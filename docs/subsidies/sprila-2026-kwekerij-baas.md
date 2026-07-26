@@ -3,7 +3,7 @@
 **Onderwerp:** elektrische vrachtwagens, zonnepanelen op dak, accu die laadt en ontlaadt
 **Voor:** Kwekerij Baas (Dieter)
 **Datum:** 26 juli 2026
-**Aanvraag:** stationaire accu **1.000 kWh** + **3× DC-laadstation 220 kW** (660 kW totaal)
+**Aanvraag:** stationaire accu **1.000 kWh** + **3× DC-laadstation 240 kW** (720 kW totaal)
 **Indicatief subsidiebedrag:** **€ 106.120** — tegen € 99.080 bij het oorspronkelijke plan van 2× 300 kW
 **Route:** staatssteun (≥ €25.000) — **indienen vóórdat je opdracht geeft**
 **Status:** concept — bedragen nog verifiëren op rvo.nl (zie §10)
@@ -39,7 +39,7 @@ Jullie plan valt dus uiteen in **drie aparte aanvragen bij drie regelingen**:
 | Onderdeel | Specificatie | Categorie | Indicatief bedrag (mkb) |
 |---|---|---|---|
 | Stationaire accu | 1.000 kWh | max. toegestaan per laadlocatie | € 85.000 |
-| DC-laadstations | 3× 220 kW = 660 kW | 3× vanaf 220 kW | € 21.120 |
+| DC-laadstations | 3× 240 kW = 720 kW | 3× vanaf 220 kW | € 21.120 |
 | | | **Totaal** | **€ 106.120** |
 
 Je zit met 1.000 kWh **exact op het maximum** dat SPRILA per laadlocatie vergoedt — goed
@@ -49,11 +49,11 @@ gekozen, meer plaatsen mag wel maar levert niets extra's op.
 
 1. **Vanaf nu geldt een tekenverbod.** Boven €25.000 moet de aanvraag binnen zijn vóórdat je
    opdracht geeft. Teken je eerder bij Draccu, dan is ruim €106.000 weg. Zie §5.
-2. **Ga naar 3× 220 kW in plaats van 2× 300 kW.** Dezelfde laadcapaciteit (660 vs 600 kW),
-   maar **€7.040 meer subsidie** én lichtere bekabeling — geen enkele kabelrun boven ~335 A,
-   dus het bezwaar van Draccu vervalt. En doe vooral níét 330 kW: dat vraagt de volle zware
-   kabel van ~500 A en levert geen cent extra op. Zie §2 — de belangrijkste sectie van dit
-   document.
+2. **Drie stations van 240 kW in plaats van twee van 300 kW.** Meer laadcapaciteit (720 vs
+   600 kW), **€7.040 meer subsidie** én lichtere bekabeling — geen enkele kabelrun boven
+   ~365 A, dus het bezwaar van Draccu vervalt. En doe vooral níét 330 kW per station: dat
+   vraagt de volle zware kabel van ~500 A en levert geen cent extra op. Zie §2 — de
+   belangrijkste sectie van dit document.
 3. **De 70%-eis wordt bij 1.000 kWh het knelpunt van deze aanvraag.** Dit is waar €85.000 op
    kan stranden, en het raakt hoe je de accu mag gebruiken. Zie §3.
 
@@ -79,11 +79,17 @@ bedragen terug naar de categoriegrens, dan valt op dat ze exact lineair zijn:
 **Je krijgt precies €32 per kW — maar alleen over de categoriegrens, niet over wat je
 werkelijk installeert.** Daaruit volgt één regel:
 
-> **Ga nooit tússen twee grenzen in zitten.** Installeer exact op een grens, of ga door naar
-> de volgende. Elke kW daarboven krijg je niet vergoed.
+> **Betaal nooit voor kW's boven een categoriegrens.** Installeer op een grens, of ga door
+> naar de volgende. Elke kW daarboven wordt niet vergoed.
 
-Bij 300 kW zit je 80 kW boven de grens van 220. Je betaalt voor 300 kW aan hardware en
-zwaardere kabel, en wordt afgerekend als 220 kW: **€23,47 per kW in plaats van €32,00.**
+Let op de precieze formulering: het gaat om **betalen** voor extra kW's, niet om ze hebben.
+Krijg je capaciteit boven de grens er gratis bij, dan is dat pure winst — dan telt alleen nog
+of de zwaardere stroom je bekabeling duurder maakt. Precies dat speelt hier bij 240 kW (zie
+hieronder).
+
+Bij 300 kW zit je 80 kW boven de grens van 220 én betaal je ervoor. Je koopt 300 kW aan
+hardware en zwaardere kabel, en wordt afgerekend als 220 kW: **€23,47 per kW in plaats van
+€32,00.**
 
 ### Eerst een nuchtere kanttekening
 
@@ -99,16 +105,40 @@ verspilt die je tóch al koopt.
 Dat sluit 350 kW en 550 kW per station uit zolang Draccu de laadpalen levert. En let op wat
 330 kW elektrisch betekent:
 
-| Vermogen per station | Categorie | Bedrag | Per kW | Stroom per run |
-|---|---|---|---|---|
-| 220 kW | vanaf 220 kW | € 7.040 | € 32,00 | ~335 A |
-| 300 kW | vanaf 220 kW | € 7.040 | € 23,47 | ~455 A |
-| **330 kW** *(Draccu-max)* | vanaf 220 kW | € 7.040 | **€ 21,33** | **~500 A** |
-| 350 kW | vanaf 350 kW | € 11.200 | € 32,00 | ~530 A |
+| Vermogen per station | Categorie | Bedrag | Stroom per run |
+|---|---|---|---|
+| 220 kW | vanaf 220 kW | € 7.040 | ~335 A |
+| **240 kW** *(gekozen)* | vanaf 220 kW | € 7.040 | ~365 A |
+| 300 kW | vanaf 220 kW | € 7.040 | ~455 A |
+| **330 kW** *(Draccu-max)* | vanaf 220 kW | € 7.040 | **~500 A** |
+| 350 kW | vanaf 350 kW | € 11.200 | ~530 A |
+
+Alles van 220 tot en met 349 kW levert exact hetzelfde op: **€7.040 per station**. Binnen die
+bandbreedte bepaalt dus alleen de prijs en de bekabeling wat verstandig is.
 
 > **330 kW is de slechtste waarde in de hele tabel.** Je vraagt er ~500 A voor — praktisch
 > dezelfde zware bekabeling als 350 kW — en krijgt er **€4.160 per station minder** voor
 > terug. Precies het kabelprobleem waar Draccu voor waarschuwt, zonder de opbrengst.
+
+### 240 kW voor de prijs van 220 kW: doen
+
+Draccu levert 240 kW voor dezelfde prijs als 220 kW. Dat is **60 kW extra laadvermogen
+gratis** — 720 kW in plaats van 660 kW — bij een ongewijzigde subsidie van € 21.120.
+
+Dit is ook precies het voorbeeld dat RVO zelf hanteert: een laadstation van **240 kW** met
+twee laadpunten van maximaal 120 kW valt in 2026 in de categorie **"vanaf 220 kW"**. Dat is
+dus geen aanname maar een bevestigd rekenvoorbeeld — prettig, want het is het enige getal in
+dit document dat rechtstreeks uit RVO's eigen uitleg komt.
+
+**Eén ding om te checken:** 240 kW vraagt circa **365 A** per kabelrun in plaats van ~335 A.
+Dat is een bescheiden stap en blijft ruim onder de ~500 A waar Draccu bezwaar tegen maakte,
+maar vraag de installateur wel expliciet:
+
+> **Valt 365 A nog in dezelfde kabelklasse als 335 A?**
+
+Zo ja, dan is de 240 kW volledig gratis en neem je hem zonder meer. Zo nee — als je een
+doorsnede omhoog moet — dan betaal je extra koper voor **nul euro extra subsidie**, en is
+220 kW de betere keuze. Dat is de enige afweging die hier nog open staat.
 
 ### De opties naast elkaar
 
@@ -118,38 +148,39 @@ rekent de definitieve waarden.
 | Optie | Samenstelling | Vermogen | Subsidie | Per run | Totale stroom | Bij Draccu? |
 |---|---|---|---|---|---|---|
 | **A.** | 2× 220 kW | 440 kW | € 14.080 | ~335 A | ~670 A | ✅ |
-| **B.** | 2× 300 kW *(huidig plan)* | 600 kW | € 14.080 | ~455 A | ~910 A | ✅ |
+| **B.** | 2× 300 kW *(oorspronkelijk plan)* | 600 kW | € 14.080 | ~455 A | ~910 A | ✅ |
 | **B′.** | 2× 330 kW | 660 kW | € 14.080 | ~500 A | ~1.000 A | ✅ |
-| **E.** | **3× 220 kW** | **660 kW** | **€ 21.120** | **~335 A** | ~1.000 A | ✅ |
+| **E.** | **3× 240 kW** *(gekozen)* | **720 kW** | **€ 21.120** | **~365 A** | ~1.095 A | ✅ |
 | **C.** | 1× 550 kW (2× 275 kW) | 550 kW | € 17.600 | ~835 A | ~835 A | ❌ |
 | **D.** | 2× 350 kW | 700 kW | € 22.400 | ~530 A | ~1.065 A | ❌ |
 
 ### De uitkomst: optie E
 
-Vergelijk **E met B′** — dat is dezelfde vergelijking, twee keer:
+Vergelijk **E met B′** — dezelfde leverancier, dezelfde categorie:
 
-| | 3× 220 kW | 2× 330 kW |
+| | 3× 240 kW | 2× 330 kW |
 |---|---|---|
-| Laadvermogen | 660 kW | 660 kW |
-| Totale stroom | ~1.000 A | ~1.000 A |
-| Stroom per kabelrun | **~335 A** | ~500 A |
+| Laadvermogen | **720 kW** | 660 kW |
+| Stroom per kabelrun | **~365 A** | ~500 A |
 | Subsidie | **€ 21.120** | € 14.080 |
 
-**Identieke laadcapaciteit, identieke totale stroom — maar €7.040 meer subsidie én lichtere
-kabels per run.** Geen enkele run komt boven ~335 A uit, dus het zware-bekabelingsprobleem
-verdwijnt volledig. Draccu kan dit gewoon offreren.
+**Méér laadcapaciteit, lichtere kabels per run, en €7.040 meer subsidie.** Op alle drie de
+punten beter. Het zware-bekabelingsprobleem waar Draccu voor waarschuwt verdwijnt, en het
+blijft binnen wat zij kunnen leveren.
+
+Optie E levert met 720 kW zelfs meer laadvermogen dan optie D (700 kW), die niet bij Draccu
+verkrijgbaar is — voor €1.280 minder subsidie.
 
 Je krijgt bovendien een derde laadpunt, dus meer flexibiliteit en redundantie dan met twee
 stations.
 
-Wat het kost: een derde kast, een derde fundatie en een derde kabelrun. Reken dat na —
-drie kleinere units zijn meestal wat duurder dan twee grotere bij gelijk vermogen, maar je
-bespaart aan de kabelkant. Netto is dit vrijwel zeker gunstig, en het is de enige optie die
-binnen Draccu's grens én op de categoriegrens zit.
+Wat het kost: een derde kast, een derde fundatie en een derde kabelrun. Reken dat na — drie
+kleinere units zijn meestal wat duurder dan twee grotere bij gelijk vermogen, maar je
+bespaart aan de kabelkant en het derde station levert €7.040 aan subsidie op.
 
-**Heb je aan 440 kW genoeg** — twee trucks die 's nachts laden is daar ruim binnen — **dan is
-optie A (€14.080) de zuinigste keuze.** Zelfde subsidie als het huidige plan, maar de lichtste
-kabels en de goedkoopste stations van allemaal.
+**Heb je aan 480 kW genoeg** — twee trucks die 's nachts laden is daar ruim binnen — **dan is
+2× 240 kW (€14.080) de zuinigste keuze.** Zelfde subsidie als het oorspronkelijke plan, maar
+lichtere kabels en één station minder om te betalen.
 
 ### Wil je meer: splits de opdracht
 
@@ -177,7 +208,7 @@ helpt om onder het 40%-plafond te blijven — zie §4.)
 
 ### Bekabeling verder verlichten
 
-Met 3× 220 kW is het zware-kabelprobleem al opgelost — geen enkele run boven ~335 A. Deze
+Met 3× 240 kW is het zware-kabelprobleem al opgelost — geen enkele run boven ~365 A. Deze
 knoppen blijven wel de moeite waard om de aanlegkosten te drukken, in volgorde van effect:
 
 1. **DC-koppeling met de accu.** Vraag Draccu of de accu **DC-gekoppeld** kan worden aan de
@@ -194,30 +225,30 @@ knoppen blijven wel de moeite waard om de aanlegkosten te drukken, in volgorde v
 4. **Gelijktijdigheid begrenzen via het EMS.** De categorie hangt af van het
    **geïnstalleerde vermogen van het station**, niet van wat je gelijktijdig afneemt.
    Laadpleinen begrenzen de gelijktijdigheid standaard, en dat is precies waar de accu voor
-   is: met drie stations van 220 kW hoef je de voeding niet op 660 kW te dimensioneren.
+   is: met drie stations van 240 kW hoef je de voeding niet op 720 kW te dimensioneren.
    Laat je adviseur of RVO wel bevestigen dat een EMS-begrenzing de indeling niet raakt
    vóór je hierop bouwt.
 
-### Gekozen: optie E — 3× 220 kW
+### Gekozen: optie E — 3× 240 kW
 
-**De aanvraag is hierop vastgesteld: drie DC-laadstations van 220 kW, samen 660 kW,
+**De aanvraag is hierop vastgesteld: drie DC-laadstations van 240 kW, samen 720 kW,
 € 21.120 aan laadpaalsubsidie.**
 
-Dat is dezelfde laadcapaciteit als het oorspronkelijke plan van 2× 300 kW, met €7.040 meer
-subsidie en geen zware bekabeling. Alles blijft binnen wat Draccu kan offreren.
+Dat is 120 kW méér laadcapaciteit dan het oorspronkelijke plan van 2× 300 kW, met €7.040
+meer subsidie en geen zware bekabeling. Alles blijft binnen wat Draccu kan offreren.
 
 Twee dingen om vast te houden bij de uitvoering:
 
-- **Drie afzonderlijke stations, niet één grote installatie.** Zou Draccu de 660 kW als één
+- **Drie afzonderlijke stations, niet één grote installatie.** Zou Draccu de 720 kW als één
   station leveren, dan val je in de categorie vanaf 550 kW en zakt de subsidie naar €17.600 —
   €3.520 minder. Dit moet expliciet zo op de offerte.
 - **Nooit 300 of 330 kW per station.** Beide zitten tussen de categoriegrenzen in en kosten
   €4.160 per station aan misgelopen subsidie, bij 330 kW zelfs met de volle zware kabel erbij.
 
-Blijkt onderweg dat 440 kW ruim volstaat — bijvoorbeeld omdat er voorlopig twee trucks
-komen — dan is optie A (2× 220 kW, € 14.080) de zuinigere variant. Dat is een
-capaciteitsbeslissing, geen subsidiebeslissing: koop geen derde station puur voor de €7.040
-(zie de kanttekening hierboven).
+Blijkt onderweg dat 480 kW ruim volstaat — bijvoorbeeld omdat er voorlopig twee trucks
+komen — dan is 2× 240 kW (€ 14.080) de zuinigere variant. Dat is een capaciteitsbeslissing,
+geen subsidiebeslissing: koop geen derde station puur voor de €7.040 (zie de kanttekening
+hierboven).
 
 ⚠️ **Let op hoe het vermogen wordt vastgesteld:** de categorie volgt uit het **totaalvermogen
 van het laadstation**, niet uit het vermogen per laadpunt. Laat de leverancier het
@@ -228,10 +259,10 @@ aanvragen en hij kost direct een categorie.
 
 | Optie | Laadpalen | Totaal |
 |---|---|---|
-| A. 2× 220 kW | € 14.080 | € 99.080 |
-| B. 2× 300 kW *(huidig plan)* | € 14.080 | € 99.080 |
+| A. 2× 240 kW | € 14.080 | € 99.080 |
+| B. 2× 300 kW *(oorspronkelijk plan)* | € 14.080 | € 99.080 |
 | B′. 2× 330 kW | € 14.080 | € 99.080 |
-| **E. 3× 220 kW** ✅ | **€ 21.120** | **€ 106.120** |
+| **E. 3× 240 kW** ✅ | **€ 21.120** | **€ 106.120** |
 | C. 1× 550 kW *(niet via Draccu)* | € 17.600 | € 102.600 |
 | D. 2× 350 kW *(niet via Draccu)* | € 22.400 | € 107.400 |
 
@@ -280,8 +311,8 @@ bijlage mee.
 
 ### Nog een technische check: kan de accu 600 kW leveren?
 
-Drie laadpalen van 220 kW vragen samen **660 kW** als ze gelijktijdig vol draaien. Een accu
-van 1.000 kWh heeft niet automatisch 660 kW afgifte — veel systemen in die klasse leveren
+Drie laadpalen van 240 kW vragen samen **720 kW** als ze gelijktijdig vol draaien. Een accu
+van 1.000 kWh heeft niet automatisch 720 kW afgifte — veel systemen in die klasse leveren
 250 tot 500 kW. Vraag Draccu expliciet naar het **ontlaadvermogen in kW**, niet alleen de
 capaciteit in kWh. Levert de accu maar 300 kW, dan kun je nooit alle palen tegelijk vol
 bedienen uit de accu en moet het net bijspringen — precies wat je wilde vermijden.
@@ -396,18 +427,18 @@ nog van jullie hebben (zie §9).
 
 | # | Type | Totaalvermogen station | Laadpunten | Categorie | Aantal | Indicatief bedrag |
 |---|---|---|---|---|---|---|
-| 1 | DC | **220 kW** | `[…]` | vanaf 220 kW | **3** | **€ 21.120** |
+| 1 | DC | **240 kW** | `[…]` | vanaf 220 kW | **3** | **€ 21.120** |
 
-Totaal geïnstalleerd laadvermogen: **660 kW**.
+Totaal geïnstalleerd laadvermogen: **720 kW**.
 
 Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan worden:
 
-- het **totaalvermogen per station is minimaal 220 kW** — expliciet zo benoemd, want de
+- het **totaalvermogen per station is 240 kW** — expliciet zo benoemd, want de
   categorie volgt uit het totaalvermogen van het station en niet uit het vermogen per
   laadpunt;
 - de stations worden geleverd als **drie afzonderlijke laadstations**, niet als één
-  installatie van 660 kW. Drie stations van 220 kW leveren €21.120 op; één station van
-  660 kW valt in de categorie vanaf 550 kW en levert €17.600 — €3.520 minder.
+  installatie van 720 kW. Drie stations van 240 kW leveren €21.120 op; één station van
+  720 kW valt in de categorie vanaf 550 kW en levert €17.600 — €3.520 minder.
 
 **Stationaire accu**
 
@@ -424,7 +455,7 @@ Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan 
 | Kostenpost | Bedrag excl. btw |
 |---|---|
 | Stationaire accu 1.000 kWh | `[…]` |
-| 3× DC-laadstation 220 kW | `[…]` |
+| 3× DC-laadstation 240 kW | `[…]` |
 | Netaansluiting / verzwaring | `[…]` |
 | Voedingskabels, trafo, schakelmateriaal | `[…]` |
 | Energiemanagementsysteem | `[…]` |
@@ -447,16 +478,16 @@ Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan 
 > `[… kWh]` per dag. De voertuigen keren dagelijks terug naar de vestiging en laden
 > overwegend `[’s nachts / tussen ritten]`.
 >
-> **Laadinfrastructuur.** Wij plaatsen **drie DC-laadstations van elk 220 kW**, samen
-> **660 kW**, aangevuld met de benodigde elektrotechnische en civiele werken. Door te kiezen
+> **Laadinfrastructuur.** Wij plaatsen **drie DC-laadstations van elk 240 kW**, samen
+> **720 kW**, aangevuld met de benodigde elektrotechnische en civiele werken. Door te kiezen
 > voor drie afzonderlijke stations in plaats van enkele grote, blijft de belasting per
-> voedingskabel beperkt tot circa 335 A en kan de laadvoorziening met conventionele
+> voedingskabel beperkt tot circa 365 A en kan de laadvoorziening met conventionele
 > bekabeling worden uitgevoerd. Elk voertuig beschikt daarmee over een eigen laadpositie, wat
 > de operationele beschikbaarheid vergroot: bij uitval van één station kan het laden op de
 > overige stations doorgaan.
 >
 > **Netcapaciteit als knelpunt.** De beschikbare netcapaciteit op onze aansluiting bedraagt
-> `[… kVA]`. Gelijktijdig laden van de drie laadstations op vol vermogen vraagt 660 kW en
+> `[… kVA]`. Gelijktijdig laden van de drie laadstations op vol vermogen vraagt 720 kW en
 > overschrijdt daarmee de beschikbare capaciteit. Netverzwaring is `[niet op afzienbare
 > termijn beschikbaar / kostbaar en pas mogelijk in …]`. Zonder aanvullende maatregelen is
 > elektrificatie van het wagenpark op deze locatie daarom niet realiseerbaar.
@@ -491,9 +522,9 @@ Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan 
 
 - [ ] **Offertes** voor accu, laadstations en aanleg — gespecificeerd per kostenpost, excl.
       btw, **niet ondertekend als opdracht**
-- [ ] **Technische specificatie laadstations** — met expliciet **220 kW totaalvermogen per
+- [ ] **Technische specificatie laadstations** — met expliciet **240 kW totaalvermogen per
       station**, het aantal laadpunten, en **drie afzonderlijke stations** (niet één
-      installatie van 660 kW)
+      installatie van 720 kW)
 - [ ] **Technische specificatie accu** — capaciteit in kWh, **ontlaadvermogen in kW**, en de
       beschrijving hoe de 70%-eis wordt geborgd en gemeten
 - [ ] **Schriftelijke bevestiging van Draccu** dat het EMS de laadstations prioriteert en de
@@ -523,7 +554,8 @@ Voor de twee andere regelingen:
 | **Deze week** | eHerkenning niveau 3 controleren of aanvragen | Zonder eH3 kun je niet indienen; kost dagen |
 | **Deze week** | Mkb-toets uitvoeren (incl. verbonden ondernemingen) | Bepaalt 40% vs 20% en de bedragen |
 | **Deze week** | Transportindicatie aanvragen bij de netbeheerder | Lange doorlooptijd; blokkeert SDE++ in november |
-| **Deze week** | **Offerte bij Draccu: 3× DC-laadstation 220 kW** — als drie losse stations | € 7.040 meer subsidie dan 2× 300 kW, en geen zware kabel |
+| **Deze week** | **Offerte bij Draccu: 3× DC-laadstation 240 kW** — als drie losse stations | € 7.040 meer subsidie dan 2× 300 kW, en meer laadvermogen |
+| **Deze week** | Installateur vragen: **valt 365 A nog in dezelfde kabelklasse als 335 A?** | Zo nee, dan kost 240 kW extra koper zonder extra subsidie |
 | **Deze week** | Draccu vragen of de accu **DC-gekoppeld** kan worden aan de laadstations | Verlicht de AC-bekabeling en helpt bij de 70%-eis |
 | **Aug** | Dagelijkse kWh-behoefte van het wagenpark doorrekenen | Bepaalt of 1.000 kWh de 70%-eis haalt |
 | **Aug** | Offertes opvragen — accu, laadstations, aansluit- en civiel werk | Bijlage bij de aanvraag |
@@ -550,9 +582,13 @@ Voor de twee andere regelingen:
 
 ### Techniek en offertes
 
-- [ ] **Offerte bij Draccu voor 3× DC-laadstation van 220 kW** (660 kW totaal), naast de accu.
-- [ ] **Laten vastleggen dat het drie afzonderlijke stations zijn** van elk minimaal 220 kW
-      totaalvermogen — niet één installatie van 660 kW. Scheelt €3.520.
+- [ ] **Offerte bij Draccu voor 3× DC-laadstation van 240 kW** (720 kW totaal), naast de accu.
+      Draccu levert 240 kW voor de prijs van 220 kW — 60 kW extra, gratis.
+- [ ] **Installateur vragen of 365 A nog in dezelfde kabelklasse valt als 335 A.** Zo ja: 240
+      kW zonder meer nemen. Zo nee: terug naar 220 kW, want extra koper levert nul extra
+      subsidie op.
+- [ ] **Laten vastleggen dat het drie afzonderlijke stations zijn** van elk 240 kW
+      totaalvermogen — niet één installatie van 720 kW. Scheelt €3.520.
 - [ ] **De meerprijs van drie kleinere kasten t.o.v. twee grote laten uitrekenen**, afgezet
       tegen €7.040 extra subsidie én de besparing op lichtere kabels.
 - [ ] **Niet op 300 of 330 kW per station uitkomen.** 330 kW vraagt ~500 A — de volle zware

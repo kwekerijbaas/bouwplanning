@@ -1,7 +1,8 @@
 # SPRILA 2026 — beoordeling regeling + concept-aanvraag
 
 **Onderwerp:** elektrische vrachtwagens, zonnepanelen op dak, accu die laadt en ontlaadt
-**Voor:** Kwekerij Baas (Dieter)
+**Aanvrager:** **A. Baas Energie B.V.** — contactpersoon Dieter
+**Wagenpark:** 2 elektrische vrachtwagens
 **Datum:** 26 juli 2026
 **Aanvraag:** stationaire accu **1.000 kWh** + **3× DC-laadstation 240 kW** (720 kW totaal)
 **Indicatief subsidiebedrag:** **€ 106.120** — tegen € 99.080 bij het oorspronkelijke plan van 2× 300 kW
@@ -54,8 +55,19 @@ gekozen, meer plaatsen mag wel maar levert niets extra's op.
    ~365 A, dus het bezwaar van Draccu vervalt. En doe vooral níét 330 kW per station: dat
    vraagt de volle zware kabel van ~500 A en levert geen cent extra op. Zie §2 — de
    belangrijkste sectie van dit document.
-3. **De 70%-eis wordt bij 1.000 kWh het knelpunt van deze aanvraag.** Dit is waar €85.000 op
-   kan stranden, en het raakt hoe je de accu mag gebruiken. Zie §3.
+3. **Met twee trucks moet de accu tegen de 70%-eis worden nagerekend.** De twee vrachtwagens
+   moeten samen **minimaal circa 600 kWh per dag** afnemen — ongeveer 250 km per truck per
+   dag — om een accu van 1.000 kWh binnen de regels vol te kunnen benutten. Rijden ze
+   structureel minder, kies dan een kleinere accu. Zie §3; hier hangt €85.000 aan.
+
+Twee dingen die met twee trucks nog openstaan:
+
+- **Twee laadstations volstaan** voor twee trucks (€ 99.080 in plaats van € 106.120). Het
+  derde station kost ~€48.000 en levert €7.040 op — neem het voor de redundantie, niet voor
+  de subsidie. Zie §3.
+- **De aanvraag staat op A. Baas Energie B.V.**, terwijl de kwekerij een andere rechtspersoon
+  is. Vier punten om vooraf te regelen — eigendom van de trucks, recht op de grond, de
+  mkb-toets over de groep, en staatssteun op groepsniveau. Zie §4.
 
 ---
 
@@ -309,6 +321,61 @@ besparing). Dat verdienmodel is hier grotendeels niet toegestaan zolang de subsi
 Laat Draccu deze drie punten **schriftelijk bevestigen in de offerte**. Dat document gaat als
 bijlage mee.
 
+### Past 1.000 kWh bij twee trucks? De rekensom
+
+Met twee vrachtwagens is dit geen theoretische vraag meer. De 70%-eis werkt namelijk als een
+**plafond op wat je nog voor de kwekerij mag gebruiken**, en dat plafond wordt bepaald door
+hoeveel de trucks afnemen:
+
+> Maximale ontlading naar de kwekerij = **3/7 × wat de trucks afnemen**
+
+Nemen de trucks samen 600 kWh per dag, dan mag er hooguit 257 kWh naar het bedrijf. Samen is
+dat 857 kWh dagelijkse ontlading — en daar hoort een accu bij van circa 1.000 kWh, want die
+draai je in de praktijk op 80–90% ontlaaddiepte.
+
+**Daaruit volgt één getal om te toetsen:**
+
+> **De twee trucks moeten samen minimaal circa 600 kWh per dag afnemen** om een accu van
+> 1.000 kWh binnen de 70%-eis vol te kunnen benutten.
+
+600 kWh per dag betekent 300 kWh per truck, ofwel ruwweg **230 tot 270 km per truck per dag**
+bij een verbruik van 1,1–1,3 kWh/km. Voor regionale distributie is dat een normale dag, dus
+goed mogelijk — maar het moet wel kloppen.
+
+| Afname trucks samen | Max. ontlading totaal | Passende accu | Subsidie |
+|---|---|---|---|
+| 400 kWh/dag *(~160 km per truck)* | 571 kWh | ~650 kWh | € 55.250 |
+| 500 kWh/dag *(~200 km per truck)* | 714 kWh | ~800 kWh | € 68.000 |
+| **600 kWh/dag** *(~250 km per truck)* | **857 kWh** | **~1.000 kWh** | **€ 85.000** |
+| 700 kWh/dag *(~290 km per truck)* | 1.000 kWh | 1.000 kWh (max) | € 85.000 |
+
+**Rijden de trucks structureel minder dan ~250 km per dag, kies dan een kleinere accu.** Je
+levert subsidie in, maar je koopt ook geen capaciteit die je onder de 70%-eis niet mag
+gebruiken. Een accu van 1.000 kWh kost al gauw €300.000; de 350 kWh die je er bij 400 kWh/dag
+te veel aan hebt kost dus zo'n €105.000 en levert €29.750 subsidie op — een verlies van
+€75.000 aan capaciteit die stil moet blijven staan.
+
+**Komt er een derde truck binnen twee jaar?** Dan is 1.000 kWh wél de juiste maat. De
+instandhoudingstermijn is 24 maanden, dus je moet die twee jaar aan de 70% voldoen — groei
+binnen die termijn telt mee.
+
+### En hoeveel laadstations bij twee trucks?
+
+Met twee trucks volstaan **twee laadstations**: elke truck een eigen laadpositie, geen
+wachtrij. Een derde station is puur redundantie of voorbereiding op een derde truck.
+
+| | Subsidie | Kosten derde station | Netto |
+|---|---|---|---|
+| 2× 240 kW | € 14.080 | — | — |
+| 3× 240 kW | € 21.120 | ± € 48.000 | **− € 41.000** |
+
+Het derde station levert €7.040 op en kost grofweg €48.000. **Neem het alleen als je de
+reservecapaciteit echt wilt** — voor een bedrijf dat dagelijks moet rijden is een spare
+laadpositie een legitieme keuze — maar niet vanwege de subsidie. Dat is dezelfde regel als in
+§2: koop geen capaciteit om subsidie te vangen.
+
+Totaal bij 2 stations: **€ 99.080**. Bij 3 stations: **€ 106.120**.
+
 ### Nog een technische check: kan de accu 600 kW leveren?
 
 Drie laadpalen van 240 kW vragen samen **720 kW** als ze gelijktijdig vol draaien. Een accu
@@ -376,6 +443,54 @@ terugvorderingsgrond.
 
 ---
 
+### Aanvragen op A. Baas Energie B.V. — vier dingen om te regelen
+
+De aanvraag komt op naam van **A. Baas Energie B.V.**, terwijl de kwekerij een andere
+rechtspersoon is. Dat kan prima, maar het roept vier vragen op die RVO bij de beoordeling
+stelt. Loop ze na vóór indiening — dit is het soort punt waar een aanvraag op afketst terwijl
+de techniek klopt.
+
+**1. Van wie zijn de vrachtwagens?**
+SPRILA is bedoeld voor ondernemers **met eigen elektrische voertuigen**. Staan de trucks op
+een andere BV dan de aanvrager, dan is de koppeling tussen aanvrager en wagenpark niet
+vanzelfsprekend. Twee oplossingen:
+
+- de trucks (in eigendom of financial lease) op **A. Baas Energie B.V.** zetten, of
+- aantoonbaar vastleggen dat de laadinfrastructuur van A. Baas Energie B.V. de voertuigen van
+  de groepsvennootschap bedient, met een overeenkomst tussen beide BV's.
+
+Leg dit voor aan RVO of je subsidieadviseur vóór indiening. Let op: dit raakt ook **AanZET**,
+want die subsidie gaat naar wie de trucks koopt. Zet beide bij voorkeur bij dezelfde entiteit.
+
+**2. Van wie is de grond?**
+De laadinfrastructuur moet op **eigen of gehuurd terrein** van de aanvrager staan. Is het
+terrein van de kwekerij, dan heeft A. Baas Energie B.V. een **huurovereenkomst of
+gebruiksrecht** nodig, plus schriftelijke toestemming. Binnen een familiegroep voelt dat
+overbodig — "het is toch allemaal van ons" — maar RVO toetst op rechtspersoon. Zonder papier
+is dit een afwijzingsgrond.
+
+**3. De mkb-toets gaat over de hele groep.**
+De Europese mkb-toets telt **verbonden en partnerondernemingen** mee. A. Baas Energie B.V.
+alleen is vrijwel zeker mkb, maar de toets moet op geconsolideerd niveau: alle BV's met een
+gezamenlijke eigenaar of meerderheidsbelang bij elkaar opgeteld. Grenzen: minder dan 250 FTE
+én (omzet ≤ €50 mln óf balanstotaal ≤ €43 mln). Bij een kwekerij plus een energie-BV blijf je
+daar naar verwachting ruim onder, maar de verklaring moet kloppen — een onjuiste
+mkb-verklaring is een terugvorderingsgrond, en het scheelt een factor 2 in de bedragen.
+
+**4. Staatssteun telt ook op groepsniveau.**
+Eerder ontvangen steun aan de kwekerij of andere groepsvennootschappen telt mee bij de
+staatssteuntoets. Verzamel het overzicht dus voor de hele groep, niet alleen voor de
+energie-BV.
+
+⚠️ **Eén extra aandachtspunt bij een energie-BV.** De naam suggereert activiteiten in energie.
+Wordt de accu ook ingezet voor **handel op de energiemarkt of levering aan derden**, dan telt
+die ontlading mee in de noemer van de 70%-eis en zak je er vrijwel zeker doorheen. Zolang de
+subsidie loopt — 24 maanden — moet de accu in hoofdzaak de laadstations bedienen. Als
+energiehandel juist de reden was om dit in een energie-BV te zetten, dan botst dat frontaal
+met deze subsidie en moet je kiezen.
+
+---
+
 ## 5. Het tekenverbod — de valkuil die €106.120 kost
 
 Er zijn twee aanvraagroutes, met een omslagpunt bij €25.000 subsidie. Met €106.120 zit je
@@ -412,15 +527,16 @@ nog van jullie hebben (zie §9).
 
 | Veld | In te vullen |
 |---|---|
-| Naam onderneming | `[statutaire naam, bijv. Kwekerij Baas B.V.]` |
+| Naam onderneming | **A. Baas Energie B.V.** |
 | KVK-nummer | `[KVK-nummer]` |
 | Vestigingsadres | `[adres]` |
 | Locatie laadinfrastructuur | `[adres laadlocatie, indien afwijkend]` |
-| Eigendom / huur terrein | `[eigendom / huur — bij huur: toestemming verhuurder bijvoegen]` |
+| Eigendom / huur terrein | `[eigendom / huur van groepsvennootschap — overeenkomst bijvoegen, zie §4]` |
 | Contactpersoon | Dieter `[achternaam]`, dieter@kwekerijbaas.nl, `[telefoon]` |
+| Eigenaar vrachtwagens | `[A. Baas Energie B.V. / andere groepsvennootschap — zie §4]` |
 | Type onderneming | Mkb `[te bevestigen na mkb-toets incl. verbonden ondernemingen]` |
 | Aanvraagroute | **≥ €25.000 → staatssteun, indienen vóór opdrachtverlening** |
-| SBI-code | `[SBI-code, tuinbouw]` |
+| SBI-code | `[SBI-code van A. Baas Energie B.V.]` |
 | IBAN | `[IBAN t.n.v. de aanvragende rechtspersoon]` |
 
 ### 6.2 Op te geven laadinfrastructuur
@@ -467,14 +583,14 @@ Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan 
 
 ### 6.3 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
 
-> Kwekerij Baas verduurzaamt het eigen transport door over te stappen op elektrische
-> vrachtwagens voor de aan- en afvoer van `[producten/stromen]`. Om die overstap mogelijk te
+> A. Baas Energie B.V. realiseert de laadvoorziening voor de overstap op elektrische
+> vrachtwagens voor de aan- en afvoer van `[producten/stromen]` binnen de Baas-groep. Om die overstap mogelijk te
 > maken, realiseren wij op ons eigen terrein aan `[adres]` een private laadvoorziening,
 > uitsluitend bestemd voor ons eigen wagenpark. De laadvoorziening wordt niet openbaar
 > toegankelijk gemaakt.
 >
-> **Wagenpark.** Wij zetten `[aantal]` elektrische vrachtwagens in `[categorie N2/N3]`, met
-> een gemiddelde dagelijkse energiebehoefte van circa `[… kWh]` per voertuig, samen circa
+> **Wagenpark.** Wij zetten **twee** elektrische vrachtwagens in `[categorie N2/N3]`, met een
+> gemiddelde dagelijkse energiebehoefte van circa `[… kWh]` per voertuig, samen circa
 > `[… kWh]` per dag. De voertuigen keren dagelijks terug naar de vestiging en laden
 > overwegend `[’s nachts / tussen ritten]`.
 >
@@ -551,13 +667,17 @@ ingediend (§5).
 
 - [ ] Statutaire naam, **KVK-nummer**, SBI-code, vestigingsadres en adres van de laadlocatie.
 - [ ] **IBAN** ten name van de aanvragende rechtspersoon.
-- [ ] **Bewijs van eigendom of de huurovereenkomst** van het terrein; bij huur ook
-      schriftelijke **toestemming van de verhuurder**.
+- [ ] **Huurovereenkomst of gebruiksrecht** waarmee A. Baas Energie B.V. over het terrein
+      beschikt, plus schriftelijke **toestemming van de eigenaar** (zie §4 — binnen de groep
+      moet dit op papier).
 - [ ] **Situatietekening of plattegrond** van de laadlocatie met de posities van de drie
       stations en de accu.
 - [ ] **Overzicht van ontvangen overheidssteun** van de afgelopen drie belastingjaren — nodig
       voor de staatssteunverklaring.
-- [ ] **Gegevens over holdings, deelnemingen en verbonden ondernemingen**, voor de mkb-toets.
+- [ ] **Gegevens over holdings, deelnemingen en verbonden ondernemingen**, voor de mkb-toets
+      — de toets gaat over de hele groep, niet over A. Baas Energie B.V. alleen.
+- [ ] **Vastlegging van de relatie tussen de laadinfrastructuur en de vrachtwagens**, als die
+      op een andere groepsvennootschap staan (zie §4).
 
 ### 7.4 Zelf op te stellen
 
@@ -679,7 +799,8 @@ Hiermee maak ik de aanvraagtekst af in plaats van hem te schetsen:
 
 1. Statutaire naam, KVK-nummer, SBI-code, adres laadlocatie, eigendom of huur.
 2. Uitkomst van de mkb-toets.
-3. Aantal en type vrachtwagens, accucapaciteit per truck, kWh per dag.
+3. Type vrachtwagens (N2/N3), accucapaciteit per truck, en vooral: **hoeveel kilometer rijden
+   ze per dag?** Dat bepaalt of 1.000 kWh de juiste accumaat is (zie §3).
 4. Laadprofiel: 's nachts, tussen ritten, of beide — en hoeveel gelijktijdig.
 5. Huidige netaansluiting in kVA en wat de netbeheerder over verzwaring zegt.
 6. De offertes zodra ze er zijn.

@@ -518,31 +518,78 @@ Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan 
 
 ---
 
-## 7. Bijlagenchecklist
+## 7. Wat is er nodig om de aanvraag compleet te maken
 
-- [ ] **Offertes** voor accu, laadstations en aanleg — gespecificeerd per kostenpost, excl.
-      btw, **niet ondertekend als opdracht**
-- [ ] **Technische specificatie laadstations** — met expliciet **240 kW totaalvermogen per
-      station**, het aantal laadpunten, en **drie afzonderlijke stations** (niet één
-      installatie van 720 kW)
-- [ ] **Technische specificatie accu** — capaciteit in kWh, **ontlaadvermogen in kW**, en de
-      beschrijving hoe de 70%-eis wordt geborgd en gemeten
-- [ ] **Schriftelijke bevestiging van Draccu** dat het EMS de laadstations prioriteert en de
-      ontlaadstromen per bestemming logt
-- [ ] **Onderbouwing van de 70%-eis** — verwachte kWh/dag naar de laadstations, afgezet tegen
-      de verwachte ontlading van de accu
-- [ ] **Situatietekening / plattegrond** van de laadlocatie
-- [ ] **Begroting** van alle subsidiabele kosten, met de 40%-toets erin
-- [ ] **Mkb-verklaring** (inclusief verbonden en partnerondernemingen)
-- [ ] **Staatssteunverklaring**
-- [ ] **Bewijs van eigendom of huurovereenkomst** van het terrein; bij huur: schriftelijke
-      toestemming van de verhuurder
-- [ ] **Machtiging** als een intermediair namens jullie indient
+Geordend naar wie het moet aanleveren, zodat je per partij één uitvraag kunt doen.
 
-Voor de twee andere regelingen:
+### 7.1 Van Draccu — de grootste post, en de langste doorlooptijd
 
-- [ ] AanZET: koopovereenkomst of financial-leasecontract van de trucks
-- [ ] SDE++: **transportindicatie van de netbeheerder**
+- [ ] **Offerte laadstations**: 3× DC van 240 kW, gespecificeerd per kostenpost, excl. btw.
+      Expliciet vermelden: **240 kW totaalvermogen per station** en **drie afzonderlijke
+      stations** (niet één installatie van 720 kW — dat scheelt €3.520).
+- [ ] **Offerte accu**: 1.000 kWh, met **ontlaadvermogen in kW** erbij vermeld.
+- [ ] **Offerte aanleg**: netaansluiting, voedingskabels, trafo, schakelmateriaal, EMS,
+      civiel werk, installatie. Per post uitgesplitst — de begroting moet zo onderbouwd
+      kunnen worden.
+- [ ] **Schriftelijke bevestiging over de 70%-eis**: dat het EMS de laadstations prioriteert
+      en dat de ontlaadstromen **per bestemming** worden gemeten en gelogd. Dit is de bijlage
+      waar €85.000 aan hangt.
+- [ ] **Antwoord op twee technische vragen**: valt ~365 A nog in dezelfde kabelklasse als
+      ~335 A, en kan de accu **DC-gekoppeld** worden aan de laadstations?
+
+⚠️ Alle offertes blijven **offertes** — niets ondertekenen als opdracht tot de aanvraag is
+ingediend (§5).
+
+### 7.2 Van de netbeheerder
+
+- [ ] **Huidige aansluitwaarde in kVA** en een schriftelijke reactie op de vraag of en wanneer
+      verzwaring mogelijk is. Dit onderbouwt in het projectplan waarom de accu nodig is.
+- [ ] **Transportindicatie** — alleen nodig voor de SDE++-aanvraag voor de zonnepanelen, maar
+      met een lange doorlooptijd. Nu aanvragen.
+
+### 7.3 Uit de eigen administratie
+
+- [ ] Statutaire naam, **KVK-nummer**, SBI-code, vestigingsadres en adres van de laadlocatie.
+- [ ] **IBAN** ten name van de aanvragende rechtspersoon.
+- [ ] **Bewijs van eigendom of de huurovereenkomst** van het terrein; bij huur ook
+      schriftelijke **toestemming van de verhuurder**.
+- [ ] **Situatietekening of plattegrond** van de laadlocatie met de posities van de drie
+      stations en de accu.
+- [ ] **Overzicht van ontvangen overheidssteun** van de afgelopen drie belastingjaren — nodig
+      voor de staatssteunverklaring.
+- [ ] **Gegevens over holdings, deelnemingen en verbonden ondernemingen**, voor de mkb-toets.
+
+### 7.4 Zelf op te stellen
+
+- [ ] **Mkb-verklaring** — inclusief verbonden en partnerondernemingen. Bepaalt of je 40% of
+      20% krijgt, en of de bedragen per station verdubbelen of halveren.
+- [ ] **Staatssteunverklaring** (de route boven €25.000).
+- [ ] **Begroting** van alle subsidiabele kosten, met de 40%-toets erin: totaal moet
+      **≥ €265.300** zijn bij een gevraagde subsidie van €106.120.
+- [ ] **Onderbouwing van de 70%-eis**: verwachte kWh/dag naar de laadstations, afgezet tegen
+      de verwachte dagelijkse ontlading van de accu. Reken met circa 1,1–1,4 kWh per gereden
+      kilometer per truck.
+- [ ] **Projectomschrijving** — concepttekst staat in §6.3, alleen de `[…]`-velden invullen.
+- [ ] **Machtiging**, als een intermediair namens jullie indient.
+
+### 7.5 Toegang
+
+- [ ] **eHerkenning niveau 3 (eH3)** op naam van de aanvragende rechtspersoon. Aanvragen kost
+      enkele dagen; zonder eH3 kun je niet indienen.
+
+### 7.6 Voor de twee andere regelingen
+
+- [ ] **AanZET** (trucks): koopovereenkomst of financial-leasecontract.
+- [ ] **SDE++** (zonnepanelen): transportindicatie van de netbeheerder, en het vermogen in kWp.
+
+### De vier echte blokkades
+
+De rest is administratie die je in een middag rond hebt. Hierop kan het project vastlopen:
+
+1. **eH3** — zonder inlog geen aanvraag, en het duurt dagen.
+2. **De offertes van Draccu** — bepalen het subsidiebedrag en de begroting.
+3. **De 70%-onderbouwing** — de enige inhoudelijke horde, en goed voor €85.000.
+4. **Het tekenverbod** — één handtekening te vroeg maakt alle bovenstaande moeite waardeloos.
 
 ---
 

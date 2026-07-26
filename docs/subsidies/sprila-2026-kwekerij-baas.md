@@ -3,8 +3,8 @@
 **Onderwerp:** elektrische vrachtwagens, zonnepanelen op dak, accu die laadt en ontlaadt
 **Voor:** Kwekerij Baas (Dieter)
 **Datum:** 26 juli 2026
-**Aanvraag:** stationaire accu **1.000 kWh** + **2× DC-laadstation 300 kW**
-**Indicatief subsidiebedrag:** **€ 99.080**
+**Aanvraag:** stationaire accu **1.000 kWh** + DC-laadstations — *configuratie in optimalisatie, zie §2*
+**Indicatief subsidiebedrag:** **€ 99.080** bij 2× 300 kW → **€ 102.600 tot € 107.400** bij een betere indeling
 **Route:** staatssteun (≥ €25.000) — **indienen vóórdat je opdracht geeft**
 **Status:** concept — bedragen nog verifiëren op rvo.nl (zie §10)
 
@@ -39,9 +39,8 @@ Jullie plan valt dus uiteen in **drie aparte aanvragen bij drie regelingen**:
 | Onderdeel | Specificatie | Categorie | Indicatief bedrag (mkb) |
 |---|---|---|---|
 | Stationaire accu | 1.000 kWh | max. toegestaan per laadlocatie | € 85.000 |
-| DC-laadstation 1 | 300 kW | DC vanaf 220 kW | € 7.040 |
-| DC-laadstation 2 | 300 kW | DC vanaf 220 kW | € 7.040 |
-| | | **Totaal** | **€ 99.080** |
+| DC-laadstations | *configuratie nog te kiezen — zie §2* | | € 14.080 – € 22.400 |
+| | | **Totaal** | **€ 99.080 – € 107.400** |
 
 Je zit met 1.000 kWh **exact op het maximum** dat SPRILA per laadlocatie vergoedt — goed
 gekozen, meer plaatsen mag wel maar levert niets extra's op.
@@ -49,41 +48,137 @@ gekozen, meer plaatsen mag wel maar levert niets extra's op.
 **Drie dingen die je nu meteen moet weten. Lees ze alle drie, ze kosten alle drie geld:**
 
 1. **Vanaf nu geldt een tekenverbod.** Boven €25.000 moet de aanvraag binnen zijn vóórdat je
-   opdracht geeft. Teken je eerder bij Draccu, dan is €99.080 weg. Zie §5.
-2. **Met 350 kW in plaats van 300 kW per laadpaal krijg je €8.320 méér subsidie.** Je zit nu
-   net onder een categoriegrens. Zie §2.
+   opdracht geeft. Teken je eerder bij Draccu, dan is bijna €100.000 weg. Zie §5.
+2. **2× 300 kW is de slechtste van alle configuraties.** Je zit net boven een categoriegrens
+   en krijgt daardoor exact evenveel subsidie als bij 220 kW, maar betaalt wél voor zwaardere
+   kabels. Er zijn drie betere varianten, tot **€8.320** meer. Zie §2 — dit is de belangrijkste
+   sectie van dit document geworden.
 3. **De 70%-eis wordt bij 1.000 kWh het knelpunt van deze aanvraag.** Dit is waar €85.000 op
    kan stranden, en het raakt hoe je de accu mag gebruiken. Zie §3.
 
 ---
 
-## 2. Gratis geld laten liggen: 300 kW versus 350 kW
+## 2. Maximaal rendement — welke configuratie levert het meeste op
 
-De subsidie per laadstation is een **vast bedrag per vermogenscategorie**. De grenzen liggen
-bij 100, 220, 350 en 550 kW. Een station van 300 kW valt daarmee in de categorie
-**"vanaf 220 kW"** — je betaalt voor 300 kW maar wordt afgerekend alsof het 220 kW is.
+Draccu meldt terecht dat 350 kW om zwaardere bekabeling vraagt. Dat verandert de afweging,
+maar het maakt de conclusie juist scherper: **2× 300 kW is de slechtste optie van allemaal.**
 
-| Vermogen per station | Categorie | Bedrag per station | 2 stations |
-|---|---|---|---|
-| 300 kW *(nu gekozen)* | vanaf 220 kW | € 7.040 | € 14.080 |
-| **350 kW** | **vanaf 350 kW** | **€ 11.200** | **€ 22.400** |
-| | | **Verschil** | **+ € 8.320** |
+### De onderliggende regel
 
-Voor 50 kW extra per station — meestal een kwestie van een andere configuratie bij dezelfde
-leverancier, soms zelfs hetzelfde kastformaat — loopt je subsidie met **€8.320** op. Dat is
-vrijwel zeker meer dan de meerprijs van de hardware, en je krijgt er ook nog eens snellere
-laadtijden bij.
+De subsidie is een **vast bedrag per laadstation per vermogenscategorie**. Reken je de
+bedragen terug naar de categoriegrens, dan valt op dat ze exact lineair zijn:
 
-**Advies: vraag de laadpaalleverancier expliciet om een variant van minimaal 350 kW en
-vergelijk de meerprijs met die €8.320.** Doe dit vóór je de offerte definitief maakt.
+| Categoriegrens | Bedrag (mkb) | Per kW |
+|---|---|---|
+| 100 kW | € 3.200 | € 32,00 |
+| 220 kW | € 7.040 | € 32,00 |
+| 350 kW | € 11.200 | € 32,00 |
+| 550 kW | € 17.600 | € 32,00 |
 
-⚠️ **Let op hoe het vermogen wordt vastgesteld:** de categorie wordt bepaald door het
-**totaalvermogen van het laadstation**, niet door het vermogen per laadpunt. Een station van
-300 kW met twee laadpunten van elk 150 kW telt als 300 kW. Laat de leverancier het
+**Je krijgt precies €32 per kW — maar alleen over de categoriegrens, niet over wat je
+werkelijk installeert.** Daaruit volgt één regel:
+
+> **Ga nooit tússen twee grenzen in zitten.** Installeer exact op een grens, of ga door naar
+> de volgende. Elke kW daarboven krijg je niet vergoed.
+
+Bij 300 kW zit je 80 kW boven de grens van 220. Je betaalt voor 300 kW aan hardware en
+zwaardere kabel, en wordt afgerekend als 220 kW: **€23,47 per kW in plaats van €32,00.**
+
+### De opties naast elkaar
+
+Stroomsterktes indicatief bij 400 V driefasen, inclusief omzetverliezen — je installateur
+rekent de definitieve waarden.
+
+| Optie | Laadvermogen | Subsidie | Per kW | Stroom per kabelrun | Totale stroom |
+|---|---|---|---|---|---|
+| **A.** 2× 220 kW | 440 kW | € 14.080 | € 32,00 | ~335 A | ~670 A |
+| **B.** 2× 300 kW *(huidig plan)* | 600 kW | € 14.080 | € 23,47 | ~455 A | ~910 A |
+| **C.** 1× 550 kW (2× 275 kW) | 550 kW | **€ 17.600** | € 32,00 | ~835 A | **~835 A** |
+| **D.** 2× 350 kW | 700 kW | **€ 22.400** | € 32,00 | ~530 A | ~1.065 A |
+
+Optie C kan, want de categorie vanaf 550 kW is in 2026 expliciet gedefinieerd als
+**"DC ≥ 550 kW óf 2 × 275 kW"** en is bewust connector-onafhankelijk — zowel zwaardere
+CCS-laders als MCS vallen eronder. Twee laadpunten van 275 kW in één station tellen dus als
+één station van 550 kW.
+
+### Wat dit betekent
+
+**Optie B is dominant slecht.** Ze levert exact hetzelfde op als optie A (€14.080), maar
+vraagt fors zwaardere kabels: ~455 A per run tegen ~335 A. Je betaalt de meerprijs van 300 kW
+zonder er één euro subsidie voor terug te zien. Als de bekabeling het knelpunt is, is de
+juiste reactie dus **niet** "dan blijven we op 300 kW" — dat is de slechtst denkbare uitkomst.
+
+**Optie C is de verrassing.** Eén station van 550 kW met twee laadpunten van 275 kW geeft
+**€3.520 méér subsidie dan het huidige plan** en heeft tegelijk **minder totale stroom**
+(~835 A tegen ~910 A) — dus minder koper, één sleuf, één fundatie, één set schakelmateriaal
+in plaats van twee. Operationeel krijg je vrijwel wat je wilde: twee laadpunten van 275 kW in
+plaats van 300 kW.
+
+Nadeel van C: **geen redundantie.** Valt dat ene station uit, dan kan geen enkele truck
+laden. Bij twee losse stations kun je door op één. Weeg dat mee — voor een bedrijf dat
+dagelijks moet rijden is dat een reëel risico.
+
+**Optie D levert absoluut het meeste** (€22.400), maar heeft de zwaarste totale bekabeling en
+is precies waar Draccu op wijst.
+
+### Het break-evenpunt dat je aan Draccu moet vragen
+
+Voor optie D ten opzichte van het huidige plan gaat het om **€8.320 extra subsidie**, oftewel
+**€4.160 per station**.
+
+> **Vraag Draccu en de laadpaalleverancier één getal: wat is de totale meerprijs van 2× 350 kW
+> ten opzichte van 2× 300 kW — station, kabel, trafo en arbeid bij elkaar?**
+>
+> Blijft die onder **€8.320**, dan is optie D de beste keuze.
+> Komt die erboven, dan is optie C (€17.600, één run) vrijwel zeker de winnaar.
+
+⚠️ **Belangrijk:** zwaardere kabels **verhogen je subsidie niet**. Het vaste bedrag per
+categorie is bedoeld om het hele pakket te dekken — laadstations, hoofdaansluiting én
+bekabeling samen. Extra koper is dus zuivere kostenpost. (Eén klein voordeel: het verhoogt
+wel je subsidiabele kosten, wat helpt om onder het 40%-plafond te blijven — zie §4.)
+
+### Drie manieren om de zwaardere bekabeling betaalbaar te maken
+
+Als optie D op de kabels sneuvelt, zijn dit de knoppen — in volgorde van effect:
+
+1. **DC-koppeling met de accu.** Vraag Draccu of de accu **DC-gekoppeld** kan worden aan de
+   laadstations in plaats van via de AC-zijde. Staat de accu op dezelfde DC-bus, dan levert
+   hij het piekvermogen lokaal en hoeft de AC-voeding alleen het *gemiddelde* te dragen, niet
+   de piek. Dat kan de zware bekabeling grotendeels wegnemen. Dit is de grootste knop die je
+   hebt, het is Draccu's eigen vakgebied, én het helpt direct bij de 70%-eis (§3).
+2. **Trafo of verdeelkast naast het laadeiland.** Kabelkosten schalen met lengte × doorsnede.
+   Verplaats het voedingspunt naar het laadeiland, dan is de zware run 15 meter in plaats van
+   150. Vaak halveert dat de meerprijs of meer.
+3. **Aluminium in plaats van koper** voor de lange runs — goedkoper per ampère, wel een
+   grotere doorsnede.
+
+Een vierde mogelijkheid: de categorie hangt af van het **geïnstalleerde vermogen van het
+station**, niet van wat je gelijktijdig afneemt. Laadpleinen begrenzen de gelijktijdigheid
+standaard via het EMS, en dat is precies waar de accu voor is. Laat je adviseur of RVO
+bevestigen dat een EMS-begrenzing de indeling niet raakt vóór je hierop bouwt.
+
+### Aanbeveling
+
+1. **Vraag de meerprijs van 350 kW op.** Onder €8.320 → **optie D, € 22.400**.
+2. **Is die te hoog → optie C, één station 550 kW met 2× 275 kW, € 17.600.** Meer subsidie
+   dan het huidige plan, minder koper, één sleuf. Alleen afvallen als je de redundantie van
+   twee losse stations echt nodig hebt.
+3. **In dat laatste geval → optie A, 2× 220 kW, € 14.080.** Zelfde subsidie als het huidige
+   plan, maar duidelijk lichtere kabels en goedkopere stations. Voor nachtladen op de
+   vestiging is 220 kW ruim voldoende: een truckaccu van 400 kWh is in minder dan twee uur
+   vol.
+4. **Blijf in geen geval op 2× 300 kW staan.**
+
+⚠️ **Let op hoe het vermogen wordt vastgesteld:** de categorie volgt uit het **totaalvermogen
+van het laadstation**, niet uit het vermogen per laadpunt. Laat de leverancier het
 totaalvermogen expliciet op de offerte zetten — dit is de meest gemaakte fout in deze
 aanvragen en hij kost direct een categorie.
 
-Bij 2× 350 kW komt het totaal uit op **€ 107.400** in plaats van €99.080.
+**Totaalbedragen inclusief de accu van €85.000:** optie A € 99.080 · optie B € 99.080 ·
+optie C **€ 102.600** · optie D **€ 107.400**.
+
+Nog een grens om te kennen: je kunt maximaal **€350.000 subsidie per aanvrager per jaar**
+ontvangen, batterijen niet meegerekend. Daar zit je met deze aanvraag ruim onder.
 
 ---
 
@@ -155,9 +250,9 @@ bedienen uit de accu en moet het net bijspringen — precies wat je wilde vermij
 
 ### De 40%-toets — haal je die?
 
-De subsidie mag nooit meer zijn dan 40% van de subsidiabele kosten (mkb). Bij €99.080
-subsidie heb je dus **minimaal €247.700 aan subsidiabele kosten** nodig; bij de 350
-kW-variant €268.500.
+De subsidie mag nooit meer zijn dan 40% van de subsidiabele kosten (mkb). Je hebt dus
+minimaal 2,5× het subsidiebedrag aan subsidiabele kosten nodig: **€247.700** bij optie A/B,
+**€256.500** bij optie C en **€268.500** bij optie D.
 
 Dat haal je vrijwel zeker: een accu van 1.000 kWh kost installatieklaar al snel €250.000 tot
 €400.000, en daar komen twee DC-stations, aansluitwerk en civiel werk bovenop. **Maar reken
@@ -237,9 +332,16 @@ nog van jullie hebben (zie §9).
 
 ### 6.2 Op te geven laadinfrastructuur
 
-| # | Type | Totaalvermogen station | Laadpunten | Categorie | Aantal | Indicatief bedrag |
-|---|---|---|---|---|---|---|
-| 1 | DC | 300 kW `[of 350 — zie §2]` | `[…]` | vanaf 220 kW `[of 350]` | 2 | € 14.080 `[of € 22.400]` |
+In te vullen zodra de configuratiekeuze uit §2 vaststaat:
+
+| Optie | Opgave | Categorie | Aantal | Indicatief bedrag |
+|---|---|---|---|---|
+| A | DC 220 kW | vanaf 220 kW | 2 | € 14.080 |
+| B | DC 300 kW *(niet doen — §2)* | vanaf 220 kW | 2 | € 14.080 |
+| C | DC 550 kW, 2× 275 kW laadpunten | vanaf 550 kW | 1 | € 17.600 |
+| D | DC 350 kW | vanaf 350 kW | 2 | € 22.400 |
+
+`[Gekozen optie: …]`
 
 **Stationaire accu**
 
@@ -256,15 +358,15 @@ nog van jullie hebben (zie §9).
 | Kostenpost | Bedrag excl. btw |
 |---|---|
 | Stationaire accu 1.000 kWh | `[…]` |
-| 2× DC-laadstation 300 kW | `[…]` |
+| DC-laadstations `[gekozen optie]` | `[…]` |
 | Netaansluiting / verzwaring | `[…]` |
 | Voedingskabels, trafo, schakelmateriaal | `[…]` |
 | Energiemanagementsysteem | `[…]` |
 | Civiel werk (grondwerk, bestrating, fundatie) | `[…]` |
 | Installatiekosten | `[…]` |
 | Vergunningen | `[…]` |
-| **Totaal subsidiabele kosten** | `[…]` — **moet ≥ € 247.700 zijn** |
-| **Gevraagde subsidie** | **€ 99.080** `[€ 107.400 bij 350 kW]` |
+| **Totaal subsidiabele kosten** | `[…]` — **moet ≥ 2,5× de gevraagde subsidie zijn** |
+| **Gevraagde subsidie** | `[€ 99.080 / € 102.600 / € 107.400]` |
 
 ### 6.3 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
 
@@ -279,12 +381,14 @@ nog van jullie hebben (zie §9).
 > `[… kWh]` per dag. De voertuigen keren dagelijks terug naar de vestiging en laden
 > overwegend `[’s nachts / tussen ritten]`.
 >
-> **Laadinfrastructuur.** Wij plaatsen twee DC-laadstations van elk `[300 / 350]` kW, samen
-> `[600 / 700]` kW, aangevuld met de benodigde elektrotechnische en civiele werken.
+> **Laadinfrastructuur.** Wij plaatsen `[aantal en vermogen conform de gekozen optie uit §2,
+> bijv. "één DC-laadstation van 550 kW met twee laadpunten van 275 kW" of "twee
+> DC-laadstations van elk 350 kW"]`, samen `[… ]` kW, aangevuld met de benodigde
+> elektrotechnische en civiele werken.
 >
 > **Netcapaciteit als knelpunt.** De beschikbare netcapaciteit op onze aansluiting bedraagt
-> `[… kVA]`. Gelijktijdig laden van beide laadstations op vol vermogen vraagt `[600 / 700]`
-> kW en overschrijdt daarmee de beschikbare capaciteit. Netverzwaring is `[niet op
+> `[… kVA]`. Gelijktijdig laden op vol vermogen vraagt `[…]` kW en overschrijdt daarmee de
+> beschikbare capaciteit. Netverzwaring is `[niet op
 > afzienbare termijn beschikbaar / kostbaar en pas mogelijk in …]`. Zonder aanvullende
 > maatregelen is elektrificatie van het wagenpark op deze locatie daarom niet realiseerbaar.
 >
@@ -349,7 +453,9 @@ Voor de twee andere regelingen:
 | **Deze week** | eHerkenning niveau 3 controleren of aanvragen | Zonder eH3 kun je niet indienen; kost dagen |
 | **Deze week** | Mkb-toets uitvoeren (incl. verbonden ondernemingen) | Bepaalt 40% vs 20% en de bedragen |
 | **Deze week** | Transportindicatie aanvragen bij de netbeheerder | Lange doorlooptijd; blokkeert SDE++ in november |
-| **Deze week** | Laadpaalleverancier vragen om een **350 kW**-variant | € 8.320 extra subsidie |
+| **Deze week** | **Meerprijs 2× 350 kW t.o.v. 2× 300 kW opvragen** (station + kabel + trafo + arbeid) | Break-even ligt op € 8.320 — bepaalt de configuratie |
+| **Deze week** | Draccu vragen of de accu **DC-gekoppeld** kan worden aan de laadstations | Grootste knop om de zware bekabeling te vermijden |
+| **Deze week** | Offerte opvragen voor **1× 550 kW met 2× 275 kW** (optie C) | € 3.520 meer dan het huidige plan, één kabelrun |
 | **Aug** | Dagelijkse kWh-behoefte van het wagenpark doorrekenen | Bepaalt of 1.000 kWh de 70%-eis haalt |
 | **Aug** | Offertes opvragen — accu, laadstations, aansluit- en civiel werk | Bijlage bij de aanvraag |
 | **Aug** | Ontlaadvermogen accu opvragen bij Draccu | Moet 600–700 kW aankunnen |
@@ -375,8 +481,17 @@ Voor de twee andere regelingen:
 
 ### Techniek en offertes
 
-- [ ] **Laadpaalleverancier vragen om 350 kW in plaats van 300 kW** en de meerprijs
-      vergelijken met €8.320 extra subsidie.
+- [ ] **Meerprijs van 2× 350 kW opvragen** ten opzichte van 2× 300 kW — station, kabel, trafo
+      en arbeid bij elkaar. Onder €8.320 → doen. Erboven → optie C.
+- [ ] **Offerte opvragen voor optie C**: één station van 550 kW met 2× 275 kW laadpunten.
+      €3.520 meer subsidie dan het huidige plan, met minder koper en één sleuf.
+- [ ] **Draccu vragen of de accu DC-gekoppeld kan worden** aan de laadstations. Zo ja, dan
+      hoeft de AC-voeding alleen het gemiddelde te dragen en verdwijnt het kabelprobleem
+      grotendeels.
+- [ ] **Voedingspunt / trafo zo dicht mogelijk bij het laadeiland plannen** — kabelkosten
+      schalen met lengte × doorsnede.
+- [ ] **Niet op 2× 300 kW blijven staan.** Dat is de enige optie die geld kost zonder iets op
+      te leveren.
 - [ ] **Totaalvermogen per station op de offerte laten zetten** — niet het vermogen per
       laadpunt. Dit bepaalt de categorie.
 - [ ] **Ontlaadvermogen van de accu opvragen bij Draccu** (in kW). Twee palen vragen samen
@@ -432,8 +547,17 @@ Dat betekent concreet:
 - De **structuur, voorwaarden en termijnen** zijn consistent over meerdere onafhankelijke
   bronnen en betrouwbaar genoeg om op te plannen.
 - De **exacte subsidiebedragen per categorie** zijn **niet op de bron geverifieerd**. Dat
-  raakt zowel het totaal van €99.080 als het advies in §2 over 300 versus 350 kW. Reken beide
-  na met de RVO-rekentool voordat je indient.
+  raakt de hele optimalisatie in §2 — zowel de totalen als de rangorde tussen de opties.
+  Reken alle vier de opties na met de RVO-rekentool voordat je kiest.
+- Het patroon van **exact €32 per kW op elke categoriegrens** volgt uit de gevonden bedragen
+  en is een sterke aanwijzing dat de tabel klopt, maar het is een afleiding van mijn kant, geen
+  bevestigde regel uit de regelingstekst. Toets hem met de rekentool.
+- De categorie **"DC ≥ 550 kW óf 2 × 275 kW"** is in meerdere bronnen bevestigd, inclusief de
+  connector-onafhankelijkheid (CCS én MCS). Optie C staat of valt hiermee — verifieer hem als
+  eerste.
+- Pas op bij het googelen: er circuleren ook bedragen van **€19.000, €43.000 en €80.000** per
+  laadstation. Dat zijn **SPULA**-bedragen (publieke laadinfrastructuur zwaar vervoer), niet
+  SPRILA. Verwar ze niet.
 - Het **maximum van 1.000 kWh per laadlocatie** en de **minimumsubsidie van €25.000** voor
   accu's zijn in meerdere bronnen bevestigd. De eerder gevonden 1.400 kWh bleek een
   SPULA-grens, niet SPRILA.

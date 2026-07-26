@@ -3,8 +3,10 @@
 **Onderwerp:** elektrische vrachtwagens, zonnepanelen op dak, accu die laadt en ontlaadt
 **Voor:** Kwekerij Baas (Dieter)
 **Datum:** 26 juli 2026
-**Status:** concept — bedragen en details nog verifiëren op rvo.nl (zie waarschuwing onderaan)
-**Gekozen route:** minimale aanvraag, onder €25.000, de-minimis, indienen ná realisatie (§5A)
+**Aanvraag:** stationaire accu **1.000 kWh** + **2× DC-laadstation 300 kW**
+**Indicatief subsidiebedrag:** **€ 99.080**
+**Route:** staatssteun (≥ €25.000) — **indienen vóórdat je opdracht geeft**
+**Status:** concept — bedragen nog verifiëren op rvo.nl (zie §10)
 
 ---
 
@@ -32,188 +34,104 @@ Jullie plan valt dus uiteen in **drie aparte aanvragen bij drie regelingen**:
 | Zonnepanelen op dak (≥ 15 kWp) | **SDE++** | **27 okt – 26 nov 2026** |
 | De elektrische vrachtwagens | **AanZET** | 2e ronde **29 sep 09:00 – 16 okt 2026 12:00** |
 
-Alle drie de loketten zijn dit najaar open. Dat is krap maar haalbaar — mits je nu begint,
-want er zit één harde valkuil in (zie §5).
+### De gekozen aanvraag
 
-### Advies bij "zo min mogelijk aanvragen"
+| Onderdeel | Specificatie | Categorie | Indicatief bedrag (mkb) |
+|---|---|---|---|
+| Stationaire accu | 1.000 kWh | max. toegestaan per laadlocatie | € 85.000 |
+| DC-laadstation 1 | 300 kW | DC vanaf 220 kW | € 7.040 |
+| DC-laadstation 2 | 300 kW | DC vanaf 220 kW | € 7.040 |
+| | | **Totaal** | **€ 99.080** |
 
-Er is één regel die deze keuze voor je maakt: **subsidie voor een accu bedraagt binnen
-SPRILA minimaal €25.000.** Een kleine accu-aanvraag bestáát niet. En alles vanaf €25.000
-valt automatisch in de zware route: aanvragen vóórdat je opdracht geeft, staatssteunregels,
-volledige onderbouwing.
+Je zit met 1.000 kWh **exact op het maximum** dat SPRILA per laadlocatie vergoedt — goed
+gekozen, meer plaatsen mag wel maar levert niets extra's op.
 
-Daarmee is het antwoord scherp:
+**Drie dingen die je nu meteen moet weten. Lees ze alle drie, ze kosten alle drie geld:**
 
-> **Minimaal aanvragen = de accu buiten de SPRILA-aanvraag laten.** Dan blijf je onder de
-> €25.000, val je onder de de-minimisregeling, en mag je gewoon eerst laten installeren en
-> daarna pas aanvragen — binnen 13 weken.
-
-Wat dat je oplevert: geen tekenverbod, geen staatssteuntoets, geen 70%-eis op de accu, geen
-meet- en logverplichting, en een aanzienlijk kortere bijlagenlijst. Je houdt je handen vrij
-en kunt morgen bij Draccu tekenen.
-
-Wat het je kost: bij een accu van pakweg 300 kWh laat je grofweg **€25.000 liggen**. Dat is
-de eerlijke prijs van "minimaal". Zie §6.4 als je die afweging nog wilt heroverwegen — het
-verschil in werk tussen beide routes is ongeveer één dag.
-
-**Concreet aan te vragen bedrag: zie de varianten in §6.1. Mijn advies is variant B,
-indicatief €7.040.**
+1. **Vanaf nu geldt een tekenverbod.** Boven €25.000 moet de aanvraag binnen zijn vóórdat je
+   opdracht geeft. Teken je eerder bij Draccu, dan is €99.080 weg. Zie §5.
+2. **Met 350 kW in plaats van 300 kW per laadpaal krijg je €8.320 méér subsidie.** Je zit nu
+   net onder een categoriegrens. Zie §2.
+3. **De 70%-eis wordt bij 1.000 kWh het knelpunt van deze aanvraag.** Dit is waar €85.000 op
+   kan stranden, en het raakt hoe je de accu mag gebruiken. Zie §3.
 
 ---
 
-## 2. Wat SPRILA precies is
+## 2. Gratis geld laten liggen: 300 kW versus 350 kW
 
-**Voluit:** Subsidieregeling Private Laadinfrastructuur bij bedrijven.
-**Uitvoerder:** RVO, namens het Ministerie van Klimaat en Groene Groei.
-**Doel:** ondernemers helpen laadinfrastructuur op eigen (of gehuurd) terrein aan te leggen
-voor hun eigen elektrische voertuigen.
+De subsidie per laadstation is een **vast bedrag per vermogenscategorie**. De grenzen liggen
+bij 100, 220, 350 en 550 kW. Een station van 300 kW valt daarmee in de categorie
+**"vanaf 220 kW"** — je betaalt voor 300 kW maar wordt afgerekend alsof het 220 kW is.
 
-**Wie mag aanvragen:** ondernemers met KVK-inschrijving, gevestigd in Nederland, met eigen
-elektrische voertuigen — personenauto's, bestelbussen, taxi's, bussen én **vrachtwagens** —
-of bouwmachines. Kwekerij Baas past hier zonder meer in.
+| Vermogen per station | Categorie | Bedrag per station | 2 stations |
+|---|---|---|---|
+| 300 kW *(nu gekozen)* | vanaf 220 kW | € 7.040 | € 14.080 |
+| **350 kW** | **vanaf 350 kW** | **€ 11.200** | **€ 22.400** |
+| | | **Verschil** | **+ € 8.320** |
 
-**Belangrijk verschil met SPULA:** SPULA is de variant voor *publiek toegankelijke*
-laadinfrastructuur voor zwaar vervoer. Jullie laadplein op eigen terrein voor eigen trucks
-is **privaat** → SPRILA. Let op: je mag de laadpunten gedurende de instandhoudingstermijn
-níét openbaar toegankelijk maken (zie §4).
+Voor 50 kW extra per station — meestal een kwestie van een andere configuratie bij dezelfde
+leverancier, soms zelfs hetzelfde kastformaat — loopt je subsidie met **€8.320** op. Dat is
+vrijwel zeker meer dan de meerprijs van de hardware, en je krijgt er ook nog eens snellere
+laadtijden bij.
 
-### Nieuw in 2026, en gunstig voor jullie
+**Advies: vraag de laadpaalleverancier expliciet om een variant van minimaal 350 kW en
+vergelijk de meerprijs met die €8.320.** Doe dit vóór je de offerte definitief maakt.
 
-- Er is een **categorie DC-laadstations vanaf 550 kW** bijgekomen, specifiek omdat er veel
-  vraag was vanuit bedrijven die elektrische vrachtwagens laden. Deze regeling is dit jaar
-  dus letterlijk verbreed richting jullie use case.
-- Het budget voor **stationaire batterijen is fors verhoogd**, van circa €18,5 mln naar
-  **€45 mln**.
-- De losse adviessubsidie (SPRILA Advies, 50% tot €3.500) is **vervallen**: sinds
-  19 december 2025 kun je daar niet meer voor aanvragen. In 2026 draait alles om aanschaf
-  en aanleg. Adviesuren meenemen als aparte subsidiepost kan dus niet meer.
-- Totaalbudget investeringssubsidie 2026: circa **€87,5 mln**.
+⚠️ **Let op hoe het vermogen wordt vastgesteld:** de categorie wordt bepaald door het
+**totaalvermogen van het laadstation**, niet door het vermogen per laadpunt. Een station van
+300 kW met twee laadpunten van elk 150 kW telt als 300 kW. Laat de leverancier het
+totaalvermogen expliciet op de offerte zetten — dit is de meest gemaakte fout in deze
+aanvragen en hij kost direct een categorie.
+
+Bij 2× 350 kW komt het totaal uit op **€ 107.400** in plaats van €99.080.
 
 ---
 
-## 3. Past jullie plan erin? Onderdeel voor onderdeel
+## 3. De 70%-eis — hier kan €85.000 op stranden
 
-### 3a. Laadstations voor de vrachtwagens — ja, kern van de regeling
-
-Zwaar transport laadt in de praktijk op DC. De subsidie is een **vast bedrag per
-laadstation**, ingedeeld op vermogensklasse.
-
-Cruciale rekenregel: **de klasse wordt bepaald door het totaalvermogen van het laadstation,
-niet door het vermogen per laadpunt.** Een station van 240 kW met twee punten van elk max
-120 kW valt in de categorie "vanaf 220 kW". Dit is precies waar aanvragen misgaan — check
-dit voordat je de klasse invult.
-
-Indicatieve bedragen voor **mkb** (grote bedrijven krijgen grofweg de helft):
-
-| Categorie | Indicatief bedrag (mkb) |
-|---|---|
-| AC vanaf 11 kW, 1 laadpunt | € 800 |
-| AC duopaal, 2 × 11 kW | € 1.600 |
-| AC vanaf 43 kW, 1 laadpunt | € 1.760 |
-| AC duopaal, 2 × 43 kW | € 3.520 |
-| DC vanaf 100 kW | € 3.200 |
-| DC vanaf 220 kW | € 7.040 |
-| DC vanaf 350 kW | € 11.200 |
-| **DC vanaf 550 kW** | **€ 17.600** |
-
-⚠️ Deze bedragen komen uit secundaire bronnen (zie §11) — rvo.nl was in deze sessie niet
-bereikbaar. **Verifieer ze met de officiële RVO-rekentool** vóór je iets indient:
-`rvo.nl/form/sprila-rekentool`.
-
-### 3b. De accu die laadt en ontlaadt — ja, mits je aan de 70%-eis voldoet
-
-Dit is het onderdeel waar de meeste aanvragen op stranden, dus lees dit goed.
-
-Een **stationaire batterij** is subsidiabel, maar alleen als hij **aantoonbaar functioneel
-gekoppeld is aan de laadinfrastructuur**. Concreet:
+Een stationaire batterij is alleen subsidiabel als hij **aantoonbaar functioneel gekoppeld
+is aan de laadinfrastructuur**:
 
 > **Minimaal 70% van het aantal kWh dat uit de stationaire batterij wordt ontladen, moet
 > aantoonbaar naar de laadstations gaan.**
 
-Dat is een harde, meetbare eis. Gevolgen voor jullie ontwerp:
+Bij 1.000 kWh — het maximum — wordt dit een serieus ontwerpvraagstuk, want de accu is groot
+ten opzichte van wat twee vrachtwagens per dag afnemen.
 
-- De accu mag níét primair dienen om de kwekerij (klimaatinstallatie, belichting, koeling)
-  te voeden of om op de energiemarkt te handelen. Doe je dat wel, dan zak je onder de 70%
-  en loop je risico op terugvordering.
-- Je moet dit kunnen **aantonen** — dus je energiemanagementsysteem moet de ontlaadstromen
-  per bestemming kunnen loggen. Neem dit op in het bestek bij je installateur.
+**Reken mee.** Cycle je de accu één keer per dag volledig, dan ontlaad je 1.000 kWh en moet
+er dus **minstens 700 kWh per dag naar de laadpalen**. Dat is ongeveer twee volle
+truckladingen per dag, elke dag. Haal je dat niet, dan zijn er maar twee uitkomsten:
 
-Subsidiegrondslag: circa **€300 per kWh opslagcapaciteit** (was €350; verlaagd omdat
-batterijprijzen zijn gedaald), met een subsidie van ongeveer **€85 per kWh voor mkb** en
-**€60 per kWh voor grote bedrijven**.
+- **je gebruikt het restant voor de kwekerij** — klimaat, belichting, koeling — en dan zak je
+  onder de 70% en voldoe je niet meer aan de voorwaarde; of
+- **je laat de accu grotendeels stilstaan** — dan haal je de 70% wel, maar staat er een accu
+  van €300.000 niets te doen.
 
-**Twee grenzen die de accu bepalen:**
+**Je kunt dus niet allebei hebben.** Dit is precies het spanningsveld met Draccu's
+standaardopzet (overdag zonnestroom opslaan, 's avonds het bedrijf voeden, 15–20 ct/kWh
+besparing). Dat verdienmodel is hier grotendeels niet toegestaan zolang de subsidie loopt.
 
-- **Maximaal 1.000 kWh per laadlocatie.** (De eerder gevonden 1.400 kWh blijkt een
-  SPULA-grens te zijn, niet SPRILA.) Meer plaatsen mag, maar is niet subsidiabel.
-- **Minimaal €25.000 subsidie** voor een accu in combinatie met nieuw geplaatste
-  laadinfrastructuur. Dit is een drempel, geen streefwaarde: vraag je minder aan, dan kwalificeer
-  je niet voor de accupost.
+**Wat je moet checken vóór je dit indient:**
 
-Die tweede grens is bepalend voor de gekozen route. Bij €85/kWh voor mkb komt €25.000 neer op
-een accu van circa **295 kWh**. Alles daaronder is niet aan te vragen, en alles daarboven duwt
-je automatisch over de €25.000-grens en dus in de zware staatssteunroute. **Een "kleine"
-accu-aanvraag is dus onmogelijk** — daarom laten we de accu in de minimale variant weg (§1, §6).
+- Hoeveel kWh nemen de vrachtwagens werkelijk per dag af? Reken met circa 1,1–1,4 kWh per
+  gereden kilometer. Kom je structureel onder de ~700 kWh/dag, **overweeg dan een kleinere
+  accu** — bijvoorbeeld 600 kWh (indicatief €51.000). Minder subsidie, maar wel een aanvraag
+  die de controle overleeft.
+- Hoe lang loopt de verplichting? De instandhoudingstermijn is **24 maanden**, dus je moet
+  twee jaar lang aan de 70% voldoen — niet alleen in het eerste kwartaal.
+- Kan het energiemanagementsysteem de laadstations **prioriteren** én de ontlaadstromen **per
+  bestemming meten en loggen**? Zonder die logging kun je niets aantonen.
 
-**Let op de formulering "accu laden en legen op vrachtwagens".** Als je hiermee bedoelt dat
-je de **accu's ván de vrachtwagens** wilt gebruiken als buffer voor het bedrijf
-(bidirectioneel / V2G), dan is dat iets anders dan een stationaire batterij en waarschijnlijk
-niet subsidiabel onder deze post — de regeling spreekt over een *stationaire* batterij die
-*aan de laadstations* levert. Laat me weten welke van de twee je bedoelt; het verandert de
-aanvraag wezenlijk.
+Laat Draccu deze drie punten **schriftelijk bevestigen in de offerte**. Dat document gaat als
+bijlage mee.
 
-**Leverancier: Draccu (Zuidwolde).** Draccu levert batterijen aan agrarische bedrijven en
-koopt direct bij fabrikanten in — prima partij voor de offerte, en ze kennen de combinatie
-accu + zonnestroom + netaansluiting. Maar let op één ding: hun **standaard use case is
-precies de use case die SPRILA níét subsidieert**. Draccu's gebruikelijke opzet is overdag
-zonnestroom opslaan en 's avonds het bedrijf zelf voeden (besparing 15–20 ct/kWh). Als de
-accu zo wordt ingeregeld, gaat het grootste deel van de ontlading naar de kwekerij en niet
-naar de laadstations — dan haal je de 70%-eis niet en is de accu niet subsidiabel onder
-SPRILA.
+### Nog een technische check: kan de accu 600 kW leveren?
 
-Neem dit dus expliciet mee in je uitvraag aan Draccu:
-
-- de accu moet **primair de laadstations voeden**, met de kwekerij als restpost;
-- het **energiemanagementsysteem moet de laadstations prioriteren** in de aansturing;
-- het systeem moet **ontlaadstromen per bestemming meten en loggen**, zodat je richting RVO
-  kunt aantonen dat je boven de 70% zit;
-- vraag Draccu dit **op papier te bevestigen in de offerte** — dat document gebruik je als
-  bijlage bij de aanvraag.
-
-Vraag ze meteen ook een **gespecificeerde offerte excl. btw** met de posten los (accu,
-omvormer, EMS, installatie, aansluitwerk), want de begroting in de aanvraag moet per
-kostenpost worden onderbouwd. En: **laat de offerte offerte blijven — niet tekenen** tot de
-aanvraag is ingediend (§5).
-
-### 3c. Zonnepanelen op dak — niet via SPRILA
-
-Zonnepanelen zijn **geen subsidiabele kostenpost** binnen SPRILA. De regeling vergoedt de
-laadinfrastructuur en de bijbehorende elektrotechniek, niet de opwek.
-
-Wat je wél moet doen:
-
-- **In je SPRILA-projectplan de zonnepanelen noemen als onderbouwing.** Het verhaal "eigen
-  opwek op het dak → accu buffert → trucks laden op zonnestroom zonder netverzwaring" maakt
-  je aanvraag inhoudelijk sterker en verklaart waarom de accu functioneel gekoppeld is aan
-  het laden.
-- **Voor de panelen zelf apart SDE++ aanvragen**, ronde **27 oktober – 26 november 2026**,
-  budget circa €8 miljard. Vanaf 15 kWp. Let op: voor zon-PV geldt in deze ronde een
-  **strengere eis** — je moet met een **transportindicatie van de netbeheerder** aantonen
-  dat je daadwerkelijk kunt terugleveren. Vraag die indicatie **nu** aan bij Liander/Stedin;
-  daar zitten lange doorlooptijden op en zonder indicatie is je SDE++-aanvraag kansloos.
-- Alternatief of aanvullend voor de panelen: **EIA** (fiscale aftrek) en/of **MIA/Vamil**.
-
-### 3d. De vrachtwagens zelf — AanZET
-
-Niet SPRILA maar **AanZET** (Aanschafsubsidie Zero-Emissie Trucks). Voor voertuigen in
-categorie N3 of N2 vanaf 10.000 kg, batterij-elektrisch of waterstof.
-
-- Subsidiepercentage 2026: circa **6,1% tot 29%**, met maximumbedragen tussen circa
-  **€15.200 en €115.200** per truck, afhankelijk van voertuigklasse en bedrijfsgrootte.
-- **Tweede openstelling 2026: 29 september 09:00 – 16 oktober 2026 12:00.** Dat is een kort
-  venster van ruim twee weken. De eerste ronde (27 januari, €78 mln) is al geweest.
-- AanZET wordt op volgorde van binnenkomst afgehandeld en gaat historisch snel vol. Zorg
-  dat je op dag één indient.
+Twee laadpalen van 300 kW vragen samen **600 kW** als ze gelijktijdig vol draaien. Een accu
+van 1.000 kWh heeft niet automatisch 600 kW afgifte — veel systemen in die klasse leveren
+250 tot 500 kW. Vraag Draccu expliciet naar het **ontlaadvermogen in kW**, niet alleen de
+capaciteit in kWh. Levert de accu maar 300 kW, dan kun je nooit twee palen tegelijk vol
+bedienen uit de accu en moet het net bijspringen — precies wat je wilde vermijden.
 
 ---
 
@@ -226,77 +144,73 @@ categorie N3 of N2 vanaf 10.000 kg, batterij-elektrisch of waterstof.
 | **Beslistermijn** | Binnen **13 weken** |
 | **Inloggen** | **eHerkenning niveau 3 (eH3)** minimaal, via Mijn RVO |
 | **Locatie** | Laadinfrastructuur in Nederland, op eigen of gehuurd terrein |
-| **Instandhouding** | Laadstations én batterij minimaal **24 maanden actief in gebruik** |
+| **Instandhouding** | Laadstations én accu minimaal **24 maanden actief in gebruik** |
 | **Niet openbaar** | In die 24 maanden **niet openbaar toegankelijk** maken |
 | **Minimum per locatie** | Subsidiebedrag ten minste circa **€2.500** per laadlocatie |
-| **Batterij** | ≥ **70%** van ontladen kWh moet naar de laadstations |
+| **Minimum accu** | Subsidie voor een accu bedraagt **minimaal €25.000** |
+| **Maximum accu** | **1.000 kWh per laadlocatie** |
+| **Accu-eis** | ≥ **70%** van ontladen kWh moet naar de laadstations |
 | **Staatssteunplafond** | Max **40%** van de subsidiabele kosten voor mkb, **20%** voor grote bedrijven |
-| **Indieningstermijn** | In hetzelfde kalenderjaar, of binnen **13 weken** na afronding van de werkzaamheden |
+| **Minimale infrastructuur** | Ten minste 1 DC-laadstation vanaf 20 kW of 1 AC-laadstation vanaf 11 kW |
+
+### De 40%-toets — haal je die?
+
+De subsidie mag nooit meer zijn dan 40% van de subsidiabele kosten (mkb). Bij €99.080
+subsidie heb je dus **minimaal €247.700 aan subsidiabele kosten** nodig; bij de 350
+kW-variant €268.500.
+
+Dat haal je vrijwel zeker: een accu van 1.000 kWh kost installatieklaar al snel €250.000 tot
+€400.000, en daar komen twee DC-stations, aansluitwerk en civiel werk bovenop. **Maar reken
+het na** zodra de offertes er zijn, want als je eronder zakt wordt de subsidie naar beneden
+bijgesteld.
 
 ### Subsidiabele kosten
 
-Ruimer dan alleen de laadpaal. Subsidiabel is alles wat nodig is om de laadinfrastructuur te
-bouwen, installeren, verbeteren en uit te breiden:
+Ruimer dan alleen de laadpaal en de accu. Subsidiabel is alles wat nodig is om de
+laadinfrastructuur te bouwen, installeren, verbeteren en uit te breiden:
 
-- de laadstations en bijbehorende technische apparatuur;
+- de laadstations, de accu en bijbehorende technische apparatuur;
 - elektrotechnische installatie en verbetering: **voedingskabels, transformatoren**,
   netaansluiting, aansluiting op elektriciteitsopslag;
 - **civieltechnisch werk**: grondwerk, terrein- en wegaanpassingen, bestrating;
 - **installatiekosten** en **vergunningskosten**.
 
-Voor een vrachtwagenlaadplein is dat civiele en elektrotechnische deel vaak een groot deel
-van de investering — neem het volledig mee in je begroting.
+Neem dit allemaal mee — het helpt je bovendien ruim boven de 40%-drempel te blijven.
 
 ### Mkb of groot bedrijf
 
-Dit bepaalt of je 40% of 20% mag ontvangen, én of je het hoge of het lage bedrag per
-laadstation krijgt (grofweg factor 2). Kwekerij Baas is naar verwachting **mkb**, maar de
-Europese mkb-toets kijkt óók naar verbonden en partnerondernemingen: als er holdings of
-deelnemingen boven of naast de kwekerij hangen, tel je die mee. Loop dit na vóór indiening —
-een onjuiste mkb-verklaring is een terugvorderingsgrond.
+Dit bepaalt of je 40% of 20% mag ontvangen, én of je het hoge of lage bedrag krijgt (grofweg
+factor 2 — bij deze aanvraag een verschil van tienduizenden euro's). Kwekerij Baas is naar
+verwachting **mkb**, maar de Europese mkb-toets kijkt óók naar verbonden en
+partnerondernemingen: hangen er holdings of deelnemingen boven of naast de kwekerij, dan tel
+je die mee. Loop dit na vóór indiening — een onjuiste mkb-verklaring is een
+terugvorderingsgrond.
 
 ---
 
-## 5. De twee routes — en waarom we voor A kiezen
+## 5. Het tekenverbod — de valkuil die €99.080 kost
 
-Er zijn **twee aanvraagroutes**, met een omslagpunt bij **€25.000 subsidie**:
+Er zijn twee aanvraagroutes, met een omslagpunt bij €25.000 subsidie. Met €99.080 zit je
+ruim in de zware route:
 
-### Route A — minder dan €25.000 → de-minimis ✅ *gekozen*
+**€25.000 of meer → reguliere staatssteunregels**
 
-Je laat **eerst installeren** en vraagt **daarna** aan, uiterlijk **13 weken na plaatsing**
-(en binnen hetzelfde kalenderjaar). Je levert facturen en betaalbewijzen mee. Je vult een
-**de-minimisverklaring** in: alle overheidssteun aan je onderneming over de afgelopen drie
-belastingjaren telt mee tegen het de-minimisplafond.
+Je moet aanvragen **vóórdat je opdracht geeft** voor de aanleg. Dit is de eis van het
+zogeheten stimulerend effect: subsidie mag alleen investeringen uitlokken die anders niet
+zouden plaatsvinden. Teken je eerst het contract met Draccu of de laadpaalleverancier en
+vraag je daarna aan, dan is je aanvraag **niet meer te redden** — geen coulance, geen
+uitzondering, geen herstelmogelijkheid.
 
-Voordelen, en de reden dat dit voor jullie de juiste route is:
+👉 **Concreet: geen opdracht tekenen, geen aanbetaling doen, geen bestelling plaatsen totdat
+de SPRILA-aanvraag is ingediend.** Offertes opvragen mag wel — sterker nog, die heb je nodig
+als bijlage. Maar de handtekening onder de opdracht komt ná de indiening.
 
-- **Geen tekenverbod.** Je kunt direct met Draccu en de laadpaalpartij zaken doen.
-- **Geen staatssteuntoets** en geen onderbouwing van het stimulerend effect.
-- **Geen 70%-eis**, want er zit geen accu in de aanvraag.
-- **Veel kortere bijlagenlijst** (§7).
-- **Geen risico op de klassieke misser** hieronder.
+Dit is een omslag ten opzichte van de eerder besproken minimale variant: daar mocht je eerst
+installeren en achteraf aanvragen. Die vrijheid heb je nu niet meer.
 
-### Route B — €25.000 of meer → reguliere staatssteunregels
-
-Je moet aanvragen **vóórdat je opdracht geeft**. Dit is de eis van het stimulerend effect:
-subsidie mag alleen investeringen uitlokken die anders niet plaatsvinden. Teken je eerst het
-contract en vraag je daarna aan, dan is je aanvraag **niet meer te redden** — geen coulance,
-geen uitzondering. Dit is de route zodra de accu meedoet, want die kent een minimum van
-€25.000 (§3b).
-
-### Wat dit betekent voor nu
-
-Zolang je binnen route A blijft — dus **zonder accu in de aanvraag** — mag je bestellen en
-laten installeren wanneer je wilt. Het enige wat telt is dat je **binnen 13 weken na
-plaatsing** indient. Zet die datum in de agenda zodra de installatie gepland staat; dat is
-in deze route de enige harde deadline die je kunt missen.
-
-⚠️ Eén ding om scherp te houden: als je later tóch besluit de accu mee te nemen in SPRILA,
-kom je in route B en geldt het tekenverbod alsnog. Beslis dus **vóórdat** je iets tekent
-welke route het wordt, en wijk daar niet meer van af.
-
-Als er al iets besteld is: bij route A is dat geen probleem — meld het even, dan check ik de
-13-wekentermijn.
+**Als er al iets besteld of getekend is: meld het direct, dan kijken we wat er nog wel kan.**
+Soms is er nog iets te redden door de opdracht te ontbinden of te splitsen, maar dan moet het
+nu gebeuren.
 
 ---
 
@@ -306,40 +220,7 @@ De aanvraag loopt via een online formulier in **Mijn RVO**. Hieronder de antwoor
 daar invult, plus de projectomschrijving die je kunt overnemen. Alles tussen `[ ]` moet ik
 nog van jullie hebben (zie §9).
 
-### 6.1 Hoeveel vraag je aan?
-
-Twee ondergrenzen bepalen wat je minimaal kúnt aanvragen:
-
-- de laadinfrastructuur moet **minimaal 1 DC-laadstation vanaf 20 kW of 1 AC-laadstation
-  vanaf 11 kW** omvatten;
-- het **subsidiebedrag per laadlocatie moet ten minste €2.500** zijn.
-
-Die tweede grens bijt: één AC-laadpunt van 11 kW levert circa €800 op en één duopaal circa
-€1.600 — **allebei te weinig om een aanvraag te mogen indienen**. Je moet dus iets verder
-omhoog.
-
-| Variant | Samenstelling | Indicatieve subsidie (mkb) | Route |
-|---|---|---|---|
-| **A — kleinst toelaatbaar** | 1× DC vanaf 100 kW | **€ 3.200** | A, de-minimis |
-| **B — minimaal zinvol voor trucks** ✅ | 1× DC vanaf 220 kW | **€ 7.040** | A, de-minimis |
-| **C — maximaal binnen de simpele route** | 1× DC vanaf 550 kW + 2× AC duopaal 2×11 kW | **€ 20.800** | A, de-minimis |
-| D — met accu | C + accu ≥ 295 kWh | **≥ € 25.000** | B, staatssteun, vooraf aanvragen |
-
-**Advies: variant B, indicatief € 7.040.** Reden: variant A haalt de €2.500-drempel wel,
-maar 100 kW is mager voor vrachtwagens — bij twee trucks sta je 's nachts te wachten. Een
-station vanaf 220 kW laadt een truckaccu binnen een normale standtijd vol en houdt ruimte
-voor een tweede voertuig. Voor ruim €3.800 extra subsidie koop je bruikbare capaciteit; dat
-is de goedkoopste stap in de hele tabel.
-
-Neem variant C alleen als je nu al zeker weet dat het wagenpark snel groeit — je blijft dan
-nog steeds onder de €25.000 en dus in de simpele route.
-
-**Toets bij de definitieve keuze:** de subsidie mag nooit meer zijn dan **40% van de
-subsidiabele kosten** (mkb). Bij €7.040 subsidie heb je dus minimaal €17.600 aan
-subsidiabele kosten nodig — met een DC-station plus aansluitwerk en civiel werk haal je dat
-ruimschoots.
-
-### 6.2 Aanvraaggegevens
+### 6.1 Aanvraaggegevens
 
 | Veld | In te vullen |
 |---|---|
@@ -350,130 +231,108 @@ ruimschoots.
 | Eigendom / huur terrein | `[eigendom / huur — bij huur: toestemming verhuurder bijvoegen]` |
 | Contactpersoon | Dieter `[achternaam]`, dieter@kwekerijbaas.nl, `[telefoon]` |
 | Type onderneming | Mkb `[te bevestigen na mkb-toets incl. verbonden ondernemingen]` |
-| Aanvraagroute | **< €25.000 → de-minimis, indienen ná realisatie (binnen 13 weken)** |
+| Aanvraagroute | **≥ €25.000 → staatssteun, indienen vóór opdrachtverlening** |
 | SBI-code | `[SBI-code, tuinbouw]` |
 | IBAN | `[IBAN t.n.v. de aanvragende rechtspersoon]` |
 
-### 6.3 Op te geven laadinfrastructuur — variant B
+### 6.2 Op te geven laadinfrastructuur
 
-| # | Type | Totaalvermogen station | Aantal laadpunten | Categorie | Aantal | Indicatief bedrag |
+| # | Type | Totaalvermogen station | Laadpunten | Categorie | Aantal | Indicatief bedrag |
 |---|---|---|---|---|---|---|
-| 1 | DC | `[… kW, ≥ 220]` | `[…]` | DC vanaf 220 kW | 1 | € 7.040 |
+| 1 | DC | 300 kW `[of 350 — zie §2]` | `[…]` | vanaf 220 kW `[of 350]` | 2 | € 14.080 `[of € 22.400]` |
 
-**Stationaire batterij: niet opnemen in deze aanvraag.** De accu mag gewoon geplaatst worden
-en mag ook in het projectverhaal genoemd worden als context — maar hij komt **niet** in de
-opgave van subsidiabele kosten, want dat zou de aanvraag over de €25.000 tillen en in route B
-duwen (§5).
+**Stationaire accu**
+
+| Veld | In te vullen |
+|---|---|
+| Opslagcapaciteit | **1.000 kWh** (maximum per laadlocatie) |
+| Ontlaadvermogen | `[… kW — opvragen bij Draccu, zie §3]` |
+| Aandeel ontlading naar laadstations | ≥ 70%, contractueel vast te leggen |
+| Wijze van aantonen | EMS met prioritering van de laadstations en logging van ontlaadstromen per bestemming |
+| Indicatief bedrag | 1.000 kWh × € 85 = **€ 85.000** |
 
 **Begroting subsidiabele kosten**
 
 | Kostenpost | Bedrag excl. btw |
 |---|---|
-| DC-laadstation (≥ 220 kW) | `[…]` |
-| Netaansluiting / verzwaring t.b.v. laadpunt | `[…]` |
+| Stationaire accu 1.000 kWh | `[…]` |
+| 2× DC-laadstation 300 kW | `[…]` |
+| Netaansluiting / verzwaring | `[…]` |
 | Voedingskabels, trafo, schakelmateriaal | `[…]` |
+| Energiemanagementsysteem | `[…]` |
 | Civiel werk (grondwerk, bestrating, fundatie) | `[…]` |
 | Installatiekosten | `[…]` |
 | Vergunningen | `[…]` |
-| **Totaal subsidiabele kosten** | `[…]` (moet ≥ € 17.600 zijn) |
-| Gevraagde subsidie | **€ 7.040** |
+| **Totaal subsidiabele kosten** | `[…]` — **moet ≥ € 247.700 zijn** |
+| **Gevraagde subsidie** | **€ 99.080** `[€ 107.400 bij 350 kW]` |
 
-⚠️ **Kosten van de accu niet in deze tabel opnemen.** Laat Draccu de accu op een **aparte
-offerte en aparte factuur** zetten, los van het laadstation en het aansluitwerk. Staan ze op
-één regel, dan is de scheiding achteraf niet meer te maken en loop je risico bij de
-controle.
-
-### 6.4 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
+### 6.3 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
 
 > Kwekerij Baas verduurzaamt het eigen transport door over te stappen op elektrische
 > vrachtwagens voor de aan- en afvoer van `[producten/stromen]`. Om die overstap mogelijk te
 > maken, realiseren wij op ons eigen terrein aan `[adres]` een private laadvoorziening,
-> uitsluitend bestemd voor onze eigen wagenpark. De laadvoorziening wordt niet openbaar
+> uitsluitend bestemd voor ons eigen wagenpark. De laadvoorziening wordt niet openbaar
 > toegankelijk gemaakt.
 >
 > **Wagenpark.** Wij zetten `[aantal]` elektrische vrachtwagens in `[categorie N2/N3]`, met
-> een gemiddelde dagelijkse energiebehoefte van circa `[… kWh]` per voertuig. De voertuigen
-> keren dagelijks terug naar de vestiging en laden overwegend `[’s nachts / tussen ritten]`.
+> een gemiddelde dagelijkse energiebehoefte van circa `[… kWh]` per voertuig, samen circa
+> `[… kWh]` per dag. De voertuigen keren dagelijks terug naar de vestiging en laden
+> overwegend `[’s nachts / tussen ritten]`.
 >
-> **Laadinfrastructuur.** Wij plaatsen `[aantal]` DC-laadstations met een totaalvermogen van
-> `[… kW]` en `[aantal]` AC-laadstations van `[… kW]`, aangevuld met de benodigde
-> elektrotechnische en civiele werken.
+> **Laadinfrastructuur.** Wij plaatsen twee DC-laadstations van elk `[300 / 350]` kW, samen
+> `[600 / 700]` kW, aangevuld met de benodigde elektrotechnische en civiele werken.
 >
 > **Netcapaciteit als knelpunt.** De beschikbare netcapaciteit op onze aansluiting bedraagt
-> `[… kVA]`. Gelijktijdig laden van het wagenpark op vol vermogen overschrijdt deze
-> capaciteit. Netverzwaring is `[niet op afzienbare termijn beschikbaar / kostbaar en pas
-> mogelijk in …]`. Zonder aanvullende maatregelen is elektrificatie van het wagenpark op deze
-> locatie daarom niet realiseerbaar.
+> `[… kVA]`. Gelijktijdig laden van beide laadstations op vol vermogen vraagt `[600 / 700]`
+> kW en overschrijdt daarmee de beschikbare capaciteit. Netverzwaring is `[niet op
+> afzienbare termijn beschikbaar / kostbaar en pas mogelijk in …]`. Zonder aanvullende
+> maatregelen is elektrificatie van het wagenpark op deze locatie daarom niet realiseerbaar.
 >
-> **Stationaire batterij (buiten deze aanvraag).** Ter ondersteuning van het laden plaatsen
-> wij op eigen kosten een stationaire batterij van `[… kWh]`. Deze laadt op momenten dat de
-> vraag laag is en de opwek hoog, en levert tijdens laadpieken extra vermogen. Zo blijft de
-> piekbelasting op de bestaande netaansluiting beperkt. De batterij maakt **geen** deel uit
-> van deze subsidieaanvraag en is niet opgenomen in de opgegeven subsidiabele kosten.
+> **Stationaire accu als oplossing.** Wij realiseren daarom een stationaire accu van
+> 1.000 kWh met een ontlaadvermogen van `[… kW]`, functioneel gekoppeld aan de
+> laadinfrastructuur. De accu laadt op momenten dat de vraag laag is en de opwek uit onze
+> zonnepanelen hoog, en levert tijdens laadpieken het vermogen dat de netaansluiting niet kan
+> leveren. Zo verhogen wij de laadcapaciteit binnen de bestaande aansluiting, zonder
+> netverzwaring. De accu wordt aangestuurd door een energiemanagementsysteem dat de
+> laadstations te allen tijde prioriteert; ten minste 70% van de uit de accu ontladen energie
+> gaat naar de laadstations, en dit wordt per bestemming gemeten en gelogd. `[Onderbouwing
+> met verwachte dagelijkse kWh naar de laadstations: … kWh/dag op … kWh ontlading.]`
 >
 > **Eigen opwek.** Op de daken van `[gebouwen]` realiseren wij `[… kWp]` aan zonnepanelen
 > (separaat gefinancierd, buiten deze aanvraag). De combinatie van eigen opwek, buffering in
-> de stationaire batterij en slim laden zorgt ervoor dat de vrachtwagens grotendeels op eigen
-> duurzaam opgewekte stroom rijden, en dat de piekbelasting op het net beperkt blijft.
+> de accu en slim laden zorgt ervoor dat de vrachtwagens grotendeels op eigen duurzaam
+> opgewekte stroom rijden en dat de piekbelasting op het net beperkt blijft.
 >
-> **Planning.** Opdrachtverlening `[maand]`, realisatie `[maand]` tot `[maand]`,
-> ingebruikname `[maand]`. De laadinfrastructuur en de batterij blijven ten minste 24
-> maanden na ingebruikname actief in gebruik.
+> **Planning.** Aanvraag `[maand]`, opdrachtverlening ná subsidieverlening, realisatie
+> `[maand]` tot `[maand]`, ingebruikname `[maand]`. De laadinfrastructuur en de accu blijven
+> ten minste 24 maanden na ingebruikname actief in gebruik.
 >
-> **Noodzaak van de subsidie.** Zonder subsidie is de businesscase op dit moment niet
-> sluitend: `[korte onderbouwing — meerkosten t.o.v. diesel, terugverdientijd, geen
-> alternatief zonder netverzwaring]`. De subsidie is daarmee bepalend voor de beslissing om
-> deze investering nu te doen.
-
-### 6.5 Als je de keuze nog wilt heroverwegen
-
-De minimale route kost je de accusubsidie. Bij een accu van 300 kWh is dat ruwweg €25.500 —
-dus de vraag "is minimaal wel het slimste?" is een reële. De afweging in één tabel:
-
-| | Route A (variant B, gekozen) | Route B (met accu) |
-|---|---|---|
-| Indicatieve subsidie | € 7.040 | € 32.000+ |
-| Aanvraagmoment | ná realisatie, binnen 13 weken | vóór opdrachtverlening |
-| Tekenverbod vooraf | nee | **ja** |
-| 70%-eis op de accu | n.v.t. | ja, met meet- en logplicht |
-| Instandhouding 24 mnd | ja (laadstation) | ja (laadstation én accu) |
-| Extra werk | — | ± 1 dag |
-| Risico bij fout | beperkt | aanvraag onherstelbaar afgewezen |
-
-Kort gezegd: het verschil is ongeveer een dag werk en een strakkere volgorde, tegen circa
-€25.000. Koop je de accu sowieso, dan is route B financieel duidelijk de betere keuze. Kies
-route A als je snelheid, eenvoud en bewegingsvrijheid belangrijker vindt, of als de accu nog
-niet vaststaat.
-
-Wat je in beide gevallen **niet** moet doen: eerst tekenen en het daarna nog willen omzetten
-naar route B. Die deur valt dicht op het moment van ondertekening.
+> **Noodzaak van de subsidie.** Zonder subsidie is de businesscase niet sluitend: `[korte
+> onderbouwing — meerkosten t.o.v. diesel, terugverdientijd, geen alternatief zonder
+> netverzwaring]`. De subsidie is daarmee bepalend voor de beslissing om deze investering nu
+> te doen.
 
 ---
 
 ## 7. Bijlagenchecklist
 
-Voor **route A** (gekozen), dus in te dienen ná realisatie:
-
-- [ ] **Facturen én betaalbewijzen** van het laadstation en het bijbehorende aanleg- en
-      aansluitwerk — gespecificeerd per kostenpost, excl. btw
-- [ ] **Aparte facturatie van de accu**, zodat die aantoonbaar buiten de aanvraag valt
-- [ ] **Technische specificatie van het laadstation** — met expliciet het **totaalvermogen
-      van het station** en het aantal laadpunten (bepaalt de categorie en dus het bedrag)
+- [ ] **Offertes** voor accu, laadstations en aanleg — gespecificeerd per kostenpost, excl.
+      btw, **niet ondertekend als opdracht**
+- [ ] **Technische specificatie laadstations** — met expliciet het **totaalvermogen per
+      station** en het aantal laadpunten
+- [ ] **Technische specificatie accu** — capaciteit in kWh, **ontlaadvermogen in kW**, en de
+      beschrijving hoe de 70%-eis wordt geborgd en gemeten
+- [ ] **Schriftelijke bevestiging van Draccu** dat het EMS de laadstations prioriteert en de
+      ontlaadstromen per bestemming logt
+- [ ] **Onderbouwing van de 70%-eis** — verwachte kWh/dag naar de laadstations, afgezet tegen
+      de verwachte ontlading van de accu
 - [ ] **Situatietekening / plattegrond** van de laadlocatie
-- [ ] **Begroting/overzicht** van de subsidiabele kosten
+- [ ] **Begroting** van alle subsidiabele kosten, met de 40%-toets erin
 - [ ] **Mkb-verklaring** (inclusief verbonden en partnerondernemingen)
-- [ ] **De-minimisverklaring** — met alle overheidssteun van de afgelopen drie belastingjaren
+- [ ] **Staatssteunverklaring**
 - [ ] **Bewijs van eigendom of huurovereenkomst** van het terrein; bij huur: schriftelijke
       toestemming van de verhuurder
-- [ ] **Datum van plaatsing vastleggen** — start van de 13-wekentermijn
 - [ ] **Machtiging** als een intermediair namens jullie indient
-
-Alleen nodig als je alsnog voor **route B** kiest:
-
-- [ ] Offertes in plaats van facturen, en indienen vóór opdrachtverlening
-- [ ] Technische specificatie batterij, met borging en meting van de 70%-eis
-- [ ] Schriftelijke bevestiging van Draccu over prioritering en logging
-- [ ] Staatssteunverklaring in plaats van de-minimisverklaring
 
 Voor de twee andere regelingen:
 
@@ -486,19 +345,20 @@ Voor de twee andere regelingen:
 
 | Wanneer | Wat | Waarom nu |
 |---|---|---|
+| **Nu** | **Niets tekenen bij Draccu of de laadpaalleverancier** | Tekenverbod tot indiening — €99.080 op het spel |
+| **Deze week** | eHerkenning niveau 3 controleren of aanvragen | Zonder eH3 kun je niet indienen; kost dagen |
+| **Deze week** | Mkb-toets uitvoeren (incl. verbonden ondernemingen) | Bepaalt 40% vs 20% en de bedragen |
 | **Deze week** | Transportindicatie aanvragen bij de netbeheerder | Lange doorlooptijd; blokkeert SDE++ in november |
-| **Deze week** | eHerkenning niveau 3 controleren of aanvragen | Zonder eH3 kun je niet indienen; aanvraag kost dagen |
-| **Deze week** | Mkb-toets uitvoeren (incl. verbonden ondernemingen) | Bepaalt 40% vs 20% en de bedragen per station |
-| **Deze week** | Definitief kiezen: route A of route B (§6.5) | Bepaalt of je wel of niet mag tekenen |
+| **Deze week** | Laadpaalleverancier vragen om een **350 kW**-variant | € 8.320 extra subsidie |
+| **Aug** | Dagelijkse kWh-behoefte van het wagenpark doorrekenen | Bepaalt of 1.000 kWh de 70%-eis haalt |
+| **Aug** | Offertes opvragen — accu, laadstations, aansluit- en civiel werk | Bijlage bij de aanvraag |
+| **Aug** | Ontlaadvermogen accu opvragen bij Draccu | Moet 600–700 kW aankunnen |
 | **Aug** | Bedragen verifiëren met de RVO-rekentool | Bedragen hier zijn indicatief |
-| **Aug** | Offertes opvragen: laadstation ≥ 220 kW, en accu **apart** bij Draccu | Gescheiden offertes houden de aanvraag onder €25k |
-| **Aug** | Laadbehoefte doorrekenen: kWh/dag en gelijktijdigheid | Bevestigt of 220 kW volstaat |
-| **Aug/sep** | Opdracht geven en laten installeren (mag in route A) | — |
-| **Binnen 13 weken na plaatsing** | **SPRILA indienen** met facturen en betaalbewijzen | Enige harde deadline in route A; ook nog vóór 18 dec |
+| **Aug/sep** | **SPRILA indienen** | Volgorde van binnenkomst; niet wachten tot december |
 | **29 sep – 16 okt** | **AanZET indienen** voor de trucks | Kort venster, gaat snel vol — dag één indienen |
 | **27 okt – 26 nov** | **SDE++ indienen** voor de zonnepanelen | Enige ronde in 2026 |
 | **Na toekenning** | Pas dán opdracht geven en realiseren | |
-| **Na realisatie** | Vaststelling aanvragen; 24 maanden in gebruik houden, niet openbaar | Instandhoudingsverplichting |
+| **Na realisatie** | Vaststelling aanvragen; 24 maanden in gebruik houden, 70%-eis blijven halen | Instandhoudingsverplichting |
 
 ---
 
@@ -506,44 +366,41 @@ Voor de twee andere regelingen:
 
 ### Nu regelen — dit blokkeert de rest
 
-- [ ] **Beslis: route A of route B** (§6.5). Doe dit vóór je iets tekent; achteraf omzetten
-      kan niet.
-- [ ] **eHerkenning niveau 3 (eH3)** controleren of aanvragen. Zonder eH3 kun je niet
-      indienen, en de aanvraag ervan kost enkele dagen.
-- [ ] **Transportindicatie aanvragen bij de netbeheerder** (Liander/Stedin). Lange
-      doorlooptijd en zonder die indicatie is de SDE++-aanvraag voor de zonnepanelen in
-      november kansloos.
-- [ ] **Mkb-toets doen**, inclusief holdings, deelnemingen en verbonden ondernemingen. Dit
-      bepaalt of je het hoge of lage bedrag per station krijgt — grofweg factor 2.
-- [ ] **Nagaan of er al iets besteld of getekend is.** In route A geen probleem; wel de
-      plaatsingsdatum vastleggen voor de 13-wekentermijn.
+- [ ] **Niets tekenen.** Geen opdracht, geen aanbetaling, geen bestelling tot de aanvraag
+      is ingediend. Als er al iets getekend is: direct melden.
+- [ ] **eHerkenning niveau 3 (eH3)** controleren of aanvragen.
+- [ ] **Mkb-toets** doen, inclusief holdings, deelnemingen en verbonden ondernemingen.
+- [ ] **Transportindicatie** aanvragen bij de netbeheerder (Liander/Stedin) — nodig voor
+      SDE++ in november, lange doorlooptijd.
 
-### Offertes en techniek
+### Techniek en offertes
 
-- [ ] **Offerte laadstation** opvragen: DC, totaalvermogen **minimaal 220 kW**, gespecificeerd
-      per kostenpost en excl. btw.
-- [ ] **Op de offerte laten bevestigen wat het totaalvermogen van het station is** — niet het
-      vermogen per laadpunt. Dit bepaalt de categorie en dus je bedrag, en het is de meest
-      gemaakte fout in deze aanvragen.
-- [ ] **Offerte accu bij Draccu — apart houden.** Aparte offerte, aparte factuur, los van
-      laadstation en aansluitwerk.
-- [ ] **Laadbehoefte doorrekenen**: kWh per truck per dag, standtijd, hoeveel voertuigen
-      gelijktijdig moeten laden. Bevestigt of 220 kW volstaat.
-- [ ] **Bedragen verifiëren** met de RVO-rekentool (`rvo.nl/form/sprila-rekentool`) — de
-      bedragen in dit document zijn indicatief.
-- [ ] **Offerte zonnepanelen** opvragen, met vermogen in kWp.
+- [ ] **Laadpaalleverancier vragen om 350 kW in plaats van 300 kW** en de meerprijs
+      vergelijken met €8.320 extra subsidie.
+- [ ] **Totaalvermogen per station op de offerte laten zetten** — niet het vermogen per
+      laadpunt. Dit bepaalt de categorie.
+- [ ] **Ontlaadvermogen van de accu opvragen bij Draccu** (in kW). Twee palen vragen samen
+      600–700 kW; veel accu's in deze klasse leveren minder.
+- [ ] **Draccu laten bevestigen** dat het EMS de laadstations prioriteert en ontlaadstromen
+      per bestemming meet en logt — schriftelijk, in de offerte.
+- [ ] **Dagelijkse kWh-behoefte van het wagenpark doorrekenen.** Kom je structureel onder
+      ~700 kWh/dag naar de trucks, overweeg dan een kleinere accu (§3).
+- [ ] **Offertes verzamelen** voor accu, laadstations, aansluitwerk en civiel werk,
+      gespecificeerd per kostenpost.
+- [ ] **40%-toets narekenen**: totale subsidiabele kosten moeten ≥ €247.700 zijn.
+- [ ] **Bedragen verifiëren** met de RVO-rekentool (`rvo.nl/form/sprila-rekentool`).
 
-### Na installatie
+### Indienen en daarna
 
-- [ ] **Plaatsingsdatum noteren** en 13 weken vooruit een herinnering zetten.
-- [ ] **Facturen en betaalbewijzen verzamelen** (§7).
-- [ ] **SPRILA indienen** via Mijn RVO — sowieso vóór 18 december 2026, 12:00.
-- [ ] **24 maanden in gebruik houden** en niet openbaar toegankelijk maken.
+- [ ] **SPRILA indienen** via Mijn RVO — bij voorkeur in augustus/september, sowieso vóór
+      18 december 2026, 12:00.
+- [ ] **Pas ná subsidieverlening opdracht geven.**
+- [ ] **24 maanden in gebruik houden**, niet openbaar toegankelijk maken, en de 70%-eis
+      blijvend halen.
 
 ### Losse deadlines dit najaar
 
-- [ ] **29 sep – 16 okt:** AanZET indienen voor de trucks. Kort venster, gaat snel vol —
-      indienen op dag één.
+- [ ] **29 sep – 16 okt:** AanZET indienen voor de trucks. Kort venster — dag één indienen.
 - [ ] **27 okt – 26 nov:** SDE++ indienen voor de zonnepanelen. Enige ronde in 2026.
 
 ### Gegevens die ik nog van je nodig heb
@@ -555,11 +412,10 @@ Hiermee maak ik de aanvraagtekst af in plaats van hem te schetsen:
 3. Aantal en type vrachtwagens, accucapaciteit per truck, kWh per dag.
 4. Laadprofiel: 's nachts, tussen ritten, of beide — en hoeveel gelijktijdig.
 5. Huidige netaansluiting in kVA en wat de netbeheerder over verzwaring zegt.
-6. De offerte van het laadstation en die van Draccu, zodra ze er zijn.
-7. Beoogde accugrootte in kWh, en of je de accu ook voor de kwekerij zelf wilt inzetten.
-8. **Wat je precies bedoelt met "accu laden en legen op vrachtwagens"**: een stationaire accu
-   naast het laadplein, of de accu's van de trucks zelf als buffer (V2G)? Dit staat nog open
-   en het verandert de opzet.
+6. De offertes zodra ze er zijn.
+7. Of je de accu ook voor de kwekerij zelf wilt inzetten — cruciaal voor de 70%-eis.
+8. **Wat je precies bedoelt met "accu laden en legen op vrachtwagens"**: de stationaire accu
+   die de trucks laadt, of de accu's van de trucks zelf als buffer (V2G)? Dit staat nog open.
 9. Vermogen van de zonnepanelen in kWp.
 
 ---
@@ -576,15 +432,13 @@ Dat betekent concreet:
 - De **structuur, voorwaarden en termijnen** zijn consistent over meerdere onafhankelijke
   bronnen en betrouwbaar genoeg om op te plannen.
 - De **exacte subsidiebedragen per categorie** zijn **niet op de bron geverifieerd**. Dat
-  raakt direct het advies in §6.1: als de bedragentabel afwijkt, verschuift de grens tussen
-  de varianten. Reken variant B na met de RVO-rekentool voordat je hem vastlegt.
-- De eerdere tegenstrijdigheid over de batterijgrens is opgelost: **1.000 kWh per
-  laadlocatie** geldt voor SPRILA, de 1.400 kWh bleek een SPULA-grens. De **minimumsubsidie
-  van €25.000 voor batterijen** is in meerdere bronnen bevestigd en is de spil onder het
-  advies in §1 — verifieer juist deze eis, want als hij niet klopt, wordt een kleine
-  accu-aanvraag alsnog mogelijk.
-- Verifieer vóór indiening in elk geval: de bedragentabel, de batterijgrenzen, en de precieze
-  bijlagenlijst. Gebruik daarvoor:
+  raakt zowel het totaal van €99.080 als het advies in §2 over 300 versus 350 kW. Reken beide
+  na met de RVO-rekentool voordat je indient.
+- Het **maximum van 1.000 kWh per laadlocatie** en de **minimumsubsidie van €25.000** voor
+  accu's zijn in meerdere bronnen bevestigd. De eerder gevonden 1.400 kWh bleek een
+  SPULA-grens, niet SPRILA.
+- Verifieer vóór indiening in elk geval: de bedragentabel, de categoriegrenzen, de
+  accugrenzen en de precieze bijlagenlijst. Gebruik daarvoor:
   - `rvo.nl/subsidies-financiering/laadinfrastructuur/sprila-aanschaf`
   - `rvo.nl/form/sprila-rekentool` (officiële rekentool)
   - `rvo.nl/subsidies-financiering/laadinfrastructuur/rekenvoorbeelden-sprila`
@@ -606,6 +460,7 @@ Dat betekent concreet:
 - [SPriLa: kopen van laadpalen op eigen terrein — Vrachtwagenheffingsbeleid](https://www.vrachtwagenheffingsbeleid.nl/subsidies/sprila)
 - [Ook in 2026 weer subsidie voor emissievrije vrachtwagens — Vrachtwagenheffingsbeleid](https://www.vrachtwagenheffingsbeleid.nl/actueel/nieuws/2026/01/19/ook-in-2026-weer-subsidie-voor-emissievrije-vrachtwagens)
 - [Meer subsidie beschikbaar voor laadpaal of batterij (SPRiLa) — BOVAG](https://mijn.bovag.nl/actueel/nieuws/meer-subsidie-beschikbaar-voor-laadpaal-of-batterij-sprila)
+- [SPRILA-subsidie voor de aanschaf van een batterij — ELIX](https://www.elix.nl/sprila-subsidie-voor-een-batterij/)
 - [Met SPRILA en SPULA krijg je subsidie voor laadinfra — Techniek Nederland](https://www.technieknederland.nl/nieuws/met-sprila-en-spula-krijg-je-subsidie-voor-laadinfra)
 - [Wijzigingen en openstelling SPriLa, SPuLa en STour in 2026 — EIFFEL Subsidies](https://eiffelsubsidies.nl/update/wijzigingen-en-openstelling-subsidieregelingen-sprila-spula-en-stour-in-2026/)
 - [De SPRILA-subsidie in 2026: alle wijzigingen op een rij — Moore MKW](https://moore-mkw.nl/actueel/belangrijke-wijzigingen-in-sprila-2026)

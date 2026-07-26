@@ -3,7 +3,7 @@
 **Onderwerp:** elektrische vrachtwagens, zonnepanelen op dak, accu die laadt en ontlaadt
 **Voor:** Kwekerij Baas (Dieter)
 **Datum:** 26 juli 2026
-**Aanvraag:** stationaire accu **1.000 kWh** + **3× DC-laadstation 220 kW** *(advies, zie §2)*
+**Aanvraag:** stationaire accu **1.000 kWh** + **3× DC-laadstation 220 kW** (660 kW totaal)
 **Indicatief subsidiebedrag:** **€ 106.120** — tegen € 99.080 bij het oorspronkelijke plan van 2× 300 kW
 **Route:** staatssteun (≥ €25.000) — **indienen vóórdat je opdracht geeft**
 **Status:** concept — bedragen nog verifiëren op rvo.nl (zie §10)
@@ -175,9 +175,10 @@ categorie dekt het hele pakket — laadstations, hoofdaansluiting én bekabeling
 koper is zuivere kostenpost. (Klein voordeel: het verhoogt wel je subsidiabele kosten, wat
 helpt om onder het 40%-plafond te blijven — zie §4.)
 
-### Drie manieren om de zwaardere bekabeling betaalbaar te maken
+### Bekabeling verder verlichten
 
-Als optie D op de kabels sneuvelt, zijn dit de knoppen — in volgorde van effect:
+Met 3× 220 kW is het zware-kabelprobleem al opgelost — geen enkele run boven ~335 A. Deze
+knoppen blijven wel de moeite waard om de aanlegkosten te drukken, in volgorde van effect:
 
 1. **DC-koppeling met de accu.** Vraag Draccu of de accu **DC-gekoppeld** kan worden aan de
    laadstations in plaats van via de AC-zijde. Staat de accu op dezelfde DC-bus, dan levert
@@ -190,22 +191,33 @@ Als optie D op de kabels sneuvelt, zijn dit de knoppen — in volgorde van effec
 3. **Aluminium in plaats van koper** voor de lange runs — goedkoper per ampère, wel een
    grotere doorsnede.
 
-Een vierde mogelijkheid: de categorie hangt af van het **geïnstalleerde vermogen van het
-station**, niet van wat je gelijktijdig afneemt. Laadpleinen begrenzen de gelijktijdigheid
-standaard via het EMS, en dat is precies waar de accu voor is. Laat je adviseur of RVO
-bevestigen dat een EMS-begrenzing de indeling niet raakt vóór je hierop bouwt.
+4. **Gelijktijdigheid begrenzen via het EMS.** De categorie hangt af van het
+   **geïnstalleerde vermogen van het station**, niet van wat je gelijktijdig afneemt.
+   Laadpleinen begrenzen de gelijktijdigheid standaard, en dat is precies waar de accu voor
+   is: met drie stations van 220 kW hoef je de voeding niet op 660 kW te dimensioneren.
+   Laat je adviseur of RVO wel bevestigen dat een EMS-begrenzing de indeling niet raakt
+   vóór je hierop bouwt.
 
-### Aanbeveling
+### Gekozen: optie E — 3× 220 kW
 
-1. **Wil je ~600 kW aan laadvermogen → optie E: 3× 220 kW bij Draccu, € 21.120.** Zelfde
-   capaciteit als je oorspronkelijke plan, €7.040 meer subsidie, en geen zware bekabeling
-   nodig. Dit is de beste combinatie van rendement en technische haalbaarheid.
-2. **Is 440 kW genoeg → optie A: 2× 220 kW, € 14.080.** De zuinigste variant.
-3. **Vraag Draccu of ze 220 kW-stations kunnen leveren** — dat is de enige echte
-   randvoorwaarde onder dit advies.
-4. **Nooit 300 of 330 kW per station.** Beide zitten tussen de grenzen in en kosten je
-   €4.160 per station aan misgelopen subsidie, bij 330 kW zelfs met de volle zware kabel
-   erbij.
+**De aanvraag is hierop vastgesteld: drie DC-laadstations van 220 kW, samen 660 kW,
+€ 21.120 aan laadpaalsubsidie.**
+
+Dat is dezelfde laadcapaciteit als het oorspronkelijke plan van 2× 300 kW, met €7.040 meer
+subsidie en geen zware bekabeling. Alles blijft binnen wat Draccu kan offreren.
+
+Twee dingen om vast te houden bij de uitvoering:
+
+- **Drie afzonderlijke stations, niet één grote installatie.** Zou Draccu de 660 kW als één
+  station leveren, dan val je in de categorie vanaf 550 kW en zakt de subsidie naar €17.600 —
+  €3.520 minder. Dit moet expliciet zo op de offerte.
+- **Nooit 300 of 330 kW per station.** Beide zitten tussen de categoriegrenzen in en kosten
+  €4.160 per station aan misgelopen subsidie, bij 330 kW zelfs met de volle zware kabel erbij.
+
+Blijkt onderweg dat 440 kW ruim volstaat — bijvoorbeeld omdat er voorlopig twee trucks
+komen — dan is optie A (2× 220 kW, € 14.080) de zuinigere variant. Dat is een
+capaciteitsbeslissing, geen subsidiebeslissing: koop geen derde station puur voor de €7.040
+(zie de kanttekening hierboven).
 
 ⚠️ **Let op hoe het vermogen wordt vastgesteld:** de categorie volgt uit het **totaalvermogen
 van het laadstation**, niet uit het vermogen per laadpunt. Laat de leverancier het
@@ -382,13 +394,20 @@ nog van jullie hebben (zie §9).
 
 ### 6.2 Op te geven laadinfrastructuur
 
-Conform het advies in §2 (optie E):
-
 | # | Type | Totaalvermogen station | Laadpunten | Categorie | Aantal | Indicatief bedrag |
 |---|---|---|---|---|---|---|
-| 1 | DC | 220 kW | `[…]` | vanaf 220 kW | 3 | € 21.120 |
+| 1 | DC | **220 kW** | `[…]` | vanaf 220 kW | **3** | **€ 21.120** |
 
-`[Definitief maken zodra Draccu bevestigt dat ze 220 kW-stations leveren.]`
+Totaal geïnstalleerd laadvermogen: **660 kW**.
+
+Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan worden:
+
+- het **totaalvermogen per station is minimaal 220 kW** — expliciet zo benoemd, want de
+  categorie volgt uit het totaalvermogen van het station en niet uit het vermogen per
+  laadpunt;
+- de stations worden geleverd als **drie afzonderlijke laadstations**, niet als één
+  installatie van 660 kW. Drie stations van 220 kW leveren €21.120 op; één station van
+  660 kW valt in de categorie vanaf 550 kW en levert €17.600 — €3.520 minder.
 
 **Stationaire accu**
 
@@ -405,7 +424,7 @@ Conform het advies in §2 (optie E):
 | Kostenpost | Bedrag excl. btw |
 |---|---|
 | Stationaire accu 1.000 kWh | `[…]` |
-| DC-laadstations `[gekozen optie]` | `[…]` |
+| 3× DC-laadstation 220 kW | `[…]` |
 | Netaansluiting / verzwaring | `[…]` |
 | Voedingskabels, trafo, schakelmateriaal | `[…]` |
 | Energiemanagementsysteem | `[…]` |
@@ -428,16 +447,19 @@ Conform het advies in §2 (optie E):
 > `[… kWh]` per dag. De voertuigen keren dagelijks terug naar de vestiging en laden
 > overwegend `[’s nachts / tussen ritten]`.
 >
-> **Laadinfrastructuur.** Wij plaatsen `[aantal en vermogen conform de gekozen optie uit §2,
-> bijv. "één DC-laadstation van 550 kW met twee laadpunten van 275 kW" of "twee
-> DC-laadstations van elk 350 kW"]`, samen `[… ]` kW, aangevuld met de benodigde
-> elektrotechnische en civiele werken.
+> **Laadinfrastructuur.** Wij plaatsen **drie DC-laadstations van elk 220 kW**, samen
+> **660 kW**, aangevuld met de benodigde elektrotechnische en civiele werken. Door te kiezen
+> voor drie afzonderlijke stations in plaats van enkele grote, blijft de belasting per
+> voedingskabel beperkt tot circa 335 A en kan de laadvoorziening met conventionele
+> bekabeling worden uitgevoerd. Elk voertuig beschikt daarmee over een eigen laadpositie, wat
+> de operationele beschikbaarheid vergroot: bij uitval van één station kan het laden op de
+> overige stations doorgaan.
 >
 > **Netcapaciteit als knelpunt.** De beschikbare netcapaciteit op onze aansluiting bedraagt
-> `[… kVA]`. Gelijktijdig laden op vol vermogen vraagt `[…]` kW en overschrijdt daarmee de
-> beschikbare capaciteit. Netverzwaring is `[niet op
-> afzienbare termijn beschikbaar / kostbaar en pas mogelijk in …]`. Zonder aanvullende
-> maatregelen is elektrificatie van het wagenpark op deze locatie daarom niet realiseerbaar.
+> `[… kVA]`. Gelijktijdig laden van de drie laadstations op vol vermogen vraagt 660 kW en
+> overschrijdt daarmee de beschikbare capaciteit. Netverzwaring is `[niet op afzienbare
+> termijn beschikbaar / kostbaar en pas mogelijk in …]`. Zonder aanvullende maatregelen is
+> elektrificatie van het wagenpark op deze locatie daarom niet realiseerbaar.
 >
 > **Stationaire accu als oplossing.** Wij realiseren daarom een stationaire accu van
 > 1.000 kWh met een ontlaadvermogen van `[… kW]`, functioneel gekoppeld aan de
@@ -469,8 +491,9 @@ Conform het advies in §2 (optie E):
 
 - [ ] **Offertes** voor accu, laadstations en aanleg — gespecificeerd per kostenpost, excl.
       btw, **niet ondertekend als opdracht**
-- [ ] **Technische specificatie laadstations** — met expliciet het **totaalvermogen per
-      station** en het aantal laadpunten
+- [ ] **Technische specificatie laadstations** — met expliciet **220 kW totaalvermogen per
+      station**, het aantal laadpunten, en **drie afzonderlijke stations** (niet één
+      installatie van 660 kW)
 - [ ] **Technische specificatie accu** — capaciteit in kWh, **ontlaadvermogen in kW**, en de
       beschrijving hoe de 70%-eis wordt geborgd en gemeten
 - [ ] **Schriftelijke bevestiging van Draccu** dat het EMS de laadstations prioriteert en de
@@ -500,7 +523,7 @@ Voor de twee andere regelingen:
 | **Deze week** | eHerkenning niveau 3 controleren of aanvragen | Zonder eH3 kun je niet indienen; kost dagen |
 | **Deze week** | Mkb-toets uitvoeren (incl. verbonden ondernemingen) | Bepaalt 40% vs 20% en de bedragen |
 | **Deze week** | Transportindicatie aanvragen bij de netbeheerder | Lange doorlooptijd; blokkeert SDE++ in november |
-| **Deze week** | **Draccu vragen: kunnen jullie 220 kW-stations leveren?** Zo ja: offerte voor **3× 220 kW** | € 7.040 meer subsidie dan 2× 300 kW, en geen zware kabel |
+| **Deze week** | **Offerte bij Draccu: 3× DC-laadstation 220 kW** — als drie losse stations | € 7.040 meer subsidie dan 2× 300 kW, en geen zware kabel |
 | **Deze week** | Draccu vragen of de accu **DC-gekoppeld** kan worden aan de laadstations | Verlicht de AC-bekabeling en helpt bij de 70%-eis |
 | **Aug** | Dagelijkse kWh-behoefte van het wagenpark doorrekenen | Bepaalt of 1.000 kWh de 70%-eis haalt |
 | **Aug** | Offertes opvragen — accu, laadstations, aansluit- en civiel werk | Bijlage bij de aanvraag |
@@ -527,8 +550,9 @@ Voor de twee andere regelingen:
 
 ### Techniek en offertes
 
-- [ ] **Draccu vragen of ze 220 kW-stations leveren**, en zo ja een offerte voor **3× 220 kW**.
-      Dit is de enige randvoorwaarde onder het advies in §2.
+- [ ] **Offerte bij Draccu voor 3× DC-laadstation van 220 kW** (660 kW totaal), naast de accu.
+- [ ] **Laten vastleggen dat het drie afzonderlijke stations zijn** van elk minimaal 220 kW
+      totaalvermogen — niet één installatie van 660 kW. Scheelt €3.520.
 - [ ] **De meerprijs van drie kleinere kasten t.o.v. twee grote laten uitrekenen**, afgezet
       tegen €7.040 extra subsidie én de besparing op lichtere kabels.
 - [ ] **Niet op 300 of 330 kW per station uitkomen.** 330 kW vraagt ~500 A — de volle zware

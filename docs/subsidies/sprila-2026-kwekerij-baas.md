@@ -415,53 +415,82 @@ terugvorderingsgrond.
 
 ---
 
-### Aanvragen op A. Baas Energie B.V. — vier dingen om te regelen
+### Op welke BV moet de aanvraag staan?
 
-De aanvraag komt op naam van **A. Baas Energie B.V.**, terwijl de kwekerij een andere
-rechtspersoon is. Dat kan prima, maar het roept vier vragen op die RVO bij de beoordeling
-stelt. Loop ze na vóór indiening — dit is het soort punt waar een aanvraag op afketst terwijl
-de techniek klopt.
+De drie elementen zitten in drie verschillende vennootschappen:
 
-**1. Van wie zijn de vrachtwagens?**
-SPRILA is bedoeld voor ondernemers **met eigen elektrische voertuigen**. Staan de trucks op
-een andere BV dan de aanvrager, dan is de koppeling tussen aanvrager en wagenpark niet
-vanzelfsprekend. Twee oplossingen:
+| Element | Vennootschap |
+|---|---|
+| De vrachtwagens | **A. Baas Potplantenkwekerij B.V.** (KVK 39064605) |
+| De laadinfrastructuur en accu | **A. Baas Energie B.V.** (KVK 39094792) |
+| De grond aan de Enserweg 4 | **Baas Groep B.V.** (KVK 32136030) |
 
-- de trucks (in eigendom of financial lease) op **A. Baas Energie B.V.** zetten, of
-- aantoonbaar vastleggen dat de laadinfrastructuur van A. Baas Energie B.V. de voertuigen van
-  de groepsvennootschap bedient, met een overeenkomst tussen beide BV's.
+SPRILA stelt drie eisen die hierop aangrijpen: de aanvrager moet **eigen elektrische
+voertuigen** hebben, de laadinfrastructuur moet op **eigen of gehuurd terrein** van de
+aanvrager staan, en de aanvrager moet de investering doen en de installatie **24 maanden in
+gebruik houden**.
 
-Leg dit voor aan RVO of je subsidieadviseur vóór indiening. Let op: dit raakt ook **AanZET**,
-want die subsidie gaat naar wie de trucks koopt. Zet beide bij voorkeur bij dezelfde entiteit.
+**De vraag is niet welke BV nu wat heeft, maar wat je nog kunt veranderen:**
 
-**2. Van wie is de grond?**
-De laadinfrastructuur moet op **eigen of gehuurd terrein** van de aanvrager staan. Is het
-terrein van de kwekerij, dan heeft A. Baas Energie B.V. een **huurovereenkomst of
-gebruiksrecht** nodig, plus schriftelijke toestemming. Binnen een familiegroep voelt dat
-overbodig — "het is toch allemaal van ons" — maar RVO toetst op rechtspersoon. Zonder papier
-is dit een afwijzingsgrond.
+| Element | Hoe makkelijk te verplaatsen? |
+|---|---|
+| Recht op de grond | **Makkelijk.** Een huurovereenkomst of gebruiksrecht van Baas Groep B.V. volstaat — SPRILA accepteert expliciet gehuurd terrein. |
+| Eigendom van de laadinfra | **Nu makkelijk, straks onmogelijk.** Zolang er niets is besteld, bepaal je zelf op welke BV de offertes en facturen komen. |
+| Eigendom van de vrachtwagens | **Moeilijk.** Al geregistreerd en waarschijnlijk gefinancierd; overzetten kost tijd, geld en toestemming van de financier. |
 
-**3. De mkb-toets gaat over de hele groep.**
-De Europese mkb-toets telt **verbonden en partnerondernemingen** mee. A. Baas Energie B.V.
-alleen is vrijwel zeker mkb, maar de toets moet op geconsolideerd niveau: alle BV's met een
-gezamenlijke eigenaar of meerderheidsbelang bij elkaar opgeteld. Grenzen: minder dan 250 FTE
-én (omzet ≤ €50 mln óf balanstotaal ≤ €43 mln). Bij een kwekerij plus een energie-BV blijf je
-daar naar verwachting ruim onder, maar de verklaring moet kloppen — een onjuiste
-mkb-verklaring is een terugvorderingsgrond, en het scheelt een factor 2 in de bedragen.
+Daaruit volgt de conclusie: **grondeigendom is de zwakste reden om aanvrager te zijn, en
+voertuigeigendom de sterkste.**
 
-**4. Staatssteun telt ook op groepsniveau.**
-Eerder ontvangen steun aan de kwekerij of andere groepsvennootschappen telt mee bij de
-staatssteuntoets. Verzamel het overzicht dus voor de hele groep, niet alleen voor de
-energie-BV.
+### Advies: aanvragen op A. Baas Potplantenkwekerij B.V.
 
-⚠️ **Eén extra aandachtspunt bij een energie-BV.** De naam suggereert activiteiten in energie.
-Wordt de accu ook ingezet voor **handel op de energiemarkt of levering aan derden**, dan telt
-die ontlading mee in de noemer van de 70%-eis en zak je er vrijwel zeker doorheen. Zolang de
-subsidie loopt — 24 maanden — moet de accu in hoofdzaak de laadstations bedienen. Als
-energiehandel juist de reden was om dit in een energie-BV te zetten, dan botst dat frontaal
-met deze subsidie en moet je kiezen.
+Dat is de vennootschap met de trucks — de enige schakel die je niet met een contract
+oplost. De andere twee regel je eromheen:
 
----
+- **Grond:** huurovereenkomst of gebruiksrecht van Baas Groep B.V. aan Potplantenkwekerij,
+  met schriftelijke toestemming voor het plaatsen van de laadinfrastructuur. Eén A4.
+- **Laadinfra en accu:** laat Draccu offreren en factureren **op A. Baas Potplantenkwekerij
+  B.V.** Dat moet je nu beslissen, vóór de opdracht — achteraf omzetten kan niet meer.
+- **AanZET sluit dan ook aan:** die subsidie gaat naar wie de trucks koopt, en dat is dezelfde
+  BV. Eén entiteit voor beide regelingen scheelt gedoe.
+
+**Baas Groep B.V. is de slechtste keuze.** Die heeft alleen de grond, en dat is precies de eis
+die je met een contract van tafel haalt.
+
+### Wanneer A. Baas Energie B.V. tóch beter is
+
+De energie-BV past inhoudelijk beter bij dit project: daar loopt de SDE-beschikking al
+(SDE1814154, meetprotocol op EAN 871861900000005250), daar horen de zonnepanelen en daar
+hoort een accu thuis. Kies deze route als:
+
+- **de trucks nog niet zijn aangeschaft** — koop ze dan op A. Baas Energie B.V. en zet alles
+  bij één vennootschap. Dit is verreweg de schoonste oplossing, maar alleen mogelijk zolang de
+  aankoop nog open ligt; of
+- **RVO bevestigt dat voertuigen van een zustervennootschap acceptabel zijn.** Zie hieronder.
+
+Let op: de SDE-beschikking op de energie-BV bindt de SPRILA-aanvraag niet. De SDE++ voor de
+zonnepanelen kun je gewoon op A. Baas Energie B.V. laten staan, ongeacht welke BV de
+SPRILA-aanvraag indient. Dat zijn losse regelingen.
+
+### Wat je hoe dan ook moet doen
+
+1. **Bel RVO en leg de situatie voor.** De vraag: *accepteert u een aanvraag waarbij de
+   laadinfrastructuur en de vrachtwagens bij verschillende vennootschappen binnen dezelfde
+   groep zitten?* Ik heb de exacte formulering van deze eis niet op de bron kunnen
+   controleren (§10), en dit is een gesprek van tien minuten dat €178.000 afdekt. Doe dit
+   vóór je de offertes definitief maakt.
+2. **Kies één vennootschap en houd alles daar.** De aanvrager moet de investering doen, de
+   facturen op naam hebben, het terrein in gebruik hebben en de installatie 24 maanden
+   aanhouden. Spreid dat niet over meerdere BV's.
+3. **De mkb-toets en de staatssteuntoets veranderen niet door je keuze.** Die gaan altijd over
+   de hele groep — verbonden ondernemingen tellen mee. Dat is dus geen argument voor of tegen
+   een bepaalde BV.
+
+⚠️ **Eén complicatie die de keuze extra scherp maakt.** Blijft de accu bij A. Baas Energie
+B.V. terwijl de trucks bij Potplantenkwekerij staan, dan levert de accu energie aan de
+voertuigen van een **andere rechtspersoon**. Voor de 70%-eis moet je aantonen dat de energie
+naar de laadstations gaat — dat blijft waar — maar juridisch is het een levering tussen twee
+vennootschappen, en het maakt de onderbouwing rommeliger dan nodig. Ook dit pleit ervoor om
+de trucks en de laadinfrastructuur bij dezelfde BV onder te brengen.
 
 ## 5. Het tekenverbod — de valkuil die €178.000 kost
 

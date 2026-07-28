@@ -1,7 +1,7 @@
 # SPRILA 2026 — beoordeling regeling + concept-aanvraag
 
 **Onderwerp:** elektrische vrachtwagens, zonnepanelen op dak, accu die laadt en ontlaadt
-**Aanvrager:** **A. Baas Energie B.V.** — contactpersoon Dieter
+**Aanvrager:** **A. Baas Potplantenkwekerij B.V.** — contactpersoon Dieter Baas
 **Wagenpark:** 2 elektrische vrachtwagens
 **Datum:** 26 juli 2026
 **Aanvraag:** stationaire accu **1.000 kWh** + **3× DC-laadstation 240 kW** (720 kW totaal)
@@ -66,9 +66,9 @@ Twee dingen die met twee trucks nog openstaan:
   Dat is een redelijke prijs voor redundantie. Zie §3.
 - **Vraag Draccu ook prijzen voor 150 kW en 220 kW.** De subsidie verspringt op die grenzen,
   en drie stations van 150 kW kosten netto mogelijk €34.000 minder. Zie §2.
-- **De aanvraag staat op A. Baas Energie B.V.**, terwijl de kwekerij een andere rechtspersoon
-  is. Vier punten om vooraf te regelen — eigendom van de trucks, recht op de grond, de
-  mkb-toets over de groep, en staatssteun op groepsniveau. Zie §4.
+- **De aanvraag komt op A. Baas Potplantenkwekerij B.V.** — de BV met de trucks. Nog te
+  regelen: een gebruiksrecht op de grond van Baas Groep B.V., en de offertes van Draccu op
+  naam van deze BV zetten. Zie §4.
 
 ---
 
@@ -441,9 +441,9 @@ gebruik houden**.
 Daaruit volgt de conclusie: **grondeigendom is de zwakste reden om aanvrager te zijn, en
 voertuigeigendom de sterkste.**
 
-### Advies: aanvragen op A. Baas Potplantenkwekerij B.V.
+### Gekozen: A. Baas Potplantenkwekerij B.V. ✅
 
-Dat is de vennootschap met de trucks — de enige schakel die je niet met een contract
+**De aanvraag staat op deze vennootschap.** Dat is de vennootschap met de trucks — de enige schakel die je niet met een contract
 oplost. De andere twee regel je eromheen:
 
 - **Grond:** huurovereenkomst of gebruiksrecht van Baas Groep B.V. aan Potplantenkwekerij,
@@ -456,41 +456,32 @@ oplost. De andere twee regel je eromheen:
 **Baas Groep B.V. is de slechtste keuze.** Die heeft alleen de grond, en dat is precies de eis
 die je met een contract van tafel haalt.
 
-### Wanneer A. Baas Energie B.V. tóch beter is
+### Wat de keuze verder betekent
 
-De energie-BV past inhoudelijk beter bij dit project: daar loopt de SDE-beschikking al
-(SDE1814154, meetprotocol op EAN 871861900000005250), daar horen de zonnepanelen en daar
-hoort een accu thuis. Kies deze route als:
+**De SDE-beschikking blijft waar hij is.** Op A. Baas Energie B.V. loopt SDE1814154 met het
+meetprotocol op EAN 871861900000005250. Dat bindt de SPRILA-aanvraag niet: ook de SDE++ voor
+de zonnepanelen kun je gewoon op de energie-BV laten staan. Losse regelingen, losse
+aanvragers — dat mag.
 
-- **de trucks nog niet zijn aangeschaft** — koop ze dan op A. Baas Energie B.V. en zet alles
-  bij één vennootschap. Dit is verreweg de schoonste oplossing, maar alleen mogelijk zolang de
-  aankoop nog open ligt; of
-- **RVO bevestigt dat voertuigen van een zustervennootschap acceptabel zijn.** Zie hieronder.
+**Wat door deze keuze juist eenvoudiger wordt:**
 
-Let op: de SDE-beschikking op de energie-BV bindt de SPRILA-aanvraag niet. De SDE++ voor de
-zonnepanelen kun je gewoon op A. Baas Energie B.V. laten staan, ongeacht welke BV de
-SPRILA-aanvraag indient. Dat zijn losse regelingen.
+- De trucks staan al op de aanvragende BV, dus de eis van "eigen elektrische voertuigen" is
+  zonder constructie geregeld.
+- **AanZET** (29 sep – 16 okt) gaat naar wie de trucks koopt, dus dat is dezelfde
+  vennootschap. Eén entiteit voor beide subsidies.
+- De accu levert straks aan voertuigen van **dezelfde rechtspersoon**. Was de accu bij de
+  energie-BV gebleven, dan was het een levering tussen twee vennootschappen geweest — dat had
+  de onderbouwing van de 70%-eis onnodig rommelig gemaakt.
 
-### Wat je hoe dan ook moet doen
+**Wat nog geregeld moet worden:**
 
-1. **Bel RVO en leg de situatie voor.** De vraag: *accepteert u een aanvraag waarbij de
-   laadinfrastructuur en de vrachtwagens bij verschillende vennootschappen binnen dezelfde
-   groep zitten?* Ik heb de exacte formulering van deze eis niet op de bron kunnen
-   controleren (§10), en dit is een gesprek van tien minuten dat €178.000 afdekt. Doe dit
-   vóór je de offertes definitief maakt.
-2. **Kies één vennootschap en houd alles daar.** De aanvrager moet de investering doen, de
-   facturen op naam hebben, het terrein in gebruik hebben en de installatie 24 maanden
-   aanhouden. Spreid dat niet over meerdere BV's.
-3. **De mkb-toets en de staatssteuntoets veranderen niet door je keuze.** Die gaan altijd over
-   de hele groep — verbonden ondernemingen tellen mee. Dat is dus geen argument voor of tegen
-   een bepaalde BV.
-
-⚠️ **Eén complicatie die de keuze extra scherp maakt.** Blijft de accu bij A. Baas Energie
-B.V. terwijl de trucks bij Potplantenkwekerij staan, dan levert de accu energie aan de
-voertuigen van een **andere rechtspersoon**. Voor de 70%-eis moet je aantonen dat de energie
-naar de laadstations gaat — dat blijft waar — maar juridisch is het een levering tussen twee
-vennootschappen, en het maakt de onderbouwing rommeliger dan nodig. Ook dit pleit ervoor om
-de trucks en de laadinfrastructuur bij dezelfde BV onder te brengen.
+1. **Gebruiksrecht op de grond.** Huurovereenkomst of gebruiksrecht van Baas Groep B.V. aan
+   A. Baas Potplantenkwekerij B.V., met schriftelijke toestemming voor het plaatsen van de
+   laadinfrastructuur. Eén A4, maar zonder dat papier is het een afwijzingsgrond.
+2. **Offertes en facturen van Draccu op naam van A. Baas Potplantenkwekerij B.V.** Dit moet
+   nu, vóór de opdracht — achteraf omzetten kan niet meer.
+3. **De mkb-toets en de staatssteuntoets** blijven ongewijzigd: die gaan over de hele groep,
+   niet over de aanvragende BV alleen.
 
 ## 5. Het tekenverbod — de valkuil die €178.000 kost
 
@@ -528,18 +519,18 @@ nog van jullie hebben (zie §9).
 
 | Veld | In te vullen |
 |---|---|
-| Naam onderneming | **A. Baas Energie B.V.** |
-| KVK-nummer | **39094792** |
-| BTW-nummer | **NL817078812B01** |
+| Naam onderneming | **A. Baas Potplantenkwekerij B.V.** |
+| KVK-nummer | **39064605** |
+| BTW-nummer | **NL805648355B01** |
 | Vestigingsadres | **Enserweg 4, 8307 PL Ens** |
 | Locatie laadinfrastructuur | `[adres laadlocatie, indien afwijkend van Enserweg 4]` |
-| Eigendom / huur terrein | `[eigendom / huur van groepsvennootschap — overeenkomst bijvoegen, zie §4]` |
+| Eigendom / huur terrein | **Huur/gebruiksrecht van Baas Groep B.V.** — overeenkomst bijvoegen (§4) |
 | Contactpersoon | Dieter Baas, dieter@kwekerijbaas.nl, +31 6 23626899 |
-| Eigenaar vrachtwagens | `[A. Baas Energie B.V. / andere groepsvennootschap — zie §4]` |
+| Eigenaar vrachtwagens | **A. Baas Potplantenkwekerij B.V.** — dezelfde als de aanvrager |
 | Type onderneming | Mkb `[te bevestigen na mkb-toets incl. verbonden ondernemingen]` |
 | Aanvraagroute | **≥ €25.000 → staatssteun, indienen vóór opdrachtverlening** |
-| SBI-code | `[SBI-code van A. Baas Energie B.V.]` |
-| IBAN | **NL88RABO0118352148** (Rabobank, BIC RABONL2U) |
+| SBI-code | `[SBI-code van A. Baas Potplantenkwekerij B.V.]` |
+| IBAN | `[IBAN van A. Baas Potplantenkwekerij B.V. — de bekende NL88RABO0118352148 staat op de energie-BV]` |
 
 ### 6.2 Op te geven laadinfrastructuur
 
@@ -585,8 +576,8 @@ Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan 
 
 ### 6.3 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
 
-> A. Baas Energie B.V. realiseert de laadvoorziening voor de overstap op elektrische
-> vrachtwagens voor de aan- en afvoer van `[producten/stromen]` binnen de Baas-groep. Om die overstap mogelijk te
+> A. Baas Potplantenkwekerij B.V. stapt over op elektrische vrachtwagens voor de aan- en
+> afvoer van `[producten/stromen]` en realiseert daarvoor een eigen laadvoorziening. Om die overstap mogelijk te
 > maken, realiseren wij op ons eigen terrein aan `[adres]` een private laadvoorziening,
 > uitsluitend bestemd voor ons eigen wagenpark. De laadvoorziening wordt niet openbaar
 > toegankelijk gemaakt.
@@ -672,18 +663,24 @@ ingediend (§5).
 
 - [x] ~~Statutaire naam, KVK-nummer, BTW-nummer, vestigingsadres, IBAN~~ — ontvangen en
       verwerkt in §6.2.
-- [ ] **SBI-code** van A. Baas Energie B.V. opzoeken (staat in het KVK-uittreksel).
-- [ ] **Huurovereenkomst of gebruiksrecht** waarmee A. Baas Energie B.V. over het terrein
-      beschikt, plus schriftelijke **toestemming van de eigenaar** (zie §4 — binnen de groep
-      moet dit op papier).
+- [ ] **SBI-code en IBAN** van A. Baas Potplantenkwekerij B.V. opzoeken.
+- [ ] **Huurovereenkomst of gebruiksrecht** opstellen tussen Baas Groep B.V. (eigenaar grond)
+      en A. Baas Potplantenkwekerij B.V., met schriftelijke toestemming voor het plaatsen van
+      de laadinfrastructuur.
+- [ ] **Draccu laten offreren en factureren op A. Baas Potplantenkwekerij B.V.** — beslis dit
+      vóór de opdracht, achteraf omzetten kan niet.
+- [ ] **AanZET op dezelfde BV** indienen (29 sep – 16 okt), want de trucks staan daar al.
+- [ ] **Huurovereenkomst of gebruiksrecht** waarmee A. Baas Potplantenkwekerij B.V. over het
+      terrein aan de Enserweg 4 beschikt, plus schriftelijke **toestemming van Baas Groep
+      B.V.** als eigenaar (zie §4 — binnen de groep moet dit op papier).
 - [ ] **Situatietekening of plattegrond** van de laadlocatie met de posities van de drie
       stations en de accu.
 - [ ] **Overzicht van ontvangen overheidssteun** van de afgelopen drie belastingjaren — nodig
       voor de staatssteunverklaring.
 - [ ] **Gegevens over holdings, deelnemingen en verbonden ondernemingen**, voor de mkb-toets
-      — de toets gaat over de hele groep, niet over A. Baas Energie B.V. alleen.
-- [ ] **Vastlegging van de relatie tussen de laadinfrastructuur en de vrachtwagens**, als die
-      op een andere groepsvennootschap staan (zie §4).
+      — de toets gaat over de hele groep, niet over de aanvragende BV alleen.
+- [x] ~~Vastlegging van de relatie tussen laadinfrastructuur en vrachtwagens~~ — vervalt: de
+      trucks staan op de aanvragende BV zelf.
 
 ### 7.4 Zelf op te stellen
 
@@ -808,9 +805,7 @@ De rest is administratie die je in een middag rond hebt. Hierop kan het project 
 
 Hiermee maak ik de aanvraagtekst af in plaats van hem te schetsen:
 
-1. ~~Statutaire naam, KVK-nummer, adres~~ — ontvangen. Nog open: **SBI-code** en of het
-   terrein aan de Enserweg 4 eigendom is van A. Baas Energie B.V. of van een andere
-   groepsvennootschap (zie §4).
+1. **SBI-code en IBAN** van A. Baas Potplantenkwekerij B.V.
 2. Uitkomst van de mkb-toets.
 3. Type vrachtwagens (N2/N3), accucapaciteit per truck, en vooral: **hoeveel kilometer rijden
    ze per dag?** Dat bepaalt of 1.000 kWh de juiste accumaat is (zie §3).

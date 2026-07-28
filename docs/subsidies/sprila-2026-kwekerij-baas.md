@@ -500,16 +500,17 @@ nog van jullie hebben (zie §9).
 | Veld | In te vullen |
 |---|---|
 | Naam onderneming | **A. Baas Energie B.V.** |
-| KVK-nummer | `[KVK-nummer]` |
-| Vestigingsadres | `[adres]` |
-| Locatie laadinfrastructuur | `[adres laadlocatie, indien afwijkend]` |
+| KVK-nummer | **39094792** |
+| BTW-nummer | **NL817078812B01** |
+| Vestigingsadres | **Enserweg 4, 8307 PL Ens** |
+| Locatie laadinfrastructuur | `[adres laadlocatie, indien afwijkend van Enserweg 4]` |
 | Eigendom / huur terrein | `[eigendom / huur van groepsvennootschap — overeenkomst bijvoegen, zie §4]` |
-| Contactpersoon | Dieter `[achternaam]`, dieter@kwekerijbaas.nl, `[telefoon]` |
+| Contactpersoon | Dieter Baas, dieter@kwekerijbaas.nl, +31 6 23626899 |
 | Eigenaar vrachtwagens | `[A. Baas Energie B.V. / andere groepsvennootschap — zie §4]` |
 | Type onderneming | Mkb `[te bevestigen na mkb-toets incl. verbonden ondernemingen]` |
 | Aanvraagroute | **≥ €25.000 → staatssteun, indienen vóór opdrachtverlening** |
 | SBI-code | `[SBI-code van A. Baas Energie B.V.]` |
-| IBAN | `[IBAN t.n.v. de aanvragende rechtspersoon]` |
+| IBAN | **NL88RABO0118352148** (Rabobank, BIC RABONL2U) |
 
 ### 6.2 Op te geven laadinfrastructuur
 
@@ -640,8 +641,9 @@ ingediend (§5).
 
 ### 7.3 Uit de eigen administratie
 
-- [ ] Statutaire naam, **KVK-nummer**, SBI-code, vestigingsadres en adres van de laadlocatie.
-- [ ] **IBAN** ten name van de aanvragende rechtspersoon.
+- [x] ~~Statutaire naam, KVK-nummer, BTW-nummer, vestigingsadres, IBAN~~ — ontvangen en
+      verwerkt in §6.2.
+- [ ] **SBI-code** van A. Baas Energie B.V. opzoeken (staat in het KVK-uittreksel).
 - [ ] **Huurovereenkomst of gebruiksrecht** waarmee A. Baas Energie B.V. over het terrein
       beschikt, plus schriftelijke **toestemming van de eigenaar** (zie §4 — binnen de groep
       moet dit op papier).
@@ -777,7 +779,9 @@ De rest is administratie die je in een middag rond hebt. Hierop kan het project 
 
 Hiermee maak ik de aanvraagtekst af in plaats van hem te schetsen:
 
-1. Statutaire naam, KVK-nummer, SBI-code, adres laadlocatie, eigendom of huur.
+1. ~~Statutaire naam, KVK-nummer, adres~~ — ontvangen. Nog open: **SBI-code** en of het
+   terrein aan de Enserweg 4 eigendom is van A. Baas Energie B.V. of van een andere
+   groepsvennootschap (zie §4).
 2. Uitkomst van de mkb-toets.
 3. Type vrachtwagens (N2/N3), accucapaciteit per truck, en vooral: **hoeveel kilometer rijden
    ze per dag?** Dat bepaalt of 1.000 kWh de juiste accumaat is (zie §3).

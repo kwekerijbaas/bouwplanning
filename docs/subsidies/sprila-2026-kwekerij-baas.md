@@ -716,7 +716,74 @@ De rest is administratie die je in een middag rond hebt. Hierop kan het project 
 
 ---
 
-## 8. Stappenplan met data
+## 8. Deze week indienen — het kritieke pad
+
+De offerte van Draccu komt morgen. Doel: **indienen vóór het weekend.** Dat kan, maar er is
+één punt dat het hele plan kan blokkeren.
+
+### 🚨 Eerst dit controleren, vandaag nog
+
+> **Heeft A. Baas Potplantenkwekerij B.V. eHerkenning niveau 3?**
+
+Zonder eH3 kun je niet indienen, en een nieuwe aanvraag duurt meestal **enkele werkdagen**
+inclusief identiteitscontrole. Heb je het niet, dan is deze week niet haalbaar en moet je het
+direct aanvragen — dan wordt het volgende week.
+
+Let op: eHerkenning staat **per rechtspersoon**. Heb je eH3 op Baas Groep of op de energie-BV,
+dan werkt dat niet voor een aanvraag namens Potplantenkwekerij. Check dus de juiste KVK
+(39064605).
+
+Er is geen wettelijke haast: SPRILA loopt tot 18 december. Wél geldt volgorde van binnenkomst,
+dus eerder indienen is beter — maar niet ten koste van een onvolledige aanvraag.
+
+### Dagindeling
+
+| Wanneer | Wat | Van wie |
+|---|---|---|
+| **Vandaag** | eH3 controleren op KVK 39064605 | zelf |
+| **Vandaag** | Mail naar koop@drenergie.nl — vóór hij de offerte afrondt, anders mist de 70%-bevestiging | zelf |
+| **Vandaag** | SBI-code en IBAN van Potplantenkwekerij opvragen | administratie |
+| **Vandaag** | Gebruiksrecht grond laten opstellen: Baas Groep B.V. → Potplantenkwekerij | administratie |
+| **Vandaag** | Aanleveren: km/dag per truck, huidige aansluitwaarde in kVA | zelf |
+| **Morgen** | Offerte Draccu binnen — begroting invullen, 40%-toets narekenen | zelf |
+| **Morgen** | Situatietekening laadlocatie maken | zelf |
+| **Woensdag** | Projectomschrijving afmaken (§6.3), mkb- en staatssteunverklaring invullen | zelf |
+| **Donderdag** | **Indienen via Mijn RVO** | zelf |
+| **Vrijdag** | Buffer | |
+
+### Wat de aanvraag níét mag ophouden
+
+- **De prijzen op 150, 220 en 350 kW.** Interessant voor optimalisatie, maar 3× 240 kW levert
+  €93.000 op en dat is een prima uitkomst. Vraag de prijzen wel, maar wacht er niet op.
+- **De keuze tussen 1,15 MWh en 1.000 kWh accu.** Voor de aanvraag maakt het niets uit: er is
+  hoe dan ook maar 1.000 kWh subsidiabel. Vul 1.000 kWh in en beslis de inkoop later.
+- **De vraag over de kabelklasse bij 365 A.** Technisch relevant, subsidietechnisch niet.
+
+### Wat de aanvraag wél kan laten stranden
+
+1. **Geen eH3** → niet in te dienen. Zie boven.
+2. **Geen gebruiksrecht op de grond** → afwijzingsgrond. De grond is van Baas Groep B.V. en de
+   aanvrager is Potplantenkwekerij; dat moet op papier.
+3. **Offerte op de verkeerde tenaamstelling** → controleer morgen meteen of Draccu op
+   A. Baas Potplantenkwekerij B.V. heeft gefactureerd, niet op de energie-BV of Baas Groep.
+4. **Te weinig aanlegkosten in de begroting** → bij €178.000 subsidie moet je op €445.000 aan
+   subsidiabele kosten komen. Hardware is €394.000, dus er moet minstens €51.000 aan aanleg
+   in. Staat dat niet gespecificeerd in de offerte, bel Draccu er morgen meteen over.
+5. **Iets ondertekenen.** De offerte komt morgen — **niet tekenen.** Pas na indiening.
+
+### Het risico dat je deze week bewust neemt
+
+De accugrootte is nog niet getoetst aan de 70%-eis, omdat het dagverbruik van de trucks
+ontbreekt. Dien je in op 1.000 kWh terwijl de trucks structureel onder ~600 kWh/dag blijven,
+dan voldoe je mogelijk niet aan de eis en loop je twee jaar lang een terugvorderingsrisico op
+€85.000 (§3).
+
+**Geef die kilometers vandaag door** — dan reken ik het na vóór je indient. Kan dat niet, dan
+is dat een bewuste keuze die je moet kennen, geen detail dat je overslaat.
+
+---
+
+## 9. Stappenplan met data
 
 | Wanneer | Wat | Waarom nu |
 |---|---|---|
@@ -740,7 +807,7 @@ De rest is administratie die je in een middag rond hebt. Hierop kan het project 
 
 ---
 
-## 9. To-dolijst
+## 10. To-dolijst
 
 ### Nu regelen — dit blokkeert de rest
 
@@ -819,7 +886,7 @@ Hiermee maak ik de aanvraagtekst af in plaats van hem te schetsen:
 
 ---
 
-## 10. Status van de cijfers
+## 11. Status van de cijfers
 
 **De subsidiebedragen zijn geverifieerd.** Ze komen van
 `rvo.nl/subsidies-financiering/laadinfrastructuur/sprila-aanschaf`, kopjes "Subsidiebedragen
@@ -863,7 +930,7 @@ stations van 150, 220 en 350 kW zijn ingeschat, en de €217/kWh voor de accu. A
 
 ---
 
-## 11. Bronnen
+## 12. Bronnen
 
 - [Subsidieregeling Private Laadinfrastructuur bij bedrijven (SPRILA) — RVO](https://www.rvo.nl/subsidies-financiering/laadinfrastructuur/sprila-aanschaf)
 - [SPRILA: Veelgestelde vragen — RVO](https://www.rvo.nl/subsidies-financiering/sprila-en-spula/sprila-veelgestelde-vragen)

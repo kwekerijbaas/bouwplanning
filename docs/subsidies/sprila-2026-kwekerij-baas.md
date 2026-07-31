@@ -614,31 +614,33 @@ aanvragers — dat mag.
 3. **De mkb-toets en de staatssteuntoets** blijven ongewijzigd: die gaan over de hele groep,
    niet over de aanvragende BV alleen.
 
-## 5. De laadlocatie: Drietorensweg 36-1 — drie punten om recht te zetten
+## 5. De laadlocatie: Drietorensweg 38-1 — drie punten om recht te zetten
 
-In de aanvraag is als laadlocatie **Drietorensweg 36-1, 8307 PG Ens** ingevuld. De accu komt
+In de aanvraag is als laadlocatie **Drietorensweg 38-1, 8307 PH Ens** ingevuld. De accu komt
 daar te staan, de laadpalen aan de achterzijde van dat terrein.
 
 ### ⚠️ De offerte staat op een ander adres
 
 Offerte DR283 vermeldt letterlijk: *"te plaatsen en aansluiten op locatie: **Locatie Enserweg
-4, Ens**"*. De aanvraag zegt Drietorensweg 36-1. **Dat moet gelijkgetrokken worden.**
+4, Ens**"*. De aanvraag zegt Drietorensweg 38-1. **Dat moet gelijkgetrokken worden.**
 
 RVO legt de offerte naast de aanvraag; een afwijkend adres is een voor de hand liggende vraag
 bij de beoordeling, en bij de vaststelling moeten de facturen op dezelfde locatie slaan.
 
-Laat Koop de offerte opnieuw uitgeven op **Drietorensweg 36-1**. Dat is meer dan een
+Laat Koop de offerte opnieuw uitgeven op **Drietorensweg 38-1**. Dat is meer dan een
 tekstwijziging, want de offerte rekent met aannames die aan Enserweg 4 hangen:
 
 - **30 meter AC-kabel** voor de accu en **maximaal 20 meter per laadstation** — die afstanden
   gelden voor de opstelling daar;
 - **"Het gecontracteerd vermogen van de aansluiting bedraagt wat betreft afname 2 MW"** — dat
-  is de aansluiting van Enserweg 4. Wat er op Drietorensweg 36-1 beschikbaar is, staat nergens.
+  is de aansluiting van Enserweg 4. Op Drietorensweg 38-1 is het **1.850 kW** — zie hieronder.
 
 Koop stelt als voorwaarde dat er "voldoende stroom" en een interne internetverbinding zijn.
 Beide zijn er volgens jullie — maar **"voldoende" moet een getal worden**: de aansluitwaarde in
-kVA of kW op Drietorensweg 36-1. Drie laadstations van 240 kW vragen samen 720 kW, plus de
-accu. Dat getal hoort in de aanvraag én in de herziene offerte.
+kVA of kW op Drietorensweg 38-1. Dat getal is inmiddels bekend uit de Liander-factuur:
+**1.850 kW gecontracteerd afnamevermogen** op een MS-aansluiting van 1–2 MVA. Drie
+laadstations van 240 kW vragen samen 720 kW, dus 38,9% — ruim voldoende. Zet dit ook in de
+herziene offerte.
 
 ### ⚠️ De netaansluiting staat op naam van A. Baas Energie B.V.
 
@@ -647,25 +649,21 @@ Uit de Liander-factuur van juli 2026 (factuurnummer 41015449149):
 | | |
 |---|---|
 | Contractant | **A. Baas Energie B.V.** |
-| Locatie op de factuur | **Drietorensweg 38-1, 8307 PH Ens** |
+| Locatie op de factuur | **Drietorensweg 38-1, 8307 PH Ens** ✅ komt overeen met de aanvraag |
 | EAN | 871687110003243584 |
 | Aansluitdienst | > 1 MVA t/m 2 MVA, transportdienst **MS** (middenspanning) |
 | **Gecontracteerd transportvermogen afname** | **1.850,0 kW** |
 | Gecontracteerd transportvermogen teruglevering | 4.000,0 kW |
 
-**Twee dingen kloppen niet met de aanvraag.**
+**Het adres is rechtgezet.** De aanvraag stond aanvankelijk op Drietorensweg 36-1 (8307 PG);
+dat is gecorrigeerd naar **Drietorensweg 38-1, 8307 PH Ens**, conform de Liander-factuur. De
+laadinfrastructuur komt achter deze aansluiting te staan, dus opgave en bewijsstuk sluiten nu
+op elkaar aan.
 
-**1. Het adres wijkt af.** De aanvraag noemt **Drietorensweg 36-1, 8307 PG**; de factuur
-**Drietorensweg 38-1, 8307 PH**. Ander huisnummer én andere postcode. Eén van beide is fout,
-en het formulier eist dat de netcapaciteit wordt onderbouwd voor *de locatie van uw
-laadinfrastructuur*. Upload je deze factuur bij een aanvraag op 36-1, dan sluit het bewijs
-niet aan op de opgave.
+Let er wel op dat **de offerte van Draccu nog op Enserweg 4 staat** (§5, hierboven). Alle drie
+de documenten — aanvraag, offerte en netcapaciteitsbewijs — moeten hetzelfde adres noemen.
 
-Twee mogelijkheden, en het verschil moet je vaststellen vóór indienen:
-
-- de laadinfrastructuur komt achter déze aansluiting → zet **38-1, 8307 PH** in de aanvraag;
-- 36-1 is een apart perceel met een eigen aansluiting → dan heb je de **Liander-factuur van
-  die aansluiting** nodig, niet deze.
+**Eén ding klopt nog niet.**
 
 **2. De aansluiting staat op de energie-BV, niet op de aanvrager.** Het formulier vraagt
 "Wat voor netaansluiting heeft **u** op de locatie van uw laadinfrastructuur?" — en het bewijs
@@ -722,13 +720,13 @@ Twee dingen om te regelen:
 
 Zet in de projectomschrijving één realisatieplanning voor accu én laadpalen, geen open einde.
 
-### ⚠️ Wie is eigenaar van Drietorensweg 36-1?
+### ⚠️ Wie is eigenaar van Drietorensweg 38-1?
 
 Het gebruiksrecht dat we in §4 hebben belegd, ging uit van Enserweg 4 in eigendom van Baas
-Groep B.V. **Dat moet nu opnieuw beoordeeld worden voor Drietorensweg 36-1.**
+Groep B.V. **Dat moet nu opnieuw beoordeeld worden voor Drietorensweg 38-1.**
 
 De eis blijft dezelfde: de laadinfrastructuur staat op **eigen of gehuurd terrein van de
-aanvrager**, dus van A. Baas Potplantenkwekerij B.V. Is Drietorensweg 36-1 van een andere
+aanvrager**, dus van A. Baas Potplantenkwekerij B.V. Is Drietorensweg 38-1 van een andere
 groepsvennootschap, dan is er een huurovereenkomst of gebruiksrecht nodig plus schriftelijke
 toestemming — op dát adres, niet op Enserweg 4.
 
@@ -774,8 +772,8 @@ nog van jullie hebben (zie §9).
 | KVK-nummer | **39064605** |
 | BTW-nummer | **NL805648355B01** |
 | Vestigingsadres | **Enserweg 4, 8307 PL Ens** |
-| Locatie laadinfrastructuur | **Drietorensweg 36-1, 8307 PG Ens** (zie §5) |
-| Eigendom / huur terrein Drietorensweg 36-1 | `[eigenaar vaststellen — gebruiksrecht t.n.v. de aanvrager vastleggen, §5]` |
+| Locatie laadinfrastructuur | **Drietorensweg 38-1, 8307 PH Ens** (zie §5) |
+| Eigendom / huur terrein Drietorensweg 38-1 | `[eigenaar vaststellen — gebruiksrecht t.n.v. de aanvrager vastleggen, §5]` |
 | Contactpersoon | Dieter Baas, dieter@kwekerijbaas.nl, +31 6 23626899 |
 | Eigenaar vrachtwagens | **A. Baas Potplantenkwekerij B.V.** — dezelfde als de aanvrager |
 | Type onderneming | Mkb `[te bevestigen na mkb-toets incl. verbonden ondernemingen]` |
@@ -842,7 +840,7 @@ offerte van Draccu is dat € 154.800, oftewel € 23.200 minder. Zie §3.
 
 > A. Baas Potplantenkwekerij B.V. stapt over op elektrische vrachtwagens voor de aan- en
 > afvoer van `[producten/stromen]` en realiseert daarvoor een eigen laadvoorziening. Om die overstap mogelijk te
-> maken, realiseren wij op ons terrein aan de Drietorensweg 36-1 te Ens een private laadvoorziening,
+> maken, realiseren wij op ons terrein aan de Drietorensweg 38-1 te Ens een private laadvoorziening,
 > uitsluitend bestemd voor ons eigen wagenpark. De laadvoorziening wordt niet openbaar
 > toegankelijk gemaakt.
 >

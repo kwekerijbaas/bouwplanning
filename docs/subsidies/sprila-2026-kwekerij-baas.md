@@ -340,25 +340,51 @@ begroot, onderbouwd en meegestuurd worden.**
 > **Actie met de hoogste opbrengst deze week: laat die posten offreren of calculeren en zet ze
 > in de begroting.** Het gaat om € 23.200 subsidie voor werk dat je toch al betaalt.
 
-### 🚨 Het geoffreerde EMS botst met de 70%-eis
+### Het EMS en de 70%-eis — opgelost, mits op papier
 
-De offerte beschrijft het energiemanagementsysteem zo:
+De offerte beschrijft het energiemanagementsysteem als sturend "aan de hand van het verbruik,
+de opwekking en de **actuele energieprijzen**". Op papier las dat als prijsgedreven
+optimalisatie, wat frontaal zou botsen met de 70%-eis.
 
-> "Om het systeem zo efficiënt mogelijk te laten werken zal er een managementsysteem
-> geïnstalleerd worden welke het batterijopslagsysteem en de omvormers gaat sturen aan de hand
-> van het verbruik, de opwekking en de **actuele energieprijzen**."
+**Koop heeft bevestigd dat het EMS juist bedoeld is om die 70% in de stuurkast in te regelen.**
+Dat neemt het ontwerprisico weg: de Envi.Base begrenst de ontlading naar andere bestemmingen,
+zodat de verhouding automatisch geborgd is. Dat is precies de goede oplossing — de eis wordt
+dan door de installatie afgedwongen in plaats van door bedrijfsvoering.
 
-Dat is **prijsgedreven optimalisatie**: de accu ontlaadt wanneer de energieprijs gunstig is,
-naar het bedrijf of naar het net. Precies het gedrag dat maakt dat je **onder de 70% zakt**
-(§3), want die eis vraagt dat minstens 70% van de ontlading naar de laadstations gaat.
+**Wat nog moet gebeuren:**
 
-De bevestiging die we hebben gevraagd — EMS prioriteert de laadstations, en de ontlaadstromen
-worden per bestemming gemeten en gelogd — **staat niet in deze offerte**. Zonder die
-bevestiging is de accupost van € 85.000 niet houdbaar.
+1. **Schriftelijk vastleggen.** Een mondelinge toezegging is geen bijlage. RVO wil kunnen zien
+   dat de borging technisch is ingeregeld. Vraag Koop dit in de offerte of in een aparte
+   verklaring te zetten.
+2. **Niet alleen sturen, ook kunnen aantonen.** Prioriteren is één ding; over 24 maanden
+   bewijzen dat je boven de 70% zat is iets anders. Envi.Base heeft "meten van energiestromen"
+   als functie — vraag expliciet of het systeem de **ontlading per bestemming** kan rapporteren
+   (naar de laadstations versus overig), en of je daar periodiek een export van krijgt. Dat is
+   het bewijsstuk bij een eventuele controle.
 
-**Vraag Koop dit alsnog schriftelijk**, en laat vastleggen dat het Envi.Base-systeem zo
-ingeregeld kan worden dat de laadstations voorrang krijgen. Kan Envitron dat niet, dan is de
-accu in deze vorm niet subsidiabel en moet het ontwerp aangepast worden.
+### Wat dit betekent voor de accugrootte
+
+Met een EMS dat de 70% afdwingt, is de naleving geen risico meer — maar de rekensom uit §3
+blijft wel gelden, alleen nu als **economische** vraag in plaats van een compliancevraag.
+
+Want als het systeem de ontlading naar het bedrijf begrenst op 3/7 van wat de trucks afnemen,
+dan bepaalt het truckverbruik hoeveel je de accu überhaupt kunt gebruiken:
+
+| Afname trucks samen | Max. ontlading naar bedrijf | Totale benutting per dag | Benutting van 1.044 kWh |
+|---|---|---|---|
+| 400 kWh/dag | 171 kWh | 571 kWh | 55% |
+| 500 kWh/dag | 214 kWh | 714 kWh | 68% |
+| 600 kWh/dag | 257 kWh | 857 kWh | 82% |
+| 700 kWh/dag | 300 kWh | 1.000 kWh | 96% |
+
+Rijden de trucks weinig, dan staat een fors deel van de accu twee jaar lang stil — niet omdat
+het niet mag, maar omdat het EMS het terecht tegenhoudt. De subsidie van € 85.000 loop je niet
+mis, maar je betaalt wel voor capaciteit die je niet kwijt kunt.
+
+**Daarom blijft het dagverbruik van de twee trucks het getal dat ontbreekt.** Het bepaalt nu
+niet meer of de aanvraag standhoudt, maar wel of vier EnerBoxen de juiste maat zijn of dat
+drie (783 kWh) volstaan. Drie units leveren € 66.555 subsidie in plaats van € 85.000 — de
+vierde unit kost circa € 52.500 en levert € 18.445 subsidie op.
 
 ### En let op de netaansluiting
 

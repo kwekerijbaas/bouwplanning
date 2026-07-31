@@ -187,43 +187,69 @@ Vraag Draccu om echte prijzen op de categoriegrenzen:
 Dat zijn de enige drie punten waar de subsidie verspringt. Met die drie prijzen is de
 optimale configuratie in vijf minuten uitgerekend.
 
-## 3. De 70%-eis — hier kan €85.000 op stranden
+## 3. De 70%-eis en de C-waarde — officiële tekst
 
-Een stationaire batterij is alleen subsidiabel als hij **aantoonbaar functioneel gekoppeld
-is aan de laadinfrastructuur**:
+Uit het aanvraagformulier zelf, dus dit is de geverifieerde formulering.
 
-> **Minimaal 70% van het aantal kWh dat uit de stationaire batterij wordt ontladen, moet
-> aantoonbaar naar de laadstations gaan.**
+### De 70%-eis
 
-Bij 1.000 kWh — het maximum — wordt dit een serieus ontwerpvraagstuk, want de accu is groot
-ten opzichte van wat twee vrachtwagens per dag afnemen.
+> "Een stationaire batterij komt alleen in aanmerking voor subsidie wanneer deze wordt ingezet
+> ten behoeve van de laadstations. Indien de stationaire batterij minder dan 70% van zijn
+> energie gaat ontladen aan laadstations komt deze niet in aanmerking voor subsidie. RVO kan de
+> subsidieontvanger **na de subsidievaststelling en in de periode van 24 maanden erna**
+> verzoeken om gebruiksdata te delen over een **exploitatieperiode van drie achtereenvolgende
+> maanden**. De gebruiksdata bestaan uit het aantal kWh dat is ontladen uit de batterij, en het
+> aantal kWh dat via de laadstations aan voertuigen is geleverd. Een aanvrager kan deze data
+> delen uit achtereenvolgens het **Batterij Management Systeem** en uit de **administratie van
+> de afgenomen laadsessies**. De subsidieontvanger is verplicht hieraan mee te werken."
 
-**Reken mee.** Cycle je de accu één keer per dag volledig, dan ontlaad je 1.000 kWh en moet
-er dus **minstens 700 kWh per dag naar de laadpalen**. Dat is ongeveer twee volle
-truckladingen per dag, elke dag. Haal je dat niet, dan zijn er maar twee uitkomsten:
+**Dat is eenvoudiger dan eerder aangenomen.** Er is geen meting per bestemming nodig. RVO
+vraagt twee datasets:
 
-- **je gebruikt het restant voor de kwekerij** — klimaat, belichting, koeling — en dan zak je
-  onder de 70% en voldoe je niet meer aan de voorwaarde; of
-- **je laat de accu grotendeels stilstaan** — dan haal je de 70% wel, maar staat er een accu
-  van €300.000 niets te doen.
+1. **kWh ontladen uit de batterij** — uit het Batterij Management Systeem;
+2. **kWh via de laadstations aan voertuigen geleverd** — uit de laadsessie-administratie.
 
-**Je kunt dus niet allebei hebben.** Dit is precies het spanningsveld met Draccu's
-standaardopzet (overdag zonnestroom opslaan, 's avonds het bedrijf voeden, 15–20 ct/kWh
-besparing). Dat verdienmodel is hier grotendeels niet toegestaan zolang de subsidie loopt.
+De Whes-laders spreken **OCPP 1.6 JSON**, dus de laadsessies zijn zonder meer uit te lezen. Het
+BMS zit in de EnerBox. Beide bronnen zijn er dus al.
 
-**Wat je moet checken vóór je dit indient:**
+**En met dit wagenpark is de eis ruimschoots gehaald.** De laadstations leveren dagelijks
+1.440–2.880 kWh aan de trucks, terwijl de accu maximaal ~1.000 kWh kan ontladen. Alles wat de
+accu levert verdwijnt in de trucks, en het net vult de rest aan. De verhouding komt daarmee
+niet in de buurt van de ondergrens.
 
-- Hoeveel kWh nemen de vrachtwagens werkelijk per dag af? Reken met circa 1,1–1,4 kWh per
-  gereden kilometer. Kom je structureel onder de ~700 kWh/dag, **overweeg dan een kleinere
-  accu** — bijvoorbeeld 600 kWh (indicatief €51.000). Minder subsidie, maar wel een aanvraag
-  die de controle overleeft.
-- Hoe lang loopt de verplichting? De instandhoudingstermijn is **24 maanden**, dus je moet
-  twee jaar lang aan de 70% voldoen — niet alleen in het eerste kwartaal.
-- Kan het energiemanagementsysteem de laadstations **prioriteren** én de ontlaadstromen **per
-  bestemming meten en loggen**? Zonder die logging kun je niets aantonen.
+### De C-waarde — een afwijzingsgrond
 
-Laat Draccu deze drie punten **schriftelijk bevestigen in de offerte**. Dat document gaat als
-bijlage mee.
+> "De C-waarde voor stationaire batterijen mag niet hoger zijn dan 0,50. De C-waarde kunt u
+> berekenen door het vermogen (kW) van uw batterij te delen door de opslagcapaciteit (kWh).
+> (…) Indien u subsidie aanvraagt voor een stationaire batterij en uw C-waarde wel hoger is dan
+> 0,50, wordt uw batterij afgewezen."
+
+Voor de geoffreerde configuratie:
+
+| | |
+|---|---|
+| Vermogen | 4 × 100 kW = **400 kW** |
+| Capaciteit | 4 × 261,248 kWh = **1.044,99 kWh** |
+| **C-waarde** | 400 ÷ 1.045 = **0,383** |
+
+Ruim onder de grens. Ook per unit is het 100 ÷ 261,248 = 0,383. **Geen risico.**
+
+Dat de accu 400 kW levert tegenover 720 kW aan laadvermogen — eerder genoteerd als
+aandachtspunt — blijkt hier juist een voorwaarde: een accu die relatief snel kan ontladen
+wordt afgewezen. De EnerBox-configuratie zit hier goed.
+
+### Let op: geen softwarematige vermogensbegrenzing
+
+Het formulier vraagt of er software is om het vermogen van de batterij in te perken, met de
+toelichting: *"Het middels software regelen van het vermogen en daarmee de C-waarde, is niet
+toegestaan in deze regeling."*
+
+Antwoord is **nee**, en dat moet zo blijven: de C-waarde van 0,383 volgt uit de hardware, niet
+uit een instelling. **Laat Draccu het omvormervermogen dus niet softwarematig begrenzen** om
+aan de C-waarde te voldoen — dat is niet nodig en het maakt de aanvraag ongeldig.
+
+Belangrijk onderscheid: dit gaat over het **begrenzen van het kW-vermogen**. Het EMS dat
+stuurt *waarheen* de energie gaat, is iets heel anders en wél toegestaan.
 
 ### Het wagenpark: 600–800 km per truck per dag
 
@@ -473,7 +499,7 @@ maken in plaats van er later achter te komen.
 | **Beslistermijn** | Binnen **13 weken** |
 | **Inloggen** | **eHerkenning niveau 3 (eH3)** minimaal, via Mijn RVO |
 | **Locatie** | Laadinfrastructuur in Nederland, op eigen of gehuurd terrein |
-| **Instandhouding** | Laadstations én accu minimaal **24 maanden actief in gebruik** |
+| **Instandhouding** | Batterijsysteem minimaal **24 maanden in eigendom ná subsidievaststelling**; laadstations 24 maanden in gebruik |
 | **Niet openbaar** | In die 24 maanden **niet openbaar toegankelijk** maken |
 | **Minimum per locatie** | Subsidiebedrag ten minste circa **€2.500** per laadlocatie |
 | **Minimum accu** | Subsidie voor een accu bedraagt **minimaal €25.000** |

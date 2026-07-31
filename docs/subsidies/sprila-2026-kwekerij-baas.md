@@ -640,6 +640,70 @@ Beide zijn er volgens jullie — maar **"voldoende" moet een getal worden**: de 
 kVA of kW op Drietorensweg 36-1. Drie laadstations van 240 kW vragen samen 720 kW, plus de
 accu. Dat getal hoort in de aanvraag én in de herziene offerte.
 
+### ⚠️ De netaansluiting staat op naam van A. Baas Energie B.V.
+
+Uit de Liander-factuur van juli 2026 (factuurnummer 41015449149):
+
+| | |
+|---|---|
+| Contractant | **A. Baas Energie B.V.** |
+| Locatie op de factuur | **Drietorensweg 38-1, 8307 PH Ens** |
+| EAN | 871687110003243584 |
+| Aansluitdienst | > 1 MVA t/m 2 MVA, transportdienst **MS** (middenspanning) |
+| **Gecontracteerd transportvermogen afname** | **1.850,0 kW** |
+| Gecontracteerd transportvermogen teruglevering | 4.000,0 kW |
+
+**Twee dingen kloppen niet met de aanvraag.**
+
+**1. Het adres wijkt af.** De aanvraag noemt **Drietorensweg 36-1, 8307 PG**; de factuur
+**Drietorensweg 38-1, 8307 PH**. Ander huisnummer én andere postcode. Eén van beide is fout,
+en het formulier eist dat de netcapaciteit wordt onderbouwd voor *de locatie van uw
+laadinfrastructuur*. Upload je deze factuur bij een aanvraag op 36-1, dan sluit het bewijs
+niet aan op de opgave.
+
+Twee mogelijkheden, en het verschil moet je vaststellen vóór indienen:
+
+- de laadinfrastructuur komt achter déze aansluiting → zet **38-1, 8307 PH** in de aanvraag;
+- 36-1 is een apart perceel met een eigen aansluiting → dan heb je de **Liander-factuur van
+  die aansluiting** nodig, niet deze.
+
+**2. De aansluiting staat op de energie-BV, niet op de aanvrager.** Het formulier vraagt
+"Wat voor netaansluiting heeft **u** op de locatie van uw laadinfrastructuur?" — en het bewijs
+dat je uploadt vermeldt A. Baas Energie B.V., terwijl de aanvraag op A. Baas
+Potplantenkwekerij B.V. staat.
+
+Dat is niet per definitie fataal: SPRILA eist eigen of gehuurd **terrein** en eigen
+**voertuigen**, en over de tenaamstelling van de aansluiting zegt de regeling niets expliciets.
+Maar RVO ziet het verschil direct. Regel daarom:
+
+- een schriftelijke afspraak tussen A. Baas Energie B.V. en A. Baas Potplantenkwekerij B.V.
+  over het **gebruik van het terrein én van de aansluiting** voor de laadinfrastructuur;
+- een korte toelichting in het veld **Opmerkingen** van het aanvraagformulier, zodat RVO het
+  niet zelf hoeft te ontdekken. Iets als: *"De netaansluiting op deze locatie staat op naam van
+  groepsvennootschap A. Baas Energie B.V. De aanvrager beschikt over het terrein en de
+  aansluiting op grond van een gebruiksovereenkomst; de te laden vrachtwagens zijn eigendom
+  van de aanvrager."*
+
+Dit is precies de groepsstructuurvraag uit §4, nu concreet. Overweeg het even opnieuw: de
+aansluiting, de accu-logica en de SDE zitten allemaal bij de energie-BV; alleen de trucks
+zitten bij de aanvrager. Bij twijfel is dit hét moment om RVO te bellen.
+
+### ✅ Goed nieuws: de capaciteitsberekening kun je overslaan
+
+| | |
+|---|---|
+| Maximaal beschikbaar vermogen | **1.850 kW** |
+| Benodigd voor 3 laadstations van 240 kW | **720 kW** |
+| **Percentage** | **38,9%** |
+
+Onder de 50%, dus je hoeft **geen capaciteitsberekening met verbruiksdata** te uploaden. Dat
+scheelt een 24-uursprofiel en een onderbouwing. Antwoord op "Is het benodigde vermogen meer
+dan 50%?" is **Nee**.
+
+Ook prettig: met 1.850 kW beschikbaar en 720 kW aan laders is er ruimte zat. De accu is hier
+dus geen noodzaak om te kunnen laden, maar een middel om eigen opwek te benutten en pieken af
+te vlakken — schrijf de projectomschrijving in §6.3 in die geest (variant b).
+
 ### ⚠️ De laadpalen "te zijner tijd" is een risico
 
 De accu is **alleen subsidiabel in combinatie met nieuw geplaatste laadinfrastructuur**. Komen

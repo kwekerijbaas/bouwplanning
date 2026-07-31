@@ -495,6 +495,9 @@ maken in plaats van er later achter te komen.
 | Onderwerp | Eis |
 |---|---|
 | **Aanvraagperiode 2026** | 20 januari 09:00 t/m **18 december 2026 12:00** |
+| **Realisatietermijn** | Project afgerond binnen **24 maanden na subsidieverlening**, daarna vaststelling aanvragen |
+| **Eén aanvraag per locatie** | Voor dezelfde laadlocatie kan in hetzelfde kalenderjaar **geen tweede aanvraag** worden ingediend |
+| **Internet** | Laadinfrastructuur moet **permanent met internet verbonden** zijn; bij niet-naleving vordert RVO 1/24e deel per maand terug |
 | **Verdeling** | Op **volgorde van binnenkomst** — vol is vol |
 | **Beslistermijn** | Binnen **13 weken** |
 | **Inloggen** | **eHerkenning niveau 3 (eH3)** minimaal, via Mijn RVO |
@@ -645,9 +648,10 @@ bijna de helft van de aanvraag.
 
 Twee dingen om te regelen:
 
-1. **Zoek de realisatietermijn op in de beschikking** zodra die binnen is. De subsidie moet
-   binnen die termijn zijn gerealiseerd en vastgesteld; "tzt" is daarbinnen geen houdbare
-   planning.
+1. **De realisatietermijn is 24 maanden na subsidieverlening.** Dat staat in de verklaringen
+   van het aanvraagformulier: het project wordt binnen 24 maanden na verlening afgerond,
+   waarna de laadinfrastructuur in gebruik wordt genomen en de vaststelling wordt aangevraagd.
+   "Tzt" mag dus, mits binnen die twee jaar.
 2. **Neem de laadpalen in dezelfde uitvoering mee als de accu**, of in elk geval binnen die
    termijn. Draccu geeft aan binnen acht weken te kunnen realiseren — plan ze dan gewoon
    samen.

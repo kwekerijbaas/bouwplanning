@@ -53,7 +53,8 @@ gekozen, meer plaatsen mag wel maar levert niets extra's op.
 2. **Het 40%-plafond wordt gehaald**, maar met een smalle marge. De herziene offerte telt
    €461.500 aan subsidiabele kosten tegenover €178.000 subsidie: 38,57%. Er is €16.500 speling,
    en daarvan hangt €10.000 aan posten die RVO kan schrappen. Neem de aanlegposten er alsnog
-   bij. Zie §3.
+   bij — die zitten al in de all-in prijs. Laat de offerte in plaats daarvan specificeren.
+   Zie §3.
 3. **De 70%-eis is geen risico meer.** Met twee ritten van 300–400 km per truck per dag vragen
    de twee vrachtwagens samen **1.440 tot 2.880 kWh per dag**, tegen maximaal 1.000 kWh die de
    accu kan leveren. De trucks nemen alles af; er is geen ruimte om de accu voor de kwekerij te
@@ -379,38 +380,63 @@ bijt het plafond alsnog. Twee posten zijn discutabel:
 - **Silowand incl. overkapping, € 9.000** — bouwkundig werk voor de accu-opstelling. Naar alle
   waarschijnlijkheid subsidiabel als civieltechnisch werk, maar geen zekerheid.
 
-Samen € 10.000 van de € 16.500 marge. **Neem daarom de aanlegposten alsnog op** — fundering,
-grondwerk, kabelsleuven, bestrating, glasvezel, vergunningen. Niet meer om het plafond te
-halen, maar om te voorkomen dat één afgekeurde post de subsidie alsnog verlaagt.
+Samen € 10.000 van de € 16.500 marge. Die marge beschermen doe je niet door posten toe te
+voegen — die zitten al in de all-in prijs — maar door **de offerte te laten specificeren**,
+zodat zichtbaar is welk deel civiel en aansluitwerk is. Zie hieronder.
 
-### ⚠️ De laadstations zijn € 72.000 duurder geworden zonder zichtbare reden
+### ⚠️ De all-in prijs spreekt de offerte zelf tegen
 
-Van € 162.000 naar € 234.000, oftewel **€ 54.000 → € 78.000 per station**. Een stijging van
-44%, terwijl in de offerte niets is veranderd:
+De € 72.000 stijging op de laadstations is verklaard: op verzoek is de aanleg meegenomen in
+een all-in tarief. Van € 54.000 naar € 78.000 per station, inclusief het civiele en
+aansluitwerk.
 
-- hetzelfde model, Whes WH-ECA-244EDD, 240 kW, 2× CCS2;
-- hetzelfde aantal, drie stuks;
-- dezelfde aanname: *"Uitgegaan is van maximaal 20 m per laadstation."*
+Op zichzelf een prima keuze — één partij, één prijs, geen coördinatie. **Maar de offerte
+vertelt dat verhaal niet.** De overige condities zijn ongewijzigd gebleven en sluiten nog
+steeds uit:
 
-**Die € 72.000 betaal je volledig zelf.** De subsidie per laadstation is een vast bedrag van
-€ 31.000 en verandert niet mee. Netto pakt de herziene offerte dus ongunstiger uit:
+> - Maken of aanpassen van het ICT-netwerk ten behoeve van het monitoringssysteem.
+> - Aanpassen van de verdeelinrichting tenzij expliciet is aangegeven dat het bij de offerte in zit.
+> - Boringen in wanden en vloeren.
+> - **Grondwerkzaamheden. Dit geldt voor het leidingtraject alsmede voor het vlakken van de ondergrond.**
+> - Binnen 50 m van de opstelplaats dient een datanetwerk aanwezig te zijn.
 
-| | Eerste versie | Herziene versie |
-|---|---|---|
-| Subsidiabele kosten | € 387.000 | € 461.500 |
-| Subsidie (na 40%-toets) | € 154.800 | € 178.000 |
-| **Netto investering** | **€ 232.200** | **€ 283.500** |
+En bij de accu staat nog altijd: *"De opdrachtgever is verantwoordelijk voor het gereedmaken
+van de ondergrond alvorens het plaatsen en draagt de kosten hiervoor."*
 
-De hogere prijs levert € 23.200 extra subsidie op, maar kost € 74.500. **Per saldo € 51.300
-duurder.**
+**Het document zegt dus dat het grondwerk er niet in zit, terwijl de prijs veronderstelt dat
+het er wél in zit.** Dat is een probleem op drie manieren:
 
-Dat de aanvraag er administratief beter van wordt, is dus geen reden om er blij mee te zijn.
-**Vraag Koop waar die € 72.000 vandaan komt** — een langere kabelweg naar de achterzijde van
-het terrein zou het kunnen verklaren, maar dan hoort dat in de offerte te staan en is de
-aanname van 20 meter niet bijgewerkt.
+1. **RVO leest de offerte zoals hij er staat.** Bij een subsidiepercentage van 38,57% is er
+   € 16.500 marge; een beoordelaar die de uitsluitingen leest, ziet € 234.000 voor drie laders
+   met expliciet uitgesloten aanlegwerk en kan vragen stellen bij die prijs.
+2. **Het formulier eist gespecificeerde kosten.** Letterlijk: *"Gespecificeerde kosten op de
+   offerte voor de installatie en aanschaf van uw laadinfrastructuur."* Eén bedrag van
+   € 234.000 voor drie stations is geen specificatie.
+3. **Bij de vaststelling telt de factuur.** Staat daar straks alleen "3× DC snellader", dan is
+   niet aantoonbaar welk deel civiel werk was — terwijl dat juist de post is die de
+   subsidiabele kosten omhoog brengt.
 
-Voor de indiening hoeft dit niet opgelost te zijn: € 461.500 is een geldige onderbouwing en
-je bent nog nergens aan gebonden. Maar zoek het uit vóór je tekent.
+### Wat je aan Koop moet vragen: specificeren, niet herprijzen
+
+Het totaal van € 461.500 mag blijven staan. Vraag om **dezelfde offerte, uitgesplitst**:
+
+- de laadstations zelf (3 × circa € 54.000);
+- het aanleg- en civiele werk dat nu is meegenomen: fundering, vlakken van de ondergrond,
+  kabelsleuven, leidingtraject, hoofdverdeler, datanetwerk;
+- en laat de **uitsluitingenlijst aanpassen**, zodat wat nu in de prijs zit er niet langer als
+  uitgesloten in staat.
+
+Datzelfde geldt voor de € 2.500 die bij de accu is bijgekomen — waarschijnlijk het gereedmaken
+van de ondergrond, maar dat staat er niet.
+
+### Correctie op eerder advies: niet dubbel opvoeren
+
+In de vorige versie van dit document stond dat je de aanlegposten **alsnog apart** in de
+begroting moest zetten. **Dat geldt niet meer.** Ze zitten nu in de prijs van Draccu; ze er
+nog eens los bij optellen zou dubbeltelling zijn en dat is een terugvorderingsgrond.
+
+De begroting is dus simpelweg de offerte: **€ 461.500**. Wat er nog los bij mag, zijn alleen
+kosten die Draccu écht niet levert — bijvoorbeeld vergunningen of engineering door derden.
 
 ### Het EMS en de 70%-eis — opgelost, mits op papier
 
@@ -829,15 +855,9 @@ bedragen excl. btw.
 | Silowand incl. overkapping | offerte | € 9.000 |
 | Voorbereiding meetdienst | offerte | € 1.000 |
 | **Subtotaal offerte Draccu** | | **€ 461.500** |
-| Fundering en gereedmaken ondergrond | `[…]` | `[…]` |
-| Grondwerk: leidingtraject en vlakken ondergrond | `[…]` | `[…]` |
-| Kabelsleuven en bestrating laadeiland | `[…]` | `[…]` |
-| Nieuwe hoofdverdeler / aanpassen verdeelinrichting | `[…]` | `[…]` |
-| Netaansluiting of -aanpassing | `[…]` | `[…]` |
-| Datanetwerk / glasvezel naar opstelplaats | `[…]` | `[…]` |
-| Boringen wanden en vloeren | `[…]` | `[…]` |
-| Vergunningen en engineering | `[…]` | `[…]` |
-| **Totaal subsidiabele kosten** | | **€ 461.500 + aanlegposten** — vereist ≥ € 445.000 ✅ |
+| *Aanleg- en civiel werk zit in de all-in prijs hierboven — niet apart opvoeren* | | — |
+| Vergunningen en engineering door derden, indien van toepassing | `[…]` | `[…]` |
+| **Totaal subsidiabele kosten** | | **€ 461.500** — vereist ≥ € 445.000 ✅ |
 | **Gevraagde subsidie** | | **€ 178.000** |
 
 ✅ **Het plafond wordt gehaald op de offerte alleen: 38,57%.** De aanvullende posten zijn niet

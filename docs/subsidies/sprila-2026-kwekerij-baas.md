@@ -50,10 +50,10 @@ gekozen, meer plaatsen mag wel maar levert niets extra's op.
 
 1. **Vanaf nu geldt een tekenverbod.** Boven €25.000 moet de aanvraag binnen zijn vóórdat je
    opdracht geeft. Teken je eerder bij Draccu, dan is €178.000 weg. Zie §5.
-2. **Het 40%-plafond is nu de bindende beperking.** Met €178.000 subsidie heb je minimaal
-   €445.000 aan subsidiabele kosten nodig; de hardware is €394.000, dus er moet voor ten
-   minste €51.000 aan aanleg in de begroting staan. Elke vergeten aanlegpost drukt je
-   subsidie. Zie §3.
+2. **Het 40%-plafond wordt gehaald**, maar met een smalle marge. De herziene offerte telt
+   €461.500 aan subsidiabele kosten tegenover €178.000 subsidie: 38,57%. Er is €16.500 speling,
+   en daarvan hangt €10.000 aan posten die RVO kan schrappen. Neem de aanlegposten er alsnog
+   bij. Zie §3.
 3. **De 70%-eis is geen risico meer.** Met twee ritten van 300–400 km per truck per dag vragen
    de twee vrachtwagens samen **1.440 tot 2.880 kWh per dag**, tegen maximaal 1.000 kWh die de
    accu kan leveren. De trucks nemen alles af; er is geen ruimte om de accu voor de kwekerij te
@@ -343,66 +343,74 @@ niet voor de subsidie — maar de rekensom valt nu duidelijk gunstiger uit dan e
 
 Totaal bij 2 stations: **€ 147.000**. Bij 3 stations: **€ 178.000**.
 
-### De offerte van Draccu (DR283, 31-7-2026) — doorgerekend
+### De herziene offerte van Draccu — doorgerekend
 
-Draccu heeft geoffreerd. De configuratie wijkt af van wat we aannamen, en op twee punten
-raakt dat de aanvraag hard.
+Draccu heeft de offerte opnieuw uitgegeven. **Twee correcties zijn doorgevoerd, en één prijs
+is fors gestegen.**
 
-**Wat er geoffreerd is** (alle bedragen excl. btw):
+| Post | Eerste versie | Herziene versie | Verschil |
+|---|---|---|---|
+| Locatie | Enserweg 4 | **Drietorensweg 38-1, Ens** ✅ | rechtgezet |
+| Gecontracteerd vermogen | "2 MWh" | **1.850 kW** ✅ | rechtgezet |
+| 4× EnerBox incl. AC-installatie | € 210.000 | € 212.500 | + € 2.500 |
+| Envitron Envi.Base | € 5.000 | € 5.000 | — |
+| Silowand incl. overkapping | € 9.000 | € 9.000 | — |
+| Voorbereiding meetdienst | € 1.000 | € 1.000 | — |
+| **3× DC-laadstation 240 kW** | € 162.000 | **€ 234.000** | **+ € 72.000** |
+| **Totaal excl. btw** | € 387.000 | **€ 461.500** | + € 74.500 |
 
-| Post | Specificatie | Bedrag |
-|---|---|---|
-| Batterijopslag | 4× Hizenergy EnerBox ES100kW-261kWh-LE, incl. AC-installatie | € 210.000 |
-| Energiemanagement | Envitron Envi.Base (+ € 800/jaar abonnement, via Envitron) | € 5.000 |
-| Silowand incl. overkapping | opstelplaats accu | € 9.000 |
-| Voorbereiding BPM / meetdienst | GvO-bemeting productie-installatie | € 1.000 |
-| DC-snelladers | 3× Whes WH-ECA-244EDD, 240 kW, 2× CCS2, incl. AC-installatie | € 162.000 |
-| **Totaal offerte** | | **€ 387.000** |
-
-**De laadstations kloppen precies.** 240 kW per paal, dus categorie "vanaf 220 kW" →
-**€ 31.000 per station, € 93.000 totaal**. Volgens de datasheet trekt elk station **377 A**
-bij 400 V, en Draccu rekent met maximaal 20 m AC-kabel per laadstation — het kabelvraagstuk
-uit §2 is daarmee klein. Terzijde: dezelfde serie heeft ook een 300 kW-variant
-(WH-ECA-304EDD, 471 A), maar die valt in dezelfde subsidiecategorie en levert dus niets extra
-op. 240 kW is de juiste keuze.
-
-**De accu is 1.044 kWh** (4 × 261,25). Daarvan is **1.000 kWh subsidiabel** → € 85.000. De
-laatste 44 kWh levert niets op; dat is geen fout, met units van 261 kWh kun je niet fijner
-doseren.
-
-### 🚨 Het 40%-plafond wordt niet gehaald
-
-Dit is de belangrijkste uitkomst van deze offerte.
+### ✅ Het 40%-plafond wordt nu wél gehaald
 
 | | |
 |---|---|
-| Subsidie op basis van de installatie | € 178.000 |
-| Daarvoor benodigde subsidiabele kosten (÷ 0,40) | **€ 445.000** |
-| Subsidiabele kosten in de offerte | € 387.000 |
-| **Tekort** | **€ 58.000** |
+| Subsidiabele kosten | € 461.500 |
+| Gevraagde subsidie | € 178.000 |
+| **Subsidiepercentage** | **38,57%** |
 
-Dien je in met alleen deze offerte, dan wordt de subsidie gekapt op 40% van € 387.000 =
-**€ 154.800**. Dat is **€ 23.200 minder** dan waar je recht op hebt.
+Onder de 40%. Het tekort van € 58.000 uit de vorige versie is verdwenen, en de aanvraag kan
+worden ingediend zonder dat de aanlegposten eerst gecalculeerd zijn.
 
-**Het goede nieuws: dat tekort is precies wat Draccu níét levert.** De offerte sluit expliciet
-uit — en dat zijn stuk voor stuk subsidiabele kosten die je zelf maakt:
+**Maar de marge is smal: € 16.500.** Zodra RVO voor meer dan dat bedrag aan posten schrapt,
+bijt het plafond alsnog. Twee posten zijn discutabel:
 
-- **Grondwerkzaamheden** — zowel het leidingtraject als het vlakken van de ondergrond;
-- **Fundering en het gereedmaken van de ondergrond** ("de opdrachtgever is verantwoordelijk
-  voor het gereedmaken van de ondergrond en draagt de kosten hiervoor");
-- **Aanpassen van de verdeelinrichting**, tenzij expliciet inbegrepen — de offerte noemt een
-  "nieuwe hoofdverdeler" voor de laders; **vraag na of die in de prijs zit**;
-- **Boringen in wanden en vloeren**;
-- **ICT-netwerk / glasvezel** naar de opstelplaats (Draccu eist een datanetwerk binnen 50 m);
-- **Netaansluiting of -aanpassing**, bestrating rond het laadeiland, en **vergunningen** —
-  komen in de offerte helemaal niet voor.
+- **Voorbereiding BPM/meetdienst, € 1.000** — dit is GvO-bemeting van een *productie*-
+  installatie. Dat hoort bij de zonnepanelen, en die zijn expliciet uitgesloten van de
+  subsidiabele kosten.
+- **Silowand incl. overkapping, € 9.000** — bouwkundig werk voor de accu-opstelling. Naar alle
+  waarschijnlijkheid subsidiabel als civieltechnisch werk, maar geen zekerheid.
 
-Voor drie DC-stations plus een accucontainer op een betonwand is € 58.000 aan grondwerk,
-fundering, sleuven, bestrating en aansluitwerk volstrekt realistisch. **Maar het moet wel
-begroot, onderbouwd en meegestuurd worden.**
+Samen € 10.000 van de € 16.500 marge. **Neem daarom de aanlegposten alsnog op** — fundering,
+grondwerk, kabelsleuven, bestrating, glasvezel, vergunningen. Niet meer om het plafond te
+halen, maar om te voorkomen dat één afgekeurde post de subsidie alsnog verlaagt.
 
-> **Actie met de hoogste opbrengst deze week: laat die posten offreren of calculeren en zet ze
-> in de begroting.** Het gaat om € 23.200 subsidie voor werk dat je toch al betaalt.
+### ⚠️ De laadstations zijn € 72.000 duurder geworden zonder zichtbare reden
+
+Van € 162.000 naar € 234.000, oftewel **€ 54.000 → € 78.000 per station**. Een stijging van
+44%, terwijl in de offerte niets is veranderd:
+
+- hetzelfde model, Whes WH-ECA-244EDD, 240 kW, 2× CCS2;
+- hetzelfde aantal, drie stuks;
+- dezelfde aanname: *"Uitgegaan is van maximaal 20 m per laadstation."*
+
+**Die € 72.000 betaal je volledig zelf.** De subsidie per laadstation is een vast bedrag van
+€ 31.000 en verandert niet mee. Netto pakt de herziene offerte dus ongunstiger uit:
+
+| | Eerste versie | Herziene versie |
+|---|---|---|
+| Subsidiabele kosten | € 387.000 | € 461.500 |
+| Subsidie (na 40%-toets) | € 154.800 | € 178.000 |
+| **Netto investering** | **€ 232.200** | **€ 283.500** |
+
+De hogere prijs levert € 23.200 extra subsidie op, maar kost € 74.500. **Per saldo € 51.300
+duurder.**
+
+Dat de aanvraag er administratief beter van wordt, is dus geen reden om er blij mee te zijn.
+**Vraag Koop waar die € 72.000 vandaan komt** — een langere kabelweg naar de achterzijde van
+het terrein zou het kunnen verklaren, maar dan hoort dat in de offerte te staan en is de
+aanname van 20 meter niet bijgewerkt.
+
+Voor de indiening hoeft dit niet opgelost te zijn: € 461.500 is een geldige onderbouwing en
+je bent nog nergens aan gebonden. Maar zoek het uit vóór je tekent.
 
 ### Het EMS en de 70%-eis — opgelost, mits op papier
 
@@ -815,12 +823,12 @@ bedragen excl. btw.
 
 | Kostenpost | Bron | Bedrag |
 |---|---|---|
-| 4× EnerBox 100 kW / 261 kWh incl. AC-installatie | offerte | € 210.000 |
-| 3× DC-laadstation 240 kW incl. AC-installatie | offerte | € 162.000 |
+| 4× EnerBox 100 kW / 261 kWh incl. AC-installatie | offerte | € 212.500 |
+| 3× DC-laadstation 240 kW incl. AC-installatie | offerte | € 234.000 |
 | Envitron Envi.Base energiemanagementsysteem | offerte | € 5.000 |
 | Silowand incl. overkapping | offerte | € 9.000 |
 | Voorbereiding meetdienst | offerte | € 1.000 |
-| **Subtotaal offerte Draccu** | | **€ 387.000** |
+| **Subtotaal offerte Draccu** | | **€ 461.500** |
 | Fundering en gereedmaken ondergrond | `[…]` | `[…]` |
 | Grondwerk: leidingtraject en vlakken ondergrond | `[…]` | `[…]` |
 | Kabelsleuven en bestrating laadeiland | `[…]` | `[…]` |
@@ -829,12 +837,12 @@ bedragen excl. btw.
 | Datanetwerk / glasvezel naar opstelplaats | `[…]` | `[…]` |
 | Boringen wanden en vloeren | `[…]` | `[…]` |
 | Vergunningen en engineering | `[…]` | `[…]` |
-| **Totaal subsidiabele kosten** | | **moet ≥ € 445.000 zijn** |
+| **Totaal subsidiabele kosten** | | **€ 461.500 + aanlegposten** — vereist ≥ € 445.000 ✅ |
 | **Gevraagde subsidie** | | **€ 178.000** |
 
-⚠️ **De aanvullende posten moeten samen minimaal € 58.000 bedragen.** Blijf je daaronder, dan
-wordt de subsidie naar beneden bijgesteld tot 40% van het werkelijke totaal — bij alleen de
-offerte van Draccu is dat € 154.800, oftewel € 23.200 minder. Zie §3.
+✅ **Het plafond wordt gehaald op de offerte alleen: 38,57%.** De aanvullende posten zijn niet
+meer nodig om onder de 40% te blijven, maar wel verstandig: de marge is € 16.500 en daarvan
+staat € 10.000 aan discutabele posten op het spel. Zie §3.
 
 ### 6.3 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
 

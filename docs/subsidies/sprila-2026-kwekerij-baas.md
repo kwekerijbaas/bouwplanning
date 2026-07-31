@@ -54,18 +54,19 @@ gekozen, meer plaatsen mag wel maar levert niets extra's op.
    €445.000 aan subsidiabele kosten nodig; de hardware is €394.000, dus er moet voor ten
    minste €51.000 aan aanleg in de begroting staan. Elke vergeten aanlegpost drukt je
    subsidie. Zie §3.
-3. **Met twee trucks moet de accu tegen de 70%-eis worden nagerekend.** De twee vrachtwagens
-   moeten samen **minimaal circa 600 kWh per dag** afnemen — ongeveer 250 km per truck per
-   dag — om een accu van 1.000 kWh binnen de regels vol te kunnen benutten. Rijden ze
-   structureel minder, kies dan een kleinere accu. Zie §3; hier hangt €85.000 aan.
+3. **De 70%-eis is geen risico meer.** Met twee ritten van 300–400 km per truck per dag vragen
+   de twee vrachtwagens samen **1.440 tot 2.880 kWh per dag**, tegen maximaal 1.000 kWh die de
+   accu kan leveren. De trucks nemen alles af; er is geen ruimte om de accu voor de kwekerij te
+   gebruiken. Vier EnerBoxen zijn eerder krap dan ruim. Zie §3.
 
 Twee dingen die met twee trucks nog openstaan:
 
-- **Twee laadstations volstaan** voor twee trucks (€ 147.000 in plaats van € 178.000). Het
-  derde station kost €48.000 en levert €31.000 op — netto €17.000 voor een reservelaadpositie.
-  Dat is een redelijke prijs voor redundantie. Zie §3.
-- **Vraag Draccu ook prijzen voor 150 kW en 220 kW.** De subsidie verspringt op die grenzen,
-  en drie stations van 150 kW kosten netto mogelijk €34.000 minder. Zie §2.
+- **Drie laadstations zijn met dit verbruik goed te verdedigen.** De trucks moeten dagelijks
+  1.440–2.880 kWh opnemen; drie palen van 240 kW leveren 720 kW en zijn daar twee tot vier uur
+  mee bezig. Zie §3.
+- **Open operationele vraag:** hoeveel standtijd zit er tussen de twee ritten? Bij minder dan
+  twee uur is 240 kW krap. Dat raakt de aanvraag niet — 240 en 300 kW zitten in dezelfde
+  subsidiecategorie — maar wel de inkoopkeuze. Zie §3.
 - **De aanvraag komt op A. Baas Potplantenkwekerij B.V.** — de BV met de trucks. Nog te
   regelen: een gebruiksrecht op de grond van Baas Groep B.V., en de offertes van Draccu op
   naam van deze BV zetten. Zie §4.
@@ -224,48 +225,85 @@ besparing). Dat verdienmodel is hier grotendeels niet toegestaan zolang de subsi
 Laat Draccu deze drie punten **schriftelijk bevestigen in de offerte**. Dat document gaat als
 bijlage mee.
 
-### Past 1.000 kWh bij twee trucks? De rekensom
+### Het wagenpark: 600–800 km per truck per dag
 
-Met twee vrachtwagens is dit geen theoretische vraag meer. De 70%-eis werkt namelijk als een
-**plafond op wat je nog voor de kwekerij mag gebruiken**, en dat plafond wordt bepaald door
-hoeveel de trucks afnemen:
+Met twee ritten van 300–400 km per truck per dag valt de eerdere zorg — een accu die te groot
+is voor twee trucks — volledig weg. Het is precies andersom.
 
-> Maximale ontlading naar de kwekerij = **3/7 × wat de trucks afnemen**
+**Wat de trucks aankunnen** (fabrieksopgaven, medio 2026):
 
-Nemen de trucks samen 600 kWh per dag, dan mag er hooguit 257 kWh naar het bedrijf. Samen is
-dat 857 kWh dagelijkse ontlading — en daar hoort een accu bij van circa 1.000 kWh, want die
-draai je in de praktijk op 80–90% ontlaaddiepte.
+| | Mercedes eActros 600 | Scania BEV (nieuwe generatie) |
+|---|---|---|
+| Accu geïnstalleerd | 621 kWh (3× 207 kWh) | tot 728 kWh getoond |
+| Bruikbaar | ~600 kWh (95%) | 240 / 320 / 400 / 480 / **560 kWh** |
+| Praktijkbereik bij 40 t | **~500 km** | **~350 km** |
+| Laden | 400 kW CCS, MCS-voorbereid | 375 kW CCS2 (vol in ~90 min); MCS 750 kW vanaf begin 2026 |
 
-**Daaruit volgt één getal om te toetsen:**
+Het verschil tussen 500 en 350 km zegt vooral iets over meetcondities. Reken zelf met een
+bandbreedte: **1,2 kWh/km** (fabrieksopgave bij 40 t) tot circa **1,8 kWh/km** in de praktijk,
+afhankelijk van belading, snelheid en seizoen.
 
-> **De twee trucks moeten samen minimaal circa 600 kWh per dag afnemen** om een accu van
-> 1.000 kWh binnen de 70%-eis vol te kunnen benutten.
+**Wat dat betekent voor het dagverbruik:**
 
-600 kWh per dag betekent 300 kWh per truck, ofwel ruwweg **230 tot 270 km per truck per dag**
-bij een verbruik van 1,1–1,3 kWh/km. Voor regionale distributie is dat een normale dag, dus
-goed mogelijk — maar het moet wel kloppen.
+| Kilometers per truck per dag | Bij 1,2 kWh/km | Bij 1,8 kWh/km |
+|---|---|---|
+| 600 km | 720 kWh | 1.080 kWh |
+| 800 km | 960 kWh | 1.440 kWh |
+| **Twee trucks samen** | **1.440 – 1.920 kWh/dag** | **2.160 – 2.880 kWh/dag** |
 
-| Afname trucks samen | Max. ontlading totaal | Passende accu | Subsidie |
+### Gevolg: de 70%-eis is geen enkel probleem meer
+
+De accu levert maximaal ~1.000 kWh per dag. De trucks vragen **anderhalf tot bijna drie keer
+zoveel**. Alles wat de accu ontlaadt kan naar de laadstations, en er blijft nog een fors tekort
+over dat het net moet leveren.
+
+Daarmee vervalt de hele afweging uit de vorige versie van dit document:
+
+- **Vier EnerBoxen zijn niet te veel — ze zijn eerder aan de krappe kant.** Van de 1.044 kWh is
+  1.000 kWh subsidiabel; meer plaatsen mag, maar levert geen extra subsidie op.
+- **De 3/7-begrenzing gaat in de praktijk nooit knellen.** Er is simpelweg geen ruimte om de
+  accu voor de kwekerij te gebruiken; de trucks nemen alles af.
+- **Een kleinere accu overwegen is niet meer aan de orde.** Dien in op 1.000 kWh.
+
+### De nieuwe vraag: haal je die kilometers operationeel?
+
+Dit raakt de subsidie niet, maar wel het project.
+
+**Geen enkele truck rijdt 600–800 km op één lading.** De eActros 600 komt tot ~500 km, de
+Scania tot ~350 km. Twee ritten van 300–400 km betekent dus **tussentijds laden**, en de vraag
+is of daar tijd voor is:
+
+| Rit | Energie nodig | Laadtijd bij 240 kW | Bij 350 kW |
 |---|---|---|---|
-| 400 kWh/dag *(~160 km per truck)* | 571 kWh | ~650 kWh | € 55.250 |
-| 500 kWh/dag *(~200 km per truck)* | 714 kWh | ~800 kWh | € 68.000 |
-| **600 kWh/dag** *(~250 km per truck)* | **857 kWh** | **~1.000 kWh** | **€ 85.000** |
-| 700 kWh/dag *(~290 km per truck)* | 1.000 kWh | 1.000 kWh (max) | € 85.000 |
+| 300 km (1,2 kWh/km) | 360 kWh | 1 u 30 | 1 u 00 |
+| 400 km (1,2 kWh/km) | 480 kWh | 2 u 00 | 1 u 25 |
+| 400 km (1,8 kWh/km) | 720 kWh | 3 u 00 | 2 u 05 |
 
-**Rijden de trucks structureel minder dan ~250 km per dag, kies dan een kleinere accu.** Je
-levert subsidie in, maar je koopt ook geen capaciteit die je onder de 70%-eis niet mag
-gebruiken. Een accu van 1.000 kWh kost al gauw €300.000; de 350 kWh die je er bij 400 kWh/dag
-te veel aan hebt kost dus zo'n €105.000 en levert €29.750 subsidie op — een verlies van
-€75.000 aan capaciteit die stil moet blijven staan.
+'Nachts is er tijd zat. **De keerklus tussen de twee ritten is de krappe.** Is die standtijd
+korter dan anderhalf à twee uur, dan haal je het niet met 240 kW en moet je kiezen:
 
-**Komt er een derde truck binnen twee jaar?** Dan is 1.000 kWh wél de juiste maat. De
-instandhoudingstermijn is 24 maanden, dus je moet die twee jaar aan de 70% voldoen — groei
-binnen die termijn telt mee.
+- **onderweg bijladen** bij publieke snelladers — dan komt die energie niet uit jouw accu, maar
+  blijft de dagbehoefte thuis nog steeds ruim boven de 1.000 kWh;
+- **sneller laden op de vestiging.** De trucks accepteren 375–400 kW; een station van 240 kW
+  benut die capaciteit dus maar voor tweederde. Draccu heeft in dezelfde Whes-serie een
+  **300 kW-variant** (WH-ECA-304EDD, 471 A) — dat scheelt een half uur per laadbeurt en valt in
+  **dezelfde subsidiecategorie**, dus zonder subsidieverlies. Alleen de hardware is duurder.
+- **een station van 350 kW of meer** — dat is een andere leverancier (Draccu offreert tot
+  330 kW), maar levert wél **€ 52.500 in plaats van € 31.000** per station.
 
-### En hoeveel laadstations bij twee trucks?
+> **Vraag om te beantwoorden vóór je de opdracht geeft — niet vóór de aanvraag:** hoeveel
+> standtijd zit er tussen de twee ritten? Bij minder dan twee uur is 240 kW krap en is de
+> 300 kW-variant de moeite van het narekenen waard.
 
-Met twee trucks volstaan **twee laadstations**: elke truck een eigen laadpositie, geen
-wachtrij. Een derde station is puur redundantie of voorbereiding op een derde truck.
+Voor de **aanvraag** verandert dit niets: 240 kW en 300 kW zitten in dezelfde categorie en
+leveren allebei € 31.000 per station. Laat deze vraag de indiening dus niet ophouden.
+
+### En hoeveel laadstations bij twee trucks?### En hoeveel laadstations bij twee trucks?
+
+Met dit verbruik is een derde station beter te verdedigen dan eerder gedacht. De twee trucks
+moeten samen 1.440 tot 2.880 kWh per dag opnemen; drie stations van 240 kW leveren 720 kW,
+dus twee tot vier uur vol laden per etmaal. Dat past, maar met twee stations wordt het krap
+zodra er iets uitvalt of een rit uitloopt.
 
 | | Subsidie | Kosten derde station | Netto |
 |---|---|---|---|
@@ -953,12 +991,12 @@ Hiermee maak ik de aanvraagtekst af in plaats van hem te schetsen:
 
 1. **SBI-code en IBAN** van A. Baas Potplantenkwekerij B.V.
 2. Uitkomst van de mkb-toets.
-3. Type vrachtwagens (N2/N3), accucapaciteit per truck, en vooral: **hoeveel kilometer rijden
-   ze per dag?** Dat bepaalt of 1.000 kWh de juiste accumaat is (zie §3).
+3. **Merk en type van de twee vrachtwagens**, en de standtijd tussen de twee dagritten.
 4. Laadprofiel: 's nachts, tussen ritten, of beide — en hoeveel gelijktijdig.
 5. Huidige netaansluiting in kVA en wat de netbeheerder over verzwaring zegt.
 6. De offertes zodra ze er zijn.
-7. Of je de accu ook voor de kwekerij zelf wilt inzetten — cruciaal voor de 70%-eis.
+7. ~~Of je de accu ook voor de kwekerij wilt inzetten~~ — niet meer relevant: de trucks nemen
+   de volledige accu-opbrengst af.
 8. **Wat je precies bedoelt met "accu laden en legen op vrachtwagens"**: de stationaire accu
    die de trucks laadt, of de accu's van de trucks zelf als buffer (V2G)? Dit staat nog open.
 9. Vermogen van de zonnepanelen in kWp.

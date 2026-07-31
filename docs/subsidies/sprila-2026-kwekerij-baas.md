@@ -279,74 +279,112 @@ niet voor de subsidie — maar de rekensom valt nu duidelijk gunstiger uit dan e
 
 Totaal bij 2 stations: **€ 147.000**. Bij 3 stations: **€ 178.000**.
 
-### De offertes ingevuld: wat levert het werkelijk op
+### De offerte van Draccu (DR283, 31-7-2026) — doorgerekend
 
-Met de prijzen van Draccu — **€48.000 per laadstation van 240 kW** en **€250.000 voor een accu
-van 1,15 MWh** — en de officiële bedragen uit §2:
+Draccu heeft geoffreerd. De configuratie wijkt af van wat we aannamen, en op twee punten
+raakt dat de aanvraag hard.
 
-| Onderdeel | Investering | Subsidie | Dekking |
-|---|---|---|---|
-| Laadstation 240 kW | € 48.000 | **€ 31.000** | 64,6% |
-| Accu (1.000 kWh subsidiabel) | € 250.000 | € 85.000 | 34,0% |
+**Wat er geoffreerd is** (alle bedragen excl. btw):
 
-**Het subsidiebedrag per laadstation is € 31.000** — 64,6% van de offerte. Netto kost een
-station dus €17.000.
-
-Twee dingen om te weten:
-
-**1. Je koopt 150 kWh accu die niet subsidiabel is.** SPRILA vergoedt maximaal 1.000 kWh. Van
-de 1,15 MWh valt 150 kWh buiten de regeling: bij €217/kWh kost dat **€32.600 en levert het
-niets op**. Met twee trucks kun je die capaciteit onder de 70%-eis ook niet benutten. Vraag
-Draccu wat een variant van 1.000 kWh kost — lineair zou dat €217.400 zijn. Accuprijzen zijn
-niet lineair (container, omvormer en BMS zijn vaste kosten), dus blijkt het verschil klein,
-neem dan gerust de 1,15 MWh: onbenutte capaciteit is dan vrijwel gratis en handig als er een
-derde truck komt.
-
-**2. Het 40%-plafond is nu de bindende beperking.** Dat was het bij de oude, te lage bedragen
-niet. Zie hieronder — dit is het belangrijkste nieuwe aandachtspunt.
-
-### Twee configuraties naast elkaar
-
-| | 3 stations + 1,15 MWh | 2 stations + 1,0 MWh |
+| Post | Specificatie | Bedrag |
 |---|---|---|
-| Laadstations | € 144.000 | € 96.000 |
-| Accu | € 250.000 | ± € 217.400 |
-| **Investering (excl. aanleg)** | **€ 394.000** | **€ 313.400** |
-| Subsidie | € 178.000 | € 147.000 |
-| **Netto** | **€ 216.000** | **€ 166.400** |
+| Batterijopslag | 4× Hizenergy EnerBox ES100kW-261kWh-LE, incl. AC-installatie | € 210.000 |
+| Energiemanagement | Envitron Envi.Base (+ € 800/jaar abonnement, via Envitron) | € 5.000 |
+| Silowand incl. overkapping | opstelplaats accu | € 9.000 |
+| Voorbereiding BPM / meetdienst | GvO-bemeting productie-installatie | € 1.000 |
+| DC-snelladers | 3× Whes WH-ECA-244EDD, 240 kW, 2× CCS2, incl. AC-installatie | € 162.000 |
+| **Totaal offerte** | | **€ 387.000** |
 
-Het derde station kost netto €17.000 en de extra 150 kWh accu €32.600 — samen **€49.600** voor
-capaciteit die je met twee trucks niet nodig hebt. Dat is nog steeds een reële afweging, maar
-het derde station is met de juiste bedragen wel een stuk aantrekkelijker geworden: €17.000
-netto voor een volwaardige reservelaadpositie is verdedigbaar als stilstand je dagelijkse
-ritten in gevaar brengt.
+**De laadstations kloppen precies.** 240 kW per paal, dus categorie "vanaf 220 kW" →
+**€ 31.000 per station, € 93.000 totaal**. Volgens de datasheet trekt elk station **377 A**
+bij 400 V, en Draccu rekent met maximaal 20 m AC-kabel per laadstation — het kabelvraagstuk
+uit §2 is daarmee klein. Terzijde: dezelfde serie heeft ook een 300 kW-variant
+(WH-ECA-304EDD, 471 A), maar die valt in dezelfde subsidiecategorie en levert dus niets extra
+op. 240 kW is de juiste keuze.
 
-### Het 40%-plafond: nu écht opletten
+**De accu is 1.044 kWh** (4 × 261,25). Daarvan is **1.000 kWh subsidiabel** → € 85.000. De
+laatste 44 kWh levert niets op; dat is geen fout, met units van 261 kWh kun je niet fijner
+doseren.
 
-De subsidie mag niet hoger zijn dan **40% van de subsidiabele kosten**. Met de juiste bedragen
-kom je daar tegenaan:
+### 🚨 Het 40%-plafond wordt niet gehaald
 
-| | 3 stations + 1,15 MWh | 2 stations + 1,0 MWh |
-|---|---|---|
-| Subsidie | € 178.000 | € 147.000 |
-| Benodigde subsidiabele kosten | **€ 445.000** | **€ 367.500** |
-| Hardware | € 394.000 | € 313.400 |
-| **Minimaal benodigde aanleg** | **€ 51.000** | **€ 54.100** |
+Dit is de belangrijkste uitkomst van deze offerte.
 
-Voor drie DC-stations plus een accu van meer dan een megawattuur haal je €51.000 aan
-netaansluiting, kabels, trafo, EMS, civiel werk, installatie en vergunningen vrijwel zeker —
-maar **het moet wel op papier staan en meegaan in de aanvraag**. Kom je eronder, dan wordt de
-subsidie evenredig verlaagd.
+| | |
+|---|---|
+| Subsidie op basis van de installatie | € 178.000 |
+| Daarvoor benodigde subsidiabele kosten (÷ 0,40) | **€ 445.000** |
+| Subsidiabele kosten in de offerte | € 387.000 |
+| **Tekort** | **€ 58.000** |
 
-Dat maakt één ding heel belangrijk geworden:
+Dien je in met alleen deze offerte, dan wordt de subsidie gekapt op 40% van € 387.000 =
+**€ 154.800**. Dat is **€ 23.200 minder** dan waar je recht op hebt.
 
-> **Neem élke aanlegpost op in de begroting.** Grondwerk, bestrating, fundaties,
-> kabelsleuven, trafo, verdeelkast, schakelmateriaal, EMS, montage-uren, vergunningen,
-> engineering. Alles wat nodig is om de laadinfrastructuur werkend te krijgen is subsidiabel,
-> en elke euro die je vergeet drukt rechtstreeks je subsidie.
+**Het goede nieuws: dat tekort is precies wat Draccu níét levert.** De offerte sluit expliciet
+uit — en dat zijn stuk voor stuk subsidiabele kosten die je zelf maakt:
 
-Laat Draccu de aanlegkosten daarom **volledig uitgesplitst** offreren in plaats van als één
-post "installatie" — dat maakt het onderbouwen richting RVO veel makkelijker.
+- **Grondwerkzaamheden** — zowel het leidingtraject als het vlakken van de ondergrond;
+- **Fundering en het gereedmaken van de ondergrond** ("de opdrachtgever is verantwoordelijk
+  voor het gereedmaken van de ondergrond en draagt de kosten hiervoor");
+- **Aanpassen van de verdeelinrichting**, tenzij expliciet inbegrepen — de offerte noemt een
+  "nieuwe hoofdverdeler" voor de laders; **vraag na of die in de prijs zit**;
+- **Boringen in wanden en vloeren**;
+- **ICT-netwerk / glasvezel** naar de opstelplaats (Draccu eist een datanetwerk binnen 50 m);
+- **Netaansluiting of -aanpassing**, bestrating rond het laadeiland, en **vergunningen** —
+  komen in de offerte helemaal niet voor.
+
+Voor drie DC-stations plus een accucontainer op een betonwand is € 58.000 aan grondwerk,
+fundering, sleuven, bestrating en aansluitwerk volstrekt realistisch. **Maar het moet wel
+begroot, onderbouwd en meegestuurd worden.**
+
+> **Actie met de hoogste opbrengst deze week: laat die posten offreren of calculeren en zet ze
+> in de begroting.** Het gaat om € 23.200 subsidie voor werk dat je toch al betaalt.
+
+### 🚨 Het geoffreerde EMS botst met de 70%-eis
+
+De offerte beschrijft het energiemanagementsysteem zo:
+
+> "Om het systeem zo efficiënt mogelijk te laten werken zal er een managementsysteem
+> geïnstalleerd worden welke het batterijopslagsysteem en de omvormers gaat sturen aan de hand
+> van het verbruik, de opwekking en de **actuele energieprijzen**."
+
+Dat is **prijsgedreven optimalisatie**: de accu ontlaadt wanneer de energieprijs gunstig is,
+naar het bedrijf of naar het net. Precies het gedrag dat maakt dat je **onder de 70% zakt**
+(§3), want die eis vraagt dat minstens 70% van de ontlading naar de laadstations gaat.
+
+De bevestiging die we hebben gevraagd — EMS prioriteert de laadstations, en de ontlaadstromen
+worden per bestemming gemeten en gelogd — **staat niet in deze offerte**. Zonder die
+bevestiging is de accupost van € 85.000 niet houdbaar.
+
+**Vraag Koop dit alsnog schriftelijk**, en laat vastleggen dat het Envi.Base-systeem zo
+ingeregeld kan worden dat de laadstations voorrang krijgen. Kan Envitron dat niet, dan is de
+accu in deze vorm niet subsidiabel en moet het ontwerp aangepast worden.
+
+### En let op de netaansluiting
+
+De offerte vermeldt: *"Het gecontracteerd vermogen van de aansluiting bedraagt wat betreft
+afname 2 MWh."* Vermoedelijk is **2 MW** bedoeld.
+
+Als dat klopt, is er ruim voldoende netcapaciteit om drie laders van samen 720 kW te voeden en
+**vervalt het argument dat netverzwaring het knelpunt is**. Die redenering staat nu wel in de
+conceptprojectomschrijving (§6.3) — die moet dan anders: de accu dient dan om eigen
+zonnestroom te benutten en pieken af te vlakken, niet om een netknelpunt op te lossen.
+
+Schrijf in de aanvraag niets wat niet klopt. **Bevestig eerst de werkelijke aansluitwaarde.**
+
+### Accuvermogen versus laadvermogen
+
+De vier units leveren samen **400 kW**, de drie laadstations vragen **720 kW**. De accu kan de
+palen dus nooit alle drie tegelijk op vol vermogen bedienen; het net springt bij. Met twee
+trucks is dat in de praktijk geen probleem, maar het is goed om te weten dat dit de
+werkelijke verhouding is.
+
+### Betalingscondities — let op het tekenverbod
+
+Draccu vraagt **80% van het totaalbedrag voor of tijdens levering**. Een aanbetaling telt als
+opdrachtverlening. Zolang de aanvraag niet is ingediend: **niets tekenen en niets
+aanbetalen** (§5). Draccu wil binnen acht weken realiseren; dat kan prima, want je mag
+opdracht geven zodra de aanvraag is ingediend — je hoeft niet op de beschikking te wachten.
 
 ### Nog een technische check: kan de accu 600 kW leveren?
 
@@ -561,18 +599,31 @@ Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan 
 
 **Begroting subsidiabele kosten**
 
-| Kostenpost | Bedrag excl. btw |
-|---|---|
-| Stationaire accu (max 1.000 kWh subsidiabel) | € 250.000 `[1,15 MWh]` / ± € 217.400 `[1,0 MWh]` |
-| 3× DC-laadstation 240 kW à € 48.000 | € 144.000 |
-| Netaansluiting / verzwaring | `[…]` |
-| Voedingskabels, trafo, schakelmateriaal | `[…]` |
-| Energiemanagementsysteem | `[…]` |
-| Civiel werk (grondwerk, bestrating, fundatie) | `[…]` |
-| Installatiekosten | `[…]` |
-| Vergunningen | `[…]` |
-| **Totaal subsidiabele kosten** | `[…]` — **moet ≥ € 445.000 zijn**; hardware is € 394.000, dus ≥ € 51.000 aanleg |
-| **Gevraagde subsidie** | **€ 178.000** |
+Uit de offerte van Draccu (DR283), aangevuld met de posten die Draccu níét levert. Alle
+bedragen excl. btw.
+
+| Kostenpost | Bron | Bedrag |
+|---|---|---|
+| 4× EnerBox 100 kW / 261 kWh incl. AC-installatie | offerte | € 210.000 |
+| 3× DC-laadstation 240 kW incl. AC-installatie | offerte | € 162.000 |
+| Envitron Envi.Base energiemanagementsysteem | offerte | € 5.000 |
+| Silowand incl. overkapping | offerte | € 9.000 |
+| Voorbereiding meetdienst | offerte | € 1.000 |
+| **Subtotaal offerte Draccu** | | **€ 387.000** |
+| Fundering en gereedmaken ondergrond | `[…]` | `[…]` |
+| Grondwerk: leidingtraject en vlakken ondergrond | `[…]` | `[…]` |
+| Kabelsleuven en bestrating laadeiland | `[…]` | `[…]` |
+| Nieuwe hoofdverdeler / aanpassen verdeelinrichting | `[…]` | `[…]` |
+| Netaansluiting of -aanpassing | `[…]` | `[…]` |
+| Datanetwerk / glasvezel naar opstelplaats | `[…]` | `[…]` |
+| Boringen wanden en vloeren | `[…]` | `[…]` |
+| Vergunningen en engineering | `[…]` | `[…]` |
+| **Totaal subsidiabele kosten** | | **moet ≥ € 445.000 zijn** |
+| **Gevraagde subsidie** | | **€ 178.000** |
+
+⚠️ **De aanvullende posten moeten samen minimaal € 58.000 bedragen.** Blijf je daaronder, dan
+wordt de subsidie naar beneden bijgesteld tot 40% van het werkelijke totaal — bij alleen de
+offerte van Draccu is dat € 154.800, oftewel € 23.200 minder. Zie §3.
 
 ### 6.3 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
 
@@ -595,11 +646,13 @@ Twee dingen die op de offerte van Draccu moeten staan voordat dit ingediend kan 
 > de operationele beschikbaarheid vergroot: bij uitval van één station kan het laden op de
 > overige stations doorgaan.
 >
-> **Netcapaciteit als knelpunt.** De beschikbare netcapaciteit op onze aansluiting bedraagt
-> `[… kVA]`. Gelijktijdig laden van de drie laadstations op vol vermogen vraagt 720 kW en
-> overschrijdt daarmee de beschikbare capaciteit. Netverzwaring is `[niet op afzienbare
-> termijn beschikbaar / kostbaar en pas mogelijk in …]`. Zonder aanvullende maatregelen is
-> elektrificatie van het wagenpark op deze locatie daarom niet realiseerbaar.
+> **Netcapaciteit en piekbelasting.** Het gecontracteerd afnamevermogen op onze aansluiting
+> bedraagt `[… kW — offerte Draccu noemt 2 MW, bevestigen]`. Gelijktijdig laden van de drie
+> laadstations op vol vermogen vraagt 720 kW. `[Kies de juiste variant: (a) dat overschrijdt
+> de beschikbare capaciteit, netverzwaring is niet op afzienbare termijn beschikbaar; óf
+> (b) dat past binnen de aansluiting, maar leidt tot een forse piekbelasting die samenvalt met
+> de bestaande belasting van de kwekerij.]` Zonder aanvullende maatregelen is het laden van
+> het wagenpark daarom `[niet realiseerbaar / alleen tegen aanzienlijke piekkosten mogelijk]`.
 >
 > **Stationaire accu als oplossing.** Wij realiseren daarom een stationaire accu van
 > 1.000 kWh met een ontlaadvermogen van `[… kW]`, functioneel gekoppeld aan de

@@ -148,7 +148,8 @@ dicht is.
 ### 6.1 De uitgangspunten
 
 Alles hieronder is **aanname** behalve wat als bron is gemarkeerd. Vervang ze door je eigen
-cijfers; het model in `aanzet-tco-model.xlsx` rekent live door.
+cijfers; het rekenmodel *AanZET TCO-model elektrische trucks.xlsx* rekent live door — alleen de
+gele cellen zijn invoer.
 
 | | Waarde | Herkomst |
 |---|---|---|

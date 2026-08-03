@@ -21,24 +21,26 @@
 onderneming telt, en **€ 162.400** als hij als kleine onderneming telt. Dat verschil van
 € 44.800 hangt aan één toets die we nog niet gedaan hebben — zie §3.
 
-**Of het uit kan:** ja, bij de kilometrage die je noemde. Gerekend met jullie eigen
-dieselverbruik van **1 op 3,8** en met de voertuigparameters uit de Panteia-tool verdient de
-hele operatie — trucks én laadinfrastructuur, na aftrek van beide subsidies — zich in
-**4,4 jaar** terug ten opzichte van diesel (4,0 jaar als de groep klein blijkt, 4,8 jaar als
-hij groot is).
+**Of het uit kan:** ja, maar met een langere adem dan bij mijn eerste schatting. Gerekend met
+jullie eigen cijfers — **100.000 km per truck per jaar**, **1 op 3,8**, **€ 1,70 per liter**
+diesel en **€ 0,10 per kWh** stroom — bespaart elektrisch **€ 45.989 per truck per jaar**.
+Tegenover een extra investering van € 465.012 is dat **5,1 jaar** terugverdientijd; 4,6 jaar
+als de groep klein blijkt, 5,6 jaar als hij groot is.
 
-Dat is langer dan de 3,5 jaar uit mijn eerste versie, en dat komt vooral door jullie eigen
-cijfer: **1 op 3,8 is zuinig**. Panteia rekent voor een zware trekker met 1 op 2,93. Een
-zuinige dieselauto maakt de overstap nu eenmaal minder lonend. De volledige onderbouwing staat
-in §6.
+Dat is langer dan de 3,5 jaar uit mijn eerste versie, en dat komt door jullie eigen opgaven.
+**1 op 3,8 is zuinig** — Panteia rekent voor een zware trekker met 1 op 2,93 — en 100.000 km is
+de helft van wat 2 × 300–400 km per dag zou suggereren. Een zuinige dieselauto die minder
+kilometers maakt, maakt de overstap nu eenmaal minder lonend. De goedkope stroom compenseert
+een deel daarvan.
 
 Twee dingen bepalen de uitkomst, en de subsidie is er geen van:
 
 - **De kilometers.** Bij 60.000 km per truck per jaar loopt de terugverdientijd op naar
-  12 jaar; bij 180.000 km zakt hij naar 3,6 jaar.
-- **De stroomprijs.** Volledig laden op eigen opwek (€ 0,11/kWh) geeft 3,6 jaar, volledig op
-  netstroom (€ 0,2154/kWh) 5,6 jaar. Dat is twee jaar verschil, en daar gaat de SPRILA-accu
-  over.
+  8,9 jaar; bij 150.000 km zakt hij naar 3,3 jaar.
+- **De stroomprijs.** Die € 0,10 draagt het hele verhaal. Moet de helft van het net komen, dan
+  zit u op ongeveer € 0,16 en loopt de terugverdientijd naar 6,3 jaar; volledig netstroom maakt
+  er 8,0 jaar van. Twee trucks vragen 293.500 kWh per jaar — zie §6.6 voor wat dat aan
+  zonnepanelen betekent.
 
 **De timing:** ronde 2 opent 29 september. Op dag één en twee mag je maximaal twee voertuigen
 aanvragen — precies wat je nodig hebt. Vanaf dag drie mag het er tien, maar dan is het budget
@@ -176,10 +178,11 @@ dicht is.
 
 ### 6.1 Waar de cijfers vandaan komen
 
-Deze paragraaf is herzien nadat Kwekerij Baas twee dingen aanleverde: het werkelijke
-dieselverbruik van **1 op 3,8** en de rekentool **TCO-ZET-Vracht v7.3** van Panteia /
-Topsector Logistiek (23-09-2024). Alle voertuiggebonden parameters komen nu uit die tool in
-plaats van uit mijn eigen schattingen.
+Deze paragraaf is herzien op basis van de cijfers die Kwekerij Baas aanleverde — dieselverbruik
+**1 op 3,8**, **100.000 km** per truck per jaar, **€ 1,70** per liter diesel en **€ 0,10** per
+kWh stroom — en op de rekentool **TCO-ZET-Vracht v7.3** van Panteia / Topsector Logistiek
+(23-09-2024). Alle overige voertuiggebonden parameters komen uit die tool in plaats van uit
+mijn eigen schattingen.
 
 **De tool zelf kon ik niet draaien.** De formules gebruiken gestructureerde tabelverwijzingen
 (`Voertuigen[[#All],[Voertuig]]`) die de beschikbare Python-formule-engine niet parseert, en
@@ -198,15 +201,13 @@ kent de **vrachtwagenheffing** nog niet (die kwam er per 1 juli 2026) en hanteer
 | | Waarde | Herkomst |
 |---|---|---|
 | Voertuigtype | Zware trekker z/opl | aanname — zie 6.6 |
-| Kilometers per truck per jaar | 150.000 | afgeleid uit 2 × 300–400 km/dag × ~230 dagen |
+| **Kilometers per truck per jaar** | **100.000** | **opgave Kwekerij Baas** |
 | **Dieselverbruik** | **1 op 3,8** (0,2632 l/km) | **opgave Kwekerij Baas** |
-| Netto dieselprijs | € 1,6063/l | Panteia: € 1,09 kaal + € 0,5163 accijns |
+| **Dieselprijs, excl. btw** | **€ 1,70/l** | **opgave Kwekerij Baas** |
+| **Stroomprijs** | **€ 0,10/kWh** | **opgave Kwekerij Baas** — eigen opwek |
 | Stroomverbruik e-truck | 1,4675 kWh/km | Panteia, incl. laadverliezen |
-| Aandeel eigen opwek | 50 % à € 0,11/kWh | Panteia |
-| Netstroom | € 0,2154/kWh | Panteia |
-| → gemengde stroomprijs | **€ 0,163/kWh** | |
 | Onderhoud diesel / elektrisch | € 0,0916 / € 0,0458 per km | Panteia — elektrisch is exact de helft |
-| Banden, reparaties | € 0,0465/km, € 1.654/jaar | Panteia, gelijk aan beide kanten |
+| Banden, reparaties, MRB | € 0,0465/km, € 1.654/jaar, € 1.028/jaar | Panteia, gelijk aan beide kanten |
 | Vrachtwagenheffing diesel / ZE | € 0,19 / € 0,04 per km | per 1 juli 2026 — niet in de tool |
 | Extra chauffeurskosten elektrisch | € 3.655/jaar | wachttijd bij laden; Panteia rekent +4,1 % |
 | Chassisprijs e-truck / diesel | € 280.000 / € 120.000 | aanname — nog te vervangen |
@@ -222,34 +223,29 @@ kent de **vrachtwagenheffing** nog niet (die kwam er per 1 juli 2026) en hanteer
 
 ### 6.4 De jaarlijkse besparing
 
-Per truck bij 150.000 km:
+Per truck bij 100.000 km:
 
 | | Diesel | Elektrisch |
 |---|---|---|
-| Brandstof / stroom | € 63.407 | € 35.811 |
-| Vrachtwagenheffing | € 28.500 | € 6.000 |
-| Onderhoud | € 13.746 | € 6.873 |
-| Banden | € 6.975 | € 6.975 |
+| Brandstof / stroom | € 44.737 | € 14.675 |
+| Vrachtwagenheffing | € 19.000 | € 4.000 |
+| Onderhoud | € 9.164 | € 4.582 |
+| Banden | € 4.648 | € 4.648 |
 | Reparaties | € 1.654 | € 1.654 |
 | Motorrijtuigenbelasting | € 1.028 | € 1.028 |
 | Extra chauffeurskosten | — | € 3.655 |
-| **Totaal per jaar** | **€ 115.307** | **€ 61.993** |
+| **Totaal per jaar** | **€ 80.231** | **€ 34.242** |
 
-**Besparing: € 53.314 per truck per jaar, € 106.627 voor twee.**
+**Besparing: € 45.989 per truck per jaar, € 91.978 voor twee.**
+
+Van die besparing komt € 30.062 uit het energieverschil en € 15.000 uit de vrachtwagenheffing.
+De heffing is dus goed voor bijna een derde, en die post bestaat pas sinds 1 juli 2026.
 
 ### 6.5 Terugverdientijd
 
 | | Klein | Middelgroot | Groot |
 |---|---|---|---|
-| **Terugverdientijd** | **4,0 jaar** | **4,4 jaar** | **4,8 jaar** |
-
-Dat is langer dan de 3,6 jaar uit mijn eerste versie, en dat komt door drie dingen tegelijk.
-Jullie **1 op 3,8 is een goed cijfer** — beter dan de 1 op 3,33 waar ik eerst mee rekende, en
-fors beter dan de 1 op 2,93 die Panteia voor een zware trekker aanhoudt. Een zuinige
-dieselauto maakt het elektrische alternatief nu eenmaal minder aantrekkelijk. Daarnaast rekent
-Panteia met **1,4675 kWh/km** in plaats van mijn 1,2, en komen er extra chauffeurskosten bij.
-Daar staat tegenover dat de gemengde stroomprijs lager uitvalt en dat Panteia's
-onderhoudscijfers gunstiger zijn voor elektrisch dan mijn schatting.
+| **Terugverdientijd** | **4,6 jaar** | **5,1 jaar** | **5,6 jaar** |
 
 ### 6.6 Gevoeligheid
 
@@ -257,49 +253,49 @@ onderhoudscijfers gunstiger zijn voor elektrisch dan mijn schatting.
 
 | km/jaar | Besparing | Terugverdientijd |
 |---|---|---|
-| 60.000 | € 38.265 | 12,2 jaar |
-| 100.000 | € 68.648 | 6,8 jaar |
-| 150.000 | € 106.627 | **4,4 jaar** |
-| 180.000 | € 129.415 | 3,6 jaar |
-| 200.000 | € 144.606 | 3,2 jaar |
+| 60.000 | € 52.263 | 8,9 jaar |
+| 80.000 | € 72.120 | 6,5 jaar |
+| **100.000** | **€ 91.978** | **5,1 jaar** |
+| 120.000 | € 111.835 | 4,2 jaar |
+| 150.000 | € 141.622 | 3,3 jaar |
+| 180.000 | € 171.408 | 2,7 jaar |
 
-**Stroomprijs** — hier zit jullie eigen speelruimte:
+**Stroomprijs** — het scenario staat of valt met die 10 cent:
 
-| € / kWh | Terugverdientijd |
-|---|---|
-| 0,11 (volledig eigen opwek) | 3,6 jaar |
-| 0,163 (50 % eigen opwek) | **4,4 jaar** |
-| 0,2154 (volledig net) | 5,6 jaar |
-| 0,30 | 10,1 jaar |
-
-Dit is de belangrijkste bevinding voor de businesscase: **volledig op eigen opwek laden scheelt
-twee jaar terugverdientijd** ten opzichte van volledig netstroom. De accu van 1.000 kWh doet
-dus meer dan alleen de 70 %-eis van SPRILA halen — hij verschuift de stroominkoop van het net
-naar het dak.
-
-**Dieselverbruik** — om te zien hoe gevoelig de uitkomst is voor jullie eigen opgave:
-
-| 1 op ... | Terugverdientijd |
-|---|---|
-| 2,9 (Panteia-default zware trekker) | 3,2 jaar |
-| 3,5 | 4,0 jaar |
-| **3,8 (jullie cijfer)** | **4,4 jaar** |
-| 4,5 | 5,4 jaar |
-
-**Voertuigtype** — ik ben van een zware trekker uitgegaan; het maakt weinig uit:
-
-| Type | AanZET-categorie | Terugverdientijd |
+| € / kWh | Besparing | Terugverdientijd |
 |---|---|---|
-| Grote bakwagen (lvm > 16 t) | N3 Bakwagen (lvm > 18t) | 4,2 jaar |
-| Lichte trekker z/opl | N3 Trekker | 4,1 jaar |
-| Zware trekker z/opl | N3 Trekker | 4,4 jaar |
+| **0,10 — volledig eigen opwek** | **€ 91.978** | **5,1 jaar** |
+| 0,14 | € 80.238 | 5,8 jaar |
+| 0,18 | € 68.498 | 6,8 jaar |
+| 0,2154 — volledig netstroom | € 58.108 | 8,0 jaar |
+| 0,30 | € 33.278 | 14,0 jaar |
 
-Alle drie leveren hetzelfde subsidiepercentage op (21 % middelgroot, 29 % klein). De uitkomst
-ligt tussen 4,1 en 4,4 jaar, dus de keuze van het type verandert het antwoord niet wezenlijk.
-Wel goed om te weten: bij **1 op 3,8 hoort in Panteia's indeling eerder een grote bakwagen
-(1 op 3,71) dan een zware trekker (1 op 2,93)**. Rijden jullie werkelijk trekker-opleggers en
-haalt u daar 1 op 3,8 mee, dan presteert dat materieel ruim 20 % beter dan waar Panteia mee
-rekent.
+**Reken hier even mee.** Twee trucks van 100.000 km verbruiken 1,4675 × 100.000 × 2 =
+**293.500 kWh per jaar**. Dat volledig uit eigen opwek halen vraagt bij een Nederlandse
+opbrengst van ongeveer 950 kWh per kWp om en nabij **310 kWp aan zonnepanelen die uitsluitend
+voor de trucks beschikbaar zijn** — bovenop wat het bedrijf zelf al verbruikt. En omdat de
+trucks 's nachts en 's winters laden terwijl de zon overdag en 's zomers schijnt, is de accu
+van 1.000 kWh geen luxe maar de voorwaarde om die 10 cent te halen.
+
+Kan maar de helft uit eigen opwek komen en de rest van het net, dan zit u op ongeveer
+€ 0,16/kWh en loopt de terugverdientijd naar 6,3 jaar. **Dit is het getal dat ik het scherpst
+zou willen controleren voordat er getekend wordt** — het beweegt de uitkomst met drie jaar.
+
+**Dieselverbruik** — hoe gevoelig de uitkomst is voor jullie eigen opgave:
+
+| 1 op ... | Besparing | Terugverdientijd |
+|---|---|---|
+| 2,9 (Panteia-default zware trekker) | € 119.745 | 3,9 jaar |
+| 3,5 | € 99.647 | 4,7 jaar |
+| **3,8 (jullie cijfer)** | **€ 91.978** | **5,1 jaar** |
+| 4,5 | € 78.060 | 6,0 jaar |
+
+**Voertuigtype** — bij 150.000 km lagen de drie plausibele typen tussen 4,1 en 4,4 jaar; de
+onderlinge verschillen zijn klein en veranderen het beeld niet. Alle drie leveren hetzelfde
+subsidiepercentage op (21 % middelgroot, 29 % klein). Wel goed om te weten: bij **1 op 3,8
+hoort in Panteia's indeling eerder een grote bakwagen (1 op 3,71) dan een zware trekker
+(1 op 2,93)**. Rijden jullie werkelijk trekker-opleggers en haalt u daar 1 op 3,8 mee, dan
+presteert dat materieel ruim 20 % beter dan waar Panteia mee rekent.
 
 ### 6.7 Wat er níét in zit
 

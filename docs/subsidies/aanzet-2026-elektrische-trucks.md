@@ -37,10 +37,11 @@ Twee dingen bepalen de uitkomst, en de subsidie is er geen van:
 
 - **De kilometers.** Bij 60.000 km per truck per jaar loopt de terugverdientijd op naar
   8,9 jaar; bij 150.000 km zakt hij naar 3,3 jaar.
-- **De stroomprijs.** Die € 0,10 draagt het hele verhaal. Moet de helft van het net komen, dan
-  zit u op ongeveer € 0,16 en loopt de terugverdientijd naar 6,3 jaar; volledig netstroom maakt
-  er 8,0 jaar van. Twee trucks vragen 293.500 kWh per jaar — zie §6.6 voor wat dat aan
-  zonnepanelen betekent.
+- **De stroomprijs.** Die € 0,10 draagt het hele verhaal, en hij is nog niet vastgesteld. In
+  volume kunnen de ORC van 350 kW en de geplande 500 kWp zon de 293.500 kWh per jaar makkelijk
+  leveren, maar of de trucks die stroom voor tien cent kúnnen afnemen hangt af van waar de ORC
+  achter hangt en van de energiebelasting op de levering tussen de twee BV's. De bandbreedte
+  loopt van 5,1 tot 8,0 jaar. **Dit is nu het belangrijkste open punt** — zie §6.7.
 
 **De timing:** ronde 2 opent 29 september. Op dag één en twee mag je maximaal twee voertuigen
 aanvragen — precies wat je nodig hebt. Vanaf dag drie mag het er tien, maar dan is het budget
@@ -297,7 +298,63 @@ hoort in Panteia's indeling eerder een grote bakwagen (1 op 3,71) dan een zware 
 (1 op 2,93)**. Rijden jullie werkelijk trekker-opleggers en haalt u daar 1 op 3,8 mee, dan
 presteert dat materieel ruim 20 % beter dan waar Panteia mee rekent.
 
-### 6.7 Wat er níét in zit
+### 6.7 Kan die 10 cent — de eigen opwek
+
+Kwekerij Baas beschikt over **350 kW ORC-vermogen** en heeft **ruimte voor circa 500 kWp aan
+zonnepanelen** op een halve hectare, nog aan te vragen. Zonnepanelen liggen er nu niet.
+
+**In volume is er ruimte zat.** De twee trucks vragen 293.500 kWh per jaar, oftewel 1.276 kWh
+per werkdag samen.
+
+| Bron | Opbrengst | Ten opzichte van de trucks |
+|---|---|---|
+| ORC 350 kW | 839 vollasturen volstaan | bij 4.000 draaiuren: 1,4 GWh — bijna vijf keer de vraag |
+| PV 500 kWp | ± 475.000 kWh/jaar | 162 % van de vraag |
+
+**In tijd zit de puzzel.** De ORC draait op restwarmte en dus vooral in het stookseizoen; de
+zon levert in de zomer. Dat is voor deze toepassing juist gunstig: samen dekken ze het hele
+jaar, terwijl de trucks het hele jaar door laden. In december levert 500 kWp nog maar zo'n
+460 kWh per dag — een derde van de dagvraag — en juist dan draait de ORC. De accu van 1.045 kWh
+overbrugt met 836 kWh bruikbaar ongeveer tweederde van één laaddag, precies genoeg om
+dagproductie naar de nacht te schuiven.
+
+**Maar er zijn drie voorwaarden, en die zijn geen van drieën vervuld.**
+
+**1. Achter welke aansluiting staat de ORC?** De laadstations komen op Drietorensweg 38-1, op de
+aansluiting van A. Baas Energie B.V. Staat de ORC daar ook achter, dan kan de stroom
+rechtstreeks naar de laders. Staat hij elders — bijvoorbeeld op Enserweg 4 — dan moet de stroom
+over het openbare net, en dan is het geen eigen opwek meer maar inkoop, mét energiebelasting,
+netbeheerkosten en leveranciersmarge. Dan is € 0,10 onhaalbaar en beland je rond de
+€ 0,20 à € 0,22. **Dit is de eerste vraag die beantwoord moet worden**, en het antwoord kost
+drie jaar terugverdientijd.
+
+**2. De levering tussen de BV's.** Ook als alles achter dezelfde aansluiting zit, wordt de
+stroom geleverd door A. Baas Energie B.V. aan A. Baas Potplantenkwekerij B.V. — twee
+rechtspersonen. Een levering tussen rechtspersonen is in beginsel belast met energiebelasting,
+ook achter de meter. Dat is precies vraag 2 uit de mail die bij Flynth ligt, en het gewicht van
+die vraag is met deze cijfers flink toegenomen: bij 293.500 kWh per jaar zit u in de derde
+schijf, waar het tarief een stuk lager ligt dan de € 0,0916 van de eerste schijf, maar het
+exacte tarief voor 2026 heb ik niet kunnen verifiëren. Bij enkele centen per kWh praat je over
+€ 10.000 tot € 15.000 per jaar — een half jaar extra terugverdientijd.
+
+**3. De zonnepanelen bestaan nog niet.** Vergunning, en vooral **transportcapaciteit voor
+teruglevering** in de Noordoostpolder, zijn geen formaliteit. Reken op een doorlooptijd die kan
+oplopen. Dat is geen blokkade voor de subsidieaanvragen — SPRILA en AanZET stellen geen eisen
+aan de herkomst van de stroom — maar het betekent wel dat de businesscase in de eerste jaren op
+de ORC leunt en niet op de zon.
+
+**Wat dit betekent voor de beslissing.** De € 0,10 is geen aanname die je even invult; het is
+een projectresultaat dat nog behaald moet worden. Ik zou de investeringsbeslissing daarom niet
+op 5,1 jaar baseren maar op een bandbreedte:
+
+| Scenario | Stroomprijs | Terugverdientijd |
+|---|---|---|
+| Alles achter één aansluiting, geen energiebelasting | € 0,10 | 5,1 jaar |
+| Eigen opwek met energiebelasting derde schijf | ± € 0,14 | 5,8 jaar |
+| Helft eigen opwek, helft net | ± € 0,16 | 6,3 jaar |
+| ORC elders, alles van het net | € 0,2154 | 8,0 jaar |
+
+### 6.8 Wat er níét in zit
 
 - **Restwaarde**, aan beide kanten op nul. De tweedehandsmarkt voor e-trucks is nog dun; dit is
   het meest onzekere getal in het hele plaatje. Panteia hanteert overigens 23 % van de

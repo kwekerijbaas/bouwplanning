@@ -864,6 +864,91 @@ bedragen excl. btw.
 meer nodig om onder de 40% te blijven, maar wel verstandig: de marge is € 16.500 en daarvan
 staat € 10.000 aan discutabele posten op het spel. Zie §3.
 
+### 6.2b De accu rechtstreeks bij de fabriek — wat dat doet met de subsidie
+
+Kwekerij Baas kreeg van een fabrikant deze opgave:
+
+> *"we have 261kWh in stock and it can be connected in parallel. For 1 unit the price is 26 900,
+> but for 4 it will have some discount and depend what inverter you will want: it works with
+> 80-100-125kW Deye"*
+
+Dat is dezelfde kast als in de offerte van Draccu — 261 kWh, parallel schakelbaar, gekoppeld
+aan een Deye-omvormer. Draccu levert de 100 kW-variant. Je kijkt hier dus naar de fabrikant
+achter het product.
+
+**Wat er in die € 26.900 zit en wat niet.** De zin *"depend what inverter you will want"*
+verraadt dat de **omvormer er niet in zit**: je koopt de batterijkast, de PCS kies je apart.
+Ga er verder van uit dat het een prijs af fabriek is, dus zonder transport, invoerrechten,
+verzekering, plaatsing, AC-installatie, inbedrijfstelling, EMS-integratie en zonder
+service-organisatie in Nederland.
+
+Vier kasten kosten dan € 107.600 vóór de aangekondigde korting. Draccu rekent voor dezelfde
+vier kasten **inclusief AC-installatie € 212.500**. Het verschil van ruim een ton is dus geen
+pure marge — daar zitten vier omvormers, transport, montage, aansluiting en garantie in.
+
+**De subsidieval.** De SPRILA-bedragen zijn vaste bedragen per categorie, maar ze worden
+afgetopt op **40 % van de werkelijke subsidiabele kosten**. Bij € 178.000 subsidie moeten de
+kosten dus minstens € 445.000 bedragen. De overige posten — drie laadstations, EMS, silowand,
+meetdienst — tellen samen € 249.000. Daarmee mag de accuregel dalen tot **€ 196.000** zonder
+dat het één euro subsidie kost. Daaronder levert elke bespaarde euro nog maar **60 cent** op,
+want 40 cent verdwijnt uit de subsidie.
+
+| Accuregel | Totale kosten | Subsidie | Netto investering | Verschil |
+|---|---|---|---|---|
+| € 212.500 — offerte Draccu | € 461.500 | € 178.000 | € 283.500 | — |
+| € 196.000 — omslagpunt | € 445.000 | € 178.000 | € 267.000 | − € 16.500 |
+| € 180.000 | € 429.000 | € 171.600 | € 257.400 | − € 26.100 |
+| € 160.000 | € 409.000 | € 163.600 | € 245.400 | − € 38.100 |
+| € 140.000 | € 389.000 | € 155.600 | € 233.400 | − € 50.100 |
+
+**Let op: die 40 %-toets geldt opnieuw bij de vaststelling.** Je kunt niet aanvragen op
+€ 461.500 en vervolgens realiseren voor € 380.000 met behoud van € 178.000. RVO kijkt bij de
+vaststelling naar de werkelijke facturen. Wordt er goedkoper ingekocht, dan wordt de subsidie
+navenant lager vastgesteld. Dit is dus geen truc die je achteraf kunt uitvoeren.
+
+**De omvormerkeuze bepaalt de C-waarde.** De fabriek biedt 80, 100 of 125 kW aan. Omdat de
+C-waarde het vermogen gedeeld door de capaciteit is, en boven 0,50 wordt afgewezen:
+
+| Omvormer | Totaal vermogen | C-waarde op 1.044 kWh | C-waarde op 1.000 kWh |
+|---|---|---|---|
+| 4 × 80 kW | 320 kW | 0,307 | 0,320 |
+| **4 × 100 kW** | **400 kW** | **0,383** | **0,400** |
+| 4 × 125 kW | 500 kW | 0,479 | **0,500 — exact op de grens** |
+
+Bij 125 kW kom je precies op de afwijzingsgrens uit zodra RVO met de subsidiabele 1.000 kWh
+rekent in plaats van de werkelijke 1.044 kWh. Dat levert geen cent extra subsidie op en zet de
+hele aanvraag op het spel. **Houd 100 kW aan** — precies wat Draccu offreert.
+
+**Wat je opgeeft door zelf in te kopen.** Vier dingen, en ze zijn geen van vieren triviaal:
+
+1. **De 70 %-eis.** Je moet kunnen aantonen dat minstens 70 % van de ontladen energie naar de
+   laadstations gaat, met BMS-data plus laadsessie-administratie over drie aaneengesloten
+   maanden, tot 24 maanden na de vaststelling. Koop je zelf in, dan moet je die integratie
+   tussen Deye-omvormer, EMS en laadstations zelf laten bouwen én garanderen. Koop heeft al
+   bevestigd dat Envi.Base daar juist voor bedoeld is. Faalt dit, dan is het een
+   terugvorderingsgrond.
+2. **Brandveiligheid.** Voor stationaire lithium-accu's geldt in Nederland **PGS 37-2**, met
+   eisen aan opstelling, afstand tot gebouwen en brandwerendheid. Een zelf geïmporteerde kast
+   moet daar net zo goed aan voldoen; laat vooraf toetsen wie dat aantoont.
+3. **Netaansluiting en normering.** NEN 1010 en NEN-EN 50549, plus melding bij de netbeheerder
+   voor 400 kW opwek achter de aansluiting. Iemand moet daarvoor tekenen.
+4. **Garantie en aansprakelijkheid.** De accu moet 24 maanden na de vaststelling nog in
+   eigendom én in bedrijf zijn. Bij ex-works inkoop bij een buitenlandse fabriek draag je dat
+   risico zelf.
+
+**Advies.** Ga niet zelf importeren, maar gebruik deze prijs als onderhandelingsgegeven. Vraag
+de fabriek om een prijs **DDP Ens, inclusief vier omvormers van 100 kW**, en leg die naast de
+€ 212.500 van Draccu. Twee uitkomsten:
+
+- Landt die prijs plus lokale montage boven € 196.000 — en dat is bepaald niet uitgesloten
+  zodra transport, omvormers, invoerrechten en installatie zijn meegeteld — dan levert zelf
+  inkopen **niets** op en neem je alleen risico over.
+- Landt hij daar duidelijk onder, dan heb je een reëel argument richting Draccu. Maar reken met
+  60 cent per bespaarde euro, niet met een hele.
+
+Wat je in beide gevallen **niet** moet doen: de aanvraag hierop laten wachten. De begroting
+mag na verlening nog wijzigen; het venster van de regeling niet.
+
 ### 6.3 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
 
 > A. Baas Potplantenkwekerij B.V. stapt over op elektrische vrachtwagens voor de aan- en

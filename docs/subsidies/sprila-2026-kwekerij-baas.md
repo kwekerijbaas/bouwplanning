@@ -872,9 +872,20 @@ Kwekerij Baas kreeg van een fabrikant deze opgave:
 > but for 4 it will have some discount and depend what inverter you will want: it works with
 > 80-100-125kW Deye"*
 
-Dat is dezelfde kast als in de offerte van Draccu — 261 kWh, parallel schakelbaar, gekoppeld
-aan een Deye-omvormer. Draccu levert de 100 kW-variant. Je kijkt hier dus naar de fabrikant
-achter het product.
+Op navraag bleek het te gaan om een set die **V-TAC** aanbiedt: een
+`261kWh HV battery set, liquid cooling, Oliter, IP65, 125kW inverter Deye`.
+
+Twee dingen die daarmee anders liggen dan ik eerst aannam:
+
+- **Het is niet dezelfde kast als bij Draccu.** Draccu offreert een *Hizenergy EnerBox
+  ES100kW-261kWh-LE*; dit is een *Oliter* HV-systeem — vijf LiFePO₄-modules van 52,25 kWh met
+  314 Ah-cellen, vloeistofgekoeld, IP65, inclusief BMS en rack. Zelfde nominale capaciteit,
+  ander product, andere fabrikant.
+- **V-TAC is geen fabriek maar een Europese distributeur.** Dat scheelt aanzienlijk in de
+  logistiek: levering binnen de EU, geen invoerrechten, geen zeevracht als gevaarlijke stof,
+  btw via verlegging. De kostenopslag die ik hieronder eerst inschatte valt daarmee grotendeels
+  weg — wat betekent dat de zelf-inkooproute eerder ónder het omslagpunt van € 196.000 landt,
+  en dus eerder subsidie kost. Zie de tabel.
 
 **Wat er in die € 26.900 zit en wat niet.** De zin *"depend what inverter you will want"*
 verraadt dat de **omvormer er niet in zit**: je koopt de batterijkast, de PCS kies je apart.
@@ -906,18 +917,24 @@ want 40 cent verdwijnt uit de subsidie.
 vaststelling naar de werkelijke facturen. Wordt er goedkoper ingekocht, dan wordt de subsidie
 navenant lager vastgesteld. Dit is dus geen truc die je achteraf kunt uitvoeren.
 
-**De omvormerkeuze bepaalt de C-waarde.** De fabriek biedt 80, 100 of 125 kW aan. Omdat de
-C-waarde het vermogen gedeeld door de capaciteit is, en boven 0,50 wordt afgewezen:
+**De omvormerkeuze bepaalt de C-waarde — en de aangeboden set heeft de zwaarste.** V-TAC biedt
+80, 100 en 125 kW aan; de gelinkte set is de **125 kW-uitvoering**. De C-waarde is het vermogen
+gedeeld door de opslagcapaciteit, en boven 0,50 volgt afwijzing:
 
-| Omvormer | Totaal vermogen | C-waarde op 1.044 kWh | C-waarde op 1.000 kWh |
+| Omvormer | Totaal vermogen | C-waarde op 1.045 kWh | C-waarde op 1.000 kWh |
 |---|---|---|---|
-| 4 × 80 kW | 320 kW | 0,307 | 0,320 |
+| 4 × 80 kW | 320 kW | 0,306 | 0,320 |
 | **4 × 100 kW** | **400 kW** | **0,383** | **0,400** |
-| 4 × 125 kW | 500 kW | 0,479 | **0,500 — exact op de grens** |
+| 4 × 125 kW | 500 kW | 0,479 | 0,500 — exact op de grens |
 
-Bij 125 kW kom je precies op de afwijzingsgrens uit zodra RVO met de subsidiabele 1.000 kWh
-rekent in plaats van de werkelijke 1.044 kWh. Dat levert geen cent extra subsidie op en zet de
-hele aanvraag op het spel. **Houd 100 kW aan** — precies wat Draccu offreert.
+De regeling rekent met *"het vermogen (kW) van uw batterij gedeeld door de opslagcapaciteit
+(kWh)"*, dus met de werkelijke 1.044,99 kWh. Ook 125 kW blijft daarmee formeel toegestaan:
+0,479 is niet *hoger* dan 0,50. Maar de marge is nog geen 5 %, en zodra iemand met de
+subsidiabele 1.000 kWh rekent sta je exact op de grens. Voor een afwijzingsgrond is dat te
+weinig speling, en extra subsidie levert het niet op.
+
+**Vraag dus om de 100 kW-uitvoering** — dezelfde configuratie als Draccu offreert, met een
+comfortabele 0,383.
 
 **Wat je opgeeft door zelf in te kopen.** Vier dingen, en ze zijn geen van vieren triviaal:
 
@@ -936,15 +953,23 @@ hele aanvraag op het spel. **Houd 100 kW aan** — precies wat Draccu offreert.
    eigendom én in bedrijf zijn. Bij ex-works inkoop bij een buitenlandse fabriek draag je dat
    risico zelf.
 
-**Advies.** Ga niet zelf importeren, maar gebruik deze prijs als onderhandelingsgegeven. Vraag
-de fabriek om een prijs **DDP Ens, inclusief vier omvormers van 100 kW**, en leg die naast de
-€ 212.500 van Draccu. Twee uitkomsten:
+**Advies.** Vraag V-TAC om een prijs **DDP Ens, vier sets met omvormers van 100 kW**, en leg
+die naast de € 212.500 van Draccu. Reken er wel bij op wat V-TAC níét doet: AC-installatie,
+aansluiting op de hoofdverdeler, inbedrijfstelling, integratie met de laadstations en het EMS,
+en service in Nederland. Een distributeur verkoopt; hij installeert niet en hij komt niet
+opdraven als er over twee jaar een module uitvalt.
 
-- Landt die prijs plus lokale montage boven € 196.000 — en dat is bepaald niet uitgesloten
-  zodra transport, omvormers, invoerrechten en installatie zijn meegeteld — dan levert zelf
-  inkopen **niets** op en neem je alleen risico over.
-- Landt hij daar duidelijk onder, dan heb je een reëel argument richting Draccu. Maar reken met
-  60 cent per bespaarde euro, niet met een hele.
+Twee uitkomsten:
+
+- Landt de prijs plus lokale montage boven € 196.000, dan levert zelf inkopen **niets** op en
+  neem je alleen risico over.
+- Landt hij daar duidelijk onder — en met EU-levering is dat goed mogelijk — dan heb je een
+  reëel onderhandelingsargument richting Draccu. Maar reken met **60 cent per bespaarde euro**,
+  en zet daar de waarde van één aanspreekpunt tegenover dat de 70 %-eis contractueel garandeert.
+
+Mijn voorkeur blijft: **de prijs gebruiken om Koop scherp te krijgen, niet om zelf te gaan
+inkopen.** De 70 %-eis en de C-waarde zijn afwijzings- en terugvorderingsgronden; die wil je bij
+één partij beleggen die er ook voor tekent.
 
 Wat je in beide gevallen **niet** moet doen: de aanvraag hierop laten wachten. De begroting
 mag na verlening nog wijzigen; het venster van de regeling niet.

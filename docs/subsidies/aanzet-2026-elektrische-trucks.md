@@ -371,6 +371,161 @@ op 5,1 jaar baseren maar op een bandbreedte:
   240 kW zijn ruim voldoende, maar het vraagt ruimte in de planning. De extra chauffeurskosten
   hierboven zijn een schatting van Panteia, geen meting bij jullie.
 
+## 6b. Welke Volvo past bij onze laadinfrastructuur
+
+Nijwa (John Nijzink, Volvo/Renault-dealer te Zwolle) stuurde op 10 augustus de presentatie
+*FH Electric E-as*. Daarin staat de nieuwe **Volvo FH Aero Electric** met de nieuwe E-as en de
+nieuwe tractieaccu's. Dit zijn fabrieksgegevens uit die presentatie.
+
+### 6b.1 De drie varianten
+
+| | 6 accu's | 6 accu's XL | 8 accu's |
+|---|---|---|---|
+| Bruto accucapaciteit | 540 kWh | 585 kWh | **780 kWh** |
+| Netto (ESOP-P / ESOP-R) | 410 / 460 kWh | 470 / 545 kWh | **630 / 725 kWh** |
+| Actieradius 4×2 | ~470 km | ~525 km | **~700 km** |
+| Actieradius 6×2 | ~450 km | ~525 km | ~700 km |
+| Leeggewicht | 10.500 kg | 11.500 kg | 13.500 kg |
+| Schoteldruk 4×2 | 10.000 kg | 13.500 kg | 11.500 kg |
+| Wielbasis | 3.950 mm | 3.600 mm | 4.100 mm |
+
+Aandrijflijn: twee elektromotoren van 420 of 460 kW met een zesversnellingsbak. NCA-prismacellen
+in een L-vorm, waardoor er zes of acht pakketten passen. ESOP-R is het ruimere
+laadvenster — meer bruikbare energie uit hetzelfde pakket, ten koste van accuslijtage.
+
+### 6b.2 Laden — hier zit de aansluiting op onze installatie
+
+Uit de presentatie:
+
+> MCS: 700 kW (~450 km actieradius in 45 minuten)
+> CCS2: 350 kW (~250 km actieradius in 45 minuten)
+> **AC opladen vervalt!**
+
+Drie gevolgen voor ons.
+
+**1. Onze paal is de beperkende factor, niet de truck.** De FH Aero neemt tot 350 kW op CCS2 aan;
+onze WHES WH-ECA-244EDD levert 240 kW. Dat is geen probleem voor nachtladen, maar wel voor
+bijladen tussen ritten:
+
+| | 45 minuten bijladen |
+|---|---|
+| Volvo's opgave bij 350 kW | ~250 km |
+| Onze paal op 240 kW | ~173 km bij Volvo-verbruik, ~150 km realistisch |
+
+Wie op 350 kW wil laden heeft een station uit de categorie *vanaf 350 kW* nodig. Dat kost bij
+Draccu ongeveer € 21.500 extra per station en levert **€ 52.500 in plaats van € 31.000** aan
+subsidie op — netto dus winst. Zie §3 van het SPRILA-document; die afweging is nu opnieuw
+relevant geworden, want tot nu toe was er geen truck in beeld die meer dan 240 kW kon opnemen.
+
+**2. Het ontbrekende getal is de pakketspanning.** Onze paal is begrensd op **350 A**. Bij een
+pakket onder circa 690 V halen we de 240 kW niet. Dat de FH Aero 350 kW op CCS2 aankan, wijst op
+een hoogvoltarchitectuur — bij 350 kW en de CCS2-grens van 500 A moet het pakket minstens 700 V
+zijn — maar dat staat niet in de presentatie. **Vraag John naar de nominale pakketspanning en
+de maximale laadstroom.** Dit is het enige getal dat nog kan tegenvallen.
+
+**3. AC-laden bestaat niet meer.** Er is dus geen goedkope terugvaloptie als een DC-station
+uitvalt. Met drie stations voor twee trucks is die redundantie er gelukkig al — een extra
+argument om niet naar twee stations terug te gaan.
+
+MCS van 700 kW is voor ons niet relevant: dat vraagt een heel ander station. Alleen zinvol als
+de trucks onderweg bij publieke MCS-punten gaan laden.
+
+### 6b.3 Aansluiting op de stationaire accu
+
+Onze accu is 1.044,99 kWh met 80 % ontlaaddiepte, dus **836 kWh bruikbaar**:
+
+| Truckvariant | Bruikbaar pakket | Volle laadbeurten uit onze accu |
+|---|---|---|
+| 780 kWh (ESOP-R) | 725 kWh | **1,15** |
+| 585 kWh (ESOP-R) | 545 kWh | 1,53 |
+| 540 kWh | 460 kWh | 1,82 |
+
+De accu is dus precies op maat voor **één volle laadbeurt van de grootste variant**. Voor twee
+trucks komt de rest rechtstreeks van de ORC of het net — geen probleem bij 1.850 kW
+gecontracteerd vermogen, maar goed om te weten dat de accu niet twee trucks in zijn eentje
+volmaakt.
+
+Laadtijden van het 780 kWh-pakket op onze paal:
+
+| | Energie | Op 240 kW | Realistisch |
+|---|---|---|---|
+| 20 → 80 % | 435 kWh | 1 u 49 | 2 u 10 |
+| Volledig bruikbaar | 725 kWh | 3 u 01 | 3 u 38 |
+
+### 6b.4 Welke variant past bij onze rit
+
+Hier wringt het, want er liggen twee verschillende dagafstanden op tafel: eerder **2 × 300–400 km
+per dag**, later **100.000 km per jaar** — dat laatste is 435 km per dag over 230 draaidagen.
+
+| Variant | Opgegeven bereik | Marge op 435 km/dag | Met 25 % winterreserve |
+|---|---|---|---|
+| 540 kWh | 470 km | + 8 % | 352 km — **te krap** |
+| 585 kWh (ESOP-R) | 525 km | + 21 % | 394 km — krap, bijladen nodig |
+| **780 kWh (ESOP-R)** | **700 km** | **+ 61 %** | **525 km — ruim** |
+
+Bij 435 km per dag is de **585 kWh met ESOP-R** het minimum, maar zonder reserve voor winter,
+files, omrijden of een zware belading. Bij 600–800 km per dag is de **780 kWh** de enige die het
+zonder tussenlading haalt, en zelfs die heeft bij 800 km nog een bijlaadmoment nodig.
+
+**Mijn advies: de 780 kWh, 8 accu's.** Drie redenen.
+
+1. **Het laadvermogen op het erf is geen knelpunt maar het bereik onderweg wel.** Drie stations
+   van 240 kW laden twee trucks 's nachts moeiteloos vol; wat je niet kunt oplossen met de
+   installatie is een truck die halverwege de dag leeg is.
+2. **Het laadgewicht is voor jullie waarschijnlijk niet bindend.** Meer accu's kosten
+   schoteldruk — bij de 4×2 gaat dat van 13.500 kg (585 kWh) naar 11.500 kg (780 kWh). Voor
+   potplanten op Deense karren zit je vrijwel altijd aan het volume vast en niet aan het gewicht.
+   **Controleer dat wel even aan de hand van jullie werkelijke vrachtgewichten** — als jullie
+   regelmatig boven 11.500 kg schoteldruk zitten, verandert het advies.
+3. **De subsidie loopt mee met de prijs.** AanZET is een percentage van de bruto aanschafprijs.
+   Elke € 10.000 duurdere truck levert € 2.900 extra subsidie op bij een kleine onderneming en
+   € 2.100 bij een middelgrote, tot een chassisprijs van ongeveer € 397.000. Het meerpakket
+   betaalt zichzelf dus voor ruwweg een kwart terug uit de subsidie.
+
+Let daarbij op het staatssteunplafond uit §2: dat bijt juist bij *lage* chassisprijzen. Met een
+dieselreferentie van circa € 130.000 knelt het plafond onder een e-truckprijs van ongeveer
+€ 252.000; daarboven bepaalt het percentage. Een FH Aero met 780 kWh zit daar comfortabel boven.
+
+### 6b.5 Het verbruik — Volvo tegenover Panteia
+
+Uit Volvo's eigen cijfers volgt een verbruik van **1,04 kWh/km**:
+
+| Variant | Bruikbaar | Bereik | Verbruik |
+|---|---|---|---|
+| 585 kWh ESOP-P | 470 kWh | 450 km | 1,044 kWh/km |
+| 585 kWh ESOP-R | 545 kWh | 525 km | 1,038 kWh/km |
+| 780 kWh ESOP-P | 630 kWh | 600 km | 1,050 kWh/km |
+| 780 kWh ESOP-R | 725 kWh | 700 km | 1,036 kWh/km |
+
+Panteia rekent met **1,4675 kWh/km** — 41 % hoger. De waarheid ligt ertussenin: fabrikantcijfers
+gelden bij gunstige omstandigheden en zonder laadverliezen, Panteia rekent conservatief. Voor een
+40-tonner in Nederlandse praktijk is 1,1 tot 1,3 kWh/km een realistische band.
+
+**Voor de businesscase maakt het opvallend weinig uit**, en dat komt door de goedkope stroom:
+
+| Verbruik | Besparing per jaar | Terugverdientijd |
+|---|---|---|
+| 1,04 (Volvo) | € 100.528 | 4,6 jaar |
+| 1,20 (realistisch) | € 97.328 | 4,8 jaar |
+| 1,4675 (Panteia) | € 91.978 | 5,1 jaar |
+
+Een halve jaar over de hele bandbreedte. Bij € 0,10 per kWh is elektriciteit simpelweg te
+goedkoop om het verschil te maken — de kilometers en de stroomprijs zelf blijven de hefbomen.
+
+### 6b.6 Wat ik aan John zou vragen
+
+1. **Nominale pakketspanning en maximale laadstroom** van de FH Aero Electric. Bepaalt of onze
+   240 kW-paal zijn volle vermogen kwijt kan.
+2. **Bruto chassisprijs excl. opbouw en btw** per variant — de grondslag voor AanZET — plus de
+   prijs van een vergelijkbare dieseltrekker, voor het staatssteunplafond.
+3. Is **MCS standaard of een optie**, en wat kost het? Wij hebben het niet nodig.
+4. **Garantie op de tractiebatterij**: gegarandeerde restcapaciteit na hoeveel jaar of hoeveel
+   kilometer? Bij 100.000 km per jaar tikken de cycli aan.
+5. Wat is het **verschil in praktijkverbruik tussen ESOP-P en ESOP-R**, en wat doet ESOP-R met de
+   levensduurgarantie?
+6. Levertijd, en of hij een **koopovereenkomst met ontbindende voorwaarde** kan opstellen vóór
+   29 september — zie §5.
+
 ## 7. Wat ik nog nodig heb
 
 Zonder deze gegevens blijven de bedragen hierboven indicatief.

@@ -730,6 +730,112 @@ vraag voor Flynth**, naast de drie die er al liggen.
 Stapelen met SPRILA en AanZET is geen probleem: die gaan over de investering, ERE over de
 geleverde kilowattuur.
 
+## 6d. Eén truck in plaats van twee
+
+Het korte antwoord: **ja, maar alleen als je de laadinfrastructuur meeschaalt.** Laat je die
+staan zoals hij nu in de SPRILA-aanvraag zit, dan loopt de terugverdientijd van 3,8 naar
+**6,2 jaar** — want je halveert de besparing terwijl de grootste kostenpost blijft staan.
+
+### 6d.1 De scenario's
+
+| Scenario | AanZET | Extra investering | Besparing per jaar | Terugverdientijd |
+|---|---|---|---|---|
+| **2 trucks, 3 laders, 4 accu-units** (huidig plan) | € 126.000 | € 446.420 | € 116.925 | **3,8 jaar** |
+| 1 truck, 3 laders, 4 units *(infra ongewijzigd)* | € 63.000 | € 364.960 | € 58.463 | 6,2 jaar |
+| 1 truck, 2 laders, 4 units | € 63.000 | € 317.960 | € 58.463 | 5,4 jaar |
+| **1 truck, 2 laders, 2 units** | € 63.000 | € 252.298 | € 58.463 | **4,3 jaar** |
+| 1 truck, 1 lader, 2 units | € 63.000 | € 205.298 | € 58.463 | 3,5 jaar |
+
+Alle varianten halen de 40 %-toets van SPRILA — die schommelt tussen 37,8 en 38,6 %.
+
+De opbouw per eenheid, afgeleid uit offerte DR283:
+
+| | Kosten | SPRILA |
+|---|---|---|
+| Per DC-laadstation 240 kW, incl. AC-installatie | € 78.000 | € 31.000 |
+| Per EnerBox van 261,25 kWh | € 53.125 | € 22.206 |
+| EMS, silowand, meetdienst (vast) | € 15.000 | — |
+
+**Let op de ondergrens bij de accu.** SPRILA keert voor een batterij minimaal € 25.000 uit; bij
+€ 85 per kWh betekent dat **minstens 295 kWh**, oftewel twee EnerBoxen. Eén enkele unit van
+261 kWh levert € 22.206 en valt dus onder de drempel. Twee units is het minimum waarmee de accu
+überhaupt subsidiabel is.
+
+### 6d.2 Twee accu-units per truck is de juiste maat
+
+Niet toevallig: bij twee EnerBoxen per truck draait de accu in beide gevallen even hard.
+
+| Opzet | Bruikbaar | Cycli per jaar |
+|---|---|---|
+| 1 truck, 2 units | 418 kWh | 351 |
+| 1 truck, 4 units | 836 kWh | **176** |
+| 2 trucks, 4 units | 836 kWh | 351 |
+
+Vier units bij één truck betekent een accu die de helft van de tijd stilstaat. En je kunt die
+overcapaciteit **niet** inzetten voor de kwekerij zelf, want de **70 %-eis** verplicht je om
+minstens 70 % van alles wat je ontlaadt naar de laadstations te sturen. Bij één truck is er dus
+hooguit 63.000 kWh per jaar aan ruimte voor iets anders. Een accu van 1.045 kWh voor één truck
+is daarmee niet alleen te groot, hij is ook wettelijk vastgezet.
+
+### 6d.3 Eén of twee laadstations bij één truck
+
+Eén truck verbruikt 638 kWh per draaidag. Op één station van 240 kW is dat 2,7 uur nominaal en
+ruim 3 uur realistisch — technisch ruim voldoende.
+
+Maar: **de Volvo FH Aero Electric kan niet meer AC-laden** (§6b.2). Valt dat ene station uit,
+dan staat de truck stil tot de monteur er is. Een tweede station kost netto € 47.000 en verlengt
+de terugverdientijd van 3,5 naar 4,3 jaar. Dat is dure redundantie, maar met één elektrische
+truck in een verder dieselvloot is het risico wel te overzien — de rit kan desnoods met een
+dieseltruck.
+
+**Mijn voorkeur: twee stations.** Niet vanwege de redundantie alleen, maar omdat de tweede
+lader bij uitbreiding naar een tweede truck sowieso nodig is, en je hem nu met € 31.000 subsidie
+koopt.
+
+### 6d.4 De tweede truck is de goedkoopste
+
+Vergelijk de verstandige één-truckopzet (2 laders, 2 units) met het volledige plan:
+
+| | Extra investering | Extra besparing | Terugverdientijd |
+|---|---|---|---|
+| Stap van 1 naar 2 trucks | € 194.122 | € 58.462 | **3,3 jaar** |
+
+De tweede truck verdient zich dus **sneller** terug dan de eerste (4,3 jaar), omdat de vaste
+posten — EMS, silowand, meetdienst, aanleg — al betaald zijn. Wie twee trucks kan inzetten,
+moet dat ook doen; het is de beste marginale investering in het hele plan.
+
+### 6d.5 Wat dit betekent voor de lopende aanvragen
+
+**De SPRILA-aanvraag hoeft niet aangepast.** Die is ingediend voor drie laadstations en
+1.000 kWh accu, en de **realisatietermijn is 24 maanden na de subsidieverlening** — dus tot
+ongeveer medio 2028. Je mag minder realiseren dan aangevraagd; bij de vaststelling wordt de
+subsidie dan naar rato lager vastgesteld en wordt de 40 %-toets opnieuw op de werkelijke kosten
+gedaan. Er is geen boete, je laat alleen subsidie liggen die je toch niet had uitgegeven.
+
+Dat geeft ruimte: **je kunt met één truck beginnen en de derde lader pas plaatsen als de tweede
+truck komt**, mits dat binnen de 24 maanden lukt. Meld een materiële wijziging wel bij RVO.
+
+**Bij AanZET ligt dat anders — en dat is het echte risico.** AanZET werkt met openstellingen. Vraag
+je nu één truck aan, dan moet de tweede wachten op een volgende ronde, en die is er niet
+gegarandeerd: het budget is per ronde, de regeling wordt eerst-komt-eerst-maalt verdeeld en de
+percentages kunnen veranderen. Op **29 september mag je op dag één twee voertuigen aanvragen** —
+precies jullie aantal. Die gelegenheid komt niet vanzelf terug.
+
+### 6d.6 Advies
+
+**Als het bedrijfsmatig kan: houd twee trucks aan.** De tweede is de goedkoopste investering van
+het hele plan (3,3 jaar) en de AanZET-ronde van 29 september is een venster dat niet gegarandeerd
+terugkomt.
+
+**Wil je het risico spreiden**, dan is één elektrische truck naast de bestaande diesel een
+verdedigbare pilot — met **twee laadstations en twee accu-units**, wat op **4,3 jaar** uitkomt.
+Dat is nog altijd een goede uitkomst, en je houdt de SPRILA-beschikking voor de derde lader
+24 maanden achter de hand.
+
+**Wat je in geen geval moet doen** is één truck kopen en de laadinfrastructuur op twee trucks
+dimensioneren. Dan betaal je € 283.500 netto aan installatie voor een besparing van € 58.463 per
+jaar, sta je op 6,2 jaar, en heb je een accu die door de 70 %-eis grotendeels stil moet staan.
+
 ## 7. Wat ik nog nodig heb
 
 Zonder deze gegevens blijven de bedragen hierboven indicatief.

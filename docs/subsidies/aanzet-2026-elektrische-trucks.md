@@ -486,6 +486,75 @@ Let daarbij op het staatssteunplafond uit §2: dat bijt juist bij *lage* chassis
 dieselreferentie van circa € 130.000 knelt het plafond onder een e-truckprijs van ongeveer
 € 252.000; daarboven bepaalt het percentage. Een FH Aero met 780 kWh zit daar comfortabel boven.
 
+### 6b.4b De prijzen van Nijwa — wat AanZET dan oplevert
+
+John Nijzink noemt **€ 300.000 voor de 4×2** en **€ 320.000 voor de 6×2**. Hiermee zijn de
+indicatieve bedragen uit §2 vervangen door echte prijzen.
+
+Als dieselreferentie neem ik **€ 146.166** — de cascoprijs van een *Zware trekker z/opl* uit de
+Panteia-tool (blad `Invoer en categorieën`, F13). Die referentie bepaalt het staatssteunplafond.
+
+| Uitvoering | Onderneming | AanZET per truck | **Twee trucks** | Bindend plafond |
+|---|---|---|---|---|
+| 4×2, € 300.000 | Klein | € 87.000 | **€ 174.000** | percentage |
+| 4×2, € 300.000 | Middelgroot | € 63.000 | **€ 126.000** | percentage |
+| 4×2, € 300.000 | Groot | € 33.300 | € 66.600 | percentage |
+| 6×2, € 320.000 | Klein | € 92.800 | **€ 185.600** | percentage |
+| 6×2, € 320.000 | Middelgroot | € 67.200 | **€ 134.400** | percentage |
+| 6×2, € 320.000 | Groot | € 35.520 | € 71.040 | percentage |
+
+**Geen van de drie plafonds bijt.** Het maximumbedrag begint pas te knellen boven een
+chassisprijs van € 397.000, en het staatssteunplafond pas zodra de vergelijkbare diesel meer
+kost dan:
+
+| | 4×2 (€ 300.000) | 6×2 (€ 320.000) |
+|---|---|---|
+| Klein | € 155.000 | € 165.333 |
+| Middelgroot | € 174.000 | € 185.600 |
+
+Met een dieselreferentie van € 146.166 zit er dus marge, maar bij de 4×2 voor een kleine
+onderneming is die marge nog geen € 9.000. **Vraag John daarom expliciet naar de prijs van een
+vergelijkbare dieseltrekker.** Ligt die boven € 155.000 — en dat is voor een nieuwe FH bepaald
+niet ondenkbaar — dan zakt de subsidie mee.
+
+### 6b.4c Wat de terugverdientijd wordt
+
+Overige invoer ongewijzigd: 100.000 km per truck per jaar, 1 op 3,8, € 1,70 per liter, € 0,10
+per kWh, laadinfrastructuur € 461.500 minus € 178.000 SPRILA.
+
+| Uitvoering | Onderneming | Extra investering | Terugverdientijd |
+|---|---|---|---|
+| **4×2, € 300.000** | **Klein** | € 403.373 | **4,4 jaar** |
+| 4×2, € 300.000 | Middelgroot | € 446.420 | **4,9 jaar** |
+| 4×2, € 300.000 | Groot | € 499.690 | 5,4 jaar |
+| 6×2, € 320.000 | Klein | € 428.843 | **4,7 jaar** |
+| 6×2, € 320.000 | Middelgroot | € 474.759 | **5,2 jaar** |
+| 6×2, € 320.000 | Groot | € 531.580 | 5,8 jaar |
+
+Dat is beter dan de 5,1 jaar uit §6.5, en dat komt niet door de truckprijs maar door de
+**hogere dieselreferentie**: € 146.166 in plaats van de eerder aangenomen € 120.000 verkleint de
+meerprijs met € 26.166 per truck.
+
+**De 6×2 kost drie maanden extra terugverdientijd.** De meerprijs van € 20.000 per truck levert
+€ 5.800 extra subsidie op bij een kleine onderneming, dus netto € 14.200 per truck. Dat is een
+reële afweging tegen wat een derde as oplevert: meer schoteldruk (16.000 kg bij de 540 kWh-variant
+tegenover 10.000 kg bij de 4×2) en betere gewichtsverdeling.
+
+**Voor potplantenvervoer zou ik de 4×2 nemen**, tenzij jullie vrachtgewichten regelmatig boven de
+10.000 kg schoteldruk uitkomen. Planten op Deense karren zitten aan het volume vast, niet aan het
+gewicht — en de 4×2 is € 20.000 goedkoper, lichter en wendbaarder op het erf.
+
+### 6b.4d Eén ding dat de prijzen nog niet vertellen
+
+**Bij welke accuvariant horen die bedragen?** Het prijsverschil van € 20.000 tussen 4×2 en 6×2
+lijkt puur de derde as. Maar de stap van zes naar acht accupakketten — 540 of 585 kWh naar
+780 kWh — is een aparte kostenpost die hier nog niet in zit. En juist die stap is volgens §6b.4
+de belangrijkste keuze.
+
+Vraag John dus om de prijs **per accuvariant**, niet alleen per asconfiguratie. Ter oriëntatie:
+elke € 10.000 meerprijs kost netto € 7.100 bij een kleine onderneming en € 7.900 bij een
+middelgrote, na aftrek van de AanZET.
+
 ### 6b.5 Het verbruik — Volvo tegenover Panteia
 
 Uit Volvo's eigen cijfers volgt een verbruik van **1,04 kWh/km**:

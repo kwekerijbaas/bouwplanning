@@ -17,15 +17,16 @@
 
 ## 1. Korte conclusie
 
-**De subsidie:** twee N3-trucks leveren **€ 117.600** op als de groep als middelgrote
-onderneming telt, en **€ 162.400** als hij als kleine onderneming telt. Dat verschil van
-€ 44.800 hangt aan één toets die we nog niet gedaan hebben — zie §3.
+**De subsidie:** met 60 medewerkers en € 22 mln omzet is de groep **middelgroot** (§3). Bij de
+prijzen van Nijwa — € 300.000 voor de 4×2 — levert dat **€ 63.000 per truck, € 126.000 voor
+twee**. Zijn die 60 medewerkers minder dan 50 *arbeidsjaren*, dan telt de groep als klein en
+wordt het € 174.000: een verschil van € 48.000 dat de moeite van het uitzoeken waard is.
 
 **Of het uit kan:** ja, maar met een langere adem dan bij mijn eerste schatting. Gerekend met
 jullie eigen cijfers — **100.000 km per truck per jaar**, **1 op 3,8**, **€ 1,70 per liter**
 diesel en **€ 0,10 per kWh** stroom — bespaart elektrisch **€ 45.989 per truck per jaar**.
-Tegenover een extra investering van € 465.012 is dat **5,1 jaar** terugverdientijd; 4,6 jaar
-als de groep klein blijkt, 5,6 jaar als hij groot is.
+Tegenover een extra investering van € 446.420 is dat **4,9 jaar** terugverdientijd voor een
+4×2 bij middelgroot; 4,4 jaar als de groep alsnog klein blijkt.
 
 Dat is langer dan de 3,5 jaar uit mijn eerste versie, en dat komt door jullie eigen opgaven.
 **1 op 3,8 is zuinig** — Panteia rekent voor een zware trekker met 1 op 2,93 — en 100.000 km is
@@ -100,33 +101,55 @@ van de dieselvariant.
 
 ---
 
-## 3. Klein of middelgroot — de vraag van € 44.800
+## 3. Bedrijfsomvang — vastgesteld: middelgroot
 
-Het verschil tussen 29 % en 21 % is bij deze trucks **€ 44.800** over twee stuks. Dat is de
-grootste enkele variabele in de hele aanvraag, en hij is puur administratief.
-
-De Europese mkb-definitie:
+Kwekerij Baas geeft op: **60 medewerkers en € 22 miljoen omzet**. Getoetst aan de Europese
+mkb-definitie (Aanbeveling 2003/361/EG), die ook voor AanZET geldt:
 
 | | Werkzame personen | Omzet | Balanstotaal |
 |---|---|---|---|
-| **Klein** | < 50 | ≤ € 10 mln | **of** ≤ € 10 mln |
-| **Middelgroot** | < 250 | ≤ € 50 mln | **of** ≤ € 43 mln |
+| Klein | < 50 | ≤ € 10 mln | **of** ≤ € 10 mln |
+| **Middelgroot** | **< 250** | **≤ € 50 mln** | **of** ≤ € 43 mln |
+| Groot | ≥ 250, of beide financiële grenzen overschreden | | |
 
-Twee dingen die vaak misgaan:
+Met 60 werkzame personen valt "klein" af: **het personeelscriterium is absoluut**, hoe laag de
+omzet ook is. Met 60 < 250 en € 22 mln < € 50 mln is de uitkomst **middelgroot**.
 
-1. **De toets gaat over de hele groep**, niet over de aanvragende BV. Alle verbonden en
-   partnerondernemingen tellen mee — in dit geval dus de hele Baas Groep, geconsolideerd, in
-   binnen- én buitenland. Een Potplantenkwekerij B.V. die op zichzelf klein oogt, kan via de
-   groep alsnog middelgroot zijn.
-2. **Het personeelscriterium is hard, de financiële criteria zijn alternatief.** Zit je boven
-   de 50 werkzame personen, dan ben je middelgroot — hoe laag de omzet ook is.
+**Gevolgen:**
 
-Voor een potplantenkwekerij met seizoenskrachten is die 50 de kritieke grens. Werkzame personen
-worden in arbeidsjaren geteld, dus deeltijders naar rato, en seizoenkrachten meestal ook.
+- **AanZET: 21 %, maximaal € 83.200 per voertuig.** Bij een chassisprijs van € 300.000 is dat
+  € 63.000 per truck, **€ 126.000 voor twee**.
+- **Staatssteunplafond: 50 % van de meerprijs.** Bij € 300.000 tegenover € 146.166 diesel is dat
+  € 76.917 — ruim boven de € 63.000, dus niet bindend.
+- **SPRILA verandert niet.** Middelgroot valt onder het mkb, dus de bedragen van € 31.000 per
+  laadstation en € 85 per kWh accu blijven staan, evenals de steunintensiteit van 40 %. De
+  lopende aanvraag van € 178.000 blijft onaangetast.
 
-**Dit moeten we vaststellen vóór de aanvraag** — met de cijfers van het laatst vastgestelde
-boekjaar. Flynth heeft ze en kan dit in een half uur beantwoorden; ik zou het bij de drie
-vragen voegen die al bij hen liggen.
+### Twee dingen die de uitkomst nog kunnen kantelen — samen € 48.000 waard
+
+Het verschil tussen klein en middelgroot is **€ 48.000** bij de 4×2 en **€ 51.200** bij de 6×2.
+Dat is de moeite van een half uur uitzoekwerk waard.
+
+**1. Zijn die 60 medewerkers ook 60 arbeidsjaren?** De definitie telt geen hoofden maar
+**jaarlijkse arbeidseenheden**. Deeltijders tellen naar rato, seizoenkrachten naar het deel van
+het jaar dat zij werken, en leerlingen of studenten met een leer- of beroepsopleidingscontract
+tellen **helemaal niet mee**. Bij een potplantenkwekerij met seizoensarbeid kan 60 hoofden
+neerkomen op ruim onder de 50 arbeidsjaren. Dit is de enige toets die hier nog geld oplevert.
+
+**2. De tweejaarsregel.** Je wisselt pas van categorie als je de grens in **twee opeenvolgende
+boekjaren** over- of onderschrijdt. Zat de groep vorig boekjaar nog onder de 50 arbeidsjaren en
+is hij pas dit jaar erboven gekomen, dan geldt voor deze aanvraag nog steeds **klein**.
+
+Beide punten liggen bij Flynth op de plank: zij hebben de loonadministratie en de jaarrekeningen.
+Eén vraag, twee cijfers — arbeidsjaren over de laatste twee vastgestelde boekjaren, geconsolideerd
+over de hele groep.
+
+**Let op dat het over de hele groep gaat**, niet over A. Baas Potplantenkwekerij B.V. alleen.
+Alle verbonden en partnerondernemingen tellen mee. De genoemde 60 medewerkers en € 22 mln moeten
+dus de geconsolideerde cijfers van de Baas Groep zijn; zijn dat de cijfers van één BV, dan valt
+de toets mogelijk anders uit.
+
+Tot die twee vragen beantwoord zijn houd ik **middelgroot** aan — dat is de voorzichtige kant.
 
 ---
 

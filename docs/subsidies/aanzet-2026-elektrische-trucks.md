@@ -22,11 +22,15 @@ prijzen van Nijwa — € 300.000 voor de 4×2 — levert dat **€ 63.000 per t
 twee**. Zijn die 60 medewerkers minder dan 50 *arbeidsjaren*, dan telt de groep als klein en
 wordt het € 174.000: een verschil van € 48.000 dat de moeite van het uitzoeken waard is.
 
-**Of het uit kan:** ja, maar met een langere adem dan bij mijn eerste schatting. Gerekend met
-jullie eigen cijfers — **100.000 km per truck per jaar**, **1 op 3,8**, **€ 1,70 per liter**
-diesel en **€ 0,10 per kWh** stroom — bespaart elektrisch **€ 45.989 per truck per jaar**.
-Tegenover een extra investering van € 446.420 is dat **4,9 jaar** terugverdientijd voor een
-4×2 bij middelgroot; 4,4 jaar als de groep alsnog klein blijkt.
+**Of het uit kan:** ja. Gerekend met jullie eigen cijfers — **100.000 km per truck per jaar**,
+**1 op 3,8**, **€ 1,70 per liter** diesel en **€ 0,10 per kWh** stroom — bespaart elektrisch
+**€ 45.989 per truck per jaar**. Tegenover een extra investering van € 446.420 is dat
+**4,9 jaar** voor een 4×2 bij middelgroot.
+
+Tel daar de **ERE** bij op — de vergoeding per geladen kWh die sinds 2026 het HBE-systeem
+vervangt — en de terugverdientijd zakt naar **3,8 jaar**. Dat is ruim € 25.000 per jaar en
+daarmee een grotere hefboom dan het verschil tussen klein en middelgroot. Zie §6c; er is één
+ding dat daarvoor nú geregeld moet worden, namelijk de MID-meter in de laadpalen.
 
 Dat is langer dan de 3,5 jaar uit mijn eerste versie, en dat komt door jullie eigen opgaven.
 **1 op 3,8 is zuinig** — Panteia rekent voor een zware trekker met 1 op 2,93 — en 100.000 km is
@@ -43,6 +47,10 @@ Twee dingen bepalen de uitkomst, en de subsidie is er geen van:
   leveren, maar of de trucks die stroom voor tien cent kúnnen afnemen hangt af van waar de ORC
   achter hangt en van de energiebelasting op de levering tussen de twee BV's. De bandbreedte
   loopt van 5,1 tot 8,0 jaar. **Dit is nu het belangrijkste open punt** — zie §6.7.
+
+**Wat er deze maand moet gebeuren:** bestel de **MID-gecertificeerde meter** mee in de drie
+laadstations. Zonder die meter is er geen ERE, en achteraf inbouwen is duur tot onmogelijk. Zet
+het bij de openstaande punten in de offerte van Draccu.
 
 **De timing:** ronde 2 opent 29 september. Op dag één en twee mag je maximaal twee voertuigen
 aanvragen — precies wat je nodig hebt. Vanaf dag drie mag het er tien, maar dan is het budget
@@ -617,6 +625,110 @@ goedkoop om het verschil te maken — de kilometers en de stroomprijs zelf blijv
    levensduurgarantie?
 6. Levertijd, en of hij een **koopovereenkomst met ontbindende voorwaarde** kan opstellen vóór
    29 september — zie §5.
+
+## 6c. ERE — de derde geldstroom
+
+Naast SPRILA op de laadinfrastructuur en AanZET op de trucks is er een **derde regeling die per
+geladen kWh uitkeert**: de **ERE, emissiereductie-eenheden**. John Nijzink wees er in zijn mail
+al op. Die vervangt sinds 2026 het HBE-systeem voor elektriciteit in het wegvervoer, is op
+31 maart 2026 door de Eerste Kamer bekrachtigd en loopt wettelijk tot 2030.
+
+Dit is geen investeringssubsidie maar een **jaarlijkse opbrengst**, en daarmee de eerste post
+die de exploitatie structureel verbetert in plaats van de investering.
+
+### 6c.1 Wat het oplevert
+
+De waarde ligt tussen **€ 0,07 en € 0,14 per geladen kWh**, met ongeveer **€ 0,10 in 2026**. De
+onderkant hoort bij het netgemiddelde aandeel hernieuwbaar, de bovenkant bij elektriciteit
+waarvan je aantoonbaar maakt dat zij hernieuwbaar is.
+
+Onze twee trucks laden **293.500 kWh per jaar**. Met een commissie van 15 % voor de
+inboekdienstverlener:
+
+| ERE per kWh | Netto per jaar | Besparing per jaar | Terugverdientijd |
+|---|---|---|---|
+| niet inboeken | € 0 | € 91.978 | 4,9 jaar |
+| netgemiddeld (± € 0,036) | € 8.981 | € 100.959 | 4,4 jaar |
+| onderkant € 0,07 | € 17.463 | € 109.441 | 4,1 jaar |
+| **midden € 0,10** | **€ 24.948** | **€ 116.926** | **3,8 jaar** |
+| bovenkant € 0,14 | € 34.927 | € 126.904 | 3,5 jaar |
+
+**Eén jaar korter dan zonder ERE.** Dat is meer dan het verschil tussen klein en middelgroot
+(§3) en meer dan het verschil tussen 4×2 en 6×2 (§6b.4c).
+
+### 6c.2 De zonnepanelen betalen nu twee keer
+
+Het verschil tussen netgemiddeld en aantoonbaar hernieuwbaar is bij ons **€ 25.945 per jaar** —
+bijna 9 cent per geladen kWh, over zeven jaar ruim € 180.000.
+
+Dat verandert de afweging uit §6.7. De 500 kWp aan zonnepanelen leverde tot nu toe alleen
+goedkope stroom op. Nu leveren zij ook **de hogere ERE-vergoeding**, omdat zon aantoonbaar
+hernieuwbaar is.
+
+**Bij de ORC ligt dat anders.** Draait die op restwarmte uit een gasgestookt proces, dan is die
+stroom **niet hernieuwbaar** en levert hij alleen het netgemiddelde op. De ORC blijft dan wel de
+goedkoopste kilowattuur, maar hij is voor de ERE de minst waardevolle. **Uitzoeken: is de
+warmtebron van de ORC hernieuwbaar, en zo nee, kun je de laadstations dan met GvO-gedekte stroom
+voeden?** Garanties van Oorsprong kosten enkele euro's per MWh en zijn dus verwaarloosbaar
+tegenover 9 cent per kWh.
+
+### 6c.3 Wat er moet gebeuren om het op te tuigen
+
+**1. MID-gecertificeerde meter in de laadpalen — dit is het meest urgent.**
+De regeling eist dat de geladen kWh officieel meetbaar zijn met een **MID-gecertificeerde
+meter**. In de datasheet van de WHES WH-ECA-244EDD staat de MID-meter als **optie**:
+
+> MID Meter (Optional)
+
+Die optie moet dus **besteld worden**. Achteraf inbouwen in drie DC-stations van 240 kW is
+duurder en mogelijk niet eens mogelijk. **Zet dit meteen in de vraag aan Koop Drost**, samen met
+de andere openstaande punten uit de offerte. Zonder MID-meter is er geen ERE — en dan laat je
+circa € 25.000 per jaar liggen op een meerprijs van hooguit enkele honderden euro's per station.
+
+**2. Een inboekdienstverlener contracteren.**
+Je kunt niet zelf bij de NEa inboeken. Dat kan alleen via een inboekdienstverlener, tenzij je
+zelf meer dan **2 miljoen kWh per jaar** laadt — wij zitten met 293.500 kWh ruim daaronder. De
+dienstverlener int de ERE's en betaalt uit onder aftrek van commissie. Wat die commissie is,
+weet ik niet; **vraag offertes op bij meerdere partijen**, want het verschil tikt aan:
+
+| Commissie | Terugverdientijd |
+|---|---|
+| 10 % | 3,8 jaar |
+| 25 % | 3,9 jaar |
+| 35 % | 4,0 jaar |
+
+Het verschil is kleiner dan je zou denken, maar over zeven jaar praat je nog steeds over
+tienduizenden euro's.
+
+**3. Aantonen dat de stroom hernieuwbaar is.**
+Zonder bewijs krijg je het netgemiddelde aandeel. Met bewijs — eigen zonnestroom met
+certificering, of ingekochte Garanties van Oorsprong — telt 100 %. Zie 6c.2; dit is de duurste
+knop aan de hele regeling.
+
+**4. Data-uitwisseling regelen.**
+De inboekdienstverlener heeft laadsessiegegevens nodig. De WHES-stations spreken **OCPP 1.6
+JSON** en hebben ethernet, wifi en 4G, dus dat zit technisch goed. Leg wel vast wie het
+backoffice-systeem levert en dat de data exporteerbaar zijn — je hebt diezelfde
+laadsessie-administratie ook nodig voor de **70 %-eis van SPRILA**, dus dat kan in één keer goed.
+
+**5. Vastleggen wie de ERE's toekomen.**
+De ERE hoort bij de exploitant van het laadpunt. In onze structuur is dat
+**A. Baas Potplantenkwekerij B.V.**, die de laadstations koopt — maar de stroom komt van
+A. Baas Energie B.V. Zet in de gebruiksovereenkomst een bepaling dat de ERE-opbrengsten aan
+Potplantenkwekerij toekomen, zodat daar later geen discussie over ontstaat. **Dit is een vierde
+vraag voor Flynth**, naast de drie die er al liggen.
+
+### 6c.4 Twee waarschuwingen
+
+- **Het is een marktprijs, geen vast tarief.** € 0,07 tot € 0,14 is een brede band en die kan
+  ook lager uitkomen. Ik zou de investeringsbeslissing niet op de ERE bouwen, maar hem
+  behandelen als meevaller die de terugverdientijd van 4,9 naar circa 3,8 jaar brengt.
+- **De regeling loopt tot 2030.** Dat is vier van de zeven jaar economische levensduur. Wat er
+  daarna gebeurt is onbekend. In de tabel hierboven reken ik alsof de opbrengst blijft; dat is
+  optimistisch aan de achterkant.
+
+Stapelen met SPRILA en AanZET is geen probleem: die gaan over de investering, ERE over de
+geleverde kilowattuur.
 
 ## 7. Wat ik nog nodig heb
 

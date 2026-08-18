@@ -239,6 +239,86 @@ Dat de accu 400 kW levert tegenover 720 kW aan laadvermogen — eerder genoteerd
 aandachtspunt — blijkt hier juist een voorwaarde: een accu die relatief snel kan ontladen
 wordt afgewezen. De EnerBox-configuratie zit hier goed.
 
+### Laadsnelheid — wat de WHES WH-ECA-244EDD werkelijk levert
+
+Uit de datasheet `20251113 EV Charger 160-300kW WHES`, dus dit zijn fabrikantsgegevens.
+
+| | |
+|---|---|
+| Nominaal vermogen | **240 kW** |
+| **Maximale stroom** | **350 A** |
+| Uitgangsspanning | 200 – 1.000 V DC |
+| Connectoren | **2 × CCS2**, samen tot het nominale vermogen |
+| Opbouw | 6 modules van 40 kW, constant vermogen |
+| Rendement | max. 95,5 % |
+| Ingangsstroom | 377 A bij 400 V AC (3P+N+PE) |
+| Kabellengte | 5 m |
+| Beschermingsgraad | IP54, IK10, koeling met ventilatoren, −30 tot +50 °C |
+| Communicatie | OCPP 1.6 JSON, ethernet / wifi / 4G |
+| Afmetingen en gewicht | 800 × 750 × 2.000 mm, 445 kg |
+
+**De 350 A is de echte begrenzing, niet de 240 kW.** Laadvermogen is spanning × stroom, dus
+zolang het accupakket van de truck onder circa 690 V zit, kom je niet aan de 240 kW toe:
+
+| Pakketspanning truck | Maximaal laadvermogen |
+|---|---|
+| 400 V | 140 kW |
+| 500 V | 175 kW |
+| 600 V | 210 kW |
+| **686 V** | **240 kW — vanaf hier haal je het volle vermogen** |
+| 800 V | 240 kW (begrensd door het station) |
+
+Elektrische trekkers zitten doorgaans tussen 600 en 800 V. Een truck met een 800 V-architectuur
+haalt dus het volle vermogen; een truck van 600 V blijft op ongeveer 210 kW steken — 12 % minder.
+**Vraag de dealer naar de nominale pakketspanning en het maximale laadvermogen van het
+voertuig**; dat bepaalt of dit station de juiste maat is.
+
+**Wat dat in kilometers betekent.** Bij 1,4675 kWh/km:
+
+| Laadvermogen | Bereik per laaduur |
+|---|---|
+| 210 kW (600 V-truck) | 143 km |
+| 240 kW (800 V-truck) | 164 km |
+| ~200 kW sessiegemiddelde | 136 km |
+
+Dat sessiegemiddelde is de eerlijke waarde om mee te plannen: elke accu neemt boven ongeveer
+70 % laadtoestand steeds minder vermogen op, dus over een sessie van 20 naar 80 % haal je niet
+het piekvermogen maar zo'n 80 tot 85 % daarvan.
+
+**Laadtijd 20 → 80 %**, bij een gemiddelde van 200 kW:
+
+| Pakket truck | Te laden | Tijd |
+|---|---|---|
+| 450 kWh | 270 kWh | 1 u 21 |
+| 540 kWh | 324 kWh | 1 u 37 |
+| 600 kWh | 360 kWh | 1 u 48 |
+| 624 kWh | 374 kWh | 1 u 52 |
+
+**Dagelijkse laadtijd per truck:**
+
+| Dagafstand | Energie | Op 240 kW | Realistisch |
+|---|---|---|---|
+| 435 km (100.000 km/jaar) | 638 kWh | 2 u 40 | 3 u 12 |
+| 600 km | 880 kWh | 3 u 40 | 4 u 24 |
+| 700 km | 1.027 kWh | 4 u 17 | 5 u 08 |
+| 800 km | 1.174 kWh | 4 u 54 | 5 u 52 |
+
+**Twee connectoren betekent delen.** De 240 kW is het totaal van het station, niet per
+connector. Twee trucks aan dezelfde paal krijgen dus elk ongeveer 120 kW. Met drie stations en
+twee trucks heeft elke truck zijn eigen paal en speelt dat niet — maar het is wel de reden om
+niet op twee stations te bezuinigen. Doordat het station uit modules van 40 kW bestaat, kan de
+verdeling ook 160/80 zijn in plaats van 120/120.
+
+**De aansluiting kan het ruim aan.** Drie stations op vol vermogen is 720 kW, oftewel 1.131 A
+aan de ingang. Tegenover de 1.850 kW gecontracteerd transportvermogen is dat 39 % — precies de
+berekening waarmee is vastgesteld dat er geen capaciteitsberekening hoeft te worden geüpload.
+De accu van 400 kW kan daarvan meer dan de helft leveren.
+
+**Voor de subsidie verandert er niets.** De RVO-tabel deelt DC-stations in op het vermogen van
+het *station*; alleen bij AC maakt de tabel expliciet onderscheid tussen één laadpunt en een
+duopaal. Een station van 240 kW met twee connectoren valt daarmee in "vanaf 220 kW" en levert
+€ 31.000 op.
+
 ### Let op: geen softwarematige vermogensbegrenzing
 
 Het formulier vraagt of er software is om het vermogen van de batterij in te perken, met de

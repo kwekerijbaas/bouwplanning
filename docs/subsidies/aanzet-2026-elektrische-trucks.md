@@ -836,6 +836,118 @@ Dat is nog altijd een goede uitkomst, en je houdt de SPRILA-beschikking voor de 
 dimensioneren. Dan betaal je € 283.500 netto aan installatie voor een besparing van € 58.463 per
 jaar, sta je op 6,2 jaar, en heb je een accu die door de 70 %-eis grotendeels stil moet staan.
 
+## 6e. De routesimulaties van Volvo — de eerste harde gebruiksdata
+
+Volvo heeft de werkelijke rit door de **Electric Range Simulator** gehaald (Erik Jan Bouma,
+18 augustus 2026, klant "A. Baas", segment *Long haul*). Dit is de eerste keer dat er gemeten
+in plaats van geschat wordt, en het verandert twee dingen die tot nu toe de grootste onzekerheid
+waren: het verbruik en de kilometrage.
+
+### 6e.1 De rit
+
+Uit het waypointbestand — beide geüploade werkboeken zijn identiek — blijkt één dagrit met vier
+etappes:
+
+| | Bestemming | Lading |
+|---|---|---|
+| 1 | Ens → Honselersdijk (Naaldwijk) | 12.500 kg |
+| 2 | Honselersdijk → Ens | leeg |
+| 3 | Ens → Bottrop (Duitsland) | 11.500 kg |
+| 4 | Bottrop → Ens | leeg |
+
+| Rit | Afstand | Rijtijd | Verbruik bij 10 °C | Bij 0 °C |
+|---|---|---|---|---|
+| Naaldwijk heen en terug | 308,8 km | 4 u 46 | 335 kWh | 356 kWh |
+| Bottrop heen en terug | 354,9 km | 5 u 15 | 383 kWh | 405 kWh |
+| **Hele dag** | **663,7 km** | **10 u 01** | **718 kWh** | **761 kWh** |
+
+Dat komt exact overeen met wat eerder werd gezegd — *"2 × 300–400 km per dag per truck"* — en
+niet met de 100.000 km per jaar waarmee ik sinds §6.2 reken. **Dit verschil is de belangrijkste
+openstaande vraag van het hele dossier**; zie 6e.4.
+
+### 6e.2 Het verbruik is nu bekend: 1,09 kWh/km
+
+De ERS geeft **1,09 kWh/km** bij 10 °C op de Naaldwijk-rit en **1,08** op Bottrop, met
+**1,14–1,16** bij 0 °C. Dat is voor jullie eigen route, met 12.500 kg lading en een maximum van
+85 km/h.
+
+Dat ligt precies tussen mijn twee eerdere bronnen in, en dichter bij de brochure dan bij Panteia:
+
+| Bron | kWh/km |
+|---|---|
+| Volvo-brochure (afgeleid uit bereik) | 1,04 |
+| **ERS, jullie eigen route** | **1,09** |
+| Panteia, zware trekker | 1,4675 |
+
+De ERS meet energie **uit de accu**. Aan de meter komt daar nog laadverlies bij — reken op 5 à
+8 %, dus **circa 1,16 kWh/km**. Dat is het getal dat telt voor de stroomkosten én voor de ERE,
+en daarmee reken ik hieronder.
+
+### 6e.3 Geen van beide uitvoeringen haalt de dag in één keer
+
+| Uitvoering | Bruikbaar | Naaldwijk (335 kWh) | Bottrop (383 kWh) | Hele dag (718 kWh) |
+|---|---|---|---|---|
+| **FH Electric 6×2 E-As, 585 kWh** | 556 kWh | rest 40 % | rest 31 % | **162 kWh tekort** |
+| FH 4×2 gen 2, 540 kWh | 460 kWh | rest 27 % | rest 17 % | 258 kWh tekort |
+
+Bij 0 °C zakt de gen 2 op de Bottrop-rit naar **12 % restcapaciteit**. Dat is te krap voor een
+file, een omleiding of een zwaardere belading. **De E-As met 585 kWh houdt op diezelfde rit nog
+27 % over** en is daarmee de enige van de twee die zonder stress rijdt.
+
+**En dat lost de rest vanzelf op**, want de rit keert tussendoor terug naar Ens. Na Naaldwijk
+staat de truck op het eigen erf met 221 kWh in de accu:
+
+| Tussenladen thuis | Energie | Op 240 kW | Realistisch |
+|---|---|---|---|
+| Minimaal voor Bottrop | 162 kWh | 40 min | 49 min |
+| Helemaal vol | 335 kWh | 84 min | 100 min |
+
+**Drie kwartier tot een uur tussenladen, op eigen terrein, midden op de dag.** Dat is precies
+wanneer de zon schijnt — de laadinfrastructuur en de accu vallen hier goed samen met de rit.
+
+Dit corrigeert mijn advies uit §6b.4: **780 kWh is niet nodig.** Dat advies ging uit van 435 km
+aaneengesloten. De werkelijke rit is twee keer ruim 300 km met een tussenstop thuis, en dan
+volstaat **585 kWh** ruimschoots. Dat scheelt de meerprijs van twee extra accupakketten.
+
+### 6e.4 Wat dit met de businesscase doet — en de vraag die overblijft
+
+Alles hangt nu op één vraag: **rijdt elke truck de hele dagrit van 664 km, of rijdt de ene truck
+naar Naaldwijk en de andere naar Bottrop?**
+
+Gerekend met 1,16 kWh/km aan de meter, twee trucks en de volledige laadinfrastructuur:
+
+| Inzet | km per truck | Besparing per jaar | Terugverdientijd |
+|---|---|---|---|
+| Elke truck de hele dagrit, 230 dagen | 152.651 | € 183.766 | **2,4 jaar** |
+| Elke truck de hele dagrit, 200 dagen | 132.740 | € 158.843 | 2,8 jaar |
+| Elke truck één rit per dag, 260 dagen | 86.256 | € 100.658 | 4,4 jaar |
+| Elke truck één rit per dag, 230 dagen | 76.325 | € 88.227 | 5,1 jaar |
+
+**Een factor twee in kilometers is een factor twee in terugverdientijd.** Tussen 2,4 en 5,1 jaar
+zit het verschil tussen "onmiddellijk doen" en "goed maar niet spectaculair".
+
+**Let op de rijtijd.** De hele dagrit is **10 uur en 1 minuut rijden**, exclusief laden, lossen
+en tussenladen. Dat gaat over de daglimiet van 9 uur heen; 10 uur mag twee keer per week. Met
+tussenladen erbij kom je op een werkdag van twaalf uur of meer. **Dat kan niet vijf dagen per
+week met één chauffeur.** Draaien jullie deze rit nu al zo, dan gebeurt dat met wisselende
+chauffeurs of met twee trucks die elk één bestemming doen — en dat laatste is precies de
+onderkant van de tabel.
+
+Ik reken tot nader bericht met de **100.000 km per truck** die eerder is opgegeven; dat zit
+tussen beide uitkomsten in en geeft 3,8 jaar. Maar dit is het getal dat vastgesteld moet worden
+voordat er getekend wordt.
+
+### 6e.5 Twee dingen die de simulaties bevestigen
+
+**Het laadvermogen is geen probleem.** De 4×2 gen 2 heeft een maximaal laadvermogen van
+30.501 kg en de 6×2 E-As van 27.260 kg; jullie vervoeren 12.500 kg. De zorg uit §6b.4 dat een
+groter accupakket laadvermogen kost, is daarmee van tafel: er is meer dan het dubbele over.
+
+**Het adres klopt niet.** De ERS gebruikt *Drietorensweg 36, 8307 Ens*, terwijl de
+SPRILA-aanvraag en de Liander-factuur op **Drietorensweg 38-1, 8307 PH** staan. Voor de
+simulatie maakt dat niets uit, maar geef het even door aan Nijwa zodat de offerte straks op het
+juiste adres staat.
+
 ## 7. Wat ik nog nodig heb
 
 Zonder deze gegevens blijven de bedragen hierboven indicatief.

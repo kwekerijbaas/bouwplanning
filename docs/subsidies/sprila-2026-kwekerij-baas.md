@@ -11,6 +11,126 @@
 
 ---
 
+> ## ✅ TOEGEKEND — 21 augustus 2026
+>
+> **Beschikking SPRILA26-04007812: € 178.000 verleend, volledig conform aanvraag.**
+> Drie DC-laadstations vanaf 220 kW (€ 93.000) en 1.000 kWh stationaire batterij (€ 85.000).
+> Het **voorschot van € 89.000 is op 21 augustus uitbetaald** op NL28RABO0346579775.
+>
+> **Wat er nu verandert:** het verbod om opdracht te geven is vervallen. Je kunt Draccu nu
+> opdracht geven. Voor AanZET blijft de volgorde-eis gelden, maar dat gaat over de trucks —
+> een ander bedrijfsmiddel.
+>
+> **De klok loopt:**
+>
+> | | Datum |
+> |---|---|
+> | Realisatie, ingebruikname én vaststellingsverzoek | **21 augustus 2028** |
+> | Met uitstel (max 12 maanden, niet-verwijtbaar) | 21 augustus 2029 |
+> | Bezwaartermijn (niet nodig, volledig toegekend) | 2 oktober 2026 |
+> | Uitleg over het vaststellingsverzoek per e-mail | ± 18 september 2026 |
+>
+> Zie §0 voor wat er is vastgelegd en wat er bij de vaststelling moet worden aangeleverd.
+
+---
+
+## 0. De beschikking — wat er nu vastligt
+
+### 0.1 Wat is toegekend
+
+| | Aangevraagd | Toegekend |
+|---|---|---|
+| DC-laadstations vanaf 220 kW | 3 | **3** — € 93.000 |
+| Stationaire batterij | 1.000 kWh | **1.000 kWh** — € 85.000 |
+| **Totaal** | € 178.000 | **€ 178.000** |
+
+Locatie: Drietorensweg 38-1, 8307 PH Ens. Subsidiepercentage 38,57 % op € 461.500 subsidiabele
+kosten — onder de 40 %-grens.
+
+### 0.2 Wat er bij de vaststelling moet worden aangeleverd
+
+1. **Gespecificeerde factuur** van de laadstations, met **merk, type, specificatie, vermogen per
+   station en de datum waarop de installatiewerkzaamheden zijn uitgevoerd**.
+2. **Bewijs van registratie van het batterijsysteem** via `www.energieleveren.nl` of via de
+   netbeheerder. Dit moet ná installatie gebeuren. *Dit stond nog niet in dit document; zet het
+   op de to-dolijst.*
+
+### 0.3 De doorlopende verplichtingen
+
+| Verplichting | Duur | Sanctie |
+|---|---|---|
+| Privaat blijven, niet in het publieke laadpalenregister (hooguit "beperkt toegankelijk") | 24 mnd na vaststelling | terugvordering van **1/24e per maand** dat niet wordt voldaan |
+| Permanent met internet verbonden | 24 mnd na vaststelling | idem |
+| Batterij in eigendom, zonder overdracht aan derden | 24 mnd na vaststelling | terugvordering |
+| **≥ 70 % van de ontladen kWh aantoonbaar naar de laadstations** | 24 mnd na vaststelling | terugvordering |
+| Documenten bewaren (EC kan tien jaar terugkijken) | 10 jaar | — |
+
+De 70 %-eis staat letterlijk zoals eerder aangenomen: RVO kan gebruiksdata opvragen over **drie
+achtereenvolgende maanden**, bestaande uit de ontladen kWh uit het **BMS** en de kWh die via de
+laadstations aan voertuigen zijn geleverd, uit de **laadsessie-administratie**. Meewerken is
+verplicht.
+
+**Publicatieplicht staatssteun.** Boven € 100.000 — en voor landbouwbedrijven al boven
+€ 10.000 — publiceert RVO naam, KVK-nummer, NACE-code, mkb-status, bedrag en datum. Deze
+subsidie wordt dus openbaar.
+
+### 0.4 Wat er in de aanvraag staat en wat dat betekent
+
+Twee dingen zijn nu vastgelegd en verdienen aandacht.
+
+**Merk en leverancier staan in de aanvraag.** Laadstation: *Whes WH-ECA-244EDD*, batterij:
+*Hizenergy EnerBox ES100kW-261kWh-LE*, leverancier *Draccu BV* (KVK 88707091). Wil je de accu
+alsnog elders kopen — bijvoorbeeld het Oliter-systeem van V-TAC uit §6.2b — dan is dat een
+**wijziging van gegevens die van belang zijn**, en die moet je op grond van de algemene
+verplichtingen onverwijld melden via **sprila@rvo.nl**. Het mag, maar bij de vaststelling wordt
+de C-waarde en de datasheet opnieuw getoetst. Reken dus op extra werk bovenop het prijsvoordeel
+dat volgens §6.2b toch al beperkt is.
+
+**RVO bevestigt de categorie-indeling zwart op wit.** Het formulier zegt: *"het vermogen van een
+DC laadstation wordt bepaald door het totale vermogen van het laadstation, dus niet door het
+maximale vermogen van één laadpunt"*, met als voorbeeld precies een station van 240 kW met twee
+laadpunten. De eerdere zorg dat de duopaal in een lagere categorie zou vallen is daarmee
+definitief van tafel.
+
+**Eén onnauwkeurigheid.** Op de vraag *"Gaat u subsidie aanvragen voor een modulair systeem
+(fysiek gescheiden laadstations en vermogenskast)?"* staat **Ja**. De WH-ECA-244EDD is een
+staande all-in-one kast; er is geen fysiek gescheiden vermogenskast. Het juiste antwoord was
+**Nee**. Voor het subsidiebedrag maakt het niets uit — elk station is werkelijk 240 kW en valt
+op eigen kracht in de categorie vanaf 220 kW — maar het klopt niet met de factuur die je straks
+inlevert. Meld het mee zodra je toch iets aan RVO doorgeeft.
+
+### 0.5 Correctie: de € 25.000-drempel geldt voor het geheel
+
+In §6d van het AanZET-document stond dat de accu minstens 295 kWh moet zijn om de drempel van
+€ 25.000 te halen. **Dat klopt niet.** Het aanvraagformulier zegt op pagina 12:
+
+> "Om in aanmerking te komen voor een subsidie voor een batterijsysteem bedraagt het
+> aangevraagde subsidiebedrag voor laadinfrastructuur **én** een batterijsysteem minimaal
+> € 25.000."
+
+De drempel geldt dus voor de **som** van laadinfrastructuur en batterij, niet voor de batterij
+alleen. Eén EnerBox van 261 kWh (€ 22.206) is samen met één laadstation (€ 31.000) ruimschoots
+boven de drempel. Dat verruimt de afbouwvarianten uit §6d van dat document.
+
+### 0.6 Als je toch minder gaat realiseren
+
+Minder realiseren dan toegekend mag; de subsidie wordt dan naar rato lager vastgesteld en de
+40 %-toets gaat opnieuw over de werkelijke kosten. Meld de wijziging via sprila@rvo.nl. Omdat er
+al € 89.000 voorschot is uitbetaald, betekent afschalen op enig moment terugbetalen:
+
+| Opzet | Kosten | Subsidie | % | Voorschot € 89.000 |
+|---|---|---|---|---|
+| **3 laders, 4 accu-units** (toegekend) | € 461.500 | € 178.000 | 38,6 % | nog € 89.000 te ontvangen |
+| 2 laders, 4 units | € 383.500 | € 147.000 | 38,3 % | nog € 58.000 te ontvangen |
+| 2 laders, 2 units | € 277.250 | € 106.412 | 38,4 % | nog € 17.412 te ontvangen |
+| 2 laders, 1 unit | € 224.125 | € 84.206 | 37,6 % | € 4.794 terugbetalen |
+| 1 lader, 2 units | € 199.250 | € 75.412 | 37,8 % | € 13.588 terugbetalen |
+| 1 lader, 1 unit | € 146.125 | € 53.206 | 36,4 % | € 35.794 terugbetalen |
+
+Alle varianten blijven onder de 40 %.
+
+---
+
 ## 1. Korte conclusie
 
 Drie dingen vooraf, want de aanname in de opdracht klopt net niet:

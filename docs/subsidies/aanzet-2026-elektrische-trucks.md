@@ -756,10 +756,14 @@ De opbouw per eenheid, afgeleid uit offerte DR283:
 | Per EnerBox van 261,25 kWh | € 53.125 | € 22.206 |
 | EMS, silowand, meetdienst (vast) | € 15.000 | — |
 
-**Let op de ondergrens bij de accu.** SPRILA keert voor een batterij minimaal € 25.000 uit; bij
-€ 85 per kWh betekent dat **minstens 295 kWh**, oftewel twee EnerBoxen. Eén enkele unit van
-261 kWh levert € 22.206 en valt dus onder de drempel. Twee units is het minimum waarmee de accu
-überhaupt subsidiabel is.
+> **Correctie (21 augustus 2026).** Hier stond dat de accu minstens 295 kWh moest zijn om de
+> drempel van € 25.000 te halen. Dat klopt niet: het aanvraagformulier zegt dat die drempel geldt
+> voor **laadinfrastructuur én batterij samen**. Eén EnerBox van 261 kWh (€ 22.206) plus één
+> laadstation (€ 31.000) zit er ruim boven. Er zijn dus ook varianten met één accu-unit mogelijk;
+> zie §0.6 van het SPRILA-document voor de volledige tabel.
+
+Wat wel geldt: bij minder dan 295 kWh accu heb je altijd minstens één laadstation nodig om
+gezamenlijk boven de € 25.000 uit te komen. Dat is bij ons sowieso het geval.
 
 ### 6d.2 Twee accu-units per truck is de juiste maat
 
@@ -806,9 +810,11 @@ moet dat ook doen; het is de beste marginale investering in het hele plan.
 
 ### 6d.5 Wat dit betekent voor de lopende aanvragen
 
-**De SPRILA-aanvraag hoeft niet aangepast.** Die is ingediend voor drie laadstations en
-1.000 kWh accu, en de **realisatietermijn is 24 maanden na de subsidieverlening** — dus tot
-ongeveer medio 2028. Je mag minder realiseren dan aangevraagd; bij de vaststelling wordt de
+**De SPRILA-beschikking is er: € 178.000, volledig toegekend op 21 augustus 2026, met
+€ 89.000 voorschot al uitbetaald.** De realisatietermijn loopt tot **21 augustus 2028**. Minder
+realiseren mag, maar dan wordt de subsidie naar rato lager vastgesteld en moet een deel van het
+voorschot terug — bij één lader en twee accu-units bijvoorbeeld € 13.588. De volledige tabel
+staat in §0.6 van het SPRILA-document. Je mag minder realiseren dan aangevraagd; bij de vaststelling wordt de
 subsidie dan naar rato lager vastgesteld en wordt de 40 %-toets opnieuw op de werkelijke kosten
 gedaan. Er is geen boete, je laat alleen subsidie liggen die je toch niet had uitgegeven.
 

@@ -385,6 +385,85 @@ op 5,1 jaar baseren maar op een bandbreedte:
 | Helft eigen opwek, helft net | ± € 0,16 | 6,3 jaar |
 | ORC elders, alles van het net | € 0,2154 | 8,0 jaar |
 
+### 6.7b Hoe de terugverdientijd wordt berekend
+
+De methode is bewust simpel:
+
+> **terugverdientijd = extra investering ÷ jaarlijkse besparing**
+
+Beide getallen zijn *verschillen ten opzichte van diesel*, niet absolute bedragen. Er wordt dus
+niet gerekend met wat een elektrische truck kost, maar met wat hij **méér** kost dan de
+dieseltruck die je anders had gekocht — en niet met wat elektrisch rijden kost, maar met wat het
+**minder** kost.
+
+#### De teller: extra investering
+
+| | |
+|---|---|
+| Bruto aanschafprijs e-truck | € 300.000 |
+| − vergelijkbare dieseltrekker | − € 146.166 |
+| **= meerprijs per truck** | **€ 153.834** |
+| − AanZET (21 % × € 300.000) | − € 63.000 |
+| = EIA-grondslag | € 90.834 |
+| − EIA-voordeel (40 % aftrek × 25,8 % Vpb) | − € 9.374 |
+| **= netto meerprijs per truck** | **€ 81.460** |
+| × 2 trucks | € 162.920 |
+| + laadinfrastructuur (€ 461.500 − € 178.000 SPRILA) | + € 283.500 |
+| **= TOTALE EXTRA INVESTERING** | **€ 446.420** |
+
+#### De noemer: jaarlijkse besparing
+
+Per truck bij 100.000 km, 1 op 3,8, € 1,70 per liter en € 0,10 per kWh:
+
+| | Diesel | Elektrisch |
+|---|---|---|
+| Brandstof / stroom | € 44.737 | € 11.550 |
+| Vrachtwagenheffing | € 19.000 | € 4.000 |
+| Onderhoud | € 9.164 | € 4.582 |
+| Banden | € 4.648 | € 4.648 |
+| Reparaties | € 1.654 | € 1.654 |
+| Motorrijtuigenbelasting | € 1.028 | € 1.028 |
+| Extra chauffeurskosten laden | — | € 3.655 |
+| **Totaal per jaar** | **€ 80.231** | **€ 31.117** |
+
+| | |
+|---|---|
+| Verschil per truck | € 49.114 |
+| × 2 trucks | € 98.228 |
+| + ERE (231.000 kWh × € 0,10 × 85 %) | + € 19.635 |
+| **= BESPARING PER JAAR** | **€ 117.863** |
+
+Banden, reparaties en motorrijtuigenbelasting staan aan beide kanten gelijk en vallen dus weg in
+het verschil. Ze staan er alleen in om de jaarkosten compleet te tonen.
+
+#### De uitkomst
+
+> € 446.420 ÷ € 117.863 = **3,79 jaar**
+
+#### Wat deze methode negeert
+
+Simpele terugverdientijd is een grove maatstaf. Hij houdt geen rekening met rente, en hij kijkt
+niet verder dan het moment waarop de investering is terugverdiend. Bij een economische
+levensduur van zeven jaar betekent 3,8 jaar dat er daarna nog ruim drie jaar voordeel overblijft
+dat in dit getal niet zichtbaar is.
+
+Ter controle dezelfde cijfers als contante waarde over zeven jaar:
+
+| Disconteringsvoet | Netto contante waarde |
+|---|---|
+| 0 % | € 378.619 |
+| 4 % | € 260.999 |
+| 6 % | € 211.535 |
+| 8 % | € 167.217 |
+| **Interne rentevoet** | **18,2 %** |
+
+Een interne rentevoet van 18 % is voor een vervangingsinvestering een goed rendement. Dat de
+uitkomst ook bij 8 % rente ruim positief blijft, betekent dat de conclusie niet afhangt van de
+financieringsvorm.
+
+Wel geldt onverkort wat in §6.8 staat: **restwaarde staat aan beide kanten op nul**, en dat is
+de grootste vereenvoudiging in het hele model.
+
 ### 6.8 Wat er níét in zit
 
 - **Restwaarde**, aan beide kanten op nul. De tweedehandsmarkt voor e-trucks is nog dun; dit is

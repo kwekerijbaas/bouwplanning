@@ -943,6 +943,74 @@ Ik reken tot nader bericht met de **100.000 km per truck** die eerder is opgegev
 tussen beide uitkomsten in en geeft 3,8 jaar. Maar dit is het getal dat vastgesteld moet worden
 voordat er getekend wordt.
 
+### 6e.4b De werkelijke dagcombinaties
+
+Op navraag: de trucks rijden meestal **tweemaal Naaldwijk**, of **Bleiswijk** (dichterbij dan
+Naaldwijk), of **eenmaal Naaldwijk en eenmaal Aalsmeer**. De Bottrop-rit uit de simulatie is dus
+een zware uitzondering, geen dagelijkse kost.
+
+Alleen de Naaldwijk-afstand is hard — 308,8 km retour uit de ERS. Bleiswijk en Aalsmeer zijn
+geschat op respectievelijk 280 en 200 km retour; vervang ze door de werkelijke ritregistratie.
+
+| Dagcombinatie | Afstand | 10 °C | 0 °C | Past in 556 kWh? | km/jaar bij 230 dagen |
+|---|---|---|---|---|---|
+| 2 × Naaldwijk | 618 km | 673 kWh | 716 kWh | nee | 142.048 |
+| Naaldwijk + Bleiswijk | 589 km | 642 kWh | 683 kWh | nee | 135.424 |
+| 2 × Bleiswijk | 560 km | 610 kWh | 650 kWh | nee | 128.800 |
+| Naaldwijk + Aalsmeer | 509 km | 555 kWh | 590 kWh | krap | 117.024 |
+| *Naaldwijk + Bottrop (ERS)* | *664 km* | *723 kWh* | *770 kWh* | *nee* | *152.651* |
+
+**Alle bestemmingen zijn heen-en-weer vanaf Ens.** Dat is de belangrijkste eigenschap van deze
+operatie: de truck komt tussen de ritten thuis, dus het bijladen gebeurt aan de eigen paal, tegen
+de eigen € 0,10 per kWh, en levert ERE op.
+
+En het bijladen is kort. Na de eerste rit Naaldwijk staat de truck thuis met 221 kWh:
+
+| Tweede rit | Bij te laden | Op 240 kW | Realistisch |
+|---|---|---|---|
+| nog een keer Naaldwijk | 116 kWh | 29 min | 35 min |
+| Bleiswijk | 84 kWh | 21 min | 25 min |
+| Aalsmeer | geen | — | — |
+
+**Twintig tot vijfendertig minuten**, en dat past in de laad- en lostijd. Bij Naaldwijk +
+Aalsmeer hoeft er zelfs helemaal niet bijgeladen te worden — al is dat in de winter net wel weer
+nodig.
+
+### 6e.4c Wat dat met de businesscase doet
+
+| Dagcombinatie | km per truck | Besparing per jaar | Terugverdientijd |
+|---|---|---|---|
+| Naaldwijk + Aalsmeer | 117.024 | € 139.171 | **3,2 jaar** |
+| 2 × Bleiswijk | 128.800 | € 153.911 | **2,9 jaar** |
+| 2 × Naaldwijk | 142.048 | € 170.494 | **2,6 jaar** |
+| *huidige aanname* | *100.000* | *€ 117.862* | *3,8 jaar* |
+
+**De werkelijke inzet is gunstiger dan waar ik mee rekende.** De aangehouden 100.000 km per truck
+zit onder alle dagcombinaties; kennelijk is niet elke dag een dubbele rit. Zolang dat niet uit de
+ritregistratie blijkt houd ik 100.000 km aan — dat is de voorzichtige kant — maar de
+werkelijkheid ligt waarschijnlijk tussen 2,6 en 3,8 jaar in plaats van op 3,8.
+
+### 6e.4d Thuis laden is geen detail maar de kern van de businesscase
+
+De transportplanner zal met laadtijden moeten gaan puzzelen, en de vuistregel daarbij is
+eenvoudig: **elke kilowattuur die onderweg wordt geladen kost ongeveer zes keer zoveel als thuis,
+en levert bovendien geen ERE op.**
+
+| Aandeel publiek laden | Extra energiekosten | Gemiste ERE | Totaal per jaar |
+|---|---|---|---|
+| 10 % | € 14.675 | € 2.495 | **€ 17.170** |
+| 20 % | € 29.350 | € 4.990 | **€ 34.340** |
+| 30 % | € 44.025 | € 7.484 | **€ 51.509** |
+
+Gerekend met € 0,60 per kWh aan een publieke snellader tegenover € 0,10 thuis. Twintig procent
+onderweg laden kost dus meer dan de hele AanZET-subsidie van één truck aan exploitatiekosten in
+vier jaar tijd.
+
+De goede boodschap is dat het niet hoeft: met retourritten van maximaal 309 km, een pakket van
+556 kWh bruikbaar en een bijlaadmoment van een half uur op eigen terrein, kan **alles thuis**.
+Dat vraagt wel dat de planning ruimte laat voor die twintig tot vijfendertig minuten tussen de
+ritten — en dat is precies de afweging die de planner moet maken.
+
 ### 6e.5 Twee dingen die de simulaties bevestigen
 
 **Het laadvermogen is geen probleem.** De 4×2 gen 2 heeft een maximaal laadvermogen van

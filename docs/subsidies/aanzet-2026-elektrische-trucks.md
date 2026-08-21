@@ -464,12 +464,72 @@ financieringsvorm.
 Wel geldt onverkort wat in §6.8 staat: **restwaarde staat aan beide kanten op nul**, en dat is
 de grootste vereenvoudiging in het hele model.
 
+### 6.7c De restwaarde
+
+Tot nu toe stond restwaarde aan beide kanten op nul. Dat is nu ingebouwd, met de
+leeftijdstabel van Panteia als basis: **23 % van de nieuwprijs na zeven jaar**, gelijk voor
+diesel en elektrisch. Voor de laadinfrastructuur hanteer ik 30 %, lineair over de
+afschrijftermijn van tien jaar die Panteia voor laadinfra aanhoudt.
+
+| | Bedrag in jaar 7 |
+|---|---|
+| Restwaarde twee e-trucks (23 % × € 300.000) | € 138.000 |
+| Af: gederfde restwaarde van de dieseltrucks die je niet koopt (23 % × € 146.166) | − € 67.236 |
+| Restwaarde laadinfrastructuur (30 % × € 461.500 bruto) | € 138.450 |
+| **Totale extra restwaarde** | **€ 209.214** |
+| Omgeslagen over zeven jaar | € 29.888 per jaar |
+
+Daarmee:
+
+| | Besparing per jaar | Terugverdientijd |
+|---|---|---|
+| Zonder restwaarde | € 113.936 | **3,9 jaar** |
+| Met restwaarde | € 143.823 | **3,1 jaar** |
+
+**Lees die 3,1 jaar met een korrel zout.** De restwaarde komt pas vrij bij verkoop in jaar 7,
+niet elk jaar in kas. Voor de kasstroom is 3,9 jaar het eerlijke getal; 3,1 jaar is het
+economische getal. Het werkboek toont ze allebei, blok 8 en blok 10.
+
+**Twee dingen waar ik de restwaarde overschat kan hebben.**
+
+*De e-truck.* 23 % is Panteia's algemene leeftijdstabel, niet een marktnotering voor gebruikte
+elektrische trekkers. Die markt bestaat nauwelijks. Als de restwaarde uitkomt op 10 % in plaats
+van 23 %, is de extra restwaarde van de voertuigen zelfs **negatief** — dan is de e-truck na
+zeven jaar minder waard dan de diesel die je niet gekocht hebt.
+
+*De laadinfrastructuur.* Van de € 461.500 is een fors deel **aanleg- en installatiewerk** —
+grondwerk, kabelsleuven, fundering, hoofdverdeler — en dat heeft geen restwaarde. Alleen de
+hardware wel: ruwweg € 314.000 aan laders en accukasten, oftewel zo'n 68 % van het totaal. Een
+restwaarde van 30 % over het hele bedrag is dus aan de optimistische kant; over alleen de
+hardware zou je op circa 20 % van het totaal uitkomen.
+
+De hele bandbreedte:
+
+| | infra 0 % | infra 15 % | infra 30 % |
+|---|---|---|---|
+| e-truck 10 % | 3,95 jaar | 3,64 jaar | 3,36 jaar |
+| e-truck 15 % | 3,81 jaar | 3,51 jaar | 3,26 jaar |
+| **e-truck 23 %** | 3,60 jaar | 3,33 jaar | **3,10 jaar** |
+| e-truck 30 % | 3,43 jaar | 3,19 jaar | 2,98 jaar |
+
+**De uitkomst ligt dus tussen 3,0 en 4,0 jaar, waar je de restwaarde ook op zet.** Dat is de
+geruststellende conclusie: restwaarde beweegt het antwoord met hooguit een jaar, terwijl de
+kilometers het met vijf jaar bewegen. Het blijft wel de reden om Nijwa naar een
+**terugkoopgarantie** te vragen — dat is de enige manier om dit getal hard te maken.
+
+Met contante waarde en de restwaarde in jaar 7 in plaats van omgeslagen:
+
+| Disconteringsvoet | Netto contante waarde |
+|---|---|
+| 4 % | € 396.414 |
+| 6 % | € 328.752 |
+| 8 % | € 268.846 |
+| **Interne rentevoet** | **21,6 %** |
+
 ### 6.8 Wat er níét in zit
 
-- **Restwaarde**, aan beide kanten op nul. De tweedehandsmarkt voor e-trucks is nog dun; dit is
-  het meest onzekere getal in het hele plaatje. Panteia hanteert overigens 23 % van de
-  nieuwprijs na zeven jaar voor beide, en omdat de e-truck duurder is valt die restwaarde in
-  absolute zin hoger uit — ten gunste van elektrisch.
+- **Restwaarde** zit er inmiddels wél in — zie §6.7c. Het blijft het meest onzekere getal in
+  het hele plaatje, maar de bandbreedte is met 3,0 tot 4,0 jaar beperkt.
 - **Accudegradatie en accuvervanging.** Bij 150.000 km per jaar tikken de laadcycli hard aan.
   Vraag de dealer naar de gegarandeerde restcapaciteit en over hoeveel jaar of kilometer.
 - **Financieringskosten.** Panteia rekent met 3,9 % rente over het gemiddeld geïnvesteerd
@@ -717,28 +777,43 @@ die de exploitatie structureel verbetert in plaats van de investering.
 
 ### 6c.1 Wat het oplevert
 
-De waarde ligt tussen **€ 0,07 en € 0,14 per geladen kWh**, met ongeveer **€ 0,10 in 2026**. De
-onderkant hoort bij het netgemiddelde aandeel hernieuwbaar, de bovenkant bij elektriciteit
-waarvan je aantoonbaar maakt dat zij hernieuwbaar is.
+**Op verzoek gerekend met netstroom, niet met eigen zon.** Dat is de voorzichtige aanname, en
+hij past bij de situatie: de ORC draait op restwarmte uit een gasgestookt proces en telt dus niet
+als hernieuwbaar, en zonnepanelen liggen er nog niet.
 
-Onze twee trucks laden **293.500 kWh per jaar**. Met een commissie van 15 % voor de
-inboekdienstverlener:
+Netstroom telt in 2026 automatisch mee voor het landelijk vastgestelde hernieuwbare aandeel van
+circa **50 %**, ongeacht je eigen contract. Daarvoor geldt **€ 0,07 tot € 0,10 per geladen kWh**.
+Kun je aantonen dat er met 100 % hernieuwbare stroom is geladen — bijvoorbeeld eigen zon
+rechtstreeks op de laadpaal via een brutoproductiemeter — dan **verdubbelt de opbrengst ruwweg**.
 
-| ERE per kWh | Netto per jaar | Besparing per jaar | Terugverdientijd |
-|---|---|---|---|
-| niet inboeken | € 0 | € 91.978 | 4,9 jaar |
-| netgemiddeld (± € 0,036) | € 8.981 | € 100.959 | 4,4 jaar |
-| onderkant € 0,07 | € 17.463 | € 109.441 | 4,1 jaar |
-| **midden € 0,10** | **€ 24.948** | **€ 116.926** | **3,8 jaar** |
-| bovenkant € 0,14 | € 34.927 | € 126.904 | 3,5 jaar |
+Ik reken hieronder met **€ 0,08 per kWh**.
 
-**Eén jaar korter dan zonder ERE.** Dat is meer dan het verschil tussen klein en middelgroot
-(§3) en meer dan het verschil tussen 4×2 en 6×2 (§6b.4c).
+Onze twee trucks laden **231.000 kWh per jaar** (100.000 km × 1,155 kWh/km × 2). Met een
+commissie van 15 % voor de inboekdienstverlener:
+
+| ERE per kWh | Netto per jaar | Terugverdientijd |
+|---|---|---|
+| niet inboeken | € 0 | 4,5 jaar |
+| netstroom, onderkant € 0,07 | € 13.745 | 4,0 jaar |
+| **netstroom, gerekend € 0,08** | **€ 15.708** | **3,9 jaar** |
+| netstroom, bovenkant € 0,10 | € 19.635 | 3,8 jaar |
+| eigen zon aangetoond, ± € 0,16 | € 31.416 | 3,5 jaar |
+
+Terugverdientijden hier zonder restwaarde; met restwaarde erbij zie §6.7c.
+
+**Een half tot een heel jaar korter dan zonder ERE.** Dat is vergelijkbaar met het verschil
+tussen klein en middelgroot (§3) en groter dan het verschil tussen 4×2 en 6×2 (§6b.4c).
 
 ### 6c.2 De zonnepanelen betalen nu twee keer
 
-Het verschil tussen netgemiddeld en aantoonbaar hernieuwbaar is bij ons **€ 25.945 per jaar** —
-bijna 9 cent per geladen kWh, over zeven jaar ruim € 180.000.
+Het verschil tussen netstroom en aantoonbaar hernieuwbaar is bij ons ongeveer **€ 15.700 per
+jaar** — de opbrengst verdubbelt van € 15.708 naar circa € 31.400. Over zeven jaar ruim
+€ 110.000.
+
+*(Eerder stond hier € 25.945, gerekend met een netmix van 26,4 % hernieuwbaar uit de
+Panteia-tool van 2024. De netmix is inmiddels circa 50 %, dus netstroom levert nu de helft van
+het groene tarief op in plaats van een kwart. Het voordeel van eigen zon is daarmee kleiner dan
+ik eerst schreef, maar nog altijd fors.)*
 
 Dat verandert de afweging uit §6.7. De 500 kWp aan zonnepanelen leverde tot nu toe alleen
 goedkope stroom op. Nu leveren zij ook **de hogere ERE-vergoeding**, omdat zon aantoonbaar

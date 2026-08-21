@@ -526,6 +526,123 @@ Met contante waarde en de restwaarde in jaar 7 in plaats van omgeslagen:
 | 8 % | € 268.846 |
 | **Interne rentevoet** | **21,6 %** |
 
+### 6.7d De calculatietool van Volvo — en wat die verandert
+
+Nijwa leverde ook Volvo's eigen *Calculatietool diesel vs LNG vs electric*. Die bevat meer dan
+alleen de restwaarde en is op vier punten gezaghebbender dan wat ik tot nu toe gebruikte, want
+het zijn de cijfers van de partij die de trucks verkoopt én onderhoudt.
+
+**Wat Volvo aanhoudt** (60 maanden, 100.000 km per jaar):
+
+| | Diesel | Elektrisch |
+|---|---|---|
+| Investering | € 150.000 | € 298.000 |
+| Aanschafsubsidie | — | € 70.000 |
+| **Restwaarde** | **€ 25.000** | **€ 20.000** |
+| Onderhoud per maand | € 600 | **€ 645** |
+| Vrachtwagenheffing per km | € 0,201 | € 0,038 |
+| MAUT per km | € 0,348 | € 0 |
+| Verbruik per 100 km | 25 l | 112,5 kWh |
+
+Verder: stroom € 0,30/kWh, diesel € 1,77/l, rente 6 %, 70.000 tolkilometers in Nederland en
+10.000 in Duitsland, en **geen laadinfrastructuur**.
+
+Volvo's eigen uitkomst: € 0,9958 per km voor diesel tegen € 0,9409 elektrisch, oftewel
+**€ 27.425 voordeel over vijf jaar per truck**. Dat is aanzienlijk magerder dan mijn cijfers.
+
+#### Vier dingen die ik heb overgenomen
+
+**1. De restwaarde — en die draait het beeld om.** € 20.000 op € 298.000 is 6,7 % na vijf jaar;
+de diesel houdt € 25.000 op € 150.000, oftewel 16,7 %. **De e-truck is na vijf jaar dus mínder
+waard dan de diesel die je niet gekocht hebt.** Waar Panteia's algemene leeftijdstabel een
+voordeel van € 35.382 per truck opleverde, staat er nu een nadeel van € 5.000. Dat is een
+verschil van ruim € 40.000 per truck, en Volvo's cijfer is het geloofwaardige — zij zouden hem
+moeten terugkopen.
+
+**2. Onderhoud is bij elektrisch dúúrder, niet goedkoper.** Volvo rekent € 645 tegen € 600 per
+maand. Panteia hield precies de helft aan voor elektrisch. Dat scheelt € 5.122 per truck per
+jaar, en ook hier volg ik Volvo: een fabrikant die R&O-contracten verkoopt weet wat zijn eigen
+trucks kosten.
+
+**3. De vrachtwagenheffing geldt niet over alle kilometers.** Volvo rekent met 70.000 van de
+100.000 kilometer als tolplichtig. Ik rekende met alle. Dat verlaagt het heffingsvoordeel van
+€ 15.000 naar € 11.410 per truck per jaar.
+
+**4. De Duitse MAUT ontbrak bij mij.** Diesel betaalt € 0,348 per kilometer, zero-emissie niets.
+Op 10.000 Duitse kilometers is dat **€ 3.480 per truck per jaar** in het voordeel van elektrisch.
+Rijden jullie na de Bottrop-uitzondering vrijwel alles binnen Nederland, zet dit dan op nul.
+
+Ook de levensduur staat nu op **vijf jaar** in plaats van zeven, omdat Volvo's restwaarde van
+€ 20.000 bij die termijn hoort.
+
+#### Wat dat met de uitkomst doet
+
+| Per truck per jaar | Diesel | Elektrisch |
+|---|---|---|
+| Brandstof / stroom | € 44.737 | € 11.550 |
+| AdBlue | € 1.825 | — |
+| Vrachtwagenheffing (70.000 km) | € 14.070 | € 2.660 |
+| MAUT (10.000 km) | € 3.480 | € 0 |
+| Onderhoud en reparatie | € 7.200 | € 7.740 |
+| Banden | € 4.648 | € 4.648 |
+| Motorrijtuigenbelasting | € 1.028 | € 1.028 |
+| Extra chauffeurskosten | — | € 3.655 |
+| **Totaal** | **€ 76.988** | **€ 31.281** |
+
+| | |
+|---|---|
+| Besparing per truck | € 45.707 |
+| × 2 trucks | € 91.414 |
+| + ERE (231.000 kWh × € 0,08 × 85 %) | € 15.708 |
+| **Besparing per jaar** | **€ 107.122** |
+| Extra investering | € 439.543 |
+| **Terugverdientijd zonder restwaarde** | **4,1 jaar** |
+| Totale extra restwaarde | € 82.300 |
+| **Terugverdientijd met restwaarde** | **3,6 jaar** |
+
+De restwaarde van € 82.300 bestaat uit **− € 10.000 op de voertuigen** en **+ € 92.300 op de
+laadinfrastructuur** (20 % van bruto — alleen de hardware, niet het aanlegwerk).
+
+| Contante waarde over 5 jaar bij 6 % | € 73.193 |
+|---|---|
+| **Interne rentevoet** | **11,4 %** |
+
+Bij zeven jaar in plaats van vijf loopt de contante waarde op naar circa € 185.000 — de laatste
+twee jaren zijn immers vrijwel pure winst.
+
+#### Waarom mijn uitkomst gunstiger is dan die van Volvo
+
+Volvo komt op € 27.425 voordeel per truck over vijf jaar, ik op ongeveer het dubbele. Drie
+posten verklaren vrijwel het hele verschil, en ze wijzen niet allemaal dezelfde kant op:
+
+| | Effect per truck over 5 jaar |
+|---|---|
+| Stroom voor € 0,10 in plaats van € 0,30 | **+ € 112.500** |
+| ERE, die bij Volvo helemaal ontbreekt | + € 39.270 |
+| Laadinfrastructuur, die bij Volvo helemaal ontbreekt | **− € 141.750** |
+
+Volvo vergelijkt alleen de voertuigen en rekent met een publieke stroomprijs. Wij investeren in
+eigen laadinfrastructuur, en dát is precies wat de kilowattuur van € 0,30 naar € 0,10 brengt.
+De twee horen bij elkaar: **de laadinfrastructuur is duur, maar zij is ook de reden dat de
+energiepost zo laag is.** Zonder die investering zou Volvo's magere € 27.425 het eerlijke
+antwoord zijn.
+
+Ik heb dit verschil niet tot op de euro gesloten; er zitten kleinere posten tussen (rente,
+EIA, de precieze subsidiebedragen, verbruikscijfers) die elkaar deels opheffen.
+
+#### Waar het nu nog aan hangt
+
+| Variabele | Bandbreedte | Terugverdientijd |
+|---|---|---|
+| Kilometers per truck | 60.000 – 180.000 | 4,9 – 2,3 jaar |
+| Stroomprijs | € 0,08 – € 0,30 | 3,4 – 5,7 jaar |
+| Restwaarde e-truck | € 0 – € 80.000 | 3,8 – 3,0 jaar |
+| Onderhoud elektrisch | € 4.600 – € 9.000 | 3,4 – 3,6 jaar |
+
+De kilometers en de stroomprijs blijven de twee die er werkelijk toe doen. De restwaarde beweegt
+het antwoord met minder dan een jaar, en onderhoud nauwelijks — dus de discussie Panteia versus
+Volvo op dat punt hoeft de beslissing niet op te houden.
+
 ### 6.8 Wat er níét in zit
 
 - **Restwaarde** zit er inmiddels wél in — zie §6.7c. Het blijft het meest onzekere getal in

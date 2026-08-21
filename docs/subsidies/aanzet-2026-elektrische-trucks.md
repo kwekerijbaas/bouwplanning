@@ -22,31 +22,26 @@ prijzen van Nijwa — € 300.000 voor de 4×2 — levert dat **€ 63.000 per t
 twee**. Zijn die 60 medewerkers minder dan 50 *arbeidsjaren*, dan telt de groep als klein en
 wordt het € 174.000: een verschil van € 48.000 dat de moeite van het uitzoeken waard is.
 
-**Of het uit kan:** ja. Gerekend met jullie eigen cijfers — **100.000 km per truck per jaar**,
-**1 op 3,8**, **€ 1,70 per liter** diesel en **€ 0,10 per kWh** stroom — bespaart elektrisch
-**€ 45.989 per truck per jaar**. Tegenover een extra investering van € 446.420 is dat
-**4,9 jaar** voor een 4×2 bij middelgroot.
+**Of het uit kan:** ja. Met alle invoer nu bevestigd — **100.000 km per truck per jaar**,
+**1 op 3,8**, **€ 1,70 per liter** diesel, **€ 0,10 per kWh** stroom, en de restwaarde- en
+onderhoudscijfers uit Volvo's eigen calculatietool — bespaart elektrisch **€ 107.122 per jaar**
+op twee trucks, inclusief € 15.708 ERE.
 
-Tel daar de **ERE** bij op — de vergoeding per geladen kWh die sinds 2026 het HBE-systeem
-vervangt — en de terugverdientijd zakt naar **3,8 jaar**. Dat is ruim € 25.000 per jaar en
-daarmee een grotere hefboom dan het verschil tussen klein en middelgroot. Zie §6c; er is één
-ding dat daarvoor nú geregeld moet worden, namelijk de MID-meter in de laadpalen.
+Tegenover een extra investering van € 439.543 is dat **4,1 jaar** terugverdientijd, of
+**3,6 jaar** als je de restwaarde meerekent. Netto contante waarde over vijf jaar bij 6 %:
+**€ 73.193**, met een interne rentevoet van **11,4 %**.
 
-Dat is langer dan de 3,5 jaar uit mijn eerste versie, en dat komt door jullie eigen opgaven.
-**1 op 3,8 is zuinig** — Panteia rekent voor een zware trekker met 1 op 2,93 — en 100.000 km is
-de helft van wat 2 × 300–400 km per dag zou suggereren. Een zuinige dieselauto die minder
-kilometers maakt, maakt de overstap nu eenmaal minder lonend. De goedkope stroom compenseert
-een deel daarvan.
+Dat is minder spectaculair dan mijn eerdere schattingen, en dat komt doordat elke aanname
+inmiddels vervangen is door een cijfer van jullie zelf of van Volvo — en die vielen stuk voor
+stuk conservatiever uit. Zie §6.7d.
 
-Twee dingen bepalen de uitkomst, en de subsidie is er geen van:
+De twee variabelen die er nog toe doen:
 
-- **De kilometers.** Bij 60.000 km per truck per jaar loopt de terugverdientijd op naar
-  8,9 jaar; bij 150.000 km zakt hij naar 3,3 jaar.
-- **De stroomprijs.** Die € 0,10 draagt het hele verhaal, en hij is nog niet vastgesteld. In
-  volume kunnen de ORC van 350 kW en de geplande 500 kWp zon de 293.500 kWh per jaar makkelijk
-  leveren, maar of de trucks die stroom voor tien cent kúnnen afnemen hangt af van waar de ORC
-  achter hangt en van de energiebelasting op de levering tussen de twee BV's. De bandbreedte
-  loopt van 5,1 tot 8,0 jaar. **Dit is nu het belangrijkste open punt** — zie §6.7.
+- **De kilometers.** Bij 60.000 km per truck loopt het op naar 4,9 jaar; gaan de trucks
+  structureel dubbele dagen rijden (180.000 km), dan zakt het naar 2,3 jaar.
+- **De stroomprijs.** Die € 0,10 draagt het verhaal. Op netstroom van € 0,2154 wordt het
+  4,5 jaar, en op een publiek tarief van € 0,30 zelfs 5,7 jaar. Zie §6.7 voor de drie
+  voorwaarden waaraan die tien cent nog moet voldoen.
 
 **Wat er deze maand moet gebeuren:** bestel de **MID-gecertificeerde meter** mee in de drie
 laadstations. Zonder die meter is er geen ERE, en achteraf inbouwen is duur tot onmogelijk. Zet
@@ -1210,9 +1205,10 @@ week met één chauffeur.** Draaien jullie deze rit nu al zo, dan gebeurt dat me
 chauffeurs of met twee trucks die elk één bestemming doen — en dat laatste is precies de
 onderkant van de tabel.
 
-Ik reken tot nader bericht met de **100.000 km per truck** die eerder is opgegeven; dat zit
-tussen beide uitkomsten in en geeft 3,8 jaar. Maar dit is het getal dat vastgesteld moet worden
-voordat er getekend wordt.
+**Dit punt is inmiddels beslecht: circa 100.000 km per truck per jaar.** Dat betekent dat de
+Bottrop-dag van 664 km en de dubbele Naaldwijk-dag uitzonderingen zijn, geen dagelijkse routine.
+De trucks halen die dagen wel — met een half uur tussenladen op eigen terrein — maar het gemiddelde
+ligt op één retourrit per dag.
 
 ### 6e.4b De werkelijke dagcombinaties
 
@@ -1256,10 +1252,14 @@ nodig.
 | 2 × Naaldwijk | 142.048 | € 170.494 | **2,6 jaar** |
 | *huidige aanname* | *100.000* | *€ 117.862* | *3,8 jaar* |
 
-**De werkelijke inzet is gunstiger dan waar ik mee rekende.** De aangehouden 100.000 km per truck
-zit onder alle dagcombinaties; kennelijk is niet elke dag een dubbele rit. Zolang dat niet uit de
-ritregistratie blijkt houd ik 100.000 km aan — dat is de voorzichtige kant — maar de
-werkelijkheid ligt waarschijnlijk tussen 2,6 en 3,8 jaar in plaats van op 3,8.
+**Bevestigd op 21 augustus 2026: circa 100.000 km per truck per jaar.** Daarmee is niet elke dag
+een dubbele rit — bij 230 draaidagen komt 100.000 km neer op 435 km per dag, dus gemiddeld één
+retourrit met af en toe een dubbele. Dat past bij de opgave dat de trucks *vaak* tweemaal
+Naaldwijk rijden, niet altijd.
+
+De tabel hierboven blijft nuttig als bovengrens: wordt de planning strakker en gaan de trucks
+structureel dubbel, dan zakt de terugverdientijd richting 2,6 jaar. Maar de basis is nu vast, en
+**dat was de grootste openstaande onzekerheid in het hele dossier.**
 
 ### 6e.4d Thuis laden is geen detail maar de kern van de businesscase
 

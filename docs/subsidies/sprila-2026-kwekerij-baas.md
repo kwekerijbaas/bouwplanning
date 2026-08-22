@@ -74,6 +74,80 @@ verplicht.
 € 10.000 — publiceert RVO naam, KVK-nummer, NACE-code, mkb-status, bedrag en datum. Deze
 subsidie wordt dus openbaar.
 
+### 0.3b Mag de accu ook interne elektrische voertuigen voeden?
+
+De beschikking zegt letterlijk:
+
+> "Van een stationaire batterij moet minimaal 70% van het aantal kWh, dat uit de stationaire
+> batterij wordt ontladen, aantoonbaar zijn geleverd aan **laadstations**. (…) De gebruiksdata
+> bestaan uit het aantal kWh dat is ontladen uit de batterij, en het aantal kWh dat **via de
+> laadstations aan voertuigen** is geleverd. (…) uit het Batterij Management Systeem (BMS) en uit
+> de administratie van de afgenomen **laadsessies**."
+
+**De toets gaat over de weg, niet over het voertuig.** Er staat niet dat de energie naar
+vrachtwagens moet, en ook niet dat het om de gesubsidieerde laadstations moet gaan. Er staat dat
+zij aan **laadstations** geleverd moet zijn, en dat je dat aantoont met **laadsessies**. Twee
+voorwaarden dus:
+
+1. het is een **laadstation** — een fysiek object met een of meer laadpunten, niet zomaar een
+   wandcontactdoos of een vast ingebouwde acculader;
+2. er is een **laadsessie-administratie** waaruit blijkt hoeveel kWh eruit is gegaan.
+
+Daaruit volgt een praktisch onderscheid dat niets met het soort voertuig te maken heeft:
+
+| | Telt mee in de 70 %? |
+|---|---|
+| Elektrische bestelbus of tractor aan een AC- of DC-laadstation met sessieregistratie | **waarschijnlijk ja** |
+| Elektrische heftruck aan een gewone industriële acculader, vast aangesloten, zonder sessielogging | **waarschijnlijk nee** — geen laadstation, geen laadsessie |
+| Elektrische heftruck aan een echt laadstation met sessieregistratie | **waarschijnlijk ja** |
+| Stroom uit de accu naar de kas, de koeling of het bedrijfsnet | **nee** — dat valt in de 30 % |
+
+Dat SPRILA ook werkmaterieel voor ogen heeft, blijkt uit het aanvraagformulier zelf: de
+exploitatievoorwaarden spreken over *"werk- en voertuigen"*, en de doelgroepkeuze voor
+vrachtauto's kent de toevoeging *"exclusief inzet in bouwsector"* — er is dus een aparte
+categorie voor bouwmaterieel.
+
+**Voorbehoud:** dit is mijn lezing van de beschikking en het formulier. De regelingstekst zelf
+en de begrippenlijst op rvo.nl heb ik niet kunnen inzien (403 vanuit deze omgeving). Zie
+hieronder.
+
+#### Hoeveel ruimte is er eigenlijk?
+
+De 70 %-eis begrenst niet wat je naar de laadstations stuurt, maar wat je naar **iets anders**
+mag sturen: hooguit 3/7 van wat er naar de laadstations gaat.
+
+Bij twee trucks die samen 231.000 kWh per jaar aan de paal afnemen:
+
+| Deel van het truckladen dat via de accu loopt | Naar laadstations | Mag naar overig |
+|---|---|---|
+| 100 % | 231.000 kWh | 99.000 kWh |
+| 75 % | 173.250 kWh | 74.250 kWh |
+| 50 % | 115.500 kWh | 49.500 kWh |
+
+**In de praktijk is niet de regel de beperking maar de accu zelf.** Met 836 kWh bruikbaar per
+cyclus en zo'n 350 cycli per jaar haal je circa 292.600 kWh doorzet; daarvan gaat 231.000 kWh
+naar de trucks en blijft er ongeveer **61.600 kWh per jaar** over. Dat is ruim binnen de 99.000
+die de regel toestaat.
+
+Ter oriëntatie: een elektrische heftruck met een pakket van circa 30 kWh die elke werkdag
+eenmaal laadt, gebruikt ongeveer 7.500 kWh per jaar. Met 60.000 kWh ruimte praat je dus over een
+stuk of acht heftrucks — en dat nog vóór de vraag of ze meetellen in de 70 % of eraf gaan.
+
+#### Wat ik zou doen
+
+**Hang interne elektrische voertuigen achter een echt laadstation met sessieregistratie.** Dan
+tellen ze mee in de teller in plaats van in de noemer, en vervalt de begrenzing voor die stroom
+helemaal. Het scheelt weinig: een AC-laadstation van 11 of 22 kW met OCPP kost een paar honderd
+euro meer dan een domme lader, en het EMS van Envitron logt de sessies toch al.
+
+**En vraag het schriftelijk na bij RVO.** Eén mail naar **sprila@rvo.nl** met de vraag of
+laadsessies van interne elektrische voertuigen via een laadstation met sessieregistratie
+meetellen als *"geleverd aan laadstations"*. Je moet wijzigingen toch melden, en de 70 %-eis is
+een terugvorderingsgrond over 24 maanden — een schriftelijk antwoord is gratis zekerheid.
+
+Neem in diezelfde mail meteen de twee andere punten mee: de correctie op *modulair systeem*
+(§0.4) en, als je daartoe besluit, een andere leverancier voor de accu.
+
 ### 0.4 Wat er in de aanvraag staat en wat dat betekent
 
 Twee dingen zijn nu vastgelegd en verdienen aandacht.

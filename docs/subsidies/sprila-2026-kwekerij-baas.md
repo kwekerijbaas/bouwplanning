@@ -209,12 +209,16 @@ het niet te doen, wel iets om te weten: **bij schaarste aan accucapaciteit gaan 
    van een automatisch geleid voertuig via een laadstation met sessieregistratie mee als
    *"geleverd aan laadstations"*?
 
-En één kans die je niet moet missen: staan de AGV's op een **andere locatie** dan
-Drietorensweg 38-1 — bijvoorbeeld bij de kwekerij aan de Enserweg — dan zou daarvoor in beginsel
-een **eigen SPRILA-aanvraag** mogelijk zijn. Voor Drietorensweg 38-1 kan dat dit kalenderjaar
-niet meer, want per laadlocatie is één aanvraag per jaar toegestaan. Of AGV-laadinfrastructuur
-op zichzelf subsidiabel is, is dezelfde openstaande vraag als hierboven — maar het is het
-navragen waard.
+**De AGV's rijden op dezelfde locatie**, Drietorensweg 38-1, waar ook de laadinfrastructuur en de
+batterij komen. Dat is gunstig: het gaat om één laadlocatie en één batterij, dus er is geen
+tweede aanvraag nodig en er speelt geen vraag over een andere vestiging. Het maakt het bovendien
+een samenhangend geheel — dezelfde installatie die twee soorten voertuigen op hetzelfde terrein
+laadt.
+
+Dat de AGV's bestaande **dieseltrekkers vervangen** is het sterkste argument richting RVO. Het
+gaat dan niet om "de accu ook ergens anders voor gebruiken", maar om het elektrificeren van een
+tweede deel van het wagenpark — precies waar de regeling voor bedoeld is. Die framing staat
+voorop in de mail aan sprila@rvo.nl.
 
 ### 0.4 Wat er in de aanvraag staat en wat dat betekent
 

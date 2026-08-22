@@ -148,6 +148,74 @@ een terugvorderingsgrond over 24 maanden — een schriftelijk antwoord is gratis
 Neem in diezelfde mail meteen de twee andere punten mee: de correctie op *modulair systeem*
 (§0.4) en, als je daartoe besluit, een andere leverancier voor de accu.
 
+### 0.3c Concreet: de AGV van Metazet
+
+De vraag gaat over de **Metazet AGV** — de M-Track of M-Flex, de inductief geleide respectievelijk
+volledig autonome trekker voor intern transport in de kas.
+
+**Taalkundig zit je goed.** De beschikking spreekt over *"kWh dat via de laadstations aan
+voertuigen is geleverd"*, en een AGV is letterlijk een **automatisch geleid voertuig**. Er staat
+niet "wegvoertuig" en ook niet "vrachtauto". Dat is een steun in de rug, geen garantie.
+
+**De echte horde is de laadkant.** Twee vragen aan Metazet bepalen het antwoord:
+
+1. **Laadt de AGV via een laadstation of via een vaste acculader?** Een dockingstation waar de
+   AGV op contacten oprijdt is verdedigbaar een laadstation; een ingebouwde lader op een vaste
+   voeding is dat niet.
+2. **Registreert dat systeem kWh per laadsessie, en zijn die gegevens te exporteren?** Dit is
+   het scharnierpunt. Zonder sessieregistratie kun je niets aantonen, en de beschikking eist
+   uitdrukkelijk *"de administratie van de afgenomen laadsessies"*.
+
+#### Het echte risico zit niet in de 70 %, maar in de meting
+
+Belangrijker dan of de AGV meetelt, is dat je de **splitsing überhaupt kunt aantonen**. Laden de
+AGV's en de trucks straks van dezelfde accu zonder dat het EMS onderscheid maakt tussen beide
+stromen, dan kun je de 70 %-verhouding niet bewijzen — en dan is de hele batterijsubsidie van
+€ 85.000 in gevaar, ongeacht hoe de verhouding werkelijk ligt.
+
+**Leg dit dus vast in de opdracht aan Draccu:** het Envi.Base-EMS moet de ontlading per
+bestemming apart loggen — laadstations trucks, laadstations overig, bedrijfsnet. Dat is een
+softwarematige instelling, geen extra hardware, maar hij moet er wel in zitten vóór
+inbedrijfstelling.
+
+#### Past het qua volume?
+
+Naast de trucks blijft er in de accu ongeveer **61.600 kWh per jaar** over, en de regel staat tot
+99.000 kWh aan overige ontlading toe. Wat de AGV's daarvan gebruiken weet ik niet — dat verbruik
+moet bij Metazet worden opgevraagd. Ter oriëntatie, met een geschat verbruik:
+
+| | Per jaar | Van de accuruimte | Van wat de regel toestaat |
+|---|---|---|---|
+| 2 AGV's à 20 kWh/dag | 12.000 kWh | 19 % | 12 % |
+| 4 AGV's à 20 kWh/dag | 24.000 kWh | 39 % | 24 % |
+| 4 AGV's à 40 kWh/dag | 48.000 kWh | 78 % | 48 % |
+
+Zelfs in het zwaarste scenario blijf je binnen de 30 %-grens. **Het volume is dus niet het
+probleem** — ook niet als de AGV's níét meetellen als laadstation.
+
+#### Eén ding dat wél verschilt: de ERE
+
+Een kilowattuur naar een truck levert € 0,08 aan ERE op, want dat is elektriciteit voor
+wegvervoer. Een kilowattuur naar een AGV in de kas levert **niets** — intern transport is geen
+wegvervoer. Bij 24.000 kWh scheelt dat ongeveer € 1.900 per jaar aan gemiste ERE. Geen reden om
+het niet te doen, wel iets om te weten: **bij schaarste aan accucapaciteit gaan de trucks voor.**
+
+#### Wat te doen
+
+1. **Bij Metazet opvragen:** het verbruik per AGV per dag, het aantal AGV's, en of het
+   laadsysteem kWh per sessie registreert en exporteert.
+2. **Bij Draccu vastleggen:** het EMS moet de ontlading per bestemming apart loggen.
+3. **Bij RVO navragen** (sprila@rvo.nl), in dezelfde mail als de andere punten: telt het laden
+   van een automatisch geleid voertuig via een laadstation met sessieregistratie mee als
+   *"geleverd aan laadstations"*?
+
+En één kans die je niet moet missen: staan de AGV's op een **andere locatie** dan
+Drietorensweg 38-1 — bijvoorbeeld bij de kwekerij aan de Enserweg — dan zou daarvoor in beginsel
+een **eigen SPRILA-aanvraag** mogelijk zijn. Voor Drietorensweg 38-1 kan dat dit kalenderjaar
+niet meer, want per laadlocatie is één aanvraag per jaar toegestaan. Of AGV-laadinfrastructuur
+op zichzelf subsidiabel is, is dezelfde openstaande vraag als hierboven — maar het is het
+navragen waard.
+
 ### 0.4 Wat er in de aanvraag staat en wat dat betekent
 
 Twee dingen zijn nu vastgelegd en verdienen aandacht.

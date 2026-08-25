@@ -1293,6 +1293,153 @@ SPRILA-aanvraag en de Liander-factuur op **Drietorensweg 38-1, 8307 PH** staan. 
 simulatie maakt dat niets uit, maar geef het even door aan Nijwa zodat de offerte straks op het
 juiste adres staat.
 
+## 6f. Eén truck, financial lease, en wat Faber verandert
+
+Stand van zaken per 25 augustus 2026: Kwekerij Baas overweegt met **één** elektrische truck te
+beginnen, kiest voor de **6×2** omdat die later tot LZV is uit te breiden, heeft **twee trucks in
+lease bij Volvo** waarvan er **één kosteloos ingeruild** mag worden, en huistransporteur **Faber**
+heeft aangegeven bij Kwekerij Baas te willen bijladen.
+
+### 6f.1 De 6×2 is de juiste keuze — en dat was al bewezen
+
+De routesimulaties uit §6e zijn gedraaid op precies deze uitvoering: **FH Electric 6×2T E-As met
+585 kWh**. De cijfers van 1,09 kWh/km, 308,8 km naar Naaldwijk en 354,9 km naar Bottrop gelden dus
+al voor de 6×2 en hoeven niet opnieuw. De meerprijs van € 20.000 ten opzichte van de 4×2 kost
+€ 4.200 aan extra AanZET-derving, netto dus € 15.800.
+
+Voor de LZV-ambitie is dat goed besteed: de Volvo-presentatie noemt **LZV bij 48 ton GCW op de
+zesaccu-variant**, dus de 585 kWh-uitvoering kan het aan. Twee dingen om vooraf te laten
+bevestigen door Nijwa:
+
+- **Wat doet LZV met het verbruik en het bereik?** De ERS is gedraaid op 12.500 kg lading en
+  40 ton. Bij 48 ton stijgt het verbruik en daalt het bereik; de rit naar Naaldwijk van 309 km
+  moet dan nog steeds passen.
+- **Een LZV vervoert ruwweg de helft meer per rit.** Dat is voor volumegebonden plantentransport
+  aantrekkelijk, maar het betekent ook mínder ritten — en dus minder kilometers, wat de
+  terugverdientijd per truck juist verlengt. Bedrijfsmatig gunstig, in dit model ongunstig.
+
+### 6f.2 Financial lease — de maandlasten
+
+Financial lease is toegestaan onder AanZET; alleen operational lease niet. Gerekend met 6 % over
+60 maanden en de restwaarden van Volvo als slottermijn:
+
+| | Hoofdsom | Slottermijn | Per maand |
+|---|---|---|---|
+| E-truck 6×2, volledig gefinancierd | € 320.000 | € 20.000 | **€ 5.900** |
+| E-truck 6×2, na AanZET als aanbetaling | € 252.800 | € 20.000 | **€ 4.601** |
+| Vergelijkbare dieseltrekker | € 150.000 | € 25.000 | € 2.542 |
+
+| Meerlast ten opzichte van diesel | Per maand |
+|---|---|
+| Zonder de subsidie in de financiering | € 3.358 |
+| Met AanZET als aanbetaling | € 2.059 |
+
+Daar staat de exploitatiebesparing tegenover: **€ 53.561 per jaar voor één truck, oftewel € 4.463
+per maand** (inclusief ERE, exclusief Faber).
+
+| Netto maandresultaat van de omruil | Per maand | Per jaar |
+|---|---|---|
+| Zonder de subsidie in de financiering | **+ € 1.105** | + € 13.262 |
+| Met AanZET als aanbetaling | **+ € 2.404** | + € 28.852 |
+
+**De omruil is vanaf de eerste maand kasstroompositief**, ook als je de AanZET nog niet hebt
+ontvangen. Dat is het antwoord op het bezwaar van de hoge aanschafkosten: bij financial lease is
+er geen aanschafmoment, alleen een maandlast — en die is lager dan wat elektrisch rijden bespaart.
+
+De AanZET komt pas binnen na levering en registratie. Praktisch betekent dat: financier eerst de
+volle € 320.000 en los af zodra de subsidie is uitbetaald. De eerste maanden kosten dan € 1.105
+netto minder dan nu, daarna € 2.404.
+
+### 6f.3 De kosteloze inruil
+
+Dat Volvo één van de twee leasetrucks kosteloos wil inruilen is de reden dat één truck nu logisch
+is: je hebt een contract dat zonder afkoopsom open kan. Over de tweede is nog niet gesproken.
+
+**Twee dingen om nu vast te leggen bij Nijwa**, want ze bepalen straks je onderhandelingspositie:
+
+1. **Tot wanneer geldt die kosteloze inruil?** Als hij aan een leaseafloop hangt en de e-truck
+   heeft een levertijd van maanden, moet je weten of het venster niet dichtvalt.
+2. **Wat gebeurt er met de tweede?** Ook al wil je het bij één houden — vraag nu wat de condities
+   zouden zijn. Na de AanZET-ronde van 29 september sta je zwakker: dan is de subsidie voor die
+   tweede truck weg en weet Volvo dat ook.
+
+### 6f.4 Faber — dit is de belangrijkste ontwikkeling
+
+Huistransporteur Faber wil bijladen zodra de mogelijkheid er is. **Dat mag onder deze subsidie,
+en dat staat in de aanvraag zelf.** Het formulier omschrijft de doelgroep als:
+
+> "private laadinfrastructuur voor eigen voertuigen of voertuigen van uw werknemers, leveranciers,
+> **vervoerders**, bezoekers of huurders"
+
+en vraagt vervolgens apart: *"Gaat u de laadinfrastructuur voor derden toegankelijk maken **naast**
+uw werknemers, leveranciers, vervoerders, bezoekers of huurders?"* — daarop is **Nee** geantwoord.
+
+Faber is jullie vervoerder en valt dus binnen de toegestane kring. Er hoeft niets gewijzigd te
+worden. Wél gelden twee voorwaarden uit het formulier:
+
+- **Marktconforme tarieven**, zonder verschillen in tarief, authenticatie- of betaalmethode ten
+  opzichte van andere voertuigen buiten de eigen organisatie;
+- de laadinfrastructuur blijft **niet publiek toegankelijk** en komt niet als zodanig in het
+  register — hooguit als "beperkt toegankelijk".
+
+**Wat het oplevert.** Bij inkoop rond € 0,10 tot € 0,16 en een marktconform tarief van circa
+€ 0,40 blijft er € 0,24 tot € 0,30 marge per kWh. Daar bovenop komt de ERE, want dit is
+wegvervoer:
+
+| Faber per jaar | Marge bij € 0,27 | ERE | **Totaal** |
+|---|---|---|---|
+| 50.000 kWh | € 13.500 | € 3.400 | **€ 16.900** |
+| 100.000 kWh | € 27.000 | € 6.800 | **€ 33.800** |
+| 150.000 kWh | € 40.500 | € 10.200 | **€ 50.700** |
+
+**En het redt de 70 %-eis.** Faber laadt aan de laadstations, dus die kilowatturen staan in de
+teller. Dat is precies wat er bij één truck ontbrak:
+
+| Faber | Naar laadstations | AGV 1×/dag | AGV 2×/dag | AGV 3×/dag |
+|---|---|---|---|---|
+| geen | 115.500 | 78,5 % ✓ | **64,6 % ✗** | **54,9 % ✗** |
+| 50.000 kWh | 165.500 | 83,9 % ✓ | 72,3 % ✓ | 63,5 % ✗ |
+| 100.000 kWh | 215.500 | 87,2 % ✓ | 77,3 % ✓ | 69,4 % ✗ |
+| 150.000 kWh | 265.500 | 89,3 % ✓ | 80,7 % ✓ | 73,6 % ✓ |
+
+*Berekend voor het geval dat de AGV's níét meetellen — de voorzichtige kant.*
+
+**En het rechtvaardigt de drie laadstations.** Met één truck zijn drie palen overbodig en zou
+afschalen moeten, met terugbetaling van een deel van het voorschot. Laadt Faber mee, dan worden
+ze gebruikt en blijft de volledige **€ 178.000** staan.
+
+### 6f.5 De uitkomst met één truck
+
+| | Zonder Faber | Faber 50.000 | Faber 100.000 | Faber 150.000 |
+|---|---|---|---|---|
+| Besparing per jaar | € 53.561 | € 87.921 | € 104.821 | € 121.721 |
+| Terugverdientijd | 5,3 jaar | **4,3 jaar** | **3,6 jaar** | **3,1 jaar** |
+| NCW bij 6 % over 5 jaar | **− € 84.838** | + € 59.899 | + € 131.088 | + € 202.277 |
+
+Extra investering € 375.691 (één 6×2 van € 320.000, AanZET € 67.200, laadinfrastructuur
+ongewijzigd).
+
+**Zonder Faber is één truck op deze infrastructuur verliesgevend** — min € 84.838 contant over
+vijf jaar. Met Faber vanaf ongeveer 50.000 kWh per jaar draait het om, en bij 100.000 kWh is het
+beter dan het oorspronkelijke tweetruckplan.
+
+**Faber is daarmee geen meevaller maar een voorwaarde.** Ik zou die toezegging vastleggen voordat
+de opdracht aan Draccu uitgaat: een intentieverklaring met een indicatie van het jaarvolume, het
+tarief en de looptijd. Zonder Faber is de juiste conclusie dat je óf twee trucks neemt, óf de
+laadinfrastructuur afschaalt.
+
+### 6f.6 Wat er nu moet gebeuren
+
+1. **Faber**: intentieverklaring met jaarvolume, tarief en looptijd. Dit bepaalt of het plan met
+   één truck rondkomt.
+2. **Nijwa**: tot wanneer geldt de kosteloze inruil, en wat zijn de condities voor de tweede
+   truck?
+3. **Nijwa**: wat doet LZV-inzet met verbruik en bereik op de rit naar Naaldwijk?
+4. **Financiering**: offerte voor financial lease over 60 maanden met slottermijn € 20.000, en de
+   mogelijkheid om vervroegd af te lossen zodra de AanZET binnen is.
+5. **29 september**: AanZET aanvragen voor één truck. Houd er rekening mee dat een tweede een
+   volgende ronde vereist die niet gegarandeerd is.
+
 ## 7. Wat ik nog nodig heb
 
 Zonder deze gegevens blijven de bedragen hierboven indicatief.

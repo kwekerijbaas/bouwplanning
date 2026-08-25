@@ -210,15 +210,26 @@ een M-Track is een inductietrekker van 2,6 kW, geen heftruck.
 Kwekerij Baas groeit in anderhalf tot twee jaar toe naar **circa 30 M-Tracks**. Daarmee kantelt
 de conclusie hierboven.
 
+**En in drukke perioden rijden zij dag en nacht door**, zodat er ook 's nachts geladen wordt —
+precies wanneer de vrachtwagens aan de paal staan.
+
 | 30 M-Tracks | kWh per jaar | Van de toegestane 99.000 kWh | Van wat de accu overhoudt |
 |---|---|---|---|
-| 1 laadcyclus per dag | 31.680 | 32 % | 51 % |
-| 1,5 cycli per dag | 47.520 | 48 % | 77 % |
-| **2 cycli per dag** | **63.360** | **64 %** | **103 %** |
-| 3 cycli per dag | 95.040 | 96 % | 154 % |
+| 1 cyclus per dag, 300 dagen — rustig | 31.680 | 32 % | 51 % |
+| 2 cycli per dag, 300 dagen | 63.360 | 64 % | 103 % |
+| **3 cycli per dag, 300 dagen — dag en nacht** | **95.040** | **96 %** | **154 %** |
+| 3 cycli per dag, 365 dagen — continu | 115.632 | **117 % — onmogelijk** | 188 % |
 
-Bij twee laadbeurten per dag verbruiken dertig M-Tracks meer dan er naast het truckladen in de
-accu overblijft, en bij drie zitten ze tegen de wettelijke grens aan.
+Bij twee laadbeurten per dag verbruiken dertig M-Tracks al meer dan er naast het truckladen in
+de accu overblijft. Bij dag-en-nachtinzet zitten zij tegen de wettelijke grens aan, en bij
+continue inzet het hele jaar door zouden zij die grens **overschrijden** — dan is de 70 % zelfs
+in theorie niet meer haalbaar, hoe je het ook regelt.
+
+**De nachtinzet maakt het bovendien scherper.** Overdag zouden de M-Tracks van de zon of de ORC
+kunnen laden zonder de accu aan te spreken. 's Nachts is dat niet zo: dan is de accu juist de
+bron, en concurreren de M-Tracks rechtstreeks met de vrachtwagens om dezelfde ontlading.
+Gerekend met 350 cycli levert de accu circa 292.600 kWh per jaar; trucks en M-Tracks samen
+vragen bij drie cycli 326.000 kWh. Er past dus niet eens alles in.
 
 Omgekeerd geformuleerd — hoeveel er dan verplicht naar de laadstations moet om de 70 % te halen:
 
@@ -239,9 +250,9 @@ niet: een groot deel gaat rechtstreeks van de ORC of het net naar de laadpaal. *
 dan raken zij de verhouding niet — hoeveel het er ook worden.
 
 Dat kost niets aan goedkope stroom: de ORC levert dezelfde € 0,10 per kWh, of die nu via de accu
-loopt of niet. De accu is er om in de tijd te schuiven, en de M-Tracks laden juist overdag en
-tussendoor, precies wanneer de zon schijnt en de ORC draait. **Zij hebben de accu helemaal niet
-nodig.**
+loopt of niet. De ORC draait bovendien in het stookseizoen ook 's nachts, dus ook bij
+dag-en-nachtinzet is er een goedkope bron zonder tussenkomst van de accu. **De M-Tracks hebben de
+accu niet nodig — zij hebben goedkope stroom nodig, en die komt er ook zonder.**
 
 Praktisch betekent dit dat de M-Tracks op een **andere verdeelinrichting** moeten hangen dan de
 laadstations, of dat het EMS de ontlading van de accu uitsluitend naar de laadpalen mag sturen.

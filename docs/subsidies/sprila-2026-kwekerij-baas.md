@@ -166,6 +166,45 @@ niet "wegvoertuig" en ook niet "vrachtauto". Dat is een steun in de rug, geen ga
    het scharnierpunt. Zonder sessieregistratie kun je niets aantonen, en de beschikking eist
    uitdrukkelijk *"de administratie van de afgenomen laadsessies"*.
 
+#### De offerte van Metazet geeft de antwoorden — en ze maken de vraag kleiner
+
+Uit de M-Track-offerte van 20 juni 2024:
+
+| | |
+|---|---|
+| Aandrijving | 2 × 1.300 W achterwielaandrijving, begrensd op 3 km/h |
+| **Tractiebatterij** | **48 V / 110 Ah = 5,28 kWh** |
+| Lader | *"de M-track is voorzien van een accu lader en accu indicator"* |
+| Afmetingen | 1565 × 830 × 1270 mm |
+| Prijs | € 17.425 per M-Track |
+| Garantie op de accu's | **6 maanden** |
+| Systeem Tuin 1 | € 146.598 excl. M-Tracks, 2.550 m inductiedraad |
+| Systeem Tuin 1 + 2 | € 213.741 excl. M-Tracks, 4.550 m inductiedraad |
+
+**Twee dingen vallen op.**
+
+**De lader zit aan boord.** De M-Track laadt niet aan een laadstation maar via een eigen lader,
+dus via een gewone voeding. Daarmee is het antwoord op de vraag aan RVO vermoedelijk **nee**: er
+is geen laadstation en geen laadsessie, dus deze kilowatturen tellen niet mee in de 70 %.
+
+**Maar het gaat om een verwaarloosbare hoeveelheid energie.** Een accu van 5,28 kWh levert bij
+loodzuur zo'n 3,5 kWh uit het stopcontact per laadcyclus. Bij 300 draaidagen:
+
+| Aantal M-Tracks | 1 cyclus/dag | 2 cycli/dag | 3 cycli/dag |
+|---|---|---|---|
+| 4 | 4.224 kWh | 8.448 kWh | 12.672 kWh |
+| 6 | 6.336 kWh | 12.672 kWh | 19.008 kWh |
+| 10 | 10.560 kWh | 21.120 kWh | 31.680 kWh |
+
+Tegenover de **231.000 kWh** die de twee vrachtwagens afnemen en de **99.000 kWh** die de regel
+aan overige ontlading toestaat, is dat niets. Vier M-Tracks met twee laadbeurten per dag zijn
+**3,7 %** van het truckverbruik en gebruiken **9 %** van de toegestane ruimte. Zelfs tien
+M-Tracks met drie cycli per dag blijven op een derde van die ruimte steken.
+
+**Conclusie: de 70 %-eis is hier geen belemmering, ook niet als de M-Tracks er niet in meetellen.**
+Mijn eerdere schatting van 20 tot 40 kWh per AGV per dag was een factor vijf tot tien te hoog —
+een M-Track is een inductietrekker van 2,6 kW, geen heftruck.
+
 #### Het echte risico zit niet in de 70 %, maar in de meting
 
 Belangrijker dan of de AGV meetelt, is dat je de **splitsing überhaupt kunt aantonen**. Laden de
@@ -210,7 +249,8 @@ het niet te doen, wel iets om te weten: **bij schaarste aan accucapaciteit gaan 
    *"geleverd aan laadstations"*?
 
 **De AGV's rijden op dezelfde locatie**, Drietorensweg 38-1, waar ook de laadinfrastructuur en de
-batterij komen. Dat is gunstig: het gaat om één laadlocatie en één batterij, dus er is geen
+batterij komen. *Let op: de offerte van Metazet is geadresseerd aan Enserweg 5 en spreekt over
+Tuin 1 en Tuin 2 — laat bevestigen dat de routetekening op de juiste kas is gebaseerd.* Dat is gunstig: het gaat om één laadlocatie en één batterij, dus er is geen
 tweede aanvraag nodig en er speelt geen vraag over een andere vestiging. Het maakt het bovendien
 een samenhangend geheel — dezelfde installatie die twee soorten voertuigen op hetzelfde terrein
 laadt.

@@ -205,6 +205,72 @@ M-Tracks met drie cycli per dag blijven op een derde van die ruimte steken.
 Mijn eerdere schatting van 20 tot 40 kWh per AGV per dag was een factor vijf tot tien te hoog —
 een M-Track is een inductietrekker van 2,6 kW, geen heftruck.
 
+#### Maar het worden er dertig — en dan is het geen bijzaak meer
+
+Kwekerij Baas groeit in anderhalf tot twee jaar toe naar **circa 30 M-Tracks**. Daarmee kantelt
+de conclusie hierboven.
+
+| 30 M-Tracks | kWh per jaar | Van de toegestane 99.000 kWh | Van wat de accu overhoudt |
+|---|---|---|---|
+| 1 laadcyclus per dag | 31.680 | 32 % | 51 % |
+| 1,5 cycli per dag | 47.520 | 48 % | 77 % |
+| **2 cycli per dag** | **63.360** | **64 %** | **103 %** |
+| 3 cycli per dag | 95.040 | 96 % | 154 % |
+
+Bij twee laadbeurten per dag verbruiken dertig M-Tracks meer dan er naast het truckladen in de
+accu overblijft, en bij drie zitten ze tegen de wettelijke grens aan.
+
+Omgekeerd geformuleerd — hoeveel er dan verplicht naar de laadstations moet om de 70 % te halen:
+
+| Verbruik M-Tracks | Minimaal naar laadstations | Aandeel van al het truckladen dat via de accu moet |
+|---|---|---|
+| 31.680 kWh | 73.920 kWh | 32 % |
+| 63.360 kWh | 147.840 kWh | 64 % |
+| 95.040 kWh | 221.760 kWh | **96 % — niet haalbaar** |
+
+Bij drie cycli per dag zou vrijwel al het truckladen door de accu moeten lopen, en dat gebeurt
+niet: een groot deel gaat rechtstreeks van de ORC of het net naar de laadpaal. **Dan haal je de
+70 % niet, en is de € 85.000 batterijsubsidie een terugvorderingsgrond.**
+
+#### De oplossing is eenvoudig, maar hij moet nú in het ontwerp
+
+**Voed de M-Tracks niet uit de stationaire batterij.** De 70 %-eis gaat uitsluitend over wat er
+*uit de batterij* wordt ontladen. Laden de M-Tracks rechtstreeks van de ORC, de zon of het net,
+dan raken zij de verhouding niet — hoeveel het er ook worden.
+
+Dat kost niets aan goedkope stroom: de ORC levert dezelfde € 0,10 per kWh, of die nu via de accu
+loopt of niet. De accu is er om in de tijd te schuiven, en de M-Tracks laden juist overdag en
+tussendoor, precies wanneer de zon schijnt en de ORC draait. **Zij hebben de accu helemaal niet
+nodig.**
+
+Praktisch betekent dit dat de M-Tracks op een **andere verdeelinrichting** moeten hangen dan de
+laadstations, of dat het EMS de ontlading van de accu uitsluitend naar de laadpalen mag sturen.
+Dat is een ontwerpkeuze in de installatie, geen instelling die je er later bij zet:
+
+> **Leg dit vast in de opdracht aan Draccu:** de stationaire batterij ontlaadt uitsluitend naar
+> de drie DC-laadstations. Het laadcircuit van de M-Tracks komt op een afzonderlijke groep, met
+> een eigen kWh-meter, en wordt niet door de batterij gevoed.
+
+Met die scheiding is er geen enkel probleem, ongeacht of het er tien of dertig worden.
+
+#### En daarmee wordt de vraag aan RVO wél de moeite waard
+
+Als RVO bevestigt dat laden van een M-Track via een laadpunt met sessieregistratie meetelt als
+*"geleverd aan laadstations"*, dan hoef je die scheiding niet aan te brengen en mag de accu de
+M-Tracks gewoon voeden. Dat scheelt een verdeelinrichting en het geeft de accu meer werk.
+
+Zegt RVO nee, dan weet je dat je de scheiding moet maken — en dan is het maar goed dat je het
+vóór de aanleg hebt gevraagd in plaats van erna. **Vermeld in die vraag de groei naar dertig
+stuks**; met vier M-Tracks is het antwoord niet interessant, met dertig wel.
+
+#### De schaal van de investering
+
+Dertig M-Tracks is € 522.750 aan voertuigen, plus € 213.741 voor het inductiesysteem over Tuin 1
+en 2 — samen ruim **€ 736.000**. Dat is groter dan de hele laadinfrastructuur voor de
+vrachtwagens. De accu's aan boord van de M-Tracks tellen samen 158 kWh, en met zes maanden
+garantie op een onderdeel dat dagelijks cyclet is de vervangingskost daarvan een reële
+exploitatiepost. Zie de vragenlijst voor Metazet.
+
 #### Het echte risico zit niet in de 70 %, maar in de meting
 
 Belangrijker dan of de AGV meetelt, is dat je de **splitsing überhaupt kunt aantonen**. Laden de

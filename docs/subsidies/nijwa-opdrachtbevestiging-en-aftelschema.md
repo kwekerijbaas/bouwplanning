@@ -191,4 +191,52 @@ maandbedrag. **Met Faber vanaf 50.000 kWh is het duidelijk positief.**
 
 Reken dus met **€ 2.481 als je alleen de truckvervanging bekijkt** — dat klopt en dat is de
 beslissing die nu voorligt. Reken met de onderste tabel als je wilt weten of het hele project
-uit kan; en daarin is Faber de doorslaggevende regel.
+uit kan.
+
+### Hoeveel doorlevering is er nodig om break-even te draaien?
+
+**Besluit 7 september 2026: er wordt gestart zonder intentieverklaring van Faber.** Dat is een
+verdedigbare keuze, en dit is waarom.
+
+Het project staat zonder doorlevering op € 104 per maand negatief, oftewel € 1.248 per jaar. Elke
+doorgeleverde kilowattuur levert netto **€ 0,338** op: € 0,27 marge plus € 0,068 ERE na commissie.
+
+> **Break-even: 3.692 kWh doorlevering per jaar.**
+>
+> Dat is **negen laadbeurten van 400 kWh** — ongeveer eens per veertig dagen een vreemde truck
+> aan de paal. Het is 3,2 % van wat onze eigen truck jaarlijks afneemt.
+
+Alles daarboven is winst:
+
+| Doorlevering | kWh per jaar | Opbrengst | Netto per maand |
+|---|---|---|---|
+| 1 laadbeurt per week | 20.800 | € 7.030 | + € 482 |
+| 2 per week | 41.600 | € 14.061 | + € 1.068 |
+| 3 per week | 62.400 | € 21.091 | + € 1.654 |
+| 5 per week | 104.000 | € 35.152 | + € 2.825 |
+| 10 per week | 208.000 | € 70.304 | + € 5.755 |
+
+**Het risico is dus veel kleiner dan het cijfer van − € 81.295 contant suggereert.** Dat bedrag
+hoort bij nul doorlevering, en nul is bij drie laadstations van 240 kW op een aansluiting van
+1.850 kW een onwaarschijnlijk scenario — zeker met de vrachtwagenheffing die zero-emissie sinds
+1 juli beloont en met AanZET dat elk jaar honderden e-trucks de markt op duwt.
+
+### Wat er dan wél geregeld moet worden
+
+Vertrouwen in de vraag is één ding; er geld voor kunnen vragen is een ander. Drie dingen moeten
+in de opdracht aan Draccu, anders kun je straks niets factureren:
+
+1. **Backoffice die derden aankan.** De WHES-stations spreken OCPP 1.6 JSON. Zorg dat het
+   achterliggende systeem laadsessies van vreemde voertuigen kan registreren, autoriseren en
+   factureren — met laadpas, app of QR. Zonder dat kan er wel geladen worden, maar niet betaald.
+2. **De MID-meter in elk station.** Stond al op de lijst voor de ERE, en is hier dubbel nodig:
+   zonder geijkte meting kun je een derde geen kWh in rekening brengen.
+3. **Marktconforme tarieven, gelijk voor iedereen.** Dat is een voorwaarde uit de
+   SPRILA-beschikking: geen verschil in tarief, authenticatie of betaalmethode tussen voertuigen
+   van buiten de eigen organisatie. Stel het tarief dus één keer goed vast en hanteer het voor
+   iedereen.
+
+En één ding om te onthouden voor later: de verplichting om **niet publiek toegankelijk** te zijn
+loopt **24 maanden na de subsidievaststelling** af. Daarna staat het je vrij om de laadstations
+wél in het publieke register op te nemen, als de vraag daar dan om vraagt. De installatie gaat
+tien jaar mee; die 24 maanden zijn een beperkte periode aan het begin.

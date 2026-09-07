@@ -1,7 +1,10 @@
 # AanZET 2026 — subsidie op twee elektrische vrachtwagens
 
 **Aanvrager:** A. Baas Potplantenkwekerij B.V. (dezelfde BV als de SPRILA-aanvraag)
-**Aantal:** 2 stuks, categorie N3
+**Besluit 7 september 2026:** **één** FH Electric 6×2T Aero E-as van **€ 315.000**,
+opdrachtbevestiging Nijwa JN2026000088. Subsidie **€ 66.150**. Zie
+`nijwa-opdrachtbevestiging-en-aftelschema.md` voor de contractcontrole en het aftelschema.
+**Categorie:** N3 Trekker
 **Openstelling:** 29 september 2026 09:00 — 16 oktober 2026 12:00
 **Budget ronde 2:** € 119,2 miljoen
 **Subsidie (indicatief):** € 117.600 tot € 162.400 voor beide trucks samen

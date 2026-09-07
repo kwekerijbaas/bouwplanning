@@ -155,7 +155,40 @@ prijssplitsing en de eHerkenning bij de hand.
 | | 5,2 jaar | **4,2 jaar** | **3,6 jaar** |
 | Netto contante waarde bij 6 % | − € 81.295 | + € 63.442 | + € 134.630 |
 
-**Financial lease**, 6 % over 60 maanden met € 20.000 slottermijn: € 5.803 per maand, of € 4.524
-na de AanZET als aanbetaling. Tegenover een dieseltrekker op € 2.542 en een exploitatiebesparing
-van € 4.463 per maand is het resultaat **+ € 1.202 per maand**, oplopend naar **+ € 2.481** zodra
-de subsidie in de financiering zit.
+## De maandlasten
+
+Uit de opdrachtbevestiging volgt dat Nijwa de truck **pas bestelt na ontvangst van het
+subsidiebedrag**, dat als aanbetaling geldt. Tegen de tijd dat de lease loopt is de € 66.150 dus
+al betaald en financier je **€ 248.850** — vanaf dag één, niet pas later.
+
+**Truck tegenover truck**, financial lease 6 % over 60 maanden met € 20.000 slottermijn:
+
+| | Per maand |
+|---|---|
+| Lease e-truck op € 248.850 | € 4.524 |
+| Lease vergelijkbare dieseltrekker | € 2.542 |
+| Meerlast | € 1.983 |
+| Exploitatiebesparing | € 4.463 |
+| **Netto** | **+ € 2.481** |
+
+Oftewel **€ 29.768 per jaar** in het voordeel van elektrisch.
+
+**Maar de laadinfrastructuur zit daar niet in.** Die € 2.481 vergelijkt twee trucks met elkaar;
+de € 283.500 die na SPRILA overblijft voor accu en laadstations moet ook terugkomen. Over tien
+jaar — de afschrijftermijn die Panteia voor laadinfra hanteert — met € 92.300 restwaarde is dat
+**€ 2.584 per maand**.
+
+| | Truck | Laadinfra | Faber | **Totaal per maand** |
+|---|---|---|---|---|
+| Zonder Faber | + € 2.481 | − € 2.584 | € 0 | **− € 104** |
+| Faber 50.000 kWh | + € 2.481 | − € 2.584 | + € 1.408 | **+ € 1.305** |
+| Faber 100.000 kWh | + € 2.481 | − € 2.584 | + € 2.817 | **+ € 2.713** |
+| Faber 150.000 kWh | + € 2.481 | − € 2.584 | + € 4.225 | **+ € 4.121** |
+
+Zonder Faber komt het hele project met één truck dus vrijwel exact op nul uit: € 104 per maand
+negatief. Dat is dezelfde conclusie als de contante waarde van − € 81.295, nu alleen als
+maandbedrag. **Met Faber vanaf 50.000 kWh is het duidelijk positief.**
+
+Reken dus met **€ 2.481 als je alleen de truckvervanging bekijkt** — dat klopt en dat is de
+beslissing die nu voorligt. Reken met de onderste tabel als je wilt weten of het hele project
+uit kan; en daarin is Faber de doorslaggevende regel.

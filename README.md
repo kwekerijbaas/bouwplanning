@@ -19,3 +19,25 @@ geen data - alleen de pagina. Deploy: Webflow Cloud, site "bouwplanning", mount 
 1. Vervang `public/planning.html` en `public/index.html` door de nieuwste
    `Reparatieplanning - Jarno.html` (OneDrive: Hagelschade 2026/bouwplanning).
 2. Commit + push naar main -> Webflow Cloud deployt automatisch (ca. 2-3 min).
+
+## Werkbonnen (hagelschade-facturatie) - `public/werkbonnen.html`
+Eén bestand, zelfde opzet als de planning: alle data via de edge function `werkbonnen`
+(Supabase-project hlgvtxcwbhrbbcozvsen). Proces: teamleider vult dagbon in en dient in
+-> administratie beoordeelt -> weekoverzicht (opmaak KZ Kasherstel) -> factuur + export
+UBL 2.1 XML / CSV / JSON voor Exact Online.
+
+- URL na deploy: https://bouwplanning.webflow.io/app/werkbonnen.html
+  - Werkvloer direct ingelogd: `.../werkbonnen.html#bon2026/Naam`
+  - Administratie: `.../werkbonnen.html#admin2026/Naam`
+- Toegangscodes staan in de edge function (`supabase/functions/werkbonnen/index.ts`),
+  overschrijfbaar via secrets `WB_CODE_TEAM` en `WB_CODE_ADMIN`.
+- Tabellen: `supabase/migrations/20260911_werkbonnen_basis.sql` (wb_*), stamgegevens
+  (tarieven KZ, projecten 26691/26692) via Lijsten in de app aan te passen.
+- Lokaal testen zonder Supabase (mock-API met dezelfde regels):
+  ```
+  cd bouwplanning
+  node tools/werkbonnen-mock.js --seed
+  ```
+  daarna http://localhost:8787/werkbonnen.html?api=http%3A%2F%2Flocalhost%3A8787%2Fapi
+  (codes bon2026 / admin2026, `--seed` laadt week 35 Drietorensweg = factuur 2026265).
+- End-to-end test (Playwright): `node tools/werkbonnen-e2e.js` (vereist `npm i playwright`).

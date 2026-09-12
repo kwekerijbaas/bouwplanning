@@ -40,4 +40,12 @@ UBL 2.1 XML / CSV / JSON voor Exact Online.
   ```
   daarna http://localhost:8787/werkbonnen.html?api=http%3A%2F%2Flocalhost%3A8787%2Fapi
   (codes bon2026 / admin2026, `--seed` laadt week 35 Drietorensweg = factuur 2026265).
-- End-to-end test (Playwright): `node tools/werkbonnen-e2e.js` (vereist `npm i playwright`).
+- Tests (drie methodes, vanuit de repo-map):
+  ```
+  cd bouwplanning
+  node tools/werkbonnen-unit.js        # 1. rekenlogica, weekoverzicht, UBL/CSV/JSON (geen browser)
+  node tools/werkbonnen-api.js         # 2. API-regels en rechten via HTTP tegen de mock
+  node tools/werkbonnen-e2e.js         # 3. browser: werkvloer -> beoordeling -> factuur (vereist npm i playwright)
+  node tools/werkbonnen-e2e-extra.js   # 3. browser: mobiel, foto/handtekening, afkeuren, Lijsten, printweergave
+  ```
+  Bij een afwijkende Chromium: `CHROME=/pad/naar/chrome node tools/werkbonnen-e2e.js`.

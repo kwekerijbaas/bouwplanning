@@ -68,3 +68,55 @@ Overdracht naar een eigen omgeving van KZ (ca. 1 uur):
 4. Testdata uit de pilot wissen via Lijsten > Instellingen > Testdata wissen; de
    JSON-export dient als archief van de pilotperiode.
 Er zijn geen licenties of abonnementen nodig; de code is één HTML-bestand plus één function.
+
+### Dagbon: ploegen, namenwolk, voertuigen, projectbon
+De teamleider tikt de dag aan op zijn telefoon; de regels van de bon worden daaruit afgeleid.
+- **Ploegen (shifts)**: eerst het aantal man, dan start- en eindtijd (kwartieren), pauze automatisch
+  (½ uur vanaf 6 uur bruto, anders 0; handmatig te overschrijven), namen kiezen via "+ namen"
+  (namenwolk in een schuifpaneel met zoekveld, op alfabet, `wb_medewerker`, voorgevuld met de 77
+  namen van de urenbriefjes van week 29, 31 en 34; vier voornamen zonder achternaam staan als
+  "te controleren") of een nieuwe naam aanmaken, overnachting ja/nee + aantal man. Op de kaart
+  staan alleen de gekozen namen (tik = verwijderen), zodat de dagbon op de telefoon kort blijft. Meer namen aantikken dan het aantal man
+  verhoogt het aantal; minder namen = "zonder naam". Meerdere ploegen per dag als niet iedereen
+  dezelfde tijden heeft. -> arbeid per ploeg (dagtarief ma-vr / za / zo), overnachting samengeteld.
+  Ploegen bewaren medewerker-ids (`leden`), zodat een naamcorrectie overal doorwerkt.
+- **Nieuwe namen controleren**: een naam die op de werkvloer wordt aangemaakt krijgt
+  `gecontroleerd=false` (bron `werkvloer`, wie) en staat oranje met "?" in de wolk. Dagbon en
+  Lijsten › Medewerkers tonen "n nieuwe namen te controleren"; de projectleider (werkvloer of
+  kantoor) corrigeert de naam en bevestigt, of voegt hem samen met de juiste bestaande naam
+  (actie `medewerker_merge`: ploegen op alle bonnen en de namen op arbeidregels worden omgezet,
+  de foute naam vervalt).
+- **Voertuigen en materieel** (`wb_voertuig`, Lijsten › Voertuigen): auto's tellen voor de
+  km-vergoeding (km per auto, standaard de projectafstand); materieel hangt aan een dagtarief.
+  Per voertuig: "al op locatie" of "gebracht" (km), hele dag of dagdeel (¾, ½, ¼). Gebracht
+  materieel rekent daarnaast transport per km via het tarief "Transport materieel (gebracht)"
+  (standaard 1,50/km, aanname; aanpassen in Lijsten › Tarieven of per project).
+- **Extra regels** (transport, materiaal, alles wat niet uit ploegen/voertuigen komt) via de
+  bekende regel-editor; tarieven zijn te importeren uit het boekhoudpakket (Lijsten › Tarieven ›
+  CSV: `omschrijving;prijs;eenheid[;categorie]`).
+- **Onthouden**: een nieuwe bon wordt voorgevuld met de ploegen en voertuigen van de vorige bon
+  van hetzelfde project (bij voorkeur van dezelfde teamleider); "alles wissen" maakt hem leeg.
+- **Projectbon per dag** (knop 🖨️ Projectbon) in de KZ-opmaak: aantal personen / start / tot /
+  eind / namen per ploeg, aantal voertuigen, overige regels, handtekening opdrachtgever.
+- **Projectwizard** (Lijsten › Projecten › + Project, of vanaf de dagbon via "projectafspraken";
+  ook voor de werkvloer): projectnummer toegewezen (hoogste + 1), gegevens, daarna alle
+  tarieven als projectafspraken voorgevuld en aan te passen met − / + in stappen van 0,25
+  (`wb_projecttarief`; de bon gebruikt de projectprijs als die er is), afstand naar de locatie.
+- **Afrondingsregels** (app, mock en edge function): mensen, auto's, nachten en stuks hele
+  getallen (mensen naar boven); uren en km per 0,5; dagdeel per 0,25; prijzen per 0,25.
+- De aangetikte invoer staat als JSON in `wb_bon.invoer`; afgeleide regels hebben `bron`
+  `shift` / `voertuig`, handmatige regels `extra`.
+
+### Papieren bon fotograferen en uitlezen
+Op de dagbon staat "Papieren bon fotograferen en uitlezen": de foto gaat naar de edge function,
+die hem met Claude (vision, model `claude-opus-5`) uitleest tegen de tarievenlijst en de regels
+alvast klaarzet (gemarkeerd, met zekerheid). De teamleider controleert en dient in; de foto
+wordt als bijlage bewaard. Vereist de secret `ANTHROPIC_API_KEY` op de function (Supabase
+dashboard > Edge Functions > werkbonnen > Secrets); zonder key geeft de knop een duidelijke
+melding. Kosten: enkele centen per foto.
+
+### Huisstijl
+Lijsten > Bedrijven: bij de aannemer een logo uploaden (knop "logo…") en de hoofdkleur en
+tweede kleur zetten. De app (balk, tabs, knoppen, achtergrond), het weekoverzicht en de factuur
+volgen die kleuren en tonen het logo. Standaard voor KZ: groen #3aa35b en magenta #e6007e
+(naar kzkasherstel.nl).

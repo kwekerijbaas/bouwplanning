@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1d4e89">
+<meta name="theme-color" content="#3aa35b">
 <title>Werkbonnen</title>
 <style>
 :root{
-  --blauw:#1d4e89; --blauw-licht:#e8eef6; --bg:#f2f4f3; --kaart:#fff; --tekst:#1b2a24; --grijs:#6c757d; --lijn:#e3e7e5;
-  --rood:#c1442e; --oranje:#f2a541; --groen:#2d6a4f; --groen-licht:#52b788;
+  /* Standaard de huisstijl van KZ Kasherstel (groen + magenta, kzkasherstel.nl); Lijsten > Bedrijven kan dit per aannemer overschrijven. */
+  --blauw:#3aa35b; --blauw-licht:#e3f2e8; --bg:#f1f9f4; --kaart:#fff; --tekst:#1b2a24; --grijs:#6c757d; --lijn:#d9e8dd;
+  --rood:#c1442e; --oranje:#f2a541; --groen:#e6007e; --groen-licht:#52b788;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -19,7 +20,7 @@ input,select,textarea{font:inherit;color:inherit}
 #topbar h1{font-size:16px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #topbar .wie{font-size:12px;opacity:.9;cursor:pointer}
 #tabs{position:sticky;top:44px;z-index:29;display:flex;background:var(--kaart);border-bottom:1px solid var(--lijn);overflow-x:auto}
-#tabs button{flex:1;min-width:76px;padding:10px 4px;font-size:13px;color:var(--grijs);border-bottom:3px solid transparent;white-space:nowrap}
+#tabs button{flex:1 0 auto;min-width:76px;padding:10px 10px;font-size:13px;color:var(--grijs);border-bottom:3px solid transparent;white-space:nowrap}
 #tabs button.actief{color:var(--blauw);border-bottom-color:var(--blauw);font-weight:600}
 #tabs button .bol{display:inline-block;min-width:17px;padding:0 4px;border-radius:9px;background:var(--rood);color:#fff;font-size:11px;margin-left:3px}
 main{padding:12px;max-width:1100px;margin:0 auto;padding-bottom:60px}
@@ -48,7 +49,39 @@ textarea{min-height:60px;resize:vertical}
 .bonregel input,.bonregel select{padding:6px}
 .bonregel .lbl{font-size:10px;color:var(--grijs);display:block}
 .bonregel .x{color:var(--rood);font-size:18px;text-align:center}
+.bonregel.uitgelezen{background:#fff8e6;border-left:3px solid var(--oranje);padding-left:6px}
 @media(max-width:640px){.bonregel{grid-template-columns:1fr 1fr 1fr;} .bonregel .oms{grid-column:1/-1} .bonregel .bedrag{grid-column:1/3} .bonregel .x{grid-column:3}}
+.bonregel.vast{background:var(--blauw-licht);border-radius:6px;padding-left:6px}
+.bonregel .vastlbl{font-size:13px}
+.shift{border:1px solid var(--lijn);border-radius:10px;padding:10px;margin:10px 0;background:#fafcfb}
+.shiftkop{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.shiftkop b{flex:1}
+.shiftkop .x,.vrt .x{color:var(--rood);font-size:18px;padding:0 6px}
+.tijden label{min-width:90px;flex:0 1 120px}
+.tijden .uren{font-size:16px;padding:8px 0}
+.wolk{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 8px}
+.wolk .naam{border:1px solid var(--lijn);border-radius:16px;padding:6px 12px;font-size:13px;background:#fff;color:var(--tekst);min-height:34px}
+.wolk .naam.aan{background:var(--blauw);color:#fff;border-color:var(--blauw);font-weight:600}
+.wolk .naam.nieuw{border-style:dashed;color:var(--blauw)}
+#nk-wolk{max-height:48vh;overflow:auto}
+.wolk .naam.check{border-color:var(--oranje);background:#fff8e6}
+.wolk .naam.check.aan{background:var(--oranje);border-color:var(--oranje)}
+.controle{border:1px solid var(--lijn);border-radius:10px;padding:10px;margin-top:10px;background:#fafcfb}
+.wolk .naam:disabled{opacity:.6;cursor:default}
+.schakel{display:flex;align-items:center;gap:6px;padding:6px 0;color:var(--tekst)}
+.schakel input[type=checkbox]{width:20px;height:20px}
+.vrt{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px;border:1px solid var(--lijn);border-radius:10px;margin-top:8px;background:#fafcfb}
+.vrt b{min-width:110px}
+.vrt label{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--grijs)}
+.vrt label input,.vrt label select{width:90px;padding:6px}
+.seg{display:inline-flex;border:1px solid var(--blauw);border-radius:8px;overflow:hidden}
+.seg button{padding:6px 10px;font-size:12px;color:var(--blauw);background:#fff}
+.seg button.aan{background:var(--blauw);color:#fff;font-weight:600}
+.afspraak{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--lijn);font-size:13px}
+.afspraak .pm{display:inline-flex;align-items:center;gap:4px}
+.afspraak .pm button{width:34px;height:34px;border-radius:8px;background:var(--blauw-licht);color:var(--blauw);font-size:18px;font-weight:700}
+.afspraak .pm input{width:84px;padding:6px;text-align:right}
+.sheetkaart h3{font-size:13px;margin:12px 0 4px;color:var(--blauw)}
 .sectie{margin-top:12px;border-top:2px solid var(--blauw-licht);padding-top:6px}
 .sectie .kop{display:flex;justify-content:space-between;align-items:center}
 .sectie .kop b{font-size:13px}
@@ -75,7 +108,7 @@ table.lijst tr.klik:hover{background:var(--blauw-licht)}
 /* KZ-achtige overzicht/factuur-opmaak */
 .doc{background:#fff;color:#000;padding:22px;max-width:800px;margin:0 auto;font-family:Arial,Helvetica,sans-serif;font-size:12px;border:1px solid var(--lijn)}
 .doc .kopblok{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}
-.doc .kopblok .firma{font-size:18px;font-weight:700;color:var(--blauw)}
+.doc .kopblok .firma{font-size:18px;font-weight:700;color:var(--blauw);font-family:Georgia,'Times New Roman',serif;letter-spacing:.02em}
 .doc .kopblok .firma small{display:block;font-size:11px;font-weight:400;color:#444}
 .doc h1{font-size:16px;margin:0 0 4px}
 .doc .meta{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:8px 0 12px;font-size:12px}
@@ -107,7 +140,7 @@ pre.xml{background:#f6f8fa;border:1px solid var(--lijn);border-radius:8px;paddin
 <body>
 <div id="login">
   <div class="kaart">
-    <h2>📋 Werkbonnen</h2>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><svg width="40" height="30" viewBox="0 0 46 34" aria-hidden="true"><polygon points="0,34 22,0 30,0 8,34" fill="#3aa35b"/><polygon points="16,34 38,0 46,0 24,34" fill="#e6007e"/></svg><div><div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:19px;letter-spacing:.04em;color:var(--blauw);line-height:1">KZ KASHERSTEL</div><div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grijs);margin-top:3px">Werkbonnen</div></div></div>
     <p class="stil" style="margin-bottom:12px">Dagbonnen vanaf de werkvloer, beoordeling door de administratie, weekoverzicht en factuur.</p>
     <label>Jouw naam<br><input type="text" id="lg-wie" autocomplete="name"></label>
     <label>Toegangscode<br><input type="password" id="lg-code" autocomplete="current-password"></label>
@@ -162,6 +195,14 @@ function regelsVan(bonId){ return (S.data.regels||[]).filter(r=>r.bon_id===bonId
 function bonTotaal(bonId){ return r2(regelsVan(bonId).reduce((s,r)=>s+Number(r.bedrag),0)); }
 function isAdmin(){ return S.data && S.data.rol==='admin'; }
 function fotoUrl(pad){ return (S.data.storage_url||'')+pad; }
+// Huisstijl van de aannemer (Lijsten > Bedrijven): hoofdkleur, tweede kleur en logo bepalen de uitstraling van app, overzicht en factuur.
+function huisstijl(b){
+  const r=document.documentElement.style; const k=b&&/^#[0-9a-f]{6}$/i.test(b.kleur||'')?b.kleur:''; const k2=b&&/^#[0-9a-f]{6}$/i.test(b.kleur2||'')?b.kleur2:'';
+  if(k){ r.setProperty('--blauw',k); r.setProperty('--blauw-licht',mengKleur(k,'#ffffff',0.86)); r.setProperty('--bg',mengKleur(k,'#ffffff',0.93)); document.querySelector('meta[name=theme-color]').content=k; } else { r.removeProperty('--blauw'); r.removeProperty('--blauw-licht'); r.removeProperty('--bg'); }
+  if(k2) r.setProperty('--groen',k2); else r.removeProperty('--groen');
+}
+function mengKleur(a,b,f){ const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)); const [x,y]=[p(a),p(b)]; return '#'+x.map((v,i)=>Math.round(v+(y[i]-v)*f).toString(16).padStart(2,'0')).join(''); }
+function logoHtml(b, h){ return b&&b.logo_pad?'<img src="'+esc(fotoUrl(b.logo_pad))+'" alt="'+esc(b.naam||'')+'" style="height:'+(h||44)+'px;max-width:220px;object-fit:contain;display:block;margin-bottom:4px">':''; }
 
 async function api(body){
   const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':S.code},body:JSON.stringify(Object.assign({wie:S.wie},body))});
@@ -202,7 +243,8 @@ function tabs(){
 function render(){
   if(!S.data) return;
   document.getElementById('tb-wie').textContent=S.wie+' · '+(isAdmin()?'administratie':'werkvloer');
-  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').textContent='📋 Werkbonnen'+(aan?' · '+aan.naam.replace(/ (B\.V\.|BV)$/i,''):'');
+  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').innerHTML=(aan&&aan.logo_pad?'<img src="'+esc(fotoUrl(aan.logo_pad))+'" alt="" style="height:26px;vertical-align:middle;margin-right:8px;background:#fff;border-radius:4px;padding:2px">':'<svg width="26" height="19" viewBox="0 0 46 34" aria-hidden="true" style="vertical-align:-3px;margin-right:6px"><polygon points="0,34 22,0 30,0 8,34" fill="#fff" opacity=".9"/><polygon points="16,34 38,0 46,0 24,34" fill="#e6007e"/></svg>')+'Werkbonnen'+(aan?' · '+esc(aan.naam.replace(/ (B\.V\.|BV)$/i,'')):'');
+  huisstijl(aan);
   tabs();
   const app=document.getElementById('app');
   if(S.tab==='bon'){ if(!S.bon) nieuweBon(); app.innerHTML=viewBon(); bindBon(); }
@@ -213,61 +255,157 @@ function render(){
 }
 
 /* ---------- dagbon ---------- */
+// Invoer op de werkvloer: shifts (start/eind + namenwolk + overnachting), voertuigen/materieel (op locatie of gebracht, dagdeel)
+// en eventueel extra regels. Uit de invoer worden de bonregels afgeleid (bron 'shift' / 'voertuig'); extra regels hebben bron 'extra'.
+// Afrondingsregels: mensen heel (naar boven), uren per 0,5, km per 0,5, nachten heel, dagdeel per 0,25, prijzen per 0,25.
 function tarieven(cat){ return (S.data.tarieven||[]).filter(t=>t.actief&&t.categorie===cat); }
 function arbeidTarief(datum){ const dt=dagType(datum); const ts=tarieven('arbeid'); return ts.find(t=>t.dagtype===dt)||ts.find(t=>t.dagtype==='alle')||ts[0]||null; }
-function nieuweBon(){
+function isVeelvoud(v,stap){ const q=num(v)/stap; return Math.abs(q-Math.round(q))<1e-6; }
+function rondAf(v,stap){ return r2(Math.round(num(v)/stap)*stap); }
+function stapAantal(r){ return r.categorie==='transport'?0.5:1; }
+function stapPer(r){ const e=String(r.eenheid_per||'').toLowerCase(); return e==='uur'?0.5:/^km/.test(e)?0.5:e==='dag'?0.25:1; }
+function heelAantal(r){ return stapAantal(r)===1; }
+function heelPer(r){ return stapPer(r)===1; }
+function regelFout(r){
+  if(!isVeelvoud(r.aantal,stapAantal(r))) return heelAantal(r)?'Aantal '+(r.eenheid_n||'')+' moet een heel getal zijn (geen halve '+(r.eenheid_n==='man'?'mannen':r.eenheid_n||'aantallen')+')':'Uren moeten in halve uren zijn';
+  if(r.per!=null&&!isVeelvoud(r.per,stapPer(r))) return (r.eenheid_per||'per')+(heelPer(r)?' moet een heel getal zijn':' moet in stappen van '+fmtNum(stapPer(r))+' zijn');
+  return '';
+}
+function tijdMin(t){ const m=/^(\d{1,2}):(\d{2})$/.exec(String(t||'')); return m?(+m[1])*60+(+m[2]):null; }
+function shiftPauze(sh){ if(sh.pauze!==''&&sh.pauze!=null&&sh.pauze!=='auto') return num(sh.pauze); const a=tijdMin(sh.start), b=tijdMin(sh.eind); if(a==null||b==null) return 0; let u=(b-a)/60; if(u<0) u+=24; return u>=6?0.5:0; }
+function shiftUren(sh){ const a=tijdMin(sh.start), b=tijdMin(sh.eind); if(a==null||b==null) return 0; let u=(b-a)/60; if(u<0) u+=24; u-=shiftPauze(sh); return Math.max(0, rondAf(u,0.5)); }
+function medewerker(id){ return (S.data.medewerkers||[]).find(m=>m.id===id); }
+function naamVan(id){ const m=medewerker(id); return m?m.naam:''; }
+// Ploeg: aantal_man (eerst invullen) + leden (medewerker-ids uit de namenwolk). Oude bonnen hadden namen als tekst + extra_man: die worden omgezet.
+function normShift(s){ const legacy=!Array.isArray((s||{}).leden); const sh=Object.assign(nieuweShift(),s||{});
+  if(legacy){ const ids=[]; for(const nm of (sh.namen||[])){ const m=(S.data.medewerkers||[]).find(m=>m.naam.toLowerCase()===String(nm).toLowerCase()); if(m) ids.push(m.id); } sh.leden=ids; if((s||{}).aantal_man==null||(s||{}).aantal_man==='') sh.aantal_man=(sh.namen||[]).length+Math.ceil(num(sh.extra_man)-1e-9); }
+  sh.leden=[...new Set(sh.leden.map(Number).filter(id=>medewerker(id)))]; sh.aantal_man=Math.max(Math.ceil(num(sh.aantal_man)-1e-9),sh.leden.length); delete sh.namen; delete sh.extra_man; return sh; }
+function shiftMan(sh){ if(!Array.isArray(sh.leden)) return (sh.namen||[]).length+Math.ceil(num(sh.extra_man)-1e-9); return Math.max(Math.ceil(num(sh.aantal_man)-1e-9), sh.leden.length); }
+function shiftNamen(sh){ return Array.isArray(sh.leden)?sh.leden.map(naamVan).filter(Boolean):(sh.namen||[]); }
+function teControleren(){ return (S.data.medewerkers||[]).filter(m=>m.actief&&!m.gecontroleerd); }
+function projectPrijs(projectId,t){ const pt=(S.data.projecttarieven||[]).find(x=>x.project_id===projectId&&x.tarief_id===t.id); return pt?Number(pt.prijs):Number(t.prijs); }
+function tariefRegel(t,projectId,extra){ return Object.assign({categorie:t.categorie, omschrijving:t.omschrijving, tarief_id:t.id, aantal:0, per:null, prijs:projectPrijs(projectId,t), eenheid_n:t.eenheid_n, eenheid_per:t.eenheid_per, eenheid_totaal:t.eenheid_totaal, namen:'', bron:''}, extra||{}); }
+function transportKmTarief(){ return tarieven('transport').find(t=>/km/i.test(t.eenheid_totaal||''))||null; }
+function voertuig(id){ return (S.data.voertuigen||[]).find(v=>v.id===id); }
+function nieuweShift(){ return {aantal_man:0, start:'06:30', eind:'16:00', pauze:'', leden:[], overnachting:false, nachten:''}; }
+// Uit shifts en voertuigen de regels van de dag afleiden (arbeid per shift, overnachting samen, km per auto-groep, materieel per dagtarief, transport gebracht materieel).
+function afleidRegels(bon){
+  const inv=bon.invoer||{shifts:[],voertuigen:[]}, pid=bon.project_id, uit=[]; const arb=arbeidTarief(bon.datum); let nachten=0;
+  for(const sh of inv.shifts||[]){ const n=shiftMan(sh), u=shiftUren(sh); if(n>0&&u>0&&arb) uit.push(tariefRegel(arb,pid,{aantal:n, per:u, namen:shiftNamen(sh).join(', '), bron:'shift'})); if(sh.overnachting&&n>0) nachten+=Math.ceil(num(sh.nachten===''||sh.nachten==null?n:sh.nachten)-1e-9); }
+  const ov=tarieven('overnachting')[0]; if(nachten>0&&ov) uit.push(tariefRegel(ov,pid,{aantal:nachten, bron:'shift'}));
+  const km=tarieven('km')[0], trT=transportKmTarief(); const perKm=new Map(), mat=new Map(); let transportKm=0;
+  for(const v of inv.voertuigen||[]){
+    const dd=Math.min(1,Math.max(0.25,rondAf(v.dagdeel==null||v.dagdeel===''?1:v.dagdeel,0.25)));
+    if(v.soort==='auto'){ if(v.gebracht&&num(v.km)>0){ const k=rondAf(v.km,0.5); perKm.set(k,(perKm.get(k)||0)+1); } continue; }
+    const t=(S.data.tarieven||[]).find(t=>t.id===v.tarief_id); if(!t) continue;
+    const key=t.id+'|'+dd; const m=mat.get(key)||{t,dd,n:0}; m.n++; mat.set(key,m);
+    if(v.gebracht&&num(v.km)>0) transportKm+=rondAf(v.km,0.5);
+  }
+  if(km) for(const [k,n] of [...perKm.entries()].sort((a,b)=>b[1]-a[1]||b[0]-a[0])) uit.push(tariefRegel(km,pid,{aantal:n, per:k, bron:'voertuig'}));
+  for(const m of mat.values()){ if(m.dd===1&&!m.t.eenheid_per) uit.push(tariefRegel(m.t,pid,{aantal:m.n, bron:'voertuig'})); else uit.push(tariefRegel(m.t,pid,{aantal:m.n, per:m.dd, eenheid_n:m.t.eenheid_n||'stuks', eenheid_per:'dag', bron:'voertuig'})); }
+  if(transportKm>0&&trT) uit.push(tariefRegel(trT,pid,{aantal:r2(transportKm), bron:'voertuig'}));
+  return uit;
+}
+function herleid(){ S.bon.regels=afleidRegels(S.bon).concat(S.bon.regels.filter(r=>r.bron==='extra')); }
+// Vorige bon van dit project (bij voorkeur van dezelfde teamleider) als voorinvulling: shifts en voertuigen worden onthouden.
+function vorigeBon(projectId, datum){ const bs=(S.data.bonnen||[]).filter(b=>b.project_id===projectId&&b.datum<=datum&&b.invoer&&((b.invoer.shifts||[]).length||(b.invoer.voertuigen||[]).length)); return bs.find(b=>b.ingevuld_door===S.wie)||bs[0]||null; }
+function vulVoorIn(){ const v=vorigeBon(S.bon.project_id,S.bon.datum); if(!v){ S.bon.invoer={shifts:[nieuweShift()],voertuigen:[]}; S.bon.voorgevuld=''; herleid(); return; }
+  S.bon.invoer=JSON.parse(JSON.stringify({shifts:(v.invoer.shifts||[]),voertuigen:v.invoer.voertuigen||[]})); S.bon.invoer.shifts=S.bon.invoer.shifts.map(normShift); S.bon.voorgevuld=v.datum; herleid(); }
+function nieuweBon(projectId){
   const eersteProject=(S.data.projecten||[]).find(p=>p.actief);
-  S.bon={ id:null, project_id:eersteProject?eersteProject.id:null, datum:vandaagISO(), ingevuld_door:S.wie, opmerking:'', afgetekend_door:'', status:'concept',
-    beoordeling:'', handtekening_pad:'', handtekening_b64:'', foto_paden:[], fotos_b64:[], regels:[] };
-  regelToevoegen('arbeid'); regelToevoegen('km'); regelToevoegen('overnachting');
+  S.bon={ id:null, project_id:projectId||(eersteProject?eersteProject.id:null), datum:vandaagISO(), ingevuld_door:S.wie, opmerking:'', afgetekend_door:'', status:'concept',
+    beoordeling:'', handtekening_pad:'', handtekening_b64:'', foto_paden:[], fotos_b64:[], regels:[], invoer:{shifts:[],voertuigen:[]}, voorgevuld:'' };
+  vulVoorIn(); S.scanInfo=''; S.bonPrint=false;
 }
 function laadBon(b){
+  const inv=b.invoer&&typeof b.invoer==='object'?b.invoer:{}; const regels=regelsVan(b.id).map(r=>({categorie:r.categorie, omschrijving:r.omschrijving, tarief_id:r.tarief_id, aantal:Number(r.aantal), per:r.per==null?null:Number(r.per), prijs:Number(r.prijs),
+      eenheid_n:r.eenheid_n, eenheid_per:r.eenheid_per, eenheid_totaal:r.eenheid_totaal, namen:r.namen||'', bron:r.bron||''}));
+  // Oude bonnen (zonder invoer) hebben alleen losse regels: die blijven als extra regels bewerkbaar.
+  const heeftInvoer=(inv.shifts||[]).length||(inv.voertuigen||[]).length;
   S.bon={ id:b.id, project_id:b.project_id, datum:b.datum, ingevuld_door:b.ingevuld_door, opmerking:b.opmerking, afgetekend_door:b.afgetekend_door, status:b.status,
     beoordeling:b.beoordeling, beoordeeld_door:b.beoordeeld_door, handtekening_pad:b.handtekening_pad, handtekening_b64:'', foto_paden:(b.foto_paden||[]).slice(), fotos_b64:[],
-    regels:regelsVan(b.id).map(r=>({categorie:r.categorie, omschrijving:r.omschrijving, tarief_id:r.tarief_id, aantal:Number(r.aantal), per:r.per==null?null:Number(r.per), prijs:Number(r.prijs),
-      eenheid_n:r.eenheid_n, eenheid_per:r.eenheid_per, eenheid_totaal:r.eenheid_totaal, namen:r.namen||''})) };
-  S.tab='bon';
+    invoer:{shifts:(inv.shifts||[]).map(normShift), voertuigen:(inv.voertuigen||[]).slice()}, voorgevuld:'',
+    regels:heeftInvoer?regels:regels.map(r=>Object.assign(r,{bron:r.bron||'extra'})) };
+  S.tab='bon'; S.scanInfo=''; S.bonPrint=false;
 }
 function regelToevoegen(cat){
   const c=CAT[cat]; let t=null;
   if(cat==='arbeid') t=arbeidTarief(S.bon.datum); else { const ts=tarieven(cat); if(ts.length===1||cat==='km'||cat==='overnachting') t=ts[0]||null; }
   S.bon.regels.push({ categorie:cat, omschrijving:t?t.omschrijving:(cat==='materieel'||cat==='transport'||cat==='materiaal'?'':c.naam), tarief_id:t?t.id:null,
-    aantal:0, per:(cat==='arbeid'||cat==='km')?0:(t&&t.eenheid_per?1:null), prijs:t?Number(t.prijs):0,
-    eenheid_n:t?t.eenheid_n:c.n, eenheid_per:t?t.eenheid_per:c.per, eenheid_totaal:t?t.eenheid_totaal:c.tot, namen:'' });
+    aantal:0, per:(cat==='arbeid'||cat==='km')?0:(t&&t.eenheid_per?1:null), prijs:t?projectPrijs(S.bon.project_id,t):0,
+    eenheid_n:t?t.eenheid_n:c.n, eenheid_per:t?t.eenheid_per:c.per, eenheid_totaal:t?t.eenheid_totaal:c.tot, namen:'', bron:'extra' });
 }
 function regelBedrag(r){ const tot=r.per==null?num(r.aantal):num(r.aantal)*num(r.per); return {totaal:r2(tot), bedrag:r2(r2(tot)*num(r.prijs))}; }
 function bonSom(){ return r2(S.bon.regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0)); }
 function magBewerken(){ if(!S.bon.id) return true; if(isAdmin()) return S.bon.status!=='gefactureerd'; return ['concept','afgekeurd'].includes(S.bon.status); }
+function tijdOpties(){ const o=[]; for(let m=0;m<24*60;m+=15) o.push(String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')); return o; }
+function tijdSelect(attr, val, d){ return '<select '+attr+' '+d+'>'+tijdOpties().map(t=>'<option '+(t===val?'selected':'')+'>'+t+'</option>').join('')+'</select>'; }
 
 function viewBon(){
   const b=S.bon, bew=magBewerken();
-  const projecten=(S.data.projecten||[]).filter(p=>p.actief||p.id===b.project_id);
-  const w=isoWeek(b.datum);
+  if(S.bonPrint&&b.id) return viewProjectbon();
+  const projecten=(S.data.projecten||[]).filter(p=>p.actief||p.id===b.project_id); const pr=project(b.project_id)||{};
+  const w=isoWeek(b.datum); const d=bew?'':'disabled';
   let x='<div class="kaart"><h2>'+(b.id?'Dagbon #'+b.id+' ':'Nieuwe dagbon ')+chip(b.status)+' <span class="badge-week">week '+w.week+'</span></h2>';
   if(b.status==='afgekeurd'&&b.beoordeling) x+='<div class="waarsch">❌ Afgekeurd door '+esc(b.beoordeeld_door||'administratie')+': '+esc(b.beoordeling)+'<br><span class="stil">Pas de bon aan en dien hem opnieuw in.</span></div>';
   if(!bew) x+='<div class="info">Deze bon is '+esc(STATUS_TXT[b.status])+' en kan niet meer gewijzigd worden'+(isAdmin()?'':' — vraag de administratie')+'.</div>';
-  x+='<div class="rij"><label>Project / locatie<select id="b-project" '+(bew?'':'disabled')+'>'+projecten.map(p=>'<option value="'+p.id+'" '+(p.id===b.project_id?'selected':'')+'>'+esc(p.naam)+' ('+esc(p.code)+') — '+esc(p.adres)+'</option>').join('')+'</select></label>'
-    +'<label>Datum<input type="date" id="b-datum" value="'+esc(b.datum)+'" '+(bew?'':'disabled')+'></label>'
-    +'<label>Ingevuld door<input type="text" id="b-wie" value="'+esc(b.ingevuld_door)+'" '+(bew?'':'disabled')+'></label></div>';
-  x+='<div class="stil">'+fmtDatum(b.datum)+' · '+(dagType(b.datum)==='zo'?'zondagtarief':dagType(b.datum)==='za'?'zaterdagtarief':'normaal tarief')+'</div>';
+  x+='<div class="rij"><label>Project / locatie<select id="b-project" '+d+'>'+projecten.map(p=>'<option value="'+p.id+'" '+(p.id===b.project_id?'selected':'')+'>'+esc(p.code)+' · '+esc(p.naam)+' — '+esc(p.adres)+(p.postcode_plaats?', '+esc(p.postcode_plaats.replace(/^\d{4}\s?[A-Z]{2}\s*/,'')):'')+'</option>').join('')+'</select></label>'
+    +'<label>Datum<input type="date" id="b-datum" value="'+esc(b.datum)+'" '+d+'></label>'
+    +'<label>Teamleider<input type="text" id="b-wie" value="'+esc(b.ingevuld_door)+'" '+d+'></label></div>';
+  x+='<div class="stil">'+fmtDatum(b.datum)+' · '+(dagType(b.datum)==='zo'?'zondagtarief':dagType(b.datum)==='za'?'zaterdagtarief':'normaal tarief')+(pr.opdrachtgever_id?' · opdrachtgever '+esc((bedrijf(pr.opdrachtgever_id)||{}).naam||''):'')+(bew?' · <a href="#" id="b-wizard">projectafspraken</a>':'')+'</div>';
+  if(b.voorgevuld&&bew) x+='<div class="info" id="b-voorgevuld">↩ Voorgevuld met de bon van '+fmtKort(b.voorgevuld)+' (shifts en voertuigen). Klopt het niet? <button class="knop klein licht" id="b-wis">alles wissen</button></div>';
+  x+='</div>';
+  // --- shifts ---
+  const inv=b.invoer||(b.invoer={shifts:[],voertuigen:[]}); inv.shifts=(inv.shifts||[]).map(normShift); inv.voertuigen=inv.voertuigen||[];
+  const tc=teControleren();
+  x+='<div class="kaart"><h2>👷 Ploegen (shifts)</h2><div class="stil">Per ploeg: aantal man, start- en eindtijd, namen kiezen via "+ namen" (op alfabet, of een nieuwe naam aanmaken), overnachting. Meerdere ploegen als niet iedereen dezelfde tijden heeft.</div>';
+  inv.shifts.forEach((sh,i)=>{
+    const n=shiftMan(sh), u=shiftUren(sh); const zonder=n-sh.leden.length;
+    x+='<div class="shift" data-shift="'+i+'"><div class="shiftkop"><b>Ploeg '+(i+1)+'</b><span class="stil">'+n+' man × '+fmtNum(u,1)+' uur</span>'+(bew?'<button class="x" data-shdel="'+i+'" title="ploeg verwijderen">×</button>':'')+'</div>';
+    x+='<div class="rij tijden"><label>Aantal man<input type="number" step="1" min="0" inputmode="numeric" data-sh="'+i+'" data-sf="aantal_man" value="'+esc(sh.aantal_man||0)+'" '+d+'></label><label>Start'+tijdSelect('data-sh="'+i+'" data-sf="start"',sh.start,d)+'</label><label>Eind'+tijdSelect('data-sh="'+i+'" data-sf="eind"',sh.eind,d)+'</label>'
+      +'<label>Pauze<select data-sh="'+i+'" data-sf="pauze" '+d+'><option value="" '+(sh.pauze===''||sh.pauze==null?'selected':'')+'>auto ('+fmtNum(shiftPauze(sh),1)+')</option>'+[0,0.5,1,1.5].map(p=>'<option value="'+p+'" '+(sh.pauze!==''&&sh.pauze!=null&&num(sh.pauze)===p?'selected':'')+'>'+fmtNum(p,1)+' uur</option>').join('')+'</select></label>'
+      +'<label>Uren p.p.<b class="uren" data-uren="'+i+'">'+fmtNum(u,1)+'</b></label></div>';
+    x+='<div class="stil">Namen: '+sh.leden.length+' van '+n+' man'+(zonder>0?' ('+zonder+' zonder naam)':'')+'</div>';
+    x+='<div class="wolk">'+sh.leden.map(id=>{ const m=medewerker(id); return '<button class="naam aan'+(m&&!m.gecontroleerd?' check':'')+'" data-sh="'+i+'" data-lid="'+id+'" '+d+' title="'+(bew?'tik om te verwijderen':'')+'">'+esc(naamVan(id))+(m&&!m.gecontroleerd?' ?':'')+(bew?' <small>×</small>':'')+'</button>'; }).join('')+(bew?'<button class="naam nieuw" data-kies="'+i+'">+ namen</button>':'')+'</div>';
+    x+='<div class="rij"><label>Overnachting<span class="schakel"><input type="checkbox" data-sh="'+i+'" data-sf="overnachting" '+(sh.overnachting?'checked':'')+' '+d+'> ja, '+(sh.overnachting?'<input type="number" step="1" min="0" inputmode="numeric" data-sh="'+i+'" data-sf="nachten" value="'+esc(sh.nachten===''||sh.nachten==null?n:sh.nachten)+'" style="width:64px;display:inline-block" '+d+'> man':'')+'</span></label></div></div>';
+  });
+  if(tc.length) x+='<div class="waarsch">✏️ '+tc.length+' nieuwe na'+(tc.length===1?'am':'men')+' van de werkvloer nog te controleren ('+esc(tc.slice(0,4).map(m=>m.naam).join(', '))+(tc.length>4?', …':'')+'). <button class="knop klein licht" id="b-namen">Controleren…</button></div>';
+  if(bew) x+='<div class="knoppen"><button class="knop licht" id="b-shift">+ ploeg</button></div>';
+  x+='</div>';
+  // --- voertuigen / materieel ---
+  const vts=(S.data.voertuigen||[]).filter(v=>v.actief); const gekozen=new Set(inv.voertuigen.map(v=>v.voertuig_id));
+  x+='<div class="kaart"><h2>🚐 Voertuigen en materieel</h2><div class="stil">Tik aan wat vandaag gebruikt is. Per voertuig: stond het al op locatie of is het gebracht (km), en hele dag of dagdeel.</div>';
+  for(const soort of ['auto','materieel']){ const lijst=vts.filter(v=>v.soort===soort); if(!lijst.length) continue;
+    x+='<div class="wolk"><span class="stil" style="align-self:center">'+(soort==='auto'?"Auto's":'Materieel')+':</span>'+lijst.map(v=>'<button class="naam'+(gekozen.has(v.id)?' aan':'')+'" data-vt="'+v.id+'" '+d+'>'+esc(v.naam)+'</button>').join('')+'</div>'; }
+  if(!vts.length) x+='<div class="stil">Nog geen voertuigen ingevoerd (administratie: Lijsten › Voertuigen).</div>';
+  inv.voertuigen.forEach((v,i)=>{ const t=(S.data.tarieven||[]).find(t=>t.id===v.tarief_id);
+    x+='<div class="vrt" data-vrt="'+i+'"><b>'+esc(v.naam)+'</b><span class="seg"><button class="'+(v.gebracht?'':'aan')+'" data-vi="'+i+'" data-vf="locatie" '+d+'>al op locatie</button><button class="'+(v.gebracht?'aan':'')+'" data-vi="'+i+'" data-vf="gebracht" '+d+'>gebracht</button></span>'
+      +(v.gebracht?'<label>km<input type="number" step="0.5" min="0" inputmode="decimal" data-vi="'+i+'" data-vf="km" value="'+esc(v.km)+'" '+d+'></label>':'<span class="stil">geen km</span>')
+      +(v.soort==='materieel'?'<label>dag<select data-vi="'+i+'" data-vf="dagdeel" '+d+'>'+[[1,'hele dag'],[0.75,'¾ dag'],[0.5,'halve dag'],[0.25,'¼ dag']].map(o=>'<option value="'+o[0]+'" '+(num(v.dagdeel==null||v.dagdeel===''?1:v.dagdeel)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('')+'</select></label><span class="stil">'+(t?fmtGeld(projectPrijs(b.project_id,t))+' '+esc(t.eenheid_totaal):'geen dagtarief')+'</span>':'<span class="stil">km-vergoeding</span>')
+      +(bew?'<button class="x" data-vdel="'+i+'">×</button>':'')+'</div>'; });
+  x+='</div>';
+  // --- regels (afgeleid + extra) ---
+  x+='<div class="kaart"><h2>🧾 Regels van deze dag</h2>';
   for(const c of CATS){
     const rs=b.regels.map((r,i)=>({r,i})).filter(o=>o.r.categorie===c.id);
-    x+='<div class="sectie"><div class="kop"><b>'+esc(c.naam)+'</b>'+(bew?'<button class="knop klein licht" data-add="'+c.id+'">+ regel</button>':'')+'</div>';
+    x+='<div class="sectie"><div class="kop"><b>'+esc(c.naam)+'</b>'+(bew?'<button class="knop klein licht" data-add="'+c.id+'">+ extra regel</button>':'')+'</div>';
     if(!rs.length) x+='<div class="stil">—</div>';
-    for(const {r,i} of rs) x+=regelHtml(r,i,bew);
+    for(const {r,i} of rs) x+=regelHtml(r,i,bew&&r.bron==='extra');
     x+='</div>';
   }
   x+='<div class="totaal"><span>Totaal dag excl. btw</span><span id="b-totaal">'+fmtGeld(bonSom())+'</span></div>';
-  x+='<div class="rij"><label>Opmerking / bijzonderheden<textarea id="b-opm" '+(bew?'':'disabled')+'>'+esc(b.opmerking)+'</textarea></label></div>';
-  x+='<h3>Aftekening opdrachtgever</h3><div class="rij"><label>Afgetekend door (naam)<input type="text" id="b-aft" value="'+esc(b.afgetekend_door)+'" '+(bew?'':'disabled')+'></label></div>';
+  x+='<div class="rij"><label>Opmerking / bijzonderheden<textarea id="b-opm" '+d+'>'+esc(b.opmerking)+'</textarea></label></div>';
+  x+='<h3>Aftekening opdrachtgever</h3><div class="rij"><label>Afgetekend door (naam)<input type="text" id="b-aft" value="'+esc(b.afgetekend_door)+'" '+d+'></label></div>';
   if(bew){ x+='<div class="stil">Handtekening (teken met vinger of muis):</div><canvas class="sig" id="b-sig"></canvas><div class="rij"><button class="knop klein licht" id="b-sig-wis">wis handtekening</button></div>'; }
   if(b.handtekening_pad&&!b.handtekening_b64) x+='<div class="stil">Opgeslagen handtekening:</div><img src="'+esc(fotoUrl(b.handtekening_pad))+'" style="max-height:110px;border:1px solid var(--lijn);border-radius:8px;background:#fff">';
   x+='<h3>Foto\'s (papieren bon, situatie)</h3>';
-  if(bew) x+='<div class="rij"><input type="file" id="b-foto" accept="image/*" multiple style="width:auto"></div>';
+  if(bew) x+='<div class="rij"><input type="file" id="b-foto" accept="image/*" multiple style="width:auto"><button class="knop licht" id="b-scan">📷 Papieren bon fotograferen en uitlezen</button></div><div class="stil">Uitlezen zet de regels van de papieren bon als extra regels klaar; controleer ze altijd voordat je indient.</div>';
+  if(S.scanInfo) x+='<div class="info" id="b-scaninfo">🔎 '+esc(S.scanInfo)+'</div>';
   x+='<div class="thumbs" id="b-thumbs">'+b.foto_paden.map((p,i)=>'<div class="th"><a href="'+esc(fotoUrl(p))+'" target="_blank"><img src="'+esc(fotoUrl(p))+'"></a>'+(bew?'<button data-delfoto="'+i+'">×</button>':'')+'</div>').join('')
     +b.fotos_b64.map((p,i)=>'<div class="th"><img src="'+p+'">'+(bew?'<button data-delnieuw="'+i+'">×</button>':'')+'</div>').join('')+'</div>';
   x+='<div class="knoppen" style="margin-top:14px">';
   if(bew){ x+='<button class="knop licht" id="b-opslaan">💾 Opslaan als concept</button><button class="knop groen" id="b-indienen">📤 Indienen bij administratie</button>'; }
+  if(b.id) x+='<button class="knop licht" id="b-print">🖨️ Projectbon</button>';
   if(b.id&&isAdmin()&&['ingediend','concept','afgekeurd'].includes(b.status)) x+='<button class="knop groen" id="b-goed">✅ Goedkeuren</button><button class="knop rood" id="b-af">❌ Afkeuren…</button>';
   if(b.id&&isAdmin()&&b.status==='goedgekeurd') x+='<button class="knop licht" id="b-terug">↩ Terug naar ingediend</button>';
   if(b.id&&(isAdmin()||['concept','afgekeurd'].includes(b.status))&&b.status!=='gefactureerd') x+='<button class="knop licht" id="b-del" style="color:var(--rood)">🗑 Verwijderen</button>';
@@ -275,17 +413,35 @@ function viewBon(){
   return x;
 }
 function regelHtml(r,i,bew){
-  const c=CAT[r.categorie], ts=tarieven(r.categorie), b=regelBedrag(r), d=bew?'':'disabled';
-  const keuze=(ts.length&&r.categorie!=='overnachting')?'<select data-i="'+i+'" data-f="tarief" '+d+'>'+ts.map(t=>'<option value="'+t.id+'" '+(t.id===r.tarief_id?'selected':'')+'>'+esc(t.omschrijving)+' — '+fmtGeld(t.prijs)+' '+esc(t.eenheid_totaal)+'</option>').join('')+'<option value="" '+(r.tarief_id?'':'selected')+'>anders…</option></select>':'';
-  const vrij=(!r.tarief_id||!ts.length||r.categorie==='overnachting')?'<input type="text" data-i="'+i+'" data-f="omschrijving" value="'+esc(r.omschrijving)+'" placeholder="omschrijving" '+d+'>':'';
-  let x='<div class="bonregel"><div class="oms">'+keuze+vrij+(r.categorie==='arbeid'?'<input type="text" data-i="'+i+'" data-f="namen" value="'+esc(r.namen)+'" placeholder="namen (optioneel)" style="margin-top:3px" '+d+'>':'')+'</div>';
-  x+='<div><span class="lbl">'+esc(r.eenheid_n||'aantal')+'</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="aantal" value="'+esc(r.aantal)+'" '+d+'></div>';
-  x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+(r.eenheid_n==='man'?' p.p.':r.eenheid_n==="auto's"?' per auto':' per stuk')+'</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+d+'>':'')+'</div>';
-  x+='<div><span class="lbl">prijs '+esc(r.eenheid_totaal)+'</span><input type="number" step="0.01" min="0" data-i="'+i+'" data-f="prijs" value="'+esc(r.prijs)+'" '+((bew&&isAdmin())?'':'disabled')+'></div>';
+  const c=CAT[r.categorie], ts=tarieven(r.categorie), b=regelBedrag(r), d=bew?'':'disabled', vast=r.bron&&r.bron!=='extra';
+  const keuze=(ts.length&&r.categorie!=='overnachting'&&!vast)?'<select data-i="'+i+'" data-f="tarief" '+d+'>'+ts.map(t=>'<option value="'+t.id+'" '+(t.id===r.tarief_id?'selected':'')+'>'+esc(t.omschrijving)+' — '+fmtGeld(projectPrijs(S.bon.project_id,t))+' '+esc(t.eenheid_totaal)+'</option>').join('')+'<option value="" '+(r.tarief_id?'':'selected')+'>anders…</option></select>':'';
+  const vrij=vast?'<span class="vastlbl">'+(r.bron==='shift'?'👷':'🚐')+' '+esc(r.omschrijving)+(r.namen?'<br><span class="stil">'+esc(r.namen)+'</span>':'')+'</span>':((!r.tarief_id||!ts.length||r.categorie==='overnachting')?'<input type="text" data-i="'+i+'" data-f="omschrijving" value="'+esc(r.omschrijving)+'" placeholder="omschrijving" '+d+'>':'');
+  let x='<div class="bonregel'+(r.uitgelezen?' uitgelezen':'')+(vast?' vast':'')+'"'+(r.uitgelezen?' title="Uit foto uitgelezen'+(r.zekerheid?' (zekerheid '+esc(r.zekerheid)+')':'')+'"':vast?' title="Afgeleid uit ploegen/voertuigen; pas die aan om deze regel te wijzigen"':'')+'><div class="oms">'+keuze+vrij+(r.categorie==='arbeid'&&!vast?'<input type="text" data-i="'+i+'" data-f="namen" value="'+esc(r.namen)+'" placeholder="namen (optioneel)" style="margin-top:3px" '+d+'>':'')+'</div>';
+  x+='<div><span class="lbl">'+esc(r.eenheid_n||'aantal')+'</span><input type="number" step="'+stapAantal(r)+'" min="0" inputmode="'+(heelAantal(r)?'numeric':'decimal')+'" data-i="'+i+'" data-f="aantal" value="'+esc(r.aantal)+'" '+(vast?'disabled':d)+'></div>';
+  x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+(r.eenheid_n==='man'?' p.p.':r.eenheid_n==="auto's"?' per auto':' per stuk')+'</span><input type="number" step="'+stapPer(r)+'" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+(vast?'disabled':d)+'>':'')+'</div>';
+  x+='<div><span class="lbl">prijs '+esc(r.eenheid_totaal)+'</span><input type="number" step="0.01" min="0" data-i="'+i+'" data-f="prijs" value="'+esc(r.prijs)+'" '+((bew&&isAdmin()&&!vast)?'':'disabled')+'></div>';
   x+='<div class="bedrag"><span class="lbl">'+fmtNum(b.totaal)+' '+esc(r.eenheid_totaal)+'</span><b data-bedrag="'+i+'">'+fmtGeld(b.bedrag)+'</b></div>';
-  x+=(bew?'<button class="x" data-del="'+i+'">×</button>':'<span></span>')+'</div>';
+  x+=(bew&&!vast?'<button class="x" data-del="'+i+'">×</button>':'<span></span>')+'</div>';
   return x;
 }
+// Projectbon per dag in de KZ-opmaak: tabel personen/start/eind/uren/namen, voertuigen, overige regels, handtekening.
+function projectbonDoc(b){
+  const p=project(b.project_id)||{}; const aan=bedrijf(p.aannemer_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{}; const inv=b.invoer||{shifts:[],voertuigen:[]};
+  let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+'</small></div><div style="text-align:right"><h1>Projectbon</h1><div>'+fmtDatum(b.datum)+'</div><div>week '+isoWeek(b.datum).week+(b.id?' · bon #'+b.id:'')+'</div></div></div>';
+  x+='<div class="meta"><b>Projectnummer:</b><span>'+esc(p.code||'')+' '+esc(p.naam||'')+'</span><b>Opdrachtgever:</b><span>'+esc((opd.naam||'').replace(/ (B\.V\.|BV)$/i,''))+'</span><b>Locatie:</b><span>'+esc(p.adres||'')+'</span><b>Plaats:</b><span>'+esc(splitsAdres(p.postcode_plaats||'').plaats)+'</span><b>Teamleider:</b><span>'+esc(b.ingevuld_door||'')+'</span><b>Aantal voertuigen:</b><span>'+(inv.voertuigen||[]).length+'</span></div>';
+  x+='<table><tr><th>Aantal personen</th><th>Start</th><th>Tot</th><th>Eind</th><th class="r">Uren p.p.</th><th>Namen</th></tr>';
+  let totMan=0; for(const sh of inv.shifts||[]){ const n=shiftMan(sh), u=shiftUren(sh); totMan+=n; const nms=shiftNamen(sh), zonder=n-nms.length; x+='<tr><td>'+n+' man</td><td>'+esc(sh.start)+'</td><td>-</td><td>'+esc(sh.eind)+'</td><td class="r">'+fmtNum(u,1)+(shiftPauze(sh)?' <small>(pauze '+fmtNum(shiftPauze(sh),1)+')</small>':'')+'</td><td>'+esc(nms.join(', '))+(zonder>0?(nms.length?' + ':'')+zonder+' zonder naam':'')+(sh.overnachting?'<br><small>overnachting '+Math.ceil(num(sh.nachten===''||sh.nachten==null?n:sh.nachten))+' man</small>':'')+'</td></tr>'; }
+  if(!(inv.shifts||[]).length){ for(const r of b.regels.filter(r=>r.categorie==='arbeid')) x+='<tr><td>'+fmtNum(r.aantal)+' man</td><td></td><td>-</td><td></td><td class="r">'+fmtNum(r.per,1)+'</td><td>'+esc(r.namen||'')+'</td></tr>'; }
+  x+='<tr class="tot"><td colspan="6">Totaal '+totMan+' man · aantal voertuigen: '+(inv.voertuigen||[]).length+'</td></tr></table>';
+  if((inv.voertuigen||[]).length) x+='<h1 style="font-size:13px;margin-top:14px">Voertuigen en materieel</h1><table><tr><th>Voertuig</th><th>Op locatie / gebracht</th><th class="r">km</th><th>Dag</th></tr>'+(inv.voertuigen||[]).map(v=>'<tr><td>'+esc(v.naam)+'</td><td>'+(v.gebracht?'gebracht':'al op locatie')+'</td><td class="r">'+(v.gebracht?fmtNum(v.km):'')+'</td><td>'+(v.soort==='materieel'?({1:'hele dag',0.75:'¾ dag',0.5:'halve dag',0.25:'¼ dag'}[num(v.dagdeel==null||v.dagdeel===''?1:v.dagdeel)]||fmtNum(v.dagdeel)):'')+'</td></tr>').join('')+'</table>';
+  const extra=b.regels.filter(r=>r.bron==='extra'||(!(inv.shifts||[]).length&&r.categorie!=='arbeid'));
+  if(extra.length) x+='<h1 style="font-size:13px;margin-top:14px">Overige (transport, materieel, materiaal)</h1><table><tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th></tr>'+extra.map(r=>'<tr><td>'+esc(r.omschrijving)+'</td><td>'+(r.per!=null?aantalTekst(r):'')+'</td><td>'+fmtNum(regelBedrag(r).totaal)+' '+esc(r.eenheid_totaal)+'</td></tr>').join('')+'</table>';
+  if(b.opmerking) x+='<div class="adres"><b>Opmerking:</b> '+esc(b.opmerking)+'</div>';
+  x+='<div class="fmeta"><div><b>Afgetekend door opdrachtgever</b>'+esc(b.afgetekend_door||'—')+(b.handtekening_pad||b.handtekening_b64?'<br><img src="'+esc(b.handtekening_b64||fotoUrl(b.handtekening_pad))+'" style="max-height:80px">':'')+'</div><div><b>Status</b>'+esc(STATUS_TXT[b.status]||b.status)+'</div><div><b>Totaal dag excl. btw</b>'+fmtGeld(b.regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0))+'</div></div>';
+  if((b.foto_paden||[]).length) x+='<div class="thumbs">'+b.foto_paden.map(p=>'<img src="'+esc(fotoUrl(p))+'" style="height:90px">').join('')+'</div>';
+  x+='</div>'; return x;
+}
+function viewProjectbon(){ return '<div class="kaart noprint"><div class="knoppen"><button class="knop licht" id="pb-terug">← Terug naar bon</button><button class="knop" id="pb-print">🖨️ Afdrukken / PDF</button></div></div>'+projectbonDoc(S.bon); }
 let sigCanvas=null;
 function initSig(){
   sigCanvas=document.getElementById('b-sig'); if(!sigCanvas) return;
@@ -306,19 +462,44 @@ function bonFields(){
   const b=S.bon; const p=document.getElementById('b-project'); const d=document.getElementById('b-datum');
   return { project_id:p?Number(p.value):b.project_id, datum:d?d.value:b.datum, ingevuld_door:(document.getElementById('b-wie')||{}).value||b.ingevuld_door,
     opmerking:(document.getElementById('b-opm')||{}).value||'', afgetekend_door:(document.getElementById('b-aft')||{}).value||'',
-    handtekening_b64:b.handtekening_b64||'', fotos_b64:b.fotos_b64, foto_paden:b.foto_paden };
+    handtekening_b64:b.handtekening_b64||'', fotos_b64:b.fotos_b64, foto_paden:b.foto_paden, invoer:b.invoer };
 }
 async function bonOpslaan(indienen){
   const f=bonFields(); const regels=S.bon.regels.filter(r=>num(r.aantal)>0).map(r=>Object.assign({},r,{omschrijving:r.omschrijving||CAT[r.categorie].naam}));
   if(!f.project_id){ toast('Kies een project'); return; }
-  if(indienen&&!regels.length){ toast('Vul minimaal één regel in'); return; }
+  if(indienen&&!regels.length){ toast('Vul minimaal één ploeg, voertuig of regel in'); return; }
   const leeg=regels.find(r=>!r.omschrijving.trim()); if(leeg){ toast('Een regel heeft nog geen omschrijving'); return; }
+  for(const r of regels){ const fout=regelFout(r); if(fout){ toast(fout+' — '+r.omschrijving); return; } }
   const pr=project(f.project_id);
   const j=await doe({action:'bon_save', id:S.bon.id, fields:f, regels, indienen:!!indienen}, (indienen?'Dagbon ingediend: ':'Dagbon opgeslagen: ')+(pr?pr.naam:'')+' '+fmtKort(f.datum)+' '+fmtGeld(r2(regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0))));
   if(j&&j.id){ const nb=(S.data.bonnen||[]).find(x=>x.id===j.id); if(nb){ laadBon(nb); render(); } toast(indienen?'Bon ingediend bij de administratie':'Bon opgeslagen'); }
 }
 function bindBon(){
-  const app=document.getElementById('app'); initSig();
+  const app=document.getElementById('app'); const k=id=>document.getElementById(id);
+  if(k('pb-terug')){ k('pb-terug').onclick=()=>{ S.bonPrint=false; render(); }; k('pb-print').onclick=()=>window.print(); return; }
+  initSig();
+  const ververs=()=>{ leesBonInputs(); herleid(); render(); };
+  // ploegen
+  app.querySelectorAll('[data-sh][data-sf]').forEach(el=>el.addEventListener('change',()=>{ const sh=S.bon.invoer.shifts[+el.dataset.sh]; const f=el.dataset.sf;
+    if(f==='overnachting') sh.overnachting=el.checked; else if(f==='pauze'||f==='aantal_man'||f==='nachten') sh[f]=el.value===''?'':Math.max(0,num(el.value)); else sh[f]=el.value;
+    if(f==='aantal_man'){ sh.aantal_man=Math.ceil(num(sh.aantal_man)-1e-9); if(sh.aantal_man<sh.leden.length){ sh.aantal_man=sh.leden.length; toast('Er zijn al '+sh.leden.length+' namen aangetikt'); } } if(f==='nachten'&&sh.nachten!=='') sh.nachten=Math.ceil(num(sh.nachten)-1e-9);
+    ververs(); }));
+  app.querySelectorAll('[data-sh][data-lid]').forEach(el=>el.onclick=()=>{ const sh=S.bon.invoer.shifts[+el.dataset.sh]; const id=+el.dataset.lid; const i=sh.leden.indexOf(id); if(i>=0) sh.leden.splice(i,1); else { sh.leden.push(id); if(sh.leden.length>num(sh.aantal_man)) sh.aantal_man=sh.leden.length; } ververs(); });
+  app.querySelectorAll('[data-kies]').forEach(el=>el.onclick=()=>{ leesBonInputs(); namenKiezer(+el.dataset.kies); });
+  if(k('b-namen')) k('b-namen').onclick=()=>{ leesBonInputs(); namenControle(); };
+  app.querySelectorAll('[data-shdel]').forEach(el=>el.onclick=()=>{ S.bon.invoer.shifts.splice(+el.dataset.shdel,1); ververs(); });
+  if(k('b-shift')) k('b-shift').onclick=()=>{ const l=S.bon.invoer.shifts[S.bon.invoer.shifts.length-1]; const s=nieuweShift(); if(l){ s.start=l.start; s.eind=l.eind; s.pauze=l.pauze; } S.bon.invoer.shifts.push(s); ververs(); };
+  if(k('b-wis')) k('b-wis').onclick=()=>{ S.bon.invoer={shifts:[nieuweShift()],voertuigen:[]}; S.bon.voorgevuld=''; ververs(); };
+  if(k('b-wizard')) k('b-wizard').onclick=e=>{ e.preventDefault(); leesBonInputs(); projectWizard(project(S.bon.project_id),'afspraken'); };
+  // voertuigen
+  app.querySelectorAll('[data-vt]').forEach(el=>el.onclick=()=>{ const id=+el.dataset.vt; const inv=S.bon.invoer; const i=inv.voertuigen.findIndex(v=>v.voertuig_id===id);
+    if(i>=0) inv.voertuigen.splice(i,1); else { const v=voertuig(id); const pr=project(S.bon.project_id)||{}; inv.voertuigen.push({voertuig_id:id, naam:v.naam, soort:v.soort, tarief_id:v.tarief_id, gebracht:v.soort==='auto', km:num(pr.afstand_km)||0, dagdeel:1}); }
+    ververs(); });
+  app.querySelectorAll('[data-vi][data-vf]').forEach(el=>{ const v=()=>S.bon.invoer.voertuigen[+el.dataset.vi]; const f=el.dataset.vf;
+    if(f==='locatie') el.onclick=()=>{ v().gebracht=false; ververs(); }; else if(f==='gebracht') el.onclick=()=>{ v().gebracht=true; if(!num(v().km)) v().km=num((project(S.bon.project_id)||{}).afstand_km)||0; ververs(); };
+    else el.addEventListener('change',()=>{ v()[f]=f==='km'?rondAf(el.value,0.5):num(el.value); ververs(); }); });
+  app.querySelectorAll('[data-vdel]').forEach(el=>el.onclick=()=>{ S.bon.invoer.voertuigen.splice(+el.dataset.vdel,1); ververs(); });
+  // extra regels
   app.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{ leesBonInputs(); regelToevoegen(b.dataset.add); render(); });
   app.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{ leesBonInputs(); S.bon.regels.splice(+b.dataset.del,1); render(); });
   app.querySelectorAll('[data-delfoto]').forEach(b=>b.onclick=()=>{ leesBonInputs(); S.bon.foto_paden.splice(+b.dataset.delfoto,1); render(); });
@@ -329,23 +510,40 @@ function bindBon(){
       const b=regelBedrag(r); const cel=app.querySelector('[data-bedrag="'+el.dataset.i+'"]'); if(cel){ cel.textContent=fmtGeld(b.bedrag); cel.previousElementSibling.textContent=fmtNum(b.totaal)+' '+r.eenheid_totaal; }
       document.getElementById('b-totaal').textContent=fmtGeld(bonSom()); });
     if(el.dataset.f==='tarief') el.addEventListener('change',()=>{ leesBonInputs(); const r=S.bon.regels[+el.dataset.i]; const t=(S.data.tarieven||[]).find(t=>t.id===Number(el.value));
-      if(t){ r.tarief_id=t.id; r.omschrijving=t.omschrijving; r.prijs=Number(t.prijs); r.eenheid_n=t.eenheid_n; r.eenheid_per=t.eenheid_per; r.eenheid_totaal=t.eenheid_totaal; if(t.eenheid_per&&r.per==null) r.per=1; if(!t.eenheid_per) r.per=null; }
+      if(t){ r.tarief_id=t.id; r.omschrijving=t.omschrijving; r.prijs=projectPrijs(S.bon.project_id,t); r.eenheid_n=t.eenheid_n; r.eenheid_per=t.eenheid_per; r.eenheid_totaal=t.eenheid_totaal; if(t.eenheid_per&&r.per==null) r.per=1; if(!t.eenheid_per) r.per=null; }
       else { r.tarief_id=null; r.omschrijving=''; if(!isAdmin()) r.prijs=0; }
       render(); });
   });
-  const datum=document.getElementById('b-datum'); if(datum) datum.addEventListener('change',()=>{ leesBonInputs(); S.bon.datum=datum.value||vandaagISO();
-    const t=arbeidTarief(S.bon.datum); if(t) for(const r of S.bon.regels) if(r.categorie==='arbeid'&&r.tarief_id&&tarieven('arbeid').some(x=>x.id===r.tarief_id)){ r.tarief_id=t.id; r.omschrijving=t.omschrijving; r.prijs=Number(t.prijs); }
-    render(); });
-  const pr=document.getElementById('b-project'); if(pr) pr.addEventListener('change',()=>{ S.bon.project_id=Number(pr.value); });
-  const foto=document.getElementById('b-foto'); if(foto) foto.addEventListener('change',async()=>{ leesBonInputs(); for(const f of foto.files){ try{ S.bon.fotos_b64.push(await verkleinFoto(f)); }catch(e){ toast('Foto laden mislukt'); } } render(); });
-  const k=id=>document.getElementById(id);
+  const datum=k('b-datum'); if(datum) datum.addEventListener('change',()=>{ leesBonInputs(); S.bon.datum=datum.value||vandaagISO();
+    const t=arbeidTarief(S.bon.datum); if(t) for(const r of S.bon.regels) if(r.categorie==='arbeid'&&r.tarief_id&&tarieven('arbeid').some(x=>x.id===r.tarief_id)){ r.tarief_id=t.id; r.omschrijving=t.omschrijving; r.prijs=projectPrijs(S.bon.project_id,t); }
+    herleid(); render(); });
+  const pr=k('b-project'); if(pr) pr.addEventListener('change',()=>{ leesBonInputs(); S.bon.project_id=Number(pr.value); if(!S.bon.id) vulVoorIn(); else herleid(); render(); });
+  const foto=k('b-foto'); if(foto) foto.addEventListener('change',async()=>{ leesBonInputs(); for(const f of foto.files){ try{ S.bon.fotos_b64.push(await verkleinFoto(f)); }catch(e){ toast('Foto laden mislukt'); } } render(); });
+  const scan=k('b-scan'); if(scan) scan.onclick=()=>{ const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*'; inp.capture='environment'; inp.onchange=async()=>{ const f=inp.files[0]; if(!f) return; leesBonInputs(); let b64; try{ b64=await verkleinFoto(f); }catch(e){ toast('Foto laden mislukt'); return; }
+      scan.disabled=true; scan.textContent='⏳ Bon wordt uitgelezen…';
+      try{ const j=await api({action:'bon_lees_foto', fields:{foto_b64:b64, project_id:S.bon.project_id, datum:S.bon.datum}, log:'Papieren bon uitgelezen'}); scanToepassen(j, b64); }
+      catch(e){ toast(e.auth?'Niet ingelogd':(e.message||'Uitlezen mislukt')); S.bon.fotos_b64.push(b64); }
+      render(); }; inp.click(); };
   if(k('b-opslaan')) k('b-opslaan').onclick=()=>bonOpslaan(false);
   if(k('b-indienen')) k('b-indienen').onclick=()=>bonOpslaan(true);
-  if(k('b-nieuw')) k('b-nieuw').onclick=()=>{ nieuweBon(); render(); };
+  if(k('b-print')) k('b-print').onclick=()=>{ leesBonInputs(); S.bonPrint=true; render(); window.scrollTo(0,0); };
+  if(k('b-nieuw')) k('b-nieuw').onclick=()=>{ nieuweBon(S.bon.project_id); render(); };
   if(k('b-goed')) k('b-goed').onclick=async()=>{ if(await doe({action:'bon_beoordeel', id:S.bon.id, besluit:'goedgekeurd'},'Dagbon #'+S.bon.id+' goedgekeurd')){ const nb=S.data.bonnen.find(x=>x.id===S.bon.id); laadBon(nb); render(); toast('Goedgekeurd'); } };
   if(k('b-terug')) k('b-terug').onclick=async()=>{ if(await doe({action:'bon_beoordeel', id:S.bon.id, besluit:'ingediend'},'Dagbon #'+S.bon.id+' terug naar ingediend')){ const nb=S.data.bonnen.find(x=>x.id===S.bon.id); laadBon(nb); render(); } };
   if(k('b-af')) k('b-af').onclick=()=>vraag('Reden van afkeuring', S.bon.beoordeling||'', async reden=>{ if(await doe({action:'bon_beoordeel', id:S.bon.id, besluit:'afgekeurd', beoordeling:reden},'Dagbon #'+S.bon.id+' afgekeurd: '+reden)){ const nb=S.data.bonnen.find(x=>x.id===S.bon.id); laadBon(nb); render(); toast('Afgekeurd'); } });
-  if(k('b-del')) k('b-del').onclick=async()=>{ if(!confirm('Deze dagbon verwijderen?')) return; if(await doe({action:'bon_delete', id:S.bon.id},'Dagbon #'+S.bon.id+' verwijderd')){ nieuweBon(); render(); } };
+  if(k('b-del')) k('b-del').onclick=async()=>{ if(!confirm('Deze dagbon verwijderen?')) return; if(await doe({action:'bon_delete', id:S.bon.id},'Dagbon #'+S.bon.id+' verwijderd')){ nieuweBon(S.bon.project_id); render(); } };
+}
+// Uitgelezen regels uit de foto als extra regels in de bon zetten; datum/aftekening alleen invullen als leeg.
+function scanToepassen(j, b64){
+  const nieuw=(j.regels||[]).map(r=>({categorie:r.categorie, omschrijving:r.omschrijving, tarief_id:r.tarief_id, aantal:num(r.aantal), per:r.per==null?null:num(r.per), prijs:num(r.prijs), eenheid_n:r.eenheid_n||CAT[r.categorie].n, eenheid_per:r.eenheid_per||CAT[r.categorie].per, eenheid_totaal:r.eenheid_totaal||CAT[r.categorie].tot, namen:r.namen||'', bron:'extra', uitgelezen:true, zekerheid:r.zekerheid, gekoppeld:r.gekoppeld}));
+  S.bon.regels=S.bon.regels.filter(r=>r.bron!=='extra'||num(r.aantal)>0).concat(nieuw);
+  if(j.datum&&(!S.bon.id)) S.bon.datum=j.datum;
+  if(j.afgetekend_door&&!S.bon.afgetekend_door) S.bon.afgetekend_door=j.afgetekend_door;
+  if(j.opmerking&&!S.bon.opmerking) S.bon.opmerking=j.opmerking;
+  S.bon.fotos_b64.push(b64);
+  const los=nieuw.filter(r=>!r.gekoppeld).length, laag=nieuw.filter(r=>r.zekerheid==='laag').length;
+  S.scanInfo=nieuw.length+' regel'+(nieuw.length===1?'':'s')+' uit de foto gehaald (leesbaarheid '+(j.leesbaarheid||'?')+')'+(los?'; '+los+' zonder tarief (prijs zelf kiezen)':'')+(laag?'; '+laag+' met lage zekerheid':'')+'. Controleer de gemarkeerde regels.';
+  toast(nieuw.length?'Bon uitgelezen: controleer de regels':'Geen regels herkend op de foto');
 }
 function leesBonInputs(){ const f=bonFields(); Object.assign(S.bon,{project_id:f.project_id, datum:f.datum, ingevuld_door:f.ingevuld_door, opmerking:f.opmerking, afgetekend_door:f.afgetekend_door}); }
 function vraag(titel, huidig, cb){
@@ -354,6 +552,88 @@ function vraag(titel, huidig, cb){
   sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); };
   document.getElementById('sh-annuleer').onclick=dicht; document.getElementById('sh-ok').onclick=()=>{ const v=document.getElementById('sh-txt').value.trim(); dicht(); cb(v); };
   setTimeout(()=>{ const e=document.getElementById('sh-txt'); if(e) e.focus(); },50);
+}
+// Namenwolk achter "+ namen": sheet met zoekveld, alle namen op alfabet (aangetikt = groen, nieuw van de werkvloer = oranje met ?),
+// en een veld om een nieuwe naam aan te maken. Zo blijft de dagbon op de telefoon kort.
+function namenKiezerHtml(i, zoek){
+  const sh=S.bon.invoer.shifts[i]; const q=String(zoek||'').trim().toLowerCase();
+  const wolk=(S.data.medewerkers||[]).filter(m=>m.actief&&(!q||m.naam.toLowerCase().includes(q))).sort((a,b)=>a.naam.localeCompare(b.naam,'nl'));
+  return wolk.length?'<div class="wolk">'+wolk.map(m=>'<button class="naam'+(sh.leden.includes(m.id)?' aan':'')+(m.gecontroleerd?'':' check')+'" data-lid="'+m.id+'"'+(m.gecontroleerd?'':' title="nieuw van de werkvloer, nog te controleren"')+'>'+esc(m.naam)+(m.gecontroleerd?'':' ?')+'</button>').join('')+'</div>':'<div class="stil">Geen naam gevonden. Maak hem hieronder aan.</div>';
+}
+function namenKiezer(i){
+  const sh=S.bon.invoer.shifts[i]; const sheet=document.getElementById('sheet'); let zoek='';
+  const dicht=()=>{ sheet.style.display='none'; sheet.innerHTML=''; herleid(); render(); };
+  const kop=()=>'Namen ploeg '+(i+1)+' — '+sh.leden.length+' van '+shiftMan(sh)+' man';
+  sheet.innerHTML='<div class="sheetkaart"><div class="sheettitel" id="nk-kop">'+esc(kop())+'</div><div class="rij"><label>Zoek<input type="text" id="nk-zoek" placeholder="typ een paar letters…" autocomplete="off"></label></div><div id="nk-wolk">'+namenKiezerHtml(i,'')+'</div>'
+    +'<div class="rij" style="margin-top:10px"><label>Nieuwe naam (voor- en achternaam; de projectleider controleert)<input type="text" id="nk-naam" autocomplete="off"></label><button class="knop licht" id="nk-toevoegen" style="align-self:flex-end">+ toevoegen</button></div>'
+    +'<div class="sheetrij"><button class="knop" id="nk-klaar" style="flex:1;text-align:center">Klaar</button></div></div>';
+  sheet.style.display='flex'; sheet.onclick=e=>{ if(e.target===sheet) dicht(); };
+  const k=id=>document.getElementById(id);
+  const teken=()=>{ k('nk-wolk').innerHTML=namenKiezerHtml(i,zoek); k('nk-kop').textContent=kop(); k('nk-wolk').querySelectorAll('[data-lid]').forEach(b=>b.onclick=()=>{ const id=+b.dataset.lid; const j=sh.leden.indexOf(id); if(j>=0) sh.leden.splice(j,1); else { sh.leden.push(id); if(sh.leden.length>num(sh.aantal_man)) sh.aantal_man=sh.leden.length; } teken(); }); };
+  teken();
+  k('nk-zoek').addEventListener('input',()=>{ zoek=k('nk-zoek').value; teken(); });
+  k('nk-klaar').onclick=dicht;
+  const toevoegen=async()=>{ const naam=k('nk-naam').value.trim(); if(!naam){ toast('Vul een naam in'); return; } k('nk-toevoegen').disabled=true;
+    try{ const j=await api({action:'medewerker_save', fields:{naam}, log:'Naam toegevoegd op de werkvloer: '+naam}); await laad(); if(j.id&&!sh.leden.includes(j.id)){ sh.leden.push(j.id); if(sh.leden.length>num(sh.aantal_man)) sh.aantal_man=sh.leden.length; } k('nk-naam').value=''; zoek=''; k('nk-zoek').value=''; toast(j.bestaand?'Naam bestond al en is aangetikt':'Naam toegevoegd; de projectleider controleert hem'); }
+    catch(e){ toast(e.auth?'Niet ingelogd':(e.message||'Opslaan mislukt')); }
+    k('nk-toevoegen').disabled=false; teken(); };
+  k('nk-toevoegen').onclick=toevoegen; k('nk-naam').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); toevoegen(); } });
+  setTimeout(()=>k('nk-zoek').focus(),50);
+}
+// Nieuwe namen van de werkvloer controleren: naam corrigeren en bevestigen, of samenvoegen met een bestaande (juiste) naam.
+function namenControle(){
+  const sh=document.getElementById('sheet'); const dicht=()=>{ sh.style.display='none'; sh.innerHTML=''; };
+  const lijst=teControleren(); const bestaand=(S.data.medewerkers||[]).filter(m=>m.actief&&m.gecontroleerd).sort((a,b)=>a.naam.localeCompare(b.naam,'nl'));
+  let h='<div class="sheetkaart"><div class="sheettitel">Nieuwe namen van de werkvloer controleren</div><div class="stil">Op de werkvloer weten ze de exacte naam vaak niet. Corrigeer de naam en bevestig, of voeg samen met de juiste bestaande naam (ploegen op de bonnen worden dan omgezet).</div>';
+  if(!lijst.length) h+='<div class="info" style="margin-top:10px">Alles is gecontroleerd.</div>';
+  for(const m of lijst) h+='<div class="controle" data-m="'+m.id+'"><div class="stil">Aangemaakt door '+esc(m.aangemaakt_door||'werkvloer')+(m.created_at?' op '+fmtKort(String(m.created_at).slice(0,10)):'')+'</div><div class="rij"><label>Naam<input type="text" data-cn="'+m.id+'" value="'+esc(m.naam)+'"></label><label>Of samenvoegen met<select data-cm="'+m.id+'"><option value="">— kies bestaande naam —</option>'+bestaand.map(b=>'<option value="'+b.id+'">'+esc(b.naam)+'</option>').join('')+'</select></label></div><div class="knoppen"><button class="knop klein" data-cok="'+m.id+'">✔ Naam klopt / opslaan</button><button class="knop klein licht" data-cmerge="'+m.id+'">⇄ Samenvoegen</button>'+(isAdmin()?'<button class="knop klein licht" data-cdel="'+m.id+'" style="color:var(--rood)">× Verwijderen</button>':'')+'</div></div>';
+  h+='<div class="sheetrij"><button class="knop licht" id="c-sluit" style="flex:1;text-align:center">Sluiten</button></div></div>';
+  sh.innerHTML=h; sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); }; document.getElementById('c-sluit').onclick=dicht;
+  const klaar=async(actie,logtekst)=>{ dicht(); if(await doe(actie,logtekst)){ if(S.tab==='bon'&&S.bon){ S.bon.invoer.shifts=S.bon.invoer.shifts.map(normShift); herleid(); render(); } if(teControleren().length) namenControle(); } };
+  sh.querySelectorAll('[data-cok]').forEach(b=>b.onclick=()=>{ const id=+b.dataset.cok; const naam=sh.querySelector('[data-cn="'+id+'"]').value.trim(); if(!naam){ toast('Naam is leeg'); return; } klaar({action:'medewerker_save', id, fields:{naam, gecontroleerd:true}},'Naam gecontroleerd: '+naam); });
+  sh.querySelectorAll('[data-cmerge]').forEach(b=>b.onclick=()=>{ const id=+b.dataset.cmerge; const inId=Number(sh.querySelector('[data-cm="'+id+'"]').value); if(!inId){ toast('Kies eerst de bestaande naam'); return; } const van=medewerker(id), naar=medewerker(inId); if(!confirm('"'+van.naam+'" samenvoegen met "'+naar.naam+'"? Ploegen op bonnen worden omgezet.')) return; klaar({action:'medewerker_merge', id, in_id:inId},'Naam samengevoegd: '+van.naam+' → '+naar.naam); });
+  sh.querySelectorAll('[data-cdel]').forEach(b=>b.onclick=()=>{ const id=+b.dataset.cdel; if(!confirm('Naam verwijderen uit de namenwolk?')) return; klaar({action:'medewerker_delete', id},'Naam verwijderd #'+id); });
+}
+// Projectwizard: projectleider maakt een project aan (projectnummer toegewezen), loopt de projectafspraken door
+// (alle tarieven voorgevuld, aan te passen met ± 0,25) en zet de standaardafstand. Ook te gebruiken voor bestaande projecten.
+function volgendProjectCode(){ const nrs=(S.data.projecten||[]).map(p=>Number(p.code)).filter(n=>Number.isInteger(n)); return nrs.length?String(Math.max(...nrs)+1):String(new Date().getFullYear()%100)+'001'; }
+function projectWizard(p, stap){
+  const sh=document.getElementById('sheet'); const dicht=()=>{ sh.style.display='none'; sh.innerHTML=''; };
+  const aanOpt=(S.data.bedrijven||[]).filter(b=>b.soort==='aannemer'&&b.actief).map(b=>({v:b.id,t:b.naam})), opdOpt=(S.data.bedrijven||[]).filter(b=>b.soort==='opdrachtgever'&&b.actief).map(b=>({v:b.id,t:b.naam}));
+  const st={ stap:stap||'gegevens', p:Object.assign({code:volgendProjectCode(), naam:'', adres:'', postcode_plaats:'', aannemer_id:aanOpt[0]&&aanOpt[0].v, opdrachtgever_id:opdOpt[0]&&opdOpt[0].v, claimnummer:'', factuur_omschrijving:'', afstand_km:0, actief:true, sort:100}, p||{}),
+    prijzen:Object.fromEntries((S.data.tarieven||[]).filter(t=>t.actief).map(t=>[t.id, p?projectPrijs(p.id,t):Number(t.prijs)])) };
+  const teken=()=>{
+    let h='<div class="sheetkaart"><div class="sheettitel">'+(p?'Project '+esc(st.p.code)+' — ':'Nieuw project — ')+(st.stap==='gegevens'?'stap 1 van 3: gegevens':st.stap==='afspraken'?'stap 2 van 3: projectafspraken':'stap 3 van 3: controle')+'</div>';
+    if(st.stap==='gegevens'){
+      h+='<div class="rij" style="display:grid;grid-template-columns:1fr 1fr"><label>Projectnummer<input type="text" data-k="code" value="'+esc(st.p.code)+'"></label><label>Naam<input type="text" data-k="naam" value="'+esc(st.p.naam)+'" placeholder="bijv. Enserweg"></label>'
+        +'<label>Locatie (adres)<input type="text" data-k="adres" value="'+esc(st.p.adres)+'"></label><label>Postcode plaats<input type="text" data-k="postcode_plaats" value="'+esc(st.p.postcode_plaats)+'"></label>'
+        +'<label>Opdrachtgever<select data-k="opdrachtgever_id">'+opdOpt.map(o=>'<option value="'+o.v+'" '+(o.v===st.p.opdrachtgever_id?'selected':'')+'>'+esc(o.t)+'</option>').join('')+'</select></label><label>Aannemer (factureert)<select data-k="aannemer_id">'+aanOpt.map(o=>'<option value="'+o.v+'" '+(o.v===st.p.aannemer_id?'selected':'')+'>'+esc(o.t)+'</option>').join('')+'</select></label>'
+        +'<label>Claimnummer verzekeraar<input type="text" data-k="claimnummer" value="'+esc(st.p.claimnummer)+'"></label><label>Afstand naar locatie (km, per 0,5)<input type="number" step="0.5" min="0" inputmode="decimal" data-k="afstand_km" value="'+esc(st.p.afstand_km||0)+'"></label>'
+        +'<label style="grid-column:1/-1">Omschrijving op factuur<input type="text" data-k="factuur_omschrijving" value="'+esc(st.p.factuur_omschrijving)+'" placeholder="Uitgevoerde werkzaamheden t.a.v. …"></label></div>';
+      h+='<div class="sheetrij"><button class="knop licht" id="w-annuleer">Annuleren</button><button class="knop" id="w-verder" style="flex:1;text-align:center">Verder naar afspraken →</button></div>';
+    } else if(st.stap==='afspraken'){
+      h+='<div class="stil">Alle tarieven staan voorgevuld met de standaardprijs. Pas aan met − / + (stappen van 0,25) of typ een bedrag. Deze prijzen gelden alleen voor dit project.</div>';
+      for(const c of CATS){ const ts=(S.data.tarieven||[]).filter(t=>t.actief&&t.categorie===c.id); if(!ts.length) continue; h+='<h3>'+esc(c.naam)+'</h3>';
+        for(const t of ts) h+='<div class="afspraak"><span>'+esc(t.omschrijving)+(t.dagtype&&t.dagtype!=='alle'?' <small class="stil">('+esc(t.dagtype)+')</small>':'')+'<br><small class="stil">'+esc(t.eenheid_totaal)+' · standaard '+fmtGeld(t.prijs)+'</small></span><span class="pm"><button data-pm="-" data-t="'+t.id+'">−</button><input type="number" step="0.25" min="0" inputmode="decimal" data-prijs="'+t.id+'" value="'+esc(st.prijzen[t.id])+'"><button data-pm="+" data-t="'+t.id+'">+</button></span></div>'; }
+      h+='<div class="sheetrij">'+(p?'<button class="knop licht" id="w-annuleer">Annuleren</button>':'<button class="knop licht" id="w-terug">← Gegevens</button>')+'<button class="knop" id="w-verder" style="flex:1;text-align:center">Controleren →</button></div>';
+    } else {
+      const afw=(S.data.tarieven||[]).filter(t=>t.actief&&r2(st.prijzen[t.id])!==r2(t.prijs));
+      h+='<div class="info"><b>'+esc(st.p.code)+' · '+esc(st.p.naam)+'</b><br>'+esc(st.p.adres)+', '+esc(st.p.postcode_plaats)+'<br>Opdrachtgever: '+esc((opdOpt.find(o=>o.v===Number(st.p.opdrachtgever_id))||{}).t||'')+' · afstand '+fmtNum(st.p.afstand_km)+' km'+(st.p.claimnummer?' · claim '+esc(st.p.claimnummer):'')+'</div>';
+      h+='<div>'+(afw.length?'<b>Afwijkende prijzen voor dit project:</b><ul style="margin:6px 0 0 18px">'+afw.map(t=>'<li>'+esc(t.omschrijving)+': '+fmtGeld(st.prijzen[t.id])+' <small class="stil">(standaard '+fmtGeld(t.prijs)+')</small></li>').join('')+'</ul>':'Alle prijzen gelijk aan de standaardtarieven.')+'</div>';
+      h+='<div class="sheetrij"><button class="knop licht" id="w-terug">← Afspraken</button><button class="knop groen" id="w-klaar" style="flex:1;text-align:center">✔ Opslaan</button></div>';
+    }
+    sh.innerHTML=h+'</div>'; sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); };
+    const k=id=>document.getElementById(id); const lees=()=>{ sh.querySelectorAll('[data-k]').forEach(el=>{ st.p[el.dataset.k]=el.dataset.k.endsWith('_id')?Number(el.value):el.dataset.k==='afstand_km'?rondAf(el.value,0.5):el.value; }); sh.querySelectorAll('[data-prijs]').forEach(el=>{ st.prijzen[+el.dataset.prijs]=rondAf(el.value,0.25); }); };
+    if(k('w-annuleer')) k('w-annuleer').onclick=dicht;
+    if(k('w-terug')) k('w-terug').onclick=()=>{ lees(); st.stap=st.stap==='afspraken'?'gegevens':'afspraken'; teken(); };
+    if(k('w-verder')) k('w-verder').onclick=()=>{ lees(); if(st.stap==='gegevens'){ if(!String(st.p.code).trim()||!String(st.p.naam).trim()){ toast('Projectnummer en naam zijn verplicht'); return; } if(!st.p.factuur_omschrijving) st.p.factuur_omschrijving='Uitgevoerde werkzaamheden t.a.v. '+st.p.naam; st.stap='afspraken'; } else st.stap='controle'; teken(); };
+    sh.querySelectorAll('[data-pm]').forEach(b=>b.onclick=()=>{ const inp=sh.querySelector('[data-prijs="'+b.dataset.t+'"]'); inp.value=Math.max(0,rondAf(num(inp.value)+(b.dataset.pm==='+'?0.25:-0.25),0.25)).toFixed(2); });
+    if(k('w-klaar')) k('w-klaar').onclick=async()=>{ dicht(); const f=Object.assign({},st.p); delete f.id; delete f.created_at; delete f.aangemaakt_door;
+      let id=p?p.id:null; try{ const j=await api({action:'project_save', id, fields:f, log:(id?'Project aangepast: ':'Project aangemaakt: ')+f.code+' '+f.naam}); id=j.id||id;
+        await api({action:'projecttarief_save', project_id:id, prijzen:Object.entries(st.prijzen).map(([t,pr])=>({tarief_id:Number(t), prijs:pr})), log:'Projectafspraken opgeslagen voor '+f.code}); await laad(); }catch(e){ toast(e.auth?'Niet ingelogd':(e.message||'Opslaan mislukt')); await laad().catch(()=>{}); render(); return; }
+      if(S.tab==='bon'&&S.bon){ if(!p){ S.bon.project_id=id; if(!S.bon.id) vulVoorIn(); } herleid(); } render(); toast('Project '+f.code+' opgeslagen met afspraken'); };
+  };
+  teken();
 }
 
 /* ---------- bonnenlijst ---------- */
@@ -421,7 +701,7 @@ function aantalTekst(r){
 function overzichtDoc(projectId, jaar, week, bonnen, opts){
   const p=project(projectId)||{}; const aan=bedrijf(p.aannemer_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{};
   const o=bouwOverzicht(bonnen);
-  let x='<div class="doc"><div class="kopblok"><div class="firma">'+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+'</small></div><div style="text-align:right"><h1>Overzicht werkzaamheden week '+week+'</h1><div>'+fmtDMY(opts&&opts.datum||vandaagISO())+'</div></div></div>';
+  let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.website?' · '+esc(aan.website.replace(/^https?:\/\//,'')):'')+'</small></div><div style="text-align:right"><h1>Overzicht werkzaamheden week '+week+'</h1><div>'+fmtDMY(opts&&opts.datum||vandaagISO())+'</div></div></div>';
   x+='<div class="meta"><b>Opdrachtgever:</b><span>'+esc((opd.naam||'').replace(/ (B\.V\.|BV)$/i,''))+'</span><b>Project:</b><span>'+esc(p.code||'')+'</span><b>Projectadres:</b><span>'+esc(p.adres||'')+'<br>'+esc(p.postcode_plaats||'')+'</span></div>';
   x+='<table><tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th><th class="r">Prijs</th><th class="r">Kosten</th></tr>';
   for(const d of o.dagen){ x+='<tr class="dag"><td colspan="5">'+fmtDatum(d.datum)+'</td></tr>';
@@ -508,7 +788,7 @@ function factuurView(f){
   if(f.status==='definitief') x+='<button class="knop licht" id="fv-exp">📦 Markeer als geëxporteerd</button><button class="knop licht" id="fv-concept">↩ Terug naar concept</button>';
   if(f.status==='geexporteerd') x+='<button class="knop licht" id="fv-def2">↩ Terug naar definitief</button>';
   x+='</div>'+(S.factXml?'<pre class="xml" id="fv-xml">'+esc(S.factXml)+'</pre><div class="stil">Download geblokkeerd? Kopieer bovenstaande tekst in een bestand.</div>':'')+'</div>';
-  x+='<div class="doc"><div class="kopblok"><div class="firma">'+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+(aan.email?' · '+esc(aan.email):'')+'</small>'+(aan.kvk||aan.btw_nummer?'<small>'+(aan.kvk?'KvK '+esc(aan.kvk):'')+(aan.kvk&&aan.btw_nummer?' · ':'')+(aan.btw_nummer?'Btw '+esc(aan.btw_nummer):'')+'</small>':'')+'</div><div style="text-align:right"><h1>Factuur</h1></div></div>';
+  x+='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,52)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+(aan.email?' · '+esc(aan.email):'')+'</small>'+(aan.kvk||aan.btw_nummer?'<small>'+(aan.kvk?'KvK '+esc(aan.kvk):'')+(aan.kvk&&aan.btw_nummer?' · ':'')+(aan.btw_nummer?'Btw '+esc(aan.btw_nummer):'')+'</small>':'')+'</div><div style="text-align:right"><h1>Factuur</h1></div></div>';
   x+='<div class="adres"><b>'+esc(opd.naam||'')+'</b><br>'+esc(opd.adres||'')+'<br>'+esc(opd.postcode_plaats||'')+'</div>';
   x+='<div class="fmeta"><div><b>Factuur</b>'+esc(f.nummer)+'</div><div><b>Factuurdatum</b>'+fmtKort(f.datum)+'</div><div><b>Vervaldatum</b>'+fmtKort(f.vervaldatum)+'</div><div><b>Project</b>'+esc(p.code||'')+(p.claimnummer?' · claim '+esc(p.claimnummer):'')+'</div></div>';
   x+='<div style="margin:4px 0 10px"><b>'+esc(f.omschrijving)+'</b> — week '+f.week+' ('+(bonnen.length?fmtKort(bonnen[0].datum)+' t/m '+fmtKort(bonnen[bonnen.length-1].datum):'')+')</div>';
@@ -607,20 +887,39 @@ function maakJSON(f){
 }
 
 /* ---------- lijsten (admin) ---------- */
+// CSV uit het boekhoudpakket: omschrijving;prijs;eenheid[;categorie]. Scheiding ; , of tab; kopregel wordt herkend en overgeslagen; decimale komma toegestaan.
+function leesTarievenCSV(tekst){
+  const regels=String(tekst||'').replace(/^\uFEFF/,'').split(/\r?\n/).map(r=>r.trim()).filter(Boolean); const uit=[];
+  for(const r of regels){ const sep=r.includes(';')?';':r.includes('\t')?'\t':','; const c=r.split(sep).map(x=>x.trim().replace(/^"|"$/g,'')); if(c.length<2) continue;
+    const prijs=Number(String(c[1]).replace(/[€\s]/g,'').replace(',','.')); if(!Number.isFinite(prijs)||!c[0]) continue;
+    uit.push({omschrijving:c[0], prijs:r2(prijs), eenheid_totaal:c[2]||'', categorie:['materiaal','materieel','transport'].includes(String(c[3]||'').toLowerCase())?String(c[3]).toLowerCase():'materiaal'}); }
+  return uit;
+}
 function viewLijsten(){
   const t=S.lijstTab; const knop=(id,naam)=>'<button class="knop klein '+(t===id?'':'licht')+'" data-lt="'+id+'">'+naam+'</button>';
-  let x='<div class="kaart"><div class="knoppen">'+knop('tarieven','Tarieven')+knop('projecten','Projecten')+knop('bedrijven','Bedrijven')+knop('instellingen','Instellingen')+'</div>';
+  let x='<div class="kaart"><div class="knoppen">'+knop('tarieven','Tarieven')+knop('projecten','Projecten')+knop('medewerkers','Medewerkers')+knop('voertuigen','Voertuigen')+knop('bedrijven','Bedrijven')+knop('instellingen','Instellingen')+'</div>';
   if(t==='tarieven'){
     x+='<h2>Tarieven</h2><div class="stil">Prijzen excl. btw. Arbeid: het dagtype bepaalt welk tarief de bon automatisch pakt (ma-vr / za / zo).</div><div class="scroll"><table class="lijst"><tr><th>Categorie</th><th>Omschrijving</th><th>Aantal-eenheid</th><th>Per</th><th>Totaal-eenheid</th><th class="bedrag">Prijs</th><th>Dagtype</th><th></th></tr>';
     for(const r of (S.data.tarieven||[]).filter(r=>r.actief)) x+='<tr class="klik" data-tarief="'+r.id+'"><td>'+esc(CAT[r.categorie]?CAT[r.categorie].naam:r.categorie)+'</td><td>'+esc(r.omschrijving)+'</td><td>'+esc(r.eenheid_n)+'</td><td>'+esc(r.eenheid_per)+'</td><td>'+esc(r.eenheid_totaal)+'</td><td class="bedrag">'+fmtGeld(r.prijs)+'</td><td>'+esc(r.dagtype)+'</td><td><button class="knop klein licht" data-tdel="'+r.id+'" style="color:var(--rood)">×</button></td></tr>';
-    x+='</table></div><div class="knoppen"><button class="knop" id="t-nieuw">+ Tarief</button></div>';
+    x+='</table></div><div class="knoppen"><button class="knop" id="t-nieuw">+ Tarief</button><button class="knop licht" id="t-import">⬆️ Importeren uit boekhoudpakket (CSV)</button></div><div class="stil">CSV met per regel: omschrijving;prijs;eenheid (bijv. "Bout M6x50 + moer;0,18;per stuk"), optioneel een 4e kolom categorie (materiaal / materieel / transport). Bestaande omschrijvingen krijgen de nieuwe prijs.</div>';
   } else if(t==='projecten'){
-    x+='<h2>Projecten / locaties</h2><div class="scroll"><table class="lijst"><tr><th>Code</th><th>Naam</th><th>Adres</th><th>Aannemer</th><th>Opdrachtgever</th><th>Claim</th><th>Actief</th></tr>';
-    for(const p of (S.data.projecten||[])) x+='<tr class="klik" data-project="'+p.id+'"><td>'+esc(p.code)+'</td><td>'+esc(p.naam)+'</td><td>'+esc(p.adres)+', '+esc(p.postcode_plaats)+'</td><td>'+esc((bedrijf(p.aannemer_id)||{}).naam||'')+'</td><td>'+esc((bedrijf(p.opdrachtgever_id)||{}).naam||'')+'</td><td>'+esc(p.claimnummer)+'</td><td>'+(p.actief?'✓':'—')+'</td></tr>';
-    x+='</table></div><div class="knoppen"><button class="knop" id="p-nieuw">+ Project</button></div>';
+    x+='<h2>Projecten / locaties</h2><div class="stil">Nieuw project: de wizard wijst een projectnummer toe en loopt de projectafspraken (prijzen per tarief) door. Ook een projectleider op de werkvloer kan dit vanaf de dagbon.</div><div class="scroll"><table class="lijst"><tr><th>Code</th><th>Naam</th><th>Adres</th><th>Opdrachtgever</th><th>Claim</th><th class="bedrag">Afstand</th><th>Afspraken</th><th>Actief</th></tr>';
+    for(const p of (S.data.projecten||[])){ const afw=(S.data.projecttarieven||[]).filter(x=>x.project_id===p.id).length; x+='<tr class="klik" data-project="'+p.id+'"><td>'+esc(p.code)+'</td><td>'+esc(p.naam)+'</td><td>'+esc(p.adres)+', '+esc(p.postcode_plaats)+'</td><td>'+esc((bedrijf(p.opdrachtgever_id)||{}).naam||'')+'</td><td>'+esc(p.claimnummer)+'</td><td class="bedrag">'+fmtNum(p.afstand_km||0)+' km</td><td><button class="knop klein licht" data-afspraken="'+p.id+'">'+(afw?afw+' prijzen':'standaard')+' …</button></td><td>'+(p.actief?'✓':'—')+'</td></tr>'; }
+    x+='</table></div><div class="knoppen"><button class="knop" id="p-nieuw">+ Project (wizard)</button></div>';
+  } else if(t==='medewerkers'){
+    const tc=teControleren();
+    x+='<h2>Medewerkers (namenwolk)</h2><div class="stil">Deze namen tikt de teamleider aan bij een ploeg (op alfabet). Nieuwe namen van de werkvloer komen hier als "te controleren": naam corrigeren, bevestigen of samenvoegen met de juiste naam.</div>';
+    if(tc.length) x+='<div class="waarsch">✏️ '+tc.length+' nieuwe na'+(tc.length===1?'am':'men')+' van de werkvloer nog te controleren. <button class="knop klein licht" id="m-controle">Controleren…</button></div>';
+    x+='<div class="scroll"><table class="lijst"><tr><th>Naam</th><th>Functie</th><th>Bron</th><th>Status</th><th></th></tr>';
+    for(const m of (S.data.medewerkers||[]).filter(m=>m.actief).sort((a,b)=>(a.gecontroleerd===b.gecontroleerd?a.naam.localeCompare(b.naam,'nl'):a.gecontroleerd?1:-1))) x+='<tr class="klik" data-medewerker="'+m.id+'"><td>'+esc(m.naam)+'</td><td>'+esc(m.functie||'')+'</td><td class="stil">'+esc(m.bron||'')+(m.aangemaakt_door?' · '+esc(m.aangemaakt_door):'')+'</td><td>'+(m.gecontroleerd?'✓':'<span class="chip st-ingediend">te controleren</span>')+'</td><td><button class="knop klein licht" data-mdel="'+m.id+'" style="color:var(--rood)">×</button></td></tr>';
+    x+='</table></div><div class="knoppen"><button class="knop" id="m-nieuw">+ Medewerker</button></div>';
+  } else if(t==='voertuigen'){
+    x+="<h2>Voertuigen en materieel</h2><div class=\"stil\">Auto's tellen mee voor de kilometervergoeding (km per auto). Materieel hangt aan een dagtarief; 'gebracht' rekent bovendien transport per km (tarief \"Transport materieel (gebracht)\").</div><div class=\"scroll\"><table class=\"lijst\"><tr><th>Naam</th><th>Soort</th><th>Kenteken</th><th>Dagtarief</th><th>Volgorde</th><th></th></tr>";
+    for(const v of (S.data.voertuigen||[]).filter(v=>v.actief)){ const tr=(S.data.tarieven||[]).find(t=>t.id===v.tarief_id); x+='<tr class="klik" data-voertuig="'+v.id+'"><td>'+esc(v.naam)+'</td><td>'+esc(v.soort)+'</td><td>'+esc(v.kenteken||'')+'</td><td>'+(tr?esc(tr.omschrijving)+' — '+fmtGeld(tr.prijs):'<span class="stil">km-vergoeding</span>')+'</td><td>'+esc(v.sort)+'</td><td><button class="knop klein licht" data-vdel2="'+v.id+'" style="color:var(--rood)">×</button></td></tr>'; }
+    x+='</table></div><div class="knoppen"><button class="knop" id="v-nieuw">+ Voertuig / materieel</button></div>';
   } else if(t==='bedrijven'){
     x+='<h2>Bedrijven</h2><div class="stil">Aannemer = de partij die factureert (verschijnt als afzender op factuur/UBL). Opdrachtgever = ontvanger van de factuur; de debiteurcode is de relatiecode in Exact Online.</div><div class="scroll"><table class="lijst"><tr><th>Soort</th><th>Naam</th><th>Adres</th><th>KvK / btw</th><th>IBAN</th><th>E-mail</th><th>Debiteurcode</th></tr>';
-    for(const b of (S.data.bedrijven||[])) x+='<tr class="klik" data-bedrijf="'+b.id+'"><td>'+esc(b.soort)+'</td><td>'+esc(b.naam)+'</td><td>'+esc(b.adres)+', '+esc(b.postcode_plaats)+'</td><td>'+esc(b.kvk)+' '+esc(b.btw_nummer)+'</td><td>'+esc(b.iban)+'</td><td>'+esc(b.email)+'</td><td>'+esc(b.debiteur_code)+'</td></tr>';
+    for(const b of (S.data.bedrijven||[])) x+='<tr class="klik" data-bedrijf="'+b.id+'"><td>'+esc(b.soort)+'</td><td>'+(b.logo_pad?'<img src="'+esc(fotoUrl(b.logo_pad))+'" style="height:22px;vertical-align:middle;margin-right:6px">':'')+esc(b.naam)+(b.kleur?' <i class="ldot" style="display:inline-block;width:12px;height:12px;border-radius:50%;background:'+esc(b.kleur)+';vertical-align:middle"></i>':'')+(b.soort==='aannemer'?' <button class="knop klein licht" data-logo="'+b.id+'">logo…</button>':'')+'</td><td>'+esc(b.adres)+', '+esc(b.postcode_plaats)+'</td><td>'+esc(b.kvk)+' '+esc(b.btw_nummer)+'</td><td>'+esc(b.iban)+'</td><td>'+esc(b.email)+'</td><td>'+esc(b.debiteur_code)+'</td></tr>';
     x+='</table></div><div class="knoppen"><button class="knop" id="bd-nieuw">+ Bedrijf</button></div>';
   } else {
     const i=S.data.instellingen||{};
@@ -657,13 +956,27 @@ function bindLijsten(){
   app.querySelectorAll('[data-tdel]').forEach(b=>b.onclick=async()=>{ if(confirm('Tarief verwijderen (op bestaande bonnen blijft de prijs staan)?')) await doe({action:'tarief_delete', id:+b.dataset.tdel},'Tarief verwijderd #'+b.dataset.tdel); });
   const tn=document.getElementById('t-nieuw'); if(tn) tn.onclick=()=>tarSave(null,null);
   const aanOpt=(S.data.bedrijven||[]).filter(b=>b.soort==='aannemer').map(b=>({v:b.id,t:b.naam})); const opdOpt=(S.data.bedrijven||[]).filter(b=>b.soort==='opdrachtgever').map(b=>({v:b.id,t:b.naam}));
-  const projVelden=[{k:'code',l:'Projectcode'},{k:'naam',l:'Naam'},{k:'adres',l:'Projectadres'},{k:'postcode_plaats',l:'Postcode plaats'},{k:'aannemer_id',l:'Aannemer (factureert)',opties:aanOpt},{k:'opdrachtgever_id',l:'Opdrachtgever',opties:opdOpt},{k:'claimnummer',l:'Claimnummer verzekeraar'},{k:'factuur_omschrijving',l:'Omschrijving op factuur',breed:true},{k:'sort',l:'Volgorde',type:'number'},{k:'actief',l:'Actief',type:'bool'}];
-  const projSave=(id,p)=>formSheet(id?'Project aanpassen':'Nieuw project',projVelden,p||{sort:100,actief:true,aannemer_id:aanOpt[0]&&aanOpt[0].v,opdrachtgever_id:opdOpt[0]&&opdOpt[0].v},async f=>{ f.aannemer_id=f.aannemer_id?Number(f.aannemer_id):null; f.opdrachtgever_id=f.opdrachtgever_id?Number(f.opdrachtgever_id):null; await doe({action:'project_save', id, fields:f},'Project opgeslagen: '+f.code); });
-  app.querySelectorAll('tr[data-project]').forEach(tr=>tr.onclick=()=>projSave(+tr.dataset.project,S.data.projecten.find(p=>p.id===+tr.dataset.project)));
-  const pn=document.getElementById('p-nieuw'); if(pn) pn.onclick=()=>projSave(null,null);
-  const bedVelden=[{k:'soort',l:'Soort',opties:[{v:'aannemer',t:'aannemer (factureert)'},{v:'opdrachtgever',t:'opdrachtgever (ontvangt factuur)'}]},{k:'naam',l:'Naam'},{k:'adres',l:'Adres'},{k:'postcode_plaats',l:'Postcode plaats'},{k:'land',l:'Land (NL)'},{k:'kvk',l:'KvK'},{k:'btw_nummer',l:'Btw-nummer'},{k:'iban',l:'IBAN'},{k:'email',l:'E-mail'},{k:'telefoon',l:'Telefoon'},{k:'debiteur_code',l:'Debiteur-/relatiecode Exact'},{k:'actief',l:'Actief',type:'bool'}];
+  app.querySelectorAll('tr[data-project]').forEach(tr=>tr.onclick=e=>{ if(e.target.closest('button')) return; projectWizard(S.data.projecten.find(p=>p.id===+tr.dataset.project),'gegevens'); });
+  app.querySelectorAll('[data-afspraken]').forEach(b=>b.onclick=()=>projectWizard(S.data.projecten.find(p=>p.id===+b.dataset.afspraken),'afspraken'));
+  const pn=document.getElementById('p-nieuw'); if(pn) pn.onclick=()=>projectWizard(null,'gegevens');
+  const ti=document.getElementById('t-import'); if(ti) ti.onclick=()=>{ const inp=document.createElement('input'); inp.type='file'; inp.accept='.csv,text/csv,text/plain'; inp.onchange=async()=>{ const f=inp.files[0]; if(!f) return; const tekst=await f.text(); const rijen=leesTarievenCSV(tekst); if(!rijen.length){ toast('Geen bruikbare regels in het bestand'); return; }
+    const j=await doe({action:'tarief_import', rijen},'Tarieven geïmporteerd uit boekhoudpakket ('+rijen.length+' regels)'); if(j) toast('Import klaar: '+j.nieuw+' nieuw, '+j.bijgewerkt+' bijgewerkt'); }; inp.click(); };
+  const medVelden=[{k:'naam',l:'Naam'},{k:'functie',l:'Functie (optioneel)'},{k:'sort',l:'Volgorde',type:'number'},{k:'gecontroleerd',l:'Gecontroleerd',type:'bool'}];
+  const mc=document.getElementById('m-controle'); if(mc) mc.onclick=()=>namenControle();
+  const medSave=(id,m)=>formSheet(id?'Medewerker aanpassen':'Nieuwe medewerker',medVelden,m||{sort:100},async f=>{ await doe({action:'medewerker_save', id, fields:f},'Medewerker opgeslagen: '+f.naam); });
+  app.querySelectorAll('tr[data-medewerker]').forEach(tr=>tr.onclick=e=>{ if(e.target.closest('button')) return; medSave(+tr.dataset.medewerker,S.data.medewerkers.find(m=>m.id===+tr.dataset.medewerker)); });
+  app.querySelectorAll('[data-mdel]').forEach(b=>b.onclick=async()=>{ if(confirm('Medewerker uit de namenwolk halen?')) await doe({action:'medewerker_delete', id:+b.dataset.mdel},'Medewerker verwijderd #'+b.dataset.mdel); });
+  const mn=document.getElementById('m-nieuw'); if(mn) mn.onclick=()=>medSave(null,null);
+  const matOpt=[{v:'',t:"— geen (auto: km-vergoeding) —"}].concat((S.data.tarieven||[]).filter(t=>t.actief&&t.categorie==='materieel').map(t=>({v:t.id,t:t.omschrijving+' — '+fmtGeld(t.prijs)+' '+t.eenheid_totaal})));
+  const vrtVelden=[{k:'naam',l:'Naam (bijv. Bus 1, Hoogwerker 2)'},{k:'soort',l:'Soort',opties:[{v:'auto',t:'auto (km-vergoeding)'},{v:'materieel',t:'materieel (dagtarief)'}]},{k:'kenteken',l:'Kenteken (optioneel)'},{k:'tarief_id',l:'Dagtarief (materieel)',opties:matOpt},{k:'sort',l:'Volgorde',type:'number'}];
+  const vrtSave=(id,v)=>formSheet(id?'Voertuig aanpassen':'Nieuw voertuig / materieel',vrtVelden,v||{soort:'auto',sort:100,tarief_id:''},async f=>{ f.tarief_id=f.tarief_id?Number(f.tarief_id):null; await doe({action:'voertuig_save', id, fields:f},'Voertuig opgeslagen: '+f.naam); });
+  app.querySelectorAll('tr[data-voertuig]').forEach(tr=>tr.onclick=e=>{ if(e.target.closest('button')) return; vrtSave(+tr.dataset.voertuig,S.data.voertuigen.find(v=>v.id===+tr.dataset.voertuig)); });
+  app.querySelectorAll('[data-vdel2]').forEach(b=>b.onclick=async()=>{ if(confirm('Voertuig verwijderen?')) await doe({action:'voertuig_delete', id:+b.dataset.vdel2},'Voertuig verwijderd #'+b.dataset.vdel2); });
+  const vn=document.getElementById('v-nieuw'); if(vn) vn.onclick=()=>vrtSave(null,null);
+  const bedVelden=[{k:'soort',l:'Soort',opties:[{v:'aannemer',t:'aannemer (factureert)'},{v:'opdrachtgever',t:'opdrachtgever (ontvangt factuur)'}]},{k:'naam',l:'Naam'},{k:'adres',l:'Adres'},{k:'postcode_plaats',l:'Postcode plaats'},{k:'land',l:'Land (NL)'},{k:'kvk',l:'KvK'},{k:'btw_nummer',l:'Btw-nummer'},{k:'iban',l:'IBAN'},{k:'email',l:'E-mail'},{k:'telefoon',l:'Telefoon'},{k:'debiteur_code',l:'Debiteur-/relatiecode Exact'},{k:'website',l:'Website'},{k:'kleur',l:'Hoofdkleur huisstijl (bijv. #1d4e89)'},{k:'kleur2',l:'Tweede kleur (knoppen goedkeuren)'},{k:'actief',l:'Actief',type:'bool'}];
   const bedSave=(id,b)=>formSheet(id?'Bedrijf aanpassen':'Nieuw bedrijf',bedVelden,b||{soort:'aannemer',land:'NL',actief:true},async f=>{ await doe({action:'bedrijf_save', id, fields:f},'Bedrijf opgeslagen: '+f.naam); });
-  app.querySelectorAll('tr[data-bedrijf]').forEach(tr=>tr.onclick=()=>bedSave(+tr.dataset.bedrijf,S.data.bedrijven.find(b=>b.id===+tr.dataset.bedrijf)));
+  app.querySelectorAll('tr[data-bedrijf]').forEach(tr=>tr.onclick=e=>{ if(e.target.closest('button')) return; bedSave(+tr.dataset.bedrijf,S.data.bedrijven.find(b=>b.id===+tr.dataset.bedrijf)); });
+  app.querySelectorAll('[data-logo]').forEach(b=>b.onclick=()=>{ const inp=document.createElement('input'); inp.type='file'; inp.accept='image/png,image/jpeg,image/svg+xml,image/webp'; inp.onchange=()=>{ const f=inp.files[0]; if(!f) return; if(f.size>2*1024*1024){ toast('Logo groter dan 2 MB'); return; } const fr=new FileReader(); fr.onload=async()=>{ await doe({action:'bedrijf_logo', id:+b.dataset.logo, fields:{logo_b64:fr.result}},'Logo geplaatst'); toast('Logo geplaatst'); }; fr.readAsDataURL(f); }; inp.click(); });
   const bn=document.getElementById('bd-nieuw'); if(bn) bn.onclick=()=>bedSave(null,null);
   const ie=document.getElementById('i-export'); if(ie) ie.onclick=()=>{ const d=S.data; download('werkbonnen-export-'+vandaagISO()+'.json', JSON.stringify({geexporteerd:new Date().toISOString(), bedrijven:d.bedrijven, projecten:d.projecten, tarieven:d.tarieven, bonnen:d.bonnen, regels:d.regels, facturen:d.facturen, instellingen:d.instellingen}, null, 2), 'application/json'); };
   const iw=document.getElementById('i-wis'); if(iw) iw.onclick=()=>vraag('Typ WISSEN om alle bonnen, regels en facturen te verwijderen (bedrijven, projecten, tarieven en instellingen blijven staan)','',async v=>{ if(v!=='WISSEN'){ toast('Niet gewist'); return; } if(await doe({action:'testdata_wissen', bevestiging:v},'Alle bonnen en facturen gewist')) toast('Testdata gewist'); });

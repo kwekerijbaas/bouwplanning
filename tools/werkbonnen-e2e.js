@@ -30,7 +30,7 @@ const VERWACHT=43856.65;
       if(await pg.$('#b-wis')) await pg.click('#b-wis');   // voorinvulling van de vorige dag wissen: elke dag anders
       for(let i=0;i<d.arbeid.length;i++){ if(i>0) await pg.click('#b-shift'); const [n,u]=d.arbeid[i]; const sh='[data-sh="'+i+'"]';
         await pg.selectOption(sh+'[data-sf="start"]','06:00'); await pg.selectOption(sh+'[data-sf="eind"]',eindVoor(u));
-        if(i===0&&d.namen){ for(const nm of d.namen){ await pg.click('[data-shift="'+i+'"] button[data-lid]:has-text("'+nm+'")'); } }
+        if(i===0&&d.namen){ await pg.click('[data-kies="'+i+'"]'); await pg.waitForSelector('#nk-wolk'); for(const nm of d.namen){ await pg.click('#nk-wolk button[data-lid]:has-text("'+nm+'")'); } await pg.click('#nk-klaar'); await pg.waitForSelector('[data-shift="'+i+'"]'); }
         await pg.fill(sh+'[data-sf="aantal_man"]',String(n)); await pg.dispatchEvent(sh+'[data-sf="aantal_man"]','change');
         await pg.check(sh+'[data-sf="overnachting"]'); await pg.waitForSelector(sh+'[data-sf="nachten"]');
         const uren=await pg.textContent('[data-uren="'+i+'"]'); if(Number(uren.replace(',','.'))!==u) fouten.push(d.datum+' ploeg '+(i+1)+' uren '+uren+' != '+u);

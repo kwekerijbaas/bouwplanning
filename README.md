@@ -72,9 +72,11 @@ Er zijn geen licenties of abonnementen nodig; de code is één HTML-bestand plus
 ### Dagbon: ploegen, namenwolk, voertuigen, projectbon
 De teamleider tikt de dag aan op zijn telefoon; de regels van de bon worden daaruit afgeleid.
 - **Ploegen (shifts)**: eerst het aantal man, dan start- en eindtijd (kwartieren), pauze automatisch
-  (½ uur vanaf 6 uur bruto, anders 0; handmatig te overschrijven), namen aantikken in de namenwolk
-  (op alfabet, `wb_medewerker`, voorgevuld met de 40 namen van het urenbriefje van week 31) of een
-  nieuwe naam aanmaken, overnachting ja/nee + aantal man. Meer namen aantikken dan het aantal man
+  (½ uur vanaf 6 uur bruto, anders 0; handmatig te overschrijven), namen kiezen via "+ namen"
+  (namenwolk in een schuifpaneel met zoekveld, op alfabet, `wb_medewerker`, voorgevuld met de 77
+  namen van de urenbriefjes van week 29, 31 en 34; vier voornamen zonder achternaam staan als
+  "te controleren") of een nieuwe naam aanmaken, overnachting ja/nee + aantal man. Op de kaart
+  staan alleen de gekozen namen (tik = verwijderen), zodat de dagbon op de telefoon kort blijft. Meer namen aantikken dan het aantal man
   verhoogt het aantal; minder namen = "zonder naam". Meerdere ploegen per dag als niet iedereen
   dezelfde tijden heeft. -> arbeid per ploeg (dagtarief ma-vr / za / zo), overnachting samengeteld.
   Ploegen bewaren medewerker-ids (`leden`), zodat een naamcorrectie overal doorwerkt.

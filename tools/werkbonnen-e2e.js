@@ -40,23 +40,23 @@ const VERWACHT=43856.65;
       await pg.click('#b-indienen'); await pg.waitForSelector('.chip.st-ingediend',{timeout:5000});
     }
     await pg.screenshot({path:'/tmp/wb-test-01-bon-team.png',fullPage:true});
-    await pg.click('[data-tab="bonnen"]'); await pg.screenshot({path:'/tmp/wb-test-02-bonnen-team.png',fullPage:true});
+    await pg.click('[data-tab="bonnen"]'); await pg.waitForSelector('#l-status'); await pg.screenshot({path:'/tmp/wb-test-02-bonnen-team.png',fullPage:true});
     // teamleider mag ingediende bon niet wijzigen
     await pg.click('tr[data-bon]'); const disabled=await pg.$('#b-datum[disabled]'); if(!disabled) fouten.push('teamleider kan ingediende bon nog bewerken');
     // --- administratie ---
     await pg.click('#tb-wie'); await pg.fill('#lg-wie','Tessa'); await pg.fill('#lg-code','admin2026'); await pg.click('#lg-ok'); await pg.waitForSelector('[data-tab="facturen"]');
-    await pg.click('[data-tab="bonnen"]'); const bol=await pg.textContent('#tabs .bol').catch(()=>''); if(bol!=='4') fouten.push('badge te beoordelen != 4: '+bol);
+    await pg.click('[data-tab="bonnen"]'); await pg.waitForSelector('#l-status'); const bol=await pg.textContent('#tabs .bol').catch(()=>''); if(bol!=='4') fouten.push('badge te beoordelen != 4: '+bol);
     // eerste afkeuren en weer laten indienen, rest goedkeuren
     const eerste=await pg.getAttribute('tr[data-bon]','data-bon');
     await pg.click('[data-af="'+eerste+'"]'); await pg.fill('#sh-txt','Km klopt niet'); await pg.click('#sh-ok'); await pg.waitForSelector('.chip.st-afgekeurd');
     await pg.click('tr[data-bon="'+eerste+'"]'); const w=await pg.textContent('.waarsch'); if(!/Km klopt niet/.test(w)) fouten.push('afkeurreden niet zichtbaar');
     await pg.screenshot({path:'/tmp/wb-test-03-bon-afgekeurd.png',fullPage:true});
     await pg.click('#b-indienen'); await pg.waitForSelector('.chip.st-ingediend');
-    await pg.click('[data-tab="bonnen"]'); while(await pg.$('[data-goed]')){ await pg.click('[data-goed]'); await pg.waitForTimeout(250); }
+    await pg.click('[data-tab="bonnen"]'); await pg.waitForSelector('#l-status'); while(await pg.$('[data-goed]')){ await pg.click('[data-goed]'); await pg.waitForTimeout(250); }
     await pg.waitForFunction(()=>document.querySelectorAll('.chip.st-goedgekeurd').length===4);
     await pg.screenshot({path:'/tmp/wb-test-04-bonnen-goedgekeurd.png',fullPage:true});
     // weekoverzicht
-    await pg.click('[data-tab="overzicht"]'); await pg.selectOption('#o-project', await pg.$eval('#o-project', s=>[...s.options].find(o=>/Drietorensweg/.test(o.textContent)).value)); await pg.selectOption('#o-week', await pg.$eval('#o-week', s=>[...s.options].find(o=>/week 35/.test(o.textContent)).value));
+    await pg.click('[data-tab="overzicht"]'); await pg.waitForSelector('#o-project'); await pg.selectOption('#o-project', await pg.$eval('#o-project', s=>[...s.options].find(o=>/Drietorensweg/.test(o.textContent)).value)); await pg.selectOption('#o-week', await pg.$eval('#o-week', s=>[...s.options].find(o=>/week 35/.test(o.textContent)).value));
     const totTxt=await pg.textContent('.doc tr.tot td.r'); console.log('overzicht totaal',totTxt);
     const tot=Number(totTxt.replace(/\./g,'').replace(',','.').replace(' €',''));
     if(Math.abs(tot-VERWACHT)>0.005) fouten.push('overzicht totaal '+tot+' != '+VERWACHT);
@@ -73,7 +73,7 @@ const VERWACHT=43856.65;
     await pg.click('#fv-json'); require('fs').writeFileSync('/tmp/wb-test-factuur-2026265.json',await pg.textContent('#fv-xml'));
     await pg.click('#fv-def'); await pg.waitForSelector('.chip.st-definitief');
     // Lijsten
-    await pg.click('[data-tab="lijsten"]'); await pg.screenshot({path:'/tmp/wb-test-07-lijsten.png',fullPage:true});
+    await pg.click('[data-tab="lijsten"]'); await pg.waitForSelector('[data-lt]'); await pg.screenshot({path:'/tmp/wb-test-07-lijsten.png',fullPage:true});
     await pg.click('#t-nieuw'); await pg.fill('[data-k="omschrijving"]','Gebruik kraan'); await pg.fill('[data-k="prijs"]','400'); await pg.click('#fs-ok'); await pg.waitForFunction(()=>document.body.textContent.includes('Gebruik kraan'));
     // mobiel
     const m=await br.newContext({viewport:{width:400,height:850},isMobile:true,hasTouch:true}); const mp=await m.newPage(); await mp.goto(BASE+'#bon2026/Piet'); await mp.waitForSelector('#b-project'); await mp.screenshot({path:'/tmp/wb-test-08-mobiel-bon.png',fullPage:true});

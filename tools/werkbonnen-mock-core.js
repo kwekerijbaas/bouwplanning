@@ -33,6 +33,7 @@ function handle(body, code){
         const regels=normRegels(body.regels);
         const basis={project_id,datum:fields.datum,ingevuld_door:String(fields.ingevuld_door||wie),opmerking:String(fields.opmerking||''),afgetekend_door:String(fields.afgetekend_door||''),updated_at:new Date().toISOString()};
         if(fields.handtekening_b64) basis.handtekening_pad=(typeof window!=='undefined')?fields.handtekening_b64:'sig-'+Date.now()+'.png';
+        if((fields.fotos_b64||[]).length>10) throw new Error("maximaal 10 foto's per bon");
         const nieuwe=(fields.fotos_b64||[]).map((f,i)=>(typeof window!=='undefined')?f:'foto-'+Date.now()+'-'+i+'.jpg');
         let bon;
         if(id){ bon=T.bonnen.find(b=>b.id===id); if(!bon) throw new Error('bon niet gevonden');
@@ -48,9 +49,9 @@ function handle(body, code){
       case 'bon_indienen': { const bon=T.bonnen.find(b=>b.id===id); if(!['concept','afgekeurd'].includes(bon.status)) throw new Error('bon is al ingediend'); if(!T.regels.some(r=>r.bon_id===id)) throw new Error('bon heeft nog geen regels'); Object.assign(bon,{status:'ingediend',ingediend_ts:new Date().toISOString()}); break; }
       case 'bon_delete': { const bon=T.bonnen.find(b=>b.id===id); if(!admin&&!['concept','afgekeurd'].includes(bon.status)) throw new Error('alleen concepten kunnen verwijderd worden'); if(bon.status==='gefactureerd') throw new Error('bon zit op een factuur'); T.bonnen=T.bonnen.filter(b=>b.id!==id); T.regels=T.regels.filter(r=>r.bon_id!==id); break; }
       case 'bon_beoordeel': { if(!admin) throw new Error('alleen administratie'); const bon=T.bonnen.find(b=>b.id===id); if(bon.status==='gefactureerd') throw new Error('bon zit al op een factuur'); const b=body.besluit; if(!['goedgekeurd','afgekeurd','ingediend'].includes(b)) throw new Error('onbekend besluit'); Object.assign(bon,{status:b,beoordeeld_door:b==='ingediend'?'':wie,beoordeeld_ts:b==='ingediend'?null:new Date().toISOString(),beoordeling:String(body.beoordeling||'')}); break; }
-      case 'bedrijf_save': { if(!admin) throw new Error('alleen administratie'); if(id) Object.assign(T.bedrijven.find(b=>b.id===id),fields); else add('bedrijven','bedrijf',{...fields}); break; }
-      case 'project_save': { if(!admin) throw new Error('alleen administratie'); if(id) Object.assign(T.projecten.find(b=>b.id===id),fields); else add('projecten','project',{...fields}); break; }
-      case 'tarief_save': { if(!admin) throw new Error('alleen administratie'); if('prijs' in fields) fields.prijs=num(fields.prijs,'prijs'); if(id) Object.assign(T.tarieven.find(b=>b.id===id),fields); else add('tarieven','tarief',{actief:true,...fields}); break; }
+      case 'bedrijf_save': { if(!admin) throw new Error('alleen administratie'); if('soort' in fields&&!['aannemer','opdrachtgever'].includes(fields.soort)) throw new Error('onbekend soort'); if('naam' in fields&&!String(fields.naam).trim()) throw new Error('naam leeg'); if(id) Object.assign(T.bedrijven.find(b=>b.id===id),fields); else add('bedrijven','bedrijf',{...fields}); break; }
+      case 'project_save': { if(!admin) throw new Error('alleen administratie'); if('code' in fields&&!String(fields.code).trim()) throw new Error('projectcode leeg'); if(!id&&T.projecten.some(p=>p.code===fields.code)) throw new Error('projectcode bestaat al'); if(id) Object.assign(T.projecten.find(b=>b.id===id),fields); else add('projecten','project',{...fields}); break; }
+      case 'tarief_save': { if(!admin) throw new Error('alleen administratie'); if('categorie' in fields&&!CATS.includes(fields.categorie)) throw new Error('onbekende categorie'); if('dagtype' in fields&&!['alle','ma-vr','za','zo'].includes(fields.dagtype)) throw new Error('onbekend dagtype'); if('prijs' in fields) fields.prijs=num(fields.prijs,'prijs'); if(id) Object.assign(T.tarieven.find(b=>b.id===id),fields); else add('tarieven','tarief',{actief:true,...fields}); break; }
       case 'tarief_delete': { if(!admin) throw new Error('alleen administratie'); T.tarieven.find(b=>b.id===id).actief=false; break; }
       case 'instelling_save': { if(!admin) throw new Error('alleen administratie'); Object.assign(T.instellingen,body.instellingen||{}); break; }
       case 'factuur_maak': {
@@ -65,7 +66,7 @@ function handle(body, code){
         const pre=T.instellingen.factuur_prefix; if(nummer.startsWith(pre)){ const n=Number(nummer.slice(pre.length)); if(Number.isInteger(n)&&n>=Number(T.instellingen.factuur_volgnummer)) T.instellingen.factuur_volgnummer=String(n+1); }
         log(); return [200,{ok:true,id:f.id,nummer}];
       }
-      case 'factuur_update': { if(!admin) throw new Error('alleen administratie'); const f=T.facturen.find(f=>f.id===id); const upd={...fields}; if('btw_pct' in upd){ const pct=num(upd.btw_pct,'btw'); upd.btw_pct=pct; upd.btw_bedrag=r2(f.bedrag_excl*pct/100); upd.bedrag_incl=r2(f.bedrag_excl+upd.btw_bedrag); } Object.assign(f,upd); break; }
+      case 'factuur_update': { if(!admin) throw new Error('alleen administratie'); const f=T.facturen.find(f=>f.id===id); const upd={...fields}; if('status' in upd&&!['concept','definitief','geexporteerd'].includes(upd.status)) throw new Error('onbekende status'); for(const k of ['datum','vervaldatum']) if(k in upd&&!/^\d{4}-\d{2}-\d{2}$/.test(upd[k]||'')) throw new Error(k+' is geen geldige datum'); if('btw_pct' in upd){ const pct=num(upd.btw_pct,'btw'); upd.btw_pct=pct; upd.btw_bedrag=r2(f.bedrag_excl*pct/100); upd.bedrag_incl=r2(f.bedrag_excl+upd.btw_bedrag); } Object.assign(f,upd); break; }
       case 'factuur_delete': { if(!admin) throw new Error('alleen administratie'); const f=T.facturen.find(f=>f.id===id); if(f.status!=='concept') throw new Error('alleen conceptfacturen kunnen vervallen'); for(const b of T.bonnen) if(b.factuur_id===id){ b.status='goedgekeurd'; b.factuur_id=null; } T.facturen=T.facturen.filter(x=>x.id!==id); break; }
       default: return [400,{fout:'onbekende actie'}];
     }

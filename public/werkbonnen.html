@@ -193,7 +193,11 @@ function tabs(){
   if(isAdmin()){ t.push({id:'facturen',naam:'🧾 Facturen'}); t.push({id:'lijsten',naam:'⚙️ Lijsten'}); }
   const open=(S.data.bonnen||[]).filter(b=>b.status==='ingediend').length;
   document.getElementById('tabs').innerHTML=t.map(x=>'<button data-tab="'+x.id+'" class="'+(S.tab===x.id?'actief':'')+'">'+x.naam+(x.id==='bonnen'&&isAdmin()&&open?'<span class="bol">'+open+'</span>':'')+'</button>').join('');
-  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{ S.tab=b.dataset.tab; if(S.tab==='bon'&&!S.bon) nieuweBon(); render(); });
+  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=async()=>{
+    if(S.tab==='bon'&&S.bon&&document.getElementById('b-datum')) leesBonInputs();   // getypte waarden bewaren
+    S.tab=b.dataset.tab; if(S.tab==='bon'&&!S.bon) nieuweBon();
+    try{ await laad(); }catch(e){ if(e.auth){ toonLogin(); return; } toast('Verversen mislukt — check je verbinding'); }   // altijd verse data bij tabwissel
+    render(); });
 }
 function render(){
   if(!S.data) return;
@@ -258,7 +262,7 @@ function viewBon(){
   if(bew){ x+='<div class="stil">Handtekening (teken met vinger of muis):</div><canvas class="sig" id="b-sig"></canvas><div class="rij"><button class="knop klein licht" id="b-sig-wis">wis handtekening</button></div>'; }
   if(b.handtekening_pad&&!b.handtekening_b64) x+='<div class="stil">Opgeslagen handtekening:</div><img src="'+esc(fotoUrl(b.handtekening_pad))+'" style="max-height:110px;border:1px solid var(--lijn);border-radius:8px;background:#fff">';
   x+='<h3>Foto\'s (papieren bon, situatie)</h3>';
-  if(bew) x+='<div class="rij"><input type="file" id="b-foto" accept="image/*" capture="environment" multiple style="width:auto"></div>';
+  if(bew) x+='<div class="rij"><input type="file" id="b-foto" accept="image/*" multiple style="width:auto"></div>';
   x+='<div class="thumbs" id="b-thumbs">'+b.foto_paden.map((p,i)=>'<div class="th"><a href="'+esc(fotoUrl(p))+'" target="_blank"><img src="'+esc(fotoUrl(p))+'"></a>'+(bew?'<button data-delfoto="'+i+'">×</button>':'')+'</div>').join('')
     +b.fotos_b64.map((p,i)=>'<div class="th"><img src="'+p+'">'+(bew?'<button data-delnieuw="'+i+'">×</button>':'')+'</div>').join('')+'</div>';
   x+='<div class="knoppen" style="margin-top:14px">';
@@ -275,7 +279,7 @@ function regelHtml(r,i,bew){
   const vrij=(!r.tarief_id||!ts.length||r.categorie==='overnachting')?'<input type="text" data-i="'+i+'" data-f="omschrijving" value="'+esc(r.omschrijving)+'" placeholder="omschrijving" '+d+'>':'';
   let x='<div class="bonregel"><div class="oms">'+keuze+vrij+(r.categorie==='arbeid'?'<input type="text" data-i="'+i+'" data-f="namen" value="'+esc(r.namen)+'" placeholder="namen (optioneel)" style="margin-top:3px" '+d+'>':'')+'</div>';
   x+='<div><span class="lbl">'+esc(r.eenheid_n||'aantal')+'</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="aantal" value="'+esc(r.aantal)+'" '+d+'></div>';
-  x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+' p.p.</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+d+'>':'')+'</div>';
+  x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+(r.eenheid_n==='man'?' p.p.':r.eenheid_n==="auto's"?' per auto':' per stuk')+'</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+d+'>':'')+'</div>';
   x+='<div><span class="lbl">prijs '+esc(r.eenheid_totaal)+'</span><input type="number" step="0.01" min="0" data-i="'+i+'" data-f="prijs" value="'+esc(r.prijs)+'" '+((bew&&isAdmin())?'':'disabled')+'></div>';
   x+='<div class="bedrag"><span class="lbl">'+fmtNum(b.totaal)+' '+esc(r.eenheid_totaal)+'</span><b data-bedrag="'+i+'">'+fmtGeld(b.bedrag)+'</b></div>';
   x+=(bew?'<button class="x" data-del="'+i+'">×</button>':'<span></span>')+'</div>';
@@ -348,7 +352,7 @@ function vraag(titel, huidig, cb){
   sh.innerHTML='<div class="sheetkaart"><div class="sheettitel">'+esc(titel)+'</div><textarea id="sh-txt">'+esc(huidig)+'</textarea><div class="sheetrij"><button class="knop licht" id="sh-annuleer">Annuleren</button><button class="knop" id="sh-ok" style="flex:1;text-align:center">OK</button></div></div>';
   sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); };
   document.getElementById('sh-annuleer').onclick=dicht; document.getElementById('sh-ok').onclick=()=>{ const v=document.getElementById('sh-txt').value.trim(); dicht(); cb(v); };
-  setTimeout(()=>document.getElementById('sh-txt').focus(),50);
+  setTimeout(()=>{ const e=document.getElementById('sh-txt'); if(e) e.focus(); },50);
 }
 
 /* ---------- bonnenlijst ---------- */
@@ -660,6 +664,7 @@ function bindLijsten(){
   const io=document.getElementById('i-opslaan'); if(io) io.onclick=()=>doe({action:'instelling_save', instellingen:{factuur_prefix:document.getElementById('i-prefix').value.trim(), factuur_volgnummer:document.getElementById('i-volg').value, betaaltermijn_dagen:document.getElementById('i-termijn').value, btw_pct:document.getElementById('i-btw').value}},'Instellingen opgeslagen');
 }
 
+document.addEventListener('visibilitychange',async()=>{ if(document.visibilityState!=='visible'||!S.data||S.tab==='bon') return; try{ await laad(); render(); }catch(e){} });
 /* ---------- start ---------- */
 (async function start(){
   const m=location.hash.match(/^#([^\/]+)(?:\/(.+))?$/);

@@ -362,6 +362,18 @@ Deno.serve(async (req) => {
         if (e2) throw e2;
         break;
       }
+      case "testdata_wissen": {
+        // Voor de pilot: alle bonnen (regels via cascade) en facturen weg; stamgegevens blijven staan.
+        if (!admin) throw new Error("alleen administratie");
+        if (String(body.bevestiging ?? "") !== "WISSEN") throw new Error("bevestiging ontbreekt");
+        const { error: e1 } = await db.from("wb_bon").update({ factuur_id: null }).not("factuur_id", "is", null);
+        if (e1) throw e1;
+        const { error: e2 } = await db.from("wb_factuur").delete().gt("id", 0);
+        if (e2) throw e2;
+        const { error: e3 } = await db.from("wb_bon").delete().gt("id", 0);
+        if (e3) throw e3;
+        break;
+      }
       default:
         return json({ fout: "onbekende actie" }, 400);
     }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1d4e89">
-<title>Werkbonnen Kwekerij Baas</title>
+<title>Werkbonnen</title>
 <style>
 :root{
   --blauw:#1d4e89; --blauw-licht:#e8eef6; --bg:#f2f4f3; --kaart:#fff; --tekst:#1b2a24; --grijs:#6c757d; --lijn:#e3e7e5;
@@ -107,7 +107,7 @@ pre.xml{background:#f6f8fa;border:1px solid var(--lijn);border-radius:8px;paddin
 <body>
 <div id="login">
   <div class="kaart">
-    <h2>📋 Werkbonnen Kwekerij Baas</h2>
+    <h2>📋 Werkbonnen</h2>
     <p class="stil" style="margin-bottom:12px">Dagbonnen vanaf de werkvloer, beoordeling door de administratie, weekoverzicht en factuur.</p>
     <label>Jouw naam<br><input type="text" id="lg-wie" autocomplete="name"></label>
     <label>Toegangscode<br><input type="password" id="lg-code" autocomplete="current-password"></label>
@@ -202,6 +202,7 @@ function tabs(){
 function render(){
   if(!S.data) return;
   document.getElementById('tb-wie').textContent=S.wie+' · '+(isAdmin()?'administratie':'werkvloer');
+  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').textContent='📋 Werkbonnen'+(aan?' · '+aan.naam.replace(/ (B\.V\.|BV)$/i,''):'');
   tabs();
   const app=document.getElementById('app');
   if(S.tab==='bon'){ if(!S.bon) nieuweBon(); app.innerHTML=viewBon(); bindBon(); }
@@ -626,7 +627,10 @@ function viewLijsten(){
     x+='<h2>Instellingen</h2><div class="rij"><label>Factuurnummer-prefix<input type="text" id="i-prefix" value="'+esc(i.factuur_prefix||'')+'"></label><label>Volgend volgnummer<input type="number" id="i-volg" value="'+esc(i.factuur_volgnummer||'1')+'"></label></div>'
       +'<div class="rij"><label>Betaaltermijn (dagen)<input type="number" id="i-termijn" value="'+esc(i.betaaltermijn_dagen||'14')+'"></label><label>Btw %<input type="number" id="i-btw" value="'+esc(i.btw_pct||'21')+'"></label></div>'
       +'<div class="stil">Volgend factuurnummer wordt: <b>'+esc(volgendNummer())+'</b></div><div class="knoppen"><button class="knop" id="i-opslaan">Opslaan</button></div>'
-      +'<h3>Toegangscodes</h3><div class="stil">Werkvloer en administratie hebben elk een eigen code (ingesteld op de server: secrets WB_CODE_TEAM en WB_CODE_ADMIN van de edge function "werkbonnen").</div>';
+      +'<h3>Toegangscodes</h3><div class="stil">Werkvloer en administratie hebben elk een eigen code (ingesteld op de server: secrets WB_CODE_TEAM en WB_CODE_ADMIN van de edge function "werkbonnen").</div>'
+      +'<h3>Gegevens en overdracht</h3><div class="stil">Alle gegevens (bedrijven, projecten, tarieven, bonnen, regels, facturen, instellingen) als één JSON-bestand, bijvoorbeeld voor overdracht naar een eigen omgeving of als back-up.</div>'
+      +'<div class="knoppen"><button class="knop licht" id="i-export">⬇️ Alles exporteren (JSON)</button><button class="knop licht" id="i-wis" style="color:var(--rood)">🗑 Testdata wissen (bonnen en facturen)</button></div>'
+      +(S.factXml?'<pre class="xml">'+esc(S.factXml.slice(0,4000))+(S.factXml.length>4000?'\n… (ingekort)':'')+'</pre>':'');
   }
   x+='</div>';
   return x;
@@ -661,6 +665,8 @@ function bindLijsten(){
   const bedSave=(id,b)=>formSheet(id?'Bedrijf aanpassen':'Nieuw bedrijf',bedVelden,b||{soort:'aannemer',land:'NL',actief:true},async f=>{ await doe({action:'bedrijf_save', id, fields:f},'Bedrijf opgeslagen: '+f.naam); });
   app.querySelectorAll('tr[data-bedrijf]').forEach(tr=>tr.onclick=()=>bedSave(+tr.dataset.bedrijf,S.data.bedrijven.find(b=>b.id===+tr.dataset.bedrijf)));
   const bn=document.getElementById('bd-nieuw'); if(bn) bn.onclick=()=>bedSave(null,null);
+  const ie=document.getElementById('i-export'); if(ie) ie.onclick=()=>{ const d=S.data; download('werkbonnen-export-'+vandaagISO()+'.json', JSON.stringify({geexporteerd:new Date().toISOString(), bedrijven:d.bedrijven, projecten:d.projecten, tarieven:d.tarieven, bonnen:d.bonnen, regels:d.regels, facturen:d.facturen, instellingen:d.instellingen}, null, 2), 'application/json'); };
+  const iw=document.getElementById('i-wis'); if(iw) iw.onclick=()=>vraag('Typ WISSEN om alle bonnen, regels en facturen te verwijderen (bedrijven, projecten, tarieven en instellingen blijven staan)','',async v=>{ if(v!=='WISSEN'){ toast('Niet gewist'); return; } if(await doe({action:'testdata_wissen', bevestiging:v},'Alle bonnen en facturen gewist')) toast('Testdata gewist'); });
   const io=document.getElementById('i-opslaan'); if(io) io.onclick=()=>doe({action:'instelling_save', instellingen:{factuur_prefix:document.getElementById('i-prefix').value.trim(), factuur_volgnummer:document.getElementById('i-volg').value, betaaltermijn_dagen:document.getElementById('i-termijn').value, btw_pct:document.getElementById('i-btw').value}},'Instellingen opgeslagen');
 }
 

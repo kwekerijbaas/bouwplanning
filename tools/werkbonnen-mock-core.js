@@ -68,6 +68,7 @@ function handle(body, code){
       }
       case 'factuur_update': { if(!admin) throw new Error('alleen administratie'); const f=T.facturen.find(f=>f.id===id); const upd={...fields}; if('status' in upd&&!['concept','definitief','geexporteerd'].includes(upd.status)) throw new Error('onbekende status'); for(const k of ['datum','vervaldatum']) if(k in upd&&!/^\d{4}-\d{2}-\d{2}$/.test(upd[k]||'')) throw new Error(k+' is geen geldige datum'); if('btw_pct' in upd){ const pct=num(upd.btw_pct,'btw'); upd.btw_pct=pct; upd.btw_bedrag=r2(f.bedrag_excl*pct/100); upd.bedrag_incl=r2(f.bedrag_excl+upd.btw_bedrag); } Object.assign(f,upd); break; }
       case 'factuur_delete': { if(!admin) throw new Error('alleen administratie'); const f=T.facturen.find(f=>f.id===id); if(f.status!=='concept') throw new Error('alleen conceptfacturen kunnen vervallen'); for(const b of T.bonnen) if(b.factuur_id===id){ b.status='goedgekeurd'; b.factuur_id=null; } T.facturen=T.facturen.filter(x=>x.id!==id); break; }
+      case 'testdata_wissen': { if(!admin) throw new Error('alleen administratie'); if(String(body.bevestiging||'')!=='WISSEN') throw new Error('bevestiging ontbreekt'); T.facturen=[]; T.bonnen=[]; T.regels=[]; break; }
       default: return [400,{fout:'onbekende actie'}];
     }
     log(); return [200,{ok:true}];

@@ -49,3 +49,22 @@ UBL 2.1 XML / CSV / JSON voor Exact Online.
   node tools/werkbonnen-e2e-extra.js   # 3. browser: mobiel, foto/handtekening, afkeuren, Lijsten, printweergave
   ```
   Bij een afwijkende Chromium: `CHROME=/pad/naar/chrome node tools/werkbonnen-e2e.js`.
+
+### Pilot met KZ Kasherstel en overdracht
+Het proces (dagbon -> beoordeling -> weekoverzicht -> factuur) is het proces van de
+aannemer. Rollen in de pilot: KZ-teamleiders = werkvloer (code `bon2026`), KZ-kantoor =
+administratie (code `admin2026`), Baas tekent de dagbon af op het scherm van de teamleider.
+De pilot draait op de Supabase-omgeving van Baas (eigen `wb_`-tabellen, los van de planning).
+
+Overdracht naar een eigen omgeving van KZ (ca. 1 uur):
+1. Supabase-project aanmaken (gratis tier volstaat) en `supabase/migrations/20260911_werkbonnen_basis.sql`
+   uitvoeren in de SQL-editor; stamgegevens (bedrijven, projecten, tarieven) invoeren via
+   Lijsten of overnemen uit de JSON-export (Lijsten > Instellingen > Alles exporteren).
+2. Edge function deployen: `supabase functions deploy werkbonnen --no-verify-jwt` vanuit deze
+   map; secrets `WB_CODE_TEAM` en `WB_CODE_ADMIN` zetten op eigen codes.
+3. `public/werkbonnen.html` hosten waar men wil (elke statische host, ook de eigen website) en
+   bovenin de constante `API` aanpassen naar `https://<project>.supabase.co/functions/v1/werkbonnen/api`
+   (of tijdelijk `?api=...` achter de URL gebruiken).
+4. Testdata uit de pilot wissen via Lijsten > Instellingen > Testdata wissen; de
+   JSON-export dient als archief van de pilotperiode.
+Er zijn geen licenties of abonnementen nodig; de code is één HTML-bestand plus één function.

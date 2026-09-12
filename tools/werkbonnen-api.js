@@ -1,13 +1,17 @@
 // API-tests via HTTP tegen de mock. Start: node tools/werkbonnen-api.js
 // API-tests via HTTP tegen de mock (zelfde regels als de edge function), zonder browser.
-const { spawn } = require('child_process'); const assert=require('assert');
-const srv=spawn('node',[require('path').join(__dirname,'werkbonnen-mock.js')],{stdio:'ignore'}); process.on('exit',()=>srv.kill());
-const API='http://localhost:8787/api';
+ const assert=require('assert');
+const { spawn } = require('child_process');
+const PORT=18000+Math.floor(Math.random()*2000);
+const srv=spawn(process.execPath,[require('path').join(__dirname,'werkbonnen-mock.js')],{stdio:'ignore',env:{...process.env,WB_PORT:String(PORT)}}); process.on('exit',()=>{ try{ srv.kill(); }catch(e){} });
+const API='http://localhost:'+PORT+'/api', BASE='http://localhost:'+PORT+'/werkbonnen.html?api='+encodeURIComponent(API);
+async function wachtOpMock(){ for(let i=0;i<50;i++){ try{ const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':'admin2026'},body:'{"action":"state"}'}); const j=await r.json(); if(j.bonnen&&j.bonnen.length===0&&j.facturen.length===0) return; throw new Error('mock op poort '+PORT+' heeft al data - test gestopt'); }catch(e){ if(/al data/.test(e.message)) { console.log('FOUT: '+e.message); process.exit(1); } await new Promise(r=>setTimeout(r,200)); } } console.log('FOUT: mock-API start niet (poort '+PORT+')'); process.exit(1); }
+
 async function call(code, body){ const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':code},body:JSON.stringify(body)}); return [r.status, await r.json()]; }
 const T='bon2026', A='admin2026';
 let n=0, fouten=[]; const t=async(naam,fn)=>{ n++; try{ await fn(); }catch(e){ fouten.push(naam+': '+e.message); } };
 (async()=>{
-  await new Promise(r=>setTimeout(r,700));
+  await wachtOpMock();
   await t('onjuiste code -> 401', async()=>{ const [s,j]=await call('fout',{action:'state'}); assert.strictEqual(s,401); assert.strictEqual(j.fout,'onjuiste code'); });
   await t('CORS preflight', async()=>{ const r=await fetch(API,{method:'OPTIONS'}); assert.ok(r.headers.get('access-control-allow-headers').includes('x-code')); });
   await t('onbekende actie -> 400', async()=>{ const [s]=await call(T,{action:'bestaat_niet'}); assert.strictEqual(s,400); });

@@ -71,11 +71,19 @@ Er zijn geen licenties of abonnementen nodig; de code is één HTML-bestand plus
 
 ### Dagbon: ploegen, namenwolk, voertuigen, projectbon
 De teamleider tikt de dag aan op zijn telefoon; de regels van de bon worden daaruit afgeleid.
-- **Ploegen (shifts)**: start- en eindtijd (kwartieren), pauze automatisch (½ uur vanaf 6 uur bruto,
-  anders 0; handmatig te overschrijven), namen aantikken in de namenwolk (`wb_medewerker`; de
-  teamleider kan zelf namen toevoegen), "extra man zonder naam", overnachting ja/nee + aantal man.
-  Meerdere ploegen per dag als niet iedereen dezelfde tijden heeft. -> arbeid per ploeg (dagtarief
-  ma-vr / za / zo), overnachting samengeteld.
+- **Ploegen (shifts)**: eerst het aantal man, dan start- en eindtijd (kwartieren), pauze automatisch
+  (½ uur vanaf 6 uur bruto, anders 0; handmatig te overschrijven), namen aantikken in de namenwolk
+  (op alfabet, `wb_medewerker`, voorgevuld met de 40 namen van het urenbriefje van week 31) of een
+  nieuwe naam aanmaken, overnachting ja/nee + aantal man. Meer namen aantikken dan het aantal man
+  verhoogt het aantal; minder namen = "zonder naam". Meerdere ploegen per dag als niet iedereen
+  dezelfde tijden heeft. -> arbeid per ploeg (dagtarief ma-vr / za / zo), overnachting samengeteld.
+  Ploegen bewaren medewerker-ids (`leden`), zodat een naamcorrectie overal doorwerkt.
+- **Nieuwe namen controleren**: een naam die op de werkvloer wordt aangemaakt krijgt
+  `gecontroleerd=false` (bron `werkvloer`, wie) en staat oranje met "?" in de wolk. Dagbon en
+  Lijsten › Medewerkers tonen "n nieuwe namen te controleren"; de projectleider (werkvloer of
+  kantoor) corrigeert de naam en bevestigt, of voegt hem samen met de juiste bestaande naam
+  (actie `medewerker_merge`: ploegen op alle bonnen en de namen op arbeidregels worden omgezet,
+  de foute naam vervalt).
 - **Voertuigen en materieel** (`wb_voertuig`, Lijsten › Voertuigen): auto's tellen voor de
   km-vergoeding (km per auto, standaard de projectafstand); materieel hangt aan een dagtarief.
   Per voertuig: "al op locatie" of "gebracht" (km), hele dag of dagdeel (¾, ½, ¼). Gebracht

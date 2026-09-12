@@ -152,3 +152,8 @@ alter table wb_bonregel add column if not exists bron text not null default ''; 
 alter table wb_medewerker enable row level security;
 alter table wb_voertuig enable row level security;
 alter table wb_projecttarief enable row level security;
+
+-- 12-09-2026 (migration "werkbonnen_medewerker_controle"): namen van de werkvloer eerst controleren door de projectleider
+alter table wb_medewerker add column if not exists gecontroleerd boolean not null default true;   -- false = nieuw aangemaakt op de werkvloer, nog te controleren/corrigeren
+alter table wb_medewerker add column if not exists bron text not null default '';                 -- 'werkvloer' / 'kantoor' / 'urenbriefje week 31'
+alter table wb_medewerker add column if not exists aangemaakt_door text not null default '';

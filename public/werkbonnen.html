@@ -63,6 +63,9 @@ textarea{min-height:60px;resize:vertical}
 .wolk .naam{border:1px solid var(--lijn);border-radius:16px;padding:6px 12px;font-size:13px;background:#fff;color:var(--tekst);min-height:34px}
 .wolk .naam.aan{background:var(--blauw);color:#fff;border-color:var(--blauw);font-weight:600}
 .wolk .naam.nieuw{border-style:dashed;color:var(--blauw)}
+.wolk .naam.check{border-color:var(--oranje);background:#fff8e6}
+.wolk .naam.check.aan{background:var(--oranje);border-color:var(--oranje)}
+.controle{border:1px solid var(--lijn);border-radius:10px;padding:10px;margin-top:10px;background:#fafcfb}
 .wolk .naam:disabled{opacity:.6;cursor:default}
 .schakel{display:flex;align-items:center;gap:6px;padding:6px 0;color:var(--tekst)}
 .schakel input[type=checkbox]{width:20px;height:20px}
@@ -270,16 +273,24 @@ function regelFout(r){
 function tijdMin(t){ const m=/^(\d{1,2}):(\d{2})$/.exec(String(t||'')); return m?(+m[1])*60+(+m[2]):null; }
 function shiftPauze(sh){ if(sh.pauze!==''&&sh.pauze!=null&&sh.pauze!=='auto') return num(sh.pauze); const a=tijdMin(sh.start), b=tijdMin(sh.eind); if(a==null||b==null) return 0; let u=(b-a)/60; if(u<0) u+=24; return u>=6?0.5:0; }
 function shiftUren(sh){ const a=tijdMin(sh.start), b=tijdMin(sh.eind); if(a==null||b==null) return 0; let u=(b-a)/60; if(u<0) u+=24; u-=shiftPauze(sh); return Math.max(0, rondAf(u,0.5)); }
-function shiftMan(sh){ return (sh.namen||[]).length+Math.ceil(num(sh.extra_man)-1e-9); }
+function medewerker(id){ return (S.data.medewerkers||[]).find(m=>m.id===id); }
+function naamVan(id){ const m=medewerker(id); return m?m.naam:''; }
+// Ploeg: aantal_man (eerst invullen) + leden (medewerker-ids uit de namenwolk). Oude bonnen hadden namen als tekst + extra_man: die worden omgezet.
+function normShift(s){ const legacy=!Array.isArray((s||{}).leden); const sh=Object.assign(nieuweShift(),s||{});
+  if(legacy){ const ids=[]; for(const nm of (sh.namen||[])){ const m=(S.data.medewerkers||[]).find(m=>m.naam.toLowerCase()===String(nm).toLowerCase()); if(m) ids.push(m.id); } sh.leden=ids; if((s||{}).aantal_man==null||(s||{}).aantal_man==='') sh.aantal_man=(sh.namen||[]).length+Math.ceil(num(sh.extra_man)-1e-9); }
+  sh.leden=[...new Set(sh.leden.map(Number).filter(id=>medewerker(id)))]; sh.aantal_man=Math.max(Math.ceil(num(sh.aantal_man)-1e-9),sh.leden.length); delete sh.namen; delete sh.extra_man; return sh; }
+function shiftMan(sh){ if(!Array.isArray(sh.leden)) return (sh.namen||[]).length+Math.ceil(num(sh.extra_man)-1e-9); return Math.max(Math.ceil(num(sh.aantal_man)-1e-9), sh.leden.length); }
+function shiftNamen(sh){ return Array.isArray(sh.leden)?sh.leden.map(naamVan).filter(Boolean):(sh.namen||[]); }
+function teControleren(){ return (S.data.medewerkers||[]).filter(m=>m.actief&&!m.gecontroleerd); }
 function projectPrijs(projectId,t){ const pt=(S.data.projecttarieven||[]).find(x=>x.project_id===projectId&&x.tarief_id===t.id); return pt?Number(pt.prijs):Number(t.prijs); }
 function tariefRegel(t,projectId,extra){ return Object.assign({categorie:t.categorie, omschrijving:t.omschrijving, tarief_id:t.id, aantal:0, per:null, prijs:projectPrijs(projectId,t), eenheid_n:t.eenheid_n, eenheid_per:t.eenheid_per, eenheid_totaal:t.eenheid_totaal, namen:'', bron:''}, extra||{}); }
 function transportKmTarief(){ return tarieven('transport').find(t=>/km/i.test(t.eenheid_totaal||''))||null; }
 function voertuig(id){ return (S.data.voertuigen||[]).find(v=>v.id===id); }
-function nieuweShift(){ return {start:'06:30', eind:'16:00', pauze:'', namen:[], extra_man:0, overnachting:false, nachten:''}; }
+function nieuweShift(){ return {aantal_man:0, start:'06:30', eind:'16:00', pauze:'', leden:[], overnachting:false, nachten:''}; }
 // Uit shifts en voertuigen de regels van de dag afleiden (arbeid per shift, overnachting samen, km per auto-groep, materieel per dagtarief, transport gebracht materieel).
 function afleidRegels(bon){
   const inv=bon.invoer||{shifts:[],voertuigen:[]}, pid=bon.project_id, uit=[]; const arb=arbeidTarief(bon.datum); let nachten=0;
-  for(const sh of inv.shifts||[]){ const n=shiftMan(sh), u=shiftUren(sh); if(n>0&&u>0&&arb) uit.push(tariefRegel(arb,pid,{aantal:n, per:u, namen:(sh.namen||[]).join(', '), bron:'shift'})); if(sh.overnachting&&n>0) nachten+=Math.ceil(num(sh.nachten===''||sh.nachten==null?n:sh.nachten)-1e-9); }
+  for(const sh of inv.shifts||[]){ const n=shiftMan(sh), u=shiftUren(sh); if(n>0&&u>0&&arb) uit.push(tariefRegel(arb,pid,{aantal:n, per:u, namen:shiftNamen(sh).join(', '), bron:'shift'})); if(sh.overnachting&&n>0) nachten+=Math.ceil(num(sh.nachten===''||sh.nachten==null?n:sh.nachten)-1e-9); }
   const ov=tarieven('overnachting')[0]; if(nachten>0&&ov) uit.push(tariefRegel(ov,pid,{aantal:nachten, bron:'shift'}));
   const km=tarieven('km')[0], trT=transportKmTarief(); const perKm=new Map(), mat=new Map(); let transportKm=0;
   for(const v of inv.voertuigen||[]){
@@ -298,7 +309,7 @@ function herleid(){ S.bon.regels=afleidRegels(S.bon).concat(S.bon.regels.filter(
 // Vorige bon van dit project (bij voorkeur van dezelfde teamleider) als voorinvulling: shifts en voertuigen worden onthouden.
 function vorigeBon(projectId, datum){ const bs=(S.data.bonnen||[]).filter(b=>b.project_id===projectId&&b.datum<=datum&&b.invoer&&((b.invoer.shifts||[]).length||(b.invoer.voertuigen||[]).length)); return bs.find(b=>b.ingevuld_door===S.wie)||bs[0]||null; }
 function vulVoorIn(){ const v=vorigeBon(S.bon.project_id,S.bon.datum); if(!v){ S.bon.invoer={shifts:[nieuweShift()],voertuigen:[]}; S.bon.voorgevuld=''; herleid(); return; }
-  S.bon.invoer=JSON.parse(JSON.stringify({shifts:v.invoer.shifts||[],voertuigen:v.invoer.voertuigen||[]})); S.bon.voorgevuld=v.datum; herleid(); }
+  S.bon.invoer=JSON.parse(JSON.stringify({shifts:(v.invoer.shifts||[]),voertuigen:v.invoer.voertuigen||[]})); S.bon.invoer.shifts=S.bon.invoer.shifts.map(normShift); S.bon.voorgevuld=v.datum; herleid(); }
 function nieuweBon(projectId){
   const eersteProject=(S.data.projecten||[]).find(p=>p.actief);
   S.bon={ id:null, project_id:projectId||(eersteProject?eersteProject.id:null), datum:vandaagISO(), ingevuld_door:S.wie, opmerking:'', afgetekend_door:'', status:'concept',
@@ -312,7 +323,7 @@ function laadBon(b){
   const heeftInvoer=(inv.shifts||[]).length||(inv.voertuigen||[]).length;
   S.bon={ id:b.id, project_id:b.project_id, datum:b.datum, ingevuld_door:b.ingevuld_door, opmerking:b.opmerking, afgetekend_door:b.afgetekend_door, status:b.status,
     beoordeling:b.beoordeling, beoordeeld_door:b.beoordeeld_door, handtekening_pad:b.handtekening_pad, handtekening_b64:'', foto_paden:(b.foto_paden||[]).slice(), fotos_b64:[],
-    invoer:{shifts:(inv.shifts||[]).map(s=>Object.assign(nieuweShift(),s)), voertuigen:(inv.voertuigen||[]).slice()}, voorgevuld:'',
+    invoer:{shifts:(inv.shifts||[]).map(normShift), voertuigen:(inv.voertuigen||[]).slice()}, voorgevuld:'',
     regels:heeftInvoer?regels:regels.map(r=>Object.assign(r,{bron:r.bron||'extra'})) };
   S.tab='bon'; S.scanInfo=''; S.bonPrint=false;
 }
@@ -344,18 +355,20 @@ function viewBon(){
   if(b.voorgevuld&&bew) x+='<div class="info" id="b-voorgevuld">↩ Voorgevuld met de bon van '+fmtKort(b.voorgevuld)+' (shifts en voertuigen). Klopt het niet? <button class="knop klein licht" id="b-wis">alles wissen</button></div>';
   x+='</div>';
   // --- shifts ---
-  const inv=b.invoer||(b.invoer={shifts:[],voertuigen:[]}); inv.shifts=inv.shifts||[]; inv.voertuigen=inv.voertuigen||[]; const namenLijst=(S.data.medewerkers||[]).filter(m=>m.actief).map(m=>m.naam);
-  x+='<div class="kaart"><h2>👷 Ploegen (shifts)</h2><div class="stil">Per ploeg: start- en eindtijd, namen aantikken, overnachting. Meerdere ploegen als niet iedereen dezelfde tijden heeft.</div>';
+  const inv=b.invoer||(b.invoer={shifts:[],voertuigen:[]}); inv.shifts=(inv.shifts||[]).map(normShift); inv.voertuigen=inv.voertuigen||[];
+  const wolk=(S.data.medewerkers||[]).filter(m=>m.actief).sort((a,c)=>a.naam.localeCompare(c.naam,'nl')); const tc=teControleren();
+  x+='<div class="kaart"><h2>👷 Ploegen (shifts)</h2><div class="stil">Per ploeg: aantal man, start- en eindtijd, namen aantikken (op alfabet) of een nieuwe naam aanmaken, overnachting. Meerdere ploegen als niet iedereen dezelfde tijden heeft.</div>';
   inv.shifts.forEach((sh,i)=>{
-    const n=shiftMan(sh), u=shiftUren(sh); const alle=[...new Set(namenLijst.concat(sh.namen||[]))].sort((a,b)=>a.localeCompare(b,'nl'));
+    const n=shiftMan(sh), u=shiftUren(sh); const zonder=n-sh.leden.length;
     x+='<div class="shift" data-shift="'+i+'"><div class="shiftkop"><b>Ploeg '+(i+1)+'</b><span class="stil">'+n+' man × '+fmtNum(u,1)+' uur</span>'+(bew?'<button class="x" data-shdel="'+i+'" title="ploeg verwijderen">×</button>':'')+'</div>';
-    x+='<div class="rij tijden"><label>Start'+tijdSelect('data-sh="'+i+'" data-sf="start"',sh.start,d)+'</label><label>Eind'+tijdSelect('data-sh="'+i+'" data-sf="eind"',sh.eind,d)+'</label>'
+    x+='<div class="rij tijden"><label>Aantal man<input type="number" step="1" min="0" inputmode="numeric" data-sh="'+i+'" data-sf="aantal_man" value="'+esc(sh.aantal_man||0)+'" '+d+'></label><label>Start'+tijdSelect('data-sh="'+i+'" data-sf="start"',sh.start,d)+'</label><label>Eind'+tijdSelect('data-sh="'+i+'" data-sf="eind"',sh.eind,d)+'</label>'
       +'<label>Pauze<select data-sh="'+i+'" data-sf="pauze" '+d+'><option value="" '+(sh.pauze===''||sh.pauze==null?'selected':'')+'>auto ('+fmtNum(shiftPauze(sh),1)+')</option>'+[0,0.5,1,1.5].map(p=>'<option value="'+p+'" '+(sh.pauze!==''&&sh.pauze!=null&&num(sh.pauze)===p?'selected':'')+'>'+fmtNum(p,1)+' uur</option>').join('')+'</select></label>'
       +'<label>Uren p.p.<b class="uren" data-uren="'+i+'">'+fmtNum(u,1)+'</b></label></div>';
-    x+='<div class="wolk">'+alle.map(nm=>'<button class="naam'+((sh.namen||[]).includes(nm)?' aan':'')+'" data-sh="'+i+'" data-naam="'+esc(nm)+'" '+d+'>'+esc(nm)+'</button>').join('')+(bew?'<button class="naam nieuw" data-shnaam="'+i+'">+ naam</button>':'')+'</div>';
-    x+='<div class="rij"><label>Extra man zonder naam<input type="number" step="1" min="0" inputmode="numeric" data-sh="'+i+'" data-sf="extra_man" value="'+esc(sh.extra_man||0)+'" '+d+'></label>'
-      +'<label>Overnachting<span class="schakel"><input type="checkbox" data-sh="'+i+'" data-sf="overnachting" '+(sh.overnachting?'checked':'')+' '+d+'> ja, '+(sh.overnachting?'<input type="number" step="1" min="0" inputmode="numeric" data-sh="'+i+'" data-sf="nachten" value="'+esc(sh.nachten===''||sh.nachten==null?n:sh.nachten)+'" style="width:64px;display:inline-block" '+d+'> man':'')+'</span></label></div></div>';
+    x+='<div class="stil">Namen: '+sh.leden.length+' van '+n+' man'+(zonder>0?' ('+zonder+' zonder naam)':'')+'</div>';
+    x+='<div class="wolk">'+wolk.map(m=>'<button class="naam'+(sh.leden.includes(m.id)?' aan':'')+(m.gecontroleerd?'':' check')+'" data-sh="'+i+'" data-lid="'+m.id+'" '+d+(m.gecontroleerd?'':' title="nieuw van de werkvloer, nog te controleren"')+'>'+esc(m.naam)+(m.gecontroleerd?'':' ?')+'</button>').join('')+(bew?'<button class="naam nieuw" data-shnaam="'+i+'">+ naam</button>':'')+'</div>';
+    x+='<div class="rij"><label>Overnachting<span class="schakel"><input type="checkbox" data-sh="'+i+'" data-sf="overnachting" '+(sh.overnachting?'checked':'')+' '+d+'> ja, '+(sh.overnachting?'<input type="number" step="1" min="0" inputmode="numeric" data-sh="'+i+'" data-sf="nachten" value="'+esc(sh.nachten===''||sh.nachten==null?n:sh.nachten)+'" style="width:64px;display:inline-block" '+d+'> man':'')+'</span></label></div></div>';
   });
+  if(tc.length) x+='<div class="waarsch">✏️ '+tc.length+' nieuwe na'+(tc.length===1?'am':'men')+' van de werkvloer nog te controleren ('+esc(tc.slice(0,4).map(m=>m.naam).join(', '))+(tc.length>4?', …':'')+'). <button class="knop klein licht" id="b-namen">Controleren…</button></div>';
   if(bew) x+='<div class="knoppen"><button class="knop licht" id="b-shift">+ ploeg</button></div>';
   x+='</div>';
   // --- voertuigen / materieel ---
@@ -416,7 +429,7 @@ function projectbonDoc(b){
   let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+'</small></div><div style="text-align:right"><h1>Projectbon</h1><div>'+fmtDatum(b.datum)+'</div><div>week '+isoWeek(b.datum).week+(b.id?' · bon #'+b.id:'')+'</div></div></div>';
   x+='<div class="meta"><b>Projectnummer:</b><span>'+esc(p.code||'')+' '+esc(p.naam||'')+'</span><b>Opdrachtgever:</b><span>'+esc((opd.naam||'').replace(/ (B\.V\.|BV)$/i,''))+'</span><b>Locatie:</b><span>'+esc(p.adres||'')+'</span><b>Plaats:</b><span>'+esc(splitsAdres(p.postcode_plaats||'').plaats)+'</span><b>Teamleider:</b><span>'+esc(b.ingevuld_door||'')+'</span><b>Aantal voertuigen:</b><span>'+(inv.voertuigen||[]).length+'</span></div>';
   x+='<table><tr><th>Aantal personen</th><th>Start</th><th>Tot</th><th>Eind</th><th class="r">Uren p.p.</th><th>Namen</th></tr>';
-  let totMan=0; for(const sh of inv.shifts||[]){ const n=shiftMan(sh), u=shiftUren(sh); totMan+=n; x+='<tr><td>'+n+' man</td><td>'+esc(sh.start)+'</td><td>-</td><td>'+esc(sh.eind)+'</td><td class="r">'+fmtNum(u,1)+(shiftPauze(sh)?' <small>(pauze '+fmtNum(shiftPauze(sh),1)+')</small>':'')+'</td><td>'+esc((sh.namen||[]).join(', '))+(num(sh.extra_man)?(sh.namen||[]).length?' + '+Math.ceil(num(sh.extra_man))+' zonder naam':Math.ceil(num(sh.extra_man))+' zonder naam':'')+(sh.overnachting?'<br><small>overnachting '+Math.ceil(num(sh.nachten===''||sh.nachten==null?n:sh.nachten))+' man</small>':'')+'</td></tr>'; }
+  let totMan=0; for(const sh of inv.shifts||[]){ const n=shiftMan(sh), u=shiftUren(sh); totMan+=n; const nms=shiftNamen(sh), zonder=n-nms.length; x+='<tr><td>'+n+' man</td><td>'+esc(sh.start)+'</td><td>-</td><td>'+esc(sh.eind)+'</td><td class="r">'+fmtNum(u,1)+(shiftPauze(sh)?' <small>(pauze '+fmtNum(shiftPauze(sh),1)+')</small>':'')+'</td><td>'+esc(nms.join(', '))+(zonder>0?(nms.length?' + ':'')+zonder+' zonder naam':'')+(sh.overnachting?'<br><small>overnachting '+Math.ceil(num(sh.nachten===''||sh.nachten==null?n:sh.nachten))+' man</small>':'')+'</td></tr>'; }
   if(!(inv.shifts||[]).length){ for(const r of b.regels.filter(r=>r.categorie==='arbeid')) x+='<tr><td>'+fmtNum(r.aantal)+' man</td><td></td><td>-</td><td></td><td class="r">'+fmtNum(r.per,1)+'</td><td>'+esc(r.namen||'')+'</td></tr>'; }
   x+='<tr class="tot"><td colspan="6">Totaal '+totMan+' man · aantal voertuigen: '+(inv.voertuigen||[]).length+'</td></tr></table>';
   if((inv.voertuigen||[]).length) x+='<h1 style="font-size:13px;margin-top:14px">Voertuigen en materieel</h1><table><tr><th>Voertuig</th><th>Op locatie / gebracht</th><th class="r">km</th><th>Dag</th></tr>'+(inv.voertuigen||[]).map(v=>'<tr><td>'+esc(v.naam)+'</td><td>'+(v.gebracht?'gebracht':'al op locatie')+'</td><td class="r">'+(v.gebracht?fmtNum(v.km):'')+'</td><td>'+(v.soort==='materieel'?({1:'hele dag',0.75:'¾ dag',0.5:'halve dag',0.25:'¼ dag'}[num(v.dagdeel==null||v.dagdeel===''?1:v.dagdeel)]||fmtNum(v.dagdeel)):'')+'</td></tr>').join('')+'</table>';
@@ -467,13 +480,14 @@ function bindBon(){
   const ververs=()=>{ leesBonInputs(); herleid(); render(); };
   // ploegen
   app.querySelectorAll('[data-sh][data-sf]').forEach(el=>el.addEventListener('change',()=>{ const sh=S.bon.invoer.shifts[+el.dataset.sh]; const f=el.dataset.sf;
-    if(f==='overnachting') sh.overnachting=el.checked; else if(f==='pauze'||f==='extra_man'||f==='nachten') sh[f]=el.value===''?'':Math.max(0,num(el.value)); else sh[f]=el.value;
-    if(f==='extra_man') sh.extra_man=Math.ceil(num(sh.extra_man)-1e-9); if(f==='nachten'&&sh.nachten!=='') sh.nachten=Math.ceil(num(sh.nachten)-1e-9);
+    if(f==='overnachting') sh.overnachting=el.checked; else if(f==='pauze'||f==='aantal_man'||f==='nachten') sh[f]=el.value===''?'':Math.max(0,num(el.value)); else sh[f]=el.value;
+    if(f==='aantal_man'){ sh.aantal_man=Math.ceil(num(sh.aantal_man)-1e-9); if(sh.aantal_man<sh.leden.length){ sh.aantal_man=sh.leden.length; toast('Er zijn al '+sh.leden.length+' namen aangetikt'); } } if(f==='nachten'&&sh.nachten!=='') sh.nachten=Math.ceil(num(sh.nachten)-1e-9);
     ververs(); }));
-  app.querySelectorAll('[data-sh][data-naam]').forEach(el=>el.onclick=()=>{ const sh=S.bon.invoer.shifts[+el.dataset.sh]; const nm=el.dataset.naam; const i=(sh.namen||[]).indexOf(nm); if(i>=0) sh.namen.splice(i,1); else (sh.namen=sh.namen||[]).push(nm); ververs(); });
-  app.querySelectorAll('[data-shnaam]').forEach(el=>el.onclick=()=>vraag('Naam van de medewerker','',async naam=>{ if(!naam) return; const sh=S.bon.invoer.shifts[+el.dataset.shnaam]; leesBonInputs();
-    try{ await api({action:'medewerker_save', fields:{naam}, log:'Medewerker toegevoegd: '+naam}); await laad(); }catch(e){ toast(e.message||'Opslaan mislukt'); }
-    if(!(sh.namen||[]).includes(naam)) (sh.namen=sh.namen||[]).push(naam); herleid(); render(); }));
+  app.querySelectorAll('[data-sh][data-lid]').forEach(el=>el.onclick=()=>{ const sh=S.bon.invoer.shifts[+el.dataset.sh]; const id=+el.dataset.lid; const i=sh.leden.indexOf(id); if(i>=0) sh.leden.splice(i,1); else { sh.leden.push(id); if(sh.leden.length>num(sh.aantal_man)) sh.aantal_man=sh.leden.length; } ververs(); });
+  app.querySelectorAll('[data-shnaam]').forEach(el=>el.onclick=()=>vraag('Naam van de medewerker (voor- en achternaam). De projectleider controleert nieuwe namen.','',async naam=>{ if(!naam) return; const sh=S.bon.invoer.shifts[+el.dataset.shnaam]; leesBonInputs(); let id=null;
+    try{ const j=await api({action:'medewerker_save', fields:{naam}, log:'Naam toegevoegd op de werkvloer: '+naam}); id=j.id; await laad(); }catch(e){ toast(e.message||'Opslaan mislukt'); }
+    if(id&&!sh.leden.includes(id)){ sh.leden.push(id); if(sh.leden.length>num(sh.aantal_man)) sh.aantal_man=sh.leden.length; } herleid(); render(); }));
+  if(k('b-namen')) k('b-namen').onclick=()=>{ leesBonInputs(); namenControle(); };
   app.querySelectorAll('[data-shdel]').forEach(el=>el.onclick=()=>{ S.bon.invoer.shifts.splice(+el.dataset.shdel,1); ververs(); });
   if(k('b-shift')) k('b-shift').onclick=()=>{ const l=S.bon.invoer.shifts[S.bon.invoer.shifts.length-1]; const s=nieuweShift(); if(l){ s.start=l.start; s.eind=l.eind; s.pauze=l.pauze; } S.bon.invoer.shifts.push(s); ververs(); };
   if(k('b-wis')) k('b-wis').onclick=()=>{ S.bon.invoer={shifts:[nieuweShift()],voertuigen:[]}; S.bon.voorgevuld=''; ververs(); };
@@ -539,6 +553,20 @@ function vraag(titel, huidig, cb){
   sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); };
   document.getElementById('sh-annuleer').onclick=dicht; document.getElementById('sh-ok').onclick=()=>{ const v=document.getElementById('sh-txt').value.trim(); dicht(); cb(v); };
   setTimeout(()=>{ const e=document.getElementById('sh-txt'); if(e) e.focus(); },50);
+}
+// Nieuwe namen van de werkvloer controleren: naam corrigeren en bevestigen, of samenvoegen met een bestaande (juiste) naam.
+function namenControle(){
+  const sh=document.getElementById('sheet'); const dicht=()=>{ sh.style.display='none'; sh.innerHTML=''; };
+  const lijst=teControleren(); const bestaand=(S.data.medewerkers||[]).filter(m=>m.actief&&m.gecontroleerd).sort((a,b)=>a.naam.localeCompare(b.naam,'nl'));
+  let h='<div class="sheetkaart"><div class="sheettitel">Nieuwe namen van de werkvloer controleren</div><div class="stil">Op de werkvloer weten ze de exacte naam vaak niet. Corrigeer de naam en bevestig, of voeg samen met de juiste bestaande naam (ploegen op de bonnen worden dan omgezet).</div>';
+  if(!lijst.length) h+='<div class="info" style="margin-top:10px">Alles is gecontroleerd.</div>';
+  for(const m of lijst) h+='<div class="controle" data-m="'+m.id+'"><div class="stil">Aangemaakt door '+esc(m.aangemaakt_door||'werkvloer')+(m.created_at?' op '+fmtKort(String(m.created_at).slice(0,10)):'')+'</div><div class="rij"><label>Naam<input type="text" data-cn="'+m.id+'" value="'+esc(m.naam)+'"></label><label>Of samenvoegen met<select data-cm="'+m.id+'"><option value="">— kies bestaande naam —</option>'+bestaand.map(b=>'<option value="'+b.id+'">'+esc(b.naam)+'</option>').join('')+'</select></label></div><div class="knoppen"><button class="knop klein" data-cok="'+m.id+'">✔ Naam klopt / opslaan</button><button class="knop klein licht" data-cmerge="'+m.id+'">⇄ Samenvoegen</button>'+(isAdmin()?'<button class="knop klein licht" data-cdel="'+m.id+'" style="color:var(--rood)">× Verwijderen</button>':'')+'</div></div>';
+  h+='<div class="sheetrij"><button class="knop licht" id="c-sluit" style="flex:1;text-align:center">Sluiten</button></div></div>';
+  sh.innerHTML=h; sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); }; document.getElementById('c-sluit').onclick=dicht;
+  const klaar=async(actie,logtekst)=>{ dicht(); if(await doe(actie,logtekst)){ if(S.tab==='bon'&&S.bon){ S.bon.invoer.shifts=S.bon.invoer.shifts.map(normShift); herleid(); render(); } if(teControleren().length) namenControle(); } };
+  sh.querySelectorAll('[data-cok]').forEach(b=>b.onclick=()=>{ const id=+b.dataset.cok; const naam=sh.querySelector('[data-cn="'+id+'"]').value.trim(); if(!naam){ toast('Naam is leeg'); return; } klaar({action:'medewerker_save', id, fields:{naam, gecontroleerd:true}},'Naam gecontroleerd: '+naam); });
+  sh.querySelectorAll('[data-cmerge]').forEach(b=>b.onclick=()=>{ const id=+b.dataset.cmerge; const inId=Number(sh.querySelector('[data-cm="'+id+'"]').value); if(!inId){ toast('Kies eerst de bestaande naam'); return; } const van=medewerker(id), naar=medewerker(inId); if(!confirm('"'+van.naam+'" samenvoegen met "'+naar.naam+'"? Ploegen op bonnen worden omgezet.')) return; klaar({action:'medewerker_merge', id, in_id:inId},'Naam samengevoegd: '+van.naam+' → '+naar.naam); });
+  sh.querySelectorAll('[data-cdel]').forEach(b=>b.onclick=()=>{ const id=+b.dataset.cdel; if(!confirm('Naam verwijderen uit de namenwolk?')) return; klaar({action:'medewerker_delete', id},'Naam verwijderd #'+id); });
 }
 // Projectwizard: projectleider maakt een project aan (projectnummer toegewezen), loopt de projectafspraken door
 // (alle tarieven voorgevuld, aan te passen met ± 0,25) en zet de standaardafstand. Ook te gebruiken voor bestaande projecten.
@@ -853,8 +881,11 @@ function viewLijsten(){
     for(const p of (S.data.projecten||[])){ const afw=(S.data.projecttarieven||[]).filter(x=>x.project_id===p.id).length; x+='<tr class="klik" data-project="'+p.id+'"><td>'+esc(p.code)+'</td><td>'+esc(p.naam)+'</td><td>'+esc(p.adres)+', '+esc(p.postcode_plaats)+'</td><td>'+esc((bedrijf(p.opdrachtgever_id)||{}).naam||'')+'</td><td>'+esc(p.claimnummer)+'</td><td class="bedrag">'+fmtNum(p.afstand_km||0)+' km</td><td><button class="knop klein licht" data-afspraken="'+p.id+'">'+(afw?afw+' prijzen':'standaard')+' …</button></td><td>'+(p.actief?'✓':'—')+'</td></tr>'; }
     x+='</table></div><div class="knoppen"><button class="knop" id="p-nieuw">+ Project (wizard)</button></div>';
   } else if(t==='medewerkers'){
-    x+='<h2>Medewerkers (namenwolk)</h2><div class="stil">Deze namen tikt de teamleider aan bij een ploeg. Teamleiders kunnen zelf namen toevoegen vanaf de dagbon.</div><div class="scroll"><table class="lijst"><tr><th>Naam</th><th>Functie</th><th>Volgorde</th><th></th></tr>';
-    for(const m of (S.data.medewerkers||[]).filter(m=>m.actief)) x+='<tr class="klik" data-medewerker="'+m.id+'"><td>'+esc(m.naam)+'</td><td>'+esc(m.functie||'')+'</td><td>'+esc(m.sort)+'</td><td><button class="knop klein licht" data-mdel="'+m.id+'" style="color:var(--rood)">×</button></td></tr>';
+    const tc=teControleren();
+    x+='<h2>Medewerkers (namenwolk)</h2><div class="stil">Deze namen tikt de teamleider aan bij een ploeg (op alfabet). Nieuwe namen van de werkvloer komen hier als "te controleren": naam corrigeren, bevestigen of samenvoegen met de juiste naam.</div>';
+    if(tc.length) x+='<div class="waarsch">✏️ '+tc.length+' nieuwe na'+(tc.length===1?'am':'men')+' van de werkvloer nog te controleren. <button class="knop klein licht" id="m-controle">Controleren…</button></div>';
+    x+='<div class="scroll"><table class="lijst"><tr><th>Naam</th><th>Functie</th><th>Bron</th><th>Status</th><th></th></tr>';
+    for(const m of (S.data.medewerkers||[]).filter(m=>m.actief).sort((a,b)=>(a.gecontroleerd===b.gecontroleerd?a.naam.localeCompare(b.naam,'nl'):a.gecontroleerd?1:-1))) x+='<tr class="klik" data-medewerker="'+m.id+'"><td>'+esc(m.naam)+'</td><td>'+esc(m.functie||'')+'</td><td class="stil">'+esc(m.bron||'')+(m.aangemaakt_door?' · '+esc(m.aangemaakt_door):'')+'</td><td>'+(m.gecontroleerd?'✓':'<span class="chip st-ingediend">te controleren</span>')+'</td><td><button class="knop klein licht" data-mdel="'+m.id+'" style="color:var(--rood)">×</button></td></tr>';
     x+='</table></div><div class="knoppen"><button class="knop" id="m-nieuw">+ Medewerker</button></div>';
   } else if(t==='voertuigen'){
     x+="<h2>Voertuigen en materieel</h2><div class=\"stil\">Auto's tellen mee voor de kilometervergoeding (km per auto). Materieel hangt aan een dagtarief; 'gebracht' rekent bovendien transport per km (tarief \"Transport materieel (gebracht)\").</div><div class=\"scroll\"><table class=\"lijst\"><tr><th>Naam</th><th>Soort</th><th>Kenteken</th><th>Dagtarief</th><th>Volgorde</th><th></th></tr>";
@@ -904,7 +935,8 @@ function bindLijsten(){
   const pn=document.getElementById('p-nieuw'); if(pn) pn.onclick=()=>projectWizard(null,'gegevens');
   const ti=document.getElementById('t-import'); if(ti) ti.onclick=()=>{ const inp=document.createElement('input'); inp.type='file'; inp.accept='.csv,text/csv,text/plain'; inp.onchange=async()=>{ const f=inp.files[0]; if(!f) return; const tekst=await f.text(); const rijen=leesTarievenCSV(tekst); if(!rijen.length){ toast('Geen bruikbare regels in het bestand'); return; }
     const j=await doe({action:'tarief_import', rijen},'Tarieven geïmporteerd uit boekhoudpakket ('+rijen.length+' regels)'); if(j) toast('Import klaar: '+j.nieuw+' nieuw, '+j.bijgewerkt+' bijgewerkt'); }; inp.click(); };
-  const medVelden=[{k:'naam',l:'Naam'},{k:'functie',l:'Functie (optioneel)'},{k:'sort',l:'Volgorde',type:'number'}];
+  const medVelden=[{k:'naam',l:'Naam'},{k:'functie',l:'Functie (optioneel)'},{k:'sort',l:'Volgorde',type:'number'},{k:'gecontroleerd',l:'Gecontroleerd',type:'bool'}];
+  const mc=document.getElementById('m-controle'); if(mc) mc.onclick=()=>namenControle();
   const medSave=(id,m)=>formSheet(id?'Medewerker aanpassen':'Nieuwe medewerker',medVelden,m||{sort:100},async f=>{ await doe({action:'medewerker_save', id, fields:f},'Medewerker opgeslagen: '+f.naam); });
   app.querySelectorAll('tr[data-medewerker]').forEach(tr=>tr.onclick=e=>{ if(e.target.closest('button')) return; medSave(+tr.dataset.medewerker,S.data.medewerkers.find(m=>m.id===+tr.dataset.medewerker)); });
   app.querySelectorAll('[data-mdel]').forEach(b=>b.onclick=async()=>{ if(confirm('Medewerker uit de namenwolk halen?')) await doe({action:'medewerker_delete', id:+b.dataset.mdel},'Medewerker verwijderd #'+b.dataset.mdel); });

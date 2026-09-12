@@ -17,7 +17,7 @@ const BUCKET = "werkbonnen";
 const CATEGORIEEN = ["arbeid", "km", "overnachting", "materieel", "transport", "materiaal"];
 const BEDRIJF_VELDEN = ["soort", "naam", "adres", "postcode_plaats", "land", "kvk", "btw_nummer", "iban", "email", "telefoon", "debiteur_code", "actief", "kleur", "kleur2", "website"];
 const PROJECT_VELDEN = ["code", "naam", "adres", "postcode_plaats", "aannemer_id", "opdrachtgever_id", "claimnummer", "factuur_omschrijving", "actief", "sort", "afstand_km"];
-const MEDEWERKER_VELDEN = ["naam", "functie", "actief", "sort"];
+const MEDEWERKER_VELDEN = ["naam", "functie", "actief", "sort", "gecontroleerd"];
 const VOERTUIG_VELDEN = ["naam", "soort", "kenteken", "tarief_id", "actief", "sort"];
 const TARIEF_VELDEN = ["categorie", "omschrijving", "eenheid_n", "eenheid_per", "eenheid_totaal", "prijs", "dagtype", "sort", "actief"];
 const FACTUUR_VELDEN = ["nummer", "datum", "vervaldatum", "omschrijving", "regel_omschrijving", "btw_pct", "status"];
@@ -364,22 +364,57 @@ Deno.serve(async (req) => {
         break;
       }
       case "medewerker_save": {
-        // Teamleider mag namen toevoegen aan de namenwolk; administratie beheert de rest.
+        // Teamleider maakt namen aan in de namenwolk (gecontroleerd=false: nog te controleren door de projectleider);
+        // naam corrigeren en bevestigen mag vanaf de werkvloer en het kantoor; de rest beheert het kantoor.
         const naam = String(fields.naam ?? "").trim().slice(0, 80);
         if ("naam" in fields && !naam) throw new Error("naam leeg");
         if (!id) {
           const { data: bestaand } = await db.from("wb_medewerker").select("id").ilike("naam", naam).maybeSingle();
-          if (bestaand) { await db.from("wb_medewerker").update({ actief: true }).eq("id", bestaand.id); await log(wie, String(body.log ?? "")); return json({ ok: true, id: bestaand.id }); }
-          const { data, error } = await db.from("wb_medewerker").insert({ naam, functie: String(fields.functie ?? "").slice(0, 80) }).select("id").single();
+          if (bestaand) { await db.from("wb_medewerker").update({ actief: true }).eq("id", bestaand.id); await log(wie, String(body.log ?? "")); return json({ ok: true, id: bestaand.id, bestaand: true }); }
+          const rij: Record<string, unknown> = admin ? pak(fields, MEDEWERKER_VELDEN) : {};
+          Object.assign(rij, { naam, gecontroleerd: admin ? fields.gecontroleerd !== false : false, bron: admin ? "kantoor" : "werkvloer", aangemaakt_door: wie });
+          const { data, error } = await db.from("wb_medewerker").insert(rij).select("id").single();
           if (error) throw error;
           await log(wie, String(body.log ?? ""));
           return json({ ok: true, id: data.id });
         }
-        const upd = admin ? pak(fields, MEDEWERKER_VELDEN) : pak(fields, ["naam"]);
+        const upd = admin ? pak(fields, MEDEWERKER_VELDEN) : pak(fields, ["naam", "gecontroleerd"]);
         if ("naam" in upd) upd.naam = naam;
         const { error } = await db.from("wb_medewerker").update(upd).eq("id", id);
-        if (error) { if (String(error.message).includes("duplicate")) throw new Error("deze naam bestaat al"); throw error; }
+        if (error) { if (String(error.message).includes("duplicate")) throw new Error("deze naam bestaat al; gebruik samenvoegen"); throw error; }
         break;
+      }
+      case "medewerker_merge": {
+        // Foute/dubbele naam van de werkvloer samenvoegen met de juiste: ploegen op bonnen omzetten, oude naam vervalt.
+        const inId = Number(body.in_id);
+        if (!id || !Number.isInteger(inId) || inId === id) throw new Error("kies twee verschillende namen");
+        const { data: mw, error: e0 } = await db.from("wb_medewerker").select("id,naam").in("id", [id, inId]);
+        if (e0) throw e0;
+        const van = (mw ?? []).find((m) => m.id === id), naar = (mw ?? []).find((m) => m.id === inId);
+        if (!van || !naar) throw new Error("medewerker niet gevonden");
+        const { data: bonnen, error: e1 } = await db.from("wb_bon").select("id,invoer").limit(5000);
+        if (e1) throw e1;
+        let n = 0;
+        for (const b of bonnen ?? []) {
+          const inv = (b.invoer ?? {}) as { shifts?: Array<Record<string, unknown>> };
+          let gew = false;
+          for (const sh of inv.shifts ?? []) {
+            const leden = Array.isArray(sh.leden) ? sh.leden as number[] : [];
+            if (leden.includes(id)) { sh.leden = [...new Set(leden.map((x) => x === id ? inId : x))]; gew = true; }
+          }
+          if (gew) {
+            n++;
+            const { error } = await db.from("wb_bon").update({ invoer: inv }).eq("id", b.id); if (error) throw error;
+            const { data: regels } = await db.from("wb_bonregel").select("id,namen").eq("bon_id", b.id).eq("categorie", "arbeid");
+            for (const r of regels ?? []) if (r.namen && String(r.namen).split(", ").includes(van.naam)) {
+              await db.from("wb_bonregel").update({ namen: String(r.namen).split(", ").map((x: string) => x === van.naam ? naar.naam : x).join(", ") }).eq("id", r.id);
+            }
+          }
+        }
+        const { error: e2 } = await db.from("wb_medewerker").update({ actief: false }).eq("id", id); if (e2) throw e2;
+        const { error: e3 } = await db.from("wb_medewerker").update({ actief: true, gecontroleerd: true }).eq("id", inId); if (e3) throw e3;
+        await log(wie, String(body.log ?? ""));
+        return json({ ok: true, bonnen: n });
       }
       case "medewerker_delete": {
         if (!admin) throw new Error("alleen administratie");

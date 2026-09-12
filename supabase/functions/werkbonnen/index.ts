@@ -16,7 +16,9 @@ const BUCKET = "werkbonnen";
 
 const CATEGORIEEN = ["arbeid", "km", "overnachting", "materieel", "transport", "materiaal"];
 const BEDRIJF_VELDEN = ["soort", "naam", "adres", "postcode_plaats", "land", "kvk", "btw_nummer", "iban", "email", "telefoon", "debiteur_code", "actief", "kleur", "kleur2", "website"];
-const PROJECT_VELDEN = ["code", "naam", "adres", "postcode_plaats", "aannemer_id", "opdrachtgever_id", "claimnummer", "factuur_omschrijving", "actief", "sort"];
+const PROJECT_VELDEN = ["code", "naam", "adres", "postcode_plaats", "aannemer_id", "opdrachtgever_id", "claimnummer", "factuur_omschrijving", "actief", "sort", "afstand_km"];
+const MEDEWERKER_VELDEN = ["naam", "functie", "actief", "sort"];
+const VOERTUIG_VELDEN = ["naam", "soort", "kenteken", "tarief_id", "actief", "sort"];
 const TARIEF_VELDEN = ["categorie", "omschrijving", "eenheid_n", "eenheid_per", "eenheid_totaal", "prijs", "dagtype", "sort", "actief"];
 const FACTUUR_VELDEN = ["nummer", "datum", "vervaldatum", "omschrijving", "regel_omschrijving", "btw_pct", "status"];
 
@@ -47,6 +49,10 @@ function isoWeek(d: string): { jaar: number; week: number } {
   return { jaar: dt.getUTCFullYear(), week };
 }
 
+// Afrondingsregels (zelfde als in de app en de mock): mensen, auto's, nachten en stuks heel; uren en km per 0,5; dagdeel per 0,25.
+function veelvoud(v: number, stap: number) { const q = v / stap; return Math.abs(q - Math.round(q)) < 1e-6; }
+function stapAantal(cat: string) { return cat === "transport" ? 0.5 : 1; }
+function stapPer(eenheid: string) { const e = eenheid.toLowerCase(); return e === "uur" ? 0.5 : /^km/.test(e) ? 0.5 : e === "dag" ? 0.25 : 1; }
 // Regels normaliseren en narekenen (server is leidend voor de bedragen).
 function normRegels(regels: unknown): Array<Record<string, unknown>> {
   if (!Array.isArray(regels)) throw new Error("regels ontbreken");
@@ -60,18 +66,28 @@ function normRegels(regels: unknown): Array<Record<string, unknown>> {
     const aantal = num(x.aantal, "aantal op regel " + (i + 1));
     const per = x.per == null || x.per === "" ? null : num(x.per, "per-waarde op regel " + (i + 1));
     const prijs = num(x.prijs, "prijs op regel " + (i + 1));
-    // Hele getallen: mannen, auto's, nachten, dagen, stuks; alleen uren mogen halve zijn.
-    if (categorie !== "transport" && !Number.isInteger(aantal)) throw new Error("aantal op regel " + (i + 1) + " moet een heel getal zijn (geen halve mannen, auto's, nachten of stuks)");
-    if (per != null && String(x.eenheid_per ?? "") !== "uur" && !Number.isInteger(per)) throw new Error("km/dagen op regel " + (i + 1) + " moeten een heel getal zijn");
+    const eenheid_per = String(x.eenheid_per ?? "");
+    if (!veelvoud(aantal, stapAantal(categorie))) throw new Error(categorie === "transport" ? "uren op regel " + (i + 1) + " moeten in halve uren zijn" : "aantal op regel " + (i + 1) + " moet een heel getal zijn (geen halve mannen, auto's, nachten of stuks)");
+    if (per != null && !veelvoud(per, stapPer(eenheid_per))) throw new Error("per-waarde op regel " + (i + 1) + " moet in stappen van " + stapPer(eenheid_per) + " zijn (uren en km per 0,5; dagdeel per 0,25)");
     const totaal = r2(per == null ? aantal : aantal * per);
+    const bron = String(x.bron ?? "");
     return {
       sort: i + 1, categorie, omschrijving,
       tarief_id: x.tarief_id == null || x.tarief_id === "" ? null : Number(x.tarief_id),
       aantal, per, totaal, prijs, bedrag: r2(totaal * prijs),
-      eenheid_n: String(x.eenheid_n ?? ""), eenheid_per: String(x.eenheid_per ?? ""), eenheid_totaal: String(x.eenheid_totaal ?? ""),
+      eenheid_n: String(x.eenheid_n ?? ""), eenheid_per, eenheid_totaal: String(x.eenheid_totaal ?? ""),
       namen: String(x.namen ?? "").slice(0, 2000),
+      bron: ["shift", "voertuig", "extra"].includes(bron) ? bron : "",
     };
   });
+}
+// Invoer van de dagbon (shifts met namen, voertuigen) zoals aangetikt; bron van de afgeleide regels en van de projectbon.
+function normInvoer(inv: unknown): Record<string, unknown> {
+  if (inv == null) return { shifts: [], voertuigen: [] };
+  if (typeof inv !== "object" || Array.isArray(inv)) throw new Error("invoer ongeldig");
+  if (JSON.stringify(inv).length > 60000) throw new Error("invoer te groot");
+  const o = inv as Record<string, unknown>;
+  return { shifts: Array.isArray(o.shifts) ? o.shifts.slice(0, 50) : [], voertuigen: Array.isArray(o.voertuigen) ? o.voertuigen.slice(0, 100) : [] };
 }
 
 
@@ -204,7 +220,7 @@ Deno.serve(async (req) => {
   try {
     switch (actie) {
       case "state": {
-        const [bedrijven, projecten, tarieven, bonnen, regels, facturen, instellingen, logboek] = await Promise.all([
+        const [bedrijven, projecten, tarieven, bonnen, regels, facturen, instellingen, logboek, medewerkers, voertuigen, projecttarieven] = await Promise.all([
           db.from("wb_bedrijf").select("*").order("soort").order("naam"),
           db.from("wb_project").select("*").order("sort").order("code"),
           db.from("wb_tarief").select("*").order("sort").order("omschrijving"),
@@ -213,13 +229,17 @@ Deno.serve(async (req) => {
           db.from("wb_factuur").select("*").order("id", { ascending: false }).limit(500),
           db.from("wb_instelling").select("*"),
           admin ? db.from("wb_logboek").select("*").order("id", { ascending: false }).limit(60) : Promise.resolve({ data: [], error: null }),
+          db.from("wb_medewerker").select("*").order("sort").order("naam"),
+          db.from("wb_voertuig").select("*").order("sort").order("naam"),
+          db.from("wb_projecttarief").select("*"),
         ]);
-        for (const r of [bedrijven, projecten, tarieven, bonnen, regels, facturen, instellingen, logboek]) if (r.error) throw r.error;
+        for (const r of [bedrijven, projecten, tarieven, bonnen, regels, facturen, instellingen, logboek, medewerkers, voertuigen, projecttarieven]) if (r.error) throw r.error;
         const inst: Record<string, string> = {};
         for (const r of instellingen.data ?? []) inst[r.sleutel] = r.waarde;
         return json({
           rol, bedrijven: bedrijven.data, projecten: projecten.data, tarieven: tarieven.data,
           bonnen: bonnen.data, regels: regels.data, facturen: facturen.data, instellingen: inst, logboek: logboek.data,
+          medewerkers: medewerkers.data, voertuigen: voertuigen.data, projecttarieven: projecttarieven.data,
           storage_url: Deno.env.get("SUPABASE_URL") + "/storage/v1/object/public/" + BUCKET + "/",
         });
       }
@@ -230,8 +250,9 @@ Deno.serve(async (req) => {
         if (!Number.isInteger(project_id)) throw new Error("kies een project");
         checkDatum(fields.datum, "datum");
         const regels = normRegels(body.regels);
+        const invoer = normInvoer(fields.invoer);
         const basis: Record<string, unknown> = {
-          project_id, datum: fields.datum,
+          project_id, datum: fields.datum, invoer,
           ingevuld_door: String(fields.ingevuld_door ?? wie).slice(0, 80),
           opmerking: String(fields.opmerking ?? "").slice(0, 4000),
           afgetekend_door: String(fields.afgetekend_door ?? "").slice(0, 80),
@@ -320,12 +341,94 @@ Deno.serve(async (req) => {
         break;
       }
       case "project_save": {
-        if (!admin) throw new Error("alleen administratie");
+        // Ook de projectleider op de werkvloer mag een project aanmaken (wizard met projectafspraken).
         const upd = pak(fields, PROJECT_VELDEN);
-        if ("code" in upd && !String(upd.code).trim()) throw new Error("projectcode leeg");
-        const { error } = id ? await db.from("wb_project").update(upd).eq("id", id) : await db.from("wb_project").insert(upd);
-        if (error) { if (String(error.message).includes("duplicate")) throw new Error("projectcode bestaat al"); throw error; }
+        if (("code" in upd || !id) && !String(upd.code ?? "").trim()) throw new Error("projectcode leeg");
+        if (("naam" in upd || !id) && !String(upd.naam ?? "").trim()) throw new Error("projectnaam leeg");
+        if ("afstand_km" in upd) upd.afstand_km = num(upd.afstand_km, "afstand");
+        if (!id) upd.aangemaakt_door = wie;
+        const res = id ? await db.from("wb_project").update(upd).eq("id", id).select("id").single() : await db.from("wb_project").insert(upd).select("id").single();
+        if (res.error) { if (String(res.error.message).includes("duplicate")) throw new Error("projectcode bestaat al"); throw res.error; }
+        await log(wie, String(body.log ?? ""));
+        return json({ ok: true, id: res.data.id });
+      }
+      case "projecttarief_save": {
+        // Projectafspraken: eigen prijs per tarief voor dit project (± 0,25-stappen in de wizard).
+        const project_id = Number(body.project_id);
+        if (!Number.isInteger(project_id)) throw new Error("project ontbreekt");
+        const prijzen = Array.isArray(body.prijzen) ? body.prijzen as Array<Record<string, unknown>> : [];
+        if (prijzen.length > 500) throw new Error("te veel prijzen");
+        const rijen = prijzen.map((x) => ({ project_id, tarief_id: Number(x.tarief_id), prijs: num(x.prijs, "prijs") }));
+        if (rijen.some((r) => !Number.isInteger(r.tarief_id))) throw new Error("tarief ontbreekt");
+        if (rijen.length) { const { error } = await db.from("wb_projecttarief").upsert(rijen, { onConflict: "project_id,tarief_id" }); if (error) throw error; }
         break;
+      }
+      case "medewerker_save": {
+        // Teamleider mag namen toevoegen aan de namenwolk; administratie beheert de rest.
+        const naam = String(fields.naam ?? "").trim().slice(0, 80);
+        if ("naam" in fields && !naam) throw new Error("naam leeg");
+        if (!id) {
+          const { data: bestaand } = await db.from("wb_medewerker").select("id").ilike("naam", naam).maybeSingle();
+          if (bestaand) { await db.from("wb_medewerker").update({ actief: true }).eq("id", bestaand.id); await log(wie, String(body.log ?? "")); return json({ ok: true, id: bestaand.id }); }
+          const { data, error } = await db.from("wb_medewerker").insert({ naam, functie: String(fields.functie ?? "").slice(0, 80) }).select("id").single();
+          if (error) throw error;
+          await log(wie, String(body.log ?? ""));
+          return json({ ok: true, id: data.id });
+        }
+        const upd = admin ? pak(fields, MEDEWERKER_VELDEN) : pak(fields, ["naam"]);
+        if ("naam" in upd) upd.naam = naam;
+        const { error } = await db.from("wb_medewerker").update(upd).eq("id", id);
+        if (error) { if (String(error.message).includes("duplicate")) throw new Error("deze naam bestaat al"); throw error; }
+        break;
+      }
+      case "medewerker_delete": {
+        if (!admin) throw new Error("alleen administratie");
+        const { error } = await db.from("wb_medewerker").update({ actief: false }).eq("id", id);
+        if (error) throw error;
+        break;
+      }
+      case "voertuig_save": {
+        if (!admin) throw new Error("alleen administratie");
+        const upd = pak(fields, VOERTUIG_VELDEN);
+        if ("naam" in upd && !String(upd.naam).trim()) throw new Error("naam leeg");
+        if ("soort" in upd && !["auto", "materieel"].includes(String(upd.soort))) throw new Error("onbekend soort");
+        if ("tarief_id" in upd) upd.tarief_id = upd.tarief_id ? Number(upd.tarief_id) : null;
+        const { error } = id ? await db.from("wb_voertuig").update(upd).eq("id", id) : await db.from("wb_voertuig").insert(upd);
+        if (error) { if (String(error.message).includes("duplicate")) throw new Error("voertuig bestaat al"); throw error; }
+        break;
+      }
+      case "voertuig_delete": {
+        if (!admin) throw new Error("alleen administratie");
+        const { error } = await db.from("wb_voertuig").update({ actief: false }).eq("id", id);
+        if (error) throw error;
+        break;
+      }
+      case "tarief_import": {
+        // Export uit het boekhoudpakket (CSV: omschrijving;prijs;eenheid[;categorie]) -> tarieven. Bestaande omschrijving: prijs bijwerken.
+        if (!admin) throw new Error("alleen administratie");
+        const rijen = Array.isArray(body.rijen) ? body.rijen as Array<Record<string, unknown>> : [];
+        if (!rijen.length) throw new Error("geen regels");
+        if (rijen.length > 2000) throw new Error("te veel regels");
+        const { data: bestaand, error: e0 } = await db.from("wb_tarief").select("id,categorie,omschrijving");
+        if (e0) throw e0;
+        let nieuw = 0, bijgewerkt = 0;
+        for (const r of rijen) {
+          const cat = CATEGORIEEN.includes(String(r.categorie)) ? String(r.categorie) : "materiaal";
+          const oms = String(r.omschrijving ?? "").trim().slice(0, 200);
+          if (!oms) continue;
+          const prijs = num(r.prijs, "prijs van " + oms);
+          const b = (bestaand ?? []).find((t) => t.categorie === cat && String(t.omschrijving).toLowerCase() === oms.toLowerCase());
+          if (b) {
+            const upd: Record<string, unknown> = { prijs, actief: true };
+            if (r.eenheid_totaal) upd.eenheid_totaal = String(r.eenheid_totaal).slice(0, 40);
+            const { error } = await db.from("wb_tarief").update(upd).eq("id", b.id); if (error) throw error; bijgewerkt++;
+          } else {
+            const { error } = await db.from("wb_tarief").insert({ categorie: cat, omschrijving: oms, eenheid_totaal: String(r.eenheid_totaal || (cat === "materieel" ? "per dag" : cat === "transport" ? "per uur" : "per stuk")).slice(0, 40), prijs, dagtype: "alle", sort: 100, actief: true });
+            if (error) throw error; nieuw++;
+          }
+        }
+        await log(wie, String(body.log ?? ""));
+        return json({ ok: true, nieuw, bijgewerkt });
       }
       case "tarief_save": {
         if (!admin) throw new Error("alleen administratie");

@@ -69,6 +69,34 @@ Overdracht naar een eigen omgeving van KZ (ca. 1 uur):
    JSON-export dient als archief van de pilotperiode.
 Er zijn geen licenties of abonnementen nodig; de code is één HTML-bestand plus één function.
 
+### Dagbon: ploegen, namenwolk, voertuigen, projectbon
+De teamleider tikt de dag aan op zijn telefoon; de regels van de bon worden daaruit afgeleid.
+- **Ploegen (shifts)**: start- en eindtijd (kwartieren), pauze automatisch (½ uur vanaf 6 uur bruto,
+  anders 0; handmatig te overschrijven), namen aantikken in de namenwolk (`wb_medewerker`; de
+  teamleider kan zelf namen toevoegen), "extra man zonder naam", overnachting ja/nee + aantal man.
+  Meerdere ploegen per dag als niet iedereen dezelfde tijden heeft. -> arbeid per ploeg (dagtarief
+  ma-vr / za / zo), overnachting samengeteld.
+- **Voertuigen en materieel** (`wb_voertuig`, Lijsten › Voertuigen): auto's tellen voor de
+  km-vergoeding (km per auto, standaard de projectafstand); materieel hangt aan een dagtarief.
+  Per voertuig: "al op locatie" of "gebracht" (km), hele dag of dagdeel (¾, ½, ¼). Gebracht
+  materieel rekent daarnaast transport per km via het tarief "Transport materieel (gebracht)"
+  (standaard 1,50/km, aanname; aanpassen in Lijsten › Tarieven of per project).
+- **Extra regels** (transport, materiaal, alles wat niet uit ploegen/voertuigen komt) via de
+  bekende regel-editor; tarieven zijn te importeren uit het boekhoudpakket (Lijsten › Tarieven ›
+  CSV: `omschrijving;prijs;eenheid[;categorie]`).
+- **Onthouden**: een nieuwe bon wordt voorgevuld met de ploegen en voertuigen van de vorige bon
+  van hetzelfde project (bij voorkeur van dezelfde teamleider); "alles wissen" maakt hem leeg.
+- **Projectbon per dag** (knop 🖨️ Projectbon) in de KZ-opmaak: aantal personen / start / tot /
+  eind / namen per ploeg, aantal voertuigen, overige regels, handtekening opdrachtgever.
+- **Projectwizard** (Lijsten › Projecten › + Project, of vanaf de dagbon via "projectafspraken";
+  ook voor de werkvloer): projectnummer toegewezen (hoogste + 1), gegevens, daarna alle
+  tarieven als projectafspraken voorgevuld en aan te passen met − / + in stappen van 0,25
+  (`wb_projecttarief`; de bon gebruikt de projectprijs als die er is), afstand naar de locatie.
+- **Afrondingsregels** (app, mock en edge function): mensen, auto's, nachten en stuks hele
+  getallen (mensen naar boven); uren en km per 0,5; dagdeel per 0,25; prijzen per 0,25.
+- De aangetikte invoer staat als JSON in `wb_bon.invoer`; afgeleide regels hebben `bron`
+  `shift` / `voertuig`, handmatige regels `extra`.
+
 ### Papieren bon fotograferen en uitlezen
 Op de dagbon staat "Papieren bon fotograferen en uitlezen": de foto gaat naar de edge function,
 die hem met Claude (vision, model `claude-opus-5`) uitleest tegen de tarievenlijst en de regels

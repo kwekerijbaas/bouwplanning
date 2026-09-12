@@ -9,7 +9,7 @@ async function wachtOpMock(){ for(let i=0;i<50;i++){ try{ const r=await fetch(AP
 
 // Week 35 Drietorensweg (factuur 2026265) volgens KZ-overzicht: per dag arbeid/km/nachten; materieel/diversen los.
 const DAGEN=[
- {datum:'2026-08-27', arbeid:[[3,12.5],[4,9]], km:[[2,54]], nachten:7, materieel:[['Gebruik bandenhoogwerker',1],['Gebruik platformtrekker incl. brandstof',2],['Gebruik teleshovel incl. brandstof',1],['Gebruik shovel met toebehoren incl. brandstof',2]]},
+ {datum:'2026-08-27', arbeid:[[3,12.5],[4,9]], km:[[2,54]], voertuigen:['Bus 1','Bus 2'], namen:['Nick Mesken','Mario Grundza','Robert Botos'], nachten:7, materieel:[['Gebruik bandenhoogwerker',1],['Gebruik platformtrekker incl. brandstof',2],['Gebruik teleshovel incl. brandstof',1],['Gebruik shovel met toebehoren incl. brandstof',2]]},
  {datum:'2026-08-28', arbeid:[[7,12.5]], km:[[2,54]], nachten:7, materieel:[['Gebruik bandenhoogwerker',4],['Gebruik platformtrekker incl. brandstof',4],['Gebruik shovel met toebehoren incl. brandstof',3]]},
  {datum:'2026-08-29', arbeid:[[12,12.5]], km:[[1,30],[3,54]], nachten:12, materieel:[]},
  {datum:'2026-08-30', arbeid:[[1,10],[14,9.5]], km:[[1,30],[6,54]], nachten:15, materieel:[]},
@@ -23,26 +23,28 @@ const VERWACHT=43856.65;
   try{
     // --- teamleider ---
     await pg.goto(BASE); await pg.fill('#lg-wie','Bas (KZ)'); await pg.fill('#lg-code','bon2026'); await pg.click('#lg-ok'); await pg.waitForSelector('#tabs button.actief');
+    // Ploegen: start 06:00, eind = 06:00 + uren + pauze (auto: 0,5 uur vanaf 6 uur bruto). Namen op de eerste ploeg van dag 1, rest als "extra man".
+    const tijd=m=>String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0'); const eindVoor=u=>tijd(6*60+Math.round((u+(u+0.5>=6?0.5:0))*60));
     for(const d of DAGEN){
       await pg.click('#b-nieuw'); await pg.selectOption('#b-project', await pg.$eval('#b-project', s=>[...s.options].find(o=>/Drietorensweg/.test(o.textContent)).value)); await pg.fill('#b-datum',d.datum); await pg.dispatchEvent('#b-datum','change');
-      // arbeid: eerste regel bestaat al
-      for(let i=0;i<d.arbeid.length;i++){ if(i>0) await pg.click('[data-add="arbeid"]'); }
-      for(let i=0;i<d.km.length;i++){ if(i>0) await pg.click('[data-add="km"]'); }
-      const rows=await pg.$$('.bonregel'); // volgorde: arbeid..., km..., overnachting
-      let ai=0,ki=0;
-      for(const row of await pg.$$('.bonregel')){
-        const sel=await row.$('select[data-f="tarief"]'); const oms=sel?await sel.evaluate(s=>s.selectedOptions[0].textContent):await (await row.$('input[data-f="omschrijving"]')).inputValue();
-        const aant=await row.$('input[data-f="aantal"]'), per=await row.$('input[data-f="per"]');
-        if(/^Arbeid/.test(oms)){ await aant.fill(String(d.arbeid[ai][0])); await per.fill(String(d.arbeid[ai][1])); ai++; }
-        else if(/Kilometer/.test(oms)){ await aant.fill(String(d.km[ki][0])); await per.fill(String(d.km[ki][1])); ki++; }
-        else if(/Overnachting/.test(oms)){ await aant.fill(String(d.nachten)); }
+      if(await pg.$('#b-wis')) await pg.click('#b-wis');   // voorinvulling van de vorige dag wissen: elke dag anders
+      for(let i=0;i<d.arbeid.length;i++){ if(i>0) await pg.click('#b-shift'); const [n,u]=d.arbeid[i]; const sh='[data-sh="'+i+'"]';
+        await pg.selectOption(sh+'[data-sf="start"]','06:00'); await pg.selectOption(sh+'[data-sf="eind"]',eindVoor(u));
+        let extra=n; if(i===0&&d.namen){ for(const nm of d.namen){ await pg.click(sh+'[data-naam="'+nm+'"]'); } extra=n-d.namen.length; }
+        await pg.fill(sh+'[data-sf="extra_man"]',String(extra)); await pg.dispatchEvent(sh+'[data-sf="extra_man"]','change');
+        await pg.check(sh+'[data-sf="overnachting"]'); await pg.waitForSelector(sh+'[data-sf="nachten"]');
+        const uren=await pg.textContent('[data-uren="'+i+'"]'); if(Number(uren.replace(',','.'))!==u) fouten.push(d.datum+' ploeg '+(i+1)+' uren '+uren+' != '+u);
       }
-      for(const [naam,dagen] of d.materieel){ await pg.click('[data-add="materieel"]'); const rows=await pg.$$('.bonregel'); const row=rows[rows.length-1]; await (await row.$('select[data-f="tarief"]')).selectOption(await (await row.$('select[data-f="tarief"]')).evaluate((s,naam)=>[...s.options].find(o=>o.textContent.split(' — ')[0]===naam).value, naam)); const rows2=await pg.$$('.bonregel'); const r2=rows2[rows2.length-1]; await (await r2.$('input[data-f="aantal"]')).fill(String(dagen)); }
+      // km: dag 1 via voertuigen (Bus 1 + Bus 2 gebracht, 54 km uit het project), andere dagen als extra regels
+      if(d.voertuigen){ for(const nm of d.voertuigen) await pg.click('button[data-vt]:has-text("'+nm+'")'); }
+      else for(const [n,km] of d.km){ await pg.click('[data-add="km"]'); const rows=await pg.$$('.bonregel:not(.vast)'); const row=rows[rows.length-1]; await (await row.$('input[data-f="aantal"]')).fill(String(n)); await (await row.$('input[data-f="per"]')).fill(String(km)); }
+      for(const [naam,dagen] of d.materieel){ await pg.click('[data-add="materieel"]'); const rows=await pg.$$('.bonregel:not(.vast)'); const row=rows[rows.length-1]; await (await row.$('select[data-f="tarief"]')).selectOption(await (await row.$('select[data-f="tarief"]')).evaluate((s,naam)=>[...s.options].find(o=>o.textContent.split(' — ')[0]===naam).value, naam)); const rows2=await pg.$$('.bonregel:not(.vast)'); const r2=rows2[rows2.length-1]; await (await r2.$('input[data-f="aantal"]')).fill(String(dagen)); }
       await pg.fill('#b-aft','Jarno Baas');
       // handtekening tekenen
       const c=await pg.$('#b-sig'); const bb=await c.boundingBox(); await pg.mouse.move(bb.x+20,bb.y+60); await pg.mouse.down(); await pg.mouse.move(bb.x+150,bb.y+90); await pg.mouse.move(bb.x+250,bb.y+40); await pg.mouse.up();
       const tot=await pg.textContent('#b-totaal'); console.log(d.datum,'dagtotaal',tot);
       await pg.click('#b-indienen'); await pg.waitForSelector('.chip.st-ingediend',{timeout:5000});
+      if(d.voertuigen){ await pg.click('#b-print'); await pg.waitForSelector('#pb-print'); const pb=await pg.textContent('.doc'); if(!/Aantalvoertuigen:2/.test(pb.replace(/\s+/g,''))||!/Nick Mesken/.test(pb)) fouten.push('projectbon onvolledig'); await pg.screenshot({path:'/tmp/wb-test-00-projectbon.png',fullPage:true}); await pg.click('#pb-terug'); await pg.waitForSelector('#b-nieuw'); }
     }
     await pg.screenshot({path:'/tmp/wb-test-01-bon-team.png',fullPage:true});
     await pg.click('[data-tab="bonnen"]'); await pg.waitForSelector('#l-status'); await pg.screenshot({path:'/tmp/wb-test-02-bonnen-team.png',fullPage:true});

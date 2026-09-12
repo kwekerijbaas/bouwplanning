@@ -48,6 +48,7 @@ textarea{min-height:60px;resize:vertical}
 .bonregel input,.bonregel select{padding:6px}
 .bonregel .lbl{font-size:10px;color:var(--grijs);display:block}
 .bonregel .x{color:var(--rood);font-size:18px;text-align:center}
+.bonregel.uitgelezen{background:#fff8e6;border-left:3px solid var(--oranje);padding-left:6px}
 @media(max-width:640px){.bonregel{grid-template-columns:1fr 1fr 1fr;} .bonregel .oms{grid-column:1/-1} .bonregel .bedrag{grid-column:1/3} .bonregel .x{grid-column:3}}
 .sectie{margin-top:12px;border-top:2px solid var(--blauw-licht);padding-top:6px}
 .sectie .kop{display:flex;justify-content:space-between;align-items:center}
@@ -75,7 +76,7 @@ table.lijst tr.klik:hover{background:var(--blauw-licht)}
 /* KZ-achtige overzicht/factuur-opmaak */
 .doc{background:#fff;color:#000;padding:22px;max-width:800px;margin:0 auto;font-family:Arial,Helvetica,sans-serif;font-size:12px;border:1px solid var(--lijn)}
 .doc .kopblok{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}
-.doc .kopblok .firma{font-size:18px;font-weight:700;color:var(--blauw)}
+.doc .kopblok .firma{font-size:18px;font-weight:700;color:var(--blauw);font-family:Georgia,'Times New Roman',serif;letter-spacing:.02em}
 .doc .kopblok .firma small{display:block;font-size:11px;font-weight:400;color:#444}
 .doc h1{font-size:16px;margin:0 0 4px}
 .doc .meta{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:8px 0 12px;font-size:12px}
@@ -162,6 +163,14 @@ function regelsVan(bonId){ return (S.data.regels||[]).filter(r=>r.bon_id===bonId
 function bonTotaal(bonId){ return r2(regelsVan(bonId).reduce((s,r)=>s+Number(r.bedrag),0)); }
 function isAdmin(){ return S.data && S.data.rol==='admin'; }
 function fotoUrl(pad){ return (S.data.storage_url||'')+pad; }
+// Huisstijl van de aannemer (Lijsten > Bedrijven): hoofdkleur, tweede kleur en logo bepalen de uitstraling van app, overzicht en factuur.
+function huisstijl(b){
+  const r=document.documentElement.style; const k=b&&/^#[0-9a-f]{6}$/i.test(b.kleur||'')?b.kleur:''; const k2=b&&/^#[0-9a-f]{6}$/i.test(b.kleur2||'')?b.kleur2:'';
+  if(k){ r.setProperty('--blauw',k); r.setProperty('--blauw-licht',mengKleur(k,'#ffffff',0.86)); r.setProperty('--bg',mengKleur(k,'#ffffff',0.93)); document.querySelector('meta[name=theme-color]').content=k; } else { r.removeProperty('--blauw'); r.removeProperty('--blauw-licht'); r.removeProperty('--bg'); }
+  if(k2) r.setProperty('--groen',k2); else r.removeProperty('--groen');
+}
+function mengKleur(a,b,f){ const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)); const [x,y]=[p(a),p(b)]; return '#'+x.map((v,i)=>Math.round(v+(y[i]-v)*f).toString(16).padStart(2,'0')).join(''); }
+function logoHtml(b, h){ return b&&b.logo_pad?'<img src="'+esc(fotoUrl(b.logo_pad))+'" alt="'+esc(b.naam||'')+'" style="height:'+(h||44)+'px;max-width:220px;object-fit:contain;display:block;margin-bottom:4px">':''; }
 
 async function api(body){
   const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':S.code},body:JSON.stringify(Object.assign({wie:S.wie},body))});
@@ -202,7 +211,8 @@ function tabs(){
 function render(){
   if(!S.data) return;
   document.getElementById('tb-wie').textContent=S.wie+' · '+(isAdmin()?'administratie':'werkvloer');
-  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').textContent='📋 Werkbonnen'+(aan?' · '+aan.naam.replace(/ (B\.V\.|BV)$/i,''):'');
+  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').innerHTML=(aan&&aan.logo_pad?'<img src="'+esc(fotoUrl(aan.logo_pad))+'" alt="" style="height:26px;vertical-align:middle;margin-right:8px;background:#fff;border-radius:4px;padding:2px">':'📋 ')+'Werkbonnen'+(aan?' · '+esc(aan.naam.replace(/ (B\.V\.|BV)$/i,'')):'');
+  huisstijl(aan);
   tabs();
   const app=document.getElementById('app');
   if(S.tab==='bon'){ if(!S.bon) nieuweBon(); app.innerHTML=viewBon(); bindBon(); }
@@ -220,13 +230,14 @@ function nieuweBon(){
   S.bon={ id:null, project_id:eersteProject?eersteProject.id:null, datum:vandaagISO(), ingevuld_door:S.wie, opmerking:'', afgetekend_door:'', status:'concept',
     beoordeling:'', handtekening_pad:'', handtekening_b64:'', foto_paden:[], fotos_b64:[], regels:[] };
   regelToevoegen('arbeid'); regelToevoegen('km'); regelToevoegen('overnachting');
+  S.scanInfo='';
 }
 function laadBon(b){
   S.bon={ id:b.id, project_id:b.project_id, datum:b.datum, ingevuld_door:b.ingevuld_door, opmerking:b.opmerking, afgetekend_door:b.afgetekend_door, status:b.status,
     beoordeling:b.beoordeling, beoordeeld_door:b.beoordeeld_door, handtekening_pad:b.handtekening_pad, handtekening_b64:'', foto_paden:(b.foto_paden||[]).slice(), fotos_b64:[],
     regels:regelsVan(b.id).map(r=>({categorie:r.categorie, omschrijving:r.omschrijving, tarief_id:r.tarief_id, aantal:Number(r.aantal), per:r.per==null?null:Number(r.per), prijs:Number(r.prijs),
       eenheid_n:r.eenheid_n, eenheid_per:r.eenheid_per, eenheid_totaal:r.eenheid_totaal, namen:r.namen||''})) };
-  S.tab='bon';
+  S.tab='bon'; S.scanInfo='';
 }
 function regelToevoegen(cat){
   const c=CAT[cat]; let t=null;
@@ -267,7 +278,8 @@ function viewBon(){
   if(bew){ x+='<div class="stil">Handtekening (teken met vinger of muis):</div><canvas class="sig" id="b-sig"></canvas><div class="rij"><button class="knop klein licht" id="b-sig-wis">wis handtekening</button></div>'; }
   if(b.handtekening_pad&&!b.handtekening_b64) x+='<div class="stil">Opgeslagen handtekening:</div><img src="'+esc(fotoUrl(b.handtekening_pad))+'" style="max-height:110px;border:1px solid var(--lijn);border-radius:8px;background:#fff">';
   x+='<h3>Foto\'s (papieren bon, situatie)</h3>';
-  if(bew) x+='<div class="rij"><input type="file" id="b-foto" accept="image/*" multiple style="width:auto"></div>';
+  if(bew) x+='<div class="rij"><input type="file" id="b-foto" accept="image/*" multiple style="width:auto"><button class="knop licht" id="b-scan">📷 Papieren bon fotograferen en uitlezen</button></div><div class="stil">Uitlezen zet de regels van de papieren bon alvast klaar; controleer ze altijd voordat je indient.</div>';
+  if(S.scanInfo) x+='<div class="info" id="b-scaninfo">🔎 '+esc(S.scanInfo)+'</div>';
   x+='<div class="thumbs" id="b-thumbs">'+b.foto_paden.map((p,i)=>'<div class="th"><a href="'+esc(fotoUrl(p))+'" target="_blank"><img src="'+esc(fotoUrl(p))+'"></a>'+(bew?'<button data-delfoto="'+i+'">×</button>':'')+'</div>').join('')
     +b.fotos_b64.map((p,i)=>'<div class="th"><img src="'+p+'">'+(bew?'<button data-delnieuw="'+i+'">×</button>':'')+'</div>').join('')+'</div>';
   x+='<div class="knoppen" style="margin-top:14px">';
@@ -282,7 +294,7 @@ function regelHtml(r,i,bew){
   const c=CAT[r.categorie], ts=tarieven(r.categorie), b=regelBedrag(r), d=bew?'':'disabled';
   const keuze=(ts.length&&r.categorie!=='overnachting')?'<select data-i="'+i+'" data-f="tarief" '+d+'>'+ts.map(t=>'<option value="'+t.id+'" '+(t.id===r.tarief_id?'selected':'')+'>'+esc(t.omschrijving)+' — '+fmtGeld(t.prijs)+' '+esc(t.eenheid_totaal)+'</option>').join('')+'<option value="" '+(r.tarief_id?'':'selected')+'>anders…</option></select>':'';
   const vrij=(!r.tarief_id||!ts.length||r.categorie==='overnachting')?'<input type="text" data-i="'+i+'" data-f="omschrijving" value="'+esc(r.omschrijving)+'" placeholder="omschrijving" '+d+'>':'';
-  let x='<div class="bonregel"><div class="oms">'+keuze+vrij+(r.categorie==='arbeid'?'<input type="text" data-i="'+i+'" data-f="namen" value="'+esc(r.namen)+'" placeholder="namen (optioneel)" style="margin-top:3px" '+d+'>':'')+'</div>';
+  let x='<div class="bonregel'+(r.uitgelezen?' uitgelezen':'')+'"'+(r.uitgelezen?' title="Uit foto uitgelezen'+(r.zekerheid?' (zekerheid '+esc(r.zekerheid)+')':'')+'"':'')+'><div class="oms">'+keuze+vrij+(r.categorie==='arbeid'?'<input type="text" data-i="'+i+'" data-f="namen" value="'+esc(r.namen)+'" placeholder="namen (optioneel)" style="margin-top:3px" '+d+'>':'')+'</div>';
   x+='<div><span class="lbl">'+esc(r.eenheid_n||'aantal')+'</span><input type="number" step="'+(heelAantal(r)?'1':'0.5')+'" min="0" inputmode="'+(heelAantal(r)?'numeric':'decimal')+'" data-i="'+i+'" data-f="aantal" value="'+esc(r.aantal)+'" '+d+'></div>';
   x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+(r.eenheid_n==='man'?' p.p.':r.eenheid_n==="auto's"?' per auto':' per stuk')+'</span><input type="number" step="'+(heelPer(r)?'1':'0.5')+'" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+d+'>':'')+'</div>';
   x+='<div><span class="lbl">prijs '+esc(r.eenheid_totaal)+'</span><input type="number" step="0.01" min="0" data-i="'+i+'" data-f="prijs" value="'+esc(r.prijs)+'" '+((bew&&isAdmin())?'':'disabled')+'></div>';
@@ -343,6 +355,11 @@ function bindBon(){
     render(); });
   const pr=document.getElementById('b-project'); if(pr) pr.addEventListener('change',()=>{ S.bon.project_id=Number(pr.value); });
   const foto=document.getElementById('b-foto'); if(foto) foto.addEventListener('change',async()=>{ leesBonInputs(); for(const f of foto.files){ try{ S.bon.fotos_b64.push(await verkleinFoto(f)); }catch(e){ toast('Foto laden mislukt'); } } render(); });
+  const scan=document.getElementById('b-scan'); if(scan) scan.onclick=()=>{ const inp=document.createElement('input'); inp.type='file'; inp.accept='image/*'; inp.capture='environment'; inp.onchange=async()=>{ const f=inp.files[0]; if(!f) return; leesBonInputs(); let b64; try{ b64=await verkleinFoto(f); }catch(e){ toast('Foto laden mislukt'); return; }
+      scan.disabled=true; scan.textContent='⏳ Bon wordt uitgelezen…';
+      try{ const j=await api({action:'bon_lees_foto', fields:{foto_b64:b64, project_id:S.bon.project_id, datum:S.bon.datum}, log:'Papieren bon uitgelezen'}); scanToepassen(j, b64); }
+      catch(e){ toast(e.auth?'Niet ingelogd':(e.message||'Uitlezen mislukt')); S.bon.fotos_b64.push(b64); }
+      render(); }; inp.click(); };
   const k=id=>document.getElementById(id);
   if(k('b-opslaan')) k('b-opslaan').onclick=()=>bonOpslaan(false);
   if(k('b-indienen')) k('b-indienen').onclick=()=>bonOpslaan(true);
@@ -351,6 +368,18 @@ function bindBon(){
   if(k('b-terug')) k('b-terug').onclick=async()=>{ if(await doe({action:'bon_beoordeel', id:S.bon.id, besluit:'ingediend'},'Dagbon #'+S.bon.id+' terug naar ingediend')){ const nb=S.data.bonnen.find(x=>x.id===S.bon.id); laadBon(nb); render(); } };
   if(k('b-af')) k('b-af').onclick=()=>vraag('Reden van afkeuring', S.bon.beoordeling||'', async reden=>{ if(await doe({action:'bon_beoordeel', id:S.bon.id, besluit:'afgekeurd', beoordeling:reden},'Dagbon #'+S.bon.id+' afgekeurd: '+reden)){ const nb=S.data.bonnen.find(x=>x.id===S.bon.id); laadBon(nb); render(); toast('Afgekeurd'); } });
   if(k('b-del')) k('b-del').onclick=async()=>{ if(!confirm('Deze dagbon verwijderen?')) return; if(await doe({action:'bon_delete', id:S.bon.id},'Dagbon #'+S.bon.id+' verwijderd')){ nieuweBon(); render(); } };
+}
+// Uitgelezen regels uit de foto in de bon zetten: lege standaardregels vervangen, rest toevoegen; datum/aftekening alleen invullen als leeg.
+function scanToepassen(j, b64){
+  const nieuw=(j.regels||[]).map(r=>({categorie:r.categorie, omschrijving:r.omschrijving, tarief_id:r.tarief_id, aantal:num(r.aantal), per:r.per==null?null:num(r.per), prijs:num(r.prijs), eenheid_n:r.eenheid_n||CAT[r.categorie].n, eenheid_per:r.eenheid_per||CAT[r.categorie].per, eenheid_totaal:r.eenheid_totaal||CAT[r.categorie].tot, namen:r.namen||'', uitgelezen:true, zekerheid:r.zekerheid, gekoppeld:r.gekoppeld}));
+  S.bon.regels=S.bon.regels.filter(r=>num(r.aantal)>0).concat(nieuw);
+  if(j.datum&&(!S.bon.id)) S.bon.datum=j.datum;
+  if(j.afgetekend_door&&!S.bon.afgetekend_door) S.bon.afgetekend_door=j.afgetekend_door;
+  if(j.opmerking&&!S.bon.opmerking) S.bon.opmerking=j.opmerking;
+  S.bon.fotos_b64.push(b64);
+  const los=nieuw.filter(r=>!r.gekoppeld).length, laag=nieuw.filter(r=>r.zekerheid==='laag').length;
+  S.scanInfo=nieuw.length+' regel'+(nieuw.length===1?'':'s')+' uit de foto gehaald (leesbaarheid '+(j.leesbaarheid||'?')+')'+(los?'; '+los+' zonder tarief (prijs zelf kiezen)':'')+(laag?'; '+laag+' met lage zekerheid':'')+'. Controleer de gemarkeerde regels.';
+  toast(nieuw.length?'Bon uitgelezen: controleer de regels':'Geen regels herkend op de foto');
 }
 function leesBonInputs(){ const f=bonFields(); Object.assign(S.bon,{project_id:f.project_id, datum:f.datum, ingevuld_door:f.ingevuld_door, opmerking:f.opmerking, afgetekend_door:f.afgetekend_door}); }
 function vraag(titel, huidig, cb){
@@ -426,7 +455,7 @@ function aantalTekst(r){
 function overzichtDoc(projectId, jaar, week, bonnen, opts){
   const p=project(projectId)||{}; const aan=bedrijf(p.aannemer_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{};
   const o=bouwOverzicht(bonnen);
-  let x='<div class="doc"><div class="kopblok"><div class="firma">'+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+'</small></div><div style="text-align:right"><h1>Overzicht werkzaamheden week '+week+'</h1><div>'+fmtDMY(opts&&opts.datum||vandaagISO())+'</div></div></div>';
+  let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.website?' · '+esc(aan.website.replace(/^https?:\/\//,'')):'')+'</small></div><div style="text-align:right"><h1>Overzicht werkzaamheden week '+week+'</h1><div>'+fmtDMY(opts&&opts.datum||vandaagISO())+'</div></div></div>';
   x+='<div class="meta"><b>Opdrachtgever:</b><span>'+esc((opd.naam||'').replace(/ (B\.V\.|BV)$/i,''))+'</span><b>Project:</b><span>'+esc(p.code||'')+'</span><b>Projectadres:</b><span>'+esc(p.adres||'')+'<br>'+esc(p.postcode_plaats||'')+'</span></div>';
   x+='<table><tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th><th class="r">Prijs</th><th class="r">Kosten</th></tr>';
   for(const d of o.dagen){ x+='<tr class="dag"><td colspan="5">'+fmtDatum(d.datum)+'</td></tr>';
@@ -513,7 +542,7 @@ function factuurView(f){
   if(f.status==='definitief') x+='<button class="knop licht" id="fv-exp">📦 Markeer als geëxporteerd</button><button class="knop licht" id="fv-concept">↩ Terug naar concept</button>';
   if(f.status==='geexporteerd') x+='<button class="knop licht" id="fv-def2">↩ Terug naar definitief</button>';
   x+='</div>'+(S.factXml?'<pre class="xml" id="fv-xml">'+esc(S.factXml)+'</pre><div class="stil">Download geblokkeerd? Kopieer bovenstaande tekst in een bestand.</div>':'')+'</div>';
-  x+='<div class="doc"><div class="kopblok"><div class="firma">'+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+(aan.email?' · '+esc(aan.email):'')+'</small>'+(aan.kvk||aan.btw_nummer?'<small>'+(aan.kvk?'KvK '+esc(aan.kvk):'')+(aan.kvk&&aan.btw_nummer?' · ':'')+(aan.btw_nummer?'Btw '+esc(aan.btw_nummer):'')+'</small>':'')+'</div><div style="text-align:right"><h1>Factuur</h1></div></div>';
+  x+='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,52)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+(aan.email?' · '+esc(aan.email):'')+'</small>'+(aan.kvk||aan.btw_nummer?'<small>'+(aan.kvk?'KvK '+esc(aan.kvk):'')+(aan.kvk&&aan.btw_nummer?' · ':'')+(aan.btw_nummer?'Btw '+esc(aan.btw_nummer):'')+'</small>':'')+'</div><div style="text-align:right"><h1>Factuur</h1></div></div>';
   x+='<div class="adres"><b>'+esc(opd.naam||'')+'</b><br>'+esc(opd.adres||'')+'<br>'+esc(opd.postcode_plaats||'')+'</div>';
   x+='<div class="fmeta"><div><b>Factuur</b>'+esc(f.nummer)+'</div><div><b>Factuurdatum</b>'+fmtKort(f.datum)+'</div><div><b>Vervaldatum</b>'+fmtKort(f.vervaldatum)+'</div><div><b>Project</b>'+esc(p.code||'')+(p.claimnummer?' · claim '+esc(p.claimnummer):'')+'</div></div>';
   x+='<div style="margin:4px 0 10px"><b>'+esc(f.omschrijving)+'</b> — week '+f.week+' ('+(bonnen.length?fmtKort(bonnen[0].datum)+' t/m '+fmtKort(bonnen[bonnen.length-1].datum):'')+')</div>';
@@ -625,7 +654,7 @@ function viewLijsten(){
     x+='</table></div><div class="knoppen"><button class="knop" id="p-nieuw">+ Project</button></div>';
   } else if(t==='bedrijven'){
     x+='<h2>Bedrijven</h2><div class="stil">Aannemer = de partij die factureert (verschijnt als afzender op factuur/UBL). Opdrachtgever = ontvanger van de factuur; de debiteurcode is de relatiecode in Exact Online.</div><div class="scroll"><table class="lijst"><tr><th>Soort</th><th>Naam</th><th>Adres</th><th>KvK / btw</th><th>IBAN</th><th>E-mail</th><th>Debiteurcode</th></tr>';
-    for(const b of (S.data.bedrijven||[])) x+='<tr class="klik" data-bedrijf="'+b.id+'"><td>'+esc(b.soort)+'</td><td>'+esc(b.naam)+'</td><td>'+esc(b.adres)+', '+esc(b.postcode_plaats)+'</td><td>'+esc(b.kvk)+' '+esc(b.btw_nummer)+'</td><td>'+esc(b.iban)+'</td><td>'+esc(b.email)+'</td><td>'+esc(b.debiteur_code)+'</td></tr>';
+    for(const b of (S.data.bedrijven||[])) x+='<tr class="klik" data-bedrijf="'+b.id+'"><td>'+esc(b.soort)+'</td><td>'+(b.logo_pad?'<img src="'+esc(fotoUrl(b.logo_pad))+'" style="height:22px;vertical-align:middle;margin-right:6px">':'')+esc(b.naam)+(b.kleur?' <i class="ldot" style="display:inline-block;width:12px;height:12px;border-radius:50%;background:'+esc(b.kleur)+';vertical-align:middle"></i>':'')+(b.soort==='aannemer'?' <button class="knop klein licht" data-logo="'+b.id+'">logo…</button>':'')+'</td><td>'+esc(b.adres)+', '+esc(b.postcode_plaats)+'</td><td>'+esc(b.kvk)+' '+esc(b.btw_nummer)+'</td><td>'+esc(b.iban)+'</td><td>'+esc(b.email)+'</td><td>'+esc(b.debiteur_code)+'</td></tr>';
     x+='</table></div><div class="knoppen"><button class="knop" id="bd-nieuw">+ Bedrijf</button></div>';
   } else {
     const i=S.data.instellingen||{};
@@ -666,9 +695,10 @@ function bindLijsten(){
   const projSave=(id,p)=>formSheet(id?'Project aanpassen':'Nieuw project',projVelden,p||{sort:100,actief:true,aannemer_id:aanOpt[0]&&aanOpt[0].v,opdrachtgever_id:opdOpt[0]&&opdOpt[0].v},async f=>{ f.aannemer_id=f.aannemer_id?Number(f.aannemer_id):null; f.opdrachtgever_id=f.opdrachtgever_id?Number(f.opdrachtgever_id):null; await doe({action:'project_save', id, fields:f},'Project opgeslagen: '+f.code); });
   app.querySelectorAll('tr[data-project]').forEach(tr=>tr.onclick=()=>projSave(+tr.dataset.project,S.data.projecten.find(p=>p.id===+tr.dataset.project)));
   const pn=document.getElementById('p-nieuw'); if(pn) pn.onclick=()=>projSave(null,null);
-  const bedVelden=[{k:'soort',l:'Soort',opties:[{v:'aannemer',t:'aannemer (factureert)'},{v:'opdrachtgever',t:'opdrachtgever (ontvangt factuur)'}]},{k:'naam',l:'Naam'},{k:'adres',l:'Adres'},{k:'postcode_plaats',l:'Postcode plaats'},{k:'land',l:'Land (NL)'},{k:'kvk',l:'KvK'},{k:'btw_nummer',l:'Btw-nummer'},{k:'iban',l:'IBAN'},{k:'email',l:'E-mail'},{k:'telefoon',l:'Telefoon'},{k:'debiteur_code',l:'Debiteur-/relatiecode Exact'},{k:'actief',l:'Actief',type:'bool'}];
+  const bedVelden=[{k:'soort',l:'Soort',opties:[{v:'aannemer',t:'aannemer (factureert)'},{v:'opdrachtgever',t:'opdrachtgever (ontvangt factuur)'}]},{k:'naam',l:'Naam'},{k:'adres',l:'Adres'},{k:'postcode_plaats',l:'Postcode plaats'},{k:'land',l:'Land (NL)'},{k:'kvk',l:'KvK'},{k:'btw_nummer',l:'Btw-nummer'},{k:'iban',l:'IBAN'},{k:'email',l:'E-mail'},{k:'telefoon',l:'Telefoon'},{k:'debiteur_code',l:'Debiteur-/relatiecode Exact'},{k:'website',l:'Website'},{k:'kleur',l:'Hoofdkleur huisstijl (bijv. #1d4e89)'},{k:'kleur2',l:'Tweede kleur (knoppen goedkeuren)'},{k:'actief',l:'Actief',type:'bool'}];
   const bedSave=(id,b)=>formSheet(id?'Bedrijf aanpassen':'Nieuw bedrijf',bedVelden,b||{soort:'aannemer',land:'NL',actief:true},async f=>{ await doe({action:'bedrijf_save', id, fields:f},'Bedrijf opgeslagen: '+f.naam); });
-  app.querySelectorAll('tr[data-bedrijf]').forEach(tr=>tr.onclick=()=>bedSave(+tr.dataset.bedrijf,S.data.bedrijven.find(b=>b.id===+tr.dataset.bedrijf)));
+  app.querySelectorAll('tr[data-bedrijf]').forEach(tr=>tr.onclick=e=>{ if(e.target.closest('button')) return; bedSave(+tr.dataset.bedrijf,S.data.bedrijven.find(b=>b.id===+tr.dataset.bedrijf)); });
+  app.querySelectorAll('[data-logo]').forEach(b=>b.onclick=()=>{ const inp=document.createElement('input'); inp.type='file'; inp.accept='image/png,image/jpeg,image/svg+xml,image/webp'; inp.onchange=()=>{ const f=inp.files[0]; if(!f) return; if(f.size>2*1024*1024){ toast('Logo groter dan 2 MB'); return; } const fr=new FileReader(); fr.onload=async()=>{ await doe({action:'bedrijf_logo', id:+b.dataset.logo, fields:{logo_b64:fr.result}},'Logo geplaatst'); toast('Logo geplaatst'); }; fr.readAsDataURL(f); }; inp.click(); });
   const bn=document.getElementById('bd-nieuw'); if(bn) bn.onclick=()=>bedSave(null,null);
   const ie=document.getElementById('i-export'); if(ie) ie.onclick=()=>{ const d=S.data; download('werkbonnen-export-'+vandaagISO()+'.json', JSON.stringify({geexporteerd:new Date().toISOString(), bedrijven:d.bedrijven, projecten:d.projecten, tarieven:d.tarieven, bonnen:d.bonnen, regels:d.regels, facturen:d.facturen, instellingen:d.instellingen}, null, 2), 'application/json'); };
   const iw=document.getElementById('i-wis'); if(iw) iw.onclick=()=>vraag('Typ WISSEN om alle bonnen, regels en facturen te verwijderen (bedrijven, projecten, tarieven en instellingen blijven staan)','',async v=>{ if(v!=='WISSEN'){ toast('Niet gewist'); return; } if(await doe({action:'testdata_wissen', bevestiging:v},'Alle bonnen en facturen gewist')) toast('Testdata gewist'); });

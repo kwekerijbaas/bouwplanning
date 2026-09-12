@@ -112,3 +112,9 @@ alter table wb_factuur enable row level security;
 alter table wb_instelling enable row level security;
 alter table wb_logboek enable row level security;
 -- Stamgegevens: zie supabase/seed_werkbonnen.sql (KZ Kasherstel-tarieven uit facturen week 33-35).
+
+-- 12-09-2026 (migration "werkbonnen_huisstijl"): huisstijl van de aannemer (logo, kleuren, website)
+alter table wb_bedrijf add column if not exists logo_pad text not null default '';
+alter table wb_bedrijf add column if not exists kleur text not null default '';
+alter table wb_bedrijf add column if not exists kleur2 text not null default '';
+alter table wb_bedrijf add column if not exists website text not null default '';

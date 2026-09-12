@@ -68,3 +68,17 @@ Overdracht naar een eigen omgeving van KZ (ca. 1 uur):
 4. Testdata uit de pilot wissen via Lijsten > Instellingen > Testdata wissen; de
    JSON-export dient als archief van de pilotperiode.
 Er zijn geen licenties of abonnementen nodig; de code is één HTML-bestand plus één function.
+
+### Papieren bon fotograferen en uitlezen
+Op de dagbon staat "Papieren bon fotograferen en uitlezen": de foto gaat naar de edge function,
+die hem met Claude (vision, model `claude-opus-5`) uitleest tegen de tarievenlijst en de regels
+alvast klaarzet (gemarkeerd, met zekerheid). De teamleider controleert en dient in; de foto
+wordt als bijlage bewaard. Vereist de secret `ANTHROPIC_API_KEY` op de function (Supabase
+dashboard > Edge Functions > werkbonnen > Secrets); zonder key geeft de knop een duidelijke
+melding. Kosten: enkele centen per foto.
+
+### Huisstijl
+Lijsten > Bedrijven: bij de aannemer een logo uploaden (knop "logo…") en de hoofdkleur en
+tweede kleur zetten. De app (balk, tabs, knoppen, achtergrond), het weekoverzicht en de factuur
+volgen die kleuren en tonen het logo. Standaard voor KZ: groen #3aa35b en magenta #e6007e
+(naar kzkasherstel.nl).

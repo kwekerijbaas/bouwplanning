@@ -2,6 +2,7 @@
 // Proces: teamleider vult dagbon in -> administratie beoordeelt -> weekoverzicht -> factuur (UBL / CSV voor Exact Online).
 // De pagina zelf is public/werkbonnen.html in de bouwplanning-repo (Webflow Cloud, /app/werkbonnen.html).
 import { createClient } from "npm:@supabase/supabase-js@2";
+import Anthropic from "npm:@anthropic-ai/sdk";
 
 const db = createClient(
   Deno.env.get("SUPABASE_URL")!,
@@ -14,7 +15,7 @@ const CODE_ADMIN = Deno.env.get("WB_CODE_ADMIN") ?? "admin2026";
 const BUCKET = "werkbonnen";
 
 const CATEGORIEEN = ["arbeid", "km", "overnachting", "materieel", "transport", "materiaal"];
-const BEDRIJF_VELDEN = ["soort", "naam", "adres", "postcode_plaats", "land", "kvk", "btw_nummer", "iban", "email", "telefoon", "debiteur_code", "actief"];
+const BEDRIJF_VELDEN = ["soort", "naam", "adres", "postcode_plaats", "land", "kvk", "btw_nummer", "iban", "email", "telefoon", "debiteur_code", "actief", "kleur", "kleur2", "website"];
 const PROJECT_VELDEN = ["code", "naam", "adres", "postcode_plaats", "aannemer_id", "opdrachtgever_id", "claimnummer", "factuur_omschrijving", "actief", "sort"];
 const TARIEF_VELDEN = ["categorie", "omschrijving", "eenheid_n", "eenheid_per", "eenheid_totaal", "prijs", "dagtype", "sort", "actief"];
 const FACTUUR_VELDEN = ["nummer", "datum", "vervaldatum", "omschrijving", "regel_omschrijving", "btw_pct", "status"];
@@ -71,6 +72,62 @@ function normRegels(regels: unknown): Array<Record<string, unknown>> {
       namen: String(x.namen ?? "").slice(0, 2000),
     };
   });
+}
+
+
+// ---------- foto van papieren bon uitlezen (Claude vision, structured output) ----------
+const SCAN_SCHEMA = {
+  type: "object", additionalProperties: false,
+  required: ["datum", "afgetekend_door", "opmerking", "leesbaarheid", "regels"],
+  properties: {
+    datum: { type: ["string", "null"], description: "Datum van de bon als YYYY-MM-DD, of null als onleesbaar" },
+    afgetekend_door: { type: ["string", "null"], description: "Naam van degene die namens de opdrachtgever heeft afgetekend, of null" },
+    opmerking: { type: "string", description: "Overige tekst op de bon die niet in een regel past (werkomschrijving, bijzonderheden); leeg als niets" },
+    leesbaarheid: { type: "string", enum: ["goed", "matig", "slecht"] },
+    regels: {
+      type: "array",
+      items: {
+        type: "object", additionalProperties: false,
+        required: ["categorie", "omschrijving", "aantal", "per", "namen", "zekerheid"],
+        properties: {
+          categorie: { type: "string", enum: ["arbeid", "km", "overnachting", "materieel", "transport", "materiaal"] },
+          omschrijving: { type: "string", description: "Exact de omschrijving uit de tarievenlijst als die past, anders de tekst van de bon" },
+          aantal: { type: "number", description: "arbeid: aantal man; km: aantal auto's; overnachting: aantal nachten; materieel/materiaal: aantal dagen of stuks; transport: uren" },
+          per: { type: ["number", "null"], description: "arbeid: uren per man; km: km per auto; materieel met stuks: dagen; anders null" },
+          namen: { type: "string", description: "Namen van de medewerkers bij een arbeidregel, gescheiden door komma's; leeg als niet vermeld" },
+          zekerheid: { type: "string", enum: ["hoog", "middel", "laag"] },
+        },
+      },
+    },
+  },
+};
+async function leesBonFoto(b64: string, tarieven: Array<Record<string, unknown>>, project: Record<string, unknown> | null, datumHint: string) {
+  const key = Deno.env.get("ANTHROPIC_API_KEY");
+  if (!key) throw new Error("Foto uitlezen staat nog niet aan: zet de secret ANTHROPIC_API_KEY op de edge function \"werkbonnen\"");
+  const komma = b64.indexOf(",");
+  const mediaType = (b64.match(/^data:(image\/[a-z]+);/) ?? [])[1] ?? "image/jpeg";
+  const data = komma >= 0 ? b64.slice(komma + 1) : b64;
+  if (!data) throw new Error("lege foto");
+  const lijst = tarieven.filter((t) => t.actief).map((t) => `- ${t.categorie} | ${t.omschrijving} | ${t.eenheid_n || "-"} x ${t.eenheid_per || "-"} | ${t.eenheid_totaal} | ${Number(t.prijs).toFixed(2)}${t.dagtype && t.dagtype !== "alle" ? " | dagtype " + t.dagtype : ""}`).join("\n");
+  const client = new Anthropic({ apiKey: key });
+  const response = await client.messages.create({
+    model: "claude-opus-5",
+    max_tokens: 8000,
+    output_config: { effort: "medium", format: { type: "json_schema", schema: SCAN_SCHEMA } },
+    system: "Je leest handgeschreven en getypte werkbonnen (aftekenbonnen) van een kassenbouwer/kasherstelbedrijf uit. Je geeft alleen terug wat er op de bon staat; niets bijverzinnen. Bij twijfel: zekerheid laag. Getallen met komma zijn decimalen. Arbeid: 'n man x uren' (mannen zijn hele getallen). Kilometers: 'n auto's x km'. Overnachting: aantal nachten. Materieel (hoogwerker, platformtrekker, shovel, gootkarren, zuiginstallatie): aantal dagen, bij stuks ook dagen in 'per'. Materiaal: stuks. Gebruik de omschrijving uit de tarievenlijst wanneer die overeenkomt.",
+    messages: [{
+      role: "user",
+      content: [
+        { type: "image", source: { type: "base64", media_type: mediaType as "image/jpeg" | "image/png" | "image/webp" | "image/gif", data } },
+        { type: "text", text: "Lees deze werkbon uit voor project " + (project ? `${project.naam} (${project.code}, ${project.adres})` : "onbekend") + ". Verwachte datum rond " + datumHint + ".\n\nTarievenlijst (categorie | omschrijving | aantal-eenheid x per-eenheid | totaal-eenheid | prijs):\n" + lijst },
+      ],
+    }],
+  });
+  if (response.stop_reason === "refusal") throw new Error("Foto kon niet worden uitgelezen (" + (response.stop_details?.explanation ?? "geweigerd") + ")");
+  const tekst = response.content.filter((b) => b.type === "text").map((b) => (b as { text: string }).text).join("");
+  let uit: Record<string, unknown>;
+  try { uit = JSON.parse(tekst); } catch { throw new Error("Foto uitgelezen maar antwoord niet leesbaar; probeer een scherpere foto"); }
+  return uit;
 }
 
 async function uploadB64(b64: string, contentType: string, ext: string): Promise<string> {
@@ -363,6 +420,50 @@ Deno.serve(async (req) => {
         if (e1) throw e1;
         const { error: e2 } = await db.from("wb_factuur").delete().eq("id", id);
         if (e2) throw e2;
+        break;
+      }
+      case "bon_lees_foto": {
+        const b64 = String(fields.foto_b64 ?? "");
+        if (!b64) throw new Error("geen foto meegestuurd");
+        const [{ data: tarieven, error: e1 }, { data: project }] = await Promise.all([
+          db.from("wb_tarief").select("*").eq("actief", true).order("sort"),
+          db.from("wb_project").select("*").eq("id", Number(fields.project_id)).maybeSingle(),
+        ]);
+        if (e1) throw e1;
+        const datumHint = typeof fields.datum === "string" && ISO_DATUM.test(fields.datum) ? fields.datum : new Date().toISOString().slice(0, 10);
+        const uit = await leesBonFoto(b64, tarieven ?? [], project ?? null, datumHint);
+        // Regels koppelen aan tarieven (omschrijving), prijs en eenheden invullen; arbeid op dagtarief van de datum.
+        const datum = typeof uit.datum === "string" && ISO_DATUM.test(uit.datum) ? uit.datum : datumHint;
+        const dag = new Date(datum + "T00:00:00Z").getUTCDay();
+        const dagtype = dag === 0 ? "zo" : dag === 6 ? "za" : "ma-vr";
+        const norm = (x: string) => x.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+        const regels = ((uit.regels ?? []) as Array<Record<string, unknown>>).slice(0, 60).map((r) => {
+          const cat = String(r.categorie ?? "");
+          let t = (tarieven ?? []).find((x) => x.categorie === cat && norm(x.omschrijving) === norm(String(r.omschrijving ?? "")));
+          if (!t && cat === "arbeid") t = (tarieven ?? []).find((x) => x.categorie === "arbeid" && x.dagtype === dagtype) ?? (tarieven ?? []).find((x) => x.categorie === "arbeid");
+          if (!t && (cat === "km" || cat === "overnachting")) t = (tarieven ?? []).find((x) => x.categorie === cat);
+          if (!t) t = (tarieven ?? []).find((x) => x.categorie === cat && (norm(x.omschrijving).includes(norm(String(r.omschrijving ?? ""))) || norm(String(r.omschrijving ?? "")).includes(norm(x.omschrijving))));
+          if (t && cat === "arbeid") t = (tarieven ?? []).find((x) => x.categorie === "arbeid" && x.dagtype === dagtype) ?? t;
+          const aantal = Number(r.aantal) || 0;
+          const per = r.per == null ? (t && t.eenheid_per ? 1 : null) : Number(r.per);
+          return {
+            categorie: cat, omschrijving: t ? t.omschrijving : String(r.omschrijving ?? ""), tarief_id: t ? t.id : null,
+            aantal: cat === "transport" ? aantal : Math.round(aantal), per: per == null ? null : (t && t.eenheid_per === "uur" ? per : Math.round(per)),
+            prijs: t ? Number(t.prijs) : 0, eenheid_n: t ? t.eenheid_n : "", eenheid_per: t ? t.eenheid_per : "", eenheid_totaal: t ? t.eenheid_totaal : "",
+            namen: String(r.namen ?? ""), zekerheid: String(r.zekerheid ?? "middel"), gekoppeld: !!t,
+          };
+        }).filter((r) => r.aantal > 0);
+        await log(wie, String(body.log ?? ""));
+        return json({ ok: true, datum, afgetekend_door: uit.afgetekend_door ?? "", opmerking: String(uit.opmerking ?? ""), leesbaarheid: String(uit.leesbaarheid ?? "matig"), regels });
+      }
+      case "bedrijf_logo": {
+        if (!admin) throw new Error("alleen administratie");
+        const b64 = String(fields.logo_b64 ?? "");
+        if (!b64) throw new Error("geen logo meegestuurd");
+        const mt = (b64.match(/^data:(image\/[a-z+]+);/) ?? [])[1] ?? "image/png";
+        const pad = await uploadB64(b64, mt, mt.includes("svg") ? "svg" : mt.includes("jpeg") ? "jpg" : "png");
+        const { error } = await db.from("wb_bedrijf").update({ logo_pad: pad }).eq("id", id);
+        if (error) throw error;
         break;
       }
       case "testdata_wissen": {

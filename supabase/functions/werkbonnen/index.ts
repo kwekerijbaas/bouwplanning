@@ -59,6 +59,9 @@ function normRegels(regels: unknown): Array<Record<string, unknown>> {
     const aantal = num(x.aantal, "aantal op regel " + (i + 1));
     const per = x.per == null || x.per === "" ? null : num(x.per, "per-waarde op regel " + (i + 1));
     const prijs = num(x.prijs, "prijs op regel " + (i + 1));
+    // Hele getallen: mannen, auto's, nachten, dagen, stuks; alleen uren mogen halve zijn.
+    if (categorie !== "transport" && !Number.isInteger(aantal)) throw new Error("aantal op regel " + (i + 1) + " moet een heel getal zijn (geen halve mannen, auto's, nachten of stuks)");
+    if (per != null && String(x.eenheid_per ?? "") !== "uur" && !Number.isInteger(per)) throw new Error("km/dagen op regel " + (i + 1) + " moeten een heel getal zijn");
     const totaal = r2(per == null ? aantal : aantal * per);
     return {
       sort: i + 1, categorie, omschrijving,

@@ -235,6 +235,10 @@ function regelToevoegen(cat){
     aantal:0, per:(cat==='arbeid'||cat==='km')?0:(t&&t.eenheid_per?1:null), prijs:t?Number(t.prijs):0,
     eenheid_n:t?t.eenheid_n:c.n, eenheid_per:t?t.eenheid_per:c.per, eenheid_totaal:t?t.eenheid_totaal:c.tot, namen:'' });
 }
+// Hele getallen: mannen, auto's, nachten, dagen, stuks. Alleen uren (arbeid per man, transport) mogen halve zijn.
+function heelAantal(r){ return r.categorie!=='transport'; }
+function heelPer(r){ return r.eenheid_per!=='uur'; }
+function regelFout(r){ if(heelAantal(r)&&!Number.isInteger(num(r.aantal))) return 'Aantal '+(r.eenheid_n||'')+' moet een heel getal zijn (geen halve '+(r.eenheid_n==='man'?'mannen':r.eenheid_n||'aantallen')+')'; if(r.per!=null&&heelPer(r)&&!Number.isInteger(num(r.per))) return (r.eenheid_per||'per')+' moet een heel getal zijn'; return ''; }
 function regelBedrag(r){ const tot=r.per==null?num(r.aantal):num(r.aantal)*num(r.per); return {totaal:r2(tot), bedrag:r2(r2(tot)*num(r.prijs))}; }
 function bonSom(){ return r2(S.bon.regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0)); }
 function magBewerken(){ if(!S.bon.id) return true; if(isAdmin()) return S.bon.status!=='gefactureerd'; return ['concept','afgekeurd'].includes(S.bon.status); }
@@ -279,8 +283,8 @@ function regelHtml(r,i,bew){
   const keuze=(ts.length&&r.categorie!=='overnachting')?'<select data-i="'+i+'" data-f="tarief" '+d+'>'+ts.map(t=>'<option value="'+t.id+'" '+(t.id===r.tarief_id?'selected':'')+'>'+esc(t.omschrijving)+' — '+fmtGeld(t.prijs)+' '+esc(t.eenheid_totaal)+'</option>').join('')+'<option value="" '+(r.tarief_id?'':'selected')+'>anders…</option></select>':'';
   const vrij=(!r.tarief_id||!ts.length||r.categorie==='overnachting')?'<input type="text" data-i="'+i+'" data-f="omschrijving" value="'+esc(r.omschrijving)+'" placeholder="omschrijving" '+d+'>':'';
   let x='<div class="bonregel"><div class="oms">'+keuze+vrij+(r.categorie==='arbeid'?'<input type="text" data-i="'+i+'" data-f="namen" value="'+esc(r.namen)+'" placeholder="namen (optioneel)" style="margin-top:3px" '+d+'>':'')+'</div>';
-  x+='<div><span class="lbl">'+esc(r.eenheid_n||'aantal')+'</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="aantal" value="'+esc(r.aantal)+'" '+d+'></div>';
-  x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+(r.eenheid_n==='man'?' p.p.':r.eenheid_n==="auto's"?' per auto':' per stuk')+'</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+d+'>':'')+'</div>';
+  x+='<div><span class="lbl">'+esc(r.eenheid_n||'aantal')+'</span><input type="number" step="'+(heelAantal(r)?'1':'0.5')+'" min="0" inputmode="'+(heelAantal(r)?'numeric':'decimal')+'" data-i="'+i+'" data-f="aantal" value="'+esc(r.aantal)+'" '+d+'></div>';
+  x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+(r.eenheid_n==='man'?' p.p.':r.eenheid_n==="auto's"?' per auto':' per stuk')+'</span><input type="number" step="'+(heelPer(r)?'1':'0.5')+'" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+d+'>':'')+'</div>';
   x+='<div><span class="lbl">prijs '+esc(r.eenheid_totaal)+'</span><input type="number" step="0.01" min="0" data-i="'+i+'" data-f="prijs" value="'+esc(r.prijs)+'" '+((bew&&isAdmin())?'':'disabled')+'></div>';
   x+='<div class="bedrag"><span class="lbl">'+fmtNum(b.totaal)+' '+esc(r.eenheid_totaal)+'</span><b data-bedrag="'+i+'">'+fmtGeld(b.bedrag)+'</b></div>';
   x+=(bew?'<button class="x" data-del="'+i+'">×</button>':'<span></span>')+'</div>';
@@ -313,6 +317,7 @@ async function bonOpslaan(indienen){
   if(!f.project_id){ toast('Kies een project'); return; }
   if(indienen&&!regels.length){ toast('Vul minimaal één regel in'); return; }
   const leeg=regels.find(r=>!r.omschrijving.trim()); if(leeg){ toast('Een regel heeft nog geen omschrijving'); return; }
+  for(const r of regels){ const fout=regelFout(r); if(fout){ toast(fout+' — '+r.omschrijving); return; } }
   const pr=project(f.project_id);
   const j=await doe({action:'bon_save', id:S.bon.id, fields:f, regels, indienen:!!indienen}, (indienen?'Dagbon ingediend: ':'Dagbon opgeslagen: ')+(pr?pr.naam:'')+' '+fmtKort(f.datum)+' '+fmtGeld(r2(regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0))));
   if(j&&j.id){ const nb=(S.data.bonnen||[]).find(x=>x.id===j.id); if(nb){ laadBon(nb); render(); } toast(indienen?'Bon ingediend bij de administratie':'Bon opgeslagen'); }

@@ -1,14 +1,18 @@
 // Browser-tests (Playwright), aanvulling op werkbonnen-e2e.js. Start: node tools/werkbonnen-e2e-extra.js
 // browser-tests voor de resterende onderdelen.
-const { chromium } = require('playwright'); const { spawn } = require('child_process'); const assert=require('assert'); const fs=require('fs');
-const srv=spawn('node',[require('path').join(__dirname,'werkbonnen-mock.js')],{stdio:'ignore'}); process.on('exit',()=>srv.kill());
-const API='http://localhost:8787/api', BASE='http://localhost:8787/werkbonnen.html?api='+encodeURIComponent(API);
+const { chromium } = require('playwright');  const assert=require('assert'); const fs=require('fs');
+const { spawn } = require('child_process');
+const PORT=18000+Math.floor(Math.random()*2000);
+const srv=spawn(process.execPath,[require('path').join(__dirname,'werkbonnen-mock.js')],{stdio:'ignore',env:{...process.env,WB_PORT:String(PORT)}}); process.on('exit',()=>{ try{ srv.kill(); }catch(e){} });
+const API='http://localhost:'+PORT+'/api', BASE='http://localhost:'+PORT+'/werkbonnen.html?api='+encodeURIComponent(API);
+async function wachtOpMock(){ for(let i=0;i<50;i++){ try{ const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':'admin2026'},body:'{"action":"state"}'}); const j=await r.json(); if(j.bonnen&&j.bonnen.length===0&&j.facturen.length===0) return; throw new Error('mock op poort '+PORT+' heeft al data - test gestopt'); }catch(e){ if(/al data/.test(e.message)) { console.log('FOUT: '+e.message); process.exit(1); } await new Promise(r=>setTimeout(r,200)); } } console.log('FOUT: mock-API start niet (poort '+PORT+')'); process.exit(1); }
+
 async function call(code, body){ const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':code},body:JSON.stringify(body)}); return [r.status, await r.json()]; }
 const geld=s=>Number(String(s).replace(/\./g,'').replace(',','.').replace(' €',''));
 let n=0, fouten=[]; const t=async(naam,fn)=>{ n++; try{ await fn(); }catch(e){ fouten.push(naam+': '+e.message.replace(/\s+/g,' ').slice(0,300)); } };
 (async()=>{
   setTimeout(()=>{ console.log('GLOBAL TIMEOUT'); process.exit(2); },170000);
-  await new Promise(r=>setTimeout(r,700));
+  await wachtOpMock();
   const br=await chromium.launch(process.env.CHROME?{executablePath:process.env.CHROME}:{});
   // ---- A. mobiele werkvloer-flow (team) met foto, materieel stuks x dag, handtekening ----
   const m=await br.newContext({viewport:{width:400,height:850},isMobile:true,hasTouch:true}); const mp=await m.newPage(); const errs=[]; mp.on('pageerror',e=>errs.push(e.message)); mp.on('dialog',d=>d.accept());

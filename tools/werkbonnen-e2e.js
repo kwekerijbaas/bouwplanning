@@ -1,7 +1,12 @@
 // End-to-end test (Playwright) van de werkbonnen-app tegen de mock-API. Start: node tools/werkbonnen-e2e.js
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
-const BASE='http://localhost:8787/werkbonnen.html?api='+encodeURIComponent('http://localhost:8787/api');
+const PORT=18000+Math.floor(Math.random()*2000);
+const srv=spawn(process.execPath,[require('path').join(__dirname,'werkbonnen-mock.js')],{stdio:'ignore',env:{...process.env,WB_PORT:String(PORT)}}); process.on('exit',()=>{ try{ srv.kill(); }catch(e){} });
+const API='http://localhost:'+PORT+'/api', BASE='http://localhost:'+PORT+'/werkbonnen.html?api='+encodeURIComponent(API);
+async function wachtOpMock(){ for(let i=0;i<50;i++){ try{ const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':'admin2026'},body:'{"action":"state"}'}); const j=await r.json(); if(j.bonnen&&j.bonnen.length===0&&j.facturen.length===0) return; throw new Error('mock op poort '+PORT+' heeft al data - test gestopt'); }catch(e){ if(/al data/.test(e.message)) { console.log('FOUT: '+e.message); process.exit(1); } await new Promise(r=>setTimeout(r,200)); } } console.log('FOUT: mock-API start niet (poort '+PORT+')'); process.exit(1); }
+
+
 // Week 35 Drietorensweg (factuur 2026265) volgens KZ-overzicht: per dag arbeid/km/nachten; materieel/diversen los.
 const DAGEN=[
  {datum:'2026-08-27', arbeid:[[3,12.5],[4,9]], km:[[2,54]], nachten:7, materieel:[['Gebruik bandenhoogwerker',1],['Gebruik platformtrekker incl. brandstof',2],['Gebruik teleshovel incl. brandstof',1],['Gebruik shovel met toebehoren incl. brandstof',2]]},
@@ -11,7 +16,7 @@ const DAGEN=[
 ];
 const VERWACHT=43856.65;
 (async()=>{
-  const srv=spawn('node',[require('path').join(__dirname,'werkbonnen-mock.js')],{stdio:'ignore'}); process.on('exit',()=>srv.kill()); await new Promise(r=>setTimeout(r,800));
+   await wachtOpMock();
   setTimeout(()=>{console.log('GLOBAL TIMEOUT');process.exit(2)},150000); const br=await chromium.launch(process.env.CHROME?{executablePath:process.env.CHROME}:{}); const ctx=await br.newContext({viewport:{width:1100,height:1400}}); const pg=await ctx.newPage();
   pg.on('pageerror',e=>console.log('PAGEERROR',e.message)); pg.on('dialog',d=>d.accept());
   const fouten=[];

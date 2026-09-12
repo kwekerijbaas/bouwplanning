@@ -1,0 +1,114 @@
+-- Werkbonnen: dagbonnen werkvloer -> beoordeling administratie -> weekoverzicht -> factuur (UBL/CSV)
+-- Toegepast op Supabase-project hlgvtxcwbhrbbcozvsen op 11-09-2026 (migration "werkbonnen_basis").
+create table if not exists wb_bedrijf (
+  id serial primary key,
+  soort text not null default 'aannemer' check (soort in ('aannemer','opdrachtgever')),
+  naam text not null,
+  adres text not null default '',
+  postcode_plaats text not null default '',
+  land text not null default 'NL',
+  kvk text not null default '',
+  btw_nummer text not null default '',
+  iban text not null default '',
+  email text not null default '',
+  telefoon text not null default '',
+  debiteur_code text not null default '',
+  actief boolean not null default true,
+  created_at timestamptz not null default now(),
+  unique (soort, naam)
+);
+create table if not exists wb_project (
+  id serial primary key,
+  code text not null unique,
+  naam text not null,
+  adres text not null default '',
+  postcode_plaats text not null default '',
+  aannemer_id integer references wb_bedrijf(id),
+  opdrachtgever_id integer references wb_bedrijf(id),
+  claimnummer text not null default '',
+  factuur_omschrijving text not null default '',
+  actief boolean not null default true,
+  sort integer not null default 100,
+  created_at timestamptz not null default now()
+);
+create table if not exists wb_tarief (
+  id serial primary key,
+  categorie text not null check (categorie in ('arbeid','km','overnachting','materieel','transport','materiaal')),
+  omschrijving text not null,
+  eenheid_n text not null default '',
+  eenheid_per text not null default '',
+  eenheid_totaal text not null default '',
+  prijs numeric(10,2) not null default 0,
+  dagtype text not null default 'alle' check (dagtype in ('alle','ma-vr','za','zo')),
+  sort integer not null default 100,
+  actief boolean not null default true,
+  unique (categorie, omschrijving)
+);
+create table if not exists wb_bon (
+  id serial primary key,
+  project_id integer not null references wb_project(id),
+  datum date not null,
+  ingevuld_door text not null default '',
+  status text not null default 'concept' check (status in ('concept','ingediend','goedgekeurd','afgekeurd','gefactureerd')),
+  opmerking text not null default '',
+  afgetekend_door text not null default '',
+  handtekening_pad text not null default '',
+  foto_paden jsonb not null default '[]'::jsonb,
+  ingediend_ts timestamptz,
+  beoordeeld_door text not null default '',
+  beoordeeld_ts timestamptz,
+  beoordeling text not null default '',
+  factuur_id integer,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+create index if not exists wb_bon_project_datum on wb_bon(project_id, datum);
+create table if not exists wb_bonregel (
+  id serial primary key,
+  bon_id integer not null references wb_bon(id) on delete cascade,
+  sort integer not null default 0,
+  categorie text not null check (categorie in ('arbeid','km','overnachting','materieel','transport','materiaal')),
+  omschrijving text not null,
+  tarief_id integer references wb_tarief(id) on delete set null,
+  aantal numeric(10,2) not null default 0,
+  per numeric(10,2),
+  totaal numeric(12,2) not null default 0,
+  prijs numeric(10,2) not null default 0,
+  bedrag numeric(12,2) not null default 0,
+  eenheid_n text not null default '',
+  eenheid_per text not null default '',
+  eenheid_totaal text not null default '',
+  namen text not null default ''
+);
+create index if not exists wb_bonregel_bon on wb_bonregel(bon_id);
+create table if not exists wb_factuur (
+  id serial primary key,
+  nummer text not null unique,
+  project_id integer not null references wb_project(id),
+  jaar integer not null,
+  week integer not null,
+  datum date not null default current_date,
+  vervaldatum date,
+  omschrijving text not null default '',
+  regel_omschrijving text not null default 'Uitgevoerde werkzaamheden volgens overzicht',
+  bedrag_excl numeric(12,2) not null default 0,
+  btw_pct numeric(5,2) not null default 21,
+  btw_bedrag numeric(12,2) not null default 0,
+  bedrag_incl numeric(12,2) not null default 0,
+  status text not null default 'concept' check (status in ('concept','definitief','geexporteerd')),
+  aangemaakt_door text not null default '',
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+alter table wb_bon add constraint wb_bon_factuur_fk foreign key (factuur_id) references wb_factuur(id) on delete set null;
+create table if not exists wb_instelling (sleutel text primary key, waarde text not null default '');
+create table if not exists wb_logboek (id serial primary key, ts timestamptz not null default now(), wie text not null default '', actie text not null);
+alter table wb_bedrijf enable row level security;
+alter table wb_project enable row level security;
+alter table wb_tarief enable row level security;
+alter table wb_bon enable row level security;
+alter table wb_bonregel enable row level security;
+alter table wb_factuur enable row level security;
+alter table wb_instelling enable row level security;
+alter table wb_logboek enable row level security;
+-- Stamgegevens: zie supabase/seed_werkbonnen.sql (KZ Kasherstel-tarieven uit facturen week 33-35).

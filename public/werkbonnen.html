@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1d4e89">
+<title>Werkbonnen</title>
+<style>
+:root{
+  --blauw:#1d4e89; --blauw-licht:#e8eef6; --bg:#f2f4f3; --kaart:#fff; --tekst:#1b2a24; --grijs:#6c757d; --lijn:#e3e7e5;
+  --rood:#c1442e; --oranje:#f2a541; --groen:#2d6a4f; --groen-licht:#52b788;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tekst);font-size:15px;-webkit-tap-highlight-color:transparent}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
+#topbar{position:sticky;top:0;z-index:30;background:var(--blauw);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px}
+#topbar h1{font-size:16px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#topbar .wie{font-size:12px;opacity:.9;cursor:pointer}
+#tabs{position:sticky;top:44px;z-index:29;display:flex;background:var(--kaart);border-bottom:1px solid var(--lijn);overflow-x:auto}
+#tabs button{flex:1;min-width:76px;padding:10px 4px;font-size:13px;color:var(--grijs);border-bottom:3px solid transparent;white-space:nowrap}
+#tabs button.actief{color:var(--blauw);border-bottom-color:var(--blauw);font-weight:600}
+#tabs button .bol{display:inline-block;min-width:17px;padding:0 4px;border-radius:9px;background:var(--rood);color:#fff;font-size:11px;margin-left:3px}
+main{padding:12px;max-width:1100px;margin:0 auto;padding-bottom:60px}
+.kaart{background:var(--kaart);border:1px solid var(--lijn);border-radius:10px;padding:12px;margin-bottom:10px}
+.kaart h2{font-size:14px;margin-bottom:8px;color:var(--blauw)}
+.kaart h3{font-size:13px;margin:12px 0 6px;color:var(--blauw)}
+.regel{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--lijn);flex-wrap:wrap}
+.regel:last-child{border-bottom:none}
+.stil{color:var(--grijs);font-size:12px}
+.knop{background:var(--blauw);color:#fff;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:600;white-space:nowrap}
+.knop.licht{background:var(--blauw-licht);color:var(--blauw)}
+.knop.rood{background:var(--rood)}
+.knop.groen{background:var(--groen)}
+.knop.klein{padding:5px 10px;font-size:12px}
+.knop.breed{width:100%;text-align:center}
+.knop:disabled{opacity:.5;cursor:default}
+.rij{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.rij>label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--grijs);flex:1;min-width:120px}
+input[type=date],input[type=text],input[type=number],input[type=password],select,textarea{border:1px solid var(--lijn);border-radius:7px;padding:8px;background:#fff;max-width:100%;width:100%}
+textarea{min-height:60px;resize:vertical}
+.chip{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap}
+.st-concept{background:#8d99ae}.st-ingediend{background:var(--oranje)}.st-goedgekeurd{background:var(--groen-licht)}.st-afgekeurd{background:var(--rood)}.st-gefactureerd{background:var(--blauw)}
+.st-definitief{background:var(--groen)}.st-geexporteerd{background:#6a4c93}
+.bedrag{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.bonregel{display:grid;grid-template-columns:minmax(140px,2fr) 70px 70px 84px 90px 30px;gap:6px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--lijn)}
+.bonregel input,.bonregel select{padding:6px}
+.bonregel .lbl{font-size:10px;color:var(--grijs);display:block}
+.bonregel .x{color:var(--rood);font-size:18px;text-align:center}
+@media(max-width:640px){.bonregel{grid-template-columns:1fr 1fr 1fr;} .bonregel .oms{grid-column:1/-1} .bonregel .bedrag{grid-column:1/3} .bonregel .x{grid-column:3}}
+.sectie{margin-top:12px;border-top:2px solid var(--blauw-licht);padding-top:6px}
+.sectie .kop{display:flex;justify-content:space-between;align-items:center}
+.sectie .kop b{font-size:13px}
+.totaal{display:flex;justify-content:space-between;font-weight:700;font-size:16px;padding:10px 0;border-top:2px solid var(--blauw)}
+#sheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40;align-items:flex-end;justify-content:center}
+.sheetkaart{background:#fff;border-radius:14px 14px 0 0;padding:14px;width:100%;max-width:640px;max-height:92vh;overflow:auto}
+.sheettitel{font-weight:700;margin-bottom:10px}
+.sheetrij{display:flex;gap:8px;margin-top:10px;align-items:center}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:9px 14px;border-radius:8px;font-size:13px;display:none;z-index:50;max-width:90vw}
+#login{position:fixed;inset:0;background:var(--bg);z-index:60;display:flex;align-items:center;justify-content:center;padding:20px}
+#login .kaart{width:100%;max-width:380px}
+#login label{display:block;margin-bottom:10px;font-size:13px;color:var(--grijs)}
+canvas.sig{border:1px dashed #999;border-radius:8px;background:#fff;width:100%;height:150px;touch-action:none}
+.thumbs{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.thumbs img{height:64px;border-radius:6px;border:1px solid var(--lijn)}
+.thumbs .th{position:relative}
+.thumbs .th button{position:absolute;top:-6px;right:-6px;background:var(--rood);color:#fff;border-radius:50%;width:20px;height:20px;font-size:12px;line-height:20px;text-align:center}
+table.lijst{width:100%;border-collapse:collapse;font-size:13px}
+table.lijst th,table.lijst td{padding:6px 5px;border-bottom:1px solid var(--lijn);text-align:left;vertical-align:top}
+table.lijst th{color:var(--grijs);font-weight:600;font-size:11px;text-transform:uppercase}
+table.lijst tr.klik{cursor:pointer}
+table.lijst tr.klik:hover{background:var(--blauw-licht)}
+.scroll{overflow-x:auto}
+/* KZ-achtige overzicht/factuur-opmaak */
+.doc{background:#fff;color:#000;padding:22px;max-width:800px;margin:0 auto;font-family:Arial,Helvetica,sans-serif;font-size:12px;border:1px solid var(--lijn)}
+.doc .kopblok{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}
+.doc .kopblok .firma{font-size:18px;font-weight:700;color:var(--blauw)}
+.doc .kopblok .firma small{display:block;font-size:11px;font-weight:400;color:#444}
+.doc h1{font-size:16px;margin:0 0 4px}
+.doc .meta{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:8px 0 12px;font-size:12px}
+.doc table{width:100%;border-collapse:collapse;font-size:12px}
+.doc th{text-align:left;border-bottom:1px solid #000;padding:4px 3px;font-size:11px}
+.doc td{padding:3px 3px;vertical-align:top}
+.doc tr.dag td{font-weight:700;padding-top:9px;border-bottom:1px solid #999}
+.doc tr.sec td{font-weight:700;padding-top:12px;border-bottom:1px solid #999}
+.doc td.r,.doc th.r{text-align:right;white-space:nowrap}
+.doc tr.tot td{font-weight:700;border-top:2px solid #000;padding-top:6px;font-size:13px}
+.doc .adres{margin:14px 0}
+.doc .voet{margin-top:22px;font-size:11px;color:#444;border-top:1px solid #999;padding-top:6px}
+.doc .fmeta{display:flex;gap:26px;margin:12px 0}
+.doc .fmeta div b{display:block;font-size:11px;color:#444}
+.knoppen{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+pre.xml{background:#f6f8fa;border:1px solid var(--lijn);border-radius:8px;padding:10px;font-size:11px;overflow:auto;max-height:50vh;white-space:pre-wrap;word-break:break-all}
+.waarsch{background:#fff4e0;border:1px solid var(--oranje);border-radius:8px;padding:8px 10px;font-size:13px;margin-bottom:8px}
+.info{background:var(--blauw-licht);border-radius:8px;padding:8px 10px;font-size:13px;margin-bottom:8px}
+.badge-week{display:inline-block;background:var(--blauw-licht);color:var(--blauw);border-radius:6px;padding:2px 7px;font-size:12px;font-weight:600}
+@media print{
+  body{background:#fff}
+  #topbar,#tabs,.knoppen,.noprint,#toast,#sheet{display:none!important}
+  main{padding:0;max-width:none}
+  .doc{border:none;max-width:none;padding:0}
+  @page{size:A4;margin:14mm}
+}
+</style>
+</head>
+<body>
+<div id="login">
+  <div class="kaart">
+    <h2>📋 Werkbonnen</h2>
+    <p class="stil" style="margin-bottom:12px">Dagbonnen vanaf de werkvloer, beoordeling door de administratie, weekoverzicht en factuur.</p>
+    <label>Jouw naam<br><input type="text" id="lg-wie" autocomplete="name"></label>
+    <label>Toegangscode<br><input type="password" id="lg-code" autocomplete="current-password"></label>
+    <div class="stil" id="lg-fout" style="color:var(--rood);min-height:16px"></div>
+    <button class="knop breed" id="lg-ok" style="margin-top:8px">Inloggen</button>
+  </div>
+</div>
+<div id="topbar"><h1>📋 Werkbonnen</h1><span class="wie" id="tb-wie"></span></div>
+<div id="tabs"></div>
+<main id="app"></main>
+<div id="sheet"></div>
+<div id="toast"></div>
+<script>
+'use strict';
+const API = (location.search.match(/[?&]api=([^&]+)/) ? decodeURIComponent(RegExp.$1) : 'https://hlgvtxcwbhrbbcozvsen.supabase.co/functions/v1/werkbonnen/api');
+const CATS = [
+  {id:'arbeid', naam:'Arbeid', n:'man', per:'uur', tot:'per uur'},
+  {id:'km', naam:'Kilometervergoeding', n:"auto's", per:'km.', tot:'per km.'},
+  {id:'overnachting', naam:'Overnachtingsvergoeding', n:'', per:'', tot:'per nacht'},
+  {id:'materieel', naam:'Materieel', n:'', per:'', tot:'per dag'},
+  {id:'transport', naam:'Transport', n:'', per:'', tot:'per uur'},
+  {id:'materiaal', naam:'Diversen (materiaal)', n:'', per:'', tot:'per stuk'},
+];
+const CAT = Object.fromEntries(CATS.map(c=>[c.id,c]));
+const STATUS_TXT = {concept:'concept', ingediend:'ingediend', goedgekeurd:'goedgekeurd', afgekeurd:'afgekeurd', gefactureerd:'gefactureerd', definitief:'definitief', geexporteerd:'geëxporteerd'};
+const DAGEN = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+const MAANDEN = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+
+const S = { data:null, tab:'bon', bon:null, code:localStorage.getItem('wb_code')||'', wie:localStorage.getItem('wb_wie')||'',
+  lijstStatus:'', lijstProject:'', ovProject:null, ovJaar:null, ovWeek:null, ovAlleenGoed:true, factId:null, factXml:null, nieuwFact:null, lijstTab:'tarieven' };
+
+/* ---------- helpers ---------- */
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function r2(n){ return Math.round((Number(n)+Number.EPSILON)*100)/100; }
+function num(v){ const n=Number(String(v==null?'':v).replace(',','.')); return Number.isFinite(n)?n:0; }
+function fmtGeld(n){ return Number(n||0).toLocaleString('nl-NL',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'; }
+function fmtNum(n, dec){ const x=Number(n||0); if(dec==null){ return Number.isInteger(x)?String(x):x.toLocaleString('nl-NL',{maximumFractionDigits:2}); } return x.toLocaleString('nl-NL',{minimumFractionDigits:dec,maximumFractionDigits:dec}); }
+function vandaagISO(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function pd(iso){ const p=String(iso).slice(0,10).split('-'); return new Date(Date.UTC(+p[0],+p[1]-1,+p[2])); }
+function iso(d){ return d.toISOString().slice(0,10); }
+function fmtDatum(isoS){ const d=pd(isoS); return DAGEN[d.getUTCDay()]+' '+d.getUTCDate()+' '+MAANDEN[d.getUTCMonth()]+' '+d.getUTCFullYear(); }
+function fmtKort(isoS){ if(!isoS) return '—'; const d=pd(isoS); return String(d.getUTCDate()).padStart(2,'0')+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+d.getUTCFullYear(); }
+function fmtDMY(isoS){ const d=pd(isoS); return d.getUTCDate()+'-'+(d.getUTCMonth()+1)+'-'+d.getUTCFullYear(); }
+function isoWeek(isoS){ const d=pd(isoS); const dag=d.getUTCDay()||7; d.setUTCDate(d.getUTCDate()+4-dag); const js=new Date(Date.UTC(d.getUTCFullYear(),0,1)); return {jaar:d.getUTCFullYear(), week:Math.ceil((((d-js)/86400000)+1)/7)}; }
+function weekMaandag(jaar, week){ const j4=new Date(Date.UTC(jaar,0,4)); const dow=j4.getUTCDay()||7; j4.setUTCDate(j4.getUTCDate()-(dow-1)+(week-1)*7); return j4; }
+function dagType(isoS){ const d=pd(isoS).getUTCDay(); return d===0?'zo':d===6?'za':'ma-vr'; }
+function chip(st){ return '<span class="chip st-'+esc(st)+'">'+esc(STATUS_TXT[st]||st)+'</span>'; }
+function toast(t){ const e=document.getElementById('toast'); e.textContent=t; e.style.display='block'; clearTimeout(toast.t); toast.t=setTimeout(()=>e.style.display='none',3200); }
+function project(id){ return (S.data.projecten||[]).find(p=>p.id===id); }
+function bedrijf(id){ return (S.data.bedrijven||[]).find(b=>b.id===id); }
+function regelsVan(bonId){ return (S.data.regels||[]).filter(r=>r.bon_id===bonId).sort((a,b)=>a.sort-b.sort); }
+function bonTotaal(bonId){ return r2(regelsVan(bonId).reduce((s,r)=>s+Number(r.bedrag),0)); }
+function isAdmin(){ return S.data && S.data.rol==='admin'; }
+function fotoUrl(pad){ return (S.data.storage_url||'')+pad; }
+
+async function api(body){
+  const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':S.code},body:JSON.stringify(Object.assign({wie:S.wie},body))});
+  if(r.status===401) throw {auth:true};
+  let j=null; try{ j=await r.json(); }catch(x){}
+  if(!r.ok) throw new Error((j&&j.fout)||'serverfout');
+  return j;
+}
+async function laad(){ S.data=await api({action:'state'}); }
+async function doe(actie, logtekst){
+  try{ const j=await api(Object.assign({},actie,{log:logtekst||''})); await laad(); render(); return j; }
+  catch(e){ toast(e.auth?'Niet ingelogd':(e.message||'Opslaan mislukt — check je verbinding')); return null; }
+}
+
+/* ---------- login ---------- */
+function toonLogin(){ document.getElementById('login').style.display='flex'; document.getElementById('lg-wie').value=S.wie; document.getElementById('lg-code').value=S.code; }
+document.getElementById('lg-ok').onclick=async()=>{
+  S.wie=document.getElementById('lg-wie').value.trim(); S.code=document.getElementById('lg-code').value.trim();
+  if(!S.wie){ document.getElementById('lg-fout').textContent='Vul je naam in'; return; }
+  try{ await laad(); localStorage.setItem('wb_code',S.code); localStorage.setItem('wb_wie',S.wie); document.getElementById('login').style.display='none'; render(); }
+  catch(e){ document.getElementById('lg-fout').textContent=e.auth?'Onjuiste toegangscode':'Geen verbinding met de server'; }
+};
+document.getElementById('lg-code').addEventListener('keydown',e=>{ if(e.key==='Enter') document.getElementById('lg-ok').click(); });
+document.getElementById('tb-wie').onclick=()=>toonLogin();
+
+/* ---------- tabs ---------- */
+function tabs(){
+  const t=[{id:'bon',naam:'📝 Dagbon'},{id:'bonnen',naam:'📋 Bonnen'},{id:'overzicht',naam:'📊 Weekoverzicht'}];
+  if(isAdmin()){ t.push({id:'facturen',naam:'🧾 Facturen'}); t.push({id:'lijsten',naam:'⚙️ Lijsten'}); }
+  const open=(S.data.bonnen||[]).filter(b=>b.status==='ingediend').length;
+  document.getElementById('tabs').innerHTML=t.map(x=>'<button data-tab="'+x.id+'" class="'+(S.tab===x.id?'actief':'')+'">'+x.naam+(x.id==='bonnen'&&isAdmin()&&open?'<span class="bol">'+open+'</span>':'')+'</button>').join('');
+  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=async()=>{
+    if(S.tab==='bon'&&S.bon&&document.getElementById('b-datum')) leesBonInputs();   // getypte waarden bewaren
+    S.tab=b.dataset.tab; if(S.tab==='bon'&&!S.bon) nieuweBon();
+    try{ await laad(); }catch(e){ if(e.auth){ toonLogin(); return; } toast('Verversen mislukt — check je verbinding'); }   // altijd verse data bij tabwissel
+    render(); });
+}
+function render(){
+  if(!S.data) return;
+  document.getElementById('tb-wie').textContent=S.wie+' · '+(isAdmin()?'administratie':'werkvloer');
+  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').textContent='📋 Werkbonnen'+(aan?' · '+aan.naam.replace(/ (B\.V\.|BV)$/i,''):'');
+  tabs();
+  const app=document.getElementById('app');
+  if(S.tab==='bon'){ if(!S.bon) nieuweBon(); app.innerHTML=viewBon(); bindBon(); }
+  else if(S.tab==='bonnen'){ app.innerHTML=viewBonnen(); bindBonnen(); }
+  else if(S.tab==='overzicht'){ app.innerHTML=viewOverzicht(); bindOverzicht(); }
+  else if(S.tab==='facturen'){ app.innerHTML=viewFacturen(); bindFacturen(); }
+  else if(S.tab==='lijsten'){ app.innerHTML=viewLijsten(); bindLijsten(); }
+}
+
+/* ---------- dagbon ---------- */
+function tarieven(cat){ return (S.data.tarieven||[]).filter(t=>t.actief&&t.categorie===cat); }
+function arbeidTarief(datum){ const dt=dagType(datum); const ts=tarieven('arbeid'); return ts.find(t=>t.dagtype===dt)||ts.find(t=>t.dagtype==='alle')||ts[0]||null; }
+function nieuweBon(){
+  const eersteProject=(S.data.projecten||[]).find(p=>p.actief);
+  S.bon={ id:null, project_id:eersteProject?eersteProject.id:null, datum:vandaagISO(), ingevuld_door:S.wie, opmerking:'', afgetekend_door:'', status:'concept',
+    beoordeling:'', handtekening_pad:'', handtekening_b64:'', foto_paden:[], fotos_b64:[], regels:[] };
+  regelToevoegen('arbeid'); regelToevoegen('km'); regelToevoegen('overnachting');
+}
+function laadBon(b){
+  S.bon={ id:b.id, project_id:b.project_id, datum:b.datum, ingevuld_door:b.ingevuld_door, opmerking:b.opmerking, afgetekend_door:b.afgetekend_door, status:b.status,
+    beoordeling:b.beoordeling, beoordeeld_door:b.beoordeeld_door, handtekening_pad:b.handtekening_pad, handtekening_b64:'', foto_paden:(b.foto_paden||[]).slice(), fotos_b64:[],
+    regels:regelsVan(b.id).map(r=>({categorie:r.categorie, omschrijving:r.omschrijving, tarief_id:r.tarief_id, aantal:Number(r.aantal), per:r.per==null?null:Number(r.per), prijs:Number(r.prijs),
+      eenheid_n:r.eenheid_n, eenheid_per:r.eenheid_per, eenheid_totaal:r.eenheid_totaal, namen:r.namen||''})) };
+  S.tab='bon';
+}
+function regelToevoegen(cat){
+  const c=CAT[cat]; let t=null;
+  if(cat==='arbeid') t=arbeidTarief(S.bon.datum); else { const ts=tarieven(cat); if(ts.length===1||cat==='km'||cat==='overnachting') t=ts[0]||null; }
+  S.bon.regels.push({ categorie:cat, omschrijving:t?t.omschrijving:(cat==='materieel'||cat==='transport'||cat==='materiaal'?'':c.naam), tarief_id:t?t.id:null,
+    aantal:0, per:(cat==='arbeid'||cat==='km')?0:(t&&t.eenheid_per?1:null), prijs:t?Number(t.prijs):0,
+    eenheid_n:t?t.eenheid_n:c.n, eenheid_per:t?t.eenheid_per:c.per, eenheid_totaal:t?t.eenheid_totaal:c.tot, namen:'' });
+}
+function regelBedrag(r){ const tot=r.per==null?num(r.aantal):num(r.aantal)*num(r.per); return {totaal:r2(tot), bedrag:r2(r2(tot)*num(r.prijs))}; }
+function bonSom(){ return r2(S.bon.regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0)); }
+function magBewerken(){ if(!S.bon.id) return true; if(isAdmin()) return S.bon.status!=='gefactureerd'; return ['concept','afgekeurd'].includes(S.bon.status); }
+
+function viewBon(){
+  const b=S.bon, bew=magBewerken();
+  const projecten=(S.data.projecten||[]).filter(p=>p.actief||p.id===b.project_id);
+  const w=isoWeek(b.datum);
+  let x='<div class="kaart"><h2>'+(b.id?'Dagbon #'+b.id+' ':'Nieuwe dagbon ')+chip(b.status)+' <span class="badge-week">week '+w.week+'</span></h2>';
+  if(b.status==='afgekeurd'&&b.beoordeling) x+='<div class="waarsch">❌ Afgekeurd door '+esc(b.beoordeeld_door||'administratie')+': '+esc(b.beoordeling)+'<br><span class="stil">Pas de bon aan en dien hem opnieuw in.</span></div>';
+  if(!bew) x+='<div class="info">Deze bon is '+esc(STATUS_TXT[b.status])+' en kan niet meer gewijzigd worden'+(isAdmin()?'':' — vraag de administratie')+'.</div>';
+  x+='<div class="rij"><label>Project / locatie<select id="b-project" '+(bew?'':'disabled')+'>'+projecten.map(p=>'<option value="'+p.id+'" '+(p.id===b.project_id?'selected':'')+'>'+esc(p.naam)+' ('+esc(p.code)+') — '+esc(p.adres)+'</option>').join('')+'</select></label>'
+    +'<label>Datum<input type="date" id="b-datum" value="'+esc(b.datum)+'" '+(bew?'':'disabled')+'></label>'
+    +'<label>Ingevuld door<input type="text" id="b-wie" value="'+esc(b.ingevuld_door)+'" '+(bew?'':'disabled')+'></label></div>';
+  x+='<div class="stil">'+fmtDatum(b.datum)+' · '+(dagType(b.datum)==='zo'?'zondagtarief':dagType(b.datum)==='za'?'zaterdagtarief':'normaal tarief')+'</div>';
+  for(const c of CATS){
+    const rs=b.regels.map((r,i)=>({r,i})).filter(o=>o.r.categorie===c.id);
+    x+='<div class="sectie"><div class="kop"><b>'+esc(c.naam)+'</b>'+(bew?'<button class="knop klein licht" data-add="'+c.id+'">+ regel</button>':'')+'</div>';
+    if(!rs.length) x+='<div class="stil">—</div>';
+    for(const {r,i} of rs) x+=regelHtml(r,i,bew);
+    x+='</div>';
+  }
+  x+='<div class="totaal"><span>Totaal dag excl. btw</span><span id="b-totaal">'+fmtGeld(bonSom())+'</span></div>';
+  x+='<div class="rij"><label>Opmerking / bijzonderheden<textarea id="b-opm" '+(bew?'':'disabled')+'>'+esc(b.opmerking)+'</textarea></label></div>';
+  x+='<h3>Aftekening opdrachtgever</h3><div class="rij"><label>Afgetekend door (naam)<input type="text" id="b-aft" value="'+esc(b.afgetekend_door)+'" '+(bew?'':'disabled')+'></label></div>';
+  if(bew){ x+='<div class="stil">Handtekening (teken met vinger of muis):</div><canvas class="sig" id="b-sig"></canvas><div class="rij"><button class="knop klein licht" id="b-sig-wis">wis handtekening</button></div>'; }
+  if(b.handtekening_pad&&!b.handtekening_b64) x+='<div class="stil">Opgeslagen handtekening:</div><img src="'+esc(fotoUrl(b.handtekening_pad))+'" style="max-height:110px;border:1px solid var(--lijn);border-radius:8px;background:#fff">';
+  x+='<h3>Foto\'s (papieren bon, situatie)</h3>';
+  if(bew) x+='<div class="rij"><input type="file" id="b-foto" accept="image/*" multiple style="width:auto"></div>';
+  x+='<div class="thumbs" id="b-thumbs">'+b.foto_paden.map((p,i)=>'<div class="th"><a href="'+esc(fotoUrl(p))+'" target="_blank"><img src="'+esc(fotoUrl(p))+'"></a>'+(bew?'<button data-delfoto="'+i+'">×</button>':'')+'</div>').join('')
+    +b.fotos_b64.map((p,i)=>'<div class="th"><img src="'+p+'">'+(bew?'<button data-delnieuw="'+i+'">×</button>':'')+'</div>').join('')+'</div>';
+  x+='<div class="knoppen" style="margin-top:14px">';
+  if(bew){ x+='<button class="knop licht" id="b-opslaan">💾 Opslaan als concept</button><button class="knop groen" id="b-indienen">📤 Indienen bij administratie</button>'; }
+  if(b.id&&isAdmin()&&['ingediend','concept','afgekeurd'].includes(b.status)) x+='<button class="knop groen" id="b-goed">✅ Goedkeuren</button><button class="knop rood" id="b-af">❌ Afkeuren…</button>';
+  if(b.id&&isAdmin()&&b.status==='goedgekeurd') x+='<button class="knop licht" id="b-terug">↩ Terug naar ingediend</button>';
+  if(b.id&&(isAdmin()||['concept','afgekeurd'].includes(b.status))&&b.status!=='gefactureerd') x+='<button class="knop licht" id="b-del" style="color:var(--rood)">🗑 Verwijderen</button>';
+  x+='<button class="knop licht" id="b-nieuw">＋ Nieuwe bon</button></div></div>';
+  return x;
+}
+function regelHtml(r,i,bew){
+  const c=CAT[r.categorie], ts=tarieven(r.categorie), b=regelBedrag(r), d=bew?'':'disabled';
+  const keuze=(ts.length&&r.categorie!=='overnachting')?'<select data-i="'+i+'" data-f="tarief" '+d+'>'+ts.map(t=>'<option value="'+t.id+'" '+(t.id===r.tarief_id?'selected':'')+'>'+esc(t.omschrijving)+' — '+fmtGeld(t.prijs)+' '+esc(t.eenheid_totaal)+'</option>').join('')+'<option value="" '+(r.tarief_id?'':'selected')+'>anders…</option></select>':'';
+  const vrij=(!r.tarief_id||!ts.length||r.categorie==='overnachting')?'<input type="text" data-i="'+i+'" data-f="omschrijving" value="'+esc(r.omschrijving)+'" placeholder="omschrijving" '+d+'>':'';
+  let x='<div class="bonregel"><div class="oms">'+keuze+vrij+(r.categorie==='arbeid'?'<input type="text" data-i="'+i+'" data-f="namen" value="'+esc(r.namen)+'" placeholder="namen (optioneel)" style="margin-top:3px" '+d+'>':'')+'</div>';
+  x+='<div><span class="lbl">'+esc(r.eenheid_n||'aantal')+'</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="aantal" value="'+esc(r.aantal)+'" '+d+'></div>';
+  x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+(r.eenheid_n==='man'?' p.p.':r.eenheid_n==="auto's"?' per auto':' per stuk')+'</span><input type="number" step="0.5" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+d+'>':'')+'</div>';
+  x+='<div><span class="lbl">prijs '+esc(r.eenheid_totaal)+'</span><input type="number" step="0.01" min="0" data-i="'+i+'" data-f="prijs" value="'+esc(r.prijs)+'" '+((bew&&isAdmin())?'':'disabled')+'></div>';
+  x+='<div class="bedrag"><span class="lbl">'+fmtNum(b.totaal)+' '+esc(r.eenheid_totaal)+'</span><b data-bedrag="'+i+'">'+fmtGeld(b.bedrag)+'</b></div>';
+  x+=(bew?'<button class="x" data-del="'+i+'">×</button>':'<span></span>')+'</div>';
+  return x;
+}
+let sigCanvas=null;
+function initSig(){
+  sigCanvas=document.getElementById('b-sig'); if(!sigCanvas) return;
+  const c=sigCanvas, ctx=c.getContext('2d'); c.width=c.offsetWidth*2; c.height=c.offsetHeight*2; ctx.scale(2,2); ctx.lineWidth=2; ctx.lineCap='round'; ctx.strokeStyle='#123';
+  if(S.bon.handtekening_b64){ const im=new Image(); im.onload=()=>ctx.drawImage(im,0,0,c.offsetWidth,c.offsetHeight); im.src=S.bon.handtekening_b64; }
+  let tekent=false;
+  const pos=e=>{ const r=c.getBoundingClientRect(); return [e.clientX-r.left, e.clientY-r.top]; };
+  c.onpointerdown=e=>{ tekent=true; c.setPointerCapture(e.pointerId); const [x,y]=pos(e); ctx.beginPath(); ctx.moveTo(x,y); };
+  c.onpointermove=e=>{ if(!tekent) return; const [x,y]=pos(e); ctx.lineTo(x,y); ctx.stroke(); };
+  c.onpointerup=c.onpointercancel=()=>{ if(tekent){ tekent=false; S.bon.handtekening_b64=c.toDataURL('image/png'); } };
+  document.getElementById('b-sig-wis').onclick=()=>{ ctx.clearRect(0,0,c.width,c.height); S.bon.handtekening_b64=''; };
+}
+function verkleinFoto(file){
+  return new Promise((ok,nee)=>{ const fr=new FileReader(); fr.onload=()=>{ const im=new Image(); im.onload=()=>{ const max=1600; let w=im.width,h=im.height; if(w>max||h>max){ const f=max/Math.max(w,h); w=Math.round(w*f); h=Math.round(h*f); }
+    const cv=document.createElement('canvas'); cv.width=w; cv.height=h; cv.getContext('2d').drawImage(im,0,0,w,h); ok(cv.toDataURL('image/jpeg',0.82)); }; im.onerror=nee; im.src=fr.result; }; fr.onerror=nee; fr.readAsDataURL(file); });
+}
+function bonFields(){
+  const b=S.bon; const p=document.getElementById('b-project'); const d=document.getElementById('b-datum');
+  return { project_id:p?Number(p.value):b.project_id, datum:d?d.value:b.datum, ingevuld_door:(document.getElementById('b-wie')||{}).value||b.ingevuld_door,
+    opmerking:(document.getElementById('b-opm')||{}).value||'', afgetekend_door:(document.getElementById('b-aft')||{}).value||'',
+    handtekening_b64:b.handtekening_b64||'', fotos_b64:b.fotos_b64, foto_paden:b.foto_paden };
+}
+async function bonOpslaan(indienen){
+  const f=bonFields(); const regels=S.bon.regels.filter(r=>num(r.aantal)>0).map(r=>Object.assign({},r,{omschrijving:r.omschrijving||CAT[r.categorie].naam}));
+  if(!f.project_id){ toast('Kies een project'); return; }
+  if(indienen&&!regels.length){ toast('Vul minimaal één regel in'); return; }
+  const leeg=regels.find(r=>!r.omschrijving.trim()); if(leeg){ toast('Een regel heeft nog geen omschrijving'); return; }
+  const pr=project(f.project_id);
+  const j=await doe({action:'bon_save', id:S.bon.id, fields:f, regels, indienen:!!indienen}, (indienen?'Dagbon ingediend: ':'Dagbon opgeslagen: ')+(pr?pr.naam:'')+' '+fmtKort(f.datum)+' '+fmtGeld(r2(regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0))));
+  if(j&&j.id){ const nb=(S.data.bonnen||[]).find(x=>x.id===j.id); if(nb){ laadBon(nb); render(); } toast(indienen?'Bon ingediend bij de administratie':'Bon opgeslagen'); }
+}
+function bindBon(){
+  const app=document.getElementById('app'); initSig();
+  app.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{ leesBonInputs(); regelToevoegen(b.dataset.add); render(); });
+  app.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{ leesBonInputs(); S.bon.regels.splice(+b.dataset.del,1); render(); });
+  app.querySelectorAll('[data-delfoto]').forEach(b=>b.onclick=()=>{ leesBonInputs(); S.bon.foto_paden.splice(+b.dataset.delfoto,1); render(); });
+  app.querySelectorAll('[data-delnieuw]').forEach(b=>b.onclick=()=>{ leesBonInputs(); S.bon.fotos_b64.splice(+b.dataset.delnieuw,1); render(); });
+  app.querySelectorAll('.bonregel [data-f]').forEach(el=>{
+    el.addEventListener('input',()=>{ const r=S.bon.regels[+el.dataset.i]; const f=el.dataset.f;
+      if(f==='aantal'||f==='per'||f==='prijs') r[f]=(f==='per'&&el.value==='')?null:num(el.value); else r[f]=el.value;
+      const b=regelBedrag(r); const cel=app.querySelector('[data-bedrag="'+el.dataset.i+'"]'); if(cel){ cel.textContent=fmtGeld(b.bedrag); cel.previousElementSibling.textContent=fmtNum(b.totaal)+' '+r.eenheid_totaal; }
+      document.getElementById('b-totaal').textContent=fmtGeld(bonSom()); });
+    if(el.dataset.f==='tarief') el.addEventListener('change',()=>{ leesBonInputs(); const r=S.bon.regels[+el.dataset.i]; const t=(S.data.tarieven||[]).find(t=>t.id===Number(el.value));
+      if(t){ r.tarief_id=t.id; r.omschrijving=t.omschrijving; r.prijs=Number(t.prijs); r.eenheid_n=t.eenheid_n; r.eenheid_per=t.eenheid_per; r.eenheid_totaal=t.eenheid_totaal; if(t.eenheid_per&&r.per==null) r.per=1; if(!t.eenheid_per) r.per=null; }
+      else { r.tarief_id=null; r.omschrijving=''; if(!isAdmin()) r.prijs=0; }
+      render(); });
+  });
+  const datum=document.getElementById('b-datum'); if(datum) datum.addEventListener('change',()=>{ leesBonInputs(); S.bon.datum=datum.value||vandaagISO();
+    const t=arbeidTarief(S.bon.datum); if(t) for(const r of S.bon.regels) if(r.categorie==='arbeid'&&r.tarief_id&&tarieven('arbeid').some(x=>x.id===r.tarief_id)){ r.tarief_id=t.id; r.omschrijving=t.omschrijving; r.prijs=Number(t.prijs); }
+    render(); });
+  const pr=document.getElementById('b-project'); if(pr) pr.addEventListener('change',()=>{ S.bon.project_id=Number(pr.value); });
+  const foto=document.getElementById('b-foto'); if(foto) foto.addEventListener('change',async()=>{ leesBonInputs(); for(const f of foto.files){ try{ S.bon.fotos_b64.push(await verkleinFoto(f)); }catch(e){ toast('Foto laden mislukt'); } } render(); });
+  const k=id=>document.getElementById(id);
+  if(k('b-opslaan')) k('b-opslaan').onclick=()=>bonOpslaan(false);
+  if(k('b-indienen')) k('b-indienen').onclick=()=>bonOpslaan(true);
+  if(k('b-nieuw')) k('b-nieuw').onclick=()=>{ nieuweBon(); render(); };
+  if(k('b-goed')) k('b-goed').onclick=async()=>{ if(await doe({action:'bon_beoordeel', id:S.bon.id, besluit:'goedgekeurd'},'Dagbon #'+S.bon.id+' goedgekeurd')){ const nb=S.data.bonnen.find(x=>x.id===S.bon.id); laadBon(nb); render(); toast('Goedgekeurd'); } };
+  if(k('b-terug')) k('b-terug').onclick=async()=>{ if(await doe({action:'bon_beoordeel', id:S.bon.id, besluit:'ingediend'},'Dagbon #'+S.bon.id+' terug naar ingediend')){ const nb=S.data.bonnen.find(x=>x.id===S.bon.id); laadBon(nb); render(); } };
+  if(k('b-af')) k('b-af').onclick=()=>vraag('Reden van afkeuring', S.bon.beoordeling||'', async reden=>{ if(await doe({action:'bon_beoordeel', id:S.bon.id, besluit:'afgekeurd', beoordeling:reden},'Dagbon #'+S.bon.id+' afgekeurd: '+reden)){ const nb=S.data.bonnen.find(x=>x.id===S.bon.id); laadBon(nb); render(); toast('Afgekeurd'); } });
+  if(k('b-del')) k('b-del').onclick=async()=>{ if(!confirm('Deze dagbon verwijderen?')) return; if(await doe({action:'bon_delete', id:S.bon.id},'Dagbon #'+S.bon.id+' verwijderd')){ nieuweBon(); render(); } };
+}
+function leesBonInputs(){ const f=bonFields(); Object.assign(S.bon,{project_id:f.project_id, datum:f.datum, ingevuld_door:f.ingevuld_door, opmerking:f.opmerking, afgetekend_door:f.afgetekend_door}); }
+function vraag(titel, huidig, cb){
+  const sh=document.getElementById('sheet'); const dicht=()=>{ sh.style.display='none'; sh.innerHTML=''; };
+  sh.innerHTML='<div class="sheetkaart"><div class="sheettitel">'+esc(titel)+'</div><textarea id="sh-txt">'+esc(huidig)+'</textarea><div class="sheetrij"><button class="knop licht" id="sh-annuleer">Annuleren</button><button class="knop" id="sh-ok" style="flex:1;text-align:center">OK</button></div></div>';
+  sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); };
+  document.getElementById('sh-annuleer').onclick=dicht; document.getElementById('sh-ok').onclick=()=>{ const v=document.getElementById('sh-txt').value.trim(); dicht(); cb(v); };
+  setTimeout(()=>{ const e=document.getElementById('sh-txt'); if(e) e.focus(); },50);
+}
+
+/* ---------- bonnenlijst ---------- */
+function viewBonnen(){
+  let bonnen=(S.data.bonnen||[]).slice();
+  if(S.lijstStatus) bonnen=bonnen.filter(b=>b.status===S.lijstStatus);
+  if(S.lijstProject) bonnen=bonnen.filter(b=>b.project_id===Number(S.lijstProject));
+  const open=(S.data.bonnen||[]).filter(b=>b.status==='ingediend');
+  let x='<div class="kaart"><h2>Bonnen'+(isAdmin()&&open.length?' — '+open.length+' te beoordelen':'')+'</h2>';
+  x+='<div class="rij"><label>Status<select id="l-status"><option value="">alle</option>'+Object.keys(STATUS_TXT).filter(s=>['concept','ingediend','goedgekeurd','afgekeurd','gefactureerd'].includes(s)).map(s=>'<option value="'+s+'" '+(S.lijstStatus===s?'selected':'')+'>'+STATUS_TXT[s]+'</option>').join('')+'</select></label>'
+    +'<label>Project<select id="l-project"><option value="">alle</option>'+(S.data.projecten||[]).map(p=>'<option value="'+p.id+'" '+(String(S.lijstProject)===String(p.id)?'selected':'')+'>'+esc(p.naam)+'</option>').join('')+'</select></label></div>';
+  if(!bonnen.length) x+='<div class="stil">Geen bonnen.</div>';
+  else {
+    x+='<div class="scroll"><table class="lijst"><tr><th>Datum</th><th>Wk</th><th>Project</th><th>Door</th><th>Afgetekend</th><th class="bedrag">Bedrag</th><th>Status</th>'+(isAdmin()?'<th></th>':'')+'</tr>';
+    for(const b of bonnen){ const p=project(b.project_id); const w=isoWeek(b.datum);
+      x+='<tr class="klik" data-bon="'+b.id+'"><td>'+fmtKort(b.datum)+'</td><td>'+w.week+'</td><td>'+esc(p?p.naam:'?')+'</td><td>'+esc(b.ingevuld_door)+'</td><td>'+(b.afgetekend_door?esc(b.afgetekend_door)+(b.handtekening_pad?' ✍️':''):'<span class="stil">—</span>')+((b.foto_paden||[]).length?' 📷'+(b.foto_paden.length):'')+'</td><td class="bedrag">'+fmtGeld(bonTotaal(b.id))+'</td><td>'+chip(b.status)+'</td>'
+        +(isAdmin()?'<td class="noprint">'+(b.status==='ingediend'?'<button class="knop klein groen" data-goed="'+b.id+'">✅</button> <button class="knop klein rood" data-af="'+b.id+'">❌</button>':'')+'</td>':'')+'</tr>';
+    }
+    x+='</table></div>';
+  }
+  x+='</div>';
+  if(isAdmin()&&S.data.logboek&&S.data.logboek.length){ x+='<div class="kaart"><h2>Logboek</h2>'+S.data.logboek.slice(0,25).map(l=>'<div class="regel stil">'+esc(new Date(l.ts).toLocaleString('nl-NL',{dateStyle:'short',timeStyle:'short'}))+' · '+esc(l.wie)+' · '+esc(l.actie)+'</div>').join('')+'</div>'; }
+  return x;
+}
+function bindBonnen(){
+  const app=document.getElementById('app');
+  document.getElementById('l-status').onchange=e=>{ S.lijstStatus=e.target.value; render(); };
+  document.getElementById('l-project').onchange=e=>{ S.lijstProject=e.target.value; render(); };
+  app.querySelectorAll('tr[data-bon]').forEach(tr=>tr.onclick=e=>{ if(e.target.closest('button')) return; const b=S.data.bonnen.find(x=>x.id===+tr.dataset.bon); laadBon(b); render(); window.scrollTo(0,0); });
+  app.querySelectorAll('[data-goed]').forEach(b=>b.onclick=async()=>{ await doe({action:'bon_beoordeel', id:+b.dataset.goed, besluit:'goedgekeurd'},'Dagbon #'+b.dataset.goed+' goedgekeurd'); });
+  app.querySelectorAll('[data-af]').forEach(b=>b.onclick=()=>vraag('Reden van afkeuring','',async reden=>{ await doe({action:'bon_beoordeel', id:+b.dataset.af, besluit:'afgekeurd', beoordeling:reden},'Dagbon #'+b.dataset.af+' afgekeurd: '+reden); }));
+}
+
+/* ---------- weekoverzicht (KZ-opmaak) ---------- */
+function wekenVoor(projectId){
+  const set=new Map();
+  for(const b of (S.data.bonnen||[])) if(!projectId||b.project_id===projectId){ const w=isoWeek(b.datum); set.set(w.jaar+'-'+w.week,w); }
+  const nu=isoWeek(vandaagISO()); set.set(nu.jaar+'-'+nu.week,nu);
+  return Array.from(set.values()).sort((a,b)=>b.jaar-a.jaar||b.week-a.week);
+}
+function bonnenWeek(projectId, jaar, week, statussen){
+  return (S.data.bonnen||[]).filter(b=>b.project_id===projectId&&(!statussen||statussen.includes(b.status))).filter(b=>{ const w=isoWeek(b.datum); return w.jaar===jaar&&w.week===week; }).sort((a,b)=>a.datum<b.datum?-1:a.datum>b.datum?1:a.id-b.id);
+}
+// Bouwt de overzichtstructuur zoals KZ hem levert: per dag arbeid/km/overnachting, daarna Materieel, Transport, Diversen (over de hele week samengevoegd).
+function bouwOverzicht(bonnen){
+  const dagen=new Map(); const agg={materieel:new Map(), transport:new Map(), materiaal:new Map()};
+  for(const b of bonnen){
+    for(const r of regelsVan(b.id)){
+      if(['arbeid','km','overnachting'].includes(r.categorie)){ if(!dagen.has(b.datum)) dagen.set(b.datum,[]); dagen.get(b.datum).push(r); }
+      else { const m=agg[r.categorie]; const key=r.omschrijving+'|'+Number(r.prijs).toFixed(2)+'|'+r.eenheid_totaal;
+        if(!m.has(key)) m.set(key,{omschrijving:r.omschrijving, prijs:Number(r.prijs), eenheid_totaal:r.eenheid_totaal, totaal:0, bedrag:0});
+        const a=m.get(key); a.totaal=r2(a.totaal+Number(r.totaal)); a.bedrag=r2(a.bedrag+Number(r.bedrag)); }
+    }
+  }
+  const dagLijst=Array.from(dagen.entries()).sort((a,b)=>a[0]<b[0]?-1:1).map(([datum,regels])=>({datum, regels:regels.sort((a,b)=>(['arbeid','km','overnachting'].indexOf(a.categorie)-['arbeid','km','overnachting'].indexOf(b.categorie))||a.sort-b.sort)}));
+  const totaal=r2(bonnen.reduce((s,b)=>s+bonTotaal(b.id),0));
+  return {dagen:dagLijst, materieel:Array.from(agg.materieel.values()), transport:Array.from(agg.transport.values()), materiaal:Array.from(agg.materiaal.values()), totaal};
+}
+function aantalTekst(r){
+  if(r.per==null) return '';
+  const n=Number(r.aantal), per=Number(r.per);
+  if(r.categorie==='arbeid') return fmtNum(n)+' '+(r.eenheid_n||'man')+'&nbsp;&nbsp; '+fmtNum(per,1)+' '+(r.eenheid_per||'uur');
+  return fmtNum(n)+' '+(r.eenheid_n||'')+'&nbsp;&nbsp; '+fmtNum(per)+' '+(r.eenheid_per||'');
+}
+function overzichtDoc(projectId, jaar, week, bonnen, opts){
+  const p=project(projectId)||{}; const aan=bedrijf(p.aannemer_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{};
+  const o=bouwOverzicht(bonnen);
+  let x='<div class="doc"><div class="kopblok"><div class="firma">'+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+'</small></div><div style="text-align:right"><h1>Overzicht werkzaamheden week '+week+'</h1><div>'+fmtDMY(opts&&opts.datum||vandaagISO())+'</div></div></div>';
+  x+='<div class="meta"><b>Opdrachtgever:</b><span>'+esc((opd.naam||'').replace(/ (B\.V\.|BV)$/i,''))+'</span><b>Project:</b><span>'+esc(p.code||'')+'</span><b>Projectadres:</b><span>'+esc(p.adres||'')+'<br>'+esc(p.postcode_plaats||'')+'</span></div>';
+  x+='<table><tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th><th class="r">Prijs</th><th class="r">Kosten</th></tr>';
+  for(const d of o.dagen){ x+='<tr class="dag"><td colspan="5">'+fmtDatum(d.datum)+'</td></tr>';
+    for(const r of d.regels) x+='<tr><td>'+esc(r.categorie==='arbeid'?'Arbeid':r.categorie==='km'?'Kilometervergoeding':r.categorie==='overnachting'?'Overnachtingsvergoeding':r.omschrijving)+'</td><td>'+aantalTekst(r)+'</td><td>'+fmtNum(r.totaal)+' '+esc(r.eenheid_totaal)+'</td><td class="r">'+fmtGeld(r.prijs)+'</td><td class="r">'+fmtGeld(r.bedrag)+'</td></tr>'; }
+  const sec=(titel,lijst)=>{ if(!lijst.length) return ''; let y='<tr class="sec"><td colspan="5">'+titel+'</td></tr>'; for(const r of lijst) y+='<tr><td>'+esc(r.omschrijving)+'</td><td></td><td>'+fmtNum(r.totaal)+' '+esc(r.eenheid_totaal)+'</td><td class="r">'+fmtGeld(r.prijs)+'</td><td class="r">'+fmtGeld(r.bedrag)+'</td></tr>'; return y; };
+  x+=sec('Materieel',o.materieel)+sec('Transport',o.transport)+sec('Diversen',o.materiaal);
+  x+='<tr class="tot"><td colspan="3">Totaal</td><td></td><td class="r">'+fmtGeld(o.totaal)+'</td></tr><tr><td colspan="5" style="text-align:right;font-size:11px">excl. btw.</td></tr></table>';
+  x+='<div class="voet">Gebaseerd op '+bonnen.length+' afgetekende dagbon'+(bonnen.length===1?'':'nen')+(bonnen.length?' ('+bonnen.map(b=>'#'+b.id).join(', ')+')':'')+'.</div></div>';
+  return x;
+}
+function viewOverzicht(){
+  const projecten=(S.data.projecten||[]);
+  if(!S.ovProject||!projecten.some(p=>p.id===S.ovProject)){ const laatste=(S.data.bonnen||[])[0]; S.ovProject=laatste?laatste.project_id:(projecten[0]?projecten[0].id:null); }
+  const weken=wekenVoor(S.ovProject);
+  if(!S.ovWeek||!weken.some(w=>w.jaar===S.ovJaar&&w.week===S.ovWeek)){ const lb=(S.data.bonnen||[]).find(b=>b.project_id===S.ovProject); const w0=lb?isoWeek(lb.datum):weken[0]; S.ovJaar=w0.jaar; S.ovWeek=w0.week; }
+  const stat=S.ovAlleenGoed?['goedgekeurd','gefactureerd']:null;
+  const bonnen=bonnenWeek(S.ovProject,S.ovJaar,S.ovWeek,stat);
+  const alle=bonnenWeek(S.ovProject,S.ovJaar,S.ovWeek,null);
+  const nietGoed=alle.filter(b=>!['goedgekeurd','gefactureerd'].includes(b.status));
+  let x='<div class="kaart noprint"><h2>Weekoverzicht</h2><div class="rij"><label>Project<select id="o-project">'+projecten.map(p=>'<option value="'+p.id+'" '+(p.id===S.ovProject?'selected':'')+'>'+esc(p.naam)+' ('+esc(p.code)+')</option>').join('')+'</select></label>'
+    +'<label>Week<select id="o-week">'+weken.map(w=>'<option value="'+w.jaar+'-'+w.week+'" '+(w.jaar===S.ovJaar&&w.week===S.ovWeek?'selected':'')+'>week '+w.week+' · '+w.jaar+' ('+fmtKort(iso(weekMaandag(w.jaar,w.week)))+')</option>').join('')+'</select></label>'
+    +'<label><span>&nbsp;</span><span><input type="checkbox" id="o-goed" '+(S.ovAlleenGoed?'checked':'')+' style="width:auto"> alleen goedgekeurde bonnen</span></label></div>';
+  if(nietGoed.length) x+='<div class="waarsch">⚠️ '+nietGoed.length+' bon'+(nietGoed.length===1?'':'nen')+' in deze week '+(nietGoed.length===1?'is':'zijn')+' nog niet goedgekeurd ('+nietGoed.map(b=>fmtKort(b.datum)+' '+STATUS_TXT[b.status]).join(', ')+').</div>';
+  x+='<div class="knoppen"><button class="knop" id="o-print">🖨️ Afdrukken / PDF</button>'+(isAdmin()&&bonnen.some(b=>b.status==='goedgekeurd')?'<button class="knop groen" id="o-factuur">🧾 Factuur maken van deze week</button>':'')+'</div></div>';
+  x+=overzichtDoc(S.ovProject,S.ovJaar,S.ovWeek,bonnen);
+  return x;
+}
+function bindOverzicht(){
+  document.getElementById('o-project').onchange=e=>{ S.ovProject=Number(e.target.value); S.ovWeek=null; render(); };
+  document.getElementById('o-week').onchange=e=>{ const [j,w]=e.target.value.split('-').map(Number); S.ovJaar=j; S.ovWeek=w; render(); };
+  document.getElementById('o-goed').onchange=e=>{ S.ovAlleenGoed=e.target.checked; render(); };
+  document.getElementById('o-print').onclick=()=>window.print();
+  const f=document.getElementById('o-factuur'); if(f) f.onclick=()=>{ S.nieuwFact={project_id:S.ovProject, jaar:S.ovJaar, week:S.ovWeek}; S.tab='facturen'; S.factId=null; render(); };
+}
+
+/* ---------- facturen ---------- */
+function volgendNummer(){ const i=S.data.instellingen||{}; return (i.factuur_prefix||'')+String(Number(i.factuur_volgnummer||1)).padStart(3,'0'); }
+function viewFacturen(){
+  const facturen=(S.data.facturen||[]);
+  let x='';
+  if(S.factId){ const f=facturen.find(f=>f.id===S.factId); if(f) return factuurView(f); S.factId=null; }
+  // nieuwe factuur
+  const nf=S.nieuwFact||{};
+  const projecten=S.data.projecten||[];
+  const pid=nf.project_id||((S.data.bonnen||[]).find(b=>b.status==='goedgekeurd')||{}).project_id||(projecten[0]?projecten[0].id:null);
+  const weken=wekenVoor(pid).filter(w=>bonnenWeek(pid,w.jaar,w.week,['goedgekeurd']).length);
+  const wk=(nf.week&&weken.some(w=>w.jaar===nf.jaar&&w.week===nf.week))?{jaar:nf.jaar,week:nf.week}:weken[0];
+  x+='<div class="kaart"><h2>Nieuwe factuur uit goedgekeurde bonnen</h2><div class="rij"><label>Project<select id="f-project">'+projecten.map(p=>'<option value="'+p.id+'" '+(p.id===pid?'selected':'')+'>'+esc(p.naam)+' ('+esc(p.code)+')</option>').join('')+'</select></label>';
+  if(!weken.length) x+='</div><div class="stil">Geen goedgekeurde, nog niet gefactureerde bonnen voor dit project.</div>';
+  else {
+    const bonnen=bonnenWeek(pid,wk.jaar,wk.week,['goedgekeurd']); const tot=r2(bonnen.reduce((s,b)=>s+bonTotaal(b.id),0)); const btw=Number((S.data.instellingen||{}).btw_pct||21);
+    x+='<label>Week<select id="f-week">'+weken.map(w=>'<option value="'+w.jaar+'-'+w.week+'" '+(w.jaar===wk.jaar&&w.week===wk.week?'selected':'')+'>week '+w.week+' · '+w.jaar+'</option>').join('')+'</select></label>'
+      +'<label>Factuurnummer<input type="text" id="f-nummer" value="'+esc(volgendNummer())+'"></label><label>Factuurdatum<input type="date" id="f-datum" value="'+vandaagISO()+'"></label></div>';
+    x+='<table class="lijst"><tr><th></th><th>Datum</th><th>Door</th><th>Afgetekend</th><th class="bedrag">Bedrag</th></tr>'+bonnen.map(b=>'<tr><td><input type="checkbox" data-fb="'+b.id+'" checked style="width:auto"></td><td>'+fmtKort(b.datum)+'</td><td>'+esc(b.ingevuld_door)+'</td><td>'+esc(b.afgetekend_door||'—')+'</td><td class="bedrag">'+fmtGeld(bonTotaal(b.id))+'</td></tr>').join('')+'</table>';
+    x+='<div class="totaal"><span>Totaal excl. btw</span><span id="f-tot">'+fmtGeld(tot)+'</span></div><div class="stil">+ '+btw+'% btw = '+fmtGeld(r2(tot*(1+btw/100)))+' incl.</div>';
+    x+='<div class="knoppen"><button class="knop groen" id="f-maak">🧾 Factuur aanmaken</button></div>';
+  }
+  x+='</div>';
+  x+='<div class="kaart"><h2>Facturen</h2>'+(facturen.length?'<div class="scroll"><table class="lijst"><tr><th>Nummer</th><th>Datum</th><th>Project</th><th>Week</th><th class="bedrag">Excl.</th><th class="bedrag">Btw</th><th class="bedrag">Incl.</th><th>Status</th></tr>'
+    +facturen.map(f=>{ const p=project(f.project_id); return '<tr class="klik" data-fact="'+f.id+'"><td><b>'+esc(f.nummer)+'</b></td><td>'+fmtKort(f.datum)+'</td><td>'+esc(p?p.naam:'')+'</td><td>'+f.week+'</td><td class="bedrag">'+fmtGeld(f.bedrag_excl)+'</td><td class="bedrag">'+fmtGeld(f.btw_bedrag)+'</td><td class="bedrag">'+fmtGeld(f.bedrag_incl)+'</td><td>'+chip(f.status)+'</td></tr>'; }).join('')+'</table></div>':'<div class="stil">Nog geen facturen.</div>')+'</div>';
+  return x;
+}
+function bindFacturen(){
+  const app=document.getElementById('app');
+  const fp=document.getElementById('f-project'); if(fp) fp.onchange=e=>{ S.nieuwFact={project_id:Number(e.target.value)}; render(); };
+  const fw=document.getElementById('f-week'); if(fw) fw.onchange=e=>{ const [j,w]=e.target.value.split('-').map(Number); S.nieuwFact=Object.assign({},S.nieuwFact||{},{project_id:Number(fp.value), jaar:j, week:w}); render(); };
+  app.querySelectorAll('[data-fb]').forEach(cb=>cb.onchange=()=>{ const ids=Array.from(app.querySelectorAll('[data-fb]:checked')).map(c=>+c.dataset.fb); document.getElementById('f-tot').textContent=fmtGeld(r2(ids.reduce((s,id)=>s+bonTotaal(id),0))); });
+  const mk=document.getElementById('f-maak'); if(mk) mk.onclick=async()=>{
+    const ids=Array.from(app.querySelectorAll('[data-fb]:checked')).map(c=>+c.dataset.fb); if(!ids.length){ toast('Selecteer minimaal één bon'); return; }
+    const [j,w]=document.getElementById('f-week').value.split('-').map(Number); const nummer=document.getElementById('f-nummer').value.trim(); const datum=document.getElementById('f-datum').value;
+    const r=await doe({action:'factuur_maak', project_id:Number(fp.value), jaar:j, week:w, bon_ids:ids, nummer, datum},'Factuur '+nummer+' aangemaakt (week '+w+', '+ids.length+' bonnen)');
+    if(r&&r.id){ S.factId=r.id; S.nieuwFact=null; render(); toast('Factuur '+r.nummer+' aangemaakt'); }
+  };
+  app.querySelectorAll('tr[data-fact]').forEach(tr=>tr.onclick=()=>{ S.factId=+tr.dataset.fact; S.factXml=null; render(); window.scrollTo(0,0); });
+  bindFactuurView();
+}
+function factuurBonnen(f){ return (S.data.bonnen||[]).filter(b=>b.factuur_id===f.id).sort((a,b)=>a.datum<b.datum?-1:1); }
+function factuurView(f){
+  const p=project(f.project_id)||{}; const aan=bedrijf(p.aannemer_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{}; const bonnen=factuurBonnen(f);
+  let x='<div class="kaart noprint"><h2>Factuur '+esc(f.nummer)+' '+chip(f.status)+'</h2><div class="knoppen"><button class="knop licht" id="fv-terug">← Facturen</button><button class="knop" id="fv-print">🖨️ Afdrukken / PDF</button>'
+    +'<button class="knop" id="fv-ubl">⬇️ UBL 2.1 XML (Exact Online / Peppol)</button><button class="knop" id="fv-csv">⬇️ CSV (Exact Online import)</button><button class="knop licht" id="fv-json">⬇️ JSON (Exact Online API)</button>'
+    +'<button class="knop licht" id="fv-ov">📊 Weekoverzicht</button>';
+  if(f.status==='concept') x+='<button class="knop groen" id="fv-def">✔ Definitief maken</button><button class="knop licht" id="fv-bewerk">✏️ Nummer/datum</button><button class="knop licht" id="fv-del" style="color:var(--rood)">🗑 Vervallen</button>';
+  if(f.status==='definitief') x+='<button class="knop licht" id="fv-exp">📦 Markeer als geëxporteerd</button><button class="knop licht" id="fv-concept">↩ Terug naar concept</button>';
+  if(f.status==='geexporteerd') x+='<button class="knop licht" id="fv-def2">↩ Terug naar definitief</button>';
+  x+='</div>'+(S.factXml?'<pre class="xml" id="fv-xml">'+esc(S.factXml)+'</pre><div class="stil">Download geblokkeerd? Kopieer bovenstaande tekst in een bestand.</div>':'')+'</div>';
+  x+='<div class="doc"><div class="kopblok"><div class="firma">'+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+(aan.email?' · '+esc(aan.email):'')+'</small>'+(aan.kvk||aan.btw_nummer?'<small>'+(aan.kvk?'KvK '+esc(aan.kvk):'')+(aan.kvk&&aan.btw_nummer?' · ':'')+(aan.btw_nummer?'Btw '+esc(aan.btw_nummer):'')+'</small>':'')+'</div><div style="text-align:right"><h1>Factuur</h1></div></div>';
+  x+='<div class="adres"><b>'+esc(opd.naam||'')+'</b><br>'+esc(opd.adres||'')+'<br>'+esc(opd.postcode_plaats||'')+'</div>';
+  x+='<div class="fmeta"><div><b>Factuur</b>'+esc(f.nummer)+'</div><div><b>Factuurdatum</b>'+fmtKort(f.datum)+'</div><div><b>Vervaldatum</b>'+fmtKort(f.vervaldatum)+'</div><div><b>Project</b>'+esc(p.code||'')+(p.claimnummer?' · claim '+esc(p.claimnummer):'')+'</div></div>';
+  x+='<div style="margin:4px 0 10px"><b>'+esc(f.omschrijving)+'</b> — week '+f.week+' ('+(bonnen.length?fmtKort(bonnen[0].datum)+' t/m '+fmtKort(bonnen[bonnen.length-1].datum):'')+')</div>';
+  x+='<table><tr><th>Omschrijving</th><th class="r">Aantal</th><th>Eenheid</th><th class="r">Prijs</th><th class="r">Bedrag excl. BTW</th></tr>';
+  x+='<tr><td>'+esc(f.regel_omschrijving)+'</td><td class="r">1</td><td>Stuks</td><td class="r">'+fmtGeld(f.bedrag_excl)+'</td><td class="r">'+fmtGeld(f.bedrag_excl)+'</td></tr>';
+  x+='<tr><td colspan="4" style="padding-top:14px">Totaal exclusief BTW</td><td class="r" style="padding-top:14px">'+fmtGeld(f.bedrag_excl)+'</td></tr>';
+  x+='<tr><td colspan="4">BTW NL hoog (exclusief) '+fmtNum(f.btw_pct,1)+'%</td><td class="r">'+fmtGeld(f.btw_bedrag)+'</td></tr>';
+  x+='<tr class="tot"><td colspan="4">Totaal te voldoen</td><td class="r">'+fmtGeld(f.bedrag_incl)+'</td></tr></table>';
+  x+='<div class="voet">Gelieve het bedrag van '+fmtGeld(f.bedrag_incl)+' vóór '+fmtKort(f.vervaldatum)+' over te maken'+(aan.iban?' op '+esc(aan.iban):'')+' onder vermelding van factuurnummer '+esc(f.nummer)+'. Specificatie: zie weekoverzicht week '+f.week+'.</div></div>';
+  x+='<div style="page-break-before:always"></div>'+overzichtDoc(f.project_id,f.jaar,f.week,bonnen,{datum:f.datum});
+  return x;
+}
+function bindFactuurView(){
+  const f=(S.data.facturen||[]).find(f=>f.id===S.factId); if(!f) return; const k=id=>document.getElementById(id);
+  k('fv-terug').onclick=()=>{ S.factId=null; S.factXml=null; render(); };
+  k('fv-print').onclick=()=>window.print();
+  k('fv-ov').onclick=()=>{ S.tab='overzicht'; S.ovProject=f.project_id; S.ovJaar=f.jaar; S.ovWeek=f.week; render(); };
+  k('fv-ubl').onclick=()=>download('Factuur '+f.nummer+'.xml', maakUBL(f), 'application/xml');
+  k('fv-csv').onclick=()=>download('Factuur '+f.nummer+' - Exact Online.csv', maakCSV(f), 'text/csv');
+  k('fv-json').onclick=()=>download('Factuur '+f.nummer+' - ExactOnline-API.json', maakJSON(f), 'application/json');
+  if(k('fv-def')) k('fv-def').onclick=()=>doe({action:'factuur_update', id:f.id, fields:{status:'definitief'}},'Factuur '+f.nummer+' definitief');
+  if(k('fv-exp')) k('fv-exp').onclick=()=>doe({action:'factuur_update', id:f.id, fields:{status:'geexporteerd'}},'Factuur '+f.nummer+' geëxporteerd naar boekhouding');
+  if(k('fv-concept')) k('fv-concept').onclick=()=>doe({action:'factuur_update', id:f.id, fields:{status:'concept'}},'Factuur '+f.nummer+' terug naar concept');
+  if(k('fv-def2')) k('fv-def2').onclick=()=>doe({action:'factuur_update', id:f.id, fields:{status:'definitief'}},'Factuur '+f.nummer+' terug naar definitief');
+  if(k('fv-del')) k('fv-del').onclick=async()=>{ if(!confirm('Factuur '+f.nummer+' laten vervallen? De bonnen worden weer goedgekeurd (niet gefactureerd).')) return; if(await doe({action:'factuur_delete', id:f.id},'Factuur '+f.nummer+' vervallen')){ S.factId=null; render(); } };
+  if(k('fv-bewerk')) k('fv-bewerk').onclick=()=>{
+    const sh=document.getElementById('sheet'); const dicht=()=>{ sh.style.display='none'; sh.innerHTML=''; };
+    sh.innerHTML='<div class="sheetkaart"><div class="sheettitel">Factuur aanpassen</div><div class="rij"><label>Nummer<input type="text" id="e-nr" value="'+esc(f.nummer)+'"></label><label>Factuurdatum<input type="date" id="e-dat" value="'+esc(f.datum)+'"></label><label>Vervaldatum<input type="date" id="e-verval" value="'+esc(f.vervaldatum||'')+'"></label></div>'
+      +'<div class="rij"><label>Omschrijving<input type="text" id="e-oms" value="'+esc(f.omschrijving)+'"></label></div><div class="rij"><label>Factuurregel<input type="text" id="e-regel" value="'+esc(f.regel_omschrijving)+'"></label><label>Btw %<input type="number" id="e-btw" value="'+esc(f.btw_pct)+'"></label></div>'
+      +'<div class="sheetrij"><button class="knop licht" id="e-annuleer">Annuleren</button><button class="knop" id="e-ok" style="flex:1;text-align:center">Opslaan</button></div></div>';
+    sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); }; k('e-annuleer').onclick=dicht;
+    k('e-ok').onclick=async()=>{ const fields={nummer:k('e-nr').value.trim(), datum:k('e-dat').value, vervaldatum:k('e-verval').value, omschrijving:k('e-oms').value, regel_omschrijving:k('e-regel').value, btw_pct:k('e-btw').value}; dicht(); await doe({action:'factuur_update', id:f.id, fields},'Factuur '+f.nummer+' aangepast'); };
+  };
+}
+function download(naam, inhoud, type){
+  S.factXml=inhoud; try{ const bl=new Blob([inhoud],{type:type+';charset=utf-8'}); const u=URL.createObjectURL(bl); const a=document.createElement('a'); a.href=u; a.download=naam; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(u); a.remove(); },500); }catch(e){}
+  render(); toast(naam+' klaargezet');
+}
+function xmlEsc(s){ return String(s==null?'':s).replace(/[<>&"']/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&apos;'}[c])); }
+function splitsAdres(pcPlaats){ const m=String(pcPlaats||'').match(/^(\d{4}\s?[A-Za-z]{2})\s+(.+)$/); return m?{pc:m[1],plaats:m[2]}:{pc:'',plaats:pcPlaats||''}; }
+function partij(b, tag){
+  const a=splitsAdres(b.postcode_plaats);
+  return '  <cac:'+tag+'>\n    <cac:Party>\n'+(b.debiteur_code?'      <cac:PartyIdentification><cbc:ID>'+xmlEsc(b.debiteur_code)+'</cbc:ID></cac:PartyIdentification>\n':'')
+    +'      <cac:PartyName><cbc:Name>'+xmlEsc(b.naam)+'</cbc:Name></cac:PartyName>\n'
+    +'      <cac:PostalAddress><cbc:StreetName>'+xmlEsc(b.adres)+'</cbc:StreetName><cbc:CityName>'+xmlEsc(a.plaats)+'</cbc:CityName><cbc:PostalZone>'+xmlEsc(a.pc)+'</cbc:PostalZone><cac:Country><cbc:IdentificationCode>'+xmlEsc(b.land||'NL')+'</cbc:IdentificationCode></cac:Country></cac:PostalAddress>\n'
+    +(b.btw_nummer?'      <cac:PartyTaxScheme><cbc:CompanyID>'+xmlEsc(b.btw_nummer)+'</cbc:CompanyID><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:PartyTaxScheme>\n':'')
+    +'      <cac:PartyLegalEntity><cbc:RegistrationName>'+xmlEsc(b.naam)+'</cbc:RegistrationName>'+(b.kvk?'<cbc:CompanyID schemeID="0106">'+xmlEsc(b.kvk)+'</cbc:CompanyID>':'')+'</cac:PartyLegalEntity>\n'
+    +(b.email?'      <cac:Contact><cbc:ElectronicMail>'+xmlEsc(b.email)+'</cbc:ElectronicMail>'+(b.telefoon?'<cbc:Telephone>'+xmlEsc(b.telefoon)+'</cbc:Telephone>':'')+'</cac:Contact>\n':'')
+    +'    </cac:Party>\n  </cac:'+tag+'>\n';
+}
+function n2(n){ return Number(n||0).toFixed(2); }
+// UBL 2.1 verkoopfactuur (EN 16931 / Peppol BIS 3.0 / NLCIUS-opzet): 1 regel "volgens overzicht" zoals KZ factureert,
+// met het weekoverzicht als specificatie in de Note en als extra regels-commentaar.
+function maakUBL(f){
+  const p=project(f.project_id)||{}; const aan=bedrijf(p.aannemer_id)||{naam:''}; const opd=bedrijf(p.opdrachtgever_id)||{naam:''}; const bonnen=factuurBonnen(f); const o=bouwOverzicht(bonnen);
+  const spec=[]; for(const d of o.dagen){ spec.push(fmtDatum(d.datum)+':'); for(const r of d.regels) spec.push('  '+(r.categorie==='arbeid'?'Arbeid':r.categorie==='km'?'Kilometervergoeding':r.categorie==='overnachting'?'Overnachtingsvergoeding':r.omschrijving)+' '+aantalTekst(r).replace(/&nbsp;/g,'').replace(/\s+/g,' ')+' '+fmtNum(r.totaal)+' '+r.eenheid_totaal+' x '+fmtGeld(r.prijs)+' = '+fmtGeld(r.bedrag)); }
+  for(const [t,l] of [['Materieel',o.materieel],['Transport',o.transport],['Diversen',o.materiaal]]) if(l.length){ spec.push(t+':'); for(const r of l) spec.push('  '+r.omschrijving+' '+fmtNum(r.totaal)+' '+r.eenheid_totaal+' x '+fmtGeld(r.prijs)+' = '+fmtGeld(r.bedrag)); }
+  let x='<?xml version="1.0" encoding="UTF-8"?>\n<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">\n';
+  x+='  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>\n  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>\n';
+  x+='  <cbc:ID>'+xmlEsc(f.nummer)+'</cbc:ID>\n  <cbc:IssueDate>'+xmlEsc(f.datum)+'</cbc:IssueDate>\n  <cbc:DueDate>'+xmlEsc(f.vervaldatum||f.datum)+'</cbc:DueDate>\n  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>\n';
+  x+='  <cbc:Note>'+xmlEsc(f.omschrijving+' - week '+f.week+' '+f.jaar+'\n'+spec.join('\n'))+'</cbc:Note>\n  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>\n';
+  x+='  <cbc:BuyerReference>'+xmlEsc(p.claimnummer||p.code||f.nummer)+'</cbc:BuyerReference>\n  <cac:OrderReference><cbc:ID>'+xmlEsc(p.code||'')+'</cbc:ID></cac:OrderReference>\n';
+  x+=partij(aan,'AccountingSupplierParty')+partij(opd,'AccountingCustomerParty');
+  x+='  <cac:PaymentMeans><cbc:PaymentMeansCode>30</cbc:PaymentMeansCode><cbc:PaymentID>'+xmlEsc(f.nummer)+'</cbc:PaymentID>'+(aan.iban?'<cac:PayeeFinancialAccount><cbc:ID>'+xmlEsc(aan.iban.replace(/\s/g,''))+'</cbc:ID></cac:PayeeFinancialAccount>':'')+'</cac:PaymentMeans>\n';
+  x+='  <cac:PaymentTerms><cbc:Note>Betaling binnen '+xmlEsc((S.data.instellingen||{}).betaaltermijn_dagen||14)+' dagen, vervaldatum '+xmlEsc(f.vervaldatum||'')+'</cbc:Note></cac:PaymentTerms>\n';
+  x+='  <cac:TaxTotal><cbc:TaxAmount currencyID="EUR">'+n2(f.btw_bedrag)+'</cbc:TaxAmount><cac:TaxSubtotal><cbc:TaxableAmount currencyID="EUR">'+n2(f.bedrag_excl)+'</cbc:TaxableAmount><cbc:TaxAmount currencyID="EUR">'+n2(f.btw_bedrag)+'</cbc:TaxAmount><cac:TaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>'+n2(f.btw_pct)+'</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:TaxCategory></cac:TaxSubtotal></cac:TaxTotal>\n';
+  x+='  <cac:LegalMonetaryTotal><cbc:LineExtensionAmount currencyID="EUR">'+n2(f.bedrag_excl)+'</cbc:LineExtensionAmount><cbc:TaxExclusiveAmount currencyID="EUR">'+n2(f.bedrag_excl)+'</cbc:TaxExclusiveAmount><cbc:TaxInclusiveAmount currencyID="EUR">'+n2(f.bedrag_incl)+'</cbc:TaxInclusiveAmount><cbc:PayableAmount currencyID="EUR">'+n2(f.bedrag_incl)+'</cbc:PayableAmount></cac:LegalMonetaryTotal>\n';
+  x+='  <cac:InvoiceLine><cbc:ID>1</cbc:ID><cbc:Note>'+xmlEsc('Weekoverzicht week '+f.week+' '+f.jaar+', dagbonnen '+bonnen.map(b=>fmtKort(b.datum)).join(', '))+'</cbc:Note><cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity><cbc:LineExtensionAmount currencyID="EUR">'+n2(f.bedrag_excl)+'</cbc:LineExtensionAmount>'
+    +'<cac:Item><cbc:Description>'+xmlEsc(f.omschrijving)+'</cbc:Description><cbc:Name>'+xmlEsc(f.regel_omschrijving)+'</cbc:Name><cac:ClassifiedTaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>'+n2(f.btw_pct)+'</cbc:Percent><cac:TaxScheme><cbc:ID>VAT</cbc:ID></cac:TaxScheme></cac:ClassifiedTaxCategory></cac:Item>'
+    +'<cac:Price><cbc:PriceAmount currencyID="EUR">'+n2(f.bedrag_excl)+'</cbc:PriceAmount><cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity></cac:Price></cac:InvoiceLine>\n';
+  x+='</Invoice>\n';
+  return x;
+}
+// CSV voor de Exact Online-import (Verkoop > Import > verkoopfacturen): kop + gespecificeerde regels (weekoverzicht) met NL-notatie (; en decimale komma).
+function maakCSV(f){
+  const p=project(f.project_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{}; const bonnen=factuurBonnen(f); const o=bouwOverzicht(bonnen);
+  const cel=v=>'"'+String(v==null?'':v).replace(/"/g,'""')+'"'; const nl=n=>String(Number(n||0).toFixed(2)).replace('.',',');
+  const kop=['Factuurnummer','Factuurdatum','Vervaldatum','Debiteurcode','Debiteurnaam','Uw referentie','Omschrijving factuur','Regel','Regelomschrijving','Aantal','Eenheid','Prijs','Bedrag excl','Btw%','Btw code','Project','Week','Datum werk'];
+  const rijen=[kop.map(cel).join(';')];
+  let nr=0; const basis=[f.nummer,fmtKort(f.datum),fmtKort(f.vervaldatum),opd.debiteur_code||'',opd.naam||'',p.claimnummer||p.code||'',f.omschrijving];
+  const regel=(oms,aantal,eenheid,prijs,bedrag,datum)=>{ nr++; rijen.push([...basis,nr,oms,fmtNum(aantal),eenheid,nl(prijs),nl(bedrag),nl(f.btw_pct),'2',p.code||'',f.week,datum||''].map(cel).join(';')); };
+  for(const d of o.dagen) for(const r of d.regels) regel((r.categorie==='arbeid'?'Arbeid':r.categorie==='km'?'Kilometervergoeding':r.categorie==='overnachting'?'Overnachtingsvergoeding':r.omschrijving)+(r.per!=null?' ('+aantalTekst(r).replace(/&nbsp;/g,'').replace(/\s+/g,' ')+')':''), r.totaal, r.eenheid_totaal, r.prijs, r.bedrag, fmtKort(d.datum));
+  for(const l of [o.materieel,o.transport,o.materiaal]) for(const r of l) regel(r.omschrijving, r.totaal, r.eenheid_totaal, r.prijs, r.bedrag, '');
+  rijen.push(['','','','','','','','','TOTAAL excl. btw','','','',nl(f.bedrag_excl),nl(f.btw_pct),'','','',''].map(cel).join(';'));
+  return '﻿'+rijen.join('\r\n')+'\r\n';
+}
+// JSON in de vorm van de Exact Online REST API (salesinvoice/SalesInvoices) - voor een koppeling of Power Automate-flow.
+function maakJSON(f){
+  const p=project(f.project_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{}; const bonnen=factuurBonnen(f); const o=bouwOverzicht(bonnen);
+  const lines=[]; const add=(oms,q,prijs,notes)=>lines.push({Description:oms.slice(0,60), Notes:notes||'', Quantity:Number(q), UnitPrice:Number(prijs), VATCode:'2', VATPercentage:Number(f.btw_pct)/100});
+  for(const d of o.dagen) for(const r of d.regels) add((r.categorie==='arbeid'?'Arbeid':r.categorie==='km'?'Kilometervergoeding':r.categorie==='overnachting'?'Overnachtingsvergoeding':r.omschrijving)+' '+fmtKort(d.datum), r.totaal, r.prijs, aantalTekst(r).replace(/&nbsp;/g,'').replace(/\s+/g,' '));
+  for(const l of [o.materieel,o.transport,o.materiaal]) for(const r of l) add(r.omschrijving, r.totaal, r.prijs, r.eenheid_totaal);
+  return JSON.stringify({ InvoiceNumber:f.nummer, OrderDate:f.datum, InvoiceDate:f.datum, DueDate:f.vervaldatum, Currency:'EUR', Description:((p.naam||'')+' week '+f.week+' - '+f.omschrijving).slice(0,60), YourRef:p.claimnummer||p.code||'',
+    OrderedBy_Code:opd.debiteur_code||'', OrderedBy_Name:opd.naam||'', InvoiceTo_Code:opd.debiteur_code||'', AmountDC:Number(f.bedrag_incl), AmountFC:Number(f.bedrag_incl), VATAmountDC:Number(f.btw_bedrag),
+    Project:p.code||'', Week:f.week, Year:f.jaar, SalesInvoiceLines:lines, Bonnen:bonnen.map(b=>({id:b.id, datum:b.datum, ingevuld_door:b.ingevuld_door, afgetekend_door:b.afgetekend_door, bedrag:bonTotaal(b.id)})) }, null, 2);
+}
+
+/* ---------- lijsten (admin) ---------- */
+function viewLijsten(){
+  const t=S.lijstTab; const knop=(id,naam)=>'<button class="knop klein '+(t===id?'':'licht')+'" data-lt="'+id+'">'+naam+'</button>';
+  let x='<div class="kaart"><div class="knoppen">'+knop('tarieven','Tarieven')+knop('projecten','Projecten')+knop('bedrijven','Bedrijven')+knop('instellingen','Instellingen')+'</div>';
+  if(t==='tarieven'){
+    x+='<h2>Tarieven</h2><div class="stil">Prijzen excl. btw. Arbeid: het dagtype bepaalt welk tarief de bon automatisch pakt (ma-vr / za / zo).</div><div class="scroll"><table class="lijst"><tr><th>Categorie</th><th>Omschrijving</th><th>Aantal-eenheid</th><th>Per</th><th>Totaal-eenheid</th><th class="bedrag">Prijs</th><th>Dagtype</th><th></th></tr>';
+    for(const r of (S.data.tarieven||[]).filter(r=>r.actief)) x+='<tr class="klik" data-tarief="'+r.id+'"><td>'+esc(CAT[r.categorie]?CAT[r.categorie].naam:r.categorie)+'</td><td>'+esc(r.omschrijving)+'</td><td>'+esc(r.eenheid_n)+'</td><td>'+esc(r.eenheid_per)+'</td><td>'+esc(r.eenheid_totaal)+'</td><td class="bedrag">'+fmtGeld(r.prijs)+'</td><td>'+esc(r.dagtype)+'</td><td><button class="knop klein licht" data-tdel="'+r.id+'" style="color:var(--rood)">×</button></td></tr>';
+    x+='</table></div><div class="knoppen"><button class="knop" id="t-nieuw">+ Tarief</button></div>';
+  } else if(t==='projecten'){
+    x+='<h2>Projecten / locaties</h2><div class="scroll"><table class="lijst"><tr><th>Code</th><th>Naam</th><th>Adres</th><th>Aannemer</th><th>Opdrachtgever</th><th>Claim</th><th>Actief</th></tr>';
+    for(const p of (S.data.projecten||[])) x+='<tr class="klik" data-project="'+p.id+'"><td>'+esc(p.code)+'</td><td>'+esc(p.naam)+'</td><td>'+esc(p.adres)+', '+esc(p.postcode_plaats)+'</td><td>'+esc((bedrijf(p.aannemer_id)||{}).naam||'')+'</td><td>'+esc((bedrijf(p.opdrachtgever_id)||{}).naam||'')+'</td><td>'+esc(p.claimnummer)+'</td><td>'+(p.actief?'✓':'—')+'</td></tr>';
+    x+='</table></div><div class="knoppen"><button class="knop" id="p-nieuw">+ Project</button></div>';
+  } else if(t==='bedrijven'){
+    x+='<h2>Bedrijven</h2><div class="stil">Aannemer = de partij die factureert (verschijnt als afzender op factuur/UBL). Opdrachtgever = ontvanger van de factuur; de debiteurcode is de relatiecode in Exact Online.</div><div class="scroll"><table class="lijst"><tr><th>Soort</th><th>Naam</th><th>Adres</th><th>KvK / btw</th><th>IBAN</th><th>E-mail</th><th>Debiteurcode</th></tr>';
+    for(const b of (S.data.bedrijven||[])) x+='<tr class="klik" data-bedrijf="'+b.id+'"><td>'+esc(b.soort)+'</td><td>'+esc(b.naam)+'</td><td>'+esc(b.adres)+', '+esc(b.postcode_plaats)+'</td><td>'+esc(b.kvk)+' '+esc(b.btw_nummer)+'</td><td>'+esc(b.iban)+'</td><td>'+esc(b.email)+'</td><td>'+esc(b.debiteur_code)+'</td></tr>';
+    x+='</table></div><div class="knoppen"><button class="knop" id="bd-nieuw">+ Bedrijf</button></div>';
+  } else {
+    const i=S.data.instellingen||{};
+    x+='<h2>Instellingen</h2><div class="rij"><label>Factuurnummer-prefix<input type="text" id="i-prefix" value="'+esc(i.factuur_prefix||'')+'"></label><label>Volgend volgnummer<input type="number" id="i-volg" value="'+esc(i.factuur_volgnummer||'1')+'"></label></div>'
+      +'<div class="rij"><label>Betaaltermijn (dagen)<input type="number" id="i-termijn" value="'+esc(i.betaaltermijn_dagen||'14')+'"></label><label>Btw %<input type="number" id="i-btw" value="'+esc(i.btw_pct||'21')+'"></label></div>'
+      +'<div class="stil">Volgend factuurnummer wordt: <b>'+esc(volgendNummer())+'</b></div><div class="knoppen"><button class="knop" id="i-opslaan">Opslaan</button></div>'
+      +'<h3>Toegangscodes</h3><div class="stil">Werkvloer en administratie hebben elk een eigen code (ingesteld op de server: secrets WB_CODE_TEAM en WB_CODE_ADMIN van de edge function "werkbonnen").</div>'
+      +'<h3>Gegevens en overdracht</h3><div class="stil">Alle gegevens (bedrijven, projecten, tarieven, bonnen, regels, facturen, instellingen) als één JSON-bestand, bijvoorbeeld voor overdracht naar een eigen omgeving of als back-up.</div>'
+      +'<div class="knoppen"><button class="knop licht" id="i-export">⬇️ Alles exporteren (JSON)</button><button class="knop licht" id="i-wis" style="color:var(--rood)">🗑 Testdata wissen (bonnen en facturen)</button></div>'
+      +(S.factXml?'<pre class="xml">'+esc(S.factXml.slice(0,4000))+(S.factXml.length>4000?'\n… (ingekort)':'')+'</pre>':'');
+  }
+  x+='</div>';
+  return x;
+}
+function formSheet(titel, velden, waarden, cb){
+  const sh=document.getElementById('sheet'); const dicht=()=>{ sh.style.display='none'; sh.innerHTML=''; };
+  let h='<div class="sheetkaart"><div class="sheettitel">'+esc(titel)+'</div><div class="rij" style="display:grid;grid-template-columns:1fr 1fr">';
+  for(const v of velden){ const val=waarden[v.k]==null?'':waarden[v.k];
+    if(v.opties) h+='<label>'+esc(v.l)+'<select data-k="'+v.k+'">'+v.opties.map(o=>'<option value="'+esc(o.v)+'" '+(String(o.v)===String(val)?'selected':'')+'>'+esc(o.t)+'</option>').join('')+'</select></label>';
+    else if(v.type==='bool') h+='<label>'+esc(v.l)+'<select data-k="'+v.k+'"><option value="true" '+(val!==false?'selected':'')+'>ja</option><option value="false" '+(val===false?'selected':'')+'>nee</option></select></label>';
+    else h+='<label style="'+(v.breed?'grid-column:1/-1':'')+'">'+esc(v.l)+'<input type="'+(v.type||'text')+'" data-k="'+v.k+'" value="'+esc(val)+'" '+(v.step?'step="'+v.step+'"':'')+'></label>'; }
+  h+='</div><div class="sheetrij"><button class="knop licht" id="fs-annuleer">Annuleren</button><button class="knop" id="fs-ok" style="flex:1;text-align:center">Opslaan</button></div></div>';
+  sh.innerHTML=h; sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); };
+  document.getElementById('fs-annuleer').onclick=dicht;
+  document.getElementById('fs-ok').onclick=()=>{ const uit={}; sh.querySelectorAll('[data-k]').forEach(el=>{ const v=velden.find(x=>x.k===el.dataset.k); let val=el.value; if(v.type==='bool') val=val==='true'; else if(v.type==='number') val=val===''?null:num(val); uit[el.dataset.k]=val; }); dicht(); cb(uit); };
+}
+function bindLijsten(){
+  const app=document.getElementById('app');
+  app.querySelectorAll('[data-lt]').forEach(b=>b.onclick=()=>{ S.lijstTab=b.dataset.lt; render(); });
+  const catOpties=CATS.map(c=>({v:c.id,t:c.naam})); const dagOpties=[{v:'alle',t:'alle dagen'},{v:'ma-vr',t:'ma-vr'},{v:'za',t:'zaterdag'},{v:'zo',t:'zondag/feestdag'}];
+  const tarVelden=[{k:'categorie',l:'Categorie',opties:catOpties},{k:'omschrijving',l:'Omschrijving',breed:true},{k:'eenheid_n',l:"Aantal-eenheid (man / auto's / stuks / leeg)"},{k:'eenheid_per',l:'Per-eenheid (uur / km. / dag / leeg)'},{k:'eenheid_totaal',l:'Totaal-eenheid (per uur / per dag / per stuk)'},{k:'prijs',l:'Prijs excl. btw',type:'number',step:'0.01'},{k:'dagtype',l:'Dagtype (alleen arbeid)',opties:dagOpties},{k:'sort',l:'Volgorde',type:'number'}];
+  const tarSave=(id,r)=>formSheet(id?'Tarief aanpassen':'Nieuw tarief',tarVelden,r||{categorie:'materieel',eenheid_totaal:'per dag',dagtype:'alle',sort:100},async f=>{ await doe({action:'tarief_save', id, fields:f},'Tarief opgeslagen: '+f.omschrijving); });
+  app.querySelectorAll('tr[data-tarief]').forEach(tr=>tr.onclick=e=>{ if(e.target.closest('button')) return; tarSave(+tr.dataset.tarief,S.data.tarieven.find(t=>t.id===+tr.dataset.tarief)); });
+  app.querySelectorAll('[data-tdel]').forEach(b=>b.onclick=async()=>{ if(confirm('Tarief verwijderen (op bestaande bonnen blijft de prijs staan)?')) await doe({action:'tarief_delete', id:+b.dataset.tdel},'Tarief verwijderd #'+b.dataset.tdel); });
+  const tn=document.getElementById('t-nieuw'); if(tn) tn.onclick=()=>tarSave(null,null);
+  const aanOpt=(S.data.bedrijven||[]).filter(b=>b.soort==='aannemer').map(b=>({v:b.id,t:b.naam})); const opdOpt=(S.data.bedrijven||[]).filter(b=>b.soort==='opdrachtgever').map(b=>({v:b.id,t:b.naam}));
+  const projVelden=[{k:'code',l:'Projectcode'},{k:'naam',l:'Naam'},{k:'adres',l:'Projectadres'},{k:'postcode_plaats',l:'Postcode plaats'},{k:'aannemer_id',l:'Aannemer (factureert)',opties:aanOpt},{k:'opdrachtgever_id',l:'Opdrachtgever',opties:opdOpt},{k:'claimnummer',l:'Claimnummer verzekeraar'},{k:'factuur_omschrijving',l:'Omschrijving op factuur',breed:true},{k:'sort',l:'Volgorde',type:'number'},{k:'actief',l:'Actief',type:'bool'}];
+  const projSave=(id,p)=>formSheet(id?'Project aanpassen':'Nieuw project',projVelden,p||{sort:100,actief:true,aannemer_id:aanOpt[0]&&aanOpt[0].v,opdrachtgever_id:opdOpt[0]&&opdOpt[0].v},async f=>{ f.aannemer_id=f.aannemer_id?Number(f.aannemer_id):null; f.opdrachtgever_id=f.opdrachtgever_id?Number(f.opdrachtgever_id):null; await doe({action:'project_save', id, fields:f},'Project opgeslagen: '+f.code); });
+  app.querySelectorAll('tr[data-project]').forEach(tr=>tr.onclick=()=>projSave(+tr.dataset.project,S.data.projecten.find(p=>p.id===+tr.dataset.project)));
+  const pn=document.getElementById('p-nieuw'); if(pn) pn.onclick=()=>projSave(null,null);
+  const bedVelden=[{k:'soort',l:'Soort',opties:[{v:'aannemer',t:'aannemer (factureert)'},{v:'opdrachtgever',t:'opdrachtgever (ontvangt factuur)'}]},{k:'naam',l:'Naam'},{k:'adres',l:'Adres'},{k:'postcode_plaats',l:'Postcode plaats'},{k:'land',l:'Land (NL)'},{k:'kvk',l:'KvK'},{k:'btw_nummer',l:'Btw-nummer'},{k:'iban',l:'IBAN'},{k:'email',l:'E-mail'},{k:'telefoon',l:'Telefoon'},{k:'debiteur_code',l:'Debiteur-/relatiecode Exact'},{k:'actief',l:'Actief',type:'bool'}];
+  const bedSave=(id,b)=>formSheet(id?'Bedrijf aanpassen':'Nieuw bedrijf',bedVelden,b||{soort:'aannemer',land:'NL',actief:true},async f=>{ await doe({action:'bedrijf_save', id, fields:f},'Bedrijf opgeslagen: '+f.naam); });
+  app.querySelectorAll('tr[data-bedrijf]').forEach(tr=>tr.onclick=()=>bedSave(+tr.dataset.bedrijf,S.data.bedrijven.find(b=>b.id===+tr.dataset.bedrijf)));
+  const bn=document.getElementById('bd-nieuw'); if(bn) bn.onclick=()=>bedSave(null,null);
+  const ie=document.getElementById('i-export'); if(ie) ie.onclick=()=>{ const d=S.data; download('werkbonnen-export-'+vandaagISO()+'.json', JSON.stringify({geexporteerd:new Date().toISOString(), bedrijven:d.bedrijven, projecten:d.projecten, tarieven:d.tarieven, bonnen:d.bonnen, regels:d.regels, facturen:d.facturen, instellingen:d.instellingen}, null, 2), 'application/json'); };
+  const iw=document.getElementById('i-wis'); if(iw) iw.onclick=()=>vraag('Typ WISSEN om alle bonnen, regels en facturen te verwijderen (bedrijven, projecten, tarieven en instellingen blijven staan)','',async v=>{ if(v!=='WISSEN'){ toast('Niet gewist'); return; } if(await doe({action:'testdata_wissen', bevestiging:v},'Alle bonnen en facturen gewist')) toast('Testdata gewist'); });
+  const io=document.getElementById('i-opslaan'); if(io) io.onclick=()=>doe({action:'instelling_save', instellingen:{factuur_prefix:document.getElementById('i-prefix').value.trim(), factuur_volgnummer:document.getElementById('i-volg').value, betaaltermijn_dagen:document.getElementById('i-termijn').value, btw_pct:document.getElementById('i-btw').value}},'Instellingen opgeslagen');
+}
+
+document.addEventListener('visibilitychange',async()=>{ if(document.visibilityState!=='visible'||!S.data||S.tab==='bon') return; try{ await laad(); render(); }catch(e){} });
+/* ---------- start ---------- */
+(async function start(){
+  const m=location.hash.match(/^#([^\/]+)(?:\/(.+))?$/);
+  if(m){ S.code=decodeURIComponent(m[1]); if(m[2]) S.wie=decodeURIComponent(m[2]); }
+  if(S.code&&S.wie){ try{ await laad(); localStorage.setItem('wb_code',S.code); localStorage.setItem('wb_wie',S.wie); document.getElementById('login').style.display='none'; render(); return; }catch(e){} }
+  toonLogin();
+})();
+</script>
+</body>
+</html>

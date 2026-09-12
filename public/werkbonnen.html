@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1d4e89">
+<meta name="theme-color" content="#3aa35b">
 <title>Werkbonnen</title>
 <style>
 :root{
-  --blauw:#1d4e89; --blauw-licht:#e8eef6; --bg:#f2f4f3; --kaart:#fff; --tekst:#1b2a24; --grijs:#6c757d; --lijn:#e3e7e5;
-  --rood:#c1442e; --oranje:#f2a541; --groen:#2d6a4f; --groen-licht:#52b788;
+  /* Standaard de huisstijl van KZ Kasherstel (groen + magenta, kzkasherstel.nl); Lijsten > Bedrijven kan dit per aannemer overschrijven. */
+  --blauw:#3aa35b; --blauw-licht:#e3f2e8; --bg:#f1f9f4; --kaart:#fff; --tekst:#1b2a24; --grijs:#6c757d; --lijn:#d9e8dd;
+  --rood:#c1442e; --oranje:#f2a541; --groen:#e6007e; --groen-licht:#52b788;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -19,7 +20,7 @@ input,select,textarea{font:inherit;color:inherit}
 #topbar h1{font-size:16px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #topbar .wie{font-size:12px;opacity:.9;cursor:pointer}
 #tabs{position:sticky;top:44px;z-index:29;display:flex;background:var(--kaart);border-bottom:1px solid var(--lijn);overflow-x:auto}
-#tabs button{flex:1;min-width:76px;padding:10px 4px;font-size:13px;color:var(--grijs);border-bottom:3px solid transparent;white-space:nowrap}
+#tabs button{flex:1 0 auto;min-width:76px;padding:10px 10px;font-size:13px;color:var(--grijs);border-bottom:3px solid transparent;white-space:nowrap}
 #tabs button.actief{color:var(--blauw);border-bottom-color:var(--blauw);font-weight:600}
 #tabs button .bol{display:inline-block;min-width:17px;padding:0 4px;border-radius:9px;background:var(--rood);color:#fff;font-size:11px;margin-left:3px}
 main{padding:12px;max-width:1100px;margin:0 auto;padding-bottom:60px}
@@ -135,7 +136,7 @@ pre.xml{background:#f6f8fa;border:1px solid var(--lijn);border-radius:8px;paddin
 <body>
 <div id="login">
   <div class="kaart">
-    <h2>📋 Werkbonnen</h2>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><svg width="40" height="30" viewBox="0 0 46 34" aria-hidden="true"><polygon points="0,34 22,0 30,0 8,34" fill="#3aa35b"/><polygon points="16,34 38,0 46,0 24,34" fill="#e6007e"/></svg><div><div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:19px;letter-spacing:.04em;color:var(--blauw);line-height:1">KZ KASHERSTEL</div><div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grijs);margin-top:3px">Werkbonnen</div></div></div>
     <p class="stil" style="margin-bottom:12px">Dagbonnen vanaf de werkvloer, beoordeling door de administratie, weekoverzicht en factuur.</p>
     <label>Jouw naam<br><input type="text" id="lg-wie" autocomplete="name"></label>
     <label>Toegangscode<br><input type="password" id="lg-code" autocomplete="current-password"></label>
@@ -238,7 +239,7 @@ function tabs(){
 function render(){
   if(!S.data) return;
   document.getElementById('tb-wie').textContent=S.wie+' · '+(isAdmin()?'administratie':'werkvloer');
-  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').innerHTML=(aan&&aan.logo_pad?'<img src="'+esc(fotoUrl(aan.logo_pad))+'" alt="" style="height:26px;vertical-align:middle;margin-right:8px;background:#fff;border-radius:4px;padding:2px">':'📋 ')+'Werkbonnen'+(aan?' · '+esc(aan.naam.replace(/ (B\.V\.|BV)$/i,'')):'');
+  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').innerHTML=(aan&&aan.logo_pad?'<img src="'+esc(fotoUrl(aan.logo_pad))+'" alt="" style="height:26px;vertical-align:middle;margin-right:8px;background:#fff;border-radius:4px;padding:2px">':'<svg width="26" height="19" viewBox="0 0 46 34" aria-hidden="true" style="vertical-align:-3px;margin-right:6px"><polygon points="0,34 22,0 30,0 8,34" fill="#fff" opacity=".9"/><polygon points="16,34 38,0 46,0 24,34" fill="#e6007e"/></svg>')+'Werkbonnen'+(aan?' · '+esc(aan.naam.replace(/ (B\.V\.|BV)$/i,'')):'');
   huisstijl(aan);
   tabs();
   const app=document.getElementById('app');

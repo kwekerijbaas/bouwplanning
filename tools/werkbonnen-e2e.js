@@ -42,7 +42,11 @@ const VERWACHT=43856.65;
       await pg.fill('#b-aft','Jarno Baas');
       // handtekening tekenen
       const c=await pg.$('#b-sig'); const bb=await c.boundingBox(); await pg.mouse.move(bb.x+20,bb.y+60); await pg.mouse.down(); await pg.mouse.move(bb.x+150,bb.y+90); await pg.mouse.move(bb.x+250,bb.y+40); await pg.mouse.up();
-      const tot=await pg.textContent('#b-totaal'); console.log(d.datum,'dagtotaal',tot);
+      // De werkvloer ziet geen bedragen: geen dagtotaal, geen prijsvelden, geen euro's op de dagbon.
+      if(await pg.$('#b-totaal')) fouten.push('werkvloer ziet dagtotaal op '+d.datum);
+      if(await pg.$('input[data-f="prijs"]')) fouten.push('werkvloer ziet prijsveld op '+d.datum);
+      const bonTxt=await pg.textContent('#app'); if(/€/.test(bonTxt)) fouten.push('werkvloer ziet bedragen op '+d.datum);
+      console.log(d.datum,'regels',(await pg.$$('.bonregel')).length,'(zonder bedragen)');
       await pg.click('#b-indienen'); await pg.waitForSelector('.chip.st-ingediend',{timeout:5000});
       if(d.voertuigen){ await pg.click('#b-print'); await pg.waitForSelector('#pb-print'); const pb=await pg.textContent('.doc'); if(!/Aantalvoertuigen:2/.test(pb.replace(/\s+/g,''))||!/Nick Mesken/.test(pb)) fouten.push('projectbon onvolledig'); await pg.screenshot({path:'/tmp/wb-test-00-projectbon.png',fullPage:true}); await pg.click('#pb-terug'); await pg.waitForSelector('#b-nieuw'); }
     }

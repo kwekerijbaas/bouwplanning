@@ -75,16 +75,18 @@ t('viewOverzicht: waarschuwing bij niet-goedgekeurde bonnen', ()=>{ M.handle({ac
 
 // --- shifts/namenwolk/voertuigen -> regels (KZ projectbon 27-7-2026, week 31) ---
 S.data=M.handle({action:'state'},M.CODE_TEAM)[1]; S.wie='Bas (KZ)';
-t('week 31 ma 27-7: 4 ploegen -> 3x14,0 / 35x12,5 / 1x2,0 / 1x1,0 uur en 38 nachten', ()=>{
+const alsAdmin=()=>{ S.data=M.handle({action:'state'},M.CODE_ADMIN)[1]; };   // bedragen narekenen kan alleen de administratie
+const alsTeam=()=>{ S.data=M.handle({action:'state'},M.CODE_TEAM)[1]; };
+t('week 31 ma 27-7: 4 ploegen -> 3x14,0 / 35x12,5 / 1x2,0 / 1x1,0 uur en 38 nachten', ()=>{ alsAdmin();
   F.nieuweBon(p.id); S.bon.datum='2026-07-27';
   const ids=namen=>namen.map(nm=>S.data.medewerkers.find(m=>m.naam===nm).id); const sh=(start,eind,namen,extra,ov)=>Object.assign(F.nieuweShift(),{start,eind,leden:ids(namen),aantal_man:namen.length+(extra||0),overnachting:!!ov,nachten:''});
   S.bon.invoer={shifts:[sh('05:00','19:30',['Nick Mesken','Mario Grundza','Robert Botos'],0,true), sh('06:30','19:30',['Piotr Szkopik'],34,true), sh('06:30','08:30',['Boguslaw Nowakowski']), sh('16:00','17:00',['René Kortekaas'])], voertuigen:[]};
   F.herleid(); const arb=S.bon.regels.filter(r=>r.categorie==='arbeid');
   assert.deepStrictEqual(arb.map(r=>[r.aantal,r.per]),[[3,14],[35,12.5],[1,2],[1,1]]); assert.ok(arb.every(r=>r.prijs===61.5&&r.bron==='shift')); assert.strictEqual(arb[0].namen,'Nick Mesken, Mario Grundza, Robert Botos');
   const ov=S.bon.regels.find(r=>r.categorie==='overnachting'); assert.strictEqual(ov.aantal,38); assert.strictEqual(F.regelBedrag(ov).bedrag,4940);
-  assert.strictEqual(F.regelBedrag(arb[1]).bedrag,26906.25); assert.strictEqual(F.regelBedrag(arb[0]).bedrag,2583); });
+  assert.strictEqual(F.regelBedrag(arb[1]).bedrag,26906.25); assert.strictEqual(F.regelBedrag(arb[0]).bedrag,2583); alsTeam(); });
 t('pauze automatisch: 0,5 uur vanaf 6 uur, anders 0; handmatig overschrijfbaar; halve mensen naar boven', ()=>{ const s=Object.assign(F.nieuweShift(),{start:'06:30',eind:'19:30'}); assert.strictEqual(F.shiftUren(s),12.5); s.pauze=1; assert.strictEqual(F.shiftUren(s),12); s.pauze=0; assert.strictEqual(F.shiftUren(s),13); const k=Object.assign(F.nieuweShift(),{start:'06:30',eind:'08:30'}); assert.strictEqual(F.shiftUren(k),2); const n=Object.assign(F.nieuweShift(),{start:'22:00',eind:'02:15'}); assert.strictEqual(F.shiftUren(n),4.5); assert.strictEqual(F.shiftMan({namen:['a','b'],extra_man:1.2}),4); assert.strictEqual(F.shiftMan({namen:[],extra_man:0}),0); });
-t('voertuigen: auto\'s gegroepeerd per km, materieel per dagtarief/dagdeel, transport gebracht materieel per km', ()=>{
+t('voertuigen: auto\'s gegroepeerd per km, materieel per dagtarief/dagdeel, transport gebracht materieel per km', ()=>{ alsAdmin();
   F.nieuweBon(p.id); S.bon.datum='2026-07-27'; const vt=n=>S.data.voertuigen.find(v=>v.naam===n); const mk=(n,gebracht,km,dd)=>{ const v=vt(n); return {voertuig_id:v.id,naam:v.naam,soort:v.soort,tarief_id:v.tarief_id,gebracht,km,dagdeel:dd==null?1:dd}; };
   S.bon.invoer={shifts:[], voertuigen:[mk('Bus 1',true,54),mk('Bus 2',true,54),mk('Bus 3',true,172),mk('Hoogwerker 1',false,0),mk('Hoogwerker 2',true,60),mk('Platformtrekker',false,0,0.5)]}; F.herleid();
   const km=S.bon.regels.filter(r=>r.categorie==='km'); assert.deepStrictEqual(km.map(r=>[r.aantal,r.per]),[[2,54],[1,172]]); assert.strictEqual(F.regelBedrag(km[0]).bedrag,75.6);
@@ -92,8 +94,8 @@ t('voertuigen: auto\'s gegroepeerd per km, materieel per dagtarief/dagdeel, tran
   const tr=S.bon.regels.find(r=>r.categorie==='transport'); assert.strictEqual(tr.aantal,60); assert.strictEqual(tr.prijs,1.5); assert.strictEqual(F.regelBedrag(tr).bedrag,90);
   assert.ok(S.bon.regels.every(r=>!F.regelFout(r)));
   // 'al op locatie' auto: geen km-regel
-  S.bon.invoer.voertuigen=[mk('Bus 1',false,54)]; F.herleid(); assert.strictEqual(S.bon.regels.length,0); });
-t('projectafspraken: projectprijs gaat voor tarief; wizard-projectcode = hoogste + 1', ()=>{ const t=S.data.tarieven.find(t=>t.omschrijving==='Arbeid'); assert.strictEqual(F.projectPrijs(p.id,t),61.5); S.data.projecttarieven.push({project_id:p.id,tarief_id:t.id,prijs:63.25}); assert.strictEqual(F.projectPrijs(p.id,t),63.25); F.nieuweBon(p.id); S.bon.datum='2026-07-27'; S.bon.invoer.shifts[0].leden=[S.data.medewerkers.find(m=>m.naam==='Jan de Vries').id]; F.herleid(); assert.strictEqual(S.bon.regels[0].prijs,63.25); S.data.projecttarieven.pop(); assert.strictEqual(F.volgendProjectCode(),'26693'); });
+  S.bon.invoer.voertuigen=[mk('Bus 1',false,54)]; F.herleid(); assert.strictEqual(S.bon.regels.length,0); alsTeam(); });
+t('projectafspraken: projectprijs gaat voor tarief; wizard-projectcode = hoogste + 1', ()=>{ alsAdmin(); const t=S.data.tarieven.find(t=>t.omschrijving==='Arbeid'); assert.strictEqual(F.projectPrijs(p.id,t),61.5); S.data.projecttarieven.push({project_id:p.id,tarief_id:t.id,prijs:63.25}); assert.strictEqual(F.projectPrijs(p.id,t),63.25); F.nieuweBon(p.id); S.bon.datum='2026-07-27'; S.bon.invoer.shifts[0].leden=[S.data.medewerkers.find(m=>m.naam==='Jan de Vries').id]; F.herleid(); assert.strictEqual(S.bon.regels[0].prijs,63.25); S.data.projecttarieven.pop(); assert.strictEqual(F.volgendProjectCode(),'26693'); alsTeam(); });
 t('voorinvullen van de vorige dag en alles wissen', ()=>{ const r=M.handle({action:'bon_save',wie:'Bas (KZ)',fields:{project_id:p.id,datum:'2026-09-10',ingevuld_door:'Bas (KZ)',invoer:{shifts:[{start:'06:30',eind:'16:00',pauze:'',namen:['Jan de Vries','Piet Bakker'],extra_man:0,overnachting:false,nachten:''}],voertuigen:[{voertuig_id:1,naam:'Bus 1',soort:'auto',gebracht:true,km:54,dagdeel:1}]}},regels:[{categorie:'arbeid',omschrijving:'Arbeid',tarief_id:1,aantal:2,per:9,prijs:61.5,eenheid_n:'man',eenheid_per:'uur',eenheid_totaal:'per uur',bron:'shift'}]},M.CODE_TEAM); assert.strictEqual(r[0],200,JSON.stringify(r[1]));
   S.data=M.handle({action:'state'},M.CODE_TEAM)[1]; F.nieuweBon(p.id); assert.strictEqual(S.bon.voorgevuld,'2026-09-10'); assert.deepStrictEqual(F.shiftNamen(S.bon.invoer.shifts[0]),['Jan de Vries','Piet Bakker']); assert.strictEqual(S.bon.invoer.shifts[0].aantal_man,2); assert.ok(!('namen' in S.bon.invoer.shifts[0])); assert.strictEqual(S.bon.invoer.voertuigen.length,1); assert.strictEqual(S.bon.regels.length,2);
   S.bon.invoer={shifts:[F.nieuweShift()],voertuigen:[]}; F.herleid(); assert.strictEqual(S.bon.regels.length,0);
@@ -109,5 +111,25 @@ t('samenvoegen: foute naam -> juiste naam, ploegen op bonnen en regel-namen omge
 t('projectbon-document (KZ-opmaak) rendert ploegen, voertuigen, handtekening', ()=>{ const b=S.data.bonnen.find(b=>b.datum==='2026-09-10'); F.laadBon(b); S.bon.afgetekend_door='Jarno Baas'; const h=F.projectbonDoc(S.bon); assert.ok(h.includes('Projectbon')); assert.ok(h.includes('26691')); assert.ok(h.includes('<th>Tot</th>')); assert.ok(h.includes('2 man')); assert.ok(h.includes('Jan de Vries, Piet Bakker')); assert.ok(h.includes('Aantal voertuigen:</b><span>1')); assert.ok(h.includes('Jarno Baas')); assert.ok(!h.includes('undefined')); S.bonPrint=true; assert.ok(F.viewBon().includes('pb-print')); S.bonPrint=false; });
 t('CSV uit boekhoudpakket lezen (;, decimale komma, kopregel, categorie)', ()=>{ const r=F.leesTarievenCSV('\uFEFFOmschrijving;Prijs;Eenheid\r\n"Bout M6x50 + moer";0,18;per stuk\r\nTransport materiaal;€ 115,00;per uur;transport\r\n;;\r\nGootkar;40;per dag;materieel'); assert.strictEqual(r.length,3); assert.deepStrictEqual(r[0],{omschrijving:'Bout M6x50 + moer',prijs:0.18,eenheid_totaal:'per stuk',categorie:'materiaal'}); assert.strictEqual(r[1].prijs,115); assert.strictEqual(r[1].categorie,'transport'); assert.strictEqual(r[2].categorie,'materieel'); });
 t('lijsten: medewerkers en voertuigen renderen', ()=>{ S.data.rol='admin'; for(const lt of ['medewerkers','voertuigen','projecten']){ S.lijstTab=lt; const h=F.viewLijsten(); assert.ok(h.length>300&&!h.includes('undefined'),lt); } assert.ok(F.viewLijsten().includes('Hoogwerker 1')||true); S.lijstTab='tarieven'; });
+
+t('werkvloer ziet geen tarieven, prijzen of bedragen', ()=>{ alsTeam();
+  assert.strictEqual(S.data.rol,'team');
+  assert.ok(S.data.tarieven.every(t=>!('prijs' in t)),'tarieven zonder prijs');
+  assert.ok(S.data.regels.every(r=>!('prijs' in r)&&!('bedrag' in r)),'bonregels zonder prijs/bedrag');
+  assert.deepStrictEqual(S.data.facturen,[],'geen facturen');
+  assert.deepStrictEqual(S.data.projecttarieven,[],'geen projectafspraken');
+  assert.strictEqual(F.magGeld(),false);
+  F.nieuweBon(p.id); S.bon.datum='2026-07-27'; S.bon.invoer.shifts[0].leden=[S.data.medewerkers.find(m=>m.naam==='Jan de Vries').id]; F.herleid();
+  const h=F.viewBon();
+  assert.ok(!/€/.test(h),'geen euro-bedragen in de dagbon');
+  assert.ok(!h.includes('data-f="prijs"'),'geen prijsveld');
+  assert.ok(!h.includes('Totaal dag excl. btw'),'geen dagtotaal');
+  assert.ok(h.includes('data-f="aantal"')&&h.includes('+ namen'),'invullen kan wel');
+  S.tab='bonnen'; const hb=F.viewBonnen(); assert.ok(!/€/.test(hb),'geen bedragen in de bonnenlijst');
+  S.ovProject=p.id; S.ovJaar=2026; S.ovWeek=35; const ho=F.viewOverzicht(); assert.ok(!/€/.test(ho),'geen bedragen in het weekoverzicht'); assert.ok(ho.includes('Weekoverzicht'));
+  S.tab='bon'; });
+t('administratie ziet de bedragen wel', ()=>{ alsAdmin();
+  F.nieuweBon(p.id); S.bon.datum='2026-07-27'; S.bon.invoer.shifts[0].leden=[S.data.medewerkers.find(m=>m.naam==='Jan de Vries').id]; F.herleid();
+  const h=F.viewBon(); assert.ok(/€/.test(h)); assert.ok(h.includes('Totaal dag excl. btw')); assert.ok(h.includes('data-f="prijs"')); alsTeam(); });
 
 console.log('unit-tests:', n, 'uitgevoerd,', fouten.length, 'fouten'); for(const x of fouten) console.log('  FOUT', x); process.exit(fouten.length?1:0);

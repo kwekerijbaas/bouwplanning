@@ -51,8 +51,13 @@ UBL 2.1 XML / CSV / JSON voor Exact Online.
   ```
   daarna http://localhost:8787/werkbonnen.html?api=http%3A%2F%2Flocalhost%3A8787%2Fapi
   (codes bon2026 / admin2026, `--seed` laadt week 35 Drietorensweg = factuur 2026265).
-  Op Windows kan het in een keer: dubbelklik `tools\start-werkbonnen.cmd` - die start de
-  mock en opent de browser vanzelf.
+  Op Windows kan het in een keer: dubbelklik `tools\start-werkbonnen.cmd` in de verkenner -
+  die start de mock en opent de browser vanzelf. Vanuit PowerShell moet er `.\` voor, anders
+  zoekt PowerShell een module in plaats van het bestand:
+  ```
+  cd C:\Users\<jij>\Documents\bouwplanning
+  .\tools\start-werkbonnen.cmd
+  ```
 - Tests (drie methodes, vanuit de repo-map):
   ```
   cd bouwplanning

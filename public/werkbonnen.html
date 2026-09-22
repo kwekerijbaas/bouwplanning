@@ -355,12 +355,12 @@ function viewBon(){
     +'<label>Datum<input type="date" id="b-datum" value="'+esc(b.datum)+'" '+d+'></label>'
     +'<label>Teamleider<input type="text" id="b-wie" value="'+esc(b.ingevuld_door)+'" '+d+'></label></div>';
   x+='<div class="stil">'+fmtDatum(b.datum)+' · '+(dagType(b.datum)==='zo'?'zondagtarief':dagType(b.datum)==='za'?'zaterdagtarief':'normaal tarief')+(pr.opdrachtgever_id?' · opdrachtgever '+esc((bedrijf(pr.opdrachtgever_id)||{}).naam||''):'')+(bew?' · <a href="#" id="b-wizard">projectafspraken</a>':'')+'</div>';
-  if(b.voorgevuld&&bew) x+='<div class="info" id="b-voorgevuld">↩ Voorgevuld met de bon van '+fmtKort(b.voorgevuld)+' (shifts en voertuigen). Klopt het niet? <button class="knop klein licht" id="b-wis">alles wissen</button></div>';
+  if(b.voorgevuld&&bew) x+='<div class="info" id="b-voorgevuld">↩ Overgenomen van de bon van '+fmtKort(b.voorgevuld)+': dezelfde ploegen (aantal man en tijden) en voertuigen. Kijk ze na — klopt het niet? <button class="knop klein licht" id="b-wis">alles wissen</button></div>';
   x+='</div>';
   // --- shifts ---
   const inv=b.invoer||(b.invoer={shifts:[],voertuigen:[]}); inv.shifts=(inv.shifts||[]).map(normShift); inv.voertuigen=inv.voertuigen||[];
   const tc=teControleren();
-  x+='<div class="kaart"><h2>👷 Ploegen (shifts)</h2><div class="stil">Per ploeg: aantal man, start- en eindtijd, namen kiezen via "+ namen" (op alfabet, of een nieuwe naam aanmaken), overnachting. Meerdere ploegen als niet iedereen dezelfde tijden heeft.</div>';
+  x+='<div class="kaart"><h2>👷 Ploegen — wie heeft er gewerkt</h2><div class="stil">Per ploeg: aantal man, start- en eindtijd, namen kiezen via "+ namen" (op alfabet, of een nieuwe naam aanmaken), overnachting. Meerdere ploegen als niet iedereen dezelfde tijden heeft.</div>';
   inv.shifts.forEach((sh,i)=>{
     const n=shiftMan(sh), u=shiftUren(sh); const zonder=n-sh.leden.length;
     x+='<div class="shift" data-shift="'+i+'"><div class="shiftkop"><b>Ploeg '+(i+1)+'</b><span class="stil">'+n+' man × '+fmtNum(u,1)+' uur</span>'+(bew?'<button class="x" data-shdel="'+i+'" title="ploeg verwijderen">×</button>':'')+'</div>';

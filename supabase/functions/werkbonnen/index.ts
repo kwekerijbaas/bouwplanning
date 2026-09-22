@@ -65,7 +65,7 @@ function normRegels(regels: unknown): Array<Record<string, unknown>> {
     if (!omschrijving) throw new Error("omschrijving leeg op regel " + (i + 1));
     const aantal = num(x.aantal, "aantal op regel " + (i + 1));
     const per = x.per == null || x.per === "" ? null : num(x.per, "per-waarde op regel " + (i + 1));
-    const prijs = num(x.prijs, "prijs op regel " + (i + 1));
+    const prijs = x.prijs == null || x.prijs === "" ? 0 : num(x.prijs, "prijs op regel " + (i + 1));
     const eenheid_per = String(x.eenheid_per ?? "");
     if (!veelvoud(aantal, stapAantal(categorie))) throw new Error(categorie === "transport" ? "uren op regel " + (i + 1) + " moeten in halve uren zijn" : "aantal op regel " + (i + 1) + " moet een heel getal zijn (geen halve mannen, auto's, nachten of stuks)");
     if (per != null && !veelvoud(per, stapPer(eenheid_per))) throw new Error("per-waarde op regel " + (i + 1) + " moet in stappen van " + stapPer(eenheid_per) + " zijn (uren en km per 0,5; dagdeel per 0,25)");
@@ -80,6 +80,26 @@ function normRegels(regels: unknown): Array<Record<string, unknown>> {
       bron: ["shift", "voertuig", "extra"].includes(bron) ? bron : "",
     };
   });
+}
+// De werkvloer stuurt alleen aantallen mee; de server zet er de geldende projectprijs bij (bedragen blijven bij de administratie).
+// deno-lint-ignore no-explicit-any
+async function prijsVanServer(db: any, project_id: number, regels: Array<Record<string, unknown>>) {
+  const ids = [...new Set(regels.map((r) => r.tarief_id).filter((x) => x != null))] as number[];
+  if (!ids.length) { for (const r of regels) { r.prijs = 0; r.bedrag = 0; } return; }
+  const [{ data: tarieven, error: e1 }, { data: pt, error: e2 }] = await Promise.all([
+    db.from("wb_tarief").select("id, prijs").in("id", ids),
+    db.from("wb_projecttarief").select("tarief_id, prijs").eq("project_id", project_id).in("tarief_id", ids),
+  ]);
+  if (e1) throw e1;
+  if (e2) throw e2;
+  const std = new Map<number, number>((tarieven ?? []).map((t: Record<string, unknown>) => [Number(t.id), Number(t.prijs)]));
+  const eigen = new Map<number, number>((pt ?? []).map((x: Record<string, unknown>) => [Number(x.tarief_id), Number(x.prijs)]));
+  for (const r of regels) {
+    const tid = r.tarief_id == null ? null : Number(r.tarief_id);
+    const prijs = tid == null ? 0 : (eigen.get(tid) ?? std.get(tid) ?? 0);
+    r.prijs = prijs;
+    r.bedrag = r2(Number(r.totaal) * prijs);
+  }
 }
 // Invoer van de dagbon (shifts met namen, voertuigen) zoals aangetikt; bron van de afgeleide regels en van de projectbon.
 function normInvoer(inv: unknown): Record<string, unknown> {
@@ -236,10 +256,17 @@ Deno.serve(async (req) => {
         for (const r of [bedrijven, projecten, tarieven, bonnen, regels, facturen, instellingen, logboek, medewerkers, voertuigen, projecttarieven]) if (r.error) throw r.error;
         const inst: Record<string, string> = {};
         for (const r of instellingen.data ?? []) inst[r.sleutel] = r.waarde;
+        // De werkvloer vult alleen uren, gebruik en verblijf in: tarieven, prijzen, bedragen en facturen blijven bij de administratie.
+        const zonderGeld = <T extends Record<string, unknown>>(rijen: T[] | null, velden: string[]) =>
+          (rijen ?? []).map((r) => { const c = { ...r } as Record<string, unknown>; for (const v of velden) delete c[v]; return c; });
+        const tarievenUit = admin ? tarieven.data : zonderGeld(tarieven.data, ["prijs"]);
+        const regelsUit = admin ? regels.data : zonderGeld(regels.data, ["prijs", "bedrag"]);
+        const facturenUit = admin ? facturen.data : [];
+        const projecttarievenUit = admin ? projecttarieven.data : [];
         return json({
-          rol, bedrijven: bedrijven.data, projecten: projecten.data, tarieven: tarieven.data,
-          bonnen: bonnen.data, regels: regels.data, facturen: facturen.data, instellingen: inst, logboek: logboek.data,
-          medewerkers: medewerkers.data, voertuigen: voertuigen.data, projecttarieven: projecttarieven.data,
+          rol, bedrijven: bedrijven.data, projecten: projecten.data, tarieven: tarievenUit,
+          bonnen: bonnen.data, regels: regelsUit, facturen: facturenUit, instellingen: inst, logboek: logboek.data,
+          medewerkers: medewerkers.data, voertuigen: voertuigen.data, projecttarieven: projecttarievenUit,
           storage_url: Deno.env.get("SUPABASE_URL") + "/storage/v1/object/public/" + BUCKET + "/",
         });
       }
@@ -250,6 +277,7 @@ Deno.serve(async (req) => {
         if (!Number.isInteger(project_id)) throw new Error("kies een project");
         checkDatum(fields.datum, "datum");
         const regels = normRegels(body.regels);
+        if (!admin) await prijsVanServer(db, project_id, regels);   // werkvloer stuurt geen prijzen mee
         const invoer = normInvoer(fields.invoer);
         const basis: Record<string, unknown> = {
           project_id, datum: fields.datum, invoer,
@@ -354,6 +382,7 @@ Deno.serve(async (req) => {
       }
       case "projecttarief_save": {
         // Projectafspraken: eigen prijs per tarief voor dit project (± 0,25-stappen in de wizard).
+        if (!admin) throw new Error("alleen administratie");
         const project_id = Number(body.project_id);
         if (!Number.isInteger(project_id)) throw new Error("project ontbreekt");
         const prijzen = Array.isArray(body.prijzen) ? body.prijzen as Array<Record<string, unknown>> : [];
@@ -592,7 +621,8 @@ Deno.serve(async (req) => {
           };
         }).filter((r) => r.aantal > 0);
         await log(wie, String(body.log ?? ""));
-        return json({ ok: true, datum, afgetekend_door: uit.afgetekend_door ?? "", opmerking: String(uit.opmerking ?? ""), leesbaarheid: String(uit.leesbaarheid ?? "matig"), regels });
+        const regelsUit = admin ? regels : regels.map((r) => { const c = { ...r } as Record<string, unknown>; delete c.prijs; return c; });
+        return json({ ok: true, datum, afgetekend_door: uit.afgetekend_door ?? "", opmerking: String(uit.opmerking ?? ""), leesbaarheid: String(uit.leesbaarheid ?? "matig"), regels: regelsUit });
       }
       case "bedrijf_logo": {
         if (!admin) throw new Error("alleen administratie");

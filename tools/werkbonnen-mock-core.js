@@ -37,7 +37,12 @@ function isoWeek(d){ const [y,m,dd]=d.split('-').map(Number); const dt=new Date(
 function veelvoud(v,stap){ const q=v/stap; return Math.abs(q-Math.round(q))<1e-6; }
 function stapAantal(cat){ return cat==='transport'?0.5:1; }
 function stapPer(eenheid){ const e=String(eenheid||'').toLowerCase(); return e==='uur'?0.5:/^km/.test(e)?0.5:e==='dag'?0.25:1; }
-function normRegels(regels){ if(!Array.isArray(regels)) throw new Error('regels ontbreken'); return regels.map((x,i)=>{ if(!CATS.includes(x.categorie)) throw new Error('onbekende categorie op regel '+(i+1)); const oms=String(x.omschrijving||'').trim(); if(!oms) throw new Error('omschrijving leeg op regel '+(i+1)); const aantal=num(x.aantal,'aantal'); const per=x.per==null||x.per===''?null:num(x.per,'per'); const prijs=num(x.prijs,'prijs'); if(!veelvoud(aantal,stapAantal(x.categorie))) throw new Error(x.categorie==='transport'?'uren op regel '+(i+1)+' moeten in halve uren zijn':'aantal op regel '+(i+1)+' moet een heel getal zijn (geen halve mannen, auto\'s, nachten of stuks)'); if(per!=null&&!veelvoud(per,stapPer(x.eenheid_per))) throw new Error('per-waarde op regel '+(i+1)+' moet in stappen van '+stapPer(x.eenheid_per)+' zijn (uren en km per 0,5; dagdeel per 0,25)'); const totaal=r2(per==null?aantal:aantal*per); return {sort:i+1,categorie:x.categorie,omschrijving:oms,tarief_id:x.tarief_id==null||x.tarief_id===''?null:Number(x.tarief_id),aantal,per,totaal,prijs,bedrag:r2(totaal*prijs),eenheid_n:String(x.eenheid_n||''),eenheid_per:String(x.eenheid_per||''),eenheid_totaal:String(x.eenheid_totaal||''),namen:String(x.namen||''),bron:['shift','voertuig','extra'].includes(x.bron)?x.bron:''}; }); }
+// De werkvloer stuurt alleen aantallen mee; de server zet er de geldende projectprijs bij.
+function prijsVanServer(projectId,regels){ for(const r of regels){ const tid=r.tarief_id==null?null:Number(r.tarief_id);
+  const pt=tid==null?null:T.projecttarieven.find(x=>x.project_id===projectId&&x.tarief_id===tid);
+  const t=tid==null?null:T.tarieven.find(x=>x.id===tid);
+  const prijs=pt?Number(pt.prijs):(t?Number(t.prijs):0); r.prijs=prijs; r.bedrag=r2(Number(r.totaal)*prijs); } }
+function normRegels(regels){ if(!Array.isArray(regels)) throw new Error('regels ontbreken'); return regels.map((x,i)=>{ if(!CATS.includes(x.categorie)) throw new Error('onbekende categorie op regel '+(i+1)); const oms=String(x.omschrijving||'').trim(); if(!oms) throw new Error('omschrijving leeg op regel '+(i+1)); const aantal=num(x.aantal,'aantal'); const per=x.per==null||x.per===''?null:num(x.per,'per'); const prijs=(x.prijs==null||x.prijs==='')?0:num(x.prijs,'prijs'); if(!veelvoud(aantal,stapAantal(x.categorie))) throw new Error(x.categorie==='transport'?'uren op regel '+(i+1)+' moeten in halve uren zijn':'aantal op regel '+(i+1)+' moet een heel getal zijn (geen halve mannen, auto\'s, nachten of stuks)'); if(per!=null&&!veelvoud(per,stapPer(x.eenheid_per))) throw new Error('per-waarde op regel '+(i+1)+' moet in stappen van '+stapPer(x.eenheid_per)+' zijn (uren en km per 0,5; dagdeel per 0,25)'); const totaal=r2(per==null?aantal:aantal*per); return {sort:i+1,categorie:x.categorie,omschrijving:oms,tarief_id:x.tarief_id==null||x.tarief_id===''?null:Number(x.tarief_id),aantal,per,totaal,prijs,bedrag:r2(totaal*prijs),eenheid_n:String(x.eenheid_n||''),eenheid_per:String(x.eenheid_per||''),eenheid_totaal:String(x.eenheid_totaal||''),namen:String(x.namen||''),bron:['shift','voertuig','extra'].includes(x.bron)?x.bron:''}; }); }
 function normInvoer(inv){ if(inv==null) return {shifts:[],voertuigen:[]}; if(typeof inv!=='object'||Array.isArray(inv)) throw new Error('invoer ongeldig'); if(JSON.stringify(inv).length>60000) throw new Error('invoer te groot'); return {shifts:Array.isArray(inv.shifts)?inv.shifts.slice(0,50):[],voertuigen:Array.isArray(inv.voertuigen)?inv.voertuigen.slice(0,100):[]}; }
 function handle(body, code){
   const rol=code===CODE_ADMIN?'admin':code===CODE_TEAM?'team':''; if(!rol) return [401,{fout:'onjuiste code'}];
@@ -45,11 +50,17 @@ function handle(body, code){
   const log=()=>{ if(body.log) T.logboek.unshift({id:++seq.log,ts:new Date().toISOString(),wie,actie:body.log}); };
   try{
     switch(body.action){
-      case 'state': return [200,{rol,bedrijven:T.bedrijven,projecten:T.projecten,tarieven:T.tarieven,medewerkers:T.medewerkers,voertuigen:T.voertuigen,projecttarieven:T.projecttarieven,bonnen:T.bonnen.slice().sort((a,b)=>a.datum<b.datum?1:a.datum>b.datum?-1:b.id-a.id),regels:T.regels,facturen:T.facturen.slice().reverse(),instellingen:T.instellingen,logboek:admin?T.logboek.slice(0,60):[],storage_url:(typeof window!=='undefined')?'':'http://localhost:8787/storage/'}];
+      case 'state': {
+        // De werkvloer vult alleen uren, gebruik en verblijf in: tarieven, prijzen, bedragen en facturen blijven bij de administratie.
+        const zonder=(rijen,velden)=>rijen.map(r=>{ const c={...r}; for(const v of velden) delete c[v]; return c; });
+        return [200,{rol,bedrijven:T.bedrijven,projecten:T.projecten,tarieven:admin?T.tarieven:zonder(T.tarieven,['prijs']),medewerkers:T.medewerkers,voertuigen:T.voertuigen,
+          projecttarieven:admin?T.projecttarieven:[],bonnen:T.bonnen.slice().sort((a,b)=>a.datum<b.datum?1:a.datum>b.datum?-1:b.id-a.id),
+          regels:admin?T.regels:zonder(T.regels,['prijs','bedrag']),facturen:admin?T.facturen.slice().reverse():[],instellingen:T.instellingen,logboek:admin?T.logboek.slice(0,60):[],
+          storage_url:(typeof window!=='undefined')?'':'http://localhost:8787/storage/'}]; }
       case 'bon_save': {
         const project_id=Number(fields.project_id); if(!Number.isInteger(project_id)) throw new Error('kies een project');
         if(!/^\d{4}-\d{2}-\d{2}$/.test(fields.datum||'')) throw new Error('datum is geen geldige datum');
-        const regels=normRegels(body.regels); const invoer=normInvoer(fields.invoer);
+        const regels=normRegels(body.regels); if(!admin) prijsVanServer(Number(fields.project_id),regels); const invoer=normInvoer(fields.invoer);
         const basis={project_id,datum:fields.datum,invoer,ingevuld_door:String(fields.ingevuld_door||wie),opmerking:String(fields.opmerking||''),afgetekend_door:String(fields.afgetekend_door||''),updated_at:new Date().toISOString()};
         if(fields.handtekening_b64) basis.handtekening_pad=(typeof window!=='undefined')?fields.handtekening_b64:'sig-'+Date.now()+'.png';
         if((fields.fotos_b64||[]).length>10) throw new Error("maximaal 10 foto's per bon");
@@ -74,6 +85,7 @@ function handle(body, code){
         let p; if(id){ p=T.projecten.find(b=>b.id===id); Object.assign(p,fields); } else p=add('projecten','project',{actief:true,sort:100,afstand_km:0,aangemaakt_door:wie,...fields});
         log(); return [200,{ok:true,id:p.id}]; }
       case 'projecttarief_save': { // projectafspraken: prijs per tarief voor dit project (wizard)
+        if(!admin) throw new Error('alleen administratie');
         const project_id=Number(body.project_id); if(!T.projecten.some(p=>p.id===project_id)) throw new Error('project niet gevonden'); const prijzen=Array.isArray(body.prijzen)?body.prijzen:[]; if(prijzen.length>500) throw new Error('te veel prijzen');
         for(const x of prijzen){ const tarief_id=Number(x.tarief_id); if(!T.tarieven.some(t=>t.id===tarief_id)) throw new Error('tarief '+x.tarief_id+' niet gevonden'); const prijs=num(x.prijs,'prijs'); const b=T.projecttarieven.find(y=>y.project_id===project_id&&y.tarief_id===tarief_id); if(b) b.prijs=prijs; else add('projecttarieven','projecttarief',{project_id,tarief_id,prijs}); }
         break; }
@@ -113,7 +125,8 @@ function handle(body, code){
       case 'factuur_delete': { if(!admin) throw new Error('alleen administratie'); const f=T.facturen.find(f=>f.id===id); if(f.status!=='concept') throw new Error('alleen conceptfacturen kunnen vervallen'); for(const b of T.bonnen) if(b.factuur_id===id){ b.status='goedgekeurd'; b.factuur_id=null; } T.facturen=T.facturen.filter(x=>x.id!==id); break; }
       case 'bon_lees_foto': { if(!fields.foto_b64) throw new Error('geen foto meegestuurd'); const t=nm=>T.tarieven.find(x=>x.omschrijving===nm); const dag=new Date((fields.datum||'2026-08-27')+'T00:00:00Z').getUTCDay(); const arb=T.tarieven.find(x=>x.categorie==='arbeid'&&x.dagtype===(dag===0?'zo':dag===6?'za':'ma-vr'))||t('Arbeid');
         const mk=(x,aantal,per,namen,zek)=>({categorie:x.categorie,omschrijving:x.omschrijving,tarief_id:x.id,aantal,per,prijs:x.prijs,eenheid_n:x.eenheid_n,eenheid_per:x.eenheid_per,eenheid_totaal:x.eenheid_totaal,namen:namen||'',zekerheid:zek||'hoog',gekoppeld:true});
-        log(); return [200,{ok:true,datum:fields.datum||'2026-08-27',afgetekend_door:'J. Baas',opmerking:'Glas afd. 3 (demo-uitlezing)',leesbaarheid:'goed',regels:[mk(arb,3,12.5,'Jan, Piet, Kees'),mk(t('Kilometervergoeding'),2,54),mk(t('Overnachtingsvergoeding'),7,null),mk(t('Gebruik platformtrekker incl. brandstof'),2,null,'','middel'),{categorie:'materiaal',omschrijving:'Rubber profiel 12mm',tarief_id:null,aantal:20,per:null,prijs:0,eenheid_n:'',eenheid_per:'',eenheid_totaal:'per stuk',namen:'',zekerheid:'laag',gekoppeld:false}]}]; }
+        const geldWeg=rs=>admin?rs:rs.map(r=>{ const c={...r}; delete c.prijs; return c; });
+        log(); return [200,{ok:true,datum:fields.datum||'2026-08-27',afgetekend_door:'J. Baas',opmerking:'Glas afd. 3 (demo-uitlezing)',leesbaarheid:'goed',regels:geldWeg([mk(arb,3,12.5,'Jan, Piet, Kees'),mk(t('Kilometervergoeding'),2,54),mk(t('Overnachtingsvergoeding'),7,null),mk(t('Gebruik platformtrekker incl. brandstof'),2,null,'','middel'),{categorie:'materiaal',omschrijving:'Rubber profiel 12mm',tarief_id:null,aantal:20,per:null,prijs:0,eenheid_n:'',eenheid_per:'',eenheid_totaal:'per stuk',namen:'',zekerheid:'laag',gekoppeld:false}])}]; }
       case 'bedrijf_logo': { if(!admin) throw new Error('alleen administratie'); if(!fields.logo_b64) throw new Error('geen logo meegestuurd'); T.bedrijven.find(b=>b.id===id).logo_pad=(typeof window!=='undefined')?fields.logo_b64:'logo-'+id+'.png'; break; }
       case 'testdata_wissen': { if(!admin) throw new Error('alleen administratie'); if(String(body.bevestiging||'')!=='WISSEN') throw new Error('bevestiging ontbreekt'); T.facturen=[]; T.bonnen=[]; T.regels=[]; break; }
       default: return [400,{fout:'onbekende actie'}];

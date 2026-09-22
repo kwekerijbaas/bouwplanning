@@ -163,9 +163,17 @@ staat de naam er twee keer.
 
 ### Leesbaar in een kas
 Een kas is licht, de telefoon zit in een handschoen en de teamleider leest niet stil aan een bureau.
-Daarom: basisletter 17px (kleine labels minimaal 14px), knoppen 16px, tabelrijen 16px en de tekstkleur
+Daarom: basisletter 19px (kleine labels minimaal 15px), knoppen 18px, tabelrijen 17px en de tekstkleur
 `--grijs` op #40514a (8,4:1 op wit in plaats van 4,7:1). Vulkleuren met witte letters (status-chips,
 balk) halen allemaal minstens 4,5:1.
+
+Geen uitlegregels op de dagbon: de koppen en knoppen zeggen zelf wat ze doen ("Wie heeft er
+gewerkt?", "Wat is er gebruikt? - tik aan", "+ Ploeg met andere tijden", "+ namen erbij"), in het
+handtekeningvak staat "teken hier met je vinger" tot er getekend wordt, en de waarschuwing bij het
+uitlezen van een foto verschijnt pas als er iets uitgelezen is. `tools/werkbonnen-e2e-extra.js`
+bewaakt dat: een test meet de lettergroottes en het contrast in de browser, een tweede controleert
+dat de oude uitlegzinnen niet terugkruipen, en een derde dat er op 360-400px geen horizontale
+scroll ontstaat.
 
 Een gekozen huisstijlkleur wordt daar automatisch op bijgesteld: `leesbaar()` verdonkert de kleur
 stapje voor stapje tot witte letters erop minstens 4,6:1 halen (KZ-groen #3aa35b wordt zo #2e7f47).

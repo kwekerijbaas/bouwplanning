@@ -20,6 +20,17 @@ geen data - alleen de pagina. Deploy: Webflow Cloud, site "bouwplanning", mount 
    `Reparatieplanning - Jarno.html` (OneDrive: Hagelschade 2026/bouwplanning).
 2. Commit + push naar main -> Webflow Cloud deployt automatisch (ca. 2-3 min).
 
+### Als de pagina blanco blijft
+`astro.config.mjs` mag géén `base` of `build.assetsPrefix` zetten: Webflow Cloud vult die
+zelf in vanuit het mount path van de environment
+([docs](https://developers.webflow.com/webflow-cloud/bring-your-own-app)). Stond hier eerder
+`base: '/app'` - dat is eruit. Controleer verder in Webflow > Apps > Webflow Cloud:
+- staat de environment op branch `main` en op mount path `/app`?
+- staat er onder Deployments een geslaagde deploy ná de laatste push? Zo niet: opnieuw
+  deployen (en anders de GitHub-koppeling opnieuw autoriseren).
+- de bouw meldt "0 page(s) built" omdat er geen `src/pages` is; dat klopt - de pagina's in
+  `public/` worden ongewijzigd naar `dist/` gekopieerd en als statische bestanden geserveerd.
+
 ## Werkbonnen (hagelschade-facturatie) - `public/werkbonnen.html`
 Eén bestand, zelfde opzet als de planning: alle data via de edge function `werkbonnen`
 (Supabase-project hlgvtxcwbhrbbcozvsen). Proces: teamleider vult dagbon in en dient in

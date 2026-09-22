@@ -194,6 +194,8 @@ function bedrijf(id){ return (S.data.bedrijven||[]).find(b=>b.id===id); }
 function regelsVan(bonId){ return (S.data.regels||[]).filter(r=>r.bon_id===bonId).sort((a,b)=>a.sort-b.sort); }
 function bonTotaal(bonId){ return r2(regelsVan(bonId).reduce((s,r)=>s+Number(r.bedrag),0)); }
 function isAdmin(){ return S.data && S.data.rol==='admin'; }
+// De werkvloer vult alleen in wat er gewerkt, gebruikt en verbleven is: geen tarieven of bedragen in beeld.
+function magGeld(){ return isAdmin(); }
 function fotoUrl(pad){ return (S.data.storage_url||'')+pad; }
 // Huisstijl van de aannemer (Lijsten > Bedrijven): hoofdkleur, tweede kleur en logo bepalen de uitstraling van app, overzicht en factuur.
 function huisstijl(b){
@@ -283,7 +285,7 @@ function normShift(s){ const legacy=!Array.isArray((s||{}).leden); const sh=Obje
 function shiftMan(sh){ if(!Array.isArray(sh.leden)) return (sh.namen||[]).length+Math.ceil(num(sh.extra_man)-1e-9); return Math.max(Math.ceil(num(sh.aantal_man)-1e-9), sh.leden.length); }
 function shiftNamen(sh){ return Array.isArray(sh.leden)?sh.leden.map(naamVan).filter(Boolean):(sh.namen||[]); }
 function teControleren(){ return (S.data.medewerkers||[]).filter(m=>m.actief&&!m.gecontroleerd); }
-function projectPrijs(projectId,t){ const pt=(S.data.projecttarieven||[]).find(x=>x.project_id===projectId&&x.tarief_id===t.id); return pt?Number(pt.prijs):Number(t.prijs); }
+function projectPrijs(projectId,t){ const pt=(S.data.projecttarieven||[]).find(x=>x.project_id===projectId&&x.tarief_id===t.id); return num(pt?pt.prijs:t.prijs); }
 function tariefRegel(t,projectId,extra){ return Object.assign({categorie:t.categorie, omschrijving:t.omschrijving, tarief_id:t.id, aantal:0, per:null, prijs:projectPrijs(projectId,t), eenheid_n:t.eenheid_n, eenheid_per:t.eenheid_per, eenheid_totaal:t.eenheid_totaal, namen:'', bron:''}, extra||{}); }
 function transportKmTarief(){ return tarieven('transport').find(t=>/km/i.test(t.eenheid_totaal||''))||null; }
 function voertuig(id){ return (S.data.voertuigen||[]).find(v=>v.id===id); }
@@ -381,7 +383,7 @@ function viewBon(){
   inv.voertuigen.forEach((v,i)=>{ const t=(S.data.tarieven||[]).find(t=>t.id===v.tarief_id);
     x+='<div class="vrt" data-vrt="'+i+'"><b>'+esc(v.naam)+'</b><span class="seg"><button class="'+(v.gebracht?'':'aan')+'" data-vi="'+i+'" data-vf="locatie" '+d+'>al op locatie</button><button class="'+(v.gebracht?'aan':'')+'" data-vi="'+i+'" data-vf="gebracht" '+d+'>gebracht</button></span>'
       +(v.gebracht?'<label>km<input type="number" step="0.5" min="0" inputmode="decimal" data-vi="'+i+'" data-vf="km" value="'+esc(v.km)+'" '+d+'></label>':'<span class="stil">geen km</span>')
-      +(v.soort==='materieel'?'<label>dag<select data-vi="'+i+'" data-vf="dagdeel" '+d+'>'+[[1,'hele dag'],[0.75,'¾ dag'],[0.5,'halve dag'],[0.25,'¼ dag']].map(o=>'<option value="'+o[0]+'" '+(num(v.dagdeel==null||v.dagdeel===''?1:v.dagdeel)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('')+'</select></label><span class="stil">'+(t?fmtGeld(projectPrijs(b.project_id,t))+' '+esc(t.eenheid_totaal):'geen dagtarief')+'</span>':'<span class="stil">km-vergoeding</span>')
+      +(v.soort==='materieel'?'<label>dag<select data-vi="'+i+'" data-vf="dagdeel" '+d+'>'+[[1,'hele dag'],[0.75,'¾ dag'],[0.5,'halve dag'],[0.25,'¼ dag']].map(o=>'<option value="'+o[0]+'" '+(num(v.dagdeel==null||v.dagdeel===''?1:v.dagdeel)===o[0]?'selected':'')+'>'+o[1]+'</option>').join('')+'</select></label><span class="stil">'+(t?(magGeld()?fmtGeld(projectPrijs(b.project_id,t))+' ':'')+esc(t.eenheid_totaal):'geen dagtarief')+'</span>':'<span class="stil">km-vergoeding</span>')
       +(bew?'<button class="x" data-vdel="'+i+'">×</button>':'')+'</div>'; });
   x+='</div>';
   // --- regels (afgeleid + extra) ---
@@ -393,7 +395,7 @@ function viewBon(){
     for(const {r,i} of rs) x+=regelHtml(r,i,bew&&r.bron==='extra');
     x+='</div>';
   }
-  x+='<div class="totaal"><span>Totaal dag excl. btw</span><span id="b-totaal">'+fmtGeld(bonSom())+'</span></div>';
+  if(magGeld()) x+='<div class="totaal"><span>Totaal dag excl. btw</span><span id="b-totaal">'+fmtGeld(bonSom())+'</span></div>';
   x+='<div class="rij"><label>Opmerking / bijzonderheden<textarea id="b-opm" '+d+'>'+esc(b.opmerking)+'</textarea></label></div>';
   x+='<h3>Aftekening opdrachtgever</h3><div class="rij"><label>Afgetekend door (naam)<input type="text" id="b-aft" value="'+esc(b.afgetekend_door)+'" '+d+'></label></div>';
   if(bew){ x+='<div class="stil">Handtekening (teken met vinger of muis):</div><canvas class="sig" id="b-sig"></canvas><div class="rij"><button class="knop klein licht" id="b-sig-wis">wis handtekening</button></div>'; }
@@ -414,13 +416,15 @@ function viewBon(){
 }
 function regelHtml(r,i,bew){
   const c=CAT[r.categorie], ts=tarieven(r.categorie), b=regelBedrag(r), d=bew?'':'disabled', vast=r.bron&&r.bron!=='extra';
-  const keuze=(ts.length&&r.categorie!=='overnachting'&&!vast)?'<select data-i="'+i+'" data-f="tarief" '+d+'>'+ts.map(t=>'<option value="'+t.id+'" '+(t.id===r.tarief_id?'selected':'')+'>'+esc(t.omschrijving)+' — '+fmtGeld(projectPrijs(S.bon.project_id,t))+' '+esc(t.eenheid_totaal)+'</option>').join('')+'<option value="" '+(r.tarief_id?'':'selected')+'>anders…</option></select>':'';
+  const keuze=(ts.length&&r.categorie!=='overnachting'&&!vast)?'<select data-i="'+i+'" data-f="tarief" '+d+'>'+ts.map(t=>'<option value="'+t.id+'" '+(t.id===r.tarief_id?'selected':'')+'>'+esc(t.omschrijving)+' — '+(magGeld()?fmtGeld(projectPrijs(S.bon.project_id,t))+' ':'')+esc(t.eenheid_totaal)+'</option>').join('')+'<option value="" '+(r.tarief_id?'':'selected')+'>anders…</option></select>':'';
   const vrij=vast?'<span class="vastlbl">'+(r.bron==='shift'?'👷':'🚐')+' '+esc(r.omschrijving)+(r.namen?'<br><span class="stil">'+esc(r.namen)+'</span>':'')+'</span>':((!r.tarief_id||!ts.length||r.categorie==='overnachting')?'<input type="text" data-i="'+i+'" data-f="omschrijving" value="'+esc(r.omschrijving)+'" placeholder="omschrijving" '+d+'>':'');
   let x='<div class="bonregel'+(r.uitgelezen?' uitgelezen':'')+(vast?' vast':'')+'"'+(r.uitgelezen?' title="Uit foto uitgelezen'+(r.zekerheid?' (zekerheid '+esc(r.zekerheid)+')':'')+'"':vast?' title="Afgeleid uit ploegen/voertuigen; pas die aan om deze regel te wijzigen"':'')+'><div class="oms">'+keuze+vrij+(r.categorie==='arbeid'&&!vast?'<input type="text" data-i="'+i+'" data-f="namen" value="'+esc(r.namen)+'" placeholder="namen (optioneel)" style="margin-top:3px" '+d+'>':'')+'</div>';
   x+='<div><span class="lbl">'+esc(r.eenheid_n||'aantal')+'</span><input type="number" step="'+stapAantal(r)+'" min="0" inputmode="'+(heelAantal(r)?'numeric':'decimal')+'" data-i="'+i+'" data-f="aantal" value="'+esc(r.aantal)+'" '+(vast?'disabled':d)+'></div>';
   x+='<div>'+(r.eenheid_per?'<span class="lbl">'+esc(r.eenheid_per)+(r.eenheid_n==='man'?' p.p.':r.eenheid_n==="auto's"?' per auto':' per stuk')+'</span><input type="number" step="'+stapPer(r)+'" min="0" data-i="'+i+'" data-f="per" value="'+esc(r.per==null?'':r.per)+'" '+(vast?'disabled':d)+'>':'')+'</div>';
-  x+='<div><span class="lbl">prijs '+esc(r.eenheid_totaal)+'</span><input type="number" step="0.01" min="0" data-i="'+i+'" data-f="prijs" value="'+esc(r.prijs)+'" '+((bew&&isAdmin()&&!vast)?'':'disabled')+'></div>';
-  x+='<div class="bedrag"><span class="lbl">'+fmtNum(b.totaal)+' '+esc(r.eenheid_totaal)+'</span><b data-bedrag="'+i+'">'+fmtGeld(b.bedrag)+'</b></div>';
+  if(magGeld()){
+    x+='<div><span class="lbl">prijs '+esc(r.eenheid_totaal)+'</span><input type="number" step="0.01" min="0" data-i="'+i+'" data-f="prijs" value="'+esc(r.prijs)+'" '+((bew&&!vast)?'':'disabled')+'></div>';
+    x+='<div class="bedrag"><span class="lbl">'+fmtNum(b.totaal)+' '+esc(r.eenheid_totaal)+'</span><b data-bedrag="'+i+'">'+fmtGeld(b.bedrag)+'</b></div>';
+  } else x+='<div class="bedrag"><span class="lbl">totaal</span><b data-bedrag="'+i+'">'+fmtNum(b.totaal)+' '+esc(r.eenheid_totaal)+'</b></div>';
   x+=(bew&&!vast?'<button class="x" data-del="'+i+'">×</button>':'<span></span>')+'</div>';
   return x;
 }
@@ -437,7 +441,7 @@ function projectbonDoc(b){
   const extra=b.regels.filter(r=>r.bron==='extra'||(!(inv.shifts||[]).length&&r.categorie!=='arbeid'));
   if(extra.length) x+='<h1 style="font-size:13px;margin-top:14px">Overige (transport, materieel, materiaal)</h1><table><tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th></tr>'+extra.map(r=>'<tr><td>'+esc(r.omschrijving)+'</td><td>'+(r.per!=null?aantalTekst(r):'')+'</td><td>'+fmtNum(regelBedrag(r).totaal)+' '+esc(r.eenheid_totaal)+'</td></tr>').join('')+'</table>';
   if(b.opmerking) x+='<div class="adres"><b>Opmerking:</b> '+esc(b.opmerking)+'</div>';
-  x+='<div class="fmeta"><div><b>Afgetekend door opdrachtgever</b>'+esc(b.afgetekend_door||'—')+(b.handtekening_pad||b.handtekening_b64?'<br><img src="'+esc(b.handtekening_b64||fotoUrl(b.handtekening_pad))+'" style="max-height:80px">':'')+'</div><div><b>Status</b>'+esc(STATUS_TXT[b.status]||b.status)+'</div><div><b>Totaal dag excl. btw</b>'+fmtGeld(b.regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0))+'</div></div>';
+  x+='<div class="fmeta"><div><b>Afgetekend door opdrachtgever</b>'+esc(b.afgetekend_door||'—')+(b.handtekening_pad||b.handtekening_b64?'<br><img src="'+esc(b.handtekening_b64||fotoUrl(b.handtekening_pad))+'" style="max-height:80px">':'')+'</div><div><b>Status</b>'+esc(STATUS_TXT[b.status]||b.status)+'</div>'+(magGeld()?'<div><b>Totaal dag excl. btw</b>'+fmtGeld(b.regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0))+'</div>':'')+'</div>';
   if((b.foto_paden||[]).length) x+='<div class="thumbs">'+b.foto_paden.map(p=>'<img src="'+esc(fotoUrl(p))+'" style="height:90px">').join('')+'</div>';
   x+='</div>'; return x;
 }
@@ -471,7 +475,7 @@ async function bonOpslaan(indienen){
   const leeg=regels.find(r=>!r.omschrijving.trim()); if(leeg){ toast('Een regel heeft nog geen omschrijving'); return; }
   for(const r of regels){ const fout=regelFout(r); if(fout){ toast(fout+' — '+r.omschrijving); return; } }
   const pr=project(f.project_id);
-  const j=await doe({action:'bon_save', id:S.bon.id, fields:f, regels, indienen:!!indienen}, (indienen?'Dagbon ingediend: ':'Dagbon opgeslagen: ')+(pr?pr.naam:'')+' '+fmtKort(f.datum)+' '+fmtGeld(r2(regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0))));
+  const j=await doe({action:'bon_save', id:S.bon.id, fields:f, regels, indienen:!!indienen}, (indienen?'Dagbon ingediend: ':'Dagbon opgeslagen: ')+(pr?pr.naam:'')+' '+fmtKort(f.datum)+(magGeld()?' '+fmtGeld(r2(regels.reduce((s,r)=>s+regelBedrag(r).bedrag,0))):''));
   if(j&&j.id){ const nb=(S.data.bonnen||[]).find(x=>x.id===j.id); if(nb){ laadBon(nb); render(); } toast(indienen?'Bon ingediend bij de administratie':'Bon opgeslagen'); }
 }
 function bindBon(){
@@ -507,8 +511,9 @@ function bindBon(){
   app.querySelectorAll('.bonregel [data-f]').forEach(el=>{
     el.addEventListener('input',()=>{ const r=S.bon.regels[+el.dataset.i]; const f=el.dataset.f;
       if(f==='aantal'||f==='per'||f==='prijs') r[f]=(f==='per'&&el.value==='')?null:num(el.value); else r[f]=el.value;
-      const b=regelBedrag(r); const cel=app.querySelector('[data-bedrag="'+el.dataset.i+'"]'); if(cel){ cel.textContent=fmtGeld(b.bedrag); cel.previousElementSibling.textContent=fmtNum(b.totaal)+' '+r.eenheid_totaal; }
-      document.getElementById('b-totaal').textContent=fmtGeld(bonSom()); });
+      const b=regelBedrag(r); const cel=app.querySelector('[data-bedrag="'+el.dataset.i+'"]');
+      if(cel){ if(magGeld()){ cel.textContent=fmtGeld(b.bedrag); cel.previousElementSibling.textContent=fmtNum(b.totaal)+' '+r.eenheid_totaal; } else cel.textContent=fmtNum(b.totaal)+' '+r.eenheid_totaal; }
+      const tot=document.getElementById('b-totaal'); if(tot) tot.textContent=fmtGeld(bonSom()); });
     if(el.dataset.f==='tarief') el.addEventListener('change',()=>{ leesBonInputs(); const r=S.bon.regels[+el.dataset.i]; const t=(S.data.tarieven||[]).find(t=>t.id===Number(el.value));
       if(t){ r.tarief_id=t.id; r.omschrijving=t.omschrijving; r.prijs=projectPrijs(S.bon.project_id,t); r.eenheid_n=t.eenheid_n; r.eenheid_per=t.eenheid_per; r.eenheid_totaal=t.eenheid_totaal; if(t.eenheid_per&&r.per==null) r.per=1; if(!t.eenheid_per) r.per=null; }
       else { r.tarief_id=null; r.omschrijving=''; if(!isAdmin()) r.prijs=0; }
@@ -601,37 +606,40 @@ function projectWizard(p, stap){
   const sh=document.getElementById('sheet'); const dicht=()=>{ sh.style.display='none'; sh.innerHTML=''; };
   const aanOpt=(S.data.bedrijven||[]).filter(b=>b.soort==='aannemer'&&b.actief).map(b=>({v:b.id,t:b.naam})), opdOpt=(S.data.bedrijven||[]).filter(b=>b.soort==='opdrachtgever'&&b.actief).map(b=>({v:b.id,t:b.naam}));
   const st={ stap:stap||'gegevens', p:Object.assign({code:volgendProjectCode(), naam:'', adres:'', postcode_plaats:'', aannemer_id:aanOpt[0]&&aanOpt[0].v, opdrachtgever_id:opdOpt[0]&&opdOpt[0].v, claimnummer:'', factuur_omschrijving:'', afstand_km:0, actief:true, sort:100}, p||{}),
-    prijzen:Object.fromEntries((S.data.tarieven||[]).filter(t=>t.actief).map(t=>[t.id, p?projectPrijs(p.id,t):Number(t.prijs)])) };
+    prijzen:Object.fromEntries((S.data.tarieven||[]).filter(t=>t.actief).map(t=>[t.id, p?projectPrijs(p.id,t):num(t.prijs)])) };
+  const geld=magGeld();                                  // werkvloer: geen prijsstap, alleen gegevens en controle
+  if(!geld&&st.stap==='afspraken') st.stap='gegevens';
   const teken=()=>{
-    let h='<div class="sheetkaart"><div class="sheettitel">'+(p?'Project '+esc(st.p.code)+' — ':'Nieuw project — ')+(st.stap==='gegevens'?'stap 1 van 3: gegevens':st.stap==='afspraken'?'stap 2 van 3: projectafspraken':'stap 3 van 3: controle')+'</div>';
+    let h='<div class="sheetkaart"><div class="sheettitel">'+(p?'Project '+esc(st.p.code)+' — ':'Nieuw project — ')+(st.stap==='gegevens'?'stap 1 van '+(geld?3:2)+': gegevens':st.stap==='afspraken'?'stap 2 van 3: projectafspraken':'stap '+(geld?3:2)+' van '+(geld?3:2)+': controle')+'</div>';
     if(st.stap==='gegevens'){
       h+='<div class="rij" style="display:grid;grid-template-columns:1fr 1fr"><label>Projectnummer<input type="text" data-k="code" value="'+esc(st.p.code)+'"></label><label>Naam<input type="text" data-k="naam" value="'+esc(st.p.naam)+'" placeholder="bijv. Enserweg"></label>'
         +'<label>Locatie (adres)<input type="text" data-k="adres" value="'+esc(st.p.adres)+'"></label><label>Postcode plaats<input type="text" data-k="postcode_plaats" value="'+esc(st.p.postcode_plaats)+'"></label>'
         +'<label>Opdrachtgever<select data-k="opdrachtgever_id">'+opdOpt.map(o=>'<option value="'+o.v+'" '+(o.v===st.p.opdrachtgever_id?'selected':'')+'>'+esc(o.t)+'</option>').join('')+'</select></label><label>Aannemer (factureert)<select data-k="aannemer_id">'+aanOpt.map(o=>'<option value="'+o.v+'" '+(o.v===st.p.aannemer_id?'selected':'')+'>'+esc(o.t)+'</option>').join('')+'</select></label>'
         +'<label>Claimnummer verzekeraar<input type="text" data-k="claimnummer" value="'+esc(st.p.claimnummer)+'"></label><label>Afstand naar locatie (km, per 0,5)<input type="number" step="0.5" min="0" inputmode="decimal" data-k="afstand_km" value="'+esc(st.p.afstand_km||0)+'"></label>'
         +'<label style="grid-column:1/-1">Omschrijving op factuur<input type="text" data-k="factuur_omschrijving" value="'+esc(st.p.factuur_omschrijving)+'" placeholder="Uitgevoerde werkzaamheden t.a.v. …"></label></div>';
-      h+='<div class="sheetrij"><button class="knop licht" id="w-annuleer">Annuleren</button><button class="knop" id="w-verder" style="flex:1;text-align:center">Verder naar afspraken →</button></div>';
+      h+='<div class="sheetrij"><button class="knop licht" id="w-annuleer">Annuleren</button><button class="knop" id="w-verder" style="flex:1;text-align:center">'+(geld?'Verder naar afspraken →':'Controleren →')+'</button></div>';
     } else if(st.stap==='afspraken'){
       h+='<div class="stil">Alle tarieven staan voorgevuld met de standaardprijs. Pas aan met − / + (stappen van 0,25) of typ een bedrag. Deze prijzen gelden alleen voor dit project.</div>';
       for(const c of CATS){ const ts=(S.data.tarieven||[]).filter(t=>t.actief&&t.categorie===c.id); if(!ts.length) continue; h+='<h3>'+esc(c.naam)+'</h3>';
         for(const t of ts) h+='<div class="afspraak"><span>'+esc(t.omschrijving)+(t.dagtype&&t.dagtype!=='alle'?' <small class="stil">('+esc(t.dagtype)+')</small>':'')+'<br><small class="stil">'+esc(t.eenheid_totaal)+' · standaard '+fmtGeld(t.prijs)+'</small></span><span class="pm"><button data-pm="-" data-t="'+t.id+'">−</button><input type="number" step="0.25" min="0" inputmode="decimal" data-prijs="'+t.id+'" value="'+esc(st.prijzen[t.id])+'"><button data-pm="+" data-t="'+t.id+'">+</button></span></div>'; }
       h+='<div class="sheetrij">'+(p?'<button class="knop licht" id="w-annuleer">Annuleren</button>':'<button class="knop licht" id="w-terug">← Gegevens</button>')+'<button class="knop" id="w-verder" style="flex:1;text-align:center">Controleren →</button></div>';
     } else {
-      const afw=(S.data.tarieven||[]).filter(t=>t.actief&&r2(st.prijzen[t.id])!==r2(t.prijs));
+      const afw=geld?(S.data.tarieven||[]).filter(t=>t.actief&&r2(st.prijzen[t.id])!==r2(t.prijs)):[];
       h+='<div class="info"><b>'+esc(st.p.code)+' · '+esc(st.p.naam)+'</b><br>'+esc(st.p.adres)+', '+esc(st.p.postcode_plaats)+'<br>Opdrachtgever: '+esc((opdOpt.find(o=>o.v===Number(st.p.opdrachtgever_id))||{}).t||'')+' · afstand '+fmtNum(st.p.afstand_km)+' km'+(st.p.claimnummer?' · claim '+esc(st.p.claimnummer):'')+'</div>';
-      h+='<div>'+(afw.length?'<b>Afwijkende prijzen voor dit project:</b><ul style="margin:6px 0 0 18px">'+afw.map(t=>'<li>'+esc(t.omschrijving)+': '+fmtGeld(st.prijzen[t.id])+' <small class="stil">(standaard '+fmtGeld(t.prijs)+')</small></li>').join('')+'</ul>':'Alle prijzen gelijk aan de standaardtarieven.')+'</div>';
-      h+='<div class="sheetrij"><button class="knop licht" id="w-terug">← Afspraken</button><button class="knop groen" id="w-klaar" style="flex:1;text-align:center">✔ Opslaan</button></div>';
+      if(geld) h+='<div>'+(afw.length?'<b>Afwijkende prijzen voor dit project:</b><ul style="margin:6px 0 0 18px">'+afw.map(t=>'<li>'+esc(t.omschrijving)+': '+fmtGeld(st.prijzen[t.id])+' <small class="stil">(standaard '+fmtGeld(t.prijs)+')</small></li>').join('')+'</ul>':'Alle prijzen gelijk aan de standaardtarieven.')+'</div>';
+      else h+='<div class="stil">De administratie legt de prijsafspraken voor dit project vast.</div>';
+      h+='<div class="sheetrij"><button class="knop licht" id="w-terug">'+(geld?'← Afspraken':'← Gegevens')+'</button><button class="knop groen" id="w-klaar" style="flex:1;text-align:center">✔ Opslaan</button></div>';
     }
     sh.innerHTML=h+'</div>'; sh.style.display='flex'; sh.onclick=e=>{ if(e.target===sh) dicht(); };
     const k=id=>document.getElementById(id); const lees=()=>{ sh.querySelectorAll('[data-k]').forEach(el=>{ st.p[el.dataset.k]=el.dataset.k.endsWith('_id')?Number(el.value):el.dataset.k==='afstand_km'?rondAf(el.value,0.5):el.value; }); sh.querySelectorAll('[data-prijs]').forEach(el=>{ st.prijzen[+el.dataset.prijs]=rondAf(el.value,0.25); }); };
     if(k('w-annuleer')) k('w-annuleer').onclick=dicht;
-    if(k('w-terug')) k('w-terug').onclick=()=>{ lees(); st.stap=st.stap==='afspraken'?'gegevens':'afspraken'; teken(); };
-    if(k('w-verder')) k('w-verder').onclick=()=>{ lees(); if(st.stap==='gegevens'){ if(!String(st.p.code).trim()||!String(st.p.naam).trim()){ toast('Projectnummer en naam zijn verplicht'); return; } if(!st.p.factuur_omschrijving) st.p.factuur_omschrijving='Uitgevoerde werkzaamheden t.a.v. '+st.p.naam; st.stap='afspraken'; } else st.stap='controle'; teken(); };
+    if(k('w-terug')) k('w-terug').onclick=()=>{ lees(); st.stap=st.stap==='afspraken'?'gegevens':(geld?'afspraken':'gegevens'); teken(); };
+    if(k('w-verder')) k('w-verder').onclick=()=>{ lees(); if(st.stap==='gegevens'){ if(!String(st.p.code).trim()||!String(st.p.naam).trim()){ toast('Projectnummer en naam zijn verplicht'); return; } if(!st.p.factuur_omschrijving) st.p.factuur_omschrijving='Uitgevoerde werkzaamheden t.a.v. '+st.p.naam; st.stap=geld?'afspraken':'controle'; } else st.stap='controle'; teken(); };
     sh.querySelectorAll('[data-pm]').forEach(b=>b.onclick=()=>{ const inp=sh.querySelector('[data-prijs="'+b.dataset.t+'"]'); inp.value=Math.max(0,rondAf(num(inp.value)+(b.dataset.pm==='+'?0.25:-0.25),0.25)).toFixed(2); });
     if(k('w-klaar')) k('w-klaar').onclick=async()=>{ dicht(); const f=Object.assign({},st.p); delete f.id; delete f.created_at; delete f.aangemaakt_door;
       let id=p?p.id:null; try{ const j=await api({action:'project_save', id, fields:f, log:(id?'Project aangepast: ':'Project aangemaakt: ')+f.code+' '+f.naam}); id=j.id||id;
-        await api({action:'projecttarief_save', project_id:id, prijzen:Object.entries(st.prijzen).map(([t,pr])=>({tarief_id:Number(t), prijs:pr})), log:'Projectafspraken opgeslagen voor '+f.code}); await laad(); }catch(e){ toast(e.auth?'Niet ingelogd':(e.message||'Opslaan mislukt')); await laad().catch(()=>{}); render(); return; }
-      if(S.tab==='bon'&&S.bon){ if(!p){ S.bon.project_id=id; if(!S.bon.id) vulVoorIn(); } herleid(); } render(); toast('Project '+f.code+' opgeslagen met afspraken'); };
+        if(geld) await api({action:'projecttarief_save', project_id:id, prijzen:Object.entries(st.prijzen).map(([t,pr])=>({tarief_id:Number(t), prijs:pr})), log:'Projectafspraken opgeslagen voor '+f.code}); await laad(); }catch(e){ toast(e.auth?'Niet ingelogd':(e.message||'Opslaan mislukt')); await laad().catch(()=>{}); render(); return; }
+      if(S.tab==='bon'&&S.bon){ if(!p){ S.bon.project_id=id; if(!S.bon.id) vulVoorIn(); } herleid(); } render(); toast('Project '+f.code+' opgeslagen'+(geld?' met afspraken':'')); };
   };
   teken();
 }
@@ -647,9 +655,9 @@ function viewBonnen(){
     +'<label>Project<select id="l-project"><option value="">alle</option>'+(S.data.projecten||[]).map(p=>'<option value="'+p.id+'" '+(String(S.lijstProject)===String(p.id)?'selected':'')+'>'+esc(p.naam)+'</option>').join('')+'</select></label></div>';
   if(!bonnen.length) x+='<div class="stil">Geen bonnen.</div>';
   else {
-    x+='<div class="scroll"><table class="lijst"><tr><th>Datum</th><th>Wk</th><th>Project</th><th>Door</th><th>Afgetekend</th><th class="bedrag">Bedrag</th><th>Status</th>'+(isAdmin()?'<th></th>':'')+'</tr>';
+    x+='<div class="scroll"><table class="lijst"><tr><th>Datum</th><th>Wk</th><th>Project</th><th>Door</th><th>Afgetekend</th>'+(magGeld()?'<th class="bedrag">Bedrag</th>':'')+'<th>Status</th>'+(isAdmin()?'<th></th>':'')+'</tr>';
     for(const b of bonnen){ const p=project(b.project_id); const w=isoWeek(b.datum);
-      x+='<tr class="klik" data-bon="'+b.id+'"><td>'+fmtKort(b.datum)+'</td><td>'+w.week+'</td><td>'+esc(p?p.naam:'?')+'</td><td>'+esc(b.ingevuld_door)+'</td><td>'+(b.afgetekend_door?esc(b.afgetekend_door)+(b.handtekening_pad?' ✍️':''):'<span class="stil">—</span>')+((b.foto_paden||[]).length?' 📷'+(b.foto_paden.length):'')+'</td><td class="bedrag">'+fmtGeld(bonTotaal(b.id))+'</td><td>'+chip(b.status)+'</td>'
+      x+='<tr class="klik" data-bon="'+b.id+'"><td>'+fmtKort(b.datum)+'</td><td>'+w.week+'</td><td>'+esc(p?p.naam:'?')+'</td><td>'+esc(b.ingevuld_door)+'</td><td>'+(b.afgetekend_door?esc(b.afgetekend_door)+(b.handtekening_pad?' ✍️':''):'<span class="stil">—</span>')+((b.foto_paden||[]).length?' 📷'+(b.foto_paden.length):'')+'</td>'+(magGeld()?'<td class="bedrag">'+fmtGeld(bonTotaal(b.id))+'</td>':'')+'<td>'+chip(b.status)+'</td>'
         +(isAdmin()?'<td class="noprint">'+(b.status==='ingediend'?'<button class="knop klein groen" data-goed="'+b.id+'">✅</button> <button class="knop klein rood" data-af="'+b.id+'">❌</button>':'')+'</td>':'')+'</tr>';
     }
     x+='</table></div>';
@@ -703,12 +711,14 @@ function overzichtDoc(projectId, jaar, week, bonnen, opts){
   const o=bouwOverzicht(bonnen);
   let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.website?' · '+esc(aan.website.replace(/^https?:\/\//,'')):'')+'</small></div><div style="text-align:right"><h1>Overzicht werkzaamheden week '+week+'</h1><div>'+fmtDMY(opts&&opts.datum||vandaagISO())+'</div></div></div>';
   x+='<div class="meta"><b>Opdrachtgever:</b><span>'+esc((opd.naam||'').replace(/ (B\.V\.|BV)$/i,''))+'</span><b>Project:</b><span>'+esc(p.code||'')+'</span><b>Projectadres:</b><span>'+esc(p.adres||'')+'<br>'+esc(p.postcode_plaats||'')+'</span></div>';
-  x+='<table><tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th><th class="r">Prijs</th><th class="r">Kosten</th></tr>';
-  for(const d of o.dagen){ x+='<tr class="dag"><td colspan="5">'+fmtDatum(d.datum)+'</td></tr>';
-    for(const r of d.regels) x+='<tr><td>'+esc(r.categorie==='arbeid'?'Arbeid':r.categorie==='km'?'Kilometervergoeding':r.categorie==='overnachting'?'Overnachtingsvergoeding':r.omschrijving)+'</td><td>'+aantalTekst(r)+'</td><td>'+fmtNum(r.totaal)+' '+esc(r.eenheid_totaal)+'</td><td class="r">'+fmtGeld(r.prijs)+'</td><td class="r">'+fmtGeld(r.bedrag)+'</td></tr>'; }
-  const sec=(titel,lijst)=>{ if(!lijst.length) return ''; let y='<tr class="sec"><td colspan="5">'+titel+'</td></tr>'; for(const r of lijst) y+='<tr><td>'+esc(r.omschrijving)+'</td><td></td><td>'+fmtNum(r.totaal)+' '+esc(r.eenheid_totaal)+'</td><td class="r">'+fmtGeld(r.prijs)+'</td><td class="r">'+fmtGeld(r.bedrag)+'</td></tr>'; return y; };
+  const geld=magGeld(), kol=geld?5:3;
+  x+='<table><tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th>'+(geld?'<th class="r">Prijs</th><th class="r">Kosten</th>':'')+'</tr>';
+  for(const d of o.dagen){ x+='<tr class="dag"><td colspan="'+kol+'">'+fmtDatum(d.datum)+'</td></tr>';
+    for(const r of d.regels) x+='<tr><td>'+esc(r.categorie==='arbeid'?'Arbeid':r.categorie==='km'?'Kilometervergoeding':r.categorie==='overnachting'?'Overnachtingsvergoeding':r.omschrijving)+'</td><td>'+aantalTekst(r)+'</td><td>'+fmtNum(r.totaal)+' '+esc(r.eenheid_totaal)+'</td>'+(geld?'<td class="r">'+fmtGeld(r.prijs)+'</td><td class="r">'+fmtGeld(r.bedrag)+'</td>':'')+'</tr>'; }
+  const sec=(titel,lijst)=>{ if(!lijst.length) return ''; let y='<tr class="sec"><td colspan="'+kol+'">'+titel+'</td></tr>'; for(const r of lijst) y+='<tr><td>'+esc(r.omschrijving)+'</td><td></td><td>'+fmtNum(r.totaal)+' '+esc(r.eenheid_totaal)+'</td>'+(geld?'<td class="r">'+fmtGeld(r.prijs)+'</td><td class="r">'+fmtGeld(r.bedrag)+'</td>':'')+'</tr>'; return y; };
   x+=sec('Materieel',o.materieel)+sec('Transport',o.transport)+sec('Diversen',o.materiaal);
-  x+='<tr class="tot"><td colspan="3">Totaal</td><td></td><td class="r">'+fmtGeld(o.totaal)+'</td></tr><tr><td colspan="5" style="text-align:right;font-size:11px">excl. btw.</td></tr></table>';
+  if(geld) x+='<tr class="tot"><td colspan="3">Totaal</td><td></td><td class="r">'+fmtGeld(o.totaal)+'</td></tr><tr><td colspan="5" style="text-align:right;font-size:11px">excl. btw.</td></tr>';
+  x+='</table>';
   x+='<div class="voet">Gebaseerd op '+bonnen.length+' afgetekende dagbon'+(bonnen.length===1?'':'nen')+(bonnen.length?' ('+bonnen.map(b=>'#'+b.id).join(', ')+')':'')+'.</div></div>';
   return x;
 }

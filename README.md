@@ -102,10 +102,26 @@ De teamleider tikt de dag aan op zijn telefoon; de regels van de bon worden daar
   ook voor de werkvloer): projectnummer toegewezen (hoogste + 1), gegevens, daarna alle
   tarieven als projectafspraken voorgevuld en aan te passen met − / + in stappen van 0,25
   (`wb_projecttarief`; de bon gebruikt de projectprijs als die er is), afstand naar de locatie.
+  Voor de werkvloer telt de wizard 2 stappen (gegevens + controle); de prijsstap is er alleen
+  voor de administratie.
 - **Afrondingsregels** (app, mock en edge function): mensen, auto's, nachten en stuks hele
   getallen (mensen naar boven); uren en km per 0,5; dagdeel per 0,25; prijzen per 0,25.
 - De aangetikte invoer staat als JSON in `wb_bon.invoer`; afgeleide regels hebben `bron`
   `shift` / `voertuig`, handmatige regels `extra`.
+
+### Geen bedragen op de werkvloer
+De werkvloer vult alleen in wat er gewerkt, gebruikt en verbleven is; tarieven en bedragen
+zijn van de administratie. Dat zit op twee plekken dicht:
+- **Server** (`supabase/functions/werkbonnen/index.ts`, en gelijk in de mock): `state` levert
+  aan een team-sessie tarieven zonder `prijs`, bonregels zonder `prijs`/`bedrag`, en geen
+  facturen en projectafspraken. `bon_save` negeert prijzen die de client meestuurt en leidt ze
+  af uit `wb_tarief` / `wb_projecttarief`; `projecttarief_save` is alleen voor de administratie.
+  Het uitlezen van een foto geeft de werkvloer eveneens regels zonder prijs terug.
+- **App**: alles wat geld toont zit achter `magGeld()` — geen prijsveld of bedrag per regel
+  (wel het aantal met eenheid), geen dagtotaal, geen kolommen Prijs/Kosten in het
+  weekoverzicht, geen bedragkolom in de bonnenlijst, geen totaal op de projectbon.
+De bedragen op het weekoverzicht en de factuur blijven ongewijzigd: de server rekent met
+dezelfde prijzen als voorheen.
 
 ### Papieren bon fotograferen en uitlezen
 Op de dagbon staat "Papieren bon fotograferen en uitlezen": de foto gaat naar de edge function,

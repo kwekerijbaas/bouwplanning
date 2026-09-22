@@ -136,3 +136,19 @@ Lijsten > Bedrijven: bij de aannemer een logo uploaden (knop "logo…") en de ho
 tweede kleur zetten. De app (balk, tabs, knoppen, achtergrond), het weekoverzicht en de factuur
 volgen die kleuren en tonen het logo. Standaard voor KZ: groen #3aa35b en magenta #e6007e
 (naar kzkasherstel.nl).
+
+Het KZ-woordmerk zit als klein PNG'je (360x126, transparant) in `werkbonnen.html` zelf, dus het
+staat er ook zonder upload en zonder internet: op het inlogscherm, in de balk, op de projectbon,
+het weekoverzicht en de factuur. Een logo dat je bij een aannemer uploadt gaat er altijd overheen.
+Staat het woordmerk er, dan zakt de bedrijfsnaam naar de kleine regel boven het adres — anders
+staat de naam er twee keer.
+
+### Leesbaar in een kas
+Een kas is licht, de telefoon zit in een handschoen en de teamleider leest niet stil aan een bureau.
+Daarom: basisletter 17px (kleine labels minimaal 14px), knoppen 16px, tabelrijen 16px en de tekstkleur
+`--grijs` op #40514a (8,4:1 op wit in plaats van 4,7:1). Vulkleuren met witte letters (status-chips,
+balk) halen allemaal minstens 4,5:1.
+
+Een gekozen huisstijlkleur wordt daar automatisch op bijgesteld: `leesbaar()` verdonkert de kleur
+stapje voor stapje tot witte letters erop minstens 4,6:1 halen (KZ-groen #3aa35b wordt zo #2e7f47).
+De kleur blijft herkenbaar, maar niemand houdt een onleesbare balk over door een te lichte keuze.

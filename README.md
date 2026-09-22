@@ -20,6 +20,17 @@ geen data - alleen de pagina. Deploy: Webflow Cloud, site "bouwplanning", mount 
    `Reparatieplanning - Jarno.html` (OneDrive: Hagelschade 2026/bouwplanning).
 2. Commit + push naar main -> Webflow Cloud deployt automatisch (ca. 2-3 min).
 
+### Als de pagina blanco blijft
+`astro.config.mjs` mag géén `base` of `build.assetsPrefix` zetten: Webflow Cloud vult die
+zelf in vanuit het mount path van de environment
+([docs](https://developers.webflow.com/webflow-cloud/bring-your-own-app)). Stond hier eerder
+`base: '/app'` - dat is eruit. Controleer verder in Webflow > Apps > Webflow Cloud:
+- staat de environment op branch `main` en op mount path `/app`?
+- staat er onder Deployments een geslaagde deploy ná de laatste push? Zo niet: opnieuw
+  deployen (en anders de GitHub-koppeling opnieuw autoriseren).
+- de bouw meldt "0 page(s) built" omdat er geen `src/pages` is; dat klopt - de pagina's in
+  `public/` worden ongewijzigd naar `dist/` gekopieerd en als statische bestanden geserveerd.
+
 ## Werkbonnen (hagelschade-facturatie) - `public/werkbonnen.html`
 Eén bestand, zelfde opzet als de planning: alle data via de edge function `werkbonnen`
 (Supabase-project hlgvtxcwbhrbbcozvsen). Proces: teamleider vult dagbon in en dient in
@@ -40,6 +51,8 @@ UBL 2.1 XML / CSV / JSON voor Exact Online.
   ```
   daarna http://localhost:8787/werkbonnen.html?api=http%3A%2F%2Flocalhost%3A8787%2Fapi
   (codes bon2026 / admin2026, `--seed` laadt week 35 Drietorensweg = factuur 2026265).
+  Op Windows kan het in een keer: dubbelklik `tools\start-werkbonnen.cmd` - die start de
+  mock en opent de browser vanzelf.
 - Tests (drie methodes, vanuit de repo-map):
   ```
   cd bouwplanning
@@ -136,3 +149,19 @@ Lijsten > Bedrijven: bij de aannemer een logo uploaden (knop "logo…") en de ho
 tweede kleur zetten. De app (balk, tabs, knoppen, achtergrond), het weekoverzicht en de factuur
 volgen die kleuren en tonen het logo. Standaard voor KZ: groen #3aa35b en magenta #e6007e
 (naar kzkasherstel.nl).
+
+Het KZ-woordmerk zit als klein PNG'je (360x126, transparant) in `werkbonnen.html` zelf, dus het
+staat er ook zonder upload en zonder internet: op het inlogscherm, in de balk, op de projectbon,
+het weekoverzicht en de factuur. Een logo dat je bij een aannemer uploadt gaat er altijd overheen.
+Staat het woordmerk er, dan zakt de bedrijfsnaam naar de kleine regel boven het adres — anders
+staat de naam er twee keer.
+
+### Leesbaar in een kas
+Een kas is licht, de telefoon zit in een handschoen en de teamleider leest niet stil aan een bureau.
+Daarom: basisletter 17px (kleine labels minimaal 14px), knoppen 16px, tabelrijen 16px en de tekstkleur
+`--grijs` op #40514a (8,4:1 op wit in plaats van 4,7:1). Vulkleuren met witte letters (status-chips,
+balk) halen allemaal minstens 4,5:1.
+
+Een gekozen huisstijlkleur wordt daar automatisch op bijgesteld: `leesbaar()` verdonkert de kleur
+stapje voor stapje tot witte letters erop minstens 4,6:1 halen (KZ-groen #3aa35b wordt zo #2e7f47).
+De kleur blijft herkenbaar, maar niemand houdt een onleesbare balk over door een te lichte keuze.

@@ -3,131 +3,131 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#3aa35b">
+<meta name="theme-color" content="#2e8449">
 <title>Werkbonnen</title>
 <style>
 :root{
   /* Standaard de huisstijl van KZ Kasherstel (groen + magenta, kzkasherstel.nl); Lijsten > Bedrijven kan dit per aannemer overschrijven. */
-  --blauw:#3aa35b; --blauw-licht:#e3f2e8; --bg:#f1f9f4; --kaart:#fff; --tekst:#1b2a24; --grijs:#6c757d; --lijn:#d9e8dd;
-  --rood:#c1442e; --oranje:#f2a541; --groen:#e6007e; --groen-licht:#52b788;
+  --blauw:#2e8449; --blauw-licht:#dcf0e3; --bg:#f1f9f4; --kaart:#fff; --tekst:#14201b; --grijs:#40514a; --lijn:#b9d3c2;
+  --blauw-diep:#1f5c35; --rood:#a8341f; --oranje:#e08a12; --oranje-diep:#9c5c06; --groen:#c40069; --groen-licht:#2f7d55;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tekst);font-size:15px;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--tekst);font-size:17px;line-height:1.45;-webkit-tap-highlight-color:transparent}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,select,textarea{font:inherit;color:inherit}
-#topbar{position:sticky;top:0;z-index:30;background:var(--blauw);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px}
-#topbar h1{font-size:16px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#topbar .wie{font-size:12px;opacity:.9;cursor:pointer}
-#tabs{position:sticky;top:44px;z-index:29;display:flex;background:var(--kaart);border-bottom:1px solid var(--lijn);overflow-x:auto}
-#tabs button{flex:1 0 auto;min-width:76px;padding:10px 10px;font-size:13px;color:var(--grijs);border-bottom:3px solid transparent;white-space:nowrap}
+#topbar{position:sticky;top:0;z-index:30;background:var(--blauw);color:#fff;padding:9px 14px;display:flex;align-items:center;gap:10px}
+#topbar h1{font-size:19px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#topbar .wie{font-size:14px;font-weight:600;cursor:pointer}
+#tabs{position:sticky;top:46px;z-index:29;display:flex;background:var(--kaart);border-bottom:1px solid var(--lijn);overflow-x:auto}
+#tabs button{flex:1 0 auto;min-width:84px;padding:12px 12px;font-size:15px;font-weight:600;color:var(--grijs);border-bottom:3px solid transparent;white-space:nowrap}
 #tabs button.actief{color:var(--blauw);border-bottom-color:var(--blauw);font-weight:600}
-#tabs button .bol{display:inline-block;min-width:17px;padding:0 4px;border-radius:9px;background:var(--rood);color:#fff;font-size:11px;margin-left:3px}
+#tabs button .bol{display:inline-block;min-width:20px;padding:1px 5px;border-radius:10px;background:var(--rood);color:#fff;font-size:13px;margin-left:3px}
 main{padding:12px;max-width:1100px;margin:0 auto;padding-bottom:60px}
 .kaart{background:var(--kaart);border:1px solid var(--lijn);border-radius:10px;padding:12px;margin-bottom:10px}
-.kaart h2{font-size:14px;margin-bottom:8px;color:var(--blauw)}
-.kaart h3{font-size:13px;margin:12px 0 6px;color:var(--blauw)}
+.kaart h2{font-size:18px;margin-bottom:10px;color:var(--blauw)}
+.kaart h3{font-size:16px;margin:14px 0 6px;color:var(--blauw)}
 .regel{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--lijn);flex-wrap:wrap}
 .regel:last-child{border-bottom:none}
-.stil{color:var(--grijs);font-size:12px}
-.knop{background:var(--blauw);color:#fff;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:600;white-space:nowrap}
-.knop.licht{background:var(--blauw-licht);color:var(--blauw)}
+.stil{color:var(--grijs);font-size:14px}
+.knop{background:var(--blauw);color:#fff;padding:11px 16px;border-radius:8px;font-size:16px;font-weight:600;white-space:nowrap}
+.knop.licht{background:var(--blauw-licht);color:var(--blauw-diep)}
 .knop.rood{background:var(--rood)}
 .knop.groen{background:var(--groen)}
-.knop.klein{padding:5px 10px;font-size:12px}
+.knop.klein{padding:7px 12px;font-size:14px}
 .knop.breed{width:100%;text-align:center}
-.knop:disabled{opacity:.5;cursor:default}
+.knop:disabled{opacity:.55;cursor:default}
 .rij{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
-.rij>label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--grijs);flex:1;min-width:120px}
-input[type=date],input[type=text],input[type=number],input[type=password],select,textarea{border:1px solid var(--lijn);border-radius:7px;padding:8px;background:#fff;max-width:100%;width:100%}
+.rij>label{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:600;color:var(--grijs);flex:1;min-width:120px}
+input[type=date],input[type=text],input[type=number],input[type=password],select,textarea{border:1px solid #9fbfab;border-radius:7px;padding:10px;background:#fff;font-size:17px;max-width:100%;width:100%}
 textarea{min-height:60px;resize:vertical}
-.chip{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap}
-.st-concept{background:#8d99ae}.st-ingediend{background:var(--oranje)}.st-goedgekeurd{background:var(--groen-licht)}.st-afgekeurd{background:var(--rood)}.st-gefactureerd{background:var(--blauw)}
-.st-definitief{background:var(--groen)}.st-geexporteerd{background:#6a4c93}
+.chip{display:inline-block;padding:3px 10px;border-radius:11px;font-size:13px;font-weight:600;color:#fff;white-space:nowrap}
+.st-concept{background:#5a6b7d}.st-ingediend{background:var(--oranje-diep)}.st-goedgekeurd{background:var(--groen-licht)}.st-afgekeurd{background:var(--rood)}.st-gefactureerd{background:var(--blauw)}
+.st-definitief{background:var(--groen)}.st-geexporteerd{background:#5a3f80}
 .bedrag{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
-.bonregel{display:grid;grid-template-columns:minmax(140px,2fr) 70px 70px 84px 90px 30px;gap:6px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--lijn)}
+.bonregel{display:grid;grid-template-columns:minmax(150px,2fr) 78px 78px 92px 100px 34px;gap:7px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--lijn)}
 .bonregel input,.bonregel select{padding:6px}
-.bonregel .lbl{font-size:10px;color:var(--grijs);display:block}
-.bonregel .x{color:var(--rood);font-size:18px;text-align:center}
+.bonregel .lbl{font-size:13px;font-weight:600;color:var(--grijs);display:block}
+.bonregel .x{color:var(--rood);font-size:22px;text-align:center}
 .bonregel.uitgelezen{background:#fff8e6;border-left:3px solid var(--oranje);padding-left:6px}
 @media(max-width:640px){.bonregel{grid-template-columns:1fr 1fr 1fr;} .bonregel .oms{grid-column:1/-1} .bonregel .bedrag{grid-column:1/3} .bonregel .x{grid-column:3}}
 .bonregel.vast{background:var(--blauw-licht);border-radius:6px;padding-left:6px}
-.bonregel .vastlbl{font-size:13px}
+.bonregel .vastlbl{font-size:15px}
 .shift{border:1px solid var(--lijn);border-radius:10px;padding:10px;margin:10px 0;background:#fafcfb}
-.shiftkop{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.shiftkop{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:17px}
 .shiftkop b{flex:1}
-.shiftkop .x,.vrt .x{color:var(--rood);font-size:18px;padding:0 6px}
-.tijden label{min-width:90px;flex:0 1 120px}
-.tijden .uren{font-size:16px;padding:8px 0}
+.shiftkop .x,.vrt .x{color:var(--rood);font-size:24px;padding:0 8px}
+.tijden label{min-width:104px;flex:0 1 132px}
+.tijden .uren{font-size:18px;font-weight:600;padding:8px 0}
 .wolk{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 8px}
-.wolk .naam{border:1px solid var(--lijn);border-radius:16px;padding:6px 12px;font-size:13px;background:#fff;color:var(--tekst);min-height:34px}
+.wolk .naam{border:1px solid #9fbfab;border-radius:18px;padding:8px 14px;font-size:16px;background:#fff;color:var(--tekst);min-height:40px}
 .wolk .naam.aan{background:var(--blauw);color:#fff;border-color:var(--blauw);font-weight:600}
 .wolk .naam.nieuw{border-style:dashed;color:var(--blauw)}
 #nk-wolk{max-height:48vh;overflow:auto}
-.wolk .naam.check{border-color:var(--oranje);background:#fff8e6}
-.wolk .naam.check.aan{background:var(--oranje);border-color:var(--oranje)}
+.wolk .naam.check{border-color:var(--oranje-diep);background:#fff2d6}
+.wolk .naam.check.aan{background:var(--oranje-diep);border-color:var(--oranje-diep)}
 .controle{border:1px solid var(--lijn);border-radius:10px;padding:10px;margin-top:10px;background:#fafcfb}
-.wolk .naam:disabled{opacity:.6;cursor:default}
+.wolk .naam:disabled{opacity:.75;cursor:default}
 .schakel{display:flex;align-items:center;gap:6px;padding:6px 0;color:var(--tekst)}
-.schakel input[type=checkbox]{width:20px;height:20px}
+.schakel input[type=checkbox]{width:24px;height:24px}
 .vrt{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px;border:1px solid var(--lijn);border-radius:10px;margin-top:8px;background:#fafcfb}
 .vrt b{min-width:110px}
-.vrt label{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--grijs)}
-.vrt label input,.vrt label select{width:90px;padding:6px}
+.vrt label{display:flex;align-items:center;gap:5px;font-size:14px;font-weight:600;color:var(--grijs)}
+.vrt label input,.vrt label select{width:102px;padding:8px}
 .seg{display:inline-flex;border:1px solid var(--blauw);border-radius:8px;overflow:hidden}
-.seg button{padding:6px 10px;font-size:12px;color:var(--blauw);background:#fff}
+.seg button{padding:8px 13px;font-size:15px;font-weight:600;color:var(--blauw);background:#fff}
 .seg button.aan{background:var(--blauw);color:#fff;font-weight:600}
-.afspraak{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--lijn);font-size:13px}
+.afspraak{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px dashed var(--lijn);font-size:15px}
 .afspraak .pm{display:inline-flex;align-items:center;gap:4px}
-.afspraak .pm button{width:34px;height:34px;border-radius:8px;background:var(--blauw-licht);color:var(--blauw);font-size:18px;font-weight:700}
-.afspraak .pm input{width:84px;padding:6px;text-align:right}
-.sheetkaart h3{font-size:13px;margin:12px 0 4px;color:var(--blauw)}
+.afspraak .pm button{width:38px;height:38px;border-radius:8px;background:var(--blauw-licht);color:var(--blauw-diep);font-size:20px;font-weight:700}
+.afspraak .pm input{width:94px;padding:8px;text-align:right}
+.sheetkaart h3{font-size:16px;margin:14px 0 4px;color:var(--blauw)}
 .sectie{margin-top:12px;border-top:2px solid var(--blauw-licht);padding-top:6px}
 .sectie .kop{display:flex;justify-content:space-between;align-items:center}
-.sectie .kop b{font-size:13px}
-.totaal{display:flex;justify-content:space-between;font-weight:700;font-size:16px;padding:10px 0;border-top:2px solid var(--blauw)}
+.sectie .kop b{font-size:16px}
+.totaal{display:flex;justify-content:space-between;font-weight:700;font-size:19px;padding:10px 0;border-top:2px solid var(--blauw)}
 #sheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:40;align-items:flex-end;justify-content:center}
 .sheetkaart{background:#fff;border-radius:14px 14px 0 0;padding:14px;width:100%;max-width:640px;max-height:92vh;overflow:auto}
-.sheettitel{font-weight:700;margin-bottom:10px}
+.sheettitel{font-weight:700;font-size:19px;margin-bottom:10px}
 .sheetrij{display:flex;gap:8px;margin-top:10px;align-items:center}
-#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:9px 14px;border-radius:8px;font-size:13px;display:none;z-index:50;max-width:90vw}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#14201b;color:#fff;padding:11px 16px;border-radius:8px;font-size:16px;display:none;z-index:50;max-width:90vw}
 #login{position:fixed;inset:0;background:var(--bg);z-index:60;display:flex;align-items:center;justify-content:center;padding:20px}
 #login .kaart{width:100%;max-width:380px}
-#login label{display:block;margin-bottom:10px;font-size:13px;color:var(--grijs)}
-canvas.sig{border:1px dashed #999;border-radius:8px;background:#fff;width:100%;height:150px;touch-action:none}
+#login label{display:block;margin-bottom:10px;font-size:15px;font-weight:600;color:var(--grijs)}
+canvas.sig{border:1px dashed #6d7d75;border-radius:8px;background:#fff;width:100%;height:150px;touch-action:none}
 .thumbs{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
 .thumbs img{height:64px;border-radius:6px;border:1px solid var(--lijn)}
 .thumbs .th{position:relative}
-.thumbs .th button{position:absolute;top:-6px;right:-6px;background:var(--rood);color:#fff;border-radius:50%;width:20px;height:20px;font-size:12px;line-height:20px;text-align:center}
-table.lijst{width:100%;border-collapse:collapse;font-size:13px}
-table.lijst th,table.lijst td{padding:6px 5px;border-bottom:1px solid var(--lijn);text-align:left;vertical-align:top}
-table.lijst th{color:var(--grijs);font-weight:600;font-size:11px;text-transform:uppercase}
+.thumbs .th button{position:absolute;top:-7px;right:-7px;background:var(--rood);color:#fff;border-radius:50%;width:24px;height:24px;font-size:14px;line-height:24px;text-align:center}
+table.lijst{width:100%;border-collapse:collapse;font-size:16px}
+table.lijst th,table.lijst td{padding:9px 6px;border-bottom:1px solid var(--lijn);text-align:left;vertical-align:top}
+table.lijst th{color:var(--grijs);font-weight:700;font-size:13px;text-transform:uppercase}
 table.lijst tr.klik{cursor:pointer}
 table.lijst tr.klik:hover{background:var(--blauw-licht)}
 .scroll{overflow-x:auto}
 /* KZ-achtige overzicht/factuur-opmaak */
-.doc{background:#fff;color:#000;padding:22px;max-width:800px;margin:0 auto;font-family:Arial,Helvetica,sans-serif;font-size:12px;border:1px solid var(--lijn)}
+.doc{background:#fff;color:#000;padding:22px;max-width:800px;margin:0 auto;font-family:Arial,Helvetica,sans-serif;font-size:13.5px;border:1px solid var(--lijn)}
 .doc .kopblok{display:flex;justify-content:space-between;gap:12px;margin-bottom:14px}
-.doc .kopblok .firma{font-size:18px;font-weight:700;color:var(--blauw);font-family:Georgia,'Times New Roman',serif;letter-spacing:.02em}
-.doc .kopblok .firma small{display:block;font-size:11px;font-weight:400;color:#444}
-.doc h1{font-size:16px;margin:0 0 4px}
-.doc .meta{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:8px 0 12px;font-size:12px}
-.doc table{width:100%;border-collapse:collapse;font-size:12px}
-.doc th{text-align:left;border-bottom:1px solid #000;padding:4px 3px;font-size:11px}
-.doc td{padding:3px 3px;vertical-align:top}
-.doc tr.dag td{font-weight:700;padding-top:9px;border-bottom:1px solid #999}
-.doc tr.sec td{font-weight:700;padding-top:12px;border-bottom:1px solid #999}
+.doc .kopblok .firma{font-size:20px;font-weight:700;color:var(--blauw);font-family:Georgia,'Times New Roman',serif;letter-spacing:.02em}
+.doc .kopblok .firma small{display:block;font-size:12px;font-weight:400;color:#2b2b2b}
+.doc h1{font-size:18px;margin:0 0 4px}
+.doc .meta{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:8px 0 12px;font-size:13.5px}
+.doc table{width:100%;border-collapse:collapse;font-size:13.5px}
+.doc th{text-align:left;border-bottom:1px solid #000;padding:5px 3px;font-size:12.5px}
+.doc td{padding:4px 3px;vertical-align:top}
+.doc tr.dag td{font-weight:700;padding-top:9px;border-bottom:1px solid #777}
+.doc tr.sec td{font-weight:700;padding-top:12px;border-bottom:1px solid #777}
 .doc td.r,.doc th.r{text-align:right;white-space:nowrap}
-.doc tr.tot td{font-weight:700;border-top:2px solid #000;padding-top:6px;font-size:13px}
+.doc tr.tot td{font-weight:700;border-top:2px solid #000;padding-top:6px;font-size:15px}
 .doc .adres{margin:14px 0}
-.doc .voet{margin-top:22px;font-size:11px;color:#444;border-top:1px solid #999;padding-top:6px}
+.doc .voet{margin-top:22px;font-size:12px;color:#2b2b2b;border-top:1px solid #777;padding-top:6px}
 .doc .fmeta{display:flex;gap:26px;margin:12px 0}
-.doc .fmeta div b{display:block;font-size:11px;color:#444}
+.doc .fmeta div b{display:block;font-size:12px;color:#2b2b2b}
 .knoppen{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-pre.xml{background:#f6f8fa;border:1px solid var(--lijn);border-radius:8px;padding:10px;font-size:11px;overflow:auto;max-height:50vh;white-space:pre-wrap;word-break:break-all}
-.waarsch{background:#fff4e0;border:1px solid var(--oranje);border-radius:8px;padding:8px 10px;font-size:13px;margin-bottom:8px}
-.info{background:var(--blauw-licht);border-radius:8px;padding:8px 10px;font-size:13px;margin-bottom:8px}
-.badge-week{display:inline-block;background:var(--blauw-licht);color:var(--blauw);border-radius:6px;padding:2px 7px;font-size:12px;font-weight:600}
+pre.xml{background:#f6f8fa;border:1px solid var(--lijn);border-radius:8px;padding:10px;font-size:13px;overflow:auto;max-height:50vh;white-space:pre-wrap;word-break:break-all}
+.waarsch{background:#fff2d6;border:1px solid var(--oranje-diep);border-radius:8px;padding:10px 12px;font-size:16px;margin-bottom:8px}
+.info{background:var(--blauw-licht);border-radius:8px;padding:10px 12px;font-size:16px;margin-bottom:8px}
+.badge-week{display:inline-block;background:var(--blauw-licht);color:var(--blauw-diep);border-radius:6px;padding:3px 9px;font-size:14px;font-weight:600}
 @media print{
   body{background:#fff}
   #topbar,#tabs,.knoppen,.noprint,#toast,#sheet{display:none!important}
@@ -140,7 +140,8 @@ pre.xml{background:#f6f8fa;border:1px solid var(--lijn);border-radius:8px;paddin
 <body>
 <div id="login">
   <div class="kaart">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><svg width="40" height="30" viewBox="0 0 46 34" aria-hidden="true"><polygon points="0,34 22,0 30,0 8,34" fill="#3aa35b"/><polygon points="16,34 38,0 46,0 24,34" fill="#e6007e"/></svg><div><div style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:19px;letter-spacing:.04em;color:var(--blauw);line-height:1">KZ KASHERSTEL</div><div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grijs);margin-top:3px">Werkbonnen</div></div></div>
+    <img id="lg-logo" alt="KZ Kasherstel" style="height:52px;max-width:100%;object-fit:contain;display:block;margin-bottom:4px">
+    <div style="font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--grijs);font-weight:700;margin-bottom:12px">Werkbonnen</div>
     <p class="stil" style="margin-bottom:12px">Dagbonnen vanaf de werkvloer, beoordeling door de administratie, weekoverzicht en factuur.</p>
     <label>Jouw naam<br><input type="text" id="lg-wie" autocomplete="name"></label>
     <label>Toegangscode<br><input type="password" id="lg-code" autocomplete="current-password"></label>
@@ -196,15 +197,27 @@ function bonTotaal(bonId){ return r2(regelsVan(bonId).reduce((s,r)=>s+Number(r.b
 function isAdmin(){ return S.data && S.data.rol==='admin'; }
 // De werkvloer vult alleen in wat er gewerkt, gebruikt en verbleven is: geen tarieven of bedragen in beeld.
 function magGeld(){ return isAdmin(); }
-function fotoUrl(pad){ return (S.data.storage_url||'')+pad; }
+// Het KZ-woordmerk zit standaard in de app (360x126, transparant). Lijsten > Bedrijven > logo... overschrijft dit per aannemer.
+const KZ_LOGO='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAB+CAYAAAAJHYvnAAAu1UlEQVR42u1dB5xURdLvN8uSBQRRQLIKCGYxgYcYzpwDB6YzB0BP/DzPCILoeX6e3icehrtTQEUFs4jxcNcsoiBJooLkoBIkL/O++s/Ug6bpFybtzuxW/Wjm7ev4qrv/XV3dXe24rquEKjc5T11brDZvvJ0ep7t9h78sHClcWuoMODOu3Ptjyrm/iTtwpHCkkvddAehKC8oxtXlDN+U4F9Cf55Jrwl7TyY1SripVKjbe7fvMeuFW/tJy5+5aZSp2iqPUMfTnseT217xnkBtNfqMJrKcItwSghfK5Mv/5xyYMxt3J/U4DZT9aR26sct3RShW9LWCdH7TEuaemUvGTqUYxuJ5Jrm6EaDMIqEtJui4pVkVjGrsDfhNOCkAL5Q8oX8CgXJRmUgzW6lUVKxvj9n5eOnjFgPL5DMq7ZJDcBnLvuModLWAtAC1UuKAc2MEJrEuohZS4fUbI9DkHtNQZ0NZN1uHx5I7MEJQFrAWghSqkknbUJ0MX2SEHoBw4fSY3WlEnF7DOVFIe0IZ+evDgemg5Zw+wnkCuRPTWAtBC2QNlfZGvoknAOnVJuTX1svMZmDujevOpLgWsBaCFooFyMYFy1zwE5YAO7pYq1ykRvfV2WuMMrLZObT2RF/m6k2uVR6AsYC0ALRS5AnbUJ3clV1ygn+LprUdXRbBOgnL8BJWUlM8h17CAP+dncqWitxaArurS8p0kLd9RwKAc0MHdG90+I6rEQYqlTv+urnKeocd9KuHnrSLXr6k7cJj0WgHoyg7K+apXzum0mVyJcsrGVxap+lfntmobVQ0cGsGCLXZgHFEAKoxMaTbX5WgC60nSmwWgK5sKo7uKdnikslJBq0A0UL6AVRi7VeFmPTsx6CZ2g7hvNXEHrZWeLgBdiKCcq33KAtblQCucgUVlaitJyQ52X5xXxUHZjzaSe1clFhgFrAWgBZQrawcvVSpxKKZCp8+LnQFNnSQYezOe3aWKBKwFoAuNcRV/eKQyT5+9fdblAtZLnbubuComg2v2wfqb5MAremsB6PIH5aqwyFdpwXq5c9ceW1XReQLK5V2XAtYC0NkF5UI7PFKJO7hbQjVSopytb7m9n0tt+uzcGFuidu1KaVA9OlBfdBRQFrAWgC5Epjx2SRPlxCrD4ZHKPH1O6DoDwdq51lmimhzNoAxpuZmwLu8I+6xLlOitBaBDmTG0R3Xl1hxAT7fSn9WEI4XSwd1+bp8Rw3ZUYdzdvkzFhjlJK3FChQPW/ZqqQcOU4JIA9DYmDOlRrJyaNyvHuVnJqn3BTptrb3IemPs/Lda4yrmQavUMGWQLldzSuIrfuqc7eHxV54Q0YFBRUS36v0y58cepYx+iXLUfgXUbYUz+92T6N4f+/4WeF1cvi51K4NyInrfS+0+pLveg5+YqN3aWhbJLi1zlfk8znklUqetiqkgEJQFoU5R2oP8qVQ45N06d2jlUuU4L+rs9va8pDMoTUHbdH1TSoM8iqrNiPmSNdYJN3pDLQZcBuKnDxyhI0yRYO3WFhXlBm8lNocpcqhImAZzfcFpe5vMC0KmANW4UwV8xajkwhLM/eRwkYF3ekOyuof9/IreC+vCqBCirbaC8jeIxqz2MIn65lKU0gDUWC6tTXcosqXxpC1XmVDdxcbGDQTZe+U2YCECXB8WpHc2kX3LuawTW7eh5PwbrGsKenKAyBsj5NINZSIC8OTFIWkB5B5GsyA3bNueB9RLOA3UKybqegHVOQRn2pWcSMM8hPseFJQLQuaStBNbf0+/3yo2/Qr/tqdG1pd+96beFsCcjWkfS8jziL0nLCVAuYgErlqP8MBP6NekErLNIy4if0xiUVwooC0BXlBokngDqpMNUfFf6/xDy2F8lF6eEwulHlejEamECiB3Hk4LL+xDJDmDtKreBo5wGSvTWkUGZeDadfnHwZI2oLgSg8xCwEx38vyRZ/1clO/ehAtZWmqeSRv0hKReHqS4qgGoSOOMwjK63lkXGnWm5SoLyd25iD7OAsgB0YUjW+H/VNrDGAqPrnKdiTlU3V7mC3DhydZhRhXBCU19knO+qeHVHxbqrKo1GiYU+nORcJ6AsAF34YO0kbA/8lcC6IQE1SdXqAHpfVY4dz09OeaGXRIf2wLkgqYaTACT3PZWQqJ3q9NyiikjVK6FXdhMqDGeVdGwB6EoH1QTKv9L/H9Lzhyoe343+PpieDySvymaAaUFy+pvYGqdLyZXFOBHrqxNbMBdXYhWIB8rfucr51RFpWQC6ylDMwcLYBwnnxhslTjAq1Yp+9y7IenEJlJ2ECmO+BspVwcjUDvusk6Dt7En/wRXaCUYsek/jwyPf66As0CwAXZXVID8zWGMnCEANpjA7kceBeSx14tTeXCrvWir/YurBVQmUfcGaRysGa+AawBp1mti6l48454HyLCoediNtVQLKAtBCvoqQLfT/d0nnjiKBrFMegTVAeY5K6pPXJNpPckFUzLH6g7V3KIYAMGFLvF4egDXE/OkEyjNMUBYSgBaKTmXUb5Jg7cZHK9eBEadW1L9wOKZx+YFywiDRCsp7tTZISNtJjaC3XpV0FQLWvxAgT3OUM5d+Sbp3ygSUBaCFsqcG2UL9aSJ17olJGSi+u1KxQ+nhIJW04JZNAWsJAfIyym8BS1fVuC/LDSQ5AGsCzPqOiuGQU7b11shjqps4au0s326MSIBZAFoo14CNQwLvJJyrYFYTi4wZgHViKg7VxTxKA0esHe7J0kZyDNbE6k2G3rpZBmCdAGVyk93kvnMBZAFooQpEavwDsCbBOu4emLw/0Ylocc/dQO5dksarCSBXOOmLjAuS2/dix0VEWMx2xlDc5a4AsgC0UJ6CdSyxuPidct2myk1s3QNgNzRAmQDdgUEbHM/9uUBO9FU1KtYOxTRJHopRLQyperUmLS8XaVkAWqhwpOol5N6mDv62chWBdWLrXoOkasSJeYFU5dqBURntvbO+OvFpUEOt55N8K93kTppKSW7uLBgKQAvlTSuHTeVZ9DtL/fzsYlXnkiJV08WlA0crJ/HbtJKJXJVVfJxFlTnJUbFJrlo3oan70JaFzs0xR+3Slt53JEl7XwpTq5I1XgFoAehKCMk40afiC5RbtED9PGKRO8ATKkfgv60qaQ5yUgLNHrtsNwrbhaTqo+nPDjI/ziua4+JGH7W1pJl73yLTs7n7MA6YYE/6HALrMQBrR8Vbk+DZWon1RAFoobya1i9ULg4dxOa4fYav3+41PDhi32E4bv4mnIB1XlQkroEa56p46Z7u4IVR4+lgjb9/cu6qX03FOlIVdhKwFoAWqjBQpqlvfOMs94ZR6zNO0A7W+2MKTR29nrA8J7SB3Bdu8tToxGbuvQuykWhLdzAWD7+AE7AWgBYqF0h2AcKzSEpeoOIbFmYDlCOB9UOX6nrrowSsMyZcBPAludJiVfT5bu6AzbnMTAfrRc4d9VwVa+0onEZ19qXf2lIdAtBCmYHybJJmZ6niugvca54s910K7i0jtumtCawfT4K16krSNYG1qi+VFIk2MSiX0AD7ZVP3no0VUYg93fux62My3Dzn8rerqT3bEEh3FLAWgBZKTYERV2rr1wTKnxMo582FmzuA9SM9nlTFNXvR89kE1tWl0qy0xlXum8S011q49/6STwVr7T6DdjUXjsD6HQLr42IqdiRvwRQSgBYyCCf6FpHUvEA57iy39/O/5fUY0m9UGf08S0D9AgE19lgfTUDdRaTqhLT8FVQYZcr9goB5Q74XmMAadfn+QucvJOUXdySgbk1TtZYiVQtAV3VJmaa6LlQYM1X81wXuDWML7np6BurEtJnA+gkC6/2qIFhDjzw+uS3O/aKZe+/6QvyI5u7foAKBKuZLkqpjogIRgK6aoOyq2cqNz1K/FP/kDngmXmk+rd+ouA9YQ28N4z853bq3ubhcDzcsTt7Pp74tZFCOqAJ5u1g1b03V5x2KqSMdWQC6MoHyUhXHVVDxhZUNlKOANf52hlzSMCFVJ/dZd8wFWMdzf2neYvqyEvqw0j3V4FnKdatE82Wwxh7tH6Y5A8c2UGWtXeW0otGwDVVjCyV75nNGjltFGlkgE4b2qqdU8dVZB2WoLkhSdvuOXCNNTeN3DsF6cd9WdbNbjQn7F6X0VNpMDZ6hpL/sQD85d+1SpGL7UgXul12wdic1cwe9LhK0UDZpGQHyDAHlkK53w7PY0TAGbhtYK2d/6to4TFHRemvo1L8lkXGiA5BQ1ag+B7DXvVJ5BrV0B8Pey3i43IG1ALRQerSJJKq51A5h/2Kh2+e5VcKSDMD6kR6xClpkTIAyuRJClE+buIPWSs1kDtbVVKwVzTdai95aALo8aTOB8hwC5ZnK2Tjf7TNqq7AkS2Dtv8iYC7De6iakZDVOQDlnYA1b1VOht66v4i1pRtKJeE1g7dQVDglA5wBB3GmqVvVx7hX/2SzMKFewfkoV1+pBb88lsK6R6QDrKnccgcQLzdxBPwmnc0+d3AGoy3lw3zjXvrOHatItptxucihGADpT2qJctTh5eaoz0+0zQlQYFQPWUEGMdIacOkqpxiSBuV1Zqt41qrRM7juSmD+i30+aufeuFq5WDB3qJk7Glsxz7ppQLbG/OtaGJOuWIlULQKcAyu5c5TqzVNnaH92bXisTluQJUN8wFnUxBY7A+inlNO4UANYJUMa2uGIV+2Q3d6AMrnlErd3BOCn7NRxJ1Q5J1a1EBbIzyTY7MOGfPalBVO9O0vJMAeUCrL8hp8YSYO24Ry/q2xo3nE+qpuKlu7uDfxXuFBZ5YK1UWe3m7n3TBaAFoIWEhITykkRJLyQkJCQALSQkJCQkAC0kJCQkAC0kJCQkJAAtJCQkJAAtJCQkJCQALSQkJCQkAC0kJCQkAC0kJCQklBWqUFscjuPAhOSuOUjaJZov1Zv1+kJ7OYBdY3LVycGs5M/kZpObSnxfL5wq+HpuSj8dyLUj10gl7ZqsUMk7ClHHPwuXyo/cFN1zOB7uOaKlKcS9zYh7Wxr5R3Eb9XxSdUQHpZHnLVr8pinGrZtmOaf7pAdbIs0z4YGRD66mGs1gHPQdMMNaQq4nuaKQND9Mg8dn+aTVLs120s1I5+MctUe4y4y8qmeYHni9kNx75B4gd3KGddya3L9U4t7F0LxhBvZhckcFpHddDnlpuseMvCfnKJ9PLd+5exrpfBu1XkTFUbhSzoEqYfnLSkUMkpnmUZfcv+nxE3LnYyAJiVJM7hhyL5D7jOLuIzWVMwKvcVP6ieT+Qu4d4vdv5J4mt0eK9fwn+vme3FUsXIQRbmnvR+5zzk+sz+WIBKALl3pl6B/WaU+mn0XkrkwziSMUjJM5zkFSVeVGuFbqcnLjie/NI9bz/fTzD3I108zTy6+WsF8AOir9VgXq7rgQ/0Oo09TLIH1Mm+tlWMZdyN0s3azcqSW5gRHAeTeWvjOlfXmGJZRlqmapyAGWcDPJvcjPkw2/h3jqC10M9E7mTb4fYCrEz59GKBOMeEdZaIIODlO5Ayx+gzPky1KDL03IXWsJ95hKLpAp7RtBa7X4V5BrYYk7gtyP2rekIt02pJ+DIwT9PblX0pCeu9HPgQFBlpGbxN+Ohd7GXJ5iS9hDfdIYobWHliyJmTTVKP9Mn7R+NuoLC1t9LeGGkdMXj82F5GfIjTOkw5aWb58RQQXQMCTMVqPMUEvdZQn3C7cnj7Zwe9mLXND1X72oHge6rht0rdeNIULaLHLTVHJNA/37EB50lU89PxvyzX68213Z1XWlPukcE5LP44wN3uDRwxIGdT8vJJ3OKvyy2y1GOaHWa+bTln/W+BqNDIU3wNWm1H49ZIEBizQrLfGwsl83IJ5tkbBDxEWNLsq+aPVRthbHtLwO9uFLh5B4Z/jEe1exLe40y3OVJc3PLO9Gp5n+0z7lRmc/PqANvGOJsyxCft188nsxzfK3VxEWBSOkY1s0HBEh3rsqZJHQEqeGT5n7+ISP8UCANYK4T9yhIXnOs8TZSO4+W9vmQedhn7yejbBI+JxPOS62hC0LKPdGFbBIaIQ9z6e890Wox6kqZJHQEmeoT35nptOWM1Zx8NarZ1lqMUeWXpRJ1tUNrF97Qe28aIVrjS7Nh6kJlRFS5b98pPOL3cxuSrjI8u4Zy7vTqRy7pJF+F5/351Kx/+sz0M/iae4WkxUyUc0+Eb/j5KaQw2B9i0+w80P6UCuLF3Za3UluhiXPX8jdzLNcJfVcGDroe8gdbnl/O1XmhBwAXyce2VpavCFtLMgT3v5Hm2Zta+PkLqEyrszg+w9jiVMn7E8dzVNRnbDwc06aOsydpqdh9Un+61TV0P+X61gfIcw/eOA3qTG1lxYp1DFoTEQVoFA56aAzAcujWE1h0vs8Fco2OBeztF7f4o3p/Mg8kZ6vYvWGSX+nMn6Y4WzlecvA+iqlu5r8oT890dRFsr43FapueRd1lR9qkDXa3yurWqeiujg5m8lFkaap7r/wGYwxs7UJLX67LmpHKNNytbP+fmUlrMf9ChagqUHU4Y5fZEpaLCVGmcJDmf+i8W5RQHgs/tkWxxDnmjwB571YojFpCLk7Mkz+JJVchDDpJW+QsgD0CVitT1FqX6V2VlnVp3T+SOkMD2nUsq2uYugXn/ebUwyPPdFXhtTxVRHKA0HiXeNdKrOroJlDe8N/jUjQO9Mj5Pa2jPaXUgUujzhCraaf1RGBDyu3t/hIGACOVXkAzkUs4Zsrv49T+W7MQhZ/sLybQ2l/w8+vkXvCGDRRxxfwYBiVPveZATxJ37glX2YqouLYgZr5vF/i8346D8QNjPdX8AGj3lTPUzOQPrGAvzYXM4eqZMYhLR00VSA679UWr4eJee/nAPiwH3e4T3kf9Vu4qgCCuuco4913Kgt7gfkgwNk21Y7WcLGNx8aLVA+tDPV5j50Gz1NZPiDXVbAzuzNqn/fxCG0D9mx+Z/GaRm3iVx+Q26SSO0BshLQmUrr/JNdGqiZPADpALbEbVVR3z6nkIQaTYEylf47KiS07thXnLTnMM0rnOUzjy/H0952WMAOIrRuzUAaczLPtyDAB2bZ3tAuVr3oK0g+mptMCgpxA7lNK800GB6GKJexcqhuhbdhmwUGz697kfqA6vkNYnAcqDqoIv+kUpKWPAtLBIkT3XFgyoyJBF9rPx/t/Kc/y0D/58SVs8a2E3FtZKsPxlncbyH1lvLPVE1QeOHn4bgr59eOyBx2GwExqOdURDPZgm98bVB9lWRwAD6e0h6WRXr0ctoUTqUwlEcJNIF7ckvOG6TgYuP1OA44JGYgXU/y/0uPtIdncR+GwnxjbRl9g1WSh00URZ4Fj6XsfzAuAVhFWjH3oJvqIH3JURkzDmljeQ+86IM8bwZVYYc9CJ8SPTf/8lmWf+ZcM2kcY73umAtCULtQY+7K64+SQNnQau2UUBzrwh1McOP0GwDbs8on2UDtvn7TR5lSr2ef9UcTT9ZawMJR0DM9mbITB8oMI9XwH7w66RQXru3GKEOsYD1N4LABC5fh5Ntp3BVErn1m5ST9UaCktJ2HSMcOHfZHdcnCC7wqf/LAC3SHb+WXZ/GjCrCC52lnIv7NP+ucHnOorM8JC6qmRZv4XkpuSwndD3XVpCul3U+VjljIbJwmjuvdTzKtGFr9zPGYRKeaPw0ljU8wH6yuds9C+UzpJmGLa52XIy6dTzC+/ThJqUkUpjaynZHHq1pZ+HrV4zSPXyXbSKQ8JWwIfykI6fot850MFYDqV3M63xjLtPy3NQXwkORwrhm2PtyPMtGCEZziV5R/+WjOhHBAEFxzT/l2qqj8KD2n4VJU8Pn4PD8hhBDs4MDl6lrC+fFQcfoSpkrfPGFvrsDBnWzUeQpXVkSp6cyaF4u1qz6mdt6vFWTJbkif8O56nQFiAgzrg7yppxEan62FTmcr8bZq8cHzUGyrgfRDQv5rBbAuHbD7kvd7X8Axnt4Ao2FOLgfSJNHXQ2K75fRpFxY6Xw3NU55AaX48Qbm6q7M2wXE9S/VyXhRk1ttZNhaEl7uMwEnaBsh9eAuHw2IsU/lCKO72AsA82zsdFCDcxb1QcWkMJNJakktan1viE7ZuFackdPmk/UF5qjYjGktob4Y5UdsM14zLI+5gsTn03pjr1DSlbTZbKsVi6xSdP6Mj3qUrGktIss5+KYznPGj23LKB+nyQXy0HZMEOG3ehVAXl/XGAqjvtyVI85VXE4EUEdjcZvZbN/JjcsUFyM2AN9RrK782wUdgy+YIHuNUu4Y+m7Hk1zut8ri+UFCJydxcEdV4u9Te5S1mEuswTDLGgkfbtcDpGeBH0d8be15vZgQLORN6vJthAHOyx38Czxa59gv2O1pFAFqDhshD2UfdTOOyxgxQ3bdu5MA5wv95kOY1M9jo9vKQCe4ruhkzOPwN/A06rRKfAD9WOzSAYzrlFO80GiP8l411MFbA/kfe6tjdfziPclIZ34a4p7uk8HxiInVsx/lC4XbbAP4fXzXE+2I9eDyO8FNlwV1LYuNNQW6ynOqJB8l1C8k1jtZNvJ0kVV9K4HAehtlbWOKgvHmv9s8b6W/O5OYwvOfT7vn6e0pgU0NhxXvcl4DenugQpQGc3gfbK2fcvXpwLQKrl7pJHlPbZQ3RMB4E+0ADQO1cQC6qYvTwt1gtH8kgjfPoHSRj11sng3EoDOKg3xAeimrDMeFhIfU3Hd6BjWdUZFqONfqY7fUHbbN42kWjIYoZMCTudsSdAgGHa/2SItNuJG8lIKhbtR2S+sXMf6ryDCaTZzTzS2lT1QQbx+ygegu/EiatTFFL9rrUojxofKZbMhKWEBrStL87mghT4AXVO6YFYFgcnUlj7jutxJLUJ+wzO0OR5EfgbN5F7CzAgAvcPNTbEMG8mMgJH6/qjHiwFayl+njUMwcwuM0ZCSv7G8L0px0LjQ8g6nNt+PWD9rfMKmqtdOBVz9rnpaUYUkoZbkXMNtzkFWEI5sIHwEC0ipUO0Uwvod719eyerxaEs9luuFINky2G+zNdGWp/RhTACIY0ud7UgxTsr9uwClG3SaW328z+A7/8L40kHZ7wW8JsVtjC9b3p0fMHhu8ZH8m0Vp0PRzmMVrrbLbJBbKrJ2NV/4qswdCBCTzSH59vsk9rI53Dxjg50qt5Bag3TQaCaa0j/p4300V2jQkCezYsNl4xgWhl0ctRkX1kQC+YI+l31HbR4gvNULStl1r9R0bMkqF3rSAbuOAGYvNlCOMNOFAQg++NMHstLXIYRF0rE+al+bCTotQgm73GVRxRL5fQLx5tsGc6vFWzAB8wBk7gGCK1rZAiIsaPpHqyLIUzxKwTgN8ptX6pu7++m3BbNHsG2W3m4C4I3jE/lIHGJYkP/KR5KfztCvK6jZ06Xsa71ZTXg3SnNpgZ4q+6d/vVm9sqVujgfJlRjqH+Kg6QBMZPEEPcSfTjdbYbgOHTvk9T2VA+f0z4BsgDR3pSd1qZ/0+Bpe/cr4LKK3/aGWeEMB3SMNYCMSCXwPmTRu1s11hj7CXuZelfJfyLAsU9VbvF20nSNmg1g3aq6i3ej+j2xbmnQ3tNP90b/WuofF+28yE8qqu5QV1l75t1O9W748Y/DzCfYGLjO/HjqqbLHG38qAJIeplFhq8OH8OGKS970Q9L+W2g73lQbOoq7w2FKF/4QTiudor/G3eBoNF7Hv1vyn9QRHTv15l51bvehbhEcLGs1peEFj0HWs4F9DZpy3/HJJfO0s/TevAw8GWDdrNWAcVFO//jDgvqdzZXVhVAbY3HEtaIyPEa8KNIZW8pod8wz9SSOtzI+7fslQH2A7Y0Kd8H6aR3lkBtkcyts2hth9jz4XbbORVPc10Ovnctv1rSLzrLYeMvsjSt72chYMpYW5LCulPzmE9XmrkVTuHeblZOzwA04UWaTxMJVCpDDX4rJpjg//GAvsUXDzwWIZpQB95LG6ClolqztsdeDwoxTgbWdr7KsPs31DZPUwlFKCDzrShDFXRDlBUpc6DaRRun9lUSAMNEVQG2C4HG8CpLEpClTWEZ1kLpQWUG2FA/T+VtBGeCrB3Y9VKqgMpZke4FuvsAjlAVpAE3W1pGvHWBlQ6DGGj8nDKcLcC5ctvafLFjyfPsVF77OeGgaNdCgSosQ5wDdt4/reyL+bqBL16T4o3S7pWKMXTbGPrfOoKIHkT1RXOJmBtwTQ0tsgnHgZfGORH/ULAOjckf+imr6B4Y6UKc09O7vayC1W6xpI04I8LRbHe0Iil5bUsfU2ktjRTuFTwdYxF0VZcx1how2lD7MDBrfBY6JqSqbVKIQFoISEhoYInsTAmJCQkJAAtJCQkJCQALSQkJCQALSQkJCQkAC0kJCQkAC0kJCQkJAAtJCQkJCQALSQkJCQALSQkJCSUFdrpTkLHcZqrpO1jXJvTWiXtUsAmLI7xwp7s2/qFoxT+SWW/DeVpCvdxlEJQGrik9Azt1Y18XZNfePzAEhduvO7E+cNGL26UHkZxV2phYUSmbkD2S/ibPjXygA3ZUyPyEfe/fURxcDT2byFhYcvgqaBrvCgd2MY9i/8sobDDfMKhfD0C8oLFsknkRgbxk9PCYA2bG57N4j9TnBWWcLg15aoU29ljfKEsbJHYbArDtkM8RZ7fw4aobN+C22hui5jOa5TOGxQHN1KbF6GiXYzW0oVZz4d90vk7hZ0Soa3j52yu373J4YYSHJeHrYwPuC2tNeLgeP2dRlJfm/bA2Z6G7Z7REbAFTf791XYb3DaCyVJYt/tQ70Na+rCRfmREvv6J0lgdoS7KuO++YLFz/SDzx6RXKOxbHAYXW/zeEmYOhRls+Qbw5xKOA1404D75BfNpuiXO35X9QtxRnk0SXHRAPx0tYUopzDPkD/soQZeXwFY07L2/xZYGk6TZNQXIoSAwuhJkoxSg21CLt84n3JUp2G+daMT9Y0BYGPeeFVA+WFBrq4X/RUWzvTrC4MeDKrrd1us4zj4Rw8OWwYUB3zhBCwvD4o5PuFsj5gc73QeF1MEJRpzePuEuV6nbtT2f40738Y+lwfPOAd/SPYV0+gfYKAZQttLSbRGQzskR2jmEn3dDygNgPM2I19USDsb4DzfCbVIBtqCJxqfAFxhdqp2GbfNtNs45zrERw2/y2omW31yfsHdpYR5V0WycA5hhCOrbgDJsZXw72Ij7k0/4WyPYN/8X+8+IyAcIHV22pcuRcRvvp1qgFSxN4WaCm5kJeuUOMYxv60xCJ7wMYBURnDtooLWZn98NCD9GywsjDq71gTnPUu19Py18Lx54PL8HuXwwp/m4UWEXaPE6czi9kdzO7zwXNwC6Hr9/TYvzJ36HG1JwvdcCfo+BsKPl+/bR/L0O19WHF/tx2l4DmqaVDbekP8dStMugH1QP/+Fw3oD7SQhAz9Ly+rMx0HnvtxoADcmxvxb2PgZTk+e/aPV7meGiAHQTDlvCYTdY0plkAHRbfv+d0WHe18pXh8OM0Pzf429oGKGd6xdaoMP+LwZClbxIWO/gkCpP1+LurrVZvWwwXlRdC3eJ0WYnc9masf/p7P85+y/lvy/nenlPqzOXw9XS0u9m1EGi7Ws8vckC0GZdrNfC3828XMl+qyDRavlhZj1IS/NH/h590Nyb3+kg2pPcIQY4m5cx4Hque7R+ssEYmA/S4uMC3vs1/3c5z5ZaGNwfeo4WZhWHac/+5xht/4kA3gMHT9IB+nYtIgCwrqWB6aPE64bf2Vr8D1O8XcGrgO81yRENtLElrKMBDiq1muZXXyvDbUa8kzW/Ewy/Ojwg4Y+XLHl+qcXtYPj9wCPeRcb7/mZD1fxaaQPRw5b8vLiztUHxsRAeTvLjvUpeYeaVpY1P/Bpq+40cz/EvBp+jAwD6U+1dW5vkzfXo6pKR2vG2mot9yrOQ/V+0+P3IPD8gQtt6itNZY/F7mtO50Xg/1iLVXG6E6a0PSBHb+TgtzkBlv33nXO7YnpBU3/BvbCnbIEs6X3mzXZ+yeHU8y+LXReO/y6obM4yef13t/R7M03lm/9XqYpUlvdO09HoYfkfqA1IAf3UJtbXhd43mt8WU1DlMe60fuTxQxzT/ozW/4T5l2EMXckNuarrQh/erNXxrFHMcB8D2PwzAPzCDfjMVJJzAuyypTs2GApz1cd7lqO9z+qCiEN0qCFfNNNT+XsvgcTmPlpGIvmsdS/3KR88UFBeqFDSG581P83lWfAfeZP5zX0uyF2v8GMPPPfgOu3Toa+3Zzz73KayLc1mqWM3lftZyM/REBpinI+Q9iMNOz9aiCfGvDfN8cobpXMHpPBoQbKKnX+Z7KtNt50fyVN/TeQ+w3b5Dr15l8Pfq6gYziPY8m39v4zv+/MKlypfPWdqfxq+uo/R3iRh3GfO0tW39IoDGR2ij6fIeayt/MdYuXraUfSbPMJbxqwN4javciHnfW8OiK1D4v2rA9GjQ7cvk9xC57uTuylKZDtcWLUap5B2FHvWy5L9tyslqmY+pAk5kP1wqOYzdlBQqsAaPnp50Vh7kNcJ1RlmuYhWHYl54C1SNfRZCotD+Wqf1+76e/ItLfedghsR/tzYX7ch/Ejk08qcjNLhBHHa6KhzSwQ3TUCyu7srP6VJP7fn2kLAvsIrCU0n40SiWVHFp6dO8+JUtoICANkQThI7KBlZGaKOekJhNOkzDmB9ZreT33Zg5HMOqBk+yz+p4ESHMC7xxAXQ8KvVEi8RQXnQc/0LX+gWv5M9mkOpCzzV3WNFMEhqOt+MDwPoehStl/fGKNMpwpdp+A/BnIWH7Ul766jamiCNDOrlrgHA7VnMoTUrxZhP38Z9bWIUAfqxggD5Om2FEHXygE++jlXWlT1CvDZRqv3/k52M1wC5v2o++4R7jnR/Pg6i6JR2M9wNDOtFCnilAt3oWpbEfxUln9ugBxNqwSw1QKMoHqr691M43iutlA4jiiivc6H0oD6RvpgAEYTRJe24REO4OKq9uwH8CfcKYkD5h7qq4TQvzZUC83S31GCZ576U9Dwu7bAD1Q3nM43gtcjj4++WPPo/ZIXZ8NAdz9G1P5X3B5/H8+7G2dQ8605HcyI431RUU7gP6AIxyd2rAgr9n85a6+4NmAUQPUbhV/FyfpzKK1TajQsrbx/j7bRV+ByMGGo+v6HB9+Xmzkd+RavuWok80fkB3+QeNV0F0COVVov3dnhdpXF6QsXWQg1hCBH3Ev3oav1cVR53Ypcpzk2pwuzI7y8AIcQGAmNlgq2b/CKo3G9Xj39URw//qzZwwcAdcqoHB42YGEqg6xlLYsixJdPpWvzoB4cwZwZOaas5GdbQ2ihn8flr7e5DKvyqgjI0t9RhG9bXneSnyf/cKkKAVz9pAdQHQ2FXQTmvIZgc+UyVv7jUH+owOubBOz9PLtTOAxeWP6aUs+mTeXw31BvYdXs1ScH0G7dPofdcAkD7Q8g465N4hwA6CPlcPMyVCRbxi8ccU6mrKb5qPSmcvjR/NNfBtHyKB7cqDldnYzjT3efvk25/yuEOT4jF93hc6zkx1vmkSdj18b7ybkkY64Lf5/fGI0/2f6Puhw8Se4wt4j3qq5K3p7ErxHTf8GiNP5bghKCj2tlNyOLMwltUQn3oqvyyQDmxBt9J/YvAy7D7KapY2Guc+PCxE6oRKcIJPulCX1rK81y/R3SfitzeyxC1PgPZ4v9G7NNYDaFTyN0ZgANJ8fq6VxVEFkoi38NVKm/brhGkltvls8Gmg0G32ozD3quRWJYA1JEIo2h/yyRe3VH/BkmEvrXKjVMallOeMFKcyww2pBPqlN/WpMi8A/kEL58ePi1iK8yNs9L+LJRPsXLmAQXtPn0ESDUbXj3b1SfdCtX1hszzpI+JTzyyksx5rJxnEf5z59DsG6qEpxp/K+sw6rI6YECC4xLR6mBbWxui73qE4z6rkFrsjuN1HXSQMCne49jw7INyptk0FIXQtA/U1LDDhmzv5DEY6qM3zq0fiwQy1fS1JJ73dXo8DI0GCGC/ottHqzaMyY5DxG3xUALiH1gtjwaHeYAfG3KONkL3NxQb6mA+9lVkGwFQl5ebQG/EpJrPTg95nhujuFE/Eh/SnpXUhJEt23bQyQoVwndquXD8waMTHyR6V1LG+p42sfbIILDGtbJdp7gZy91v0mJhJeHrwLy388BZPw8BqFS+SYup7qUruDQX9Dfp8S/iump7zMiPPzlqD6slgXiWJJd4rudNBN3hxiknoOvywE469NLXjqwEdXH+GjtzbfYA+2iDD2S0w4HJNLfN5lln6HLF0KPPU+44bKN+9c1B9EzXVBiTjGwO+e09DPfO6MZvz6DCf/tDWZ2BIhc7SJPj3sM9vsSYRYNvX4wFbuuqlkeGerDfqrzGiLY/2IOw9nqc7lVwM+8kyBW/J06NjLKNlA7X9SPeasGkGX1OPVfLv+D0GkcYpNuR/Y0GB3NcZNiL9G0dZ+OEB9D48pQ2dQvHi6u2aRH6Lj2TsSfZmPWAmNUSL3yUfwFLj+TUZpnMRpxNJn038mK3pP9unCPAYdD/gP89jgcWxlKkLS+ggLFA+FSBNxgwBpa/m1z4DvkBt+K0m5NxH6W9KIf4Y5usZYdN7bmPnswrKO8mci8F1kPZqEJuWMMuNRcbXNHBEn35LC4LdJXM1ge5qy8znTm3wfDBVCZp5P1TLb5gnLaPh4agvFsywINKVAr/E4LWK1RodNClzuZYopn36Qk4zeneZz6iC8J3V9h0CiREawGjswOjMeQOQT2W9GkakpVqYh+n9Eayu2IWlS2+/5hgtv8PU9oVAUAdI39BjY0GFnrEH/EPW+zwJexFsN6It568PSufQ+yXa34cyeNXkvOpy2Vtp+YMXP9jskpAfBpWDVfLElEe/0PumFH6JFmYTN2IMnI/wKvNk1t3tqw1MtcmvO+sucVjhBZauwIPbyQ/6XCwEQq/dUG3f5zmFv+UzrWwH8ECJ06TQRffhBSs9TEPmrW5joB2X4VNzwYreH27Uxb4cFvZGlMZzby2ktdGWdJ7XC2joDVjV5ZWr2JLOsZzODxynGav69L31B9D7dVQ2b3fLw6w2OiwNrED+Jdy50d/OZ9sZq3hqjFnj2Qy84NsfYMuCy1af24kuGbdl3o3HlB17e3nwHqqpDk2+HMJ889SU9TS+NGG1BlQx3t730bqqkAHEVHFeTO91HfV+zNc6HKc2p6u3kW70fj6V+Xvs/abnp7idnUnPaK/YKz6f+/chWrw6/M0/8nkCxVI32nNtLdyRaJsU5lv+exjPFq/ktgxejWPBB4v1+zPueW0K6zY9dJtD3D7v0IQlYMXpPJgVseTrbRd83ezvlrbfTTtjYPIebeKcxBkN45TSxyramfkeEWxxmK7MOPW2k60GLc3JljCXsQ68JCSfZ420plrCrA84Pv5tGnYhlnKcQ3z8R/qcPPKzU3CVFuY4vzCsd7T5/WAcz9X9TlJ2exArjbK9FyHMyQE82dXyvdm0xXFLlmxxjOM41wW1W+N4/WaV4klC7cj2OyHlgS61awRbHJ7raITVjyR/bPhFtcUBQQhbPqtlYIujp2HKwXTPGXxZrQxbGyq7tjggwZ+hdrRzYzpgGdSD7QLqsC/P0P3SgDqoUchJxzBbR/t78appI8QK3r52Dk99j2C9aDGPKFidxagzlDd0b9MnKbs1O5O8zd9vqh33WILmG3+/wSOTTrBOtYHKCMA6mhcZAT57a+V7kRcBTf2fuShj7oXEdOVelmTma1OM0ojSkbeNDlKvbeuW386DJcYiom1RZqlPmFksadn8lmv1it0ufTWpz7OattSIYy70fKDp9JWmCtFpkU/+igdymy52fAAfU+H5giBdfArpeG1xps+3xI0p81TiZ29ug0qF753X46JeTqH4R/GAcBRLTHEevGCXApbatlrqc3jAt+qE9rcrCzPmjooxyv9U52avj2uSp0nTU+Drck2HbSv75zpfsL7EsxNdf/uKsm9K+E57/spnNjXHoup4CyoYllSv4FlWjMuKtvmvsLMU5P8YpfEEg/0ZvF6DfjiNse1jn62Oryl/a3abuP29b65P/T87JYWRlclGuAAAAABJRU5ErkJggg==';
+function fotoUrl(pad){ return /^(data:|https?:|\/)/.test(pad||'')?pad:(S.data.storage_url||'')+pad; }
+function bedrijfLogo(b){ if(!b) return ''; if(b.logo_pad) return fotoUrl(b.logo_pad); return /kasherstel/i.test(b.naam||'')?KZ_LOGO:''; }
+document.getElementById('lg-logo').src=KZ_LOGO;
 // Huisstijl van de aannemer (Lijsten > Bedrijven): hoofdkleur, tweede kleur en logo bepalen de uitstraling van app, overzicht en factuur.
 function huisstijl(b){
   const r=document.documentElement.style; const k=b&&/^#[0-9a-f]{6}$/i.test(b.kleur||'')?b.kleur:''; const k2=b&&/^#[0-9a-f]{6}$/i.test(b.kleur2||'')?b.kleur2:'';
-  if(k){ r.setProperty('--blauw',k); r.setProperty('--blauw-licht',mengKleur(k,'#ffffff',0.86)); r.setProperty('--bg',mengKleur(k,'#ffffff',0.93)); document.querySelector('meta[name=theme-color]').content=k; } else { r.removeProperty('--blauw'); r.removeProperty('--blauw-licht'); r.removeProperty('--bg'); }
-  if(k2) r.setProperty('--groen',k2); else r.removeProperty('--groen');
+  if(k){ const kd=leesbaar(k,4.6); r.setProperty('--blauw',kd); r.setProperty('--blauw-diep',leesbaar(k,6.5)); r.setProperty('--blauw-licht',mengKleur(kd,'#ffffff',0.87)); r.setProperty('--bg',mengKleur(kd,'#ffffff',0.94)); document.querySelector('meta[name=theme-color]').content=kd; }
+  else { for(const n of ['--blauw','--blauw-diep','--blauw-licht','--bg']) r.removeProperty(n); }
+  if(k2) r.setProperty('--groen',leesbaar(k2,4.6)); else r.removeProperty('--groen');
 }
+// Een huisstijlkleur die er op een beeldscherm mooi uitziet, kan te licht zijn voor witte letters - en dan leest niemand het
+// nog in een kas vol licht. We verdonkeren zo'n kleur net zo lang tot het contrast klopt; de kleur blijft herkenbaar.
+function witContrast(hex){ const v=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255).map(x=>x<=0.03928?x/12.92:Math.pow((x+0.055)/1.055,2.4)); return 1.05/(0.2126*v[0]+0.7152*v[1]+0.0722*v[2]+0.05); }
+function leesbaar(hex, doel){ let h=hex; for(let i=0;i<60&&witContrast(h)<doel;i++) h=mengKleur(h,'#000000',0.06); return h; }
 function mengKleur(a,b,f){ const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)); const [x,y]=[p(a),p(b)]; return '#'+x.map((v,i)=>Math.round(v+(y[i]-v)*f).toString(16).padStart(2,'0')).join(''); }
-function logoHtml(b, h){ return b&&b.logo_pad?'<img src="'+esc(fotoUrl(b.logo_pad))+'" alt="'+esc(b.naam||'')+'" style="height:'+(h||44)+'px;max-width:220px;object-fit:contain;display:block;margin-bottom:4px">':''; }
+function logoHtml(b, h){ const src=bedrijfLogo(b); return src?'<img src="'+esc(src)+'" alt="'+esc((b&&b.naam)||'')+'" style="height:'+(h||44)+'px;max-width:240px;object-fit:contain;display:block;margin-bottom:6px">':''; }
+// Staat het woordmerk er al, dan hoeft de naam niet nog eens groot: die zakt naar de regel met het adres.
+function firmaNaam(b){ return bedrijfLogo(b)?'':esc((b&&b.naam)||''); }
+function firmaNaamKlein(b){ return bedrijfLogo(b)?esc((b&&b.naam)||'')+'<br>':''; }
 
 async function api(body){
   const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':S.code},body:JSON.stringify(Object.assign({wie:S.wie},body))});
@@ -220,7 +233,7 @@ async function doe(actie, logtekst){
 }
 
 /* ---------- login ---------- */
-function toonLogin(){ document.getElementById('login').style.display='flex'; document.getElementById('lg-wie').value=S.wie; document.getElementById('lg-code').value=S.code; }
+function toonLogin(){ document.getElementById('lg-logo').src=KZ_LOGO; document.getElementById('login').style.display='flex'; document.getElementById('lg-wie').value=S.wie; document.getElementById('lg-code').value=S.code; }
 document.getElementById('lg-ok').onclick=async()=>{
   S.wie=document.getElementById('lg-wie').value.trim(); S.code=document.getElementById('lg-code').value.trim();
   if(!S.wie){ document.getElementById('lg-fout').textContent='Vul je naam in'; return; }
@@ -245,7 +258,7 @@ function tabs(){
 function render(){
   if(!S.data) return;
   document.getElementById('tb-wie').textContent=S.wie+' · '+(isAdmin()?'administratie':'werkvloer');
-  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); document.querySelector('#topbar h1').innerHTML=(aan&&aan.logo_pad?'<img src="'+esc(fotoUrl(aan.logo_pad))+'" alt="" style="height:26px;vertical-align:middle;margin-right:8px;background:#fff;border-radius:4px;padding:2px">':'<svg width="26" height="19" viewBox="0 0 46 34" aria-hidden="true" style="vertical-align:-3px;margin-right:6px"><polygon points="0,34 22,0 30,0 8,34" fill="#fff" opacity=".9"/><polygon points="16,34 38,0 46,0 24,34" fill="#e6007e"/></svg>')+'Werkbonnen'+(aan?' · '+esc(aan.naam.replace(/ (B\.V\.|BV)$/i,'')):'');
+  const aan=(S.data.bedrijven||[]).find(b=>b.soort==='aannemer'&&b.actief); const aanLogo=bedrijfLogo(aan); document.querySelector('#topbar h1').innerHTML=(aanLogo?'<img src="'+esc(aanLogo)+'" alt="'+esc((aan&&aan.naam)||'')+'" style="height:30px;vertical-align:middle;margin-right:8px;background:#fff;border-radius:5px;padding:3px 5px">':'<svg width="26" height="19" viewBox="0 0 46 34" aria-hidden="true" style="vertical-align:-3px;margin-right:6px"><polygon points="0,34 22,0 30,0 8,34" fill="#fff" opacity=".9"/><polygon points="16,34 38,0 46,0 24,34" fill="#e6007e"/></svg>')+'Werkbonnen'+(aan&&!aanLogo?' · '+esc(aan.naam.replace(/ (B\.V\.|BV)$/i,'')):'');
   huisstijl(aan);
   tabs();
   const app=document.getElementById('app');
@@ -431,7 +444,7 @@ function regelHtml(r,i,bew){
 // Projectbon per dag in de KZ-opmaak: tabel personen/start/eind/uren/namen, voertuigen, overige regels, handtekening.
 function projectbonDoc(b){
   const p=project(b.project_id)||{}; const aan=bedrijf(p.aannemer_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{}; const inv=b.invoer||{shifts:[],voertuigen:[]};
-  let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+'</small></div><div style="text-align:right"><h1>Projectbon</h1><div>'+fmtDatum(b.datum)+'</div><div>week '+isoWeek(b.datum).week+(b.id?' · bon #'+b.id:'')+'</div></div></div>';
+  let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+firmaNaam(aan)+'<small>'+firmaNaamKlein(aan)+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+'</small></div><div style="text-align:right"><h1>Projectbon</h1><div>'+fmtDatum(b.datum)+'</div><div>week '+isoWeek(b.datum).week+(b.id?' · bon #'+b.id:'')+'</div></div></div>';
   x+='<div class="meta"><b>Projectnummer:</b><span>'+esc(p.code||'')+' '+esc(p.naam||'')+'</span><b>Opdrachtgever:</b><span>'+esc((opd.naam||'').replace(/ (B\.V\.|BV)$/i,''))+'</span><b>Locatie:</b><span>'+esc(p.adres||'')+'</span><b>Plaats:</b><span>'+esc(splitsAdres(p.postcode_plaats||'').plaats)+'</span><b>Teamleider:</b><span>'+esc(b.ingevuld_door||'')+'</span><b>Aantal voertuigen:</b><span>'+(inv.voertuigen||[]).length+'</span></div>';
   x+='<table><tr><th>Aantal personen</th><th>Start</th><th>Tot</th><th>Eind</th><th class="r">Uren p.p.</th><th>Namen</th></tr>';
   let totMan=0; for(const sh of inv.shifts||[]){ const n=shiftMan(sh), u=shiftUren(sh); totMan+=n; const nms=shiftNamen(sh), zonder=n-nms.length; x+='<tr><td>'+n+' man</td><td>'+esc(sh.start)+'</td><td>-</td><td>'+esc(sh.eind)+'</td><td class="r">'+fmtNum(u,1)+(shiftPauze(sh)?' <small>(pauze '+fmtNum(shiftPauze(sh),1)+')</small>':'')+'</td><td>'+esc(nms.join(', '))+(zonder>0?(nms.length?' + ':'')+zonder+' zonder naam':'')+(sh.overnachting?'<br><small>overnachting '+Math.ceil(num(sh.nachten===''||sh.nachten==null?n:sh.nachten))+' man</small>':'')+'</td></tr>'; }
@@ -709,7 +722,7 @@ function aantalTekst(r){
 function overzichtDoc(projectId, jaar, week, bonnen, opts){
   const p=project(projectId)||{}; const aan=bedrijf(p.aannemer_id)||{}; const opd=bedrijf(p.opdrachtgever_id)||{};
   const o=bouwOverzicht(bonnen);
-  let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.website?' · '+esc(aan.website.replace(/^https?:\/\//,'')):'')+'</small></div><div style="text-align:right"><h1>Overzicht werkzaamheden week '+week+'</h1><div>'+fmtDMY(opts&&opts.datum||vandaagISO())+'</div></div></div>';
+  let x='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,44)+firmaNaam(aan)+'<small>'+firmaNaamKlein(aan)+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.website?' · '+esc(aan.website.replace(/^https?:\/\//,'')):'')+'</small></div><div style="text-align:right"><h1>Overzicht werkzaamheden week '+week+'</h1><div>'+fmtDMY(opts&&opts.datum||vandaagISO())+'</div></div></div>';
   x+='<div class="meta"><b>Opdrachtgever:</b><span>'+esc((opd.naam||'').replace(/ (B\.V\.|BV)$/i,''))+'</span><b>Project:</b><span>'+esc(p.code||'')+'</span><b>Projectadres:</b><span>'+esc(p.adres||'')+'<br>'+esc(p.postcode_plaats||'')+'</span></div>';
   const geld=magGeld(), kol=geld?5:3;
   x+='<table><tr><th>Omschrijving</th><th>Aantal</th><th>Eenheid</th>'+(geld?'<th class="r">Prijs</th><th class="r">Kosten</th>':'')+'</tr>';
@@ -798,7 +811,7 @@ function factuurView(f){
   if(f.status==='definitief') x+='<button class="knop licht" id="fv-exp">📦 Markeer als geëxporteerd</button><button class="knop licht" id="fv-concept">↩ Terug naar concept</button>';
   if(f.status==='geexporteerd') x+='<button class="knop licht" id="fv-def2">↩ Terug naar definitief</button>';
   x+='</div>'+(S.factXml?'<pre class="xml" id="fv-xml">'+esc(S.factXml)+'</pre><div class="stil">Download geblokkeerd? Kopieer bovenstaande tekst in een bestand.</div>':'')+'</div>';
-  x+='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,52)+esc(aan.naam||'')+'<small>'+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+(aan.email?' · '+esc(aan.email):'')+'</small>'+(aan.kvk||aan.btw_nummer?'<small>'+(aan.kvk?'KvK '+esc(aan.kvk):'')+(aan.kvk&&aan.btw_nummer?' · ':'')+(aan.btw_nummer?'Btw '+esc(aan.btw_nummer):'')+'</small>':'')+'</div><div style="text-align:right"><h1>Factuur</h1></div></div>';
+  x+='<div class="doc"><div class="kopblok"><div class="firma">'+logoHtml(aan,52)+firmaNaam(aan)+'<small>'+firmaNaamKlein(aan)+esc(aan.adres||'')+(aan.adres?', ':'')+esc(aan.postcode_plaats||'')+(aan.telefoon?' · T '+esc(aan.telefoon):'')+(aan.email?' · '+esc(aan.email):'')+'</small>'+(aan.kvk||aan.btw_nummer?'<small>'+(aan.kvk?'KvK '+esc(aan.kvk):'')+(aan.kvk&&aan.btw_nummer?' · ':'')+(aan.btw_nummer?'Btw '+esc(aan.btw_nummer):'')+'</small>':'')+'</div><div style="text-align:right"><h1>Factuur</h1></div></div>';
   x+='<div class="adres"><b>'+esc(opd.naam||'')+'</b><br>'+esc(opd.adres||'')+'<br>'+esc(opd.postcode_plaats||'')+'</div>';
   x+='<div class="fmeta"><div><b>Factuur</b>'+esc(f.nummer)+'</div><div><b>Factuurdatum</b>'+fmtKort(f.datum)+'</div><div><b>Vervaldatum</b>'+fmtKort(f.vervaldatum)+'</div><div><b>Project</b>'+esc(p.code||'')+(p.claimnummer?' · claim '+esc(p.claimnummer):'')+'</div></div>';
   x+='<div style="margin:4px 0 10px"><b>'+esc(f.omschrijving)+'</b> — week '+f.week+' ('+(bonnen.length?fmtKort(bonnen[0].datum)+' t/m '+fmtKort(bonnen[bonnen.length-1].datum):'')+')</div>';
@@ -929,7 +942,7 @@ function viewLijsten(){
     x+='</table></div><div class="knoppen"><button class="knop" id="v-nieuw">+ Voertuig / materieel</button></div>';
   } else if(t==='bedrijven'){
     x+='<h2>Bedrijven</h2><div class="stil">Aannemer = de partij die factureert (verschijnt als afzender op factuur/UBL). Opdrachtgever = ontvanger van de factuur; de debiteurcode is de relatiecode in Exact Online.</div><div class="scroll"><table class="lijst"><tr><th>Soort</th><th>Naam</th><th>Adres</th><th>KvK / btw</th><th>IBAN</th><th>E-mail</th><th>Debiteurcode</th></tr>';
-    for(const b of (S.data.bedrijven||[])) x+='<tr class="klik" data-bedrijf="'+b.id+'"><td>'+esc(b.soort)+'</td><td>'+(b.logo_pad?'<img src="'+esc(fotoUrl(b.logo_pad))+'" style="height:22px;vertical-align:middle;margin-right:6px">':'')+esc(b.naam)+(b.kleur?' <i class="ldot" style="display:inline-block;width:12px;height:12px;border-radius:50%;background:'+esc(b.kleur)+';vertical-align:middle"></i>':'')+(b.soort==='aannemer'?' <button class="knop klein licht" data-logo="'+b.id+'">logo…</button>':'')+'</td><td>'+esc(b.adres)+', '+esc(b.postcode_plaats)+'</td><td>'+esc(b.kvk)+' '+esc(b.btw_nummer)+'</td><td>'+esc(b.iban)+'</td><td>'+esc(b.email)+'</td><td>'+esc(b.debiteur_code)+'</td></tr>';
+    for(const b of (S.data.bedrijven||[])) x+='<tr class="klik" data-bedrijf="'+b.id+'"><td>'+esc(b.soort)+'</td><td>'+(bedrijfLogo(b)?'<img src="'+esc(bedrijfLogo(b))+'" style="height:26px;vertical-align:middle;margin-right:6px">':'')+esc(b.naam)+(b.kleur?' <i class="ldot" style="display:inline-block;width:12px;height:12px;border-radius:50%;background:'+esc(b.kleur)+';vertical-align:middle"></i>':'')+(b.soort==='aannemer'?' <button class="knop klein licht" data-logo="'+b.id+'">logo…</button>':'')+'</td><td>'+esc(b.adres)+', '+esc(b.postcode_plaats)+'</td><td>'+esc(b.kvk)+' '+esc(b.btw_nummer)+'</td><td>'+esc(b.iban)+'</td><td>'+esc(b.email)+'</td><td>'+esc(b.debiteur_code)+'</td></tr>';
     x+='</table></div><div class="knoppen"><button class="knop" id="bd-nieuw">+ Bedrijf</button></div>';
   } else {
     const i=S.data.instellingen||{};

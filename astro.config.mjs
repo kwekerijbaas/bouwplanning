@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 
-// Statische site: de app staat als kant-en-klaar bestand in public/index.html.
-// base moet gelijk zijn aan het Webflow Cloud mount path.
+// Statische site: de apps staan als kant-en-klare bestanden in public/ en worden
+// ongewijzigd naar dist/ gekopieerd. Webflow Cloud zet zelf het mount path
+// (base / build.assetsPrefix) bij het bouwen — die hoort hier dus niet te staan.
+// https://developers.webflow.com/webflow-cloud/bring-your-own-app
 export default defineConfig({
-  base: '/app',
   trailingSlash: 'ignore',
 });

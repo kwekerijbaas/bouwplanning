@@ -30,6 +30,12 @@ function pak(bron: Record<string, unknown>, velden: string[]) {
   return uit;
 }
 function r2(n: number) { return Math.round((n + Number.EPSILON) * 100) / 100; }
+// KZ rekent zoals hun Excel: regelbedragen (totaal x prijs) onafgerond optellen en pas het eindtotaal op centen afronden.
+function somExact(regels: { totaal: unknown; prijs: unknown }[]) {
+  let c = 0;
+  for (const r of regels) c += Math.round(Number(r.totaal) * 100) * Math.round(Number(r.prijs) * 100);
+  return Math.sign(c) * Math.floor((Math.abs(c) + 50) / 100) / 100;
+}
 function num(v: unknown, veld: string, min = 0): number {
   const n = Number(String(v ?? "").replace(",", "."));
   if (!Number.isFinite(n) || n < min) throw new Error(veld + " is geen geldig getal");
@@ -81,7 +87,8 @@ function normRegels(regels: unknown): Array<Record<string, unknown>> {
     };
   });
 }
-// De werkvloer stuurt alleen aantallen mee; de server zet er de geldende projectprijs bij (bedragen blijven bij de administratie).
+// Prijzen verwijzen naar het tarief of de projectprijs (projectafspraken): de server zet ze erbij, voor werkvloer én kantoor.
+// Een andere prijs = een projectprijs of een nieuw type (tarief) met eigen prijs; nooit een losse prijs op een bonregel.
 // deno-lint-ignore no-explicit-any
 async function prijsVanServer(db: any, project_id: number, regels: Array<Record<string, unknown>>) {
   const ids = [...new Set(regels.map((r) => r.tarief_id).filter((x) => x != null))] as number[];
@@ -182,6 +189,11 @@ async function log(wie: string, actie: string) {
   if (actie) await db.from("wb_logboek").insert({ wie, actie });
 }
 
+// Na een prijswijziging: open (niet-gefactureerde) bonnen volgen de nieuwe prijs.
+async function herprijs(project_id: number | null) {
+  const { error } = await db.rpc("wb_herprijs", { p_project: project_id });
+  if (error) throw error;
+}
 async function bonMetRegels(id: number) {
   const { data: bon, error } = await db.from("wb_bon").select("*").eq("id", id).single();
   if (error) throw error;
@@ -277,7 +289,7 @@ Deno.serve(async (req) => {
         if (!Number.isInteger(project_id)) throw new Error("kies een project");
         checkDatum(fields.datum, "datum");
         const regels = normRegels(body.regels);
-        if (!admin) await prijsVanServer(db, project_id, regels);   // werkvloer stuurt geen prijzen mee
+        await prijsVanServer(db, project_id, regels);   // prijs komt uit tarief/projectprijs, niet uit de bon
         const invoer = normInvoer(fields.invoer);
         const basis: Record<string, unknown> = {
           project_id, datum: fields.datum, invoer,
@@ -349,6 +361,11 @@ Deno.serve(async (req) => {
         if (!["goedgekeurd", "afgekeurd", "ingediend"].includes(besluit)) throw new Error("onbekend besluit");
         const bon = await bonMetRegels(id!);
         if (bon.status === "gefactureerd") throw new Error("bon zit al op een factuur");
+        if (besluit === "goedgekeurd") {
+          const { data: los, error: el } = await db.from("wb_bonregel").select("omschrijving").eq("bon_id", id).is("tarief_id", null).limit(1);
+          if (el) throw el;
+          if (los?.length) throw new Error("regel '" + los[0].omschrijving + "' heeft nog geen type: kies een type of maak een nieuw type met prijs aan");
+        }
         const { error } = await db.from("wb_bon").update({
           status: besluit, beoordeeld_door: besluit === "ingediend" ? "" : wie,
           beoordeeld_ts: besluit === "ingediend" ? null : new Date().toISOString(),
@@ -381,15 +398,19 @@ Deno.serve(async (req) => {
         return json({ ok: true, id: res.data.id });
       }
       case "projecttarief_save": {
-        // Projectafspraken: eigen prijs per tarief voor dit project (± 0,25-stappen in de wizard).
+        // Projectprijzen: eigen prijs per type voor dit project; open bonnen van het project rekenen direct met de nieuwe prijs.
         if (!admin) throw new Error("alleen administratie");
         const project_id = Number(body.project_id);
         if (!Number.isInteger(project_id)) throw new Error("project ontbreekt");
         const prijzen = Array.isArray(body.prijzen) ? body.prijzen as Array<Record<string, unknown>> : [];
         if (prijzen.length > 500) throw new Error("te veel prijzen");
-        const rijen = prijzen.map((x) => ({ project_id, tarief_id: Number(x.tarief_id), prijs: num(x.prijs, "prijs") }));
-        if (rijen.some((r) => !Number.isInteger(r.tarief_id))) throw new Error("tarief ontbreekt");
+        // prijs leeg = standaardtarief (geen projectprijs), zodat het project de standaardprijs blijft volgen.
+        const standaard = prijzen.filter((x) => x.prijs == null || x.prijs === "").map((x) => Number(x.tarief_id));
+        const rijen = prijzen.filter((x) => !(x.prijs == null || x.prijs === "")).map((x) => ({ project_id, tarief_id: Number(x.tarief_id), prijs: num(x.prijs, "prijs") }));
+        if (rijen.some((r) => !Number.isInteger(r.tarief_id)) || standaard.some((t) => !Number.isInteger(t))) throw new Error("tarief ontbreekt");
         if (rijen.length) { const { error } = await db.from("wb_projecttarief").upsert(rijen, { onConflict: "project_id,tarief_id" }); if (error) throw error; }
+        if (standaard.length) { const { error } = await db.from("wb_projecttarief").delete().eq("project_id", project_id).in("tarief_id", standaard); if (error) throw error; }
+        await herprijs(project_id);
         break;
       }
       case "medewerker_save": {
@@ -491,6 +512,7 @@ Deno.serve(async (req) => {
             if (error) throw error; nieuw++;
           }
         }
+        if (bijgewerkt) await herprijs(null);
         await log(wie, String(body.log ?? ""));
         return json({ ok: true, nieuw, bijgewerkt });
       }
@@ -500,9 +522,11 @@ Deno.serve(async (req) => {
         if ("categorie" in upd && !CATEGORIEEN.includes(String(upd.categorie))) throw new Error("onbekende categorie");
         if ("prijs" in upd) upd.prijs = num(upd.prijs, "prijs");
         if ("dagtype" in upd && !["alle", "ma-vr", "za", "zo"].includes(String(upd.dagtype))) throw new Error("onbekend dagtype");
-        const { error } = id ? await db.from("wb_tarief").update(upd).eq("id", id) : await db.from("wb_tarief").insert(upd);
-        if (error) { if (String(error.message).includes("duplicate")) throw new Error("dit tarief bestaat al"); throw error; }
-        break;
+        const { data: rij, error } = id ? await db.from("wb_tarief").update(upd).eq("id", id).select("id").single() : await db.from("wb_tarief").insert(upd).select("id").single();
+        if (error) { if (String(error.message).includes("duplicate")) throw new Error("dit type bestaat al"); throw error; }
+        if (id && "prijs" in upd) await herprijs(null);
+        await log(wie, String(body.log ?? ""));
+        return json({ ok: true, id: rij.id });
       }
       case "tarief_delete": {
         if (!admin) throw new Error("alleen administratie");
@@ -524,6 +548,9 @@ Deno.serve(async (req) => {
         const project_id = Number(body.project_id);
         const jaar = Number(body.jaar), week = Number(body.week);
         if (!Number.isInteger(project_id) || !Number.isInteger(jaar) || !Number.isInteger(week)) throw new Error("project, jaar en week zijn verplicht");
+        // Een factuur mag meerdere weken beslaan (KZ 2026200: week 26 en 27); week = eerste week.
+        const weekTot = body.week_tot == null || body.week_tot === "" ? week : Number(body.week_tot);
+        if (!Number.isInteger(weekTot) || weekTot < week || weekTot > 53) throw new Error("t/m week moet gelijk aan of na week " + week + " liggen");
         const bonIds = (body.bon_ids ?? []) as number[];
         if (!Array.isArray(bonIds) || !bonIds.length) throw new Error("geen goedgekeurde bonnen geselecteerd");
         const { data: bonnen, error: e1 } = await db.from("wb_bon").select("*").in("id", bonIds);
@@ -532,12 +559,12 @@ Deno.serve(async (req) => {
           if (b.project_id !== project_id) throw new Error("bon " + b.id + " hoort bij een ander project");
           if (b.status !== "goedgekeurd") throw new Error("bon van " + b.datum + " is nog niet goedgekeurd");
           const w = isoWeek(b.datum);
-          if (w.jaar !== jaar || w.week !== week) throw new Error("bon van " + b.datum + " valt niet in week " + week);
+          if (w.jaar !== jaar || w.week < week || w.week > weekTot) throw new Error("bon van " + b.datum + " valt niet in week " + (weekTot === week ? week : week + " t/m " + weekTot));
         }
         if ((bonnen ?? []).length !== bonIds.length) throw new Error("niet alle bonnen gevonden");
-        const { data: regels, error: e2 } = await db.from("wb_bonregel").select("bedrag").in("bon_id", bonIds);
+        const { data: regels, error: e2 } = await db.from("wb_bonregel").select("totaal, prijs").in("bon_id", bonIds);
         if (e2) throw e2;
-        const excl = r2((regels ?? []).reduce((s, r) => s + Number(r.bedrag), 0));
+        const excl = somExact(regels ?? []);
         const { data: inst } = await db.from("wb_instelling").select("*");
         const im = new Map((inst ?? []).map((r) => [r.sleutel, r.waarde]));
         const btwPct = Number(im.get("btw_pct") ?? 21);

@@ -130,6 +130,69 @@ t('werkvloer ziet geen tarieven, prijzen of bedragen', ()=>{ alsTeam();
   S.tab='bon'; });
 t('administratie ziet de bedragen wel', ()=>{ alsAdmin();
   F.nieuweBon(p.id); S.bon.datum='2026-07-27'; S.bon.invoer.shifts[0].leden=[S.data.medewerkers.find(m=>m.naam==='Jan de Vries').id]; F.herleid();
-  const h=F.viewBon(); assert.ok(/€/.test(h)); assert.ok(h.includes('Totaal dag excl. btw')); assert.ok(h.includes('data-f="prijs"')); alsTeam(); });
+  const h=F.viewBon(); assert.ok(/€/.test(h)); assert.ok(h.includes('Totaal dag excl. btw')); assert.ok(h.includes('class="prijsvast"')); assert.ok(!h.includes('data-f="prijs"'),'prijs niet los te typen: verwijst naar tarief/projectprijs'); alsTeam(); });
+
+// --- KZ-facturen 2026222, 2026221 (week 30) en 2026200 (week 26 en 27), regel voor regel uit de overzichten ---
+// KZ telt de regelbedragen onafgerond op en rondt pas het totaal af; per regel afronden geeft bij 2026200 een cent te veel.
+// Prijzen verwijzen naar het tarief of de projectprijs. KZ rekent hetzelfde transport soms tegen 95, 115 of 130 (ook binnen één
+// project en zelfs binnen één factuur), dus dat kan geen projectprijs zijn: het kantoor maakt er een eigen type met prijs voor aan.
+// De namen hieronder zijn voorlopig; welk soort transport bij welke prijs hoort, moet KZ nog laten weten.
+const HW='Gebruik hoogwerker incl. brandstof', BHWI='Gebruik bandenhoogwerker incl. brandstof', BHW='Gebruik bandenhoogwerker', PT='Gebruik platformtrekker incl. brandstof', TS='Gebruik teleshovel incl. brandstof', SH='Gebruik shovel met toebehoren incl. brandstof';
+const nieuwType=(omschrijving,categorie,eenheid_totaal,prijs)=>{ const r=M.handle({action:'tarief_save',wie:'Tessa',fields:{categorie,omschrijving,eenheid_totaal,prijs}},M.CODE_ADMIN); assert.strictEqual(r[0],200,JSON.stringify(r[1])); return omschrijving; };
+const OPH95=nieuwType('Ophalen materiaal (tarief 95)','transport','per uur',95), TC130=nieuwType('Transport container (tarief 130)','transport','per uur',130), TM115=nieuwType('Transport materiaal (tarief 115)','transport','per uur',115);
+const BHW175=nieuwType('Gebruik bandenhoogwerker (tarief 175)','materieel','per dag',175);   // 2026221: zonder brandstof toch 175 i.p.v. 100 - navragen bij KZ
+const dag=(datum,arbeidTarief,arbeid,km,ov,extra)=>[datum,[...arbeid.map(([m,u])=>mk(arbeidTarief,m,u)),...km.map(([a,k])=>mk(KM,a,k)),...(ov?[mk(OV,ov,null)]:[]),...(extra||[])]];
+function kzFactuur(code, dagen, week, weekTot, nummer, datum){
+  const pr=M.T.projecten.find(x=>x.code===code); const bonIds=[];
+  for(const [d,regels] of dagen){
+    const team=regels.map(r=>{ const c={...r}; delete c.prijs; return c; });   // de werkvloer stuurt geen prijzen mee
+    const r=M.handle({action:'bon_save',wie:'Bas',fields:{project_id:pr.id,datum:d,ingevuld_door:'Bas',afgetekend_door:'Jarno'},regels:team,indienen:true},M.CODE_TEAM); assert.strictEqual(r[0],200,JSON.stringify(r[1]));
+    assert.strictEqual(M.handle({action:'bon_beoordeel',id:r[1].id,besluit:'goedgekeurd',wie:'Tessa'},M.CODE_ADMIN)[0],200); bonIds.push(r[1].id); }
+  const fr=M.handle({action:'factuur_maak',wie:'Tessa',project_id:pr.id,jaar:2026,week,week_tot:weekTot,bon_ids:bonIds,nummer,datum},M.CODE_ADMIN); assert.strictEqual(fr[0],200,JSON.stringify(fr[1]));
+  S.data=M.handle({action:'state'},M.CODE_ADMIN)[1]; return {pr, bonIds, f:S.data.facturen.find(x=>x.nummer===nummer)};
+}
+const K222=kzFactuur('26692',[dag('2026-07-20',A,[[1,2],[3,12.5]],[[1,54]],3,[mk(BHW,1,null),mk(SH,1,null),mk('Transport machines',2,null),mk('Transport machines',7,null),mk(OPH95,3,null),
+  mk('Gootstrip',150,null),mk('Nokbeveiliging',70,null),mk('Dekroede',139,null),mk('Goot-nok-goot kabel recht',2,null),mk('Goot-nok-goot kabel schuin',4,null),mk('Kaproede',4,null),mk('Nok koppeling',4,null),mk('Nokprofiel',36,null)])],30,30,'2026222','2026-07-29');
+const K221=kzFactuur('26691',[
+  dag('2026-07-20',A,[[8,14],[22,12.5]],[[1,172],[2,187],[4,60],[2,54]],30),
+  dag('2026-07-21',A,[[1,11.5],[31,12.5]],[[1,187],[5,60],[3,54],[1,30]],31),
+  dag('2026-07-22',A,[[1,12],[31,12.5],[1,7.5],[2,2]],[[1,187],[1,185],[5,60],[3,54],[1,30]],35),
+  dag('2026-07-23',A,[[1,10.5],[34,12.5]],[[7,60],[3,54],[1,30]],35),
+  dag('2026-07-24',A,[[4,10],[7,14.5],[24,12.5],[4,6]],[[1,172],[2,187],[1,184],[5,60],[2,54]],28),
+  dag('2026-07-25',AZ,[[2,9],[2,9.5],[2,4],[2,2]],[[1,364],[1,182],[2,60]],28),
+  dag('2026-07-26',AS,[[2,14],[1,13],[27,12.5],[6,2]],[[1,184],[5,60],[3,54],[2,182]],36,[mk(HW,5,null),mk(HW,6,null),mk(HW,5,null),mk(BHWI,7,null),mk(BHW175,7,null),
+    mk(PT,6,null),mk(PT,3,null),mk(PT,6,null),mk(PT,4,null),mk(TS,6,null),mk(SH,6,null),mk(SH,5,null),mk(OPH95,3,null),mk(TC130,4,null),mk(TC130,4,null),mk('Parkers',120,null),mk('Nokblok + parkers',40,null)])],30,30,'2026221','2026-07-29');
+const K200=kzFactuur('26691',[
+  dag('2026-06-28',AS,[[2,3.5]],[[2,314]],0),
+  dag('2026-06-29',A,[[1,16],[1,14.5],[2,14],[2,6.5],[3,13],[1,7]],[[1,314],[2,172],[1,187]],8),
+  dag('2026-06-30',A,[[7,14],[1,14.5],[3,13],[4,12.5]],[[1,314],[1,60],[2,30],[1,187],[1,172]],14),
+  dag('2026-07-01',A,[[2,14],[1,13],[6,12.5],[1,8]],[[1,172],[1,60],[2,30]],9),
+  dag('2026-07-02',A,[[2,14],[1,5],[1,13],[6,12.5],[1,5]],[[1,172],[1,112],[1,60],[2,30]],9),
+  dag('2026-07-03',A,[[1,4],[1,12],[2,3],[7,12.5],[1,5],[3,7]],[[1,184],[2,172],[2,45],[1,60]],11),
+  dag('2026-07-04',AZ,[[7,12.5],[1,3.5],[1,11],[3,9],[1,6]],[[1,187],[1,54],[2,60]],11),
+  dag('2026-07-05',AS,[[1,2.5],[2,3],[8,12.5],[1,4.5],[1,8.5]],[[1,54],[3,60]],11,[mk(HW,7,null),mk(BHW,7,null),mk(BHW,7,null),mk('Gebruik trekker met kipper incl. brandstof',2,null),mk(PT,5,null),mk(PT,5,null),mk(TS,6,null),mk(TS,1,null),mk('Gebruik gootkarren A-type',1,4),
+    mk('Transport machines',8,null),mk('Transport machines',5,null),mk('Transport machines',6,null),mk('Transport machines',3,null),mk(TC130,8,null),mk(TC130,10.5,null),mk('Transport machines',7,null),
+    mk('Transport materiaal',4,null),mk(TM115,3.5,null),mk(TM115,6.5,null),mk(TM115,7,null),mk('Betonplex',1504,null)])],26,27,'2026200','2026-07-08');
+for(const [naam,K,excl,btw,incl] of [['2026222 (wk 30 Drietorensweg)',K222,8265.68,1735.79,10001.47],['2026221 (wk 30 Enserweg)',K221,219481.33,46091.08,265572.41],['2026200 (wk 26 en 27 Enserweg)',K200,103424.38,21719.12,125143.50]])
+  t('KZ-factuur '+naam+' op de cent', ()=>{ assert.ok(K.f,'factuur aangemaakt'); assert.strictEqual(K.f.bedrag_excl,excl); assert.strictEqual(K.f.btw_bedrag,btw); assert.strictEqual(K.f.bedrag_incl,incl); assert.strictEqual(F.bouwOverzicht(F.factuurBonnen(K.f)).totaal,excl,'overzicht in de app = factuur'); });
+t('2026200: per regel afronden zou 1 cent te veel geven; KZ rondt pas het totaal af', ()=>{ const rs=S.data.regels.filter(r=>K200.bonIds.includes(r.bon_id)); assert.strictEqual(F.r2(rs.reduce((s,r)=>s+r.bedrag,0)),103424.39); assert.strictEqual(F.somExact(rs),103424.38); assert.strictEqual(F.bonnenTotaal(K200.bonIds),103424.38); });
+t('2026200: factuur over week 26 en 27 (overzicht, factuur, lijst, exports)', ()=>{ const f=K200.f; const b=F.factuurBonnen(f); assert.strictEqual(b.length,8); assert.strictEqual(F.wekenTekst(b,f.week),'26 en 27'); assert.strictEqual(F.wekenTekst([],30),'30');
+  assert.ok(F.overzichtDoc(f.project_id,f.jaar,f.week,b,{datum:f.datum}).includes('Overzicht werkzaamheden week 26 en 27')); S.factId=f.id; const h=F.viewFacturen(); assert.ok(h.includes('week 26 en 27 (28-06-2026 t/m 05-07-2026)')); assert.ok(h.includes('103.424,38 €')); S.factId=null; assert.ok(F.viewFacturen().includes('<td>26 en 27</td>'));
+  const c=F.maakCSV(f); const rijen=c.slice(1).trim().split('\r\n').slice(1,-1).map(r=>r.split(';').map(v=>v.replace(/^"|"$/g,''))); assert.ok(rijen.some(r=>r[8]==='Afrondingsverschil'&&r[12]==='-0,01'),'afrondingsregel'); assert.strictEqual(F.r2(rijen.reduce((s,r)=>s+Number(r[12].replace(',','.')),0)),103424.38); assert.ok(rijen.every(r=>r[16]==='26 en 27'));
+  const j=JSON.parse(F.maakJSON(f)); assert.strictEqual(F.r2(j.SalesInvoiceLines.reduce((s,l)=>s+F.r2(l.Quantity*l.UnitPrice),0)),103424.38); assert.strictEqual(j.Weeks,'26 en 27'); assert.ok(F.maakUBL(f).includes('week 26 en 27 2026')); });
+t('2026221/2026222: afgeronde regels tellen al op tot het totaal, dus geen afrondingsregel', ()=>{ for(const K of [K221,K222]) assert.ok(!F.maakCSV(K.f).includes('Afrondingsverschil')); });
+t('factuur over meerdere weken: bon buiten de periode of t/m-week voor de beginweek wordt geweigerd', ()=>{ const pr=M.T.projecten.find(x=>x.code==='26691');
+  const r=M.handle({action:'bon_save',wie:'Bas',fields:{project_id:pr.id,datum:'2026-07-06',ingevuld_door:'Bas'},regels:[mk(A,1,8)],indienen:true},M.CODE_TEAM); M.handle({action:'bon_beoordeel',id:r[1].id,besluit:'goedgekeurd',wie:'Tessa'},M.CODE_ADMIN);
+  const x=M.handle({action:'factuur_maak',wie:'Tessa',project_id:pr.id,jaar:2026,week:26,week_tot:27,bon_ids:[r[1].id]},M.CODE_ADMIN); assert.strictEqual(x[0],500); assert.ok(/valt niet in week 26 t\/m 27/.test(x[1].fout));
+  const y=M.handle({action:'factuur_maak',wie:'Tessa',project_id:pr.id,jaar:2026,week:28,week_tot:27,bon_ids:[r[1].id]},M.CODE_ADMIN); assert.strictEqual(y[0],500); assert.ok(/t\/m week/.test(y[1].fout));
+  S.data=M.handle({action:'state'},M.CODE_ADMIN)[1]; S.nieuwFact={project_id:pr.id,jaar:2026,week:28,week_tot:28}; const h=F.viewFacturen(); assert.ok(h.includes('id="f-tot-week"')); assert.ok(h.includes('alleen deze week')); S.nieuwFact=null;
+  M.handle({action:'bon_delete',id:r[1].id},M.CODE_ADMIN); S.data=M.handle({action:'state'},M.CODE_ADMIN)[1]; });
+t('weekoverzicht: t/m-week kiezen toont de weken samen', ()=>{ S.data.rol='admin'; S.ovProject=M.T.projecten.find(x=>x.code==='26691').id; S.ovJaar=2026; S.ovWeek=26; S.ovTot=27; S.ovAlleenGoed=false; const h=F.viewOverzicht(); assert.ok(h.includes('Overzicht werkzaamheden week 26 en 27')); assert.ok(h.includes('103.424,38 €')); assert.ok(h.includes('id="o-tot"')); S.ovTot=null; assert.ok(F.viewOverzicht().includes('Overzicht werkzaamheden week 26<')); });
+
+t('dagbon kantoor: prijs verwijst naar tarief/projectprijs, regel zonder type krijgt "+ nieuw type"', ()=>{ S.data=M.handle({action:'state'},M.CODE_ADMIN)[1]; const pr=M.T.projecten.find(x=>x.code==='26692');
+  const tc=S.data.tarieven.find(t=>t.omschrijving==='Transport container'); S.data.projecttarieven.push({project_id:pr.id,tarief_id:tc.id,prijs:130});
+  F.nieuweBon(pr.id); S.bon.datum='2026-07-21'; S.bon.regels=[F.tariefRegel(tc,pr.id,{aantal:2,bron:'extra'}),{categorie:'materiaal',omschrijving:'Rubber profiel 12mm',tarief_id:null,aantal:20,per:null,prijs:55,eenheid_n:'',eenheid_per:'',eenheid_totaal:'per stuk',namen:'',bron:'extra'}];
+  const h=F.viewBon(); assert.ok(h.includes('260,00 €'),'2 uur x projectprijs 130'); assert.ok(h.includes('<small>project</small>')); assert.ok(h.includes('data-nt="1"')); assert.ok(h.includes('+ nieuw type met eigen prijs')); assert.strictEqual(S.bon.regels[1].prijs,0,'geen losse prijs'); assert.strictEqual(F.bonSom(),260);
+  S.data.projecttarieven.pop(); assert.ok(F.viewBon().includes('190,00 €'),'zonder projectprijs het standaardtarief 95'); });
 
 console.log('unit-tests:', n, 'uitgevoerd,', fouten.length, 'fouten'); for(const x of fouten) console.log('  FOUT', x); process.exit(fouten.length?1:0);

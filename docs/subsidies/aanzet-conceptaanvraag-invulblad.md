@@ -36,7 +36,17 @@ Het middel moet wel gemachtigd zijn voor RVO-diensten namens KVK 39064605.
 
 ---
 
-## 2. Verkoopprijs: € 315.000 invullen
+## 2. Verkoopprijs: € 315.000 min de dealeropties
+
+> **Correctie 24-09, na het zien van het formulier.** De toelichting bij "Opgegeven kosten" noemt de
+> verkoopprijs van het chassis "inclusief af-fabriek opties, maar exclusief de opbouw […] **en
+> exclusief dealeropties**, zoals vermeld op de overeenkomst". Het formulier sluit de dealerposten
+> dus uitdrukkelijk uit, strenger dan de regelingtekst. De dealerposten staan op p.8 onder
+> "Interne werkplaats". Vraag John Nijzink vóór dinsdag om het bedrag daarvan en trek het af van
+> € 315.000. Krijgt u dat niet op tijd, trek dan een eigen schatting van € 7.500 af: vul
+> **€ 307.500** in, dan is de subsidie **€ 64.575**. Een te lage opgave is veilig: die kost alleen
+> subsidie. Een te hoge opgave wordt bij de vaststelling gecorrigeerd. De tekst hieronder geldt
+> alleen nog voor de regelingtekst zelf.
 
 De regeling definieert de verkoopprijs als *"prijs van de emissieloze vrachtauto inclusief
 af-fabriekopties, exclusief de opbouw die bovenop het bakwagenchassis wordt gebouwd, en zoals

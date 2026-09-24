@@ -116,24 +116,49 @@ De teamleider tikt de dag aan op zijn telefoon; de regels van de bon worden daar
   van hetzelfde project (bij voorkeur van dezelfde teamleider); "alles wissen" maakt hem leeg.
 - **Projectbon per dag** (knop 🖨️ Projectbon) in de KZ-opmaak: aantal personen / start / tot /
   eind / namen per ploeg, aantal voertuigen, overige regels, handtekening opdrachtgever.
-- **Projectwizard** (Lijsten › Projecten › + Project, of vanaf de dagbon via "projectafspraken";
+- **Projectwizard** (Lijsten › Projecten › + Project, of vanaf de dagbon via "projectprijzen";
   ook voor de werkvloer): projectnummer toegewezen (hoogste + 1), gegevens, daarna alle
-  tarieven als projectafspraken voorgevuld en aan te passen met − / + in stappen van 0,25
-  (`wb_projecttarief`; de bon gebruikt de projectprijs als die er is), afstand naar de locatie.
+  types met hun standaardprijs voorgevuld als projectprijzen, aan te passen met − / + (stappen
+  van 0,25) of door een bedrag te typen (op de cent). Alleen prijzen die afwijken van het
+  standaardtarief worden als projectprijs opgeslagen (`wb_projecttarief`); de rest blijft het
+  standaardtarief volgen. Afstand naar de locatie.
   Voor de werkvloer telt de wizard 2 stappen (gegevens + controle); de prijsstap is er alleen
   voor de administratie.
 - **Afrondingsregels** (app, mock en edge function): mensen, auto's, nachten en stuks hele
-  getallen (mensen naar boven); uren en km per 0,5; dagdeel per 0,25; prijzen per 0,25.
+  getallen (mensen naar boven); uren en km per 0,5; dagdeel per 0,25.
 - De aangetikte invoer staat als JSON in `wb_bon.invoer`; afgeleide regels hebben `bron`
   `shift` / `voertuig`, handmatige regels `extra`.
+
+### Prijzen: altijd via type en projectprijs
+Een prijs staat nooit los op een bonregel. Elke regel verwijst naar een type (tarief); de prijs
+is de projectprijs als die voor dat project is afgesproken, anders het standaardtarief.
+- **Andere prijs voor dit project** → Projectprijzen (wizard). Alle bonnen van het project die
+  nog niet gefactureerd zijn rekenen direct met de nieuwe prijs (database-functie
+  `wb_herprijs`); gefactureerde bonnen blijven ongemoeid.
+- **Andere prijs voor een ander soort werk of transport** → een nieuw type met eigen prijs:
+  Lijsten › Tarieven › "+ Tarief", of op de dagbon in de keuzelijst "+ nieuw type met eigen
+  prijs…" / de knop "+ nieuw type" bij een regel zonder type. De regel verwijst er direct naar.
+- **Regel zonder type** (vrije tekst van de werkvloer of uit een uitgelezen foto) kost 0 en
+  blokkeert het goedkeuren tot het kantoor er een type aan hangt. "Goedkeuren" slaat eerst de
+  wijzigingen van het kantoor op.
+- Standaardtarief of import uit het boekhoudpakket gewijzigd → ook dan volgen open bonnen.
+
+### Afronding en facturen over meerdere weken (zoals KZ)
+- KZ telt de regelbedragen (totaal × prijs) onafgerond op en rondt pas het eindtotaal af op
+  centen; per regel afronden geeft bij factuur 2026200 een cent te veel. App, mock en edge
+  function rekenen nu hetzelfde (`somExact`). In de CSV/JSON-export komt zo nodig een regel
+  "Afrondingsverschil" zodat de regels optellen tot het factuurbedrag.
+- Een factuur of overzicht kan meerdere weken beslaan ("t/m week"; KZ 2026200 = week 26 en 27).
+- Nagerekend op de cent (tools/werkbonnen-unit.js): 2026264, 2026265, 2026222, 2026221, 2026200.
 
 ### Geen bedragen op de werkvloer
 De werkvloer vult alleen in wat er gewerkt, gebruikt en verbleven is; tarieven en bedragen
 zijn van de administratie. Dat zit op twee plekken dicht:
 - **Server** (`supabase/functions/werkbonnen/index.ts`, en gelijk in de mock): `state` levert
   aan een team-sessie tarieven zonder `prijs`, bonregels zonder `prijs`/`bedrag`, en geen
-  facturen en projectafspraken. `bon_save` negeert prijzen die de client meestuurt en leidt ze
-  af uit `wb_tarief` / `wb_projecttarief`; `projecttarief_save` is alleen voor de administratie.
+  facturen en projectprijzen. `bon_save` negeert prijzen die de client meestuurt (ook van het
+  kantoor) en leidt ze af uit `wb_tarief` / `wb_projecttarief`; `projecttarief_save` en
+  `tarief_save` zijn alleen voor de administratie.
   Het uitlezen van een foto geeft de werkvloer eveneens regels zonder prijs terug.
 - **App**: alles wat geld toont zit achter `magGeld()` — geen prijsveld of bedrag per regel
   (wel het aantal met eenheid), geen dagtotaal, geen kolommen Prijs/Kosten in het

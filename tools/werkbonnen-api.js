@@ -77,10 +77,20 @@ let n=0, fouten=[]; const t=async(naam,fn)=>{ n++; try{ await fn(); }catch(e){ f
     const id1=j.id;
     [s,j]=await call(T,{action:'bon_save',fields:{project_id:pr.id,datum:'2026-09-09'},regels:[{categorie:'arbeid',omschrijving:'Arbeid',tarief_id:t2.id,aantal:2,per:10,eenheid_n:'man',eenheid_per:'uur',eenheid_totaal:'per uur',bron:'shift'}]}); assert.strictEqual(s,200,JSON.stringify(j));
     a=(await call(A,{action:'state'}))[1]; r=a.regels.find(x=>x.bon_id===j.id); assert.strictEqual(r.bedrag,1400);
-    // administratie mag een eigen prijs zetten op een extra regel
+    // ook de administratie zet geen losse prijs: een regel zonder type kost 0 en blokkeert het goedkeuren
     const [s3,j3]=await call(A,{action:'bon_save',fields:{project_id:pr.id,datum:'2026-09-09'},regels:[{categorie:'materiaal',omschrijving:'Los materiaal',tarief_id:null,aantal:3,per:null,prijs:12.5,eenheid_totaal:'per stuk',bron:'extra'}]}); assert.strictEqual(s3,200,JSON.stringify(j3));
-    a=(await call(A,{action:'state'}))[1]; assert.strictEqual(a.regels.find(x=>x.bon_id===j3.id).bedrag,37.5);
-    for(const del of [id1,j.id,j3.id]) await call(A,{action:'bon_delete',id:del});
-    await call(A,{action:'projecttarief_save',project_id:pr.id,prijzen:[{tarief_id:t2.id,prijs:61.5}]}); });
+    a=(await call(A,{action:'state'}))[1]; assert.strictEqual(a.regels.find(x=>x.bon_id===j3.id).bedrag,0);
+    const [s4,j4]=await call(A,{action:'bon_beoordeel',id:j3.id,besluit:'goedgekeurd'}); assert.strictEqual(s4,500); assert.ok(/nog geen type/.test(j4.fout));
+    // nieuw type met eigen prijs -> regel verwijst ernaar
+    const [s5,j5]=await call(A,{action:'tarief_save',fields:{categorie:'materiaal',omschrijving:'Los materiaal',eenheid_totaal:'per stuk',prijs:12.5}}); assert.strictEqual(s5,200,JSON.stringify(j5)); assert.ok(j5.id);
+    await call(A,{action:'bon_save',id:j3.id,fields:{project_id:pr.id,datum:'2026-09-09'},regels:[{categorie:'materiaal',omschrijving:'Los materiaal',tarief_id:j5.id,aantal:3,per:null,eenheid_totaal:'per stuk',bron:'extra'}]});
+    a=(await call(A,{action:'state'}))[1]; assert.strictEqual(a.regels.find(x=>x.bon_id===j3.id).bedrag,37.5); assert.strictEqual((await call(A,{action:'bon_beoordeel',id:j3.id,besluit:'goedgekeurd'}))[0],200);
+    // projectprijs wijzigen: open bonnen rekenen direct mee; prijs leeg = terug naar standaard
+    await call(A,{action:'projecttarief_save',project_id:pr.id,prijzen:[{tarief_id:t2.id,prijs:72.5}]}); a=(await call(A,{action:'state'}))[1]; assert.strictEqual(a.regels.find(x=>x.bon_id===id1).bedrag,1450);
+    await call(A,{action:'projecttarief_save',project_id:pr.id,prijzen:[{tarief_id:t2.id,prijs:null}]}); a=(await call(A,{action:'state'}))[1]; assert.ok(!a.projecttarieven.some(x=>x.project_id===pr.id&&x.tarief_id===t2.id)); assert.strictEqual(a.regels.find(x=>x.bon_id===id1).bedrag,1230);
+    // standaardtarief wijzigen: ook open bonnen volgen
+    await call(A,{action:'tarief_save',id:j5.id,fields:{prijs:13}}); a=(await call(A,{action:'state'}))[1]; assert.strictEqual(a.regels.find(x=>x.bon_id===j3.id).bedrag,39);
+    const [s6]=await call(A,{action:'tarief_save',fields:{categorie:'materiaal',omschrijving:'los materiaal',prijs:1}}); assert.strictEqual(s6,500,'dubbel type geweigerd');
+    for(const del of [id1,j.id,j3.id]) await call(A,{action:'bon_delete',id:del}); await call(A,{action:'tarief_delete',id:j5.id}); });
   console.log('api-tests:', n, 'uitgevoerd,', fouten.length, 'fouten'); for(const x of fouten) console.log('  FOUT', x); process.exit(fouten.length?1:0);
 })();

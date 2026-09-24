@@ -9,7 +9,7 @@ async function wachtOpMock(){ for(let i=0;i<50;i++){ try{ const r=await fetch(AP
 
 async function call(code, body){ const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json','x-code':code},body:JSON.stringify(body)}); return [r.status, await r.json()]; }
 const geld=s=>Number(String(s).replace(/\./g,'').replace(',','.').replace(' €',''));
-let n=0, fouten=[]; const t=async(naam,fn)=>{ n++; const t0=Date.now(); try{ await fn(); if(process.env.WB_LOG) console.log('ok  ', naam, Date.now()-t0,'ms'); }catch(e){ if(process.env.WB_LOG) console.log('FOUT', naam, Date.now()-t0,'ms'); fouten.push(naam+': '+e.message.replace(/\s+/g,' ').slice(0,300)); } };
+let n=0, fouten=[]; const t=async(naam,fn)=>{ n++; const t0=Date.now(); try{ await fn(); if(process.env.WB_LOG) console.log('ok  ', naam, Date.now()-t0,'ms'); }catch(e){ if(process.env.WB_LOG) console.log('FOUT', naam, Date.now()-t0,'ms', '->', e.message.replace(/\s+/g,' ').slice(0,220)); fouten.push(naam+': '+e.message.replace(/\s+/g,' ').slice(0,300)); } };
 (async()=>{
   setTimeout(()=>{ console.log('GLOBAL TIMEOUT'); process.exit(2); },170000);
   await wachtOpMock();
@@ -28,7 +28,7 @@ let n=0, fouten=[]; const t=async(naam,fn)=>{ n++; const t0=Date.now(); try{ awa
     assert.ok((await mp.textContent('#nk-kop')).includes('3 van 4 man'));
     await mp.fill('#nk-naam','Ali Yilmaz'); await mp.click('#nk-toevoegen'); await mp.waitForSelector('#nk-wolk button[data-lid].aan.check:has-text("Ali Yilmaz")');   // nieuwe naam in de wolk, gemarkeerd als te controleren
     await mp.click('#nk-klaar'); await mp.waitForSelector('[data-shift="0"] button[data-lid].aan.check:has-text("Ali Yilmaz")'); assert.strictEqual((await mp.$$('[data-shift="0"] button[data-lid].aan')).length,4);
-    assert.ok((await mp.textContent('[data-shift="0"]')).includes('4 van 4 man'));
+    assert.ok((await mp.textContent('[data-shift="0"]')).includes('4 van 4 namen ingevuld'));
     assert.ok((await mp.textContent('#app')).includes('nog te controleren'));
     assert.strictEqual(await mp.textContent('[data-uren="0"]'),'8,0'); assert.ok((await mp.textContent('[data-shift="0"] .shiftkop')).includes('4 man'));
     await mp.check('[data-sh="0"][data-sf="overnachting"]'); await mp.waitForSelector('[data-sh="0"][data-sf="nachten"]'); assert.strictEqual(await mp.inputValue('[data-sh="0"][data-sf="nachten"]'),'4');
@@ -58,10 +58,21 @@ let n=0, fouten=[]; const t=async(naam,fn)=>{ n++; const t0=Date.now(); try{ awa
     await mp.click('.vrt [data-vdel="0"]'); await mp.waitForFunction(()=>document.querySelectorAll('.bonregel').length===0); });
   await t('mobiel: papieren bon fotograferen en uitlezen -> regels gemarkeerd', async()=>{ await mp.click('#b-nieuw'); await mp.waitForSelector('#b-scan'); const [chooser]=await Promise.all([mp.waitForEvent('filechooser'), mp.click('#b-scan')]); await chooser.setFiles(require('path').join(__dirname,'testdata','bon.png')); await mp.waitForSelector('.bonregel.uitgelezen',{timeout:10000}); const n=(await mp.$$('.bonregel.uitgelezen')).length; assert.ok(n>=5,'uitgelezen regels: '+n); assert.ok((await mp.textContent('#b-scaninfo')).includes('regels uit de foto')); assert.ok(!(await mp.$('#b-totaal')),'ook na het uitlezen geen bedragen voor de werkvloer'); assert.strictEqual(await mp.inputValue('#b-aft'),'J. Baas'); assert.strictEqual((await mp.$$('#b-thumbs img')).length,1); const los=await mp.$$eval('.bonregel.uitgelezen input[data-f="omschrijving"]',els=>els.map(e=>e.value)); assert.ok(los.includes('Rubber profiel 12mm'),'ongekoppelde regel als vrije tekst'); await mp.screenshot({path:'/tmp/wb-test-14-scan.png',fullPage:true}); });
   await t('huisstijl aannemer: KZ-groen in de balk', async()=>{ const bg=await mp.$eval('#topbar',e=>getComputedStyle(e).backgroundColor); assert.strictEqual(bg,'rgb(46, 127, 71)','KZ-groen, donkerder gezet voor leesbaarheid'); const lg=await mp.$eval('#topbar h1 img',e=>[e.alt,e.src.slice(0,21),e.clientHeight]); assert.ok(lg[0].includes('KZ Kasherstel'),'woordmerk met de naam als alt: '+lg[0]); assert.strictEqual(lg[1],'data:image/png;base64'); assert.ok(lg[2]>=20,'woordmerk zichtbaar groot: '+lg[2]); });
-  await t('leesbaar in de kas: grote letters en donker grijs', async()=>{ const m=await mp.evaluate(()=>{ const g=s=>getComputedStyle(document.querySelector(s)); const px=s=>parseFloat(g(s).fontSize); const lum=c=>{ const v=c.match(/\d+/g).slice(0,3).map(x=>{x/=255; return x<=0.03928?x/12.92:Math.pow((x+0.055)/1.055,2.4);}); return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2]; };
-    const grijs=lum(g('.stil').color), wit=lum('rgb(255,255,255)'.replace(/[^0-9,]/g,'')||'255,255,255');
-    return {body:px('body'), stil:px('.stil'), knop:px('.knop'), tab:px('#tabs button'), grijs:(1.05)/(grijs+0.05)}; });
-    assert.ok(m.body>=17,'body '+m.body); assert.ok(m.stil>=14,'.stil '+m.stil); assert.ok(m.knop>=16,'.knop '+m.knop); assert.ok(m.tab>=15,'tab '+m.tab); assert.ok(m.grijs>=7,'contrast grijs op wit '+m.grijs.toFixed(2)); });
+  await t('leesbaar in de kas: grote letters en donker grijs', async()=>{
+    // Meten via eigen probe-elementen: de uitlegregels zijn uit de app gehaald, dus .stil staat
+    // niet meer gegarandeerd op elk scherm.
+    const m=await mp.evaluate(()=>{
+      const mk=(cls,ouder,tag)=>{ const p=document.querySelector(ouder)||document.body; const e=document.createElement(tag||'div'); e.className=cls; p.appendChild(e); const cs=getComputedStyle(e); const o={fs:parseFloat(cs.fontSize),kleur:cs.color}; e.remove(); return o; };
+      const lum=c=>{ const v=c.match(/\d+/g).slice(0,3).map(x=>{x/=255; return x<=0.03928?x/12.92:Math.pow((x+0.055)/1.055,2.4);}); return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2]; };
+      const stil=mk('stil','main'), knop=mk('knop','main','button'), tab=mk('','#tabs','button');
+      return {body:parseFloat(getComputedStyle(document.body).fontSize), stil:stil.fs, knop:knop.fs, tab:tab.fs, grijs:1.05/(lum(stil.kleur)+0.05)};
+    });
+    assert.ok(m.body>=19,'body '+m.body); assert.ok(m.stil>=15,'.stil '+m.stil); assert.ok(m.knop>=18,'.knop '+m.knop);
+    assert.ok(m.tab>=17,'tab '+m.tab); assert.ok(m.grijs>=7,'contrast grijs op wit '+m.grijs.toFixed(2)); });
+  await t('geen uitlegregels meer op de dagbon', async()=>{
+    const t1=await mp.textContent('#app');
+    for(const zin of ['Per ploeg: aantal man','Tik aan wat vandaag gebruikt is','teken met vinger of muis','Uitlezen zet de regels'])
+      assert.ok(!t1.includes(zin),'uitlegregel staat er nog: '+zin); });
   await t('mobiel: geen horizontale scroll, geen JS-fouten', async()=>{ for(const tab of ['bonnen','overzicht']){ await mp.click('[data-tab="'+tab+'"]'); await mp.waitForTimeout(100); assert.ok(!(await mp.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+1)), tab); } assert.deepStrictEqual(errs,[]); });
   // ---- B. administratie: afkeuren -> team past aan -> goedkeuren via bonpagina ----
   const ctx=await br.newContext({viewport:{width:1100,height:1300}}); const pg=await ctx.newPage(); const errs2=[]; pg.on('pageerror',e=>errs2.push(e.message)); pg.on('dialog',d=>d.accept());

@@ -1,5 +1,10 @@
 # AanZET 2026 ronde 2 — invulblad conceptaanvraag
 
+> **Status 29-09-2026: ingediend** op de eerste dag van de ronde. Zaaknummer AANZET26E-… (nog
+> invullen). Beslistermijn 13 weken, dus uiterlijk ca. 29 december 2026 (art. 2.7), eenmaal
+> verlengbaar. Volgende stappen: zaaknummer naar John Nijzink, EIA via Flynth vóór 4 december,
+> en binnen één maand na de beschikking de order onherroepelijk maken (§6).
+
 *A. Baas Potplantenkwekerij B.V. — 1× Volvo FH Electric 6×2T — opgesteld 24 september 2026*
 
 Het portaal voor de conceptaanvraag staat al open (sinds 3 september 12:00). Indienen kan vanaf

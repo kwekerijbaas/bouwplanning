@@ -14,6 +14,42 @@
 >
 > Ingediend op 29 september 2026, de eerste dag van de ronde.
 
+### Afspraak met Nijwa: eerst de demorit (9-10-2026)
+
+Nijwa toont met een demotruck aan dat een volle wagen Ens → Naaldwijk → Bleiswijk → Ens op één
+lading haalt. Lukt dat niet, dan vervalt de Volvo-optie.
+
+**De rit past ruim, op papier.** Naaldwijk is 154 km enkele reis (ERS). Naaldwijk–Bleiswijk en
+Bleiswijk–Ens zijn geschat op ca. 25 en 140 km, samen ongeveer **320 km**.
+
+| | 10 °C (1,09 kWh/km) | 0 °C (1,15 kWh/km) |
+|---|---|---|
+| Uit de accu | ca. 350 kWh | ca. 370 kWh |
+| Van 545 kWh bruikbaar (ESOP-R) | 64 % | 68 % |
+| Over bij aankomst | ca. 195 kWh (36 %) | ca. 175 kWh (32 %) |
+
+**Twee knelpunten met de beschikking:**
+
+1. **Een ander merk kan niet onder deze beschikking.** Beschikking punt 5: *"Het wijzigen van het
+   merk na toekenning van de subsidie is niet toegestaan."* Valt Volvo af, dan vervalt deze
+   subsidie. Het voorschot van € 45.864 gaat terug en een nieuwe aanvraag kan pas in de ronde van
+   2027 (vermoedelijk half maart). Melden bij RVO is de plicht van de subsidieontvanger (art. 3.1
+   lid 2), niet van Nijwa.
+2. **De demorit moet vóór 9 november gereden en geslaagd zijn.** Zolang de order nog van de test
+   afhangt, is hij niet onherroepelijk (art. 3.2 lid 1 c). Plan de rit uiterlijk in de week van
+   2 november en leg daarna schriftelijk vast: "test geslaagd, order definitief".
+
+**Leg de testcriteria vooraf schriftelijk vast:**
+
+- **Truck:** dezelfde uitvoering als besteld: 6×2T met 6 accupakketten (585 kWh), ESOP-R.
+- **Rit en lading:** de echte route met een realistische volle lading. Spreek het gewicht in kg af,
+  bij voorkeur de zwaarste normale lading. De koel- of verwarmingsunit op de trailer staat aan.
+- **Start en tussenladen:** vertrek met 100 % SoC en laad onderweg niet bij.
+- **Rijstijl:** normaal rijden, 85 km/h.
+- **Geslaagd:** aankomst in Ens met minstens 15–20 % SoC over, als reserve voor winter en
+  omleidingen. Ook leeg aankomen is technisch "gehaald", en daar heb je in de winter niets aan.
+- **Vastlegging:** de data uit Volvo Connect. Die laten verbruik in kWh/km en het SoC-verloop zien.
+
 *A. Baas Potplantenkwekerij B.V. — 1× Volvo FH Electric 6×2T — opgesteld 24 september 2026*
 
 Het portaal voor de conceptaanvraag staat al open (sinds 3 september 12:00). Indienen kan vanaf

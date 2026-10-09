@@ -1,9 +1,18 @@
 # AanZET 2026 ronde 2 — invulblad conceptaanvraag
 
-> **Status 29-09-2026: ingediend** op de eerste dag van de ronde. Zaaknummer AANZET26E-… (nog
-> invullen). Beslistermijn 13 weken, dus uiterlijk ca. 29 december 2026 (art. 2.7), eenmaal
-> verlengbaar. Volgende stappen: zaaknummer naar John Nijzink, EIA via Flynth vóór 4 december,
-> en binnen één maand na de beschikking de order onherroepelijk maken (§6).
+> **Status 9-10-2026: VERLEEND.** Beschikking AANZET26E-04032902 van 9 oktober 2026:
+> **€ 65.520** (21 % × € 312.000; opgegeven kosten dus € 315.000 − € 3.000 dealeropties).
+> Voorschot 70 % = **€ 45.864** op NL28RABO0346579775, betaaldatum 9 oktober.
+>
+> | Termijn | Datum | Wat |
+> |---|---|---|
+> | 1 maand na beschikking | **uiterlijk 9 november 2026** | Order bij Nijwa onherroepelijk, fabrieksorder geplaatst, schriftelijk bewijs bewaren |
+> | 3 maanden na overeenkomst | **uiterlijk 4 december 2026** | EIA-melding via Flynth |
+> | 6 weken na beschikking | 20 november 2026 | Bezwaartermijn (niet nodig: bedrag klopt) |
+> | 12 maanden na beschikking | **uiterlijk 9 oktober 2027** | Vaststellingsverzoek met kenteken en gespecificeerde factuur |
+> | 4 jaar na tenaamstelling | — | Kenteken ononderbroken op naam van de B.V. |
+>
+> Ingediend op 29 september 2026, de eerste dag van de ronde.
 
 *A. Baas Potplantenkwekerij B.V. — 1× Volvo FH Electric 6×2T — opgesteld 24 september 2026*
 

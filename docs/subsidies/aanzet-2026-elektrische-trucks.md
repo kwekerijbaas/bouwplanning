@@ -1,0 +1,1566 @@
+# AanZET 2026 — subsidie op twee elektrische vrachtwagens
+
+**Aanvrager:** A. Baas Potplantenkwekerij B.V. (dezelfde BV als de SPRILA-aanvraag)
+**Besluit 7 september 2026:** **één** FH Electric 6×2T Aero E-as van **€ 315.000**,
+opdrachtbevestiging Nijwa JN2026000088. Subsidie **€ 66.150**. Zie
+`nijwa-opdrachtbevestiging-en-aftelschema.md` voor de contractcontrole en het aftelschema.
+**Categorie:** N3 Trekker
+**Openstelling:** 29 september 2026 09:00 — 16 oktober 2026 12:00
+**Budget ronde 2:** € 119,2 miljoen
+**Subsidie (indicatief):** € 117.600 tot € 162.400 voor beide trucks samen
+
+> **Status van de cijfers.** rvo.nl en officielebekendmakingen.nl geven vanuit deze omgeving een
+> 403, dus de regelingstekst zelf heb ik niet kunnen lezen. De AanZET-percentages, de maxima en
+> de grondslag zijn inmiddels wél bevestigd door een tweede, onafhankelijke bron: het
+> subsidieblad van de **TCO-ZET-Vracht v7.3** van Panteia / Topsector Logistiek. Beide bronnen
+> komen exact overeen. De openstellingsdata en het budget rusten nog op webbronnen alleen.
+> Zie §8.
+
+---
+
+## 1. Korte conclusie
+
+**De subsidie:** met 60 medewerkers en € 22 mln omzet is de groep **middelgroot** (§3). Bij de
+prijzen van Nijwa — € 300.000 voor de 4×2 — levert dat **€ 63.000 per truck, € 126.000 voor
+twee**. Zijn die 60 medewerkers minder dan 50 *arbeidsjaren*, dan telt de groep als klein en
+wordt het € 174.000: een verschil van € 48.000 dat de moeite van het uitzoeken waard is.
+
+**Of het uit kan:** ja. Met alle invoer nu bevestigd — **100.000 km per truck per jaar**,
+**1 op 3,8**, **€ 1,70 per liter** diesel, **€ 0,10 per kWh** stroom, en de restwaarde- en
+onderhoudscijfers uit Volvo's eigen calculatietool — bespaart elektrisch **€ 107.122 per jaar**
+op twee trucks, inclusief € 15.708 ERE.
+
+Tegenover een extra investering van € 439.543 is dat **4,1 jaar** terugverdientijd, of
+**3,6 jaar** als je de restwaarde meerekent. Netto contante waarde over vijf jaar bij 6 %:
+**€ 73.193**, met een interne rentevoet van **11,4 %**.
+
+Dat is minder spectaculair dan mijn eerdere schattingen, en dat komt doordat elke aanname
+inmiddels vervangen is door een cijfer van jullie zelf of van Volvo — en die vielen stuk voor
+stuk conservatiever uit. Zie §6.7d.
+
+De twee variabelen die er nog toe doen:
+
+- **De kilometers.** Bij 60.000 km per truck loopt het op naar 4,9 jaar; gaan de trucks
+  structureel dubbele dagen rijden (180.000 km), dan zakt het naar 2,3 jaar.
+- **De stroomprijs.** Die € 0,10 draagt het verhaal. Op netstroom van € 0,2154 wordt het
+  4,5 jaar, en op een publiek tarief van € 0,30 zelfs 5,7 jaar. Zie §6.7 voor de drie
+  voorwaarden waaraan die tien cent nog moet voldoen.
+
+**Wat er deze maand moet gebeuren:** bestel de **MID-gecertificeerde meter** mee in de drie
+laadstations. Zonder die meter is er geen ERE, en achteraf inbouwen is duur tot onmogelijk. Zet
+het bij de openstaande punten in de offerte van Draccu.
+
+**De timing:** ronde 2 opent 29 september. Op dag één en twee mag je maximaal twee voertuigen
+aanvragen — precies wat je nodig hebt. Vanaf dag drie mag het er tien, maar dan is het budget
+mogelijk al aan het opdrogen. **Indienen op 29 september om 09:00.**
+
+**De volgorde-val:** net als bij SPRILA mag je **geen onherroepelijke verplichting** zijn
+aangegaan op het moment van indienen. Anders dan bij SPRILA moet je wél al een koopovereenkomst
+hebben — maar dan met een **ontbindende voorwaarde**. Zie §5.
+
+---
+
+## 2. De subsidiebedragen
+
+Het subsidiebedrag is een **percentage van de verkoopprijs van het chassis af fabriek**,
+inclusief fabrieksopties, **exclusief opbouw en exclusief btw**. Niet van de meerkosten ten
+opzichte van diesel. Dat is bevestigd door de formule in het subsidieblad van de Panteia-tool
+(§8).
+
+Er gelden **drie plafonds tegelijk**; het laagste wint:
+
+1. het **percentage** × de bruto verkoopprijs van het e-voertuig;
+2. het **maximumbedrag** per voertuig;
+3. het **EU-staatssteunplafond**: 40 % (groot), 50 % (middelgroot) of 60 % (klein) van de
+   *meerprijs* ten opzichte van een vergelijkbaar dieselvoertuig.
+
+Voor categorie **N3** (bakwagenchassis en trekker):
+
+| Onderneming | Percentage | Maximum per voertuig |
+|---|---|---|
+| Klein + non-profit | **29 %** | € 115.200 |
+| Middelgroot | **21 %** | € 83.200 |
+| Groot | **11,1 %** | € 43.900 |
+
+Over de hele regeling lopen de percentages van 6,1 % tot 29 %, met maxima van € 15.200 tot
+€ 115.200; de lagere waarden gelden voor lichtere categorieën (N2 vanaf 4.250 kg).
+
+### Wat dat oplevert
+
+Bij een chassisprijs van **€ 280.000** (aanname, zie §7):
+
+| Onderneming | Per truck | Twee trucks | Maximum geraakt? |
+|---|---|---|---|
+| Klein | € 81.200 | **€ 162.400** | nee (plafond ligt op € 397.000 chassisprijs) |
+| Middelgroot | € 58.800 | **€ 117.600** | nee |
+| Groot | € 31.080 | € 62.160 | nee |
+
+Geen van de drie plafonds bijt hier: het **percentage** bepaalt de uitkomst. Het maximumbedrag
+begint pas te knellen bij een chassisprijs van ongeveer € 397.000, en het staatssteunplafond
+ligt bij een meerprijs van € 160.000 op € 80.000 (middelgroot) respectievelijk € 96.000 (klein)
+— ruim boven de berekende € 58.800 en € 81.200.
+
+**Let wel op het staatssteunplafond zodra de meerprijs kleiner wordt.** Kost het vergelijkbare
+dieselmodel € 160.000 in plaats van € 120.000, dan zakt het plafond voor een kleine onderneming
+naar € 72.000 en verliest u € 9.200 per truck. Vraag de dealer daarom ook om een prijsindicatie
+van de dieselvariant.
+
+---
+
+## 3. Bedrijfsomvang — vastgesteld: middelgroot
+
+Kwekerij Baas geeft op: **60 medewerkers en € 22 miljoen omzet**. Getoetst aan de Europese
+mkb-definitie (Aanbeveling 2003/361/EG), die ook voor AanZET geldt:
+
+| | Werkzame personen | Omzet | Balanstotaal |
+|---|---|---|---|
+| Klein | < 50 | ≤ € 10 mln | **of** ≤ € 10 mln |
+| **Middelgroot** | **< 250** | **≤ € 50 mln** | **of** ≤ € 43 mln |
+| Groot | ≥ 250, of beide financiële grenzen overschreden | | |
+
+Met 60 werkzame personen valt "klein" af: **het personeelscriterium is absoluut**, hoe laag de
+omzet ook is. Met 60 < 250 en € 22 mln < € 50 mln is de uitkomst **middelgroot**.
+
+**Gevolgen:**
+
+- **AanZET: 21 %, maximaal € 83.200 per voertuig.** Bij een chassisprijs van € 300.000 is dat
+  € 63.000 per truck, **€ 126.000 voor twee**.
+- **Staatssteunplafond: 50 % van de meerprijs.** Bij € 300.000 tegenover € 146.166 diesel is dat
+  € 76.917 — ruim boven de € 63.000, dus niet bindend.
+- **SPRILA verandert niet.** Middelgroot valt onder het mkb, dus de bedragen van € 31.000 per
+  laadstation en € 85 per kWh accu blijven staan, evenals de steunintensiteit van 40 %. De
+  lopende aanvraag van € 178.000 blijft onaangetast.
+
+### Twee dingen die de uitkomst nog kunnen kantelen — samen € 48.000 waard
+
+Het verschil tussen klein en middelgroot is **€ 48.000** bij de 4×2 en **€ 51.200** bij de 6×2.
+Dat is de moeite van een half uur uitzoekwerk waard.
+
+**1. Zijn die 60 medewerkers ook 60 arbeidsjaren?** De definitie telt geen hoofden maar
+**jaarlijkse arbeidseenheden**. Deeltijders tellen naar rato, seizoenkrachten naar het deel van
+het jaar dat zij werken, en leerlingen of studenten met een leer- of beroepsopleidingscontract
+tellen **helemaal niet mee**. Bij een potplantenkwekerij met seizoensarbeid kan 60 hoofden
+neerkomen op ruim onder de 50 arbeidsjaren. Dit is de enige toets die hier nog geld oplevert.
+
+**2. De tweejaarsregel.** Je wisselt pas van categorie als je de grens in **twee opeenvolgende
+boekjaren** over- of onderschrijdt. Zat de groep vorig boekjaar nog onder de 50 arbeidsjaren en
+is hij pas dit jaar erboven gekomen, dan geldt voor deze aanvraag nog steeds **klein**.
+
+Beide punten liggen bij Flynth op de plank: zij hebben de loonadministratie en de jaarrekeningen.
+Eén vraag, twee cijfers — arbeidsjaren over de laatste twee vastgestelde boekjaren, geconsolideerd
+over de hele groep.
+
+**Let op dat het over de hele groep gaat**, niet over A. Baas Potplantenkwekerij B.V. alleen.
+Alle verbonden en partnerondernemingen tellen mee. De genoemde 60 medewerkers en € 22 mln moeten
+dus de geconsolideerde cijfers van de Baas Groep zijn; zijn dat de cijfers van één BV, dan valt
+de toets mogelijk anders uit.
+
+Tot die twee vragen beantwoord zijn houd ik **middelgroot** aan — dat is de voorzichtige kant.
+
+---
+
+## 4. Kan AanZET gestapeld worden?
+
+| Combinatie | Mag het? | Toelichting |
+|---|---|---|
+| AanZET + **SPRILA** | **Ja** | Verschillende bedrijfsmiddelen: de trucks tegenover de laadinfrastructuur. Geen overlap. |
+| AanZET + **EIA** | **Ja** | Blijft toegestaan. De ontvangen AanZET-subsidie gaat wel van de EIA-grondslag af. |
+| AanZET + **MIA** | **Nee** | Sinds 1 januari 2025 uitgesloten voor hetzelfde voertuig. Als tegenprestatie zijn de AanZET-percentages verhoogd. |
+| SPRILA + **EIA** op dezelfde laadpaal | **Waarschijnlijk niet** | Twee regelingen op hetzelfde bedrijfsmiddel. Voorleggen aan Flynth. |
+
+**EIA 2026:** 40 % extra aftrek van de winst, bovenop de gewone afschrijving. Bij 25,8 % Vpb is
+het kaseffect dus circa 10,3 % van de grondslag.
+
+De vraag die het antwoord bepaalt: **wat is de EIA-grondslag bij een e-truck?** De Energielijst
+beperkt dat bij voertuigen doorgaans tot de **meerkosten** ten opzichte van een conventioneel
+alternatief, niet tot de volledige aanschafprijs. Ik reken hieronder met de meerkosten — dat is
+de voorzichtige kant. Zit de volledige prijs erin, dan valt het voordeel per truck ongeveer
+€ 12.000 hoger uit. Ook dit is een vraag voor Flynth.
+
+Wel een aanwijzing: de Panteia-tool rekent voor **MIA** met de **volledige bruto aanschafprijs
+minus de ontvangen AanZET** als grondslag (`M2-Subsidie!B26`), niet met de meerkosten. Werkt de
+EIA op dezelfde manier, dan valt het voordeel hoger uit. Het werkboek heeft daarvoor een
+schakelaar in cel C25 — zet die op *Ja* om die variant te zien.
+
+---
+
+## 5. De volgorde — anders dan bij SPRILA
+
+Bij SPRILA geldt: **niets tekenen** voordat de aanvraag binnen is. Bij AanZET is het net anders:
+
+- Je moet **wél een koopovereenkomst of financial-leasecontract hebben** op het moment van
+  indienen — dat is een bijlage bij de aanvraag.
+- Maar je mag **geen onherroepelijke verplichting** zijn aangegaan. Daarom moet het contract een
+  **ontbindende voorwaarde** bevatten, in de trant van *"deze overeenkomst wordt definitief na
+  toekenning van de AanZET-subsidie"*.
+- Op het moment van indienen mag de truck **niet geleverd zijn** en **niet op naam staan**.
+
+Praktisch: laat de dealer een koopovereenkomst opstellen met die ontbindende voorwaarde, ruim
+vóór 29 september. Laat de tekst van die clausule door Flynth of door mij nakijken — een
+verkeerd geformuleerde voorwaarde is een afwijzingsgrond, en dat merk je pas als het venster
+dicht is.
+
+**Financial lease mag, operational lease niet.** De truck moet op je balans komen.
+
+---
+
+## 6. Of het uit kan — de TCO
+
+### 6.1 Waar de cijfers vandaan komen
+
+Deze paragraaf is herzien op basis van de cijfers die Kwekerij Baas aanleverde — dieselverbruik
+**1 op 3,8**, **100.000 km** per truck per jaar, **€ 1,70** per liter diesel en **€ 0,10** per
+kWh stroom — en op de rekentool **TCO-ZET-Vracht v7.3** van Panteia / Topsector Logistiek
+(23-09-2024). Alle overige voertuiggebonden parameters komen uit die tool in plaats van uit
+mijn eigen schattingen.
+
+**De tool zelf kon ik niet draaien.** De formules gebruiken gestructureerde tabelverwijzingen
+(`Voertuigen[[#All],[Voertuig]]`) die de beschikbare Python-formule-engine niet parseert, en
+LibreOffice is in deze omgeving onbruikbaar. Wat ik wel heb gedaan: de parameters en de
+rekenregels uit de tool gelezen en toegepast in een eigen werkboek, met per waarde de broncel
+erbij. Dat werkboek is *AanZET TCO-model elektrische trucks.xlsx*; het blad
+*Panteia-parameters* bevat de overgenomen tabellen.
+
+Wie het wil controleren kan de tool zelf openen en de invoer uit §6.2 overnemen; de uitkomsten
+horen dan in dezelfde orde van grootte te liggen. Twee verschillen blijven bestaan: de tool
+kent de **vrachtwagenheffing** nog niet (die kwam er per 1 juli 2026) en hanteert
+**SPRILA-bedragen die niet overeenkomen** met wat RVO in 2026 publiceert — zie §8.
+
+### 6.2 De uitgangspunten
+
+| | Waarde | Herkomst |
+|---|---|---|
+| Voertuigtype | Zware trekker z/opl | aanname — zie 6.6 |
+| **Kilometers per truck per jaar** | **100.000** | **opgave Kwekerij Baas** |
+| **Dieselverbruik** | **1 op 3,8** (0,2632 l/km) | **opgave Kwekerij Baas** |
+| **Dieselprijs, excl. btw** | **€ 1,70/l** | **opgave Kwekerij Baas** |
+| **Stroomprijs** | **€ 0,10/kWh** | **opgave Kwekerij Baas** — eigen opwek |
+| Stroomverbruik e-truck | 1,4675 kWh/km | Panteia, incl. laadverliezen |
+| Onderhoud diesel / elektrisch | € 0,0916 / € 0,0458 per km | Panteia — elektrisch is exact de helft |
+| Banden, reparaties, MRB | € 0,0465/km, € 1.654/jaar, € 1.028/jaar | Panteia, gelijk aan beide kanten |
+| Vrachtwagenheffing diesel / ZE | € 0,19 / € 0,04 per km | per 1 juli 2026 — niet in de tool |
+| Extra chauffeurskosten elektrisch | € 3.655/jaar | wachttijd bij laden; Panteia rekent +4,1 % |
+| Chassisprijs e-truck / diesel | € 280.000 / € 120.000 | aanname — nog te vervangen |
+
+### 6.3 De investering
+
+| | Klein | Middelgroot | Groot |
+|---|---|---|---|
+| AanZET, twee trucks | € 162.400 | € 117.600 | € 62.160 |
+| Netto meerprijs beide trucks, na AanZET en EIA | € 141.336 | € 181.512 | € 231.231 |
+| Laadinfrastructuur na SPRILA | € 283.500 | € 283.500 | € 283.500 |
+| **Totale extra investering** | **€ 424.836** | **€ 465.012** | **€ 514.731** |
+
+### 6.4 De jaarlijkse besparing
+
+Per truck bij 100.000 km:
+
+| | Diesel | Elektrisch |
+|---|---|---|
+| Brandstof / stroom | € 44.737 | € 14.675 |
+| Vrachtwagenheffing | € 19.000 | € 4.000 |
+| Onderhoud | € 9.164 | € 4.582 |
+| Banden | € 4.648 | € 4.648 |
+| Reparaties | € 1.654 | € 1.654 |
+| Motorrijtuigenbelasting | € 1.028 | € 1.028 |
+| Extra chauffeurskosten | — | € 3.655 |
+| **Totaal per jaar** | **€ 80.231** | **€ 34.242** |
+
+**Besparing: € 45.989 per truck per jaar, € 91.978 voor twee.**
+
+Van die besparing komt € 30.062 uit het energieverschil en € 15.000 uit de vrachtwagenheffing.
+De heffing is dus goed voor bijna een derde, en die post bestaat pas sinds 1 juli 2026.
+
+### 6.5 Terugverdientijd
+
+| | Klein | Middelgroot | Groot |
+|---|---|---|---|
+| **Terugverdientijd** | **4,6 jaar** | **5,1 jaar** | **5,6 jaar** |
+
+### 6.6 Gevoeligheid
+
+**Kilometers per truck per jaar** — veruit de grootste hefboom:
+
+| km/jaar | Besparing | Terugverdientijd |
+|---|---|---|
+| 60.000 | € 52.263 | 8,9 jaar |
+| 80.000 | € 72.120 | 6,5 jaar |
+| **100.000** | **€ 91.978** | **5,1 jaar** |
+| 120.000 | € 111.835 | 4,2 jaar |
+| 150.000 | € 141.622 | 3,3 jaar |
+| 180.000 | € 171.408 | 2,7 jaar |
+
+**Stroomprijs** — het scenario staat of valt met die 10 cent:
+
+| € / kWh | Besparing | Terugverdientijd |
+|---|---|---|
+| **0,10 — volledig eigen opwek** | **€ 91.978** | **5,1 jaar** |
+| 0,14 | € 80.238 | 5,8 jaar |
+| 0,18 | € 68.498 | 6,8 jaar |
+| 0,2154 — volledig netstroom | € 58.108 | 8,0 jaar |
+| 0,30 | € 33.278 | 14,0 jaar |
+
+**Reken hier even mee.** Twee trucks van 100.000 km verbruiken 1,4675 × 100.000 × 2 =
+**293.500 kWh per jaar**. Dat volledig uit eigen opwek halen vraagt bij een Nederlandse
+opbrengst van ongeveer 950 kWh per kWp om en nabij **310 kWp aan zonnepanelen die uitsluitend
+voor de trucks beschikbaar zijn** — bovenop wat het bedrijf zelf al verbruikt. En omdat de
+trucks 's nachts en 's winters laden terwijl de zon overdag en 's zomers schijnt, is de accu
+van 1.000 kWh geen luxe maar de voorwaarde om die 10 cent te halen.
+
+Kan maar de helft uit eigen opwek komen en de rest van het net, dan zit u op ongeveer
+€ 0,16/kWh en loopt de terugverdientijd naar 6,3 jaar. **Dit is het getal dat ik het scherpst
+zou willen controleren voordat er getekend wordt** — het beweegt de uitkomst met drie jaar.
+
+**Dieselverbruik** — hoe gevoelig de uitkomst is voor jullie eigen opgave:
+
+| 1 op ... | Besparing | Terugverdientijd |
+|---|---|---|
+| 2,9 (Panteia-default zware trekker) | € 119.745 | 3,9 jaar |
+| 3,5 | € 99.647 | 4,7 jaar |
+| **3,8 (jullie cijfer)** | **€ 91.978** | **5,1 jaar** |
+| 4,5 | € 78.060 | 6,0 jaar |
+
+**Voertuigtype** — bij 150.000 km lagen de drie plausibele typen tussen 4,1 en 4,4 jaar; de
+onderlinge verschillen zijn klein en veranderen het beeld niet. Alle drie leveren hetzelfde
+subsidiepercentage op (21 % middelgroot, 29 % klein). Wel goed om te weten: bij **1 op 3,8
+hoort in Panteia's indeling eerder een grote bakwagen (1 op 3,71) dan een zware trekker
+(1 op 2,93)**. Rijden jullie werkelijk trekker-opleggers en haalt u daar 1 op 3,8 mee, dan
+presteert dat materieel ruim 20 % beter dan waar Panteia mee rekent.
+
+### 6.7 Kan die 10 cent — de eigen opwek
+
+Kwekerij Baas beschikt over **350 kW ORC-vermogen** en heeft **ruimte voor circa 500 kWp aan
+zonnepanelen** op een halve hectare, nog aan te vragen. Zonnepanelen liggen er nu niet.
+
+**In volume is er ruimte zat.** De twee trucks vragen 293.500 kWh per jaar, oftewel 1.276 kWh
+per werkdag samen.
+
+| Bron | Opbrengst | Ten opzichte van de trucks |
+|---|---|---|
+| ORC 350 kW | 839 vollasturen volstaan | bij 4.000 draaiuren: 1,4 GWh — bijna vijf keer de vraag |
+| PV 500 kWp | ± 475.000 kWh/jaar | 162 % van de vraag |
+
+**In tijd zit de puzzel.** De ORC draait op restwarmte en dus vooral in het stookseizoen; de
+zon levert in de zomer. Dat is voor deze toepassing juist gunstig: samen dekken ze het hele
+jaar, terwijl de trucks het hele jaar door laden. In december levert 500 kWp nog maar zo'n
+460 kWh per dag — een derde van de dagvraag — en juist dan draait de ORC. De accu van 1.045 kWh
+overbrugt met 836 kWh bruikbaar ongeveer tweederde van één laaddag, precies genoeg om
+dagproductie naar de nacht te schuiven.
+
+**Maar er zijn drie voorwaarden, en die zijn geen van drieën vervuld.**
+
+**1. Achter welke aansluiting staat de ORC?** De laadstations komen op Drietorensweg 38-1, op de
+aansluiting van A. Baas Energie B.V. Staat de ORC daar ook achter, dan kan de stroom
+rechtstreeks naar de laders. Staat hij elders — bijvoorbeeld op Enserweg 4 — dan moet de stroom
+over het openbare net, en dan is het geen eigen opwek meer maar inkoop, mét energiebelasting,
+netbeheerkosten en leveranciersmarge. Dan is € 0,10 onhaalbaar en beland je rond de
+€ 0,20 à € 0,22. **Dit is de eerste vraag die beantwoord moet worden**, en het antwoord kost
+drie jaar terugverdientijd.
+
+**2. De levering tussen de BV's.** Ook als alles achter dezelfde aansluiting zit, wordt de
+stroom geleverd door A. Baas Energie B.V. aan A. Baas Potplantenkwekerij B.V. — twee
+rechtspersonen. Een levering tussen rechtspersonen is in beginsel belast met energiebelasting,
+ook achter de meter. Dat is precies vraag 2 uit de mail die bij Flynth ligt, en het gewicht van
+die vraag is met deze cijfers flink toegenomen: bij 293.500 kWh per jaar zit u in de derde
+schijf, waar het tarief een stuk lager ligt dan de € 0,0916 van de eerste schijf, maar het
+exacte tarief voor 2026 heb ik niet kunnen verifiëren. Bij enkele centen per kWh praat je over
+€ 10.000 tot € 15.000 per jaar — een half jaar extra terugverdientijd.
+
+**3. De zonnepanelen bestaan nog niet.** Vergunning, en vooral **transportcapaciteit voor
+teruglevering** in de Noordoostpolder, zijn geen formaliteit. Reken op een doorlooptijd die kan
+oplopen. Dat is geen blokkade voor de subsidieaanvragen — SPRILA en AanZET stellen geen eisen
+aan de herkomst van de stroom — maar het betekent wel dat de businesscase in de eerste jaren op
+de ORC leunt en niet op de zon.
+
+**Wat dit betekent voor de beslissing.** De € 0,10 is geen aanname die je even invult; het is
+een projectresultaat dat nog behaald moet worden. Ik zou de investeringsbeslissing daarom niet
+op 5,1 jaar baseren maar op een bandbreedte:
+
+| Scenario | Stroomprijs | Terugverdientijd |
+|---|---|---|
+| Alles achter één aansluiting, geen energiebelasting | € 0,10 | 5,1 jaar |
+| Eigen opwek met energiebelasting derde schijf | ± € 0,14 | 5,8 jaar |
+| Helft eigen opwek, helft net | ± € 0,16 | 6,3 jaar |
+| ORC elders, alles van het net | € 0,2154 | 8,0 jaar |
+
+### 6.7b Hoe de terugverdientijd wordt berekend
+
+De methode is bewust simpel:
+
+> **terugverdientijd = extra investering ÷ jaarlijkse besparing**
+
+Beide getallen zijn *verschillen ten opzichte van diesel*, niet absolute bedragen. Er wordt dus
+niet gerekend met wat een elektrische truck kost, maar met wat hij **méér** kost dan de
+dieseltruck die je anders had gekocht — en niet met wat elektrisch rijden kost, maar met wat het
+**minder** kost.
+
+#### De teller: extra investering
+
+| | |
+|---|---|
+| Bruto aanschafprijs e-truck | € 300.000 |
+| − vergelijkbare dieseltrekker | − € 146.166 |
+| **= meerprijs per truck** | **€ 153.834** |
+| − AanZET (21 % × € 300.000) | − € 63.000 |
+| = EIA-grondslag | € 90.834 |
+| − EIA-voordeel (40 % aftrek × 25,8 % Vpb) | − € 9.374 |
+| **= netto meerprijs per truck** | **€ 81.460** |
+| × 2 trucks | € 162.920 |
+| + laadinfrastructuur (€ 461.500 − € 178.000 SPRILA) | + € 283.500 |
+| **= TOTALE EXTRA INVESTERING** | **€ 446.420** |
+
+#### De noemer: jaarlijkse besparing
+
+Per truck bij 100.000 km, 1 op 3,8, € 1,70 per liter en € 0,10 per kWh:
+
+| | Diesel | Elektrisch |
+|---|---|---|
+| Brandstof / stroom | € 44.737 | € 11.550 |
+| Vrachtwagenheffing | € 19.000 | € 4.000 |
+| Onderhoud | € 9.164 | € 4.582 |
+| Banden | € 4.648 | € 4.648 |
+| Reparaties | € 1.654 | € 1.654 |
+| Motorrijtuigenbelasting | € 1.028 | € 1.028 |
+| Extra chauffeurskosten laden | — | € 3.655 |
+| **Totaal per jaar** | **€ 80.231** | **€ 31.117** |
+
+| | |
+|---|---|
+| Verschil per truck | € 49.114 |
+| × 2 trucks | € 98.228 |
+| + ERE (231.000 kWh × € 0,10 × 85 %) | + € 19.635 |
+| **= BESPARING PER JAAR** | **€ 117.863** |
+
+Banden, reparaties en motorrijtuigenbelasting staan aan beide kanten gelijk en vallen dus weg in
+het verschil. Ze staan er alleen in om de jaarkosten compleet te tonen.
+
+#### De uitkomst
+
+> € 446.420 ÷ € 117.863 = **3,79 jaar**
+
+#### Wat deze methode negeert
+
+Simpele terugverdientijd is een grove maatstaf. Hij houdt geen rekening met rente, en hij kijkt
+niet verder dan het moment waarop de investering is terugverdiend. Bij een economische
+levensduur van zeven jaar betekent 3,8 jaar dat er daarna nog ruim drie jaar voordeel overblijft
+dat in dit getal niet zichtbaar is.
+
+Ter controle dezelfde cijfers als contante waarde over zeven jaar:
+
+| Disconteringsvoet | Netto contante waarde |
+|---|---|
+| 0 % | € 378.619 |
+| 4 % | € 260.999 |
+| 6 % | € 211.535 |
+| 8 % | € 167.217 |
+| **Interne rentevoet** | **18,2 %** |
+
+Een interne rentevoet van 18 % is voor een vervangingsinvestering een goed rendement. Dat de
+uitkomst ook bij 8 % rente ruim positief blijft, betekent dat de conclusie niet afhangt van de
+financieringsvorm.
+
+Wel geldt onverkort wat in §6.8 staat: **restwaarde staat aan beide kanten op nul**, en dat is
+de grootste vereenvoudiging in het hele model.
+
+### 6.7c De restwaarde
+
+Tot nu toe stond restwaarde aan beide kanten op nul. Dat is nu ingebouwd, met de
+leeftijdstabel van Panteia als basis: **23 % van de nieuwprijs na zeven jaar**, gelijk voor
+diesel en elektrisch. Voor de laadinfrastructuur hanteer ik 30 %, lineair over de
+afschrijftermijn van tien jaar die Panteia voor laadinfra aanhoudt.
+
+| | Bedrag in jaar 7 |
+|---|---|
+| Restwaarde twee e-trucks (23 % × € 300.000) | € 138.000 |
+| Af: gederfde restwaarde van de dieseltrucks die je niet koopt (23 % × € 146.166) | − € 67.236 |
+| Restwaarde laadinfrastructuur (30 % × € 461.500 bruto) | € 138.450 |
+| **Totale extra restwaarde** | **€ 209.214** |
+| Omgeslagen over zeven jaar | € 29.888 per jaar |
+
+Daarmee:
+
+| | Besparing per jaar | Terugverdientijd |
+|---|---|---|
+| Zonder restwaarde | € 113.936 | **3,9 jaar** |
+| Met restwaarde | € 143.823 | **3,1 jaar** |
+
+**Lees die 3,1 jaar met een korrel zout.** De restwaarde komt pas vrij bij verkoop in jaar 7,
+niet elk jaar in kas. Voor de kasstroom is 3,9 jaar het eerlijke getal; 3,1 jaar is het
+economische getal. Het werkboek toont ze allebei, blok 8 en blok 10.
+
+**Twee dingen waar ik de restwaarde overschat kan hebben.**
+
+*De e-truck.* 23 % is Panteia's algemene leeftijdstabel, niet een marktnotering voor gebruikte
+elektrische trekkers. Die markt bestaat nauwelijks. Als de restwaarde uitkomt op 10 % in plaats
+van 23 %, is de extra restwaarde van de voertuigen zelfs **negatief** — dan is de e-truck na
+zeven jaar minder waard dan de diesel die je niet gekocht hebt.
+
+*De laadinfrastructuur.* Van de € 461.500 is een fors deel **aanleg- en installatiewerk** —
+grondwerk, kabelsleuven, fundering, hoofdverdeler — en dat heeft geen restwaarde. Alleen de
+hardware wel: ruwweg € 314.000 aan laders en accukasten, oftewel zo'n 68 % van het totaal. Een
+restwaarde van 30 % over het hele bedrag is dus aan de optimistische kant; over alleen de
+hardware zou je op circa 20 % van het totaal uitkomen.
+
+De hele bandbreedte:
+
+| | infra 0 % | infra 15 % | infra 30 % |
+|---|---|---|---|
+| e-truck 10 % | 3,95 jaar | 3,64 jaar | 3,36 jaar |
+| e-truck 15 % | 3,81 jaar | 3,51 jaar | 3,26 jaar |
+| **e-truck 23 %** | 3,60 jaar | 3,33 jaar | **3,10 jaar** |
+| e-truck 30 % | 3,43 jaar | 3,19 jaar | 2,98 jaar |
+
+**De uitkomst ligt dus tussen 3,0 en 4,0 jaar, waar je de restwaarde ook op zet.** Dat is de
+geruststellende conclusie: restwaarde beweegt het antwoord met hooguit een jaar, terwijl de
+kilometers het met vijf jaar bewegen. Het blijft wel de reden om Nijwa naar een
+**terugkoopgarantie** te vragen — dat is de enige manier om dit getal hard te maken.
+
+Met contante waarde en de restwaarde in jaar 7 in plaats van omgeslagen:
+
+| Disconteringsvoet | Netto contante waarde |
+|---|---|
+| 4 % | € 396.414 |
+| 6 % | € 328.752 |
+| 8 % | € 268.846 |
+| **Interne rentevoet** | **21,6 %** |
+
+### 6.7d De calculatietool van Volvo — en wat die verandert
+
+Nijwa leverde ook Volvo's eigen *Calculatietool diesel vs LNG vs electric*. Die bevat meer dan
+alleen de restwaarde en is op vier punten gezaghebbender dan wat ik tot nu toe gebruikte, want
+het zijn de cijfers van de partij die de trucks verkoopt én onderhoudt.
+
+**Wat Volvo aanhoudt** (60 maanden, 100.000 km per jaar):
+
+| | Diesel | Elektrisch |
+|---|---|---|
+| Investering | € 150.000 | € 298.000 |
+| Aanschafsubsidie | — | € 70.000 |
+| **Restwaarde** | **€ 25.000** | **€ 20.000** |
+| Onderhoud per maand | € 600 | **€ 645** |
+| Vrachtwagenheffing per km | € 0,201 | € 0,038 |
+| MAUT per km | € 0,348 | € 0 |
+| Verbruik per 100 km | 25 l | 112,5 kWh |
+
+Verder: stroom € 0,30/kWh, diesel € 1,77/l, rente 6 %, 70.000 tolkilometers in Nederland en
+10.000 in Duitsland, en **geen laadinfrastructuur**.
+
+Volvo's eigen uitkomst: € 0,9958 per km voor diesel tegen € 0,9409 elektrisch, oftewel
+**€ 27.425 voordeel over vijf jaar per truck**. Dat is aanzienlijk magerder dan mijn cijfers.
+
+#### Vier dingen die ik heb overgenomen
+
+**1. De restwaarde — en die draait het beeld om.** € 20.000 op € 298.000 is 6,7 % na vijf jaar;
+de diesel houdt € 25.000 op € 150.000, oftewel 16,7 %. **De e-truck is na vijf jaar dus mínder
+waard dan de diesel die je niet gekocht hebt.** Waar Panteia's algemene leeftijdstabel een
+voordeel van € 35.382 per truck opleverde, staat er nu een nadeel van € 5.000. Dat is een
+verschil van ruim € 40.000 per truck, en Volvo's cijfer is het geloofwaardige — zij zouden hem
+moeten terugkopen.
+
+**2. Onderhoud is bij elektrisch dúúrder, niet goedkoper.** Volvo rekent € 645 tegen € 600 per
+maand. Panteia hield precies de helft aan voor elektrisch. Dat scheelt € 5.122 per truck per
+jaar, en ook hier volg ik Volvo: een fabrikant die R&O-contracten verkoopt weet wat zijn eigen
+trucks kosten.
+
+**3. De vrachtwagenheffing geldt niet over alle kilometers.** Volvo rekent met 70.000 van de
+100.000 kilometer als tolplichtig. Ik rekende met alle. Dat verlaagt het heffingsvoordeel van
+€ 15.000 naar € 11.410 per truck per jaar.
+
+**4. De Duitse MAUT ontbrak bij mij.** Diesel betaalt € 0,348 per kilometer, zero-emissie niets.
+Op 10.000 Duitse kilometers is dat **€ 3.480 per truck per jaar** in het voordeel van elektrisch.
+Rijden jullie na de Bottrop-uitzondering vrijwel alles binnen Nederland, zet dit dan op nul.
+
+Ook de levensduur staat nu op **vijf jaar** in plaats van zeven, omdat Volvo's restwaarde van
+€ 20.000 bij die termijn hoort.
+
+#### Wat dat met de uitkomst doet
+
+| Per truck per jaar | Diesel | Elektrisch |
+|---|---|---|
+| Brandstof / stroom | € 44.737 | € 11.550 |
+| AdBlue | € 1.825 | — |
+| Vrachtwagenheffing (70.000 km) | € 14.070 | € 2.660 |
+| MAUT (10.000 km) | € 3.480 | € 0 |
+| Onderhoud en reparatie | € 7.200 | € 7.740 |
+| Banden | € 4.648 | € 4.648 |
+| Motorrijtuigenbelasting | € 1.028 | € 1.028 |
+| Extra chauffeurskosten | — | € 3.655 |
+| **Totaal** | **€ 76.988** | **€ 31.281** |
+
+| | |
+|---|---|
+| Besparing per truck | € 45.707 |
+| × 2 trucks | € 91.414 |
+| + ERE (231.000 kWh × € 0,08 × 85 %) | € 15.708 |
+| **Besparing per jaar** | **€ 107.122** |
+| Extra investering | € 439.543 |
+| **Terugverdientijd zonder restwaarde** | **4,1 jaar** |
+| Totale extra restwaarde | € 82.300 |
+| **Terugverdientijd met restwaarde** | **3,6 jaar** |
+
+De restwaarde van € 82.300 bestaat uit **− € 10.000 op de voertuigen** en **+ € 92.300 op de
+laadinfrastructuur** (20 % van bruto — alleen de hardware, niet het aanlegwerk).
+
+| Contante waarde over 5 jaar bij 6 % | € 73.193 |
+|---|---|
+| **Interne rentevoet** | **11,4 %** |
+
+Bij zeven jaar in plaats van vijf loopt de contante waarde op naar circa € 185.000 — de laatste
+twee jaren zijn immers vrijwel pure winst.
+
+#### Waarom mijn uitkomst gunstiger is dan die van Volvo
+
+Volvo komt op € 27.425 voordeel per truck over vijf jaar, ik op ongeveer het dubbele. Drie
+posten verklaren vrijwel het hele verschil, en ze wijzen niet allemaal dezelfde kant op:
+
+| | Effect per truck over 5 jaar |
+|---|---|
+| Stroom voor € 0,10 in plaats van € 0,30 | **+ € 112.500** |
+| ERE, die bij Volvo helemaal ontbreekt | + € 39.270 |
+| Laadinfrastructuur, die bij Volvo helemaal ontbreekt | **− € 141.750** |
+
+Volvo vergelijkt alleen de voertuigen en rekent met een publieke stroomprijs. Wij investeren in
+eigen laadinfrastructuur, en dát is precies wat de kilowattuur van € 0,30 naar € 0,10 brengt.
+De twee horen bij elkaar: **de laadinfrastructuur is duur, maar zij is ook de reden dat de
+energiepost zo laag is.** Zonder die investering zou Volvo's magere € 27.425 het eerlijke
+antwoord zijn.
+
+Ik heb dit verschil niet tot op de euro gesloten; er zitten kleinere posten tussen (rente,
+EIA, de precieze subsidiebedragen, verbruikscijfers) die elkaar deels opheffen.
+
+#### Waar het nu nog aan hangt
+
+| Variabele | Bandbreedte | Terugverdientijd |
+|---|---|---|
+| Kilometers per truck | 60.000 – 180.000 | 4,9 – 2,3 jaar |
+| Stroomprijs | € 0,08 – € 0,30 | 3,4 – 5,7 jaar |
+| Restwaarde e-truck | € 0 – € 80.000 | 3,8 – 3,0 jaar |
+| Onderhoud elektrisch | € 4.600 – € 9.000 | 3,4 – 3,6 jaar |
+
+De kilometers en de stroomprijs blijven de twee die er werkelijk toe doen. De restwaarde beweegt
+het antwoord met minder dan een jaar, en onderhoud nauwelijks — dus de discussie Panteia versus
+Volvo op dat punt hoeft de beslissing niet op te houden.
+
+### 6.8 Wat er níét in zit
+
+- **Restwaarde** zit er inmiddels wél in — zie §6.7c. Het blijft het meest onzekere getal in
+  het hele plaatje, maar de bandbreedte is met 3,0 tot 4,0 jaar beperkt.
+- **Accudegradatie en accuvervanging.** Bij 150.000 km per jaar tikken de laadcycli hard aan.
+  Vraag de dealer naar de gegarandeerde restcapaciteit en over hoeveel jaar of kilometer.
+- **Financieringskosten.** Panteia rekent met 3,9 % rente over het gemiddeld geïnvesteerd
+  vermogen; omdat de e-truck duurder is, valt dat nadelig uit voor elektrisch. Niet meegenomen.
+- **ETS2 vanaf 2027** maakt diesel € 0,12–0,14 per liter duurder — bij 39.500 liter per truck
+  per jaar zo'n € 5.000 extra besparing. Ten gunste van elektrisch; het model is hier
+  conservatief.
+- **Inzetbaarheid.** 600–800 km per dag betekent bijladen tussen de ritten. Drie DC-laders van
+  240 kW zijn ruim voldoende, maar het vraagt ruimte in de planning. De extra chauffeurskosten
+  hierboven zijn een schatting van Panteia, geen meting bij jullie.
+
+## 6b. Welke Volvo past bij onze laadinfrastructuur
+
+Nijwa (John Nijzink, Volvo/Renault-dealer te Zwolle) stuurde op 10 augustus de presentatie
+*FH Electric E-as*. Daarin staat de nieuwe **Volvo FH Aero Electric** met de nieuwe E-as en de
+nieuwe tractieaccu's. Dit zijn fabrieksgegevens uit die presentatie.
+
+### 6b.1 De drie varianten
+
+| | 6 accu's | 6 accu's XL | 8 accu's |
+|---|---|---|---|
+| Bruto accucapaciteit | 540 kWh | 585 kWh | **780 kWh** |
+| Netto (ESOP-P / ESOP-R) | 410 / 460 kWh | 470 / 545 kWh | **630 / 725 kWh** |
+| Actieradius 4×2 | ~470 km | ~525 km | **~700 km** |
+| Actieradius 6×2 | ~450 km | ~525 km | ~700 km |
+| Leeggewicht | 10.500 kg | 11.500 kg | 13.500 kg |
+| Schoteldruk 4×2 | 10.000 kg | 13.500 kg | 11.500 kg |
+| Wielbasis | 3.950 mm | 3.600 mm | 4.100 mm |
+
+Aandrijflijn: twee elektromotoren van 420 of 460 kW met een zesversnellingsbak. NCA-prismacellen
+in een L-vorm, waardoor er zes of acht pakketten passen. ESOP-R is het ruimere
+laadvenster — meer bruikbare energie uit hetzelfde pakket, ten koste van accuslijtage.
+
+### 6b.2 Laden — hier zit de aansluiting op onze installatie
+
+Uit de presentatie:
+
+> MCS: 700 kW (~450 km actieradius in 45 minuten)
+> CCS2: 350 kW (~250 km actieradius in 45 minuten)
+> **AC opladen vervalt!**
+
+Drie gevolgen voor ons.
+
+**1. Onze paal is de beperkende factor, niet de truck.** De FH Aero neemt tot 350 kW op CCS2 aan;
+onze WHES WH-ECA-244EDD levert 240 kW. Dat is geen probleem voor nachtladen, maar wel voor
+bijladen tussen ritten:
+
+| | 45 minuten bijladen |
+|---|---|
+| Volvo's opgave bij 350 kW | ~250 km |
+| Onze paal op 240 kW | ~173 km bij Volvo-verbruik, ~150 km realistisch |
+
+Wie op 350 kW wil laden heeft een station uit de categorie *vanaf 350 kW* nodig. Dat kost bij
+Draccu ongeveer € 21.500 extra per station en levert **€ 52.500 in plaats van € 31.000** aan
+subsidie op — netto dus winst. Zie §3 van het SPRILA-document; die afweging is nu opnieuw
+relevant geworden, want tot nu toe was er geen truck in beeld die meer dan 240 kW kon opnemen.
+
+**2. Het ontbrekende getal is de pakketspanning.** Onze paal is begrensd op **350 A**. Bij een
+pakket onder circa 690 V halen we de 240 kW niet. Dat de FH Aero 350 kW op CCS2 aankan, wijst op
+een hoogvoltarchitectuur — bij 350 kW en de CCS2-grens van 500 A moet het pakket minstens 700 V
+zijn — maar dat staat niet in de presentatie. **Vraag John naar de nominale pakketspanning en
+de maximale laadstroom.** Dit is het enige getal dat nog kan tegenvallen.
+
+**3. AC-laden bestaat niet meer.** Er is dus geen goedkope terugvaloptie als een DC-station
+uitvalt. Met drie stations voor twee trucks is die redundantie er gelukkig al — een extra
+argument om niet naar twee stations terug te gaan.
+
+MCS van 700 kW is voor ons niet relevant: dat vraagt een heel ander station. Alleen zinvol als
+de trucks onderweg bij publieke MCS-punten gaan laden.
+
+### 6b.3 Aansluiting op de stationaire accu
+
+Onze accu is 1.044,99 kWh met 80 % ontlaaddiepte, dus **836 kWh bruikbaar**:
+
+| Truckvariant | Bruikbaar pakket | Volle laadbeurten uit onze accu |
+|---|---|---|
+| 780 kWh (ESOP-R) | 725 kWh | **1,15** |
+| 585 kWh (ESOP-R) | 545 kWh | 1,53 |
+| 540 kWh | 460 kWh | 1,82 |
+
+De accu is dus precies op maat voor **één volle laadbeurt van de grootste variant**. Voor twee
+trucks komt de rest rechtstreeks van de ORC of het net — geen probleem bij 1.850 kW
+gecontracteerd vermogen, maar goed om te weten dat de accu niet twee trucks in zijn eentje
+volmaakt.
+
+Laadtijden van het 780 kWh-pakket op onze paal:
+
+| | Energie | Op 240 kW | Realistisch |
+|---|---|---|---|
+| 20 → 80 % | 435 kWh | 1 u 49 | 2 u 10 |
+| Volledig bruikbaar | 725 kWh | 3 u 01 | 3 u 38 |
+
+### 6b.4 Welke variant past bij onze rit
+
+Hier wringt het, want er liggen twee verschillende dagafstanden op tafel: eerder **2 × 300–400 km
+per dag**, later **100.000 km per jaar** — dat laatste is 435 km per dag over 230 draaidagen.
+
+| Variant | Opgegeven bereik | Marge op 435 km/dag | Met 25 % winterreserve |
+|---|---|---|---|
+| 540 kWh | 470 km | + 8 % | 352 km — **te krap** |
+| 585 kWh (ESOP-R) | 525 km | + 21 % | 394 km — krap, bijladen nodig |
+| **780 kWh (ESOP-R)** | **700 km** | **+ 61 %** | **525 km — ruim** |
+
+Bij 435 km per dag is de **585 kWh met ESOP-R** het minimum, maar zonder reserve voor winter,
+files, omrijden of een zware belading. Bij 600–800 km per dag is de **780 kWh** de enige die het
+zonder tussenlading haalt, en zelfs die heeft bij 800 km nog een bijlaadmoment nodig.
+
+**Mijn advies: de 780 kWh, 8 accu's.** Drie redenen.
+
+1. **Het laadvermogen op het erf is geen knelpunt maar het bereik onderweg wel.** Drie stations
+   van 240 kW laden twee trucks 's nachts moeiteloos vol; wat je niet kunt oplossen met de
+   installatie is een truck die halverwege de dag leeg is.
+2. **Het laadgewicht is voor jullie waarschijnlijk niet bindend.** Meer accu's kosten
+   schoteldruk — bij de 4×2 gaat dat van 13.500 kg (585 kWh) naar 11.500 kg (780 kWh). Voor
+   potplanten op Deense karren zit je vrijwel altijd aan het volume vast en niet aan het gewicht.
+   **Controleer dat wel even aan de hand van jullie werkelijke vrachtgewichten** — als jullie
+   regelmatig boven 11.500 kg schoteldruk zitten, verandert het advies.
+3. **De subsidie loopt mee met de prijs.** AanZET is een percentage van de bruto aanschafprijs.
+   Elke € 10.000 duurdere truck levert € 2.900 extra subsidie op bij een kleine onderneming en
+   € 2.100 bij een middelgrote, tot een chassisprijs van ongeveer € 397.000. Het meerpakket
+   betaalt zichzelf dus voor ruwweg een kwart terug uit de subsidie.
+
+Let daarbij op het staatssteunplafond uit §2: dat bijt juist bij *lage* chassisprijzen. Met een
+dieselreferentie van circa € 130.000 knelt het plafond onder een e-truckprijs van ongeveer
+€ 252.000; daarboven bepaalt het percentage. Een FH Aero met 780 kWh zit daar comfortabel boven.
+
+### 6b.4b De prijzen van Nijwa — wat AanZET dan oplevert
+
+John Nijzink noemt **€ 300.000 voor de 4×2** en **€ 320.000 voor de 6×2**. Hiermee zijn de
+indicatieve bedragen uit §2 vervangen door echte prijzen.
+
+Als dieselreferentie neem ik **€ 146.166** — de cascoprijs van een *Zware trekker z/opl* uit de
+Panteia-tool (blad `Invoer en categorieën`, F13). Die referentie bepaalt het staatssteunplafond.
+
+| Uitvoering | Onderneming | AanZET per truck | **Twee trucks** | Bindend plafond |
+|---|---|---|---|---|
+| 4×2, € 300.000 | Klein | € 87.000 | **€ 174.000** | percentage |
+| 4×2, € 300.000 | Middelgroot | € 63.000 | **€ 126.000** | percentage |
+| 4×2, € 300.000 | Groot | € 33.300 | € 66.600 | percentage |
+| 6×2, € 320.000 | Klein | € 92.800 | **€ 185.600** | percentage |
+| 6×2, € 320.000 | Middelgroot | € 67.200 | **€ 134.400** | percentage |
+| 6×2, € 320.000 | Groot | € 35.520 | € 71.040 | percentage |
+
+**Geen van de drie plafonds bijt.** Het maximumbedrag begint pas te knellen boven een
+chassisprijs van € 397.000, en het staatssteunplafond pas zodra de vergelijkbare diesel meer
+kost dan:
+
+| | 4×2 (€ 300.000) | 6×2 (€ 320.000) |
+|---|---|---|
+| Klein | € 155.000 | € 165.333 |
+| Middelgroot | € 174.000 | € 185.600 |
+
+Met een dieselreferentie van € 146.166 zit er dus marge, maar bij de 4×2 voor een kleine
+onderneming is die marge nog geen € 9.000. **Vraag John daarom expliciet naar de prijs van een
+vergelijkbare dieseltrekker.** Ligt die boven € 155.000 — en dat is voor een nieuwe FH bepaald
+niet ondenkbaar — dan zakt de subsidie mee.
+
+### 6b.4c Wat de terugverdientijd wordt
+
+Overige invoer ongewijzigd: 100.000 km per truck per jaar, 1 op 3,8, € 1,70 per liter, € 0,10
+per kWh, laadinfrastructuur € 461.500 minus € 178.000 SPRILA.
+
+| Uitvoering | Onderneming | Extra investering | Terugverdientijd |
+|---|---|---|---|
+| **4×2, € 300.000** | **Klein** | € 403.373 | **4,4 jaar** |
+| 4×2, € 300.000 | Middelgroot | € 446.420 | **4,9 jaar** |
+| 4×2, € 300.000 | Groot | € 499.690 | 5,4 jaar |
+| 6×2, € 320.000 | Klein | € 428.843 | **4,7 jaar** |
+| 6×2, € 320.000 | Middelgroot | € 474.759 | **5,2 jaar** |
+| 6×2, € 320.000 | Groot | € 531.580 | 5,8 jaar |
+
+Dat is beter dan de 5,1 jaar uit §6.5, en dat komt niet door de truckprijs maar door de
+**hogere dieselreferentie**: € 146.166 in plaats van de eerder aangenomen € 120.000 verkleint de
+meerprijs met € 26.166 per truck.
+
+**De 6×2 kost drie maanden extra terugverdientijd.** De meerprijs van € 20.000 per truck levert
+€ 5.800 extra subsidie op bij een kleine onderneming, dus netto € 14.200 per truck. Dat is een
+reële afweging tegen wat een derde as oplevert: meer schoteldruk (16.000 kg bij de 540 kWh-variant
+tegenover 10.000 kg bij de 4×2) en betere gewichtsverdeling.
+
+**Voor potplantenvervoer zou ik de 4×2 nemen**, tenzij jullie vrachtgewichten regelmatig boven de
+10.000 kg schoteldruk uitkomen. Planten op Deense karren zitten aan het volume vast, niet aan het
+gewicht — en de 4×2 is € 20.000 goedkoper, lichter en wendbaarder op het erf.
+
+### 6b.4d Eén ding dat de prijzen nog niet vertellen
+
+**Bij welke accuvariant horen die bedragen?** Het prijsverschil van € 20.000 tussen 4×2 en 6×2
+lijkt puur de derde as. Maar de stap van zes naar acht accupakketten — 540 of 585 kWh naar
+780 kWh — is een aparte kostenpost die hier nog niet in zit. En juist die stap is volgens §6b.4
+de belangrijkste keuze.
+
+Vraag John dus om de prijs **per accuvariant**, niet alleen per asconfiguratie. Ter oriëntatie:
+elke € 10.000 meerprijs kost netto € 7.100 bij een kleine onderneming en € 7.900 bij een
+middelgrote, na aftrek van de AanZET.
+
+### 6b.5 Het verbruik — Volvo tegenover Panteia
+
+Uit Volvo's eigen cijfers volgt een verbruik van **1,04 kWh/km**:
+
+| Variant | Bruikbaar | Bereik | Verbruik |
+|---|---|---|---|
+| 585 kWh ESOP-P | 470 kWh | 450 km | 1,044 kWh/km |
+| 585 kWh ESOP-R | 545 kWh | 525 km | 1,038 kWh/km |
+| 780 kWh ESOP-P | 630 kWh | 600 km | 1,050 kWh/km |
+| 780 kWh ESOP-R | 725 kWh | 700 km | 1,036 kWh/km |
+
+Panteia rekent met **1,4675 kWh/km** — 41 % hoger. De waarheid ligt ertussenin: fabrikantcijfers
+gelden bij gunstige omstandigheden en zonder laadverliezen, Panteia rekent conservatief. Voor een
+40-tonner in Nederlandse praktijk is 1,1 tot 1,3 kWh/km een realistische band.
+
+**Voor de businesscase maakt het opvallend weinig uit**, en dat komt door de goedkope stroom:
+
+| Verbruik | Besparing per jaar | Terugverdientijd |
+|---|---|---|
+| 1,04 (Volvo) | € 100.528 | 4,6 jaar |
+| 1,20 (realistisch) | € 97.328 | 4,8 jaar |
+| 1,4675 (Panteia) | € 91.978 | 5,1 jaar |
+
+Een halve jaar over de hele bandbreedte. Bij € 0,10 per kWh is elektriciteit simpelweg te
+goedkoop om het verschil te maken — de kilometers en de stroomprijs zelf blijven de hefbomen.
+
+### 6b.6 Wat ik aan John zou vragen
+
+1. **Nominale pakketspanning en maximale laadstroom** van de FH Aero Electric. Bepaalt of onze
+   240 kW-paal zijn volle vermogen kwijt kan.
+2. **Bruto chassisprijs excl. opbouw en btw** per variant — de grondslag voor AanZET — plus de
+   prijs van een vergelijkbare dieseltrekker, voor het staatssteunplafond.
+3. Is **MCS standaard of een optie**, en wat kost het? Wij hebben het niet nodig.
+4. **Garantie op de tractiebatterij**: gegarandeerde restcapaciteit na hoeveel jaar of hoeveel
+   kilometer? Bij 100.000 km per jaar tikken de cycli aan.
+5. Wat is het **verschil in praktijkverbruik tussen ESOP-P en ESOP-R**, en wat doet ESOP-R met de
+   levensduurgarantie?
+6. Levertijd, en of hij een **koopovereenkomst met ontbindende voorwaarde** kan opstellen vóór
+   29 september — zie §5.
+
+## 6c. ERE — de derde geldstroom
+
+Naast SPRILA op de laadinfrastructuur en AanZET op de trucks is er een **derde regeling die per
+geladen kWh uitkeert**: de **ERE, emissiereductie-eenheden**. John Nijzink wees er in zijn mail
+al op. Die vervangt sinds 2026 het HBE-systeem voor elektriciteit in het wegvervoer, is op
+31 maart 2026 door de Eerste Kamer bekrachtigd en loopt wettelijk tot 2030.
+
+Dit is geen investeringssubsidie maar een **jaarlijkse opbrengst**, en daarmee de eerste post
+die de exploitatie structureel verbetert in plaats van de investering.
+
+### 6c.1 Wat het oplevert
+
+**Op verzoek gerekend met netstroom, niet met eigen zon.** Dat is de voorzichtige aanname, en
+hij past bij de situatie: de ORC draait op restwarmte uit een gasgestookt proces en telt dus niet
+als hernieuwbaar, en zonnepanelen liggen er nog niet.
+
+Netstroom telt in 2026 automatisch mee voor het landelijk vastgestelde hernieuwbare aandeel van
+circa **50 %**, ongeacht je eigen contract. Daarvoor geldt **€ 0,07 tot € 0,10 per geladen kWh**.
+Kun je aantonen dat er met 100 % hernieuwbare stroom is geladen — bijvoorbeeld eigen zon
+rechtstreeks op de laadpaal via een brutoproductiemeter — dan **verdubbelt de opbrengst ruwweg**.
+
+Ik reken hieronder met **€ 0,08 per kWh**.
+
+Onze twee trucks laden **231.000 kWh per jaar** (100.000 km × 1,155 kWh/km × 2). Met een
+commissie van 15 % voor de inboekdienstverlener:
+
+| ERE per kWh | Netto per jaar | Terugverdientijd |
+|---|---|---|
+| niet inboeken | € 0 | 4,5 jaar |
+| netstroom, onderkant € 0,07 | € 13.745 | 4,0 jaar |
+| **netstroom, gerekend € 0,08** | **€ 15.708** | **3,9 jaar** |
+| netstroom, bovenkant € 0,10 | € 19.635 | 3,8 jaar |
+| eigen zon aangetoond, ± € 0,16 | € 31.416 | 3,5 jaar |
+
+Terugverdientijden hier zonder restwaarde; met restwaarde erbij zie §6.7c.
+
+**Een half tot een heel jaar korter dan zonder ERE.** Dat is vergelijkbaar met het verschil
+tussen klein en middelgroot (§3) en groter dan het verschil tussen 4×2 en 6×2 (§6b.4c).
+
+### 6c.2 De zonnepanelen betalen nu twee keer
+
+Het verschil tussen netstroom en aantoonbaar hernieuwbaar is bij ons ongeveer **€ 15.700 per
+jaar** — de opbrengst verdubbelt van € 15.708 naar circa € 31.400. Over zeven jaar ruim
+€ 110.000.
+
+*(Eerder stond hier € 25.945, gerekend met een netmix van 26,4 % hernieuwbaar uit de
+Panteia-tool van 2024. De netmix is inmiddels circa 50 %, dus netstroom levert nu de helft van
+het groene tarief op in plaats van een kwart. Het voordeel van eigen zon is daarmee kleiner dan
+ik eerst schreef, maar nog altijd fors.)*
+
+Dat verandert de afweging uit §6.7. De 500 kWp aan zonnepanelen leverde tot nu toe alleen
+goedkope stroom op. Nu leveren zij ook **de hogere ERE-vergoeding**, omdat zon aantoonbaar
+hernieuwbaar is.
+
+**Bij de ORC ligt dat anders.** Draait die op restwarmte uit een gasgestookt proces, dan is die
+stroom **niet hernieuwbaar** en levert hij alleen het netgemiddelde op. De ORC blijft dan wel de
+goedkoopste kilowattuur, maar hij is voor de ERE de minst waardevolle. **Uitzoeken: is de
+warmtebron van de ORC hernieuwbaar, en zo nee, kun je de laadstations dan met GvO-gedekte stroom
+voeden?** Garanties van Oorsprong kosten enkele euro's per MWh en zijn dus verwaarloosbaar
+tegenover 9 cent per kWh.
+
+### 6c.3 Wat er moet gebeuren om het op te tuigen
+
+**1. MID-gecertificeerde meter in de laadpalen — dit is het meest urgent.**
+De regeling eist dat de geladen kWh officieel meetbaar zijn met een **MID-gecertificeerde
+meter**. In de datasheet van de WHES WH-ECA-244EDD staat de MID-meter als **optie**:
+
+> MID Meter (Optional)
+
+Die optie moet dus **besteld worden**. Achteraf inbouwen in drie DC-stations van 240 kW is
+duurder en mogelijk niet eens mogelijk. **Zet dit meteen in de vraag aan Koop Drost**, samen met
+de andere openstaande punten uit de offerte. Zonder MID-meter is er geen ERE — en dan laat je
+circa € 25.000 per jaar liggen op een meerprijs van hooguit enkele honderden euro's per station.
+
+**2. Een inboekdienstverlener contracteren.**
+Je kunt niet zelf bij de NEa inboeken. Dat kan alleen via een inboekdienstverlener, tenzij je
+zelf meer dan **2 miljoen kWh per jaar** laadt — wij zitten met 293.500 kWh ruim daaronder. De
+dienstverlener int de ERE's en betaalt uit onder aftrek van commissie. Wat die commissie is,
+weet ik niet; **vraag offertes op bij meerdere partijen**, want het verschil tikt aan:
+
+| Commissie | Terugverdientijd |
+|---|---|
+| 10 % | 3,8 jaar |
+| 25 % | 3,9 jaar |
+| 35 % | 4,0 jaar |
+
+Het verschil is kleiner dan je zou denken, maar over zeven jaar praat je nog steeds over
+tienduizenden euro's.
+
+**3. Aantonen dat de stroom hernieuwbaar is.**
+Zonder bewijs krijg je het netgemiddelde aandeel. Met bewijs — eigen zonnestroom met
+certificering, of ingekochte Garanties van Oorsprong — telt 100 %. Zie 6c.2; dit is de duurste
+knop aan de hele regeling.
+
+**4. Data-uitwisseling regelen.**
+De inboekdienstverlener heeft laadsessiegegevens nodig. De WHES-stations spreken **OCPP 1.6
+JSON** en hebben ethernet, wifi en 4G, dus dat zit technisch goed. Leg wel vast wie het
+backoffice-systeem levert en dat de data exporteerbaar zijn — je hebt diezelfde
+laadsessie-administratie ook nodig voor de **70 %-eis van SPRILA**, dus dat kan in één keer goed.
+
+**5. Vastleggen wie de ERE's toekomen.**
+De ERE hoort bij de exploitant van het laadpunt. In onze structuur is dat
+**A. Baas Potplantenkwekerij B.V.**, die de laadstations koopt — maar de stroom komt van
+A. Baas Energie B.V. Zet in de gebruiksovereenkomst een bepaling dat de ERE-opbrengsten aan
+Potplantenkwekerij toekomen, zodat daar later geen discussie over ontstaat. **Dit is een vierde
+vraag voor Flynth**, naast de drie die er al liggen.
+
+### 6c.4 Twee waarschuwingen
+
+- **Het is een marktprijs, geen vast tarief.** € 0,07 tot € 0,14 is een brede band en die kan
+  ook lager uitkomen. Ik zou de investeringsbeslissing niet op de ERE bouwen, maar hem
+  behandelen als meevaller die de terugverdientijd van 4,9 naar circa 3,8 jaar brengt.
+- **De regeling loopt tot 2030.** Dat is vier van de zeven jaar economische levensduur. Wat er
+  daarna gebeurt is onbekend. In de tabel hierboven reken ik alsof de opbrengst blijft; dat is
+  optimistisch aan de achterkant.
+
+Stapelen met SPRILA en AanZET is geen probleem: die gaan over de investering, ERE over de
+geleverde kilowattuur.
+
+## 6d. Eén truck in plaats van twee
+
+Het korte antwoord: **ja, maar alleen als je de laadinfrastructuur meeschaalt.** Laat je die
+staan zoals hij nu in de SPRILA-aanvraag zit, dan loopt de terugverdientijd van 3,8 naar
+**6,2 jaar** — want je halveert de besparing terwijl de grootste kostenpost blijft staan.
+
+### 6d.1 De scenario's
+
+| Scenario | AanZET | Extra investering | Besparing per jaar | Terugverdientijd |
+|---|---|---|---|---|
+| **2 trucks, 3 laders, 4 accu-units** (huidig plan) | € 126.000 | € 446.420 | € 116.925 | **3,8 jaar** |
+| 1 truck, 3 laders, 4 units *(infra ongewijzigd)* | € 63.000 | € 364.960 | € 58.463 | 6,2 jaar |
+| 1 truck, 2 laders, 4 units | € 63.000 | € 317.960 | € 58.463 | 5,4 jaar |
+| **1 truck, 2 laders, 2 units** | € 63.000 | € 252.298 | € 58.463 | **4,3 jaar** |
+| 1 truck, 1 lader, 2 units | € 63.000 | € 205.298 | € 58.463 | 3,5 jaar |
+
+Alle varianten halen de 40 %-toets van SPRILA — die schommelt tussen 37,8 en 38,6 %.
+
+De opbouw per eenheid, afgeleid uit offerte DR283:
+
+| | Kosten | SPRILA |
+|---|---|---|
+| Per DC-laadstation 240 kW, incl. AC-installatie | € 78.000 | € 31.000 |
+| Per EnerBox van 261,25 kWh | € 53.125 | € 22.206 |
+| EMS, silowand, meetdienst (vast) | € 15.000 | — |
+
+> **Correctie (21 augustus 2026).** Hier stond dat de accu minstens 295 kWh moest zijn om de
+> drempel van € 25.000 te halen. Dat klopt niet: het aanvraagformulier zegt dat die drempel geldt
+> voor **laadinfrastructuur én batterij samen**. Eén EnerBox van 261 kWh (€ 22.206) plus één
+> laadstation (€ 31.000) zit er ruim boven. Er zijn dus ook varianten met één accu-unit mogelijk;
+> zie §0.6 van het SPRILA-document voor de volledige tabel.
+
+Wat wel geldt: bij minder dan 295 kWh accu heb je altijd minstens één laadstation nodig om
+gezamenlijk boven de € 25.000 uit te komen. Dat is bij ons sowieso het geval.
+
+### 6d.2 Twee accu-units per truck is de juiste maat
+
+Niet toevallig: bij twee EnerBoxen per truck draait de accu in beide gevallen even hard.
+
+| Opzet | Bruikbaar | Cycli per jaar |
+|---|---|---|
+| 1 truck, 2 units | 418 kWh | 351 |
+| 1 truck, 4 units | 836 kWh | **176** |
+| 2 trucks, 4 units | 836 kWh | 351 |
+
+Vier units bij één truck betekent een accu die de helft van de tijd stilstaat. En je kunt die
+overcapaciteit **niet** inzetten voor de kwekerij zelf, want de **70 %-eis** verplicht je om
+minstens 70 % van alles wat je ontlaadt naar de laadstations te sturen. Bij één truck is er dus
+hooguit 63.000 kWh per jaar aan ruimte voor iets anders. Een accu van 1.045 kWh voor één truck
+is daarmee niet alleen te groot, hij is ook wettelijk vastgezet.
+
+### 6d.3 Eén of twee laadstations bij één truck
+
+Eén truck verbruikt 638 kWh per draaidag. Op één station van 240 kW is dat 2,7 uur nominaal en
+ruim 3 uur realistisch — technisch ruim voldoende.
+
+Maar: **de Volvo FH Aero Electric kan niet meer AC-laden** (§6b.2). Valt dat ene station uit,
+dan staat de truck stil tot de monteur er is. Een tweede station kost netto € 47.000 en verlengt
+de terugverdientijd van 3,5 naar 4,3 jaar. Dat is dure redundantie, maar met één elektrische
+truck in een verder dieselvloot is het risico wel te overzien — de rit kan desnoods met een
+dieseltruck.
+
+**Mijn voorkeur: twee stations.** Niet vanwege de redundantie alleen, maar omdat de tweede
+lader bij uitbreiding naar een tweede truck sowieso nodig is, en je hem nu met € 31.000 subsidie
+koopt.
+
+### 6d.4 De tweede truck is de goedkoopste
+
+Vergelijk de verstandige één-truckopzet (2 laders, 2 units) met het volledige plan:
+
+| | Extra investering | Extra besparing | Terugverdientijd |
+|---|---|---|---|
+| Stap van 1 naar 2 trucks | € 194.122 | € 58.462 | **3,3 jaar** |
+
+De tweede truck verdient zich dus **sneller** terug dan de eerste (4,3 jaar), omdat de vaste
+posten — EMS, silowand, meetdienst, aanleg — al betaald zijn. Wie twee trucks kan inzetten,
+moet dat ook doen; het is de beste marginale investering in het hele plan.
+
+### 6d.5 Wat dit betekent voor de lopende aanvragen
+
+**De SPRILA-beschikking is er: € 178.000, volledig toegekend op 21 augustus 2026, met
+€ 89.000 voorschot al uitbetaald.** De realisatietermijn loopt tot **21 augustus 2028**. Minder
+realiseren mag, maar dan wordt de subsidie naar rato lager vastgesteld en moet een deel van het
+voorschot terug — bij één lader en twee accu-units bijvoorbeeld € 13.588. De volledige tabel
+staat in §0.6 van het SPRILA-document. Je mag minder realiseren dan aangevraagd; bij de vaststelling wordt de
+subsidie dan naar rato lager vastgesteld en wordt de 40 %-toets opnieuw op de werkelijke kosten
+gedaan. Er is geen boete, je laat alleen subsidie liggen die je toch niet had uitgegeven.
+
+Dat geeft ruimte: **je kunt met één truck beginnen en de derde lader pas plaatsen als de tweede
+truck komt**, mits dat binnen de 24 maanden lukt. Meld een materiële wijziging wel bij RVO.
+
+**Bij AanZET ligt dat anders — en dat is het echte risico.** AanZET werkt met openstellingen. Vraag
+je nu één truck aan, dan moet de tweede wachten op een volgende ronde, en die is er niet
+gegarandeerd: het budget is per ronde, de regeling wordt eerst-komt-eerst-maalt verdeeld en de
+percentages kunnen veranderen. Op **29 september mag je op dag één twee voertuigen aanvragen** —
+precies jullie aantal. Die gelegenheid komt niet vanzelf terug.
+
+### 6d.6 Advies
+
+**Als het bedrijfsmatig kan: houd twee trucks aan.** De tweede is de goedkoopste investering van
+het hele plan (3,3 jaar) en de AanZET-ronde van 29 september is een venster dat niet gegarandeerd
+terugkomt.
+
+**Wil je het risico spreiden**, dan is één elektrische truck naast de bestaande diesel een
+verdedigbare pilot — met **twee laadstations en twee accu-units**, wat op **4,3 jaar** uitkomt.
+Dat is nog altijd een goede uitkomst, en je houdt de SPRILA-beschikking voor de derde lader
+24 maanden achter de hand.
+
+**Wat je in geen geval moet doen** is één truck kopen en de laadinfrastructuur op twee trucks
+dimensioneren. Dan betaal je € 283.500 netto aan installatie voor een besparing van € 58.463 per
+jaar, sta je op 6,2 jaar, en heb je een accu die door de 70 %-eis grotendeels stil moet staan.
+
+## 6e. De routesimulaties van Volvo — de eerste harde gebruiksdata
+
+Volvo heeft de werkelijke rit door de **Electric Range Simulator** gehaald (Erik Jan Bouma,
+18 augustus 2026, klant "A. Baas", segment *Long haul*). Dit is de eerste keer dat er gemeten
+in plaats van geschat wordt, en het verandert twee dingen die tot nu toe de grootste onzekerheid
+waren: het verbruik en de kilometrage.
+
+### 6e.1 De rit
+
+Uit het waypointbestand — beide geüploade werkboeken zijn identiek — blijkt één dagrit met vier
+etappes:
+
+| | Bestemming | Lading |
+|---|---|---|
+| 1 | Ens → Honselersdijk (Naaldwijk) | 12.500 kg |
+| 2 | Honselersdijk → Ens | leeg |
+| 3 | Ens → Bottrop (Duitsland) | 11.500 kg |
+| 4 | Bottrop → Ens | leeg |
+
+| Rit | Afstand | Rijtijd | Verbruik bij 10 °C | Bij 0 °C |
+|---|---|---|---|---|
+| Naaldwijk heen en terug | 308,8 km | 4 u 46 | 335 kWh | 356 kWh |
+| Bottrop heen en terug | 354,9 km | 5 u 15 | 383 kWh | 405 kWh |
+| **Hele dag** | **663,7 km** | **10 u 01** | **718 kWh** | **761 kWh** |
+
+Dat komt exact overeen met wat eerder werd gezegd — *"2 × 300–400 km per dag per truck"* — en
+niet met de 100.000 km per jaar waarmee ik sinds §6.2 reken. **Dit verschil is de belangrijkste
+openstaande vraag van het hele dossier**; zie 6e.4.
+
+### 6e.2 Het verbruik is nu bekend: 1,09 kWh/km
+
+De ERS geeft **1,09 kWh/km** bij 10 °C op de Naaldwijk-rit en **1,08** op Bottrop, met
+**1,14–1,16** bij 0 °C. Dat is voor jullie eigen route, met 12.500 kg lading en een maximum van
+85 km/h.
+
+Dat ligt precies tussen mijn twee eerdere bronnen in, en dichter bij de brochure dan bij Panteia:
+
+| Bron | kWh/km |
+|---|---|
+| Volvo-brochure (afgeleid uit bereik) | 1,04 |
+| **ERS, jullie eigen route** | **1,09** |
+| Panteia, zware trekker | 1,4675 |
+
+De ERS meet energie **uit de accu**. Aan de meter komt daar nog laadverlies bij — reken op 5 à
+8 %, dus **circa 1,16 kWh/km**. Dat is het getal dat telt voor de stroomkosten én voor de ERE,
+en daarmee reken ik hieronder.
+
+### 6e.3 Geen van beide uitvoeringen haalt de dag in één keer
+
+| Uitvoering | Bruikbaar | Naaldwijk (335 kWh) | Bottrop (383 kWh) | Hele dag (718 kWh) |
+|---|---|---|---|---|
+| **FH Electric 6×2 E-As, 585 kWh** | 556 kWh | rest 40 % | rest 31 % | **162 kWh tekort** |
+| FH 4×2 gen 2, 540 kWh | 460 kWh | rest 27 % | rest 17 % | 258 kWh tekort |
+
+Bij 0 °C zakt de gen 2 op de Bottrop-rit naar **12 % restcapaciteit**. Dat is te krap voor een
+file, een omleiding of een zwaardere belading. **De E-As met 585 kWh houdt op diezelfde rit nog
+27 % over** en is daarmee de enige van de twee die zonder stress rijdt.
+
+**En dat lost de rest vanzelf op**, want de rit keert tussendoor terug naar Ens. Na Naaldwijk
+staat de truck op het eigen erf met 221 kWh in de accu:
+
+| Tussenladen thuis | Energie | Op 240 kW | Realistisch |
+|---|---|---|---|
+| Minimaal voor Bottrop | 162 kWh | 40 min | 49 min |
+| Helemaal vol | 335 kWh | 84 min | 100 min |
+
+**Drie kwartier tot een uur tussenladen, op eigen terrein, midden op de dag.** Dat is precies
+wanneer de zon schijnt — de laadinfrastructuur en de accu vallen hier goed samen met de rit.
+
+Dit corrigeert mijn advies uit §6b.4: **780 kWh is niet nodig.** Dat advies ging uit van 435 km
+aaneengesloten. De werkelijke rit is twee keer ruim 300 km met een tussenstop thuis, en dan
+volstaat **585 kWh** ruimschoots. Dat scheelt de meerprijs van twee extra accupakketten.
+
+### 6e.4 Wat dit met de businesscase doet — en de vraag die overblijft
+
+Alles hangt nu op één vraag: **rijdt elke truck de hele dagrit van 664 km, of rijdt de ene truck
+naar Naaldwijk en de andere naar Bottrop?**
+
+Gerekend met 1,16 kWh/km aan de meter, twee trucks en de volledige laadinfrastructuur:
+
+| Inzet | km per truck | Besparing per jaar | Terugverdientijd |
+|---|---|---|---|
+| Elke truck de hele dagrit, 230 dagen | 152.651 | € 183.766 | **2,4 jaar** |
+| Elke truck de hele dagrit, 200 dagen | 132.740 | € 158.843 | 2,8 jaar |
+| Elke truck één rit per dag, 260 dagen | 86.256 | € 100.658 | 4,4 jaar |
+| Elke truck één rit per dag, 230 dagen | 76.325 | € 88.227 | 5,1 jaar |
+
+**Een factor twee in kilometers is een factor twee in terugverdientijd.** Tussen 2,4 en 5,1 jaar
+zit het verschil tussen "onmiddellijk doen" en "goed maar niet spectaculair".
+
+**Let op de rijtijd.** De hele dagrit is **10 uur en 1 minuut rijden**, exclusief laden, lossen
+en tussenladen. Dat gaat over de daglimiet van 9 uur heen; 10 uur mag twee keer per week. Met
+tussenladen erbij kom je op een werkdag van twaalf uur of meer. **Dat kan niet vijf dagen per
+week met één chauffeur.** Draaien jullie deze rit nu al zo, dan gebeurt dat met wisselende
+chauffeurs of met twee trucks die elk één bestemming doen — en dat laatste is precies de
+onderkant van de tabel.
+
+**Dit punt is inmiddels beslecht: circa 100.000 km per truck per jaar.** Dat betekent dat de
+Bottrop-dag van 664 km en de dubbele Naaldwijk-dag uitzonderingen zijn, geen dagelijkse routine.
+De trucks halen die dagen wel — met een half uur tussenladen op eigen terrein — maar het gemiddelde
+ligt op één retourrit per dag.
+
+### 6e.4b De werkelijke dagcombinaties
+
+Op navraag: de trucks rijden meestal **tweemaal Naaldwijk**, of **Bleiswijk** (dichterbij dan
+Naaldwijk), of **eenmaal Naaldwijk en eenmaal Aalsmeer**. De Bottrop-rit uit de simulatie is dus
+een zware uitzondering, geen dagelijkse kost.
+
+Alleen de Naaldwijk-afstand is hard — 308,8 km retour uit de ERS. Bleiswijk en Aalsmeer zijn
+geschat op respectievelijk 280 en 200 km retour; vervang ze door de werkelijke ritregistratie.
+
+| Dagcombinatie | Afstand | 10 °C | 0 °C | Past in 556 kWh? | km/jaar bij 230 dagen |
+|---|---|---|---|---|---|
+| 2 × Naaldwijk | 618 km | 673 kWh | 716 kWh | nee | 142.048 |
+| Naaldwijk + Bleiswijk | 589 km | 642 kWh | 683 kWh | nee | 135.424 |
+| 2 × Bleiswijk | 560 km | 610 kWh | 650 kWh | nee | 128.800 |
+| Naaldwijk + Aalsmeer | 509 km | 555 kWh | 590 kWh | krap | 117.024 |
+| *Naaldwijk + Bottrop (ERS)* | *664 km* | *723 kWh* | *770 kWh* | *nee* | *152.651* |
+
+**Alle bestemmingen zijn heen-en-weer vanaf Ens.** Dat is de belangrijkste eigenschap van deze
+operatie: de truck komt tussen de ritten thuis, dus het bijladen gebeurt aan de eigen paal, tegen
+de eigen € 0,10 per kWh, en levert ERE op.
+
+En het bijladen is kort. Na de eerste rit Naaldwijk staat de truck thuis met 221 kWh:
+
+| Tweede rit | Bij te laden | Op 240 kW | Realistisch |
+|---|---|---|---|
+| nog een keer Naaldwijk | 116 kWh | 29 min | 35 min |
+| Bleiswijk | 84 kWh | 21 min | 25 min |
+| Aalsmeer | geen | — | — |
+
+**Twintig tot vijfendertig minuten**, en dat past in de laad- en lostijd. Bij Naaldwijk +
+Aalsmeer hoeft er zelfs helemaal niet bijgeladen te worden — al is dat in de winter net wel weer
+nodig.
+
+### 6e.4c Wat dat met de businesscase doet
+
+| Dagcombinatie | km per truck | Besparing per jaar | Terugverdientijd |
+|---|---|---|---|
+| Naaldwijk + Aalsmeer | 117.024 | € 139.171 | **3,2 jaar** |
+| 2 × Bleiswijk | 128.800 | € 153.911 | **2,9 jaar** |
+| 2 × Naaldwijk | 142.048 | € 170.494 | **2,6 jaar** |
+| *huidige aanname* | *100.000* | *€ 117.862* | *3,8 jaar* |
+
+**Bevestigd op 21 augustus 2026: circa 100.000 km per truck per jaar.** Daarmee is niet elke dag
+een dubbele rit — bij 230 draaidagen komt 100.000 km neer op 435 km per dag, dus gemiddeld één
+retourrit met af en toe een dubbele. Dat past bij de opgave dat de trucks *vaak* tweemaal
+Naaldwijk rijden, niet altijd.
+
+De tabel hierboven blijft nuttig als bovengrens: wordt de planning strakker en gaan de trucks
+structureel dubbel, dan zakt de terugverdientijd richting 2,6 jaar. Maar de basis is nu vast, en
+**dat was de grootste openstaande onzekerheid in het hele dossier.**
+
+### 6e.4d Thuis laden is geen detail maar de kern van de businesscase
+
+De transportplanner zal met laadtijden moeten gaan puzzelen, en de vuistregel daarbij is
+eenvoudig: **elke kilowattuur die onderweg wordt geladen kost ongeveer zes keer zoveel als thuis,
+en levert bovendien geen ERE op.**
+
+| Aandeel publiek laden | Extra energiekosten | Gemiste ERE | Totaal per jaar |
+|---|---|---|---|
+| 10 % | € 14.675 | € 2.495 | **€ 17.170** |
+| 20 % | € 29.350 | € 4.990 | **€ 34.340** |
+| 30 % | € 44.025 | € 7.484 | **€ 51.509** |
+
+Gerekend met € 0,60 per kWh aan een publieke snellader tegenover € 0,10 thuis. Twintig procent
+onderweg laden kost dus meer dan de hele AanZET-subsidie van één truck aan exploitatiekosten in
+vier jaar tijd.
+
+De goede boodschap is dat het niet hoeft: met retourritten van maximaal 309 km, een pakket van
+556 kWh bruikbaar en een bijlaadmoment van een half uur op eigen terrein, kan **alles thuis**.
+Dat vraagt wel dat de planning ruimte laat voor die twintig tot vijfendertig minuten tussen de
+ritten — en dat is precies de afweging die de planner moet maken.
+
+### 6e.5 Twee dingen die de simulaties bevestigen
+
+**Het laadvermogen is geen probleem.** De 4×2 gen 2 heeft een maximaal laadvermogen van
+30.501 kg en de 6×2 E-As van 27.260 kg; jullie vervoeren 12.500 kg. De zorg uit §6b.4 dat een
+groter accupakket laadvermogen kost, is daarmee van tafel: er is meer dan het dubbele over.
+
+**Het adres klopt niet.** De ERS gebruikt *Drietorensweg 36, 8307 Ens*, terwijl de
+SPRILA-aanvraag en de Liander-factuur op **Drietorensweg 38-1, 8307 PH** staan. Voor de
+simulatie maakt dat niets uit, maar geef het even door aan Nijwa zodat de offerte straks op het
+juiste adres staat.
+
+## 6f. Eén truck, financial lease, en wat Faber verandert
+
+Stand van zaken per 25 augustus 2026: Kwekerij Baas overweegt met **één** elektrische truck te
+beginnen, kiest voor de **6×2** omdat die later tot LZV is uit te breiden, heeft **twee trucks in
+lease bij Volvo** waarvan er **één kosteloos ingeruild** mag worden, en huistransporteur **Faber**
+heeft aangegeven bij Kwekerij Baas te willen bijladen.
+
+### 6f.1 De 6×2 is de juiste keuze — en dat was al bewezen
+
+De routesimulaties uit §6e zijn gedraaid op precies deze uitvoering: **FH Electric 6×2T E-As met
+585 kWh**. De cijfers van 1,09 kWh/km, 308,8 km naar Naaldwijk en 354,9 km naar Bottrop gelden dus
+al voor de 6×2 en hoeven niet opnieuw. De meerprijs van € 20.000 ten opzichte van de 4×2 kost
+€ 4.200 aan extra AanZET-derving, netto dus € 15.800.
+
+Voor de LZV-ambitie is dat goed besteed: de Volvo-presentatie noemt **LZV bij 48 ton GCW op de
+zesaccu-variant**, dus de 585 kWh-uitvoering kan het aan. Twee dingen om vooraf te laten
+bevestigen door Nijwa:
+
+- **Wat doet LZV met het verbruik en het bereik?** De ERS is gedraaid op 12.500 kg lading en
+  40 ton. Bij 48 ton stijgt het verbruik en daalt het bereik; de rit naar Naaldwijk van 309 km
+  moet dan nog steeds passen.
+- **Een LZV vervoert ruwweg de helft meer per rit.** Dat is voor volumegebonden plantentransport
+  aantrekkelijk, maar het betekent ook mínder ritten — en dus minder kilometers, wat de
+  terugverdientijd per truck juist verlengt. Bedrijfsmatig gunstig, in dit model ongunstig.
+
+### 6f.2 Financial lease — de maandlasten
+
+Financial lease is toegestaan onder AanZET; alleen operational lease niet. Gerekend met 6 % over
+60 maanden en de restwaarden van Volvo als slottermijn:
+
+| | Hoofdsom | Slottermijn | Per maand |
+|---|---|---|---|
+| E-truck 6×2, volledig gefinancierd | € 320.000 | € 20.000 | **€ 5.900** |
+| E-truck 6×2, na AanZET als aanbetaling | € 252.800 | € 20.000 | **€ 4.601** |
+| Vergelijkbare dieseltrekker | € 150.000 | € 25.000 | € 2.542 |
+
+| Meerlast ten opzichte van diesel | Per maand |
+|---|---|
+| Zonder de subsidie in de financiering | € 3.358 |
+| Met AanZET als aanbetaling | € 2.059 |
+
+Daar staat de exploitatiebesparing tegenover: **€ 53.561 per jaar voor één truck, oftewel € 4.463
+per maand** (inclusief ERE, exclusief Faber).
+
+| Netto maandresultaat van de omruil | Per maand | Per jaar |
+|---|---|---|
+| Zonder de subsidie in de financiering | **+ € 1.105** | + € 13.262 |
+| Met AanZET als aanbetaling | **+ € 2.404** | + € 28.852 |
+
+**De omruil is vanaf de eerste maand kasstroompositief**, ook als je de AanZET nog niet hebt
+ontvangen. Dat is het antwoord op het bezwaar van de hoge aanschafkosten: bij financial lease is
+er geen aanschafmoment, alleen een maandlast — en die is lager dan wat elektrisch rijden bespaart.
+
+De AanZET komt pas binnen na levering en registratie. Praktisch betekent dat: financier eerst de
+volle € 320.000 en los af zodra de subsidie is uitbetaald. De eerste maanden kosten dan € 1.105
+netto minder dan nu, daarna € 2.404.
+
+### 6f.3 De kosteloze inruil
+
+Dat Volvo één van de twee leasetrucks kosteloos wil inruilen is de reden dat één truck nu logisch
+is: je hebt een contract dat zonder afkoopsom open kan. Over de tweede is nog niet gesproken.
+
+**Twee dingen om nu vast te leggen bij Nijwa**, want ze bepalen straks je onderhandelingspositie:
+
+1. **Tot wanneer geldt die kosteloze inruil?** Als hij aan een leaseafloop hangt en de e-truck
+   heeft een levertijd van maanden, moet je weten of het venster niet dichtvalt.
+2. **Wat gebeurt er met de tweede?** Ook al wil je het bij één houden — vraag nu wat de condities
+   zouden zijn. Na de AanZET-ronde van 29 september sta je zwakker: dan is de subsidie voor die
+   tweede truck weg en weet Volvo dat ook.
+
+### 6f.4 Faber — dit is de belangrijkste ontwikkeling
+
+Huistransporteur Faber wil bijladen zodra de mogelijkheid er is. **Dat mag onder deze subsidie,
+en dat staat in de aanvraag zelf.** Het formulier omschrijft de doelgroep als:
+
+> "private laadinfrastructuur voor eigen voertuigen of voertuigen van uw werknemers, leveranciers,
+> **vervoerders**, bezoekers of huurders"
+
+en vraagt vervolgens apart: *"Gaat u de laadinfrastructuur voor derden toegankelijk maken **naast**
+uw werknemers, leveranciers, vervoerders, bezoekers of huurders?"* — daarop is **Nee** geantwoord.
+
+Faber is jullie vervoerder en valt dus binnen de toegestane kring. Er hoeft niets gewijzigd te
+worden. Wél gelden twee voorwaarden uit het formulier:
+
+- **Marktconforme tarieven**, zonder verschillen in tarief, authenticatie- of betaalmethode ten
+  opzichte van andere voertuigen buiten de eigen organisatie;
+- de laadinfrastructuur blijft **niet publiek toegankelijk** en komt niet als zodanig in het
+  register — hooguit als "beperkt toegankelijk".
+
+**Wat het oplevert.** Bij inkoop rond € 0,10 tot € 0,16 en een marktconform tarief van circa
+€ 0,40 blijft er € 0,24 tot € 0,30 marge per kWh. Daar bovenop komt de ERE, want dit is
+wegvervoer:
+
+| Faber per jaar | Marge bij € 0,27 | ERE | **Totaal** |
+|---|---|---|---|
+| 50.000 kWh | € 13.500 | € 3.400 | **€ 16.900** |
+| 100.000 kWh | € 27.000 | € 6.800 | **€ 33.800** |
+| 150.000 kWh | € 40.500 | € 10.200 | **€ 50.700** |
+
+**En het redt de 70 %-eis.** Faber laadt aan de laadstations, dus die kilowatturen staan in de
+teller. Dat is precies wat er bij één truck ontbrak:
+
+| Faber | Naar laadstations | AGV 1×/dag | AGV 2×/dag | AGV 3×/dag |
+|---|---|---|---|---|
+| geen | 115.500 | 78,5 % ✓ | **64,6 % ✗** | **54,9 % ✗** |
+| 50.000 kWh | 165.500 | 83,9 % ✓ | 72,3 % ✓ | 63,5 % ✗ |
+| 100.000 kWh | 215.500 | 87,2 % ✓ | 77,3 % ✓ | 69,4 % ✗ |
+| 150.000 kWh | 265.500 | 89,3 % ✓ | 80,7 % ✓ | 73,6 % ✓ |
+
+*Berekend voor het geval dat de AGV's níét meetellen — de voorzichtige kant.*
+
+**En het rechtvaardigt de drie laadstations.** Met één truck zijn drie palen overbodig en zou
+afschalen moeten, met terugbetaling van een deel van het voorschot. Laadt Faber mee, dan worden
+ze gebruikt en blijft de volledige **€ 178.000** staan.
+
+### 6f.5 De uitkomst met één truck
+
+| | Zonder Faber | Faber 50.000 | Faber 100.000 | Faber 150.000 |
+|---|---|---|---|---|
+| Besparing per jaar | € 53.561 | € 87.921 | € 104.821 | € 121.721 |
+| Terugverdientijd | 5,3 jaar | **4,3 jaar** | **3,6 jaar** | **3,1 jaar** |
+| NCW bij 6 % over 5 jaar | **− € 84.838** | + € 59.899 | + € 131.088 | + € 202.277 |
+
+Extra investering € 375.691 (één 6×2 van € 320.000, AanZET € 67.200, laadinfrastructuur
+ongewijzigd).
+
+**Zonder Faber is één truck op deze infrastructuur verliesgevend** — min € 84.838 contant over
+vijf jaar. Met Faber vanaf ongeveer 50.000 kWh per jaar draait het om, en bij 100.000 kWh is het
+beter dan het oorspronkelijke tweetruckplan.
+
+**Faber is daarmee geen meevaller maar een voorwaarde.** Ik zou die toezegging vastleggen voordat
+de opdracht aan Draccu uitgaat: een intentieverklaring met een indicatie van het jaarvolume, het
+tarief en de looptijd. Zonder Faber is de juiste conclusie dat je óf twee trucks neemt, óf de
+laadinfrastructuur afschaalt.
+
+### 6f.6 Wat er nu moet gebeuren
+
+1. **Faber**: intentieverklaring met jaarvolume, tarief en looptijd. Dit bepaalt of het plan met
+   één truck rondkomt.
+2. **Nijwa**: tot wanneer geldt de kosteloze inruil, en wat zijn de condities voor de tweede
+   truck?
+3. **Nijwa**: wat doet LZV-inzet met verbruik en bereik op de rit naar Naaldwijk?
+4. **Financiering**: offerte voor financial lease over 60 maanden met slottermijn € 20.000, en de
+   mogelijkheid om vervroegd af te lossen zodra de AanZET binnen is.
+5. **29 september**: AanZET aanvragen voor één truck. Houd er rekening mee dat een tweede een
+   volgende ronde vereist die niet gegarandeerd is.
+
+## 7. Wat ik nog nodig heb
+
+Zonder deze gegevens blijven de bedragen hierboven indicatief.
+
+**Voor de subsidieberekening — deze bepalen het bedrag:**
+
+1. **De chassisprijs.** Verkoopprijs af fabriek, **exclusief opbouw en exclusief btw**, per
+   truck. Uit een offerte of pro-forma van de dealer. Dit is de grondslag; alles hangt hieraan.
+2. **Categorie en uitvoering.** N3 of N2, bakwagen of trekker, tmm. Bepaalt welke rij van de
+   tabel geldt. Voor trekkers en zware bakwagens (lvm > 18 t) gelden dezelfde percentages.
+2a. **De prijs van het vergelijkbare dieselmodel.** Die bepaalt de meerprijs en daarmee het
+   EU-staatssteunplafond. Bij een kleine meerprijs kan dat plafond de subsidie drukken.
+3. **Klein of middelgroot.** Van de hele groep, geconsolideerd: werkzame personen in
+   arbeidsjaren, netto-omzet en balanstotaal over het laatst vastgestelde boekjaar. Dit is
+   € 44.800 waard.
+4. **Koop of financial lease.**
+
+**Voor de vraag of het uit kan:**
+
+5. **Rijden jullie nu zelf, of wordt het vervoer uitbesteed?** Dit verandert de hele
+   vergelijking. Bij eigen vervoer vergelijk ik e-truck met dieseltruck, zoals hierboven. Wordt
+   het nu gecharterd, dan is de vergelijking charterprijs tegenover eigen exploitatie inclusief
+   chauffeurskosten — een heel ander sommetje, en dan is de subsidie niet de hoofdvraag.
+6. **De werkelijke kilometers.** Per truck per jaar, en het aantal draaidagen. Dit is na de
+   chassisprijs het belangrijkste getal in het model.
+7. **De literprijs diesel** die jullie werkelijk betalen, exclusief btw. Het verbruik heb ik
+   inmiddels: 1 op 3,8. Ik reken nu met Panteia's € 1,6063 (kale prijs € 1,09 plus accijns
+   € 0,5163); koopt u scherper in, dan wordt de terugverdientijd langer.
+8. **De onderhoudskosten** van het huidige materieel, per kilometer of per jaar.
+9. **De stroomprijs, en het aandeel eigen opwek.** Wat betalen jullie all-in per kWh op
+   Drietorensweg 38-1 — leveringstarief plus energiebelasting plus opslagen plus het variabele
+   deel netbeheer? En hoeveel kWh leveren de zonnepanelen, en hoeveel daarvan blijft nu
+   ongebruikt? Dit is na de kilometers de grootste hefboom: het verschil tussen volledig eigen
+   opwek en volledig netstroom is twee jaar terugverdientijd.
+10. **De beoogde houdperiode** en het afschrijvingsregime dat jullie hanteren.
+
+**Voor de aanvraag zelf, richting 29 september:**
+
+11. **Koopovereenkomst met ontbindende voorwaarde**, per truck, ruim op tijd getekend.
+12. **eHerkenning niveau 3** op KVK 39064605 — dezelfde als voor SPRILA, dus die staat al.
+13. **Bevestiging van de dealer** dat de truck vóór 16 oktober niet geleverd wordt en niet op
+    naam komt.
+
+---
+
+## 8. Betrouwbaarheid van de cijfers
+
+De TCO-tool van Panteia bevat een compleet subsidieblad (`M2-Subsidie`) en fungeert daarmee als
+**tweede, onafhankelijke bron** naast de webbronnen. Op alle AanZET-punten komen beide overeen.
+
+| Gegeven | Zekerheid |
+|---|---|
+| Percentages 29 / 21 / 11,1 % voor N3 trekker en zware bakwagen | **Bevestigd** — webbronnen én Panteia `M2-Subsidie` F5:I17 |
+| Maxima € 115.200 / € 83.200 / € 43.900 | **Bevestigd** door beide bronnen |
+| Grondslag = **bruto verkoopprijs van het e-voertuig**, niet de meerkosten | **Opgelost** — zie hieronder |
+| Staatssteunplafond 40 / 50 / 60 % van de meerprijs | **Nieuw** — uit Panteia `M2-Subsidie` F21:G23 |
+| Openstelling 29 sep – 16 okt 2026 | Meerdere onafhankelijke webbronnen |
+| Budget € 119,2 mln | Eén bron |
+| Max 2 voertuigen op dag 1–2, 10 vanaf dag 3 | Twee bronnen |
+| AanZET niet met MIA, wel met EIA | Meerdere bronnen; Panteia v7.3 dateert van vóór die wijziging |
+| Koopovereenkomst met ontbindende voorwaarde vereist | RVO-FAQ via zoekresultaat |
+| Vrachtwagenheffing € 0,19 / € 0,04 per km | Bronnen geven bandbreedtes; orde van grootte |
+| EIA 40 % in 2026 | Meerdere bronnen |
+
+### De grondslag is opgelost
+
+Het openstaande punt uit de eerste versie — percentage over de verkoopprijs of over de
+meerkosten — wordt beslecht door de formule in `M2-Subsidie!B20`:
+
+```
+AanZET = MIN(
+    bruto aanschafprijs e-voertuig × percentage,
+    maximumbedrag per voertuig,
+    staatssteunpercentage × meerprijs t.o.v. diesel
+)
+```
+
+Het percentage gaat dus over de **volledige bruto aanschafprijs van het elektrische voertuig**.
+Dat bevestigt de lezing uit de webbronnen.
+
+Wel komt er een **derde plafond** bij dat ik nog niet had: de EU-staatssteungrens van **40 %
+(groot), 50 % (middelgroot) of 60 % (klein) van de meerprijs** ten opzichte van een
+vergelijkbaar dieselvoertuig. Bij onze aannames — € 280.000 e-truck tegenover € 120.000 diesel,
+dus € 160.000 meerprijs — bijt dat plafond niet: 50 % daarvan is € 80.000 en de subsidie komt
+uit op € 58.800. Maar het gaat wél bijten zodra de meerprijs kleiner wordt. Bij een dieselprijs
+van € 160.000 in plaats van € 120.000 zakt het plafond voor een kleine onderneming naar
+€ 72.000 en verliest u € 9.200 per truck. **Vraag de dealer dus ook om een prijsindicatie van
+het vergelijkbare dieselmodel** — dat getal bepaalt mede de subsidie.
+
+Het werkboek rekent alle drie de plafonds door en toont in cel C47 welke van de drie bindend is.
+
+### Eén punt waarop de tool níét gevolgd moet worden
+
+De Panteia-tool bevat SPRILA-bedragen die **afwijken** van wat RVO voor 2026 publiceert:
+
+| | Panteia v7.3 | RVO 2026 (schermafdrukken) |
+|---|---|---|
+| Stationaire batterij, mkb | € 160 per kWh | € 85 per kWh |
+| DC-laadstation 350 kW, mkb | € 83.393 | maximaal € 88.000 in de hoogste categorie |
+
+De tool dateert van september 2024 en bevat kennelijk conceptbedragen uit de voorbereiding van
+de regeling. **Voor SPRILA zijn de RVO-bedragen leidend**, dus de € 178.000 uit de lopende
+aanvraag blijft staan. Vul in de tool de SPRILA-subsidie desnoods handmatig in.
+
+## 9. Bronnen
+
+- [Aanschafsubsidie Zero-Emissie Trucks (AanZET) — RVO](https://www.rvo.nl/subsidies-financiering/aanzet)
+- [Voorwaarden AanZET — RVO](https://www.rvo.nl/subsidies-financiering/aanzet/voorwaarden)
+- [Veelgestelde vragen AanZET — RVO](https://www.rvo.nl/subsidies-financiering/aanzet/veelgestelde-vragen)
+- [Nieuwe AanZET-ronde opent op 29 september 2026 — Subsidiebureau Nederland](https://www.subsidiebureau-nederland.nl/nieuwe-aanzet-ronde-opent-op-29-september-2026/)
+- [Nieuwe ronde AanZET-subsidie opent 29 september — TLN](https://www.tln.nl/actueel/aanzet-subsidie-septemberronde-start-29-september)
+- [AanZET 2026: subsidiebedragen, voorwaarden en data — FleetGO](https://fleetgo.nl/blog/aanzet-2026-subsidiebedragen-voorwaarden-en-data/)
+- [Aanzet subsidie 2026 aanvragen voor e-trucks — Scania Nederland](https://www.scania.com/nl/nl/home/e-mobility-hub/aanzet-subsidie-2026-aanvragen.html)
+- [Subsidiemogelijkheden elektrische vrachtwagens — TLN](https://www.tln.nl/actueel/subsidiemogelijkheden-elektrische-vrachtwagens-meer-dan-alleen-aanzet)
+- [MIA en Vamil 2026 voor e-vrachtwagens — MAN Nederland](https://man-nederland.nl/kennisbank/mia-en-vamil-2026)
+- [Vrachtwagenheffing vanaf 1 juli 2026 — evofenedex](https://www.evofenedex.nl/magazines/vrachtwagenheffing-vanaf-1-juli-2026-een-feit)
+- [Vrachtwagenheffing 2026: kosten, TCO & voordelen — eTruck Academy](https://www.etruckacademy.nl/kostencalculatie/vrachtwagenheffing-2026-elektrische-vrachtwagens-kosten-voordelen-en-tco/)
+- [Energie-investeringsaftrek (EIA) 2026 — Subvention](https://subvention.nl/algemeen/energie-investeringsaftrek-eia-2026)
+- [Definitie van kleine en middelgrote ondernemingen (MKB) — EUR-Lex](https://eur-lex.europa.eu/legal-content/NL/TXT/HTML/?uri=LEGISSUM%3An26001)
+- [Mkb of grote onderneming? — RVO](https://www.rvo.nl/subsidies-financiering/tvl/mkb-grote-onderneming)
+- TCO-ZET-Vracht v7.3, Panteia in opdracht van Topsector Logistiek, 23 september 2024 (door Kwekerij Baas aangeleverd). Bladen `M2-Subsidie`, `Invoer en categorieën` en `Parameters`.

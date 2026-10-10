@@ -1437,6 +1437,62 @@ inkopen.** De 70 %-eis en de C-waarde zijn afwijzings- en terugvorderingsgronden
 Wat je in beide gevallen **niet** moet doen: de aanvraag hierop laten wachten. De begroting
 mag na verlening nog wijzigen; het venster van de regeling niet.
 
+### 6.2c Offerte Draccu (DR283) naast de fabrieksopgave — 10-10-2026
+
+Vergeleken wordt alleen de **accuregel**: de fabriek levert geen laadstations, EMS, silowand of
+meetdienst. Die € 249.000 blijft in beide routes staan. Van de fabrieksopgave heb ik niet meer dan
+de zin uit §6.2b en de setbeschrijving van V-TAC; er ligt in dit dossier geen offerte of
+datasheet van de fabriek.
+
+| | Draccu DR283 | Fabriek / V-TAC |
+|---|---|---|
+| Product | Hizenergy EnerBox ES100kW-261kWh-LE | Oliter HV-set, 5 × 52,25 kWh LiFePO₄ 314 Ah, vloeistofgekoeld, IP65, BMS en rack |
+| Capaciteit | 4 × 261 kWh ≈ 1.045 kWh | 4 × 261 kWh ≈ 1.045 kWh |
+| Prijs per kast | € 53.125 (incl. AC-installatie) | € 26.900 (maximaal af fabriek) |
+| Prijs per kWh | **€ 203** | **€ 103** |
+| Vier kasten | **€ 212.500** | € 107.600 vóór de aangekondigde korting |
+| Omvormer 100 kW | zit erin | **niet inbegrepen**, apart (Deye 80/100/125 kW) |
+| Transport en invoer | zit erin | niet inbegrepen (EU-levering, dus geen invoerrechten) |
+| AC-installatie, aansluiting hoofdverdeler, inbedrijfstelling | zit erin | niet inbegrepen |
+| EMS-integratie met de laadstations | Envi.Base, € 5.000 apart, door Draccu bevestigd voor de 70 %-eis | zelf te laten bouwen en te garanderen |
+| Service en garantie in Nederland | ja | nee |
+| 70 %-eis, PGS 37, normering, aansprakelijkheid | bij één partij | bij jou |
+
+**Het verschil van € 104.900 is geen marge.** Het is de omvormer, het transport, de installatie en
+de integratie die in de fabrieksprijs ontbreken. Een ruwe schatting van wat daar bij komt, niet
+gebaseerd op een offerte:
+
+| Post | Schatting |
+|---|---|
+| 4 omvormers van 100 kW | € 36.000 – € 60.000 |
+| Transport | € 3.000 – € 6.000 |
+| Plaatsing, AC-installatie, aansluiting, inbedrijfstelling | € 25.000 – € 45.000 |
+| **Samen bovenop € 107.600** | **€ 172.000 – € 219.000** |
+
+Vergeleken met € 212.500 is dat in het gunstigste geval € 41.000 goedkoper en in het ongunstigste
+geval niets. **Netto blijft er minder over**, want de 40 %-toets zakt mee (§6.2b): tot € 196.000
+kost besparen niets, daaronder levert elke bespaarde euro 60 cent op. Bij € 172.000 is de netto
+winst € 31.100, bij € 196.000 is hij € 16.500, en bij € 212.500 of meer is hij nul.
+
+**Voor wie deze route kiest, komt er nog bij:**
+
+- Een andere acculeverancier is een **wijziging van gegevens die van belang zijn** en moet via
+  sprila@rvo.nl worden gemeld (§0.4). De C-waarde en datasheet worden bij de vaststelling opnieuw
+  getoetst. Neem de 100 kW-uitvoering (C-waarde 0,383); bij 125 kW is het 0,479.
+- Het voorschot van € 89.000 is al uitbetaald. Wordt de subsidie bij de vaststelling lager
+  vastgesteld, dan betaal je het verschil terug.
+
+**Conclusie.** De fabrieksprijs per kWh is de helft van Draccu's, maar de twee zijn niet
+vergelijkbaar. Op de ruwe schatting levert zelf inkopen hooguit € 30.000 netto op en kan het
+niets opleveren, tegen veel meer eigen risico op de 70 %-eis, de brandveiligheid en de garantie.
+**Twee dingen met de fabrieksopgave doen:**
+
+1. **Vraag een vaste prijs DDP Ens** voor vier sets met 100 kW-omvormers, met de korting voor
+   vier en een specificatie van wat erin zit. Pas dan is de vergelijking te maken.
+2. **Onderhandel met Draccu op de accuregel.** Tot € 196.000 kost een lagere prijs jou geen
+   subsidie: dat is € 16.500 ruimte om af te dingen. Het fabrieksbedrag van € 26.900 per kast is
+   het argument.
+
 ### 6.3 Projectomschrijving (concepttekst — aan te vullen en over te nemen)
 
 > A. Baas Potplantenkwekerij B.V. stapt over op elektrische vrachtwagens voor de aan- en

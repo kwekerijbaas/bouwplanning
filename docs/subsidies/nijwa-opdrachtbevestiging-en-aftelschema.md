@@ -333,3 +333,35 @@ Gevolgen voor de rest van het dossier:
 - **Laadinfrastructuur:** een grotere accu betekent een langere laadsessie. Met 20 → 80 % van 740 kWh
   is dat circa 440 kWh per sessie. Het wijzigt niets aan de 3 × 240 kW, maar de vraag aan Koop
   over het werkelijke laadvermogen met de Volvo wordt hierdoor scherper.
+
+### Leasevoorstel Rabobank, 4,9 % (22 oktober 2026)
+
+Het voorstel van Rabobank staat op **4,9 %**. Het voorstel van Volvo is nog niet binnen.
+Gerekend op de 780 kWh-uitvoering met € 338.500 min € 65.520 subsidie = **€ 272.980**
+financiering, 60 maanden:
+
+| Slotbetaling | 6 % (eerdere aanname) | **4,9 %** |
+|---|---|---|
+| € 0 | € 5.277 | € 5.139 |
+| € 20.000 | € 4.991 | **€ 4.844** |
+| € 40.000 | € 4.704 | € 4.549 |
+
+- Bij € 20.000 slotbetaling scheelt 4,9 % ten opzichte van 6 % **€ 147 per maand**, ca. € 8.800 over 60 maanden.
+- Ten opzichte van de 585 kWh-uitvoering (€ 4.402 per maand bij 4,9 %) is de 780 kWh **€ 442 per maand duurder**.
+- Looptijd bij € 20.000 slotbetaling en 4,9 %: 48 maanden € 5.896, 72 maanden € 4.144, 84 maanden € 3.645.
+
+**Wat vóór het kiezen moet worden nagegaan, bij Rabobank en bij Volvo:**
+
+1. Is het een **financial lease** zoals bedoeld in het Besluit Omzetbelasting (paragraaf 3.2)? AanZET
+   telt alleen koop en financial lease als aanschaf, geen operational lease.
+2. **Kenteken en tenaamstelling:** op naam van A. Baas Potplantenkwekerij B.V., of met een
+   verstrekkingsvoorbehoud op hun naam, vier jaar lang.
+3. **Wie koopt bij Nijwa?** Koopt de lessor de truck, dan moet de opdrachtbevestiging op naam van
+   de lessor komen of worden overgedragen. De bevestiging vervalt op 4 november en de koop moet
+   uiterlijk 9 november definitief zijn.
+4. Is **4,9 % nominaal of effectief**, en welke kosten komen erbij (afsluitkosten, borg, verzekering)?
+5. De **slotbetaling**: wat is die in het voorstel, en wie draagt het restwaarderisico?
+6. Hoe wordt het **voorschot van € 45.864** verrekend? Is de subsidie in de financiering verwerkt,
+   zoals hier gerekend?
+7. Bij Volvo: zit er een **servicecontract of kilometerlimiet** aan het voorstel? Vergelijk het
+   voorstel zonder die bundel.

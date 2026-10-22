@@ -309,6 +309,11 @@ moet bij Metazet worden opgevraagd. Ter oriëntatie, met een geschat verbruik:
 Zelfs in het zwaarste scenario blijf je binnen de 30 %-grens. **Het volume is dus niet het
 probleem** — ook niet als de AGV's níét meetellen als laadstation.
 
+> **Correctie 22-10-2026.** Hieronder staat dat een kilowattuur naar een AGV geen ERE oplevert.
+> Dat klopt niet: de NEa rekent tractoren en andere mobiele machines wel mee, ook zonder kenteken,
+> mits de levering via een bemeterd leverpunt met geïntegreerde meter loopt. Zie
+> [voorbereiding-offerte-accu-en-laadinfra.md](voorbereiding-offerte-accu-en-laadinfra.md), §3.
+
 #### Eén ding dat wél verschilt: de ERE
 
 Een kilowattuur naar een truck levert € 0,08 aan ERE op, want dat is elektriciteit voor

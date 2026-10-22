@@ -892,8 +892,8 @@ die de exploitatie structureel verbetert in plaats van de investering.
 
 > **Correctie 22-10-2026, na lezing van de NEa-pagina's.** Vier uitspraken in §6c kloppen niet:
 > gekochte GvO's op netstroom geven geen 100 % (alleen eigen zon of wind op de locatie, of een
-> directe lijn); de ORC geeft geen hogere ERE (geen zon of wind, en WKK-stroom is niet
-> inboekbaar); de ERE gaat naar de partij op wiens naam de aansluiting staat, dat is A. Baas
+> directe lijn); de ORC geeft geen hogere ERE (hij staat achter een biomassavergasser en stroom uit
+> biomassa telt niet als 100 %; hij draait dus niet op een gasgestookt proces zoals hierna staat); de ERE gaat naar de partij op wiens naam de aansluiting staat, dat is A. Baas
 > Energie B.V.; en een externe MID-meter is vanaf 2027 niet toegestaan, hij moet in het laadpunt
 > zitten. Zie
 > [voorbereiding-offerte-accu-en-laadinfra.md](voorbereiding-offerte-accu-en-laadinfra.md).

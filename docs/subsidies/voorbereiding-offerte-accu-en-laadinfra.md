@@ -10,9 +10,7 @@ regelgeving zelf (Besluit en Regeling energie vervoer) heb ik niet gelezen.*
 
 **De groene stroom van de ORC kan niet worden "gekoppeld" aan het laden voor een hogere ERE.**
 De NEa laat 100 % hernieuwbaar alleen toe voor **zonne- en windenergie**, uit eigen opwek op de
-leverlocatie of via een geregistreerde directe lijn. De ORC draait op restwarmte uit een
-gasgestookt proces. Daarmee valt die stroom buiten 100 %. Stroom uit een WKK of aggregaat is volgens de NEa
-helemaal niet inboekbaar; of een ORC op restwarmte daaronder valt, is niet beantwoord (§4.2). De route naar de hoge ERE loopt dus via de
+leverlocatie of via een geregistreerde directe lijn. De ORC staat achter de Regawatt-biomassavergasser en wekt dus stroom uit biomassa op. De NEa zegt dat stroom uit biomassa of biogas niet inboekbaar is als 100 %. Stroom uit een WKK of aggregaat is helemaal niet inboekbaar; of de ORC daaronder valt, is niet beantwoord (§4.2). De route naar de hoge ERE loopt dus via de
 geplande **500 kWp zonnepanelen**, niet via de ORC. Zie §4.
 
 **Drie dingen uit mijn eerdere stukken kloppen niet** en zijn in §5 rechtgezet:
@@ -178,16 +176,16 @@ exploitatiesubsidie zijn uitgekeerd** op de opwek over de inboekperiode.
 
 ### 4.2 Wat dit voor de ORC betekent
 
-De ORC is geen zon of wind, en een gasgestookt proces is geen hernieuwbare bron. Voor de ERE geeft
+De ORC wekt stroom uit biomassa op, en dat staat bij de NEa niet tussen de bronnen voor 100 %. (Eerder schreef ik dat de ORC op een gasgestookt proces draait; dat was onjuist.) Voor de ERE geeft
 het "koppelen" van ORC-stroom aan de accu dus niets extra's. Wat de regels **niet** beantwoorden:
 
 - of ORC-stroom die naar de laadstations loopt gewoon als **netstroom** (50,5 %) mag worden
   ingeboekt, zolang de netto afname op de aansluiting groter is dan de levering aan vervoer; of
-- of de NEa de ORC-stroom als **WKK-stroom** ziet en dan niet toelaat.
+- of de NEa de ORC-stroom als **WKK-stroom** ziet en dan niet toelaat. De mail aan de NEa-helpdesk (`mail/mail-nea-helpdesk-orc-en-laadpunten.eml`) legt dit voor.
 
 Het tweede zou de ERE op die kilowattuur op nul zetten. **Stel dit als vraag aan de
 NEa-helpdesk en aan de inboekdienstverlener, voordat de ERE wordt meegerekend voor kilowatturen die
-uit de ORC komen.** Vraag het met de ORC-gegevens erbij (vermogen, warmtebron).
+uit de ORC komen.** Vraag het met de ORC-gegevens erbij (vermogen, biomassa als warmtebron).
 
 De ORC blijft de goedkoopste kilowattuur voor het bedrijf. Het gaat hier alleen om de ERE.
 

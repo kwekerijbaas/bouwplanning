@@ -240,3 +240,96 @@ En één ding om te onthouden voor later: de verplichting om **niet publiek toeg
 loopt **24 maanden na de subsidievaststelling** af. Daarna staat het je vrij om de laadstations
 wél in het publieke register op te nemen, als de vraag daar dan om vraagt. De installatie gaat
 tien jaar mee; die 24 maanden zijn een beperkte periode aan het begin.
+
+---
+
+## Nieuwe opdrachtbevestiging van 21 oktober — de 780 kWh-uitvoering
+
+Besluit van 22 oktober 2026: de truck wordt de **780 kWh-uitvoering**. Nijwa heeft daarvoor een
+nieuwe opdrachtbevestiging uitgegeven (JN2026000088, 21-10-2026). Die is **nog niet getekend**
+("Voor akkoord" is leeg) en **geldig tot 4 november 2026** (14 dagen).
+
+### Wat er is veranderd ten opzichte van 4 september
+
+| | 4 september | 21 oktober |
+|---|---|---|
+| Totaal investering | € 315.000 | **€ 338.500** (+ € 23.500) |
+| Tractieaccu | 585 kWh, 3 + 3 pakketten | **780 kWh, 4 + 4 pakketten**, bruikbaar **740 kWh** (UBE) |
+| Wielbasis | 3.600 mm | **4.100 mm** |
+| Aanspreking | A. Baas Potplantenkwekerij B.V., Enserweg 4, 8307 PL | "Baas Potlantenkwekerij B.V.", Drietorensweg 36 l, 8307 PG |
+| Subsidieparagraaf | order pas definitief na toekenning AanZET, voorschot als aanbetaling | **geschrapt** |
+| Stelpost spuitwerk | € 2.500 | bedrag niet meer genoemd |
+| Aan de cabine | handbediende cabinelift, geluidseis fase 2 | elektrische cabinelift, dubbele kantelcilinder, geluidseis fase 3, extra lange zijfenders |
+| Verlichting | LED met adaptief grootlicht | **LED zonder adaptief grootlicht** |
+| Nieuw | | 2000 W omvormer (Xenteq), twee LED-lampen aan de zijfenders, bekabeling voor 4 extra schakelaars, 3e RVS loopplaat |
+
+### Wat dit met de AanZET-subsidie doet
+
+- **De subsidie blijft € 65.520.** De verlening is een vast bedrag; bij de vaststelling is het
+  "nooit hoger dan het subsidiebedrag in de verleningsbeschikking". Dat € 4.935 meer had gekund
+  (21 % van € 335.500) is niet meer te halen. De extra € 23.500 krijgt dus geen subsidie.
+- **Het type of de configuratie wijzigen hoeft niet gemeld te worden** (beschikking, punt 5). Het
+  merk blijft Volvo. Er is geen stap naar RVO nodig.
+- **Het staatssteunplafond is geen probleem:** 50 % van de meerprijs ten opzichte van de diesel is
+  ca. € 96.000, tegen € 65.520.
+- **Het schrappen van de subsidieparagraaf is hier juist goed.** Die voorwaarde was nodig om de
+  aanvraag in te dienen. RVO wil nu dat de koop **uiterlijk 9 november** definitief is. Een
+  getekende opdrachtbevestiging zonder voorwaarde is dat bewijs. Teken dus vóór 4 november, de
+  datum waarop de offerte vervalt.
+
+### Wat vóór het tekenen moet worden gecorrigeerd
+
+1. **Naam en adres.** "Baas Potlantenkwekerij B.V." mist de "A." en bevat een typefout. Het
+   adres is Drietorensweg 36 l, 8307 PG. De beschikking en de eerste opdrachtbevestiging staan op
+   **A. Baas Potplantenkwekerij B.V., Enserweg 4, 8307 PL**. Het kenteken komt via de RDW op naam
+   van het KVK-nummer 39064605; laat Nijwa dit herstellen voordat je tekent.
+2. **Hoe de subsidie en het voorschot bij Nijwa terechtkomen.** Die alinea is weg. Bij een
+   financial lease betaalt de lessor Nijwa, en het voorschot van € 45.864 gaat dan als aanbetaling
+   naar de lessor. Leg dat met de lessor vast en laat de lessor vooraf bevestigen dat het kenteken
+   op naam van de B.V. komt (vier jaar, art. 3.2).
+3. **De demorit.** De opdrachtbevestiging noemt de afspraak niet meer. Is de rit gereden, laat
+   dan schriftelijk vastleggen dat de test geslaagd is. Is hij niet gereden en vervalt hij met de
+   780 kWh, leg dan ook dat vast, voordat de order onherroepelijk wordt.
+4. **Bevestiging dat de fabrieksorder is geplaatst**, met datum, voor 9 november.
+5. **Levertijd.** Er staat nog "in overleg". De vaststelling moet uiterlijk 9 oktober 2027 en uitstel
+   is bij een trekker praktisch niet mogelijk. Vraag de levertijd van de 780 kWh-uitvoering
+   schriftelijk.
+6. **Adaptief grootlicht** is verdwenen uit de verlichting. Bewust, of een omissie?
+7. **De stelpost voor het spuitwerk** is zonder bedrag. Laat die erbij zetten, ook voor de prijssplitsing.
+
+### Wat € 338.500 en 780 kWh doen met de cijfers
+
+| | € 315.000, 585 kWh | € 338.500, 780 kWh |
+|---|---|---|
+| Subsidie | € 65.520 | € 65.520 |
+| Te financieren (prijs min subsidie) | € 248.850 | **€ 272.980** |
+| Lease, 6 %, 60 mnd, € 20.000 slotbetaling | € 4.524 per maand | **ca. € 4.991 per maand** |
+| Verschil | | **+ € 467 per maand** |
+| Terugverdientijd | | **ca. een half jaar langer** (€ 24.130 meer te financieren op € 53.561 besparing per jaar) |
+
+Aannames die niet vaststaan: de slotbetaling is gelijk gehouden aan € 20.000 (Volvo's schatting voor
+de oude uitvoering), en het extra gewicht van twee accupakketten is niet in het verbruik verwerkt.
+
+### Wat 740 kWh bruikbaar betekent voor de ritten
+
+Verbruik uit de Volvo-simulatie (§6e van het AanZET-document), nu gerekend op **740 kWh** bruikbaar
+in plaats van 545 kWh. Reken nog enkele procenten extra voor het gewicht van de twee extra accu's.
+
+| Dagcombinatie | Km | Verbruik 10 °C | Verbruik 0 °C | Deel van 740 kWh |
+|---|---|---|---|---|
+| Ens → Naaldwijk → Bleiswijk → Ens (demorit) | ca. 320 | ca. 350 kWh | ca. 370 kWh | **47–50 %** |
+| Naaldwijk + Aalsmeer | 509 | 555 kWh | 590 kWh | 75–80 % |
+| 2 × Bleiswijk | 560 | 610 kWh | 650 kWh | 82–88 % |
+| Naaldwijk + Bleiswijk | 589 | 642 kWh | 683 kWh | 87–92 % |
+| 2 × Naaldwijk | 618 | 673 kWh | 716 kWh | **91–97 %** |
+
+De demorit zou daarmee met de helft van de accu worden gereden. **De meeste dagen halen nu zonder
+bijladen, maar de zwaarste dag (2 × Naaldwijk in de winter) haalt hij net, zonder reserve.**
+Bijladen aan het eigen station blijft dus nodig op de langste dagen.
+
+Gevolgen voor de rest van het dossier:
+- **EIA:** de melding via Flynth moet op deze opdrachtbevestiging en het bedrag van € 338.500
+  worden gebaseerd. Houd **4 december** aan als uiterste datum (drie maanden na de eerste overeenkomst).
+- **Laadinfrastructuur:** een grotere accu betekent een langere laadsessie. Met 20 → 80 % van 740 kWh
+  is dat circa 440 kWh per sessie. Het wijzigt niets aan de 3 × 240 kW, maar de vraag aan Koop
+  over het werkelijke laadvermogen met de Volvo wordt hierdoor scherper.

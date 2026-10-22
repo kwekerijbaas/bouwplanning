@@ -187,6 +187,12 @@ Het tweede zou de ERE op die kilowattuur op nul zetten. **Stel dit als vraag aan
 NEa-helpdesk en aan de inboekdienstverlener, voordat de ERE wordt meegerekend voor kilowatturen die
 uit de ORC komen.** Vraag het met de ORC-gegevens erbij (vermogen, biomassa als warmtebron).
 
+**Garanties van Oorsprong voor de ORC-stroom.** Die zijn te krijgen, maar zijn voor de ERE geen sleutel: de NEa
+eist niet-net GvO's alleen als aanvulling op de bronnen zon en wind, en sluit biomassa als bron voor 100 %
+uit. Een GvO bewijst de herkomst van de stroom, niet dat de NEa de bron toelaat. De GvO's van de ORC
+kunnen wel apart waarde hebben (verkoop aan een groene-stroomleverancier). Wie ze verkoopt, mag diezelfde
+kilowattuur niet ook voor de ERE gebruiken. De vraag staat in de mail aan de NEa-helpdesk.
+
 De ORC blijft de goedkoopste kilowattuur voor het bedrijf. Het gaat hier alleen om de ERE.
 
 ### 4.3 Wat wél kan: zon via de accu

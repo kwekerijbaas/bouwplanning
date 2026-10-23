@@ -16,6 +16,12 @@
 
 ### Afspraak met Nijwa: eerst de demorit (9-10-2026)
 
+> **Vervallen op 23-10-2026.** Besluit van Dieter: de demorit gaat niet door, omdat de 780 kWh-uitvoering
+> het aantal kilometers sowieso haalt (op papier 47–50 % van 740 kWh bruikbaar voor Ens → Naaldwijk →
+> Bleiswijk → Ens). Leg schriftelijk vast met Nijwa dat de afspraak vervalt, zodat de order onherroepelijk
+> kan worden vóór **9 november**. De testcriteria hieronder en de mail
+> `mail/mail-john-nijzink-demorit-testcriteria.eml` zijn daarmee achterhaald.
+
 Nijwa toont met een demotruck aan dat een volle wagen Ens → Naaldwijk → Bleiswijk → Ens op één
 lading haalt. Lukt dat niet, dan vervalt de Volvo-optie.
 

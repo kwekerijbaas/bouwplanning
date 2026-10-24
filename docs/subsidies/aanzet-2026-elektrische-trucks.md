@@ -166,10 +166,14 @@ Tot die twee vragen beantwoord zijn houd ik **middelgroot** aan — dat is de vo
 | AanZET + **SPRILA** | **Ja** | Verschillende bedrijfsmiddelen: de trucks tegenover de laadinfrastructuur. Geen overlap. |
 | AanZET + **EIA** | **Ja** | Blijft toegestaan. De ontvangen AanZET-subsidie gaat wel van de EIA-grondslag af. |
 | AanZET + **MIA** | **Nee** | Sinds 1 januari 2025 uitgesloten voor hetzelfde voertuig. Als tegenprestatie zijn de AanZET-percentages verhoogd. |
-| SPRILA + **EIA** op dezelfde laadpaal | **Waarschijnlijk niet** | Twee regelingen op hetzelfde bedrijfsmiddel. Voorleggen aan Flynth. |
+| SPRILA + **EIA** op dezelfde accu | **Ja, met aftrek** | RVO: een investeringssubsidie gaat van de EIA-grondslag af. Of het meetelt in het staatssteunplafond van SPRILA is niet vastgesteld. Zie [eia-elektrische-truck-en-accu.md](eia-elektrische-truck-en-accu.md). |
 
 **EIA 2026:** 40 % extra aftrek van de winst, bovenop de gewone afschrijving. Bij 25,8 % Vpb is
 het kaseffect dus circa 10,3 % van de grondslag.
+
+> **Correctie 24-10-2026.** De grondslag hieronder (meerprijs min AanZET) volgt niet uit de Energielijst. EIA geldt alleen voor
+> de prijs van onderdelen met een eigen code (o.a. 240606, 240907, 241229, 241227), min subsidie. Het voordeel is daarom
+> onzeker en kan lager zijn dan het bedrag hieronder. Zie [eia-elektrische-truck-en-accu.md](eia-elektrische-truck-en-accu.md).
 
 De vraag die het antwoord bepaalt: **wat is de EIA-grondslag bij een e-truck?** De Energielijst
 beperkt dat bij voertuigen doorgaans tot de **meerkosten** ten opzichte van een conventioneel

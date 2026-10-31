@@ -79,6 +79,10 @@ en niet de € 10.201 uit mijn eerdere model.
 
 ---
 
+> **Aanvulling 31-10-2026.** VFS heeft een EIA-berekening gestuurd met een grondslag van € 206.690 voor de truck (netto € 21.330, fee € 1.950).
+> Volvo kent de optieprijzen, dus dat bedrag is beter onderbouwd dan mijn voorbeeldbedragen in §3. Maar het trekt de AanZET-subsidie niet af;
+> met aftrek is het netto ca. € 14.500 tot € 17.200. Zie [leasevoorstellen-rabobank-en-volvo.md](leasevoorstellen-rabobank-en-volvo.md), §6.
+
 ## 4. De stationaire accu
 
 Er zijn twee codes, met verschillende voorwaarden.

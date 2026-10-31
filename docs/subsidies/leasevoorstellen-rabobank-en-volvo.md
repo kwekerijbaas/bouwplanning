@@ -252,3 +252,17 @@ leggen of een rentevastzetting te prijzen.
 **Een leesfout is mogelijk:** de offerte van Rabobank zegt ook dat de definitieve rente op het moment van het
 contract wordt bepaald en kan afwijken. De twee uitzonderingen hierboven heb ik gelezen als de regel; laat
 Rabobank dat schriftelijk bevestigen.
+
+---
+
+## 11. Stand van zaken (31 oktober 2026)
+
+- **Mails verstuurd** aan Steven Jochems (VFS, vraagt 84 maanden) en Bart Wijnne (Rabobank, vraagt 72 maanden).
+  Antwoord gevraagd vóór **vrijdag 6 november**. De mails zijn door Dieter zelf nog aangepast: de fout
+  "780kW" en de vragen over de fee en de betaling aan Nijwa zijn vervallen of herschreven.
+- **Fee VFS:** € 1.950 min € 1.000 korting bij een lease, dus **€ 950** ex btw. Duidelijk.
+- **Betaling aan Nijwa:** geen vraag meer. Dat regelen de financier en Nijwa onderling.
+- **Voorkeur:** Volvo-lease, op voorwaarde dat de Financiële Service Lease voor AanZET telt (§5).
+- **Nog niets ondertekend:** niet de Rabobank-offerte, niet de groenverklaring.
+- **Data:** 6 november antwoorden, 9 november koop definitief (de getekende bevestiging van Nijwa voldoet),
+  10 november einde beschermde rente Rabobank, 27 november Rabobank-offerte vervalt, 4 december EIA melden.

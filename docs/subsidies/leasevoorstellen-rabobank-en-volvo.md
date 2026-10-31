@@ -211,3 +211,44 @@ offerte, wanneer Nijwa betaald wordt, en 84 maanden als variant.
 - Welke onderdelen onder Volvo's € 206.690 vallen en tegen welke prijs.
 - Of de Vpb-positie van de B.V. 19 % of 25,8 % is. Dat moet Flynth zeggen.
 - Of de Rabobank-hoofdsom incl. of excl. btw is.
+
+---
+
+## 10. Wat een rentewijziging van 25 basispunten doet (31 oktober 2026)
+
+Gerekend op de bedragen uit de twee offertes (Rabobank € 270.000, 84 maanden, 5,35 %; VFS € 273.500,
+72 maanden, 5,40 % impliciet, € 75 koopoptie). VFS-bedragen excl. btw.
+
+**Per 25 bp: ca. € 31 per maand.** Over de looptijd ca. € 2.600 bij Rabobank (84 maanden) en ca. € 2.200 bij
+VFS (72 maanden). Per 50 bp ca. € 62 per maand, per 100 bp ca. € 125.
+
+**De regels verschillen:**
+
+| Rentewijziging tussen offerte en levering | Rabobank (akkoord vóór 10-11-2026) | VFS |
+|---|---|---|
+| Daling, elke grootte | volledig doorgegeven | pas bij ≥ 20 bp, dan volledig |
+| Stijging tot en met 25 bp | **niets** | pas bij ≥ 20 bp, dan volledig |
+| Stijging boven 25 bp | de stijging wordt verwerkt (hele stijging of alleen het deel boven 25 bp: **vragen**) | volledig |
+
+| Wijziging | Rabobank | VFS |
+|---|---|---|
+| −25 bp | −€ 31 per maand | −€ 31 per maand |
+| −10 bp | −€ 12 per maand | € 0 |
+| +10 bp | € 0 | € 0 |
+| +20 bp | € 0 | +€ 25 per maand |
+| **+25 bp** | **€ 0** | **+€ 31 per maand (+€ 2.200)** |
+| +30 bp | +€ 37 per maand, als de hele stijging telt | +€ 37 per maand |
+| +50 bp | +€ 62 per maand | +€ 62 per maand |
+
+**Na 10 november** geldt bij Rabobank het tarief van de dag, dus volledig in beide richtingen, zoals bij VFS.
+
+**Rabobank-specifiek:** raak je de groenkorting kwijt (groenverklaring niet afgegeven of "Einde groenkorting"),
+dan stijgt de rente met 50 bp naar 5,85 %. Dat is € 62 per maand, ca. € 5.200 over 84 maanden.
+
+**Hoe lang je blootstaat:** tot de leverdatum, en die is nog "in overleg". Na het sluiten van het
+contract is de rente vast. Vraag Nijwa de datum, en vraag beide partijen de rente bij bestelling vast te
+leggen of een rentevastzetting te prijzen.
+
+**Een leesfout is mogelijk:** de offerte van Rabobank zegt ook dat de definitieve rente op het moment van het
+contract wordt bepaald en kan afwijken. De twee uitzonderingen hierboven heb ik gelezen als de regel; laat
+Rabobank dat schriftelijk bevestigen.

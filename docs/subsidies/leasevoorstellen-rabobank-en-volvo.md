@@ -58,7 +58,7 @@ Hierin zit de verklaring van Volvo: *"de groen korting die we niet hebben als ni
 hele verschil"*. Zonder groenkorting zou Rabobank op 5,85 % staan.
 
 **Dit wijkt af van wat u eerder doorgaf (4,9 %).** Als dat een indicatie was, is het tarief in de offerte
-0,45 pp hoger. Bij € 270.000 en 84 maanden is dat ongeveer € 65 per maand.
+0,45 pp hoger. Bij € 270.000 en 84 maanden is dat ongeveer € 56 per maand (€ 3.788 bij 4,9 % tegen € 3.844).
 
 **Wat dit betekent voor het eerdere plan:** de 60 maanden met € 20.000 slotbetaling zijn vervangen door
 volledig aflossende leningen van 72 of 84 maanden. Er is dus geen restwaarderisico meer, maar je betaalt

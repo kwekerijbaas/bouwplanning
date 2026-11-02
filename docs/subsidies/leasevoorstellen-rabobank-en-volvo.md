@@ -266,3 +266,70 @@ Rabobank dat schriftelijk bevestigen.
 - **Nog niets ondertekend:** niet de Rabobank-offerte, niet de groenverklaring.
 - **Data:** 6 november antwoorden, 9 november koop definitief (de getekende bevestiging van Nijwa voldoet),
   10 november einde beschermde rente Rabobank, 27 november Rabobank-offerte vervalt, 4 december EIA melden.
+
+---
+
+## 12. Antwoorden van 2 november 2026 (uit de inbox)
+
+**Rabobank, Bart Wijnne, 2-11 13:03.** Beantwoordt alleen de vraag naar 72 maanden. In de mail van Dieter waarop hij
+antwoordt (30-10) staat alleen die vraag.
+
+| | 84 maanden (offerte 27-10) | 72 maanden (2-11) |
+|---|---|---|
+| Hoofdsom | € 270.000 | € 270.000 |
+| Rente | 5,35 % | **5,27 %** |
+| Maandbedrag | € 3.843,58 | **€ 4.363,07** |
+
+Bart: *"Welke looptijd je wilt kun je altijd beslissen op het moment dat leaseovereenkomst definitief wordt."*
+
+**Rabobank noemt nergens 4,9 %.** De schriftelijke tarieven zijn 5,27 % en 5,35 %.
+
+**Nog niet gevraagd en dus niet beantwoord:** verlengen of vastzetten van het rente-aanbod (10-11), of een stijging boven
+0,25 pp helemaal of gedeeltelijk telt, de hoofdelijke aansprakelijkheid van Energie B.V. en Baas Groep B.V., de
+behandelingskosten van de groenverklaring, en btw.
+
+**VFS, Steven Jochems, 2-11 08:46 (offerte 3826585).**
+
+| | 84 maanden |
+|---|---|
+| Aanschaf / aanbetaling / financiering | € 338.500 / **€ 65.520** (nu exact de AanZET) / **€ 272.980** |
+| Termijn | **84 × € 3.903,55** excl. btw (€ 4.723,30 incl.) |
+| Koopoptie | € 75 |
+| Rente | 5,4 % volgens de mail. Uit de termijn reken ik **5,50 %** nominaal |
+| Rentewijziging | IRS-gekoppeld, aanpassing bij ≥ 20 bp tot levering |
+
+**Zijn antwoord op de AanZET-vraag (punt 2):** Financial Service Lease wordt sinds 2020 gevoerd en is "100 % een financial lease".
+Vooraf is overleg geweest met de Belastingdienst en juridisch. Redenering: geen restwaarde, volledige afschrijving, dus geen
+restwaarderisico; het economisch eigendom gaat direct naar de huurder, na de koopoptie wordt de huurder juridisch eigenaar.
+*"Deze constructie hebben we al vele malen gebruikt bij het RVO. Het leasecontract moet dan als aanvulling gebruikt worden op
+de factuur aan VFS van de truck."* Kenteken altijd op naam van de klant. *"VFS neemt alle verantwoordelijkheid voor deze vorm
+van Financial Lease."*
+
+**Wat dat wel en niet is:** het is een schriftelijke bewering, geen contractuele garantie. "Verantwoordelijkheid voor deze
+vorm" zegt niet dat VFS de subsidie compenseert als RVO de lease niet als financial lease aanmerkt. Mijn punt over de
+btw-behandeling per termijn (paragraaf 3.2 van het Besluit beschrijft levering met btw over het totaal bij aanvang) wordt
+niet beantwoord. Wat RVO accepteert, beslist RVO.
+
+**EIA (punt 3):** niet beantwoord. Hij zegt alleen dat EIA los staat van AanZET. De lijst per onderdeel met code en prijs ontbreekt
+nog, en de vraag wat er na aftrek van de AanZET overblijft ook.
+
+### Vergelijking op gelijke voet (financiering € 272.980)
+
+| | 84 maanden | 72 maanden |
+|---|---|---|
+| Rabobank, 270.000 geschaald naar 272.980 | € 3.886 | € 4.411 |
+| VFS | € 3.903,55 | ca. € 4.426 (offerte van 28-10 geschaald) |
+| **Verschil, VFS duurder** | **ca. € 18 per maand** | **ca. € 15 per maand** |
+| Totaal over de looptijd, incl. koopoptie | ca. € 1.400 | ca. € 1.000 |
+
+Effectief op jaarbasis: Rabobank 5,48 % (84) en 5,40 % (72); VFS 5,64 % (84) en 5,53 % (72).
+
+**Kasstroom bij start:** Rabobank € 68.500 eigen inbreng, plus € 71.085 btw die je terugkrijgt. VFS € 65.520 aanbetaling plus
+€ 13.759 btw, samen € 79.279. Daar staat het AanZET-voorschot van € 45.864 tegenover; de laatste € 19.656 komt pas na de
+vaststelling. Tijdelijk dus ca. € 33.400 voor te schieten, waarvan € 13.759 btw terugkomt in de aangifte.
+
+### Open punten
+
+1. **VFS:** AanZET-risico schriftelijk bij VFS leggen (vrijwaring of contractclausule), en bij RVO toetsen. EIA-lijst per onderdeel.
+2. **Rabobank:** de vragen die nog niet gesteld zijn (rente-aanbod verlengen, hoofdelijke aansprakelijkheid, groenverklaring).
+3. **Beide:** de rente is pas vast bij het contract, bij levering.

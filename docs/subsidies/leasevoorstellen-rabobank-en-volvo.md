@@ -333,3 +333,38 @@ vaststelling. Tijdelijk dus ca. € 33.400 voor te schieten, waarvan € 13.759 
 1. **VFS:** AanZET-risico schriftelijk bij VFS leggen (vrijwaring of contractclausule), en bij RVO toetsen. EIA-lijst per onderdeel.
 2. **Rabobank:** de vragen die nog niet gesteld zijn (rente-aanbod verlengen, hoofdelijke aansprakelijkheid, groenverklaring).
 3. **Beide:** de rente is pas vast bij het contract, bij levering.
+
+---
+
+## 13. Telefoongesprek met Rabobank, ca. 19 oktober 2026 (Fireflies)
+
+*Bron: automatisch transcript "phone_20261019-Wynne-Rabolease", 12,9 minuten. De spreker aan de andere kant is **Joost**
+(vermoedelijk Joost Neeleman, die bij Bart Wijnne in kopie staat), niet Bart. Het transcript is machinaal en op plekken onleesbaar
+("585 kw" is kWh, "Nauwpark" is vermoedelijk Naaldwijk, "sprieler" is SPRILA). Alleen de getallen die helder zijn uitgesproken zijn gebruikt.*
+
+**Waar de 4,9 % vandaan komt.** Joost: *"Ik zou nu uitkomen, inclusief die groenverklaring, rond de 4,9."* Twee keer herhaald.
+Direct daarna: *"de 4,9 is gebaseerd op de huidige rente, op dit moment"* en die kan in maart anders zijn. Het was dus een mondelinge
+indicatie van ca. 19 oktober. De schriftelijke offerte van 27 oktober staat op 5,35 % (84 maanden), en die van 2 november op 5,27 % (72 maanden).
+Verschil met de indicatie: 0,37 tot 0,45 procentpunt.
+
+**Waar dat verschil vandaan kan komen (niet bevestigd).** Joost zei op de vraag naar toeslagen: *"Nee, zeker niet."* Bart noemt in zijn
+mail van 30 oktober wel een **debiteurenopslag** die in het tarief "gelijk blijft". Daarnaast kan de marktrente zijn bewogen en spelen de looptijd.
+Dit is een vraag aan Bart.
+
+**Verder in het gesprek**
+- **Looptijden:** Joost adviseert 84 of 96 maanden voor de truck ("60 maanden is heel zwaar"), en **120 maanden voor de laadpalen en de accu**. Voor
+  die laatste is nog geen definitieve offerte.
+- **Levering:** *"Dus in maart wordt hier geleverd. Prima, dan hoef je nog pas te betalen."* De rente tot levering loopt dus ca. 4 à 5 maanden mee.
+- **Groenverklaring:** volgens Joost vrijwel automatisch bij een AanZET-subsidie, en *"die kun je al wel aanvragen"*. Let op de kostenregel op het
+  formulier (§4: 1 % van het projectvermogen, max. € 5.000, als je later bij een andere financier uitkomt). Vraag Rabobank of ze dat laten vallen.
+- **Looptijd en rente later kiezen:** *"Dan kun je in maart altijd kijken wat je dan alsnog doet met rente, etc. En met looptijd."*
+- **Merkwijziging:** Dieter in het gesprek: in de beschikking staat dat je niet van merk mag wisselen. Volvo bood een korting op de 780 kWh.
+- **Kilometers:** 80.000 tot 100.000 per jaar; de oude truck zit op ca. 800.000 km en wordt ingeruild of omgebouwd tot pendelauto.
+  Dat is waarschijnlijk de vervangen truck voor de EIA-code 241229 (aero-cabine); noteer het kenteken.
+- **Accu-voeding:** *"Nee, dat willen we niet"* op de vraag of de accu met zonnepanelen wordt geladen; er is een ORC, dus de situatie
+  moet daarop worden aangesloten. Dat sluit aan op de NEa-vragen over de ORC.
+- **SPRILA:** het project loopt als aanvraag aan de truck vast en moet binnen anderhalf jaar zijn uitgevoerd.
+
+**EIA-voorbeeld van Joost.** Een klant met een Volvo met extra as, snelheidsbegrenzer, aero-cabine en spiegelcamera's kwam op een totale aftrekpost
+van **ca. € 20.000**. Dat is veel minder dan de € 82.676 aftrek in het VFS-voorstel. Het zegt niets over een elektrische truck met accu, maar
+het is een reden om de lijst per onderdeel te eisen. De Energielijst heeft ook een code voor spiegelcamera's (241225) die ik niet had meegenomen.

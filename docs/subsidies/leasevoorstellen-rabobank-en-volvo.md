@@ -368,3 +368,27 @@ Dit is een vraag aan Bart.
 **EIA-voorbeeld van Joost.** Een klant met een Volvo met extra as, snelheidsbegrenzer, aero-cabine en spiegelcamera's kwam op een totale aftrekpost
 van **ca. € 20.000**. Dat is veel minder dan de € 82.676 aftrek in het VFS-voorstel. Het zegt niets over een elektrische truck met accu, maar
 het is een reden om de lijst per onderdeel te eisen. De Energielijst heeft ook een code voor spiegelcamera's (241225) die ik niet had meegenomen.
+
+---
+
+## 14. Welke deal is het beste, ongeacht de prijs (4 november 2026)
+
+*Gelezen: de twee antwoorden van 2 november (Steven 08:46, Bart 13:03). Er is sinds die datum geen nieuwe mail van Volvo of Rabobank binnengekomen.*
+
+| Criterium | Beter | Waarom |
+|---|---|---|
+| AanZET-zekerheid (€ 65.520) | **Rabobank** | Je koopt zelf, factuur en kenteken op jouw naam. Bij VFS: lease, factuur op naam van VFS, nog niet door RVO bevestigd |
+| Aansprakelijkheid en zekerheden | **VFS** (niet bevestigd) | Rabobank: hoofdelijk Energie B.V. en Baas Groep B.V., eerste pandrecht, en bestaande zekerheden mogen ook voor deze lening gelden. Bij VFS noemt het voorstel dat niet |
+| Rente tot levering (maart) | **Rabobank** | Stijging tot 25 bp telt niet (akkoord vóór 10-11), dalingen gaan door. VFS past bij ≥ 20 bp volledig aan, beide kanten |
+| Looptijd kiezen | **Rabobank** | Looptijd kiezen bij het contract. VFS: aparte offerte per looptijd |
+| Geldigheid | **VFS** (niet genoemd) | Rabobank: opnemen binnen 6 maanden na 27-10-2026, dus uiterlijk 27-04-2027. Schuift de levering door, dan vervalt de offerte |
+| Btw en kasstroom | **VFS** | VFS betaalt de btw aan de dealer. Bij Rabobank betaal je Nijwa incl. btw (€ 71.085) en krijg je die terug |
+| Bestaande Volvo-leases en inruil | **VFS** | Twee trucks lopen al bij VFS en Volvo wil er één kosteloos inwisselen. Dat blijft binnen één partij |
+| Complexiteit | **VFS** | Rabobank: groenverklaring, behandelingskosten, hoofdelijke partijen, SEPA, pand |
+| Laadpalen en accu (120 mnd) | **Rabobank** | Rabobank biedt dat aan; Volvo niet |
+
+**Keuze voor de truck: Volvo (VFS), onder twee voorwaarden.**
+1. RVO en VFS bevestigen schriftelijk dat de Financiële Service Lease voor AanZET telt, met een vrijwaring of contractclausule.
+2. VFS vraagt geen hoofdelijke aansprakelijkheid van groepsmaatschappijen of andere zekerheden die je niet wilt.
+
+Komt een van beide niet goed, dan is Rabobank de keuze. De laadpalen en de accu kunnen apart bij Rabobank worden besproken.

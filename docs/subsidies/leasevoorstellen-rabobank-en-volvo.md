@@ -392,3 +392,35 @@ het is een reden om de lijst per onderdeel te eisen. De Energielijst heeft ook e
 2. VFS vraagt geen hoofdelijke aansprakelijkheid van groepsmaatschappijen of andere zekerheden die je niet wilt.
 
 Komt een van beide niet goed, dan is Rabobank de keuze. De laadpalen en de accu kunnen apart bij Rabobank worden besproken.
+
+---
+
+## 15. Status 7 november 2026: kredietgoedkeuring VFS ontvangen
+
+Bron: Steven Jochems (VFS), mail van 5-11-2026 met `Krediet_goedkeuring_VFS-3826585.pdf` en `Financieringsofferte_VFS-3826585.pdf`.
+
+| | VFS (goedgekeurd) |
+|---|---|
+| Vorm | Financiële Service Lease, object 1× Volvo FH 780 kW 6×2 met AERO |
+| Aanschafprijs | € 338.500 |
+| Aanbetaling | € 65.520 (gelijk aan de AanZET-subsidie), te betalen aan VFS vóór levering |
+| Financiering | € 272.980 (maximum) |
+| Looptijd | 84 maanden, slottermijn nihil, gelijke termijnen vooraf, automatische incasso |
+| Termijn | 84 × € 3.903,55 excl. btw (btw per termijn terug te vragen) |
+| Koopoptie | € 75 |
+| Kosten kredietacceptatie en contract | geen |
+| Kenteken | op naam van de klant; tenaamstellingscode bij VFS gedurende de looptijd |
+| Geldig tot | 5-3-2027 |
+
+**Zekerheden: solo bevestigd.** "Aanvullende voorwaarde(n): Nvt." en "Meetekenende partij(en): Nvt." Dus geen hoofdelijkheid, geen garantiegever. A. Baas Potplantenkwekerij B.V. is de enige contractant.
+
+**Voorwaarden in de goedkeuring:** Wwft-check en vaststelling UBO (UBO-formulier is op 4-11-2026 via DocuSign verstuurd); geen nadelige wijzigingen in kredietwaardigheid; geldige transportvergunning (NIWO); verzekering WA/casco onder uitgebreide condities; automatische incasso; standaarddocumentatie en algemene voorwaarden (nog niet gezien).
+
+**Aandachtspunten**
+1. **Geldigheid tot 5-3-2027, levering verwacht rond maart 2027.** Ligt de ingangsdatum erna, dan mag VFS de aanvraag opnieuw beoordelen. Verlenging vragen.
+2. **Rente niet vast.** De offerte volgt de IRS van 2-11-2026 tot de levering; geen aanpassing bij een verschil kleiner dan 20 bp. Bij ±25 bp is dat ca. € 31 per maand.
+3. **Factuur en btw.** Nijwa factureert aan VFS; de klant ontvangt per termijn een factuur met btw. Of RVO dit als financiële lease accepteert, is nog niet schriftelijk bevestigd (Steven wil geen aparte vrijwaring geven). Een RVO-bevestiging blijft de zekerste route.
+4. **Kasstroom.** Aanbetaling € 65.520 tegenover het AanZET-voorschot van € 45.864. Het verschil van € 19.656 komt pas na vaststelling.
+5. **Algemene voorwaarden en concept-contract** nog opvragen.
+
+Vergelijking met Rabobank blijft zoals in §14: Rabobank 84 mnd € 3.843,58 op € 270.000 (5,35%, hoofdelijke aansprakelijkheid Energie B.V. en Baas Groep B.V.); VFS 84 mnd € 3.903,55 op € 272.980 zonder aanvullende zekerheden. Voorkeur Dieter: VFS.

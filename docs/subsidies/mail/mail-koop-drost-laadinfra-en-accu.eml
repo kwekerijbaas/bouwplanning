@@ -1,0 +1,226 @@
+To: Koop Drost <koop@drenergie.nl>
+Subject: Laadinfra en accu (offerte DR283) =?utf-8?b?4oCT?= subsidie
+ toegekend, vragen voor de opdracht
+Date: Sat, 10 Oct 2026 08:45:08 +0000
+X-Unsent: 1
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2404162350108477325=="
+
+--===============2404162350108477325==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Beste Koop,
+
+De subsidie is binnen, dus ik wil de laadinfrastructuur en de accu nu concree=
+t gaan maken. Eerst de stand van zaken, daarna een aantal punten die ik graag=
+ schriftelijk bevestigd zie voordat ik opdracht geef.
+
+STAND VAN ZAKEN
+- SPRILA is toegekend (SPRILA26-04007812, 21 augustus 2026): =E2=82=AC 178.00=
+0 voor 3 DC-laadstations vanaf 220 kW en een stationaire batterij van 1.000 k=
+Wh. Realisatie, ingebruikname en vaststellingsverzoek moeten uiterlijk 21 aug=
+ustus 2028 rond zijn.
+- De truck: =C3=A9=C3=A9n Volvo FH Electric 6x2T (585 kWh, CCS2 350 kW en MCS=
+). Hiervoor is ook de AanZET-subsidie toegekend. Nijwa bevestigt de leverdatu=
+m nog; ik wil dat jullie installatie klaar is zodra de truck er is.
+- Uitgangspunt blijft jullie offerte DR283: 4=C3=97 EnerBox ES100kW-261kWh-LE=
+, 3=C3=97 Whes WH-ECA-244EDD, Envitron Envi.Base, silowand met overkapping en=
+ voorbereiding meetdienst, =E2=82=AC 461.500 excl. btw.
+
+1. OFFERTE EN PLANNING
+- Is DR283 nog geldig en prijsvast? Wat is de levertijd (eerder noemde je ach=
+t weken)?
+- Graag de definitieve offerte en factuur op naam van A. Baas Potplantenkweke=
+rij B.V., met plaatsing op Drietorensweg 38-1, 8307 PH Ens (niet Enserweg).
+- In de offerte staat 80 % voor of tijdens levering. Kunnen we de betaling in=
+ termijnen afspreken, bijvoorbeeld bij opdracht, bij levering en bij opleveri=
+ng?
+
+2. WAT OP OFFERTE EN FACTUUR MOET STAAN (RVO CONTROLEERT DIT BIJ DE VASTSTELL=
+ING)
+- Laadstations: merk, type en vermogen per station. Drie afzonderlijke statio=
+ns met elk 240 kW totaalvermogen, en de installatiedatum op de factuur. Het i=
+s een staande all-in-one kast, dus geen fysiek gescheiden vermogenskast.
+- Accu: merk, type, nominale capaciteit (4 =C3=97 261 kWh) en het maximale on=
+tlaadvermogen in kW. De verhouding vermogen/capaciteit mag niet boven 0,5 uit=
+komen; met 4 =C3=97 100 kW op ca. 1.045 kWh kom ik op 0,38. Graag bevestigen.
+- Na installatie moet het batterijsysteem geregistreerd worden via Energielev=
+eren.nl of de netbeheerder. Is dat onderdeel van jullie werk?
+
+3. MID-METERS
+- In de datasheet van de Whes is de MID-meter optioneel. Ik wil hem in alle d=
+rie de stations: zonder MID-meter kan ik geen ERE inboeken en geen kWh aan de=
+rden factureren. Graag meeprijzen, en bevestigen dat het een ingebouwde, MID-=
+gecertificeerde meter is die een inboekdienstverlener accepteert.
+
+4. EMS EN DATA (70 %-EIS UIT DE BESCHIKKING)
+- Minimaal 70 % van de kWh die uit de accu komt moet aantoonbaar naar de laad=
+stations gaan, tot 24 maanden na de vaststelling. RVO kan daarvoor data over =
+drie opeenvolgende maanden opvragen: de ontladen kWh uit het BMS en de kWh pe=
+r laadsessie. Graag schriftelijk bevestigd dat:
+a) het EMS de accu bij voorrang naar de laadstations laat ontladen;
+b) het EMS de ontlading per bestemming logt (laadstations / overig);
+c) BMS-data en laadsessies als CSV te exporteren zijn (per sessie: start, ein=
+de, kWh, station);
+d) die data minimaal 24 maanden na de vaststelling bewaard blijven en voor mi=
+j toegankelijk zijn, ook als een abonnement of dienst stopt;
+e) de installatie permanent met internet verbonden is (eis in de beschikking)=
+. Wat is daarvoor nodig, bijvoorbeeld 4G als reserve?
+
+5. LADEN VOOR DERDEN
+- Onze huistransporteur Faber wil bij ons bijladen, en andere vervoerders kun=
+nen volgen. Welk backoffice zit standaard in de offerte (de Whes spreekt OCPP=
+ 1.6 JSON)? Het moet kunnen: externe voertuigen autoriseren (laadpas, QR of a=
+pp), per sessie kWh factureren tegen =C3=A9=C3=A9n marktconform tarief voor i=
+edereen, de laadpunten niet in het publieke register zetten maar beperkt toeg=
+ankelijk houden (eis uit de beschikking), en sessiedata exporteren voor een E=
+RE-inboekdienstverlener.
+- Wat kost dat per maand, per station of per installatie?
+
+6. INTERNE VOERTUIGEN (AGV'S)
+- Over 1,5 =C3=A0 2 jaar groeien we naar circa 30 automatische trekkertjes (M=
+etazet M-Track, 48 V / 5,28 kWh) die onze dieseltrekkers vervangen. In drukke=
+ perioden rijden ze ook 's nachts. Ik wil ze via hetzelfde systeem laden.
+- Kan het EMS of backoffice AC-laadpunten voor deze voertuigen beheren, met s=
+essieregistratie per punt? Wat is daarvoor nodig (type punten, verdeler, EMS-=
+licentie)? Ik hoef dit nu niet te bestellen, maar het moet er straks wel bij =
+kunnen. Graag als optie meeprijzen.
+
+7. TRUCK EN UITBREIDING
+- Welk vermogen krijgt de Volvo FH Electric (CCS2 350 kW, 585 kWh) in de prak=
+tijk uit de Whes? Ik zag de grens van 350 A en wil weten hoelang 20 =E2=86=92=
+ 80 % duurt.
+- Zijn de stations later geschikt voor MCS, of is daarvoor een ander station =
+nodig?
+- Hoe breid ik later uit met extra stations of EnerBox-eenheden, en tegen wel=
+ke prijs?
+
+8. SCOPE EN GARANTIE
+- Wat is inbegrepen aan netaanvragen, hoofdverdeler, vergunningen of meldinge=
+n, keuring en oplevering, en brandveiligheid van het batterijsysteem (PGS 37)=
+, inclusief afstemming met mijn verzekeraar? Wat moet ik zelf regelen?
+- Garantie op de accu: hoeveel jaar of cycli, en welke restcapaciteit is gega=
+randeerd? Wie levert service in Nederland en wat is de reactietijd bij een st=
+oring?
+
+Kunnen we deze of volgende week een technisch overleg van een uur plannen, bi=
+j voorkeur bij mij op locatie? Stuur je antwoorden en de definitieve offerte =
+graag per mail, dan kan ik daarna snel opdracht geven.
+
+Met vriendelijke groet,
+
+Dieter Baas
+A. Baas Potplantenkwekerij B.V.
+Enserweg 4, 8307 PL Ens
+
+--===============2404162350108477325==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body style=3D'font-family:Calibri,Arial,sans-serif;font-size:11pt;colo=
+r:#222;line-height:1.45'>
+<p>Beste Koop,</p>
+<p>De subsidie is binnen, dus ik wil de laadinfrastructuur en de accu nu conc=
+reet gaan maken. Eerst de stand van zaken, daarna een aantal punten die ik gr=
+aag schriftelijk bevestigd zie voordat ik opdracht geef.</p>
+<p><b>Stand van zaken</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>SPRILA is toegek=
+end (SPRILA26-04007812, 21 augustus 2026): =E2=82=AC 178.000 voor 3 DC-laadst=
+ations vanaf 220 kW en een stationaire batterij van 1.000 kWh. Realisatie, in=
+gebruikname en vaststellingsverzoek moeten uiterlijk 21 augustus 2028 rond zi=
+jn.</li><li style=3D'margin:3px 0'>De truck: =C3=A9=C3=A9n Volvo FH Electric =
+6x2T (585 kWh, CCS2 350 kW en MCS). Hiervoor is ook de AanZET-subsidie toegek=
+end. Nijwa bevestigt de leverdatum nog; ik wil dat jullie installatie klaar i=
+s zodra de truck er is.</li><li style=3D'margin:3px 0'>Uitgangspunt blijft ju=
+llie offerte DR283: 4=C3=97 EnerBox ES100kW-261kWh-LE, 3=C3=97 Whes WH-ECA-24=
+4EDD, Envitron Envi.Base, silowand met overkapping en voorbereiding meetdiens=
+t, =E2=82=AC 461.500 excl. btw.</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>1. Offerte en planning</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Is DR283 nog gel=
+dig en prijsvast? Wat is de levertijd (eerder noemde je acht weken)?</li><li =
+style=3D'margin:3px 0'>Graag de definitieve offerte en factuur op naam van A.=
+ Baas Potplantenkwekerij B.V., met plaatsing op Drietorensweg 38-1, 8307 PH E=
+ns (niet Enserweg).</li><li style=3D'margin:3px 0'>In de offerte staat 80 % v=
+oor of tijdens levering. Kunnen we de betaling in termijnen afspreken, bijvoo=
+rbeeld bij opdracht, bij levering en bij oplevering?</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>2. Wat op offerte en factuur moet staan (=
+RVO controleert dit bij de vaststelling)</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Laadstations: me=
+rk, type en vermogen per station. Drie afzonderlijke stations met elk 240 kW =
+totaalvermogen, en de installatiedatum op de factuur. Het is een staande all-=
+in-one kast, dus geen fysiek gescheiden vermogenskast.</li><li style=3D'margi=
+n:3px 0'>Accu: merk, type, nominale capaciteit (4 =C3=97 261 kWh) en het maxi=
+male ontlaadvermogen in kW. De verhouding vermogen/capaciteit mag niet boven =
+0,5 uitkomen; met 4 =C3=97 100 kW op ca. 1.045 kWh kom ik op 0,38. Graag beve=
+stigen.</li><li style=3D'margin:3px 0'>Na installatie moet het batterijsystee=
+m geregistreerd worden via Energieleveren.nl of de netbeheerder. Is dat onder=
+deel van jullie werk?</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>3. MID-meters</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>In de datasheet =
+van de Whes is de MID-meter optioneel. Ik wil hem in alle drie de stations: z=
+onder MID-meter kan ik geen ERE inboeken en geen kWh aan derden factureren. G=
+raag meeprijzen, en bevestigen dat het een ingebouwde, MID-gecertificeerde me=
+ter is die een inboekdienstverlener accepteert.</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>4. EMS en data (70 %-eis uit de beschikki=
+ng)</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Minimaal 70 % va=
+n de kWh die uit de accu komt moet aantoonbaar naar de laadstations gaan, tot=
+ 24 maanden na de vaststelling. RVO kan daarvoor data over drie opeenvolgende=
+ maanden opvragen: de ontladen kWh uit het BMS en de kWh per laadsessie. Graa=
+g schriftelijk bevestigd dat:</li><li style=3D'margin:3px 0'>a) het EMS de ac=
+cu bij voorrang naar de laadstations laat ontladen;</li><li style=3D'margin:3=
+px 0'>b) het EMS de ontlading per bestemming logt (laadstations / overig);</l=
+i><li style=3D'margin:3px 0'>c) BMS-data en laadsessies als CSV te exporteren=
+ zijn (per sessie: start, einde, kWh, station);</li><li style=3D'margin:3px 0=
+'>d) die data minimaal 24 maanden na de vaststelling bewaard blijven en voor =
+mij toegankelijk zijn, ook als een abonnement of dienst stopt;</li><li style=
+=3D'margin:3px 0'>e) de installatie permanent met internet verbonden is (eis =
+in de beschikking). Wat is daarvoor nodig, bijvoorbeeld 4G als reserve?</li><=
+/ul>
+<p style=3D'margin:10px 0 2px 0'><b>5. Laden voor derden</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Onze huistranspo=
+rteur Faber wil bij ons bijladen, en andere vervoerders kunnen volgen. Welk b=
+ackoffice zit standaard in de offerte (de Whes spreekt OCPP 1.6 JSON)? Het mo=
+et kunnen: externe voertuigen autoriseren (laadpas, QR of app), per sessie kW=
+h factureren tegen =C3=A9=C3=A9n marktconform tarief voor iedereen, de laadpu=
+nten niet in het publieke register zetten maar beperkt toegankelijk houden (e=
+is uit de beschikking), en sessiedata exporteren voor een ERE-inboekdienstver=
+lener.</li><li style=3D'margin:3px 0'>Wat kost dat per maand, per station of =
+per installatie?</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>6. Interne voertuigen (AGV's)</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Over 1,5 =C3=A0 =
+2 jaar groeien we naar circa 30 automatische trekkertjes (Metazet M-Track, 48=
+ V / 5,28 kWh) die onze dieseltrekkers vervangen. In drukke perioden rijden z=
+e ook 's nachts. Ik wil ze via hetzelfde systeem laden.</li><li style=3D'marg=
+in:3px 0'>Kan het EMS of backoffice AC-laadpunten voor deze voertuigen behere=
+n, met sessieregistratie per punt? Wat is daarvoor nodig (type punten, verdel=
+er, EMS-licentie)? Ik hoef dit nu niet te bestellen, maar het moet er straks =
+wel bij kunnen. Graag als optie meeprijzen.</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>7. Truck en uitbreiding</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Welk vermogen kr=
+ijgt de Volvo FH Electric (CCS2 350 kW, 585 kWh) in de praktijk uit de Whes? =
+Ik zag de grens van 350 A en wil weten hoelang 20 =E2=86=92 80 % duurt.</li><=
+li style=3D'margin:3px 0'>Zijn de stations later geschikt voor MCS, of is daa=
+rvoor een ander station nodig?</li><li style=3D'margin:3px 0'>Hoe breid ik la=
+ter uit met extra stations of EnerBox-eenheden, en tegen welke prijs?</li></u=
+l>
+<p style=3D'margin:10px 0 2px 0'><b>8. Scope en garantie</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Wat is inbegrepe=
+n aan netaanvragen, hoofdverdeler, vergunningen of meldingen, keuring en ople=
+vering, en brandveiligheid van het batterijsysteem (PGS 37), inclusief afstem=
+ming met mijn verzekeraar? Wat moet ik zelf regelen?</li><li style=3D'margin:=
+3px 0'>Garantie op de accu: hoeveel jaar of cycli, en welke restcapaciteit is=
+ gegarandeerd? Wie levert service in Nederland en wat is de reactietijd bij e=
+en storing?</li></ul>
+<p>Kunnen we deze of volgende week een technisch overleg van een uur plannen,=
+ bij voorkeur bij mij op locatie? Stuur je antwoorden en de definitieve offer=
+te graag per mail, dan kan ik daarna snel opdracht geven.</p>
+<p>Met vriendelijke groet,</p>
+<p>Dieter Baas<br>A. Baas Potplantenkwekerij B.V.<br>Enserweg 4, 8307 PL Ens<=
+/p>
+</body></html>
+
+--===============2404162350108477325==--

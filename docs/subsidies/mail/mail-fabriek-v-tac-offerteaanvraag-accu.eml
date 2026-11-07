@@ -1,0 +1,139 @@
+Subject: Request for firm quotation: 4 x 261 kWh Oliter HV sets with 100 kW
+ inverters, DDP Ens (NL)
+Date: Sat, 10 Oct 2026 09:00:35 +0000
+X-Unsent: 1
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8461054746789607934=="
+
+--===============8461054746789607934==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+Thanks again for the information on the 261 kWh Oliter HV set. We would like =
+to move from an indicative price to a firm quotation, so we can compare it pr=
+operly with other offers. Could you send the following?
+
+1. PRICE
+- Firm quotation for 4 sets of 261 kWh with 100 kW Deye inverters (about 1,04=
+5 kWh in total), delivered DDP Drietorensweg 38-1, 8307 PH Ens, the Netherlan=
+ds, excluding VAT. Please show the battery cabinet and the inverter as separa=
+te lines, plus the discount for 4 units, and state what is included (cabling,=
+ communication, rack, transport, duties, insurance).
+- The same for the 80 kW inverter version, as a reference.
+- Validity of the quotation, payment terms, and the lead time from order to d=
+elivery on site. Where is the stock?
+
+2. POWER AND CAPACITY (WE NEED THESE ON THE DATASHEET)
+- Nominal and usable capacity per set, and the rated continuous power of the =
+complete system (battery plus inverter) in kW. Our subsidy rules reject a bat=
+tery whose power divided by capacity is above 0.50. With 4 =C3=97 100 kW on a=
+bout 1,045 kWh we are at 0.38, and we want that to be stated in the documents.
+- Exact inverter model and its grid code settings for the Netherlands.
+- Round-trip efficiency, cell type and cycle life.
+
+3. BMS AND CONTROL INTERFACE (THE MOST IMPORTANT POINT FOR US)
+- We must read the discharged kWh per period from the BMS and keep that data =
+for at least 24 months. An external energy management system has to be able t=
+o control charging and discharging, so the battery supplies our truck charger=
+s with priority.
+- Please confirm this is possible and send the communication protocol (Modbus=
+ TCP or similar) with the register list.
+- Remote monitoring: is it included, who owns the data, and is it possible wi=
+thout a cloud subscription?
+
+4. WARRANTY AND SERVICE
+- Warranty in years and cycles on the battery and on the inverter, with the g=
+uaranteed capacity retention (for example 80 % after X years or Y cycles).
+- Who handles warranty and service in the Netherlands, and what is the respon=
+se time for a fault? Do you have an installation partner in the Netherlands f=
+or the AC connection and commissioning?
+
+5. CERTIFICATES AND SAFETY
+- Datasheets for the Oliter cabinet and the Deye inverter, and the certificat=
+es: CE, IEC 62619, IEC 62477, UN38.3 and compliance with EN 50549 for the Dut=
+ch grid.
+- A fire safety test report (UL 9540A or equivalent). Dutch rules for station=
+ary lithium storage (PGS 37) require documentation on thermal runaway propaga=
+tion.
+- Dimensions, weight, required clearances per cabinet, and confirmation that =
+outdoor installation is suitable for the Dutch climate.
+
+This is a request for a quotation only, not an order. We would like to decide=
+ in the coming weeks, so a reply within a few days would be very helpful. If =
+a call is easier, I am happy to arrange one.
+
+Kind regards,
+
+Dieter Baas
+A. Baas Potplantenkwekerij B.V.
+Enserweg 4, 8307 PL Ens, the Netherlands
+
+--===============8461054746789607934==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body style=3D'font-family:Calibri,Arial,sans-serif;font-size:11pt;colo=
+r:#222;line-height:1.45'>
+<p>Hello,</p>
+<p>Thanks again for the information on the 261 kWh Oliter HV set. We would li=
+ke to move from an indicative price to a firm quotation, so we can compare it=
+ properly with other offers. Could you send the following?</p>
+<p style=3D'margin:10px 0 2px 0'><b>1. Price</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Firm quotation f=
+or <b>4 sets of 261 kWh with 100 kW Deye inverters</b> (about 1,045 kWh in to=
+tal), delivered <b>DDP Drietorensweg 38-1, 8307 PH Ens, the Netherlands</b>, =
+excluding VAT. Please show the battery cabinet and the inverter as separate l=
+ines, plus the discount for 4 units, and state what is included (cabling, com=
+munication, rack, transport, duties, insurance).</li><li style=3D'margin:3px =
+0'>The same for the 80 kW inverter version, as a reference.</li><li style=3D'=
+margin:3px 0'>Validity of the quotation, payment terms, and the lead time fro=
+m order to delivery on site. Where is the stock?</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>2. Power and capacity (we need these on t=
+he datasheet)</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Nominal and usab=
+le capacity per set, and the <b>rated continuous power of the complete system=
+</b> (battery plus inverter) in kW. Our subsidy rules reject a battery whose =
+power divided by capacity is above 0.50. With 4 =C3=97 100 kW on about 1,045 =
+kWh we are at 0.38, and we want that to be stated in the documents.</li><li s=
+tyle=3D'margin:3px 0'>Exact inverter model and its grid code settings for the=
+ Netherlands.</li><li style=3D'margin:3px 0'>Round-trip efficiency, cell type=
+ and cycle life.</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>3. BMS and control interface (the most im=
+portant point for us)</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>We must read the=
+ <b>discharged kWh per period</b> from the BMS and keep that data for at leas=
+t 24 months. An external energy management system has to be able to control c=
+harging and discharging, so the battery supplies our truck chargers with prio=
+rity.</li><li style=3D'margin:3px 0'>Please confirm this is possible and send=
+ the communication protocol (Modbus TCP or similar) with the register list.</=
+li><li style=3D'margin:3px 0'>Remote monitoring: is it included, who owns the=
+ data, and is it possible without a cloud subscription?</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>4. Warranty and service</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Warranty in year=
+s and cycles on the battery and on the inverter, with the guaranteed capacity=
+ retention (for example 80 % after X years or Y cycles).</li><li style=3D'mar=
+gin:3px 0'>Who handles warranty and service <b>in the Netherlands</b>, and wh=
+at is the response time for a fault? Do you have an installation partner in t=
+he Netherlands for the AC connection and commissioning?</li></ul>
+<p style=3D'margin:10px 0 2px 0'><b>5. Certificates and safety</b></p>
+<ul style=3D'margin:4px 0 10px 0'><li style=3D'margin:3px 0'>Datasheets for t=
+he Oliter cabinet and the Deye inverter, and the certificates: CE, IEC 62619,=
+ IEC 62477, UN38.3 and compliance with EN 50549 for the Dutch grid.</li><li s=
+tyle=3D'margin:3px 0'>A fire safety test report (UL 9540A or equivalent). Dut=
+ch rules for stationary lithium storage (PGS 37) require documentation on the=
+rmal runaway propagation.</li><li style=3D'margin:3px 0'>Dimensions, weight, =
+required clearances per cabinet, and confirmation that outdoor installation i=
+s suitable for the Dutch climate.</li></ul>
+<p>This is a request for a quotation only, not an order. We would like to dec=
+ide in the coming weeks, so a reply within a few days would be very helpful. =
+If a call is easier, I am happy to arrange one.</p>
+<p>Kind regards,</p>
+<p>Dieter Baas<br>A. Baas Potplantenkwekerij B.V.<br>Enserweg 4, 8307 PL Ens,=
+ the Netherlands</p>
+</body></html>
+
+--===============8461054746789607934==--
